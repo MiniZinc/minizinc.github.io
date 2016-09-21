@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Scheduling constraints</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-packing.html' title='Packing constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-extensional.html' title='Extensional constraints (table, regular etc.)'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-globals-scheduling'>Scheduling constraints</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>alternative</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>s0</span>,
+                      <span class='mzn-ti'>var int</span>: <span class='mzn-id'>d0</span>,
+                      <span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>s</span>,
+                      <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d), 
+    "alternative: index sets of third and fourth argument must be identical", 
+    sum ( i in index_set(s) ) ( 
+    bool2int(occurs(s[i])) 
+    )<=1 /\ 
+    span(s0, d0, s, d))
+</div>
+(standard decomposition from alternative.mzn:8)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Alternative constraint for optional tasks. Task (<span class='mzn-arg'>s0</span>,<span class='mzn-arg'>d0</span>) spans the optional tasks (<span class='mzn-arg'>s</span>[<span class='mzn-parm'>i</span>],<span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>]) in the array arguments and at most one can occur</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>cumulative</span>(<span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>s</span>,
+                     <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>,
+                     <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>r</span>,
+                     <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d) /\ 
+index_set(s)==index_set(r), 
+    "cumulative: the 3 array arguments must have identical index sets", 
+    assert(lb_array(d)>=0 /\ 
+                                                                        
+    lb_array(r)>=0, 
+    "cumulative: durations and resource usages must be non-negative", 
+    let {
+                                                                          
+    set of int: tasks = { i | i in index_set(s) where ub(r[i]) > 0 /\ 
+                                                      ub(d[i]) > 0 }, 
+    set of int: times = min ( i in tasks ) ( 
+                            lb(s[i]) 
+                        )..max ( i in tasks ) ( 
+                               ub(s[i])+ub(d[i]) 
+                           ),
+                                                                      
+    } in (
+                                                                          
+    forall ( t in times ) ( 
+        b>=sum ( i in tasks ) ( 
+               bool2int(occurs(s[i]) /\ deopt(s[i])<=t /\ 
+               t < deopt(s[i])+d[i])*r[i] 
+           ) 
+    ))))
+</div>
+(standard decomposition from cumulative_opt.mzn:10)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that a set of tasks given by start times <span class='mzn-arg'>s</span>, durations <span class='mzn-arg'>d</span>, and   resource requirements <span class='mzn-arg'>r</span>, never require more than a global resource bound   <span class='mzn-arg'>b</span> at any one time. Start times are optional variables, so   that absent tasks do not need to be scheduled.</p><p>
+  Assumptions:<ul>
+<li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0 and <span class='mzn-arg'>r</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
+</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>cumulative</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>s</span>,
+                     <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>,
+                     <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>r</span>,
+                     <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d) /\ 
+index_set(s)==index_set(r), 
+    "cumulative: the 3 array arguments must have identical index sets", 
+    assert(lb_array(d)>=0 /\ 
+                                                                        
+    lb_array(r)>=0, 
+    "cumulative: durations and resource usages must be non-negative", 
+    if forall ( i in index_set(r) ) ( is_fixed(r[i]) /\ fix(r[i])==1 
+       ) /\ 
+       is_fixed(b) /\ 
+       fix(b)==1 then 
+                                                                          
+    if forall ( i in index_set(d) ) ( 
+           is_fixed(d[i]) /\ 
+           fix(d[i])==1 
+       ) then 
+        alldifferent(s) 
+    else 
+        disjunctive(s, d) 
+    endif 
+                                                                      
+    else 
+                                                                          
+    let {
+        set of int: Tasks = { i | i in index_set(s) where ub(r[i]) > 
+    0 /\ ub(d[i]) > 
+    0 }, 
+        int: early = min ( i in Tasks ) ( lb(s[i]) ), 
+        int: late = max ( i in Tasks ) ( ub(s[i])+ub(d[i]) ),
+    } in (
+        if late-early > 5000 then 
+            cumulative_task(s, d, r, b) 
+        else 
+            cumulative_time(s, d, r, b) 
+        endif) 
+                                                                      
+    endif))
+</div>
+(standard decomposition from cumulative.mzn:12)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that a set of tasks given by start times <span class='mzn-arg'>s</span>, durations <span class='mzn-arg'>d</span>, and   resource requirements <span class='mzn-arg'>r</span>, never require more than a global resource bound   <span class='mzn-arg'>b</span> at any one time.</p><p>
+  Assumptions:<ul>
+<li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0 and <span class='mzn-arg'>r</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
+</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>disjunctive</span>(<span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>s</span>,
+                      <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d), 
+    "disjunctive: the array arguments must have identical index sets", 
+    forall ( i in index_set(d) ) ( 
+                                                                           
+    d[i]>=0 
+                                                                       
+    ) /\ 
+                                                                       
+    if lb_array(d) > 0 then 
+        disjunctive_strict(s, d) 
+    else 
+        forall ( i, j in index_set(d) where i < j ) ( 
+            absent(s[i]) \/ absent(s[j]) \/ d[i]==0 \/ d[j]==0 \/ 
+            deopt(s[i])+d[i]<=deopt(s[j]) \/ 
+            deopt(s[j])+d[j]<=deopt(s[i]) 
+        ) 
+    endif)
+</div>
+(standard decomposition from disjunctive_opt.mzn:12)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that a set of tasks given by start times <span class='mzn-arg'>s</span> and durations <span class='mzn-arg'>d</span>   do not overlap in time. Tasks with duration 0 can be scheduled at any time,   even in the middle of other tasks. Start times are optional variables, so   that absent tasks do not need to be scheduled.</p><p>
+  Assumptions:<ul>
+<li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
+</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>disjunctive</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>s</span>,
+                      <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d), 
+    "disjunctive: the array arguments must have identical index sets", 
+    forall ( i in index_set(d) ) ( 
+                                                                           
+    d[i]>=0 
+                                                                       
+    ) /\ 
+                                                                       
+    if lb_array(d) > 0 then 
+        disjunctive_strict(s, d) 
+    else 
+        forall ( i, j in index_set(d) where i < j ) ( 
+            d[i]==0 \/ d[j]==0 \/ s[i]+d[i]<=s[j] \/ s[j]+d[j]<=s[i] 
+        ) 
+    endif)
+</div>
+(standard decomposition from disjunctive.mzn:11)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that a set of tasks given by start times <span class='mzn-arg'>s</span> and durations <span class='mzn-arg'>d</span>   do not overlap in time. Tasks with duration 0 can be scheduled at any time,   even in the middle of other tasks.</p><p>
+  Assumptions:<ul>
+<li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
+</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>disjunctive_strict</span>(<span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>s</span>,
+                             <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d), 
+    "disjunctive: the array arguments must have identical index sets", 
+    forall ( i in index_set(d) ) ( 
+                                                                           
+    d[i]>=0 
+                                                                       
+    ) /\ 
+                                                                       
+    forall ( i, j in index_set(d) where i < j ) ( 
+        absent(s[i]) \/ absent(s[j]) \/ 
+        deopt(s[i])+d[i]<=deopt(s[j]) \/ 
+        deopt(s[j])+d[j]<=deopt(s[i]) 
+    ))
+</div>
+(standard decomposition from disjunctive_strict_opt.mzn:10)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that a set of tasks given by start times <span class='mzn-arg'>s</span> and durations <span class='mzn-arg'>d</span>   do not overlap in time. Tasks with duration 0 CANNOT be scheduled at any time,   but only when no other task is running. Start times are optional variables, so   that absent tasks do not need to be scheduled.</p><p>
+  Assumptions:<ul>
+<li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
+</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>disjunctive_strict</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>s</span>,
+                             <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d), 
+    "disjunctive: the array arguments must have identical index sets", 
+    forall ( i in index_set(d) ) ( 
+    d[i]>=0 
+                                                                       
+    ) /\ 
+                                                                       
+    forall ( i, j in index_set(d) where i < j ) ( 
+        s[i]+d[i]<=s[j] \/ s[j]+d[j]<=s[i] 
+    ))
+</div>
+(standard decomposition from disjunctive_strict.mzn:9)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that a set of tasks given by start times <span class='mzn-arg'>s</span> and durations <span class='mzn-arg'>d</span>   do not overlap in time. Tasks with duration 0 CANNOT be scheduled at any time,   but only when no other task is running.</p><p>
+  Assumptions:<ul>
+<li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
+</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>span</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>s0</span>,
+               <span class='mzn-ti'>var int</span>: <span class='mzn-id'>d0</span>,
+               <span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>s</span>,
+               <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d), 
+    "span: index sets of third and fourth argument must be identical", 
+    (occurs(s0) <-> exists ( i in index_set(s) ) ( occurs(s[i]) )) /\ 
+    s0==min(s) /\ 
+    (absent(s0) -> d0==0) /\ 
+    ~+(s0, d0)==max ( i in index_set(s) ) ( ~+(s[i], d[i]) ))
+</div>
+(standard decomposition from span.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Span constraint for optional tasks. Task (<span class='mzn-arg'>s0</span>,<span class='mzn-arg'>d0</span>) spans the optional   tasks (<span class='mzn-arg'>s</span>[<span class='mzn-parm'>i</span>],<span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>]) in the array arguments.</p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

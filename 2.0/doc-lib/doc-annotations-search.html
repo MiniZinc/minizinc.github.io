@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Search annotations</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-annotations-prop.html' title='Propagation strength annotations'>&#8656;</a> <a class='mzn-nav-up' href='doc-annotations.html' title='Annotations'>&#8679;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-annotations-search'>Search annotations</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+ </p>
+</div>
+<p>Sections:</p>
+<ul>
+<li><a href='#doc-annotations-search-varsel'>Variable selection annotations</a>
+<li><a href='#doc-annotations-search-choice'>Value choice annotations</a>
+<li><a href='#doc-annotations-search-explore'>Exploration strategy annotations</a>
+</ul>
+<p>Declarations in this section:</p>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>bool_search</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>,
+                       <span class='mzn-ti'>ann</span>: <span class='mzn-id'>select</span>,
+                       <span class='mzn-ti'>ann</span>: <span class='mzn-id'>choice</span>,
+                       <span class='mzn-ti'>ann</span>: <span class='mzn-id'>explore</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Specify search on variables <span class='mzn-arg'>x</span>, with variable selection   strategy <span class='mzn-arg'>select</span>, value choice strategy <span class='mzn-arg'>choice</span>, and exploration strategy   <span class='mzn-arg'>explore</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>float_search</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>,
+                        <span class='mzn-ti'>float</span>: <span class='mzn-id'>prec</span>,
+                        <span class='mzn-ti'>ann</span>: <span class='mzn-id'>select</span>,
+                        <span class='mzn-ti'>ann</span>: <span class='mzn-id'>choice</span>,
+                        <span class='mzn-ti'>ann</span>: <span class='mzn-id'>explore</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Specify search on variables <span class='mzn-arg'>x</span>,    with precision <span class='mzn-arg'>prec</span>, variable selection   strategy <span class='mzn-arg'>select</span>, value choice strategy <span class='mzn-arg'>choice</span>, and exploration strategy   <span class='mzn-arg'>explore</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>int_search</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                      <span class='mzn-ti'>ann</span>: <span class='mzn-id'>select</span>,
+                      <span class='mzn-ti'>ann</span>: <span class='mzn-id'>choice</span>,
+                      <span class='mzn-ti'>ann</span>: <span class='mzn-id'>explore</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Specify search on variables <span class='mzn-arg'>x</span>, with variable selection   strategy <span class='mzn-arg'>select</span>, value choice strategy <span class='mzn-arg'>choice</span>, and exploration strategy   <span class='mzn-arg'>explore</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>seq_search</span>(<span class='mzn-ti'>array [int] of ann</span>: <span class='mzn-id'>s</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Sequentially perform the searches specified in array <span class='mzn-arg'>s</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>set_search</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>,
+                      <span class='mzn-ti'>ann</span>: <span class='mzn-id'>select</span>,
+                      <span class='mzn-ti'>ann</span>: <span class='mzn-id'>choice</span>,
+                      <span class='mzn-ti'>ann</span>: <span class='mzn-id'>explore</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Specify search on variables <span class='mzn-arg'>x</span>, with variable selection   strategy <span class='mzn-arg'>select</span>, value choice strategy <span class='mzn-arg'>choice</span>, and exploration strategy   <span class='mzn-arg'>explore</span>.</p>
+</div></div></div>
+<div class='mzn-group-level-1'>
+<div class='mzn-group-nav'><a class='mzn-nav-up' href='#doc-annotations-search' title='Search annotations'>&#8679;</a> <a class='mzn-nav-next' href='#doc-annotations-search-choice' title='Value choice annotations'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-annotations-search-varsel'>Variable selection annotations</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+ </p>
+</div>
+<div class='mzn-decl-type-par'>
+<div class='mzn-decl-type-heading'>Parameters</div>
+<div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>anti_first_fail</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Choose the variable with the largest domain </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>dom_w_deg</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Choose the variable with largest domain, divided  by the number of attached constraints weighted by how often they have caused failure </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>first_fail</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Choose the variable with the smallest domain </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>impact</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Choose the variable with the highest impact so  far during the search  </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>input_order</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Search variables in the given order </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>largest</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Choose the variable with the largest value in its domain </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>max_regret</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Choose the variable with largest difference  between the two smallest values in its domain  </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>most_constrained</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Choose the variable with the smallest domain,  breaking ties using the number of attached constraints </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>occurrence</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Choose the variable with the largest number of attached constraints </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>smallest</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Choose the variable with the smallest value in its domain </p>
+</div></div></div>
+</div><div class='mzn-group-level-1'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='#doc-annotations-search-varsel' title='Variable selection annotations'>&#8656;</a> <a class='mzn-nav-up' href='#doc-annotations-search' title='Search annotations'>&#8679;</a> <a class='mzn-nav-next' href='#doc-annotations-search-explore' title='Exploration strategy annotations'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-annotations-search-choice'>Value choice annotations</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+ </p>
+</div>
+<div class='mzn-decl-type-par'>
+<div class='mzn-decl-type-heading'>Parameters</div>
+<div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>indomain</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Assign values in ascending order </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>indomain_interval</span></div><div class='mzn-vardecl-doc'>
+<p>
+     If the domain consists of several contiguous intervals, reduce the   domain to the first interval. Otherwise bisect the domain. </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>indomain_max</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Assign the largest value in the domain </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>indomain_median</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Assign the middle value in the domain </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>indomain_middle</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Assign the value in the domain closest to  the mean of its current bounds </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>indomain_min</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Assign the smallest value in the domain </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>indomain_random</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Assign a random value from the domain </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>indomain_reverse_split</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Bisect the domain, excluding the lower half first </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>indomain_split</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Bisect the domain, excluding the upper half first </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>indomain_split_random</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Bisect the domain, randomly selecting which half to exclude first </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>outdomain_max</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Exclude the largest value from the domain </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>outdomain_median</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Exclude the middle value from the domain </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>outdomain_min</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Exclude the smallest value from the domain </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>outdomain_random</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Exclude a random value from the domain </p>
+</div></div></div>
+</div><div class='mzn-group-level-1'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='#doc-annotations-search-choice' title='Value choice annotations'>&#8656;</a> <a class='mzn-nav-up' href='#doc-annotations-search' title='Search annotations'>&#8679;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-annotations-search-explore'>Exploration strategy annotations</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-par'>
+<div class='mzn-decl-type-heading'>Parameters</div>
+<div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>complete</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Perform a complete search </p>
+</div></div></div>
+</div></div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

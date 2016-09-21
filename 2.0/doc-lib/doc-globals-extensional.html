@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Extensional constraints (table, regular etc.)</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-scheduling.html' title='Scheduling constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-globals-extensional'>Extensional constraints (table, regular etc.)</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>regular</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                  <span class='mzn-ti'>int</span>: <span class='mzn-id'>Q</span>,
+                  <span class='mzn-ti'>int</span>: <span class='mzn-id'>S</span>,
+                  <span class='mzn-ti'>array [int,int] of int</span>: <span class='mzn-id'>d</span>,
+                  <span class='mzn-ti'>int</span>: <span class='mzn-id'>q0</span>,
+                  <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>F</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(Q > 0, "regular: \'Q\' must be greater than zero", assert(S > 
+    0, "regular: \'S\' must be greater than zero", 
+    assert(index_set_1of2(d)==1..Q /\ 
+                                                   index_set_2of2(d)==
+    1..S, 
+    "regular: the transition function \'d\' must be [1..Q,1..S]", 
+    assert(forall ( i in 1..Q, j in 1..S ) ( 
+                                                                      
+    d[i, j] in 0..Q ), 
+    "regular: transition function \'d\' points to states outside 0..Q", 
+    assert(q0 in 1..Q, "regular: start state \'q0\' not in 1..Q", 
+    assert(F subset 1..Q, 
+    "regular: final states in \'F\' contain states outside 1..Q", 
+    let {
+                                                                      
+    int: m = min(index_set(x)), 
+                                                                      
+    int: n = max(index_set(x))+1, 
+                                                                      
+    array [m..n] of var 1..Q: a,
+                                                                  
+    } in (
+    a[m]==q0 /\ 
+    forall ( i in index_set(x) ) ( 
+    x[i] in 1..S /\ a[i+1]==d[a[i], x[i]] 
+    ) /\ 
+    a[n] in F)))))))
+</div>
+(standard decomposition from regular.mzn:8)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    The sequence of values in array <span class='mzn-arg'>x</span> (which must all be in the range 1..<span class='mzn-arg'>S</span>)   is accepted by the DFA of <span class='mzn-arg'>Q</span> states with input 1..<span class='mzn-arg'>S</span> and transition   function <span class='mzn-arg'>d</span> (which maps (1..<span class='mzn-arg'>Q</span>, 1..<span class='mzn-arg'>S</span>) -> 0..<span class='mzn-arg'>Q</span>)) and initial state <span class='mzn-arg'>q0</span>   (which must be in 1..<span class='mzn-arg'>Q</span>) and accepting states <span class='mzn-arg'>F</span> (which all must be in   1..<span class='mzn-arg'>Q</span>).  We reserve state 0 to be an always failing state.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>regular_nfa</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                      <span class='mzn-ti'>int</span>: <span class='mzn-id'>Q</span>,
+                      <span class='mzn-ti'>int</span>: <span class='mzn-id'>S</span>,
+                      <span class='mzn-ti'>array [int,int] of set of int</span>: <span class='mzn-id'>d</span>,
+                      <span class='mzn-ti'>int</span>: <span class='mzn-id'>q0</span>,
+                      <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>F</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(Q > 0, "regular_nfa: \'Q\' must be greater than zero", 
+    assert(S > 0, "regular_nfa: \'S\' must be greater than zero", 
+    assert(index_set_1of2(d)==1..Q /\ 
+                                                                  
+    index_set_2of2(d)==1..S, 
+    "regular_nfa: the transition function \'d\' must be [1..Q,1..S]", 
+    assert(forall ( i in 1..Q, j in 1..S ) ( 
+                                                                          
+    d[i, j] subset 1..Q 
+    ), 
+    "regular_nfa: transition function \'d\' points to states outside 1..Q", 
+    assert(q0 in 1..Q, "regular: start state \'q0\' not in 1..Q", 
+    assert(F subset 1..Q, 
+    "regular: final states in \'F\' contain states outside 1..Q", 
+    let {
+                                                                      
+    int: m = min(index_set(x)), 
+                                                                      
+    int: n = max(index_set(x))+1, 
+                                                                      
+    array [m..n] of var 1..Q: a,
+                                                                  
+    } in (
+    a[m]==q0 /\ 
+    forall ( i in index_set(x) ) ( 
+    x[i] in 1..S /\ a[i+1] in d[a[i], x[i]] 
+    ) /\ 
+    a[n] in F)))))))
+</div>
+(standard decomposition from regular_nfa.mzn:8)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    The sequence of values in array <span class='mzn-arg'>x</span> (which must all be in the range 1..<span class='mzn-arg'>S</span>)   is accepted by the NFA of <span class='mzn-arg'>Q</span> states with input 1..<span class='mzn-arg'>S</span> and transition   function <span class='mzn-arg'>d</span> (which maps (1..<span class='mzn-arg'>Q</span>, 1..<span class='mzn-arg'>S</span>) -> set of 1..<span class='mzn-arg'>Q</span>)) and initial state <span class='mzn-arg'>q0</span>   (which must be in 1..<span class='mzn-arg'>Q</span>) and accepting states <span class='mzn-arg'>F</span> (which all must be in   1..<span class='mzn-arg'>Q</span>).</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>table</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [int,int] of bool</span>: <span class='mzn-id'>t</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set_2of2(t)==index_set(x), 
+    "The second dimension of the table must equal the number of variables "++
+                                        
+                                        "in the first argument", let {
+                                                                     
+    int: l = min(index_set(x)), 
+                                                                     
+    int: u = max(index_set(x)), 
+                                                                     
+    int: lt = min(index_set_1of2(t)), 
+                                                                     
+    int: ut = max(index_set_1of2(t)), 
+                                                                     
+    var lt..ut: i, 
+                                                                     
+    array [l..u, lt..ut] of bool: t_transposed = array2d(l..u, lt..
+    ut, [ t[i, j] | j in l..u, i in lt..ut ]),
+                                                                 
+    } in (
+    forall ( j in l..u ) ( 
+    t_transposed[j, i]==x[j] )
+                                                                 ))
+</div>
+(standard decomposition from table_bool.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Represents the constraint <span class='mzn-arg'>x</span> in <span class='mzn-arg'>t</span> where we   consider each row in <span class='mzn-arg'>t</span> to be a tuple and <span class='mzn-arg'>t</span> as a set of tuples.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>table</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [int,int] of int</span>: <span class='mzn-id'>t</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set_2of2(t)==index_set(x), 
+    "The second dimension of the table must equal the number of variables "++
+                                        
+                                        "in the first argument", let {
+                                                                     
+    int: l = min(index_set(x)), 
+                                                                     
+    int: u = max(index_set(x)), 
+                                                                     
+    int: lt = min(index_set_1of2(t)), 
+                                                                     
+    int: ut = max(index_set_1of2(t)), 
+                                                                     
+    var lt..ut: i, 
+                                                                     
+    array [l..u, lt..ut] of int: t_transposed = array2d(l..u, lt..ut, 
+    [ t[i, j] | j in l..u, i in lt..ut ]),
+                                                                 
+    } in (
+    forall ( j in l..u ) ( 
+    t_transposed[j, i]==x[j] )
+                                                                 ))
+</div>
+(standard decomposition from table_int.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Represents the constraint <span class='mzn-arg'>x</span> in <span class='mzn-arg'>t</span> where we   consider each row in <span class='mzn-arg'>t</span> to be a tuple and <span class='mzn-arg'>t</span> as a set of tuples.</p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

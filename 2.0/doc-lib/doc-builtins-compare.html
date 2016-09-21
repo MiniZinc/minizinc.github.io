@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Comparison Builtins</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-arithmetic.html' title='Arithmetic Builtins'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-builtins-compare'>Comparison Builtins</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  These builtins implement comparison operations.</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'!='</span>(<span class='mzn-ti'>$T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>$T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x!=y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is not equal to <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'!='</span>(<span class='mzn-ti'>var $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x!=y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is not equal to <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'!='</span>(<span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x!=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is not equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'!='</span>(<span class='mzn-ti'>array [$U] of var $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$U] of var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x!=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is not equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'<'</span>(<span class='mzn-ti'>$T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>$T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x<y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is less than <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'<'</span>(<span class='mzn-ti'>var $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x<y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is less than <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'<'</span>(<span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x<y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is lexicographically smaller than array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'<'</span>(<span class='mzn-ti'>array [$U] of var $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$U] of var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x<y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is lexicographically smaller than array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'<='</span>(<span class='mzn-ti'>$T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>$T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x<=y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is less than or equal to <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'<='</span>(<span class='mzn-ti'>var $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x<=y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is less than or equal to <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'<='</span>(<span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x<=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is lexicographically smaller than or equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'<='</span>(<span class='mzn-ti'>array [$U] of var $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$U] of var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x<=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is lexicographically smaller than or equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>$T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>$T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is equal to <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>opt $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>opt $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is equal to <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>var $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is equal to <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>var opt $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var opt $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is equal to <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>array [$T] of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$T] of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of int: xx = array1d(x), 
+    array [int] of int: yy = array1d(y),
+} in (assert(index_sets_agree(x, y), "array index sets do not match", 
+    forall ( i in index_set(xx) ) ( 
+    xx[i]==yy[i] ))
+)
+</div>
+(standard decomposition from builtins.mzn:63)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>array [$T] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$T] of var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of var int: xx = array1d(x), 
+    array [int] of var int: yy = array1d(y),
+} in (assert(index_sets_agree(x, y), "array index sets do not match", 
+    forall ( i in index_set(xx) ) ( 
+    xx[i]==yy[i] ))
+)
+</div>
+(standard decomposition from builtins.mzn:73)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>array [$T] of bool</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$T] of bool</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of bool: xx = array1d(x), 
+    array [int] of bool: yy = array1d(y),
+} in (assert(index_sets_agree(x, y), "array index sets do not match", 
+    forall ( i in index_set(xx) ) ( 
+    xx[i]==yy[i] ))
+)
+</div>
+(standard decomposition from builtins.mzn:83)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>array [$T] of var bool</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$T] of var bool</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of var bool: xx = array1d(x), 
+    array [int] of var bool: yy = array1d(y),
+} in (assert(index_sets_agree(x, y), "array index sets do not match", 
+    forall ( i in index_set(xx) ) ( 
+    xx[i]==yy[i] ))
+)
+</div>
+(standard decomposition from builtins.mzn:93)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>array [$T] of set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$T] of set of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of set of int: xx = array1d(x), 
+    array [int] of set of int: yy = array1d(y),
+} in (assert(index_sets_agree(x, y), "array index sets do not match", 
+    forall ( i in index_set(xx) ) ( 
+    xx[i]==yy[i] ))
+)
+</div>
+(standard decomposition from builtins.mzn:103)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>array [$T] of var set of int</span>: <span class='mzn-id'>x</span>,
+              <span class='mzn-ti'>array [$T] of var set of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of var set of int: xx = array1d(x), 
+    array [int] of var set of int: yy = array1d(y),
+} in (assert(index_sets_agree(x, y), "array index sets do not match", 
+    forall ( i in index_set(xx) ) ( 
+    xx[i]==yy[i] ))
+)
+</div>
+(standard decomposition from builtins.mzn:113)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>array [$T] of float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$T] of float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of float: xx = array1d(x), 
+    array [int] of float: yy = array1d(y),
+} in (assert(index_sets_agree(x, y), "array index sets do not match", 
+    forall ( i in index_set(xx) ) ( 
+    xx[i]==yy[i] ))
+)
+</div>
+(standard decomposition from builtins.mzn:123)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'='</span>(<span class='mzn-ti'>array [$T] of var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$T] of var float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of var float: xx = array1d(x), 
+    array [int] of var float: yy = array1d(y),
+} in (assert(index_sets_agree(x, y), "array index sets do not match", 
+    forall ( i in index_set(xx) ) ( 
+    xx[i]==yy[i] ))
+)
+</div>
+(standard decomposition from builtins.mzn:133)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is equal to array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'>'</span>(<span class='mzn-ti'>$T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>$T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x>y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is greater than <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'>'</span>(<span class='mzn-ti'>var $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x>y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is greater than <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'>'</span>(<span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x>y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is lexicographically greater than array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'>'</span>(<span class='mzn-ti'>array [$U] of var $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$U] of var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x>y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is lexicographically greater than array <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'>='</span>(<span class='mzn-ti'>$T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>$T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x>=y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is greater than or equal to <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'>='</span>(<span class='mzn-ti'>var $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x>=y</span></p><p>
+  Return if <span class='mzn-arg'>x</span> is greater than or equal to <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'>='</span>(<span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x>=y</span></p><p>
+  Return if array <span class='mzn-arg'>x</span> is lexicographically greater than or equal to array <span class='mzn-arg'>y</span> </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Exponential and logarithmic builtins</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-arithmetic.html' title='Arithmetic Builtins'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-trigonometric.html' title='Trigonometric functions'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-builtins-explog'>Exponential and logarithmic builtins</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  These builtins implement exponential and logarithmic functions.</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>exp</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(e ^ {{\bf x}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>exp</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var float: r, 
+    constraint float_exp(x, r),
+} in (r)
+</div>
+(standard decomposition from builtins.mzn:386)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(e ^ {{\bf x}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>ln</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(\ln {\bf x}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>ln</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var float: r, 
+    constraint float_ln(x, r),
+} in (r)
+</div>
+(standard decomposition from builtins.mzn:395)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(\ln {\bf x}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>log</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(\log_{{\bf x}} {\bf y}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>log10</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(\log_{10} {\bf x}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>log10</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var float: r, 
+    constraint float_log10(x, r),
+} in (r)
+</div>
+(standard decomposition from builtins.mzn:404)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(\log_{10} {\bf x}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>log2</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(\log_{2} {\bf x}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>log2</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var float: r, 
+    constraint float_log2(x, r),
+} in (r)
+</div>
+(standard decomposition from builtins.mzn:413)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(\log_{2} {\bf x}\) </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

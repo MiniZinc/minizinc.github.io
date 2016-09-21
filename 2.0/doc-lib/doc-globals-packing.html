@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Packing constraints</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-counting.html' title='Counting constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-scheduling.html' title='Scheduling constraints'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-globals-packing'>Packing constraints</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bin_packing</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>,
+                      <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>bin</span>,
+                      <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>w</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(bin)==index_set(w), 
+    "bin_packing: the bin and weight arrays must have identical index sets", 
+    assert(lb_array(w)>=0, 
+    "bin_packing: the weights must be non-negative", assert(c>=0, 
+    "bin_packing: capacity must be non-negative", forall ( b in 
+    lb_array(bin)..ub_array(bin) ) ( c>=sum ( i in 
+    index_set(bin) ) ( w[i]*
+    bool2int(bin[i]==b) ) ))))
+</div>
+(standard decomposition from bin_packing.mzn:10)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Requires that each item <span class='mzn-parm'>i</span> with weight <span class='mzn-arg'>w</span>[<span class='mzn-parm'>i</span>], be put into <span class='mzn-arg'>bin</span>[<span class='mzn-parm'>i</span>] such    that the sum of the weights of the items in each bin does not exceed the    capacity <span class='mzn-arg'>c</span>.</p><p>
+  Assumptions:<ul>
+<li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>w</span>[<span class='mzn-parm'>i</span>] >=0<li> <span class='mzn-arg'>c</span> >=0</ul>
+</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bin_packing_capa</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>c</span>,
+                           <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>bin</span>,
+                           <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>w</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(bin)==index_set(w), 
+    "bin_packing_capa: the bin and weight arrays must have identical index sets", 
+    assert(lb_array(w)>=0, 
+    "bin_packing_capa: the weights must be non-negative", 
+    assert(lb_array(c)>=0, 
+    "bin_packing_capa: the capacities must be non-negative", forall ( 
+    i in index_set(bin) ) ( 
+    min(index_set(c))<=bin[i] /\ bin
+    [i]<=max(index_set(c)) ) /\ forall ( 
+    b in index_set(c) ) ( c
+    [b]>=sum ( i in index_set(bin) ) ( w[i]*bool2int(bin[i]==b) ) ))))
+</div>
+(standard decomposition from bin_packing_capa.mzn:10)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Requires that each item <span class='mzn-parm'>i</span> with weight <span class='mzn-arg'>w</span>[<span class='mzn-parm'>i</span>], be put into <span class='mzn-arg'>bin</span>[<span class='mzn-parm'>i</span>] such    that the sum of the weights of the items in each bin <span class='mzn-parm'>b</span> does not exceed the    capacity <span class='mzn-arg'>c</span>[<span class='mzn-parm'>b</span>].</p><p>
+  Assumptions:<ul>
+<li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>w</span>[<span class='mzn-parm'>i</span>] >=0<li> forall <span class='mzn-parm'>b</span>, <span class='mzn-arg'>c</span>[<span class='mzn-parm'>b</span>] >=0</ul>
+</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-fn-id'>bin_packing_load</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>bin</span>,
+                                                  <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>w</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [dom_bounds_array(bin)] of var 0..sum(w): load, 
+    constraint bin_packing_load(load, bin, w),
+} in (load)
+</div>
+(standard decomposition from bin_packing_load_fn.mzn:11)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Returns the load of each bin resulting from packing each item <span class='mzn-parm'>i</span> with   weight <span class='mzn-arg'>w</span>[<span class='mzn-parm'>i</span>] into <span class='mzn-arg'>bin</span>[<span class='mzn-parm'>i</span>], where the load is defined as    the sum of the weights of the items in each bin.</p><p>
+  Assumptions:<ul>
+<li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>w</span>[<span class='mzn-parm'>i</span>] >=0</ul>
+</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bin_packing_load</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>load</span>,
+                           <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>bin</span>,
+                           <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>w</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(bin)==index_set(w), 
+    "bin_packing_load: the bin and weight arrays must have identical index sets", 
+    assert(lb_array(w)>=0, 
+    "bin_packing_load: the weights must be non-negative", sum(load)==
+    sum(w) /\ forall ( i
+     in index_set(bin) ) ( 
+    min(index_set(load))<=bin[i] /\ bin[i]<=
+    max(index_set(load)) ) /\ forall ( b
+     in index_set(load) ) ( load
+    [b]==sum ( i in index_set(bin) ) ( w[i]*bool2int(bin[i]==b) ) )))
+</div>
+(standard decomposition from bin_packing_load.mzn:9)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Requires that each item <span class='mzn-parm'>i</span> with weight <span class='mzn-arg'>w</span>[<span class='mzn-parm'>i</span>], be put into <span class='mzn-arg'>bin</span>[<span class='mzn-parm'>i</span>] such    that the sum of the weights of the items in each bin <span class='mzn-parm'>b</span> is equal to   <span class='mzn-arg'>load</span>[<span class='mzn-parm'>b</span>].</p><p>
+  Assumptions:<ul>
+<li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>w</span>[<span class='mzn-parm'>i</span>] >=0</ul>
+</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>diffn</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>y</span>,
+                <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>dx</span>,
+                <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>dy</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(x)==index_set(y) /\ index_set(x)==index_set(dx) /\ 
+index_set(x)==index_set(dy), "diffn: index set mismatch", forall ( i, 
+                                                                   j
+     in index_set(x) where i < j ) ( x[i]+dx
+    [i]<=x[j] \/ y[i]+dy
+    [i]<=y[j] \/ x[j]+dx
+    [j]<=x[i] \/ y[j]+dy
+    [j]<=y[i] 
+                                                          ))
+</div>
+(standard decomposition from diffn.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains rectangles <span class='mzn-parm'>i</span>, given by their origins (<span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>], <span class='mzn-arg'>y</span>[<span class='mzn-parm'>i</span>])   and sizes (<span class='mzn-arg'>dx</span>[<span class='mzn-parm'>i</span>], <span class='mzn-arg'>dy</span>[<span class='mzn-parm'>i</span>]), to be non-overlapping. Zero-width   rectangles can still not overlap with any other rectangle.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>diffn_k</span>(<span class='mzn-ti'>array [int,int] of var int</span>: <span class='mzn-id'>box_posn</span>,
+                  <span class='mzn-ti'>array [int,int] of var int</span>: <span class='mzn-id'>box_size</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    set of int: DIMS = index_set_2of2(box_posn),
+} in (
+    assert(index_set_2of2(box_size)==DIMS /\ 
+    index_set_1of2(box_posn)==index_set_1of2(box_size), 
+    "diffn: index sets of arguments are incorrect", forall ( b1, b2
+                                                              in 
+    index_set_1of2(box_posn) where b1 < b2 ) ( 
+    diffn_nonoverlap_k([ box_posn[b1, j] | j in DIMS ], [ box_size
+    [b1, j] | j in DIMS ], [ box_posn[b2, j] | j in DIMS ], [ box_size
+    [b2, j] | j in DIMS ]) 
+                                                    )))
+</div>
+(standard decomposition from diffn_k.mzn:7)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains <span class='mzn-parm'>k</span>-dimensional boxes to be non-overlapping. For each box <span class='mzn-parm'>i</span>   and dimension <span class='mzn-parm'>j</span>, <span class='mzn-arg'>box_posn</span>[<span class='mzn-parm'>i</span>, <span class='mzn-parm'>j</span>] is the base position of the box   in dimension <span class='mzn-parm'>j</span>, and <span class='mzn-arg'>box_size</span>[<span class='mzn-parm'>i</span>, <span class='mzn-parm'>j</span>] is the size in that dimension.   Boxes whose size is 0 in any dimension still cannot overlap with any other box.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>diffn_nonstrict</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                          <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>y</span>,
+                          <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>dx</span>,
+                          <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>dy</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(x)==index_set(y) /\ index_set(x)==index_set(dx) /\ 
+index_set(x)==index_set(dy), "diffn: index set mismatch", forall ( i, 
+                                                                   j
+     in index_set(x) where i < j ) ( dx[i]==
+    0 \/ dx[j]==
+    0 \/ dy[i]==
+    0 \/ dy[j]==
+    0 \/ x[i]+dx
+    [i]<=x[j] \/ y[i]+dy
+    [i]<=y[j] \/ x[j]+dx
+    [j]<=x[i] \/ y[j]+dy
+    [j]<=y[i] 
+                                                          ))
+</div>
+(standard decomposition from diffn_nonstrict.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains rectangles <span class='mzn-parm'>i</span>, given by their origins (<span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>], <span class='mzn-arg'>y</span>[<span class='mzn-parm'>i</span>])   and sizes (<span class='mzn-arg'>dx</span>[<span class='mzn-parm'>i</span>], <span class='mzn-arg'>dy</span>[<span class='mzn-parm'>i</span>]), to be non-overlapping. Zero-width   rectangles can be packed anywhere.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>diffn_nonstrict_k</span>(<span class='mzn-ti'>array [int,int] of var int</span>: <span class='mzn-id'>box_posn</span>,
+                            <span class='mzn-ti'>array [int,int] of var int</span>: <span class='mzn-id'>box_size</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    set of int: DIMS = index_set_2of2(box_posn),
+} in (
+    assert(index_set_2of2(box_size)==DIMS /\ 
+    index_set_1of2(box_posn)==index_set_1of2(box_size), 
+    "diffn: index sets of arguments are incorrect", forall ( b1, b2
+                                                              in 
+    index_set_1of2(box_posn) where b1 < b2 ) ( 
+    diffn_nonstrict_nonoverlap_k([ box_posn[b1, j] | j in DIMS ], 
+    [ box_size[b1, j] | j in DIMS ], [ box_posn[b2, j] | j in DIMS ], 
+    [ box_size[b2, j] | j in DIMS ]) 
+                                                    )))
+</div>
+(standard decomposition from diffn_nonstrict_k.mzn:7)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains <span class='mzn-parm'>k</span>-dimensional boxes to be non-overlapping. For each box <span class='mzn-parm'>i</span>   and dimension <span class='mzn-parm'>j</span>, <span class='mzn-arg'>box_posn</span>[<span class='mzn-parm'>i</span>, <span class='mzn-parm'>j</span>] is the base position of the box   in dimension <span class='mzn-parm'>j</span>, and <span class='mzn-arg'>box_size</span>[<span class='mzn-parm'>i</span>, <span class='mzn-parm'>j</span>] is the size in that dimension.   Boxes whose size is 0 in at least one dimension can be packed anywhere.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>geost</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>k</span>,
+                <span class='mzn-ti'>array [int,int] of int</span>: <span class='mzn-id'>rect_size</span>,
+                <span class='mzn-ti'>array [int,int] of int</span>: <span class='mzn-id'>rect_offset</span>,
+                <span class='mzn-ti'>array [int] of set of int</span>: <span class='mzn-id'>shape</span>,
+                <span class='mzn-ti'>array [int,int] of var int</span>: <span class='mzn-id'>x</span>,
+                <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>kind</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set_1of2(rect_size)==index_set_1of2(rect_offset) /\ 
+index_set_2of2(rect_size)==1..k /\ 
+index_set_2of2(rect_offset)==1..k /\ 
+index_set(shape)==1..length(shape) /\ 
+index_set_1of2(x)==index_set(kind) /\ 
+index_set_2of2(x)==1..k /\ 
+forall ( i in index_set(shape) ) ( 
+    shape[i] subset index_set_1of2(rect_size) 
+), "geost: index sets of arguments are incorrect", assert(forall ( i
+     in index_set(shape) ) ( 
+                                                       card(shape
+    [i]) > 0 
+                                                   ), 
+    "geost: sets in shape must be non-empty", let {
+                                                  set of int: DIMS = 
+    1..k, 
+                                                  set of int: SHAPES
+                                                   = 1..
+    length(shape), 
+                                                  set of int: OBJECTS
+                                                   = index_set(kind),
+                                              } in (
+                                                  forall ( s in 
+    SHAPES ) ( 
+                                                      forall ( r1, r2
+                                                                in 
+    shape[s] where r1 < r2 ) ( 
+                                                          
+    assert(geost_nonoverlap_k([ rect_offset[r1, j] | j in DIMS ], 
+    [ rect_size[r1, j] | j in DIMS ], [ rect_offset[r2, j] | j in 
+    DIMS ], [ rect_offset[r2, j] | j in DIMS ]), 
+    ((((("geost: rectangles "++show(r1))++" and ")++show(r2))++
+                                                 " in shape ")++
+                                                 show(s))++
+                                                 " overlap!") 
+                                                      ) 
+                                                  ) /\ 
+                                                  forall ( o1, o2 in 
+    OBJECTS where o1 < o2 ) ( 
+                                                      forall ( s1 in 
+    dom(kind[o1]), s2 in dom(kind[o2]) ) ( 
+                                                          kind[o1]==
+    s1 /\ 
+                                                          kind[o2]==
+    s2 -> forall ( r1 in shape[s1], r2 in shape[s2] ) ( 
+              geost_nonoverlap_k([ x[o1, j]+rect_offset[r1, j] | j in 
+    DIMS ], [ rect_size[r1, j] | j in DIMS ], [ x[o2, j]+rect_offset
+    [r2, j] | j in DIMS ], [ rect_size[r2, j] | j in DIMS ]) 
+          ) 
+                                                      ) 
+                                                  ))))
+</div>
+(standard decomposition from geost.mzn:14)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+   A global non-overlap constraint for <span class='mzn-arg'>k</span> dimensional objects. It enforces that no two objects overlap.     </p><p>
+</p><p>
+ </p><p>
+</p><p>
+</p>
+<div class='mzn-fundecl-params-heading'>Parameters</div>
+<ul class='mzn-fundecl-params'>
+<li><span class='mzn-arg'>k</span>:             the number of dimensions</li>
+<li><span class='mzn-arg'>rect_size</span>:     the size of each box in <span class='mzn-arg'>k</span> dimensios</li>
+<li><span class='mzn-arg'>rect_offset</span>:   the offset of each box from the base position in <span class='mzn-arg'>k</span> dimensions</li>
+<li><span class='mzn-arg'>shape</span>:         the set of rectangles defining the <span class='mzn-parm'>i</span>-th shape. Assumption: Each pair of boxes in a shape must not overlap.</li>
+<li><span class='mzn-arg'>x</span>:        the base position of each object. <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>,<span class='mzn-parm'>j</span>] is the position of object <span class='mzn-parm'>i</span> in. dimension <span class='mzn-parm'>j</span>.</li>
+<li><span class='mzn-arg'>kind</span>:       the shape used by each object.</li>
+</ul>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>geost_bb</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>k</span>,
+                   <span class='mzn-ti'>array [int,int] of int</span>: <span class='mzn-id'>rect_size</span>,
+                   <span class='mzn-ti'>array [int,int] of int</span>: <span class='mzn-id'>rect_offset</span>,
+                   <span class='mzn-ti'>array [int] of set of int</span>: <span class='mzn-id'>shape</span>,
+                   <span class='mzn-ti'>array [int,int] of var int</span>: <span class='mzn-id'>x</span>,
+                   <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>kind</span>,
+                   <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>l</span>,
+                   <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>u</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(l)==1..k /\ 
+index_set(u)==1..k, 
+    "geost_bb: index set of bounds arrays is not 1.."++
+                    show(k), let {
+                                 set of int: DIMS = 1..k, 
+                                 set of int: OBJECTS = 
+    index_set(kind),
+                             } in (
+                                 geost(k, rect_size, rect_offset, 
+    shape, x, kind) /\ 
+                                 forall ( o in OBJECTS ) ( 
+                                     forall ( s in dom(kind[o]) ) ( 
+                                         kind[o]==s -> forall ( r in 
+    shape[s], j in DIMS ) ( x[o, j]+
+    rect_offset[r, j]>=l[j] /\ x[o, j]+
+    rect_offset[r, j]+rect_size[r, j]<=u[j] ) 
+                                     ) 
+                                 )))
+</div>
+(standard decomposition from geost.mzn:96)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+   A global non-overlap constraint for <span class='mzn-arg'>k</span> dimensional objects. It enforces that no two objects overlap, and that all objects fit within a global <span class='mzn-arg'>k</span> dimensional bounding box.     </p><p>
+</p><p>
+ </p><p>
+</p><p>
+ </p><p>
+</p>
+<div class='mzn-fundecl-params-heading'>Parameters</div>
+<ul class='mzn-fundecl-params'>
+<li><span class='mzn-arg'>k</span>:             the number of dimensions</li>
+<li><span class='mzn-arg'>rect_size</span>:     the size of each box in <span class='mzn-arg'>k</span> dimensios</li>
+<li><span class='mzn-arg'>rect_offset</span>:   the offset of each box from the base position in <span class='mzn-arg'>k</span> dimensions</li>
+<li><span class='mzn-arg'>shape</span>:         the set of rectangles defining the <span class='mzn-parm'>i</span>-th shape. Assumption: Each pair of boxes in a shape must not overlap.</li>
+<li><span class='mzn-arg'>x</span>:        the base position of each object. <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>,<span class='mzn-parm'>j</span>] is the position of object <span class='mzn-parm'>i</span> in dimension <span class='mzn-parm'>j</span>.</li>
+<li><span class='mzn-arg'>kind</span>:       the shape used by each object.</li>
+<li><span class='mzn-arg'>l</span>:             is an array of lower bounds, <span class='mzn-arg'>l</span>[<span class='mzn-parm'>i</span>] is the minimum bounding box for all objects in dimension <span class='mzn-parm'>i</span>.</li>
+<li><span class='mzn-arg'>u</span>:             is an array of upper bounds, <span class='mzn-arg'>u</span>[<span class='mzn-parm'>i</span>] is the maximum bounding box for all objects in dimension <span class='mzn-parm'>i</span>.</li>
+</ul>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>geost_smallest_bb</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>k</span>,
+                            <span class='mzn-ti'>array [int,int] of int</span>: <span class='mzn-id'>rect_size</span>,
+                            <span class='mzn-ti'>array [int,int] of int</span>: <span class='mzn-id'>rect_offset</span>,
+                            <span class='mzn-ti'>array [int] of set of int</span>: <span class='mzn-id'>shape</span>,
+                            <span class='mzn-ti'>array [int,int] of var int</span>: <span class='mzn-id'>x</span>,
+                            <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>kind</span>,
+                            <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>l</span>,
+                            <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>u</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    set of int: DIMS = 1..k, 
+    set of int: OBJECTS = index_set(kind),
+} in (
+    geost_bb(k, rect_size, rect_offset, shape, x, kind, l, u) /\ 
+    forall ( j in DIMS ) ( 
+        exists ( o in OBJECTS, s in dom(kind[o]) ) ( 
+            kind[o]==s /\ 
+            exists ( r in shape[s] ) ( 
+                x[o, j]+rect_offset[r, j]==l[j] 
+            ) 
+        ) /\ 
+        exists ( o in OBJECTS, s in dom(kind[o]) ) ( 
+            kind[o]==s /\ 
+            exists ( r in shape[s] ) ( 
+                x[o, j]+rect_offset[r, j]+rect_size[r, j]==u[j] 
+            ) 
+        ) 
+    ))
+</div>
+(standard decomposition from geost.mzn:147)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+   A global non-overlap constraint for <span class='mzn-arg'>k</span> dimensional objects. It enforces that no two objects overlap, and that all objects fit within a global <span class='mzn-arg'>k</span> dimensional bounding box. In addition, it enforces that the bounding box is the smallest one containing all objects, i.e., each of the <span class='mzn-arg'>2k</span> boundaries is touched by at least by one object.     </p><p>
+</p><p>
+ </p><p>
+</p><p>
+ </p><p>
+</p>
+<div class='mzn-fundecl-params-heading'>Parameters</div>
+<ul class='mzn-fundecl-params'>
+<li><span class='mzn-arg'>k</span>:             the number of dimensions</li>
+<li><span class='mzn-arg'>rect_size</span>:     the size of each box in <span class='mzn-arg'>k</span> dimensios</li>
+<li><span class='mzn-arg'>rect_offset</span>:   the offset of each box from the base position in <span class='mzn-arg'>k</span> dimensions</li>
+<li><span class='mzn-arg'>shape</span>:         the set of rectangles defining the <span class='mzn-parm'>i</span>-th shape. Assumption: Each pair of boxes in a shape must not overlap.</li>
+<li><span class='mzn-arg'>x</span>:        the base position of each object. <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>,<span class='mzn-parm'>j</span>] is the position of object <span class='mzn-parm'>i</span> in dimension <span class='mzn-parm'>j</span>.</li>
+<li><span class='mzn-arg'>kind</span>:       the shape used by each object.</li>
+<li><span class='mzn-arg'>l</span>:             is an array of lower bounds, <span class='mzn-arg'>l</span>[<span class='mzn-parm'>i</span>] is the minimum bounding box for all objects in dimension <span class='mzn-parm'>i</span>.</li>
+<li><span class='mzn-arg'>u</span>:             is an array of upper bounds, <span class='mzn-arg'>u</span>[<span class='mzn-parm'>i</span>] is the maximum bounding box for all objects in dimension <span class='mzn-parm'>i</span>.</li>
+</ul>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>knapsack</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>w</span>,
+                   <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>p</span>,
+                   <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                   <span class='mzn-ti'>var int</span>: <span class='mzn-id'>W</span>,
+                   <span class='mzn-ti'>var int</span>: <span class='mzn-id'>P</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(w)==index_set(p) /\ index_set(w)==index_set(x), 
+    "index set of weights must be equal to index set of profits and index set of items", 
+    assert(lb_array(w)>=0, "weights must be non-negative", 
+    assert(lb_array(p)>=0, "profits must be non-negative", forall ( i
+     in index_set(x) ) ( x[i]>=
+    0 ) /\ W>=0 /\ P>=0 /\ P==sum ( i
+     in index_set(p) ) ( x
+    [i]*p[i] ) /\ W==sum ( i
+     in index_set(w) ) ( x
+    [i]*w[i] ))))
+</div>
+(standard decomposition from knapsack.mzn:15)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+   Requires that items are packed in a knapsack with certain weight and profit restrictions.  Assumptions:<ul>
+<li> Weights <span class='mzn-arg'>w</span> and profits <span class='mzn-arg'>p</span> must be non-negative<li> <span class='mzn-arg'>w</span>, <span class='mzn-arg'>p</span> and <span class='mzn-arg'>x</span> must have the same index sets </ul>
+</p><p>
+</p><p>
+</p>
+<div class='mzn-fundecl-params-heading'>Parameters</div>
+<ul class='mzn-fundecl-params'>
+<li><span class='mzn-arg'>w</span>:  weight of each type of item</li>
+<li><span class='mzn-arg'>p</span>:  profit of each type of item</li>
+<li><span class='mzn-arg'>x</span>:  number of items of each type that are packed</li>
+<li><span class='mzn-arg'>W</span>:  sum of sizes of all items in the knapsack</li>
+<li><span class='mzn-arg'>P</span>:  sum of profits of all items in the knapsack</li>
+</ul>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

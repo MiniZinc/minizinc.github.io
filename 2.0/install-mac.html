@@ -1,0 +1,38 @@
+---
+layout: default
+title: "MiniZinc: Version 2 Installation Instructions for Mac"
+---
+
+{% assign mznversion = site.data.version["mznversion"] %}
+{% assign mzndate = site.data.version["mzndate"] %}
+
+<h2>MiniZinc 2</h2>
+
+<h3>Installation Instructions for Mac OS</h3>
+
+<p>These instructions are for installing MiniZinc 2 from a binary distribution for Mac OS. Download the installer here:</p>
+
+<ul>
+    <li><b>Mac OS installer:</b> <a class="download" href="https://github.com/MiniZinc/libminizinc/releases/download/{{ mznversion }}/Install.MiniZinc.{{ mznversion }}.pkg">Install.MiniZinc.{{ mznversion }}.pkg</a>
+</ul>
+
+<p>After downloading, right-click the package and select "Open". This step is necessary because we currently cannot provide a digital signature for the installation package. Follow the instructions in the installer.</p>
+
+<p>Alternatively, if you prefer not to install MiniZinc globally, you can download the followin binary package and simply unpack it anywhere:</p>
+
+<ul>
+    <li><b>Mac OS binary archive:</b> <a class="download" href="https://github.com/MiniZinc/libminizinc/releases/download/{{ mznversion }}/minizinc-{{ mznversion }}-Darwin.tar.gz">minizinc-{{ mznversion }}-Darwin.tar.gz</a>
+</ul>
+
+
+<h3>Running MiniZinc</h3>
+
+<p>The installer will place the MiniZinc executables in <tt>/usr/local/bin</tt>, which is on the standard system path. From a terminal, you can now run <tt>minizinc</tt>, <tt>mzn2fzn</tt>, <tt>flatzinc</tt>, and <tt>solns2out</tt>.
+</p>
+
+<p>You can also find documentation and examples in <tt>/usr/local/share/doc/minizinc/</tt>.</p>
+
+<h3>Using MiniZinc 2.0 with the MiniZinc IDE</h3>
+
+<p>
+  In order to use MiniZinc 2 with the <a href="/ide/index.html">MiniZinc IDE</a>, you need to change the MiniZinc path in the preferences dialog to point to the <tt>/usr/local/bin</tt>, where the MiniZinc binaries can be found. </p>

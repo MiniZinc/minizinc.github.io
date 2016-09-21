@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Global constraints</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-up' href='doc.html' title='The MiniZinc library'>&#8679;</a> <a class='mzn-nav-next' href='doc-annotations.html' title='Annotations'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-globals'>Global constraints</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  These constraints represent high-level modelling abstractions, for which   many solvers implement special, efficient inference algorithms.</p><p>
+  </p>
+</div>
+<p>Sections:</p>
+<ul>
+<li><a href='doc-globals-alldifferent.html'>All-Different and related constraints</a>
+<li><a href='doc-globals-lexicographic.html'>Lexicographic constraints</a>
+<li><a href='doc-globals-sort.html'>Sorting constraints</a>
+<li><a href='doc-globals-channeling.html'>Channeling constraints</a>
+<li><a href='doc-globals-counting.html'>Counting constraints</a>
+<li><a href='doc-globals-packing.html'>Packing constraints</a>
+<li><a href='doc-globals-scheduling.html'>Scheduling constraints</a>
+<li><a href='doc-globals-extensional.html'>Extensional constraints (table, regular etc.)</a>
+</ul>
+<p>Declarations in this section:</p>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>arg_max</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {constraint length(x) > 0,} in (arg_max_total(x))
+</div>
+(standard decomposition from arg_max.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+      Returns the index of the maximum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>arg_max</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {constraint length(x) > 0,} in (arg_max_total(x))
+</div>
+(standard decomposition from arg_max.mzn:12)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+      Returns the index of the maximum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>arg_min</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {constraint length(x) > 0,} in (arg_min_total(x))
+</div>
+(standard decomposition from arg_min.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+      Returns the index of the minimum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>arg_min</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {constraint length(x) > 0,} in (arg_min_total(x))
+</div>
+(standard decomposition from arg_min.mzn:12)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+      Returns the index of the minimum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>circuit</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    set of int: S = index_set(x), 
+    int: l = min(S), 
+    int: n = card(S), 
+    array [S] of var 1..n: order,
+} in (
+    alldifferent(x) /\ alldifferent(order) /\ 
+    forall ( i in S ) ( x[i]!=i ) /\ 
+    order[l]==1 /\ 
+    forall ( i in S ) ( 
+        order[i]!=n -> order[x[i]]==order[i]+1 
+    ) /\ 
+    forall ( i in S ) ( 
+        order[i]==n -> x[i]==l 
+    ))
+</div>
+(standard decomposition from circuit.mzn:7)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains the elements of <span class='mzn-arg'>x</span> to define a circuit where <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] = <span class='mzn-parm'>j</span> means   that <span class='mzn-parm'>j</span> is the successor of <span class='mzn-parm'>i</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>disjoint</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s1</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s2</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>s1 intersect s2=={}
+</div>
+(standard decomposition from disjoint.mzn:2)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Requires that sets <span class='mzn-arg'>s1</span> and <span class='mzn-arg'>s2</span> do not intersect. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>maximum</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: l = min(index_set(x)), 
+    int: u = max(index_set(x)), 
+    int: ly = lb_array(x), 
+    int: uy = ub_array(x), 
+    array [l..u] of var ly..uy: y,
+} in (
+    y[l]==x[l] /\ m==y[u] /\ 
+    forall ( i in l+1..u ) ( y[i]==max(x[i], y[i-1]) ))
+</div>
+(standard decomposition from redefinitions-2.0.mzn:11)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>m</span> to be the maximum of the values in <span class='mzn-arg'>x</span>.</p><p>
+  Assumptions: |<span class='mzn-arg'>x</span>| > 0.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>maximum</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: l = min(index_set(x)), 
+    int: u = max(index_set(x)), 
+    float: ly = lb_array(x), 
+    float: uy = ub_array(x), 
+    array [l..u] of var ly..uy: y,
+} in (
+    y[l]==x[l] /\ m==y[u] /\ 
+    forall ( i in l+1..u ) ( y[i]==max(x[i], y[i-1]) ))
+</div>
+(standard decomposition from redefinitions-2.0.mzn:21)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>m</span> to be the maximum of the values in <span class='mzn-arg'>x</span>.</p><p>
+  Assumptions: |<span class='mzn-arg'>x</span>| > 0.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>maximum_arg</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>i</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: l = min(index_set(x)), 
+    int: u = max(index_set(x)), 
+    int: ly = lb_array(x), 
+    int: uy = ub_array(x), 
+    array [l..u] of var ly..uy: y, 
+    array [l..u] of var l..u: mi,
+} in (
+    y[l]==x[l] /\ mi[l]==l /\ 
+    i==mi[u] /\ 
+    forall ( j in l+1..u ) ( 
+        y[j]==max(x[j], y[j-1]) /\ 
+        mi[j]==if y[j-1]>=x[j] then mi[j-1] else j endif 
+    ))
+</div>
+(standard decomposition from arg_max_int.mzn:1)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+      Constrain <span class='mzn-arg'>i</span> to be the index of the maximum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.          Assumption: |x| > 0</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>maximum_arg</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>i</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: l = min(index_set(x)), 
+    int: u = max(index_set(x)), 
+    float: ly = lb_array(x), 
+    float: uy = ub_array(x), 
+    array [l..u] of var ly..uy: y, 
+    array [l..u] of var l..u: mi,
+} in (
+    y[l]==x[l] /\ mi[l]==l /\ 
+    i==mi[u] /\ 
+    forall ( j in l+1..u ) ( 
+        y[j]==max(x[j], y[j-1]) /\ 
+        mi[j]==if y[j-1]>=x[j] then mi[j-1] else j endif 
+    ))
+</div>
+(standard decomposition from arg_max_float.mzn:1)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+      Constrain <span class='mzn-arg'>i</span> to be the index of the maximum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.          Assumption: |x| > 0</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>member</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( x[i]==y )
+</div>
+(standard decomposition from member_bool.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that <span class='mzn-arg'>y</span> occurs in the array <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>member</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( x[i]==y )
+</div>
+(standard decomposition from member_float.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that <span class='mzn-arg'>y</span> occurs in the array <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>member</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( x[i]==y )
+</div>
+(standard decomposition from member_int.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that <span class='mzn-arg'>y</span> occurs in the array <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>member</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( x[i]==y )
+</div>
+(standard decomposition from member_set.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that <span class='mzn-arg'>y</span> occurs in the array <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>member</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>y in x
+</div>
+(standard decomposition from set_member.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that <span class='mzn-arg'>y</span> occurs in the set <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>minimum</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: l = min(index_set(x)), 
+    int: u = max(index_set(x)), 
+    float: ly = lb_array(x), 
+    float: uy = ub_array(x), 
+    array [l..u] of var ly..uy: y,
+} in (
+    y[l]==x[l] /\ m==y[u] /\ 
+    forall ( i in l+1..u ) ( y[i]==min(x[i], y[i-1]) ))
+</div>
+(standard decomposition from redefinitions-2.0.mzn:41)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>m</span> to be the minimum of the values in <span class='mzn-arg'>x</span>.</p><p>
+  Assumptions: |<span class='mzn-arg'>x</span>| > 0.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>minimum</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: l = min(index_set(x)), 
+    int: u = max(index_set(x)), 
+    int: ly = lb_array(x), 
+    int: uy = ub_array(x), 
+    array [l..u] of var ly..uy: y,
+} in (
+    y[l]==x[l] /\ m==y[u] /\ 
+    forall ( i in l+1..u ) ( y[i]==min(x[i], y[i-1]) ))
+</div>
+(standard decomposition from redefinitions-2.0.mzn:31)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>m</span> to be the minimum of the values in <span class='mzn-arg'>x</span>.</p><p>
+  Assumptions: |<span class='mzn-arg'>x</span>| > 0.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>minimum_arg</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>i</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: l = min(index_set(x)), 
+    int: u = max(index_set(x)), 
+    int: ly = lb_array(x), 
+    int: uy = ub_array(x), 
+    array [l..u] of var ly..uy: y, 
+    array [l..u] of var l..u: mi,
+} in (
+    y[l]==x[l] /\ mi[l]==l /\ 
+    i==mi[u] /\ 
+    forall ( j in l+1..u ) ( 
+        y[j]==min(x[j], y[j-1]) /\ 
+        mi[j]==if y[j-1]<=x[j] then mi[j-1] else j endif 
+    ))
+</div>
+(standard decomposition from arg_min_int.mzn:1)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+      Constrain <span class='mzn-arg'>i</span> to be the index of the minimum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.          Assumption: |x| > 0</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>minimum_arg</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>i</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: l = min(index_set(x)), 
+    int: u = max(index_set(x)), 
+    float: ly = lb_array(x), 
+    float: uy = ub_array(x), 
+    array [l..u] of var ly..uy: y, 
+    array [l..u] of var l..u: mi,
+} in (
+    y[l]==x[l] /\ mi[l]==l /\ 
+    i==mi[u] /\ 
+    forall ( j in l+1..u ) ( 
+        y[j]==min(x[j], y[j-1]) /\ 
+        mi[j]==if y[j-1]<=x[j] then mi[j-1] else j endif 
+    ))
+</div>
+(standard decomposition from arg_min_float.mzn:1)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+      Constrain <span class='mzn-arg'>i</span> to be the index of the minimum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.          Assumption: |x| > 0</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>network_flow</span>(<span class='mzn-ti'>array [int,1..2] of int</span>: <span class='mzn-id'>arc</span>,
+                       <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>balance</span>,
+                       <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>flow</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: source_node = 1, 
+    int: sink_node = 2, 
+    set of int: ARCS = index_set_1of2(arc), 
+    set of int: NODES = index_set(balance),
+} in (
+    assert(ARCS==index_set(flow) /\ lb_array(arc)>=min(NODES) /\ 
+    ub_array(arc)<=max(NODES), 
+    "network_flow: wrong sizes of input array parameters", forall ( i
+     in NODES ) ( sum ( j
+     in ARCS where i==arc[j, source_node] ) ( 
+    flow[j] )-sum 
+    ( j in ARCS where i==arc[j, sink_node] ) ( 
+    flow[j] )==
+    balance[i] 
+                                                           )))
+</div>
+(standard decomposition from network_flow.mzn:9)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Defines a network flow constraint.   </p><p>
+</p><p>
+</p>
+<div class='mzn-fundecl-params-heading'>Parameters</div>
+<ul class='mzn-fundecl-params'>
+<li><span class='mzn-arg'>arc</span>:  a directed arc of the flow network. Arc <span class='mzn-parm'>i</span> connects node <span class='mzn-arg'>arc</span>[<span class='mzn-parm'>i</span>,1] to node <span class='mzn-arg'>arc</span>[<span class='mzn-parm'>i</span>,2].</li>
+<li><span class='mzn-arg'>balance</span>:  the difference between input and output flow for each node.</li>
+<li><span class='mzn-arg'>flow</span>:  the flow going through each arc.</li>
+</ul>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>network_flow_cost</span>(<span class='mzn-ti'>array [int,1..2] of int</span>: <span class='mzn-id'>arc</span>,
+                            <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>balance</span>,
+                            <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>weight</span>,
+                            <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>flow</span>,
+                            <span class='mzn-ti'>var int</span>: <span class='mzn-id'>cost</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: source_node = 1, 
+    int: sink_node = 2, 
+    set of int: ARCS = index_set_1of2(arc), 
+    set of int: NODES = index_set(balance),
+} in (
+    assert(ARCS==index_set(flow) /\ ARCS==index_set(weight) /\ 
+    lb_array(arc)>=min(NODES) /\ 
+    ub_array(arc)<=max(NODES), 
+    "network_flow: wrong sizes of input array parameters", cost==sum 
+    ( i in ARCS ) ( 
+    flow[i]*weight[i] ) /\ 
+                                                           forall ( i
+     in NODES ) ( sum ( j
+     in ARCS where i==arc[j, source_node] ) ( 
+    flow[j] )-sum 
+    ( j in ARCS where i==arc[j, sink_node] ) ( 
+    flow[j] )==
+    balance[i] 
+                                                           )))
+</div>
+(standard decomposition from network_flow.mzn:39)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Defines a network flow constraint with cost.   </p><p>
+</p><p>
+</p><p>
+</p>
+<div class='mzn-fundecl-params-heading'>Parameters</div>
+<ul class='mzn-fundecl-params'>
+<li><span class='mzn-arg'>arc</span>:  a directed arc of the flow network. Arc <span class='mzn-parm'>i</span> connects node <span class='mzn-arg'>arc</span>[<span class='mzn-parm'>i</span>,1] to node <span class='mzn-arg'>arc</span>[<span class='mzn-parm'>i</span>,2].</li>
+<li><span class='mzn-arg'>balance</span>:  the difference between input and output flow for each node.</li>
+<li><span class='mzn-arg'>weight</span>:  the unit cost of the flow through the arc.</li>
+<li><span class='mzn-arg'>flow</span>:  the flow going through each arc.</li>
+<li><span class='mzn-arg'>cost</span>:  the overall cost of the flow.</li>
+</ul>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>partition_set</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>S</span>,
+                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>universe</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>all_disjoint(S) /\ 
+universe==array_union ( i in index_set(S) ) ( S[i] )
+</div>
+(standard decomposition from partition_set.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains the sets in array <span class='mzn-arg'>S</span> to partition the <span class='mzn-arg'>universe</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var set of int</span>: <span class='mzn-fn-id'>range</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                               <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var set of lb_array(x)..ub_array(x): t, 
+    constraint range(x, s, t),
+} in (t)
+</div>
+(standard decomposition from range_fn.mzn:8)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Returns the image of function <span class='mzn-arg'>x</span> (represented as an array) on set   of values <span class='mzn-arg'>s</span>.  ub(<span class='mzn-arg'>s</span>) must be a subset of index_set(<span class='mzn-arg'>x</span>) otherwise an   assertion failure will occur.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>range</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s</span>,
+                <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>t</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(ub(s) subset index_set(x), 
+    "range: upper bound of \'s\' must be a subset of the index set of \'x\'", 
+    forall ( i in ub(s) ) ( 
+    i in s -> x[i] in t 
+                                                                              
+    ) /\ 
+                                                                              
+    forall ( i in ub(t) ) ( 
+        i in t -> exists ( j in ub(s) ) ( j in s /\ x[j]==i ) 
+    ))
+</div>
+(standard decomposition from range.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that the image of function <span class='mzn-arg'>x</span> (represented as an array) on set   of values <span class='mzn-arg'>s</span> is <span class='mzn-arg'>t</span>.  ub(<span class='mzn-arg'>s</span>) must be a subset of index_set(<span class='mzn-arg'>x</span>) otherwise an   assertion failure will occur.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var set of int</span>: <span class='mzn-fn-id'>roots</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                               <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>t</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var set of index_set(x): s, 
+    constraint roots(x, s, t),
+} in (s)
+</div>
+(standard decomposition from roots_fn.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Returns <span class='mzn-arg'>s</span> such that <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] in <span class='mzn-arg'>t</span> for all <span class='mzn-parm'>i</span> in <span class='mzn-arg'>s</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>roots</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s</span>,
+                <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>t</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(ub(s) subset index_set(x), 
+    "roots: upper bound of \'s\' must be a subset of the index set of \'x\'", 
+    forall ( i in ub(s) ) ( 
+    i in s -> x[i] in t 
+                                                                              
+    ) /\ 
+                                                                              
+    forall ( i in ub(t) ) ( 
+        i in t -> forall ( j in index_set(x) ) ( x[j]==i -> j in s ) 
+    ))
+</div>
+(standard decomposition from roots.mzn:4)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] in <span class='mzn-arg'>t</span> for all <span class='mzn-parm'>i</span> in <span class='mzn-arg'>s</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>sliding_sum</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>low</span>,
+                      <span class='mzn-ti'>int</span>: <span class='mzn-id'>up</span>,
+                      <span class='mzn-ti'>int</span>: <span class='mzn-id'>seq</span>,
+                      <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>vs</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: lx = min(index_set(vs)), 
+    int: ux = max(index_set(vs)),
+} in (
+    forall ( i in lx..ux-seq+1 ) ( 
+        let {var int: sum_of_l = sum ( j in i..i+seq-1 ) ( vs[j] ),
+        } in (low<=sum_of_l /\ sum_of_l<=up) 
+    ))
+</div>
+(standard decomposition from sliding_sum.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that in each subsequence <span class='mzn-arg'>vs</span>[<span class='mzn-parm'>i</span>], ..., <span class='mzn-arg'>vs</span>[<span class='mzn-parm'>i</span> + <span class='mzn-arg'>seq</span> - 1] the sum of the   values belongs to the interval [<span class='mzn-arg'>low</span>, <span class='mzn-arg'>up</span>].</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>subcircuit</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    set of int: S = index_set(x), 
+    int: l = min(S), 
+    int: u = max(S), 
+    int: n = card(S), 
+    array [S] of var 1..n: order, 
+    array [S] of var bool: ins = array1d(S, [ x[i]!=i | i in S ]), 
+    var l..u+1: firstin = min ( i in S ) ( 
+                              u+1+bool2int(ins[i])*(i-u-1) 
+                          ), 
+    var S: lastin, 
+    var bool: empty = firstin > u,
+} in (
+    alldifferent(x) /\ 
+    alldifferent(order) /\ 
+    (empty -> forall ( i in S ) ( 
+                  not ins[i] 
+              )) /\ 
+    (not empty -> order[firstin]==1 /\ lastin > firstin /\ 
+                  x[lastin]==firstin /\ 
+                  ins[lastin] /\ 
+                  ins[firstin] /\ 
+                  forall ( i in S ) ( 
+                      ins[i] /\ 
+                      x[i]!=firstin -> order[x[i]]==order[i]+1 
+                  ) /\ 
+                  forall ( i in S ) ( 
+                      ins[i] \/ 
+                      order[lastin] < order[i] 
+                  )))
+</div>
+(standard decomposition from subcircuit.mzn:8)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains the elements of <span class='mzn-arg'>x</span> to define a subcircuit where <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] = <span class='mzn-parm'>j</span>   means that <span class='mzn-parm'>j</span> is the successor of <span class='mzn-parm'>i</span> and <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] = <span class='mzn-parm'>i</span> means that <span class='mzn-parm'>i</span>   is not in the circuit.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>sum_pred</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>i</span>,
+                   <span class='mzn-ti'>array [int] of set of int</span>: <span class='mzn-id'>sets</span>,
+                   <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>cs</span>,
+                   <span class='mzn-ti'>var int</span>: <span class='mzn-id'>s</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>s==sum ( j in index_set(cs) ) ( bool2int(j in sets[i])*cs[j] )
+</div>
+(standard decomposition from sum_pred.mzn:9)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that the sum of <span class='mzn-arg'>cs</span>[<span class='mzn-parm'>i1</span>]..<span class='mzn-arg'>cs</span>[<span class='mzn-parm'>iN</span>] equals <span class='mzn-arg'>s</span>,   where <span class='mzn-parm'>i1</span>..<span class='mzn-parm'>iN</span> are the elements of the <span class='mzn-arg'>i</span> th set in <span class='mzn-arg'>sets</span>.</p><p>
+  Nb: not called 'sum' as in the constraints catalog because 'sum' is a   MiniZinc built-in function.</p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

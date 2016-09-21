@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>String operations</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-coercion.html' title='Coercions'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-reflect.html' title='Reflection operations'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-builtins-string'>String operations</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  These functions implement operations on strings.</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>'++'</span>(<span class='mzn-ti'>string</span>: <span class='mzn-id'>s1</span>, <span class='mzn-ti'>string</span>: <span class='mzn-id'>s2</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">s1++s2</span></p><p>
+  Return concatenation of <span class='mzn-arg'>s1</span> and <span class='mzn-arg'>s2</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>concat</span>(<span class='mzn-ti'>array [$T] of string</span>: <span class='mzn-id'>s</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return concatenation of strings in array <span class='mzn-arg'>s</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>file_path</span>()</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return path of file where this function is called </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>format</span>(<span class='mzn-ti'>var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Convert <span class='mzn-arg'>x</span> into a string </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>format</span>(<span class='mzn-ti'>var opt set of $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Convert <span class='mzn-arg'>x</span> into a string </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>format</span>(<span class='mzn-ti'>array [$U] of var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Convert <span class='mzn-arg'>x</span> into a string </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>format</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>w</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>p</span>, <span class='mzn-ti'>var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Formatted to-string conversion</p><p>
+Converts the value <span class='mzn-arg'>x</span> into a string right justified by the number of characters given by <span class='mzn-arg'>w</span>, or left justified if <span class='mzn-arg'>w</span> is negative.</p><p>
+The maximum length of the string representation of <span class='mzn-arg'>x</span> is given by <span class='mzn-arg'>p</span>, or the maximum number of digits after the decimal point for floating point numbers. It is a run-time error for <span class='mzn-arg'>p</span> to be negative.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>format</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>w</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>p</span>, <span class='mzn-ti'>var opt set of $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Formatted to-string conversion</p><p>
+Converts the value <span class='mzn-arg'>x</span> into a string right justified by the number of characters given by <span class='mzn-arg'>w</span>, or left justified if <span class='mzn-arg'>w</span> is negative.</p><p>
+The maximum length of the string representation of <span class='mzn-arg'>x</span> is given by <span class='mzn-arg'>p</span>. It is a run-time error for <span class='mzn-arg'>p</span> to be negative.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>format</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>w</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>p</span>, <span class='mzn-ti'>array [$U] of var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Formatted to-string conversion</p><p>
+Converts the value <span class='mzn-arg'>x</span> into a string right justified by the number of characters given by <span class='mzn-arg'>w</span>, or left justified if <span class='mzn-arg'>w</span> is negative.</p><p>
+The maximum length of the string representation of <span class='mzn-arg'>x</span> is given by <span class='mzn-arg'>p</span>. It is a run-time error for <span class='mzn-arg'>p</span> to be negative.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>format</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>w</span>, <span class='mzn-ti'>var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Formatted to-string conversion</p><p>
+Converts the value <span class='mzn-arg'>x</span> into a string right justified by the number of characters given by <span class='mzn-arg'>w</span>, or left justified if <span class='mzn-arg'>w</span> is negative.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>format</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>w</span>, <span class='mzn-ti'>var opt set of $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Formatted to-string conversion</p><p>
+Converts the value <span class='mzn-arg'>x</span> into a string right justified by the number of characters given by <span class='mzn-arg'>w</span>, or left justified if <span class='mzn-arg'>w</span> is negative.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>format</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>w</span>, <span class='mzn-ti'>array [$U] of var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Formatted to-string conversion</p><p>
+Converts the value <span class='mzn-arg'>x</span> into a string right justified by the number of characters given by <span class='mzn-arg'>w</span>, or left justified if <span class='mzn-arg'>w</span> is negative.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>join</span>(<span class='mzn-ti'>string</span>: <span class='mzn-id'>d</span>, <span class='mzn-ti'>array [$T] of string</span>: <span class='mzn-id'>s</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Join string in array <span class='mzn-arg'>s</span> using delimiter <span class='mzn-arg'>d</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>show</span>(<span class='mzn-ti'>var opt set of $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Convert <span class='mzn-arg'>x</span> into a string </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>show</span>(<span class='mzn-ti'>var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Convert <span class='mzn-arg'>x</span> into a string </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>show</span>(<span class='mzn-ti'>array [$U] of var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Convert <span class='mzn-arg'>x</span> into a string </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>show2d</span>(<span class='mzn-ti'>array [int,int] of var opt $T</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: rows = card(index_set_1of2(x)), 
+    int: cols = card(index_set_2of2(x)), 
+    array [int] of string: s = [ show(x[i, j]) | i in 
+    index_set_1of2(x), j in index_set_2of2(x) ], 
+    int: max_length = max ( i in index_set(s) ) ( 
+                          string_length(s[i]) 
+                      ),
+} in (
+    "[| "++
+    concat ( i in 1..rows, j in 1..cols ) ( 
+        format(max_length, s[(i-1)*cols+j])++
+        if j < cols then ", "  elseif i < rows then " |\n   " 
+        else " |]\n" 
+        endif 
+    ))
+</div>
+(standard decomposition from builtins.mzn:1106)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Convert two-dimensional array <span class='mzn-arg'>x</span> into a string </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>show3d</span>(<span class='mzn-ti'>array [int,int,int] of var opt $T</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: len1 = card(index_set_1of3(x)), 
+    int: len2 = card(index_set_2of3(x)), 
+    int: len3 = card(index_set_3of3(x)), 
+    array [int] of string: s = [ show(x[i, j, k]) | i in 
+    index_set_1of3(x), j in index_set_2of3(x), k in 
+    index_set_3of3(x) ], 
+    int: max_length = max ( i in index_set(s) ) ( 
+                          string_length(s[i]) 
+                      ),
+} in (
+    "[| | "++
+    concat ( i in 1..len1, j in 1..len2, k in 1..len3 ) ( 
+        format(max_length, s[(i-1)*len2*len3+(j-1)*len3+k])++
+        if k < len3 then ", "  elseif j < len2 then 
+            " |\n     "  elseif i < len1 then 
+            " |,\n\n   | " 
+        else 
+            " | |]\n" 
+        endif 
+    ))
+</div>
+(standard decomposition from builtins.mzn:1120)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Convert three-dimensional array <span class='mzn-arg'>x</span> into a string </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>show_float</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>w</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>p</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Formatted to-string conversion for floats.</p><p>
+Converts the float <span class='mzn-arg'>x</span> into a string right justified by the number of characters given by <span class='mzn-arg'>w</span>, or left justified if <span class='mzn-arg'>w</span> is negative. The number of digits to appear after the decimal point is given by <span class='mzn-arg'>p</span>. It is a run-time error for <span class='mzn-arg'>p</span> to be negative.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>string</span>: <span class='mzn-fn-id'>show_int</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>w</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Formatted to-string conversion for integers</p><p>
+Converts the integer <span class='mzn-arg'>x</span> into a string right justified by the number of characters given by <span class='mzn-arg'>w</span>, or left justified if <span class='mzn-arg'>w</span> is negative.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>string_length</span>(<span class='mzn-ti'>string</span>: <span class='mzn-id'>s</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return length of <span class='mzn-arg'>s</span> </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

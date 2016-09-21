@@ -1,0 +1,47 @@
+---
+layout: default
+title: "MiniZinc: Version 2 Installation Instructions from Source Code"
+---
+
+{% assign mznversion = site.data.version["mznversion"] %}
+{% assign mzndate = site.data.version["mzndate"] %}
+
+<h2>MiniZinc 2</h2>
+
+<h3>Installation Instructions (source)</h3>
+
+<p>These instructions are for compiling and installing MiniZinc 2 from the source code.</p>
+
+<p>The following source packages are available for download:</p>
+
+<ul><li><a class="download" href="https://github.com/MiniZinc/libminizinc/archive/{{ mznversion }}.tar.gz">libminizinc-{{ mznversion }}.tar.gz</a>
+
+<li><a class="download" href="https://github.com/MiniZinc/libminizinc/archive/{{ mznversion }}.zip">libminizinc-{{ mznversion }}.zip</a>
+</ul>
+
+<p>
+You can also obtain the source code from our <a href="https://github.com/MiniZinc/libminizinc">github repository</a>.
+</p>
+
+<p>MiniZinc 2 is based on the <tt>libminizinc</tt> C++ library. In order to compile and install <tt>libminizinc</tt> you will need the following software:</p>
+
+<ul>
+  <li><a href="http://www.cmake.org">cmake</a>
+  <li>A recent C++ compiler, libminizinc has been tested with recent versions of clang, g++, and Microsoft Visual C++.
+  <li>Optionally: The bison and flex parser/lexer generators. These usually come packaged for Linux distributions, and they are part of the Xcode developer tools for Mac OS. On Windows, you can e.g. install them via cygwin.
+</ul>
+
+<h3>Compilation</h3>
+
+<p>Download and unpack the source code package or clone our git repository. In a terminal, change into the source code toplevel directory.</p>
+
+<p>Execute the following commands in the source code toplevel directory:</p>
+
+<ul>
+  <li><tt>mkdir build</tt>
+  <li><tt>cd build</tt>
+  <li><tt>cmake ..</tt>
+  <li><tt>cmake --build .</tt>
+</ul>
+
+<p>Please refer to the <tt>cmake</tt> documentation for platform-specific options.</p>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>All-Different and related constraints</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-lexicographic.html' title='Lexicographic constraints'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-globals-alldifferent'>All-Different and related constraints</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>all_different</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(x) where i < j ) ( x[i]!=x[j] )
+</div>
+(standard decomposition from all_different_int.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrain the array of integers <span class='mzn-arg'>x</span> to be all different.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>all_different</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(x) where i < j ) ( x[i]!=x[j] )
+</div>
+(standard decomposition from all_different_set.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Constrain the array of sets of integers <span class='mzn-arg'>x</span> to be all different.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>all_disjoint</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>S</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(S) where i < j ) ( disjoint(S[i], S[j]) )
+</div>
+(standard decomposition from all_disjoint.mzn:4)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Constrain the array of sets of integers <span class='mzn-arg'>S</span> to be pairwise disjoint.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>all_equal</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(x) where i < j ) ( x[i]==x[j] )
+</div>
+(standard decomposition from all_equal_int.mzn:1)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Constrain the array of integers <span class='mzn-arg'>x</span> to be all equal</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>all_equal</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(x) where i < j ) ( x[i]==x[j] )
+</div>
+(standard decomposition from all_equal_set.mzn:1)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Constrain the array of sets of integers <span class='mzn-arg'>x</span> to be all different</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>alldifferent_except_0</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>vs</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(vs) where i < j ) ( 
+    vs[i]!=0 /\ vs[j]!=0 -> vs[i]!=vs[j] 
+)
+</div>
+(standard decomposition from alldifferent_except_0.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Constrain the array of integers <span class='mzn-arg'>vs</span> to be all different except those   elements that are assigned the value 0.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>nvalue</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var 0..length(x): n, 
+    constraint nvalue(n, x),
+} in (n)
+</div>
+(standard decomposition from nvalue_fn.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Returns the number of distinct values in <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>nvalue</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>n</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: lx = lb_array(x), 
+    int: ux = ub_array(x),
+} in (
+    n==sum ( j in lx..ux ) ( 
+           bool2int(exists ( i in index_set(x) ) ( x[i]==j )) 
+       ))
+</div>
+(standard decomposition from nvalue.mzn:4)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that the number of distinct values in <span class='mzn-arg'>x</span> is <span class='mzn-arg'>n</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>symmetric_all_different</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>all_different(x) /\ 
+forall ( i, j in index_set(x) where i!=j ) ( x[i]==j -> x[j]==i )
+</div>
+(standard decomposition from symmetric_all_different.mzn:8)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires the array of integers <span class='mzn-arg'>x</span> to be all different, and for all <span class='mzn-parm'>i</span>,   <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>]=j \(\rightarrow\) <span class='mzn-arg'>x</span>[<span class='mzn-parm'>j</span>]=i.</p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

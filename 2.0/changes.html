@@ -1,0 +1,459 @@
+<?php
+include("../standard.php");
+mznheader("MiniZinc: Version 2 changelog","software","../");
+
+function bug($id) {
+  return "<a href=\"https://github.com/MiniZinc/libminizinc/issues/".$id."\">"."bug #".$id."</a>";
+}
+
+?>  
+
+<h2>MiniZinc 2 Change Log</h2>
+
+<h3>Version 2.0.13</h3>
+
+<h4>Bug fixes:</h4>
+
+<ul>
+<li> Fix a bug in the Common Subexpression Elimination table of the compiler,
+   which could lead to some constraints being dropped (especially when using
+   linear redefinitions).
+<li> The output model sometimes did not include all required definitions,
+   in particular when array declarations used identifiers to specify the
+   dimensions.
+<li> The generated FlatZinc sometimes still contained bool variables that were
+   not connected to the rest of the model, which could produce incorrect
+   solutions being printed.
+<li> Fix a bug where warnings (e.g. about partial functions) could lead to
+   crashes.
+<li> Fix the bounds computation for integer and float variables, which could
+   produce incorrect bounds for linear expressions. Fixes <?=bug(94)?>.
+<li> Fix a bug in the IDE that caused solver output to be shown incompletely
+	in some cases.
+</ul>
+
+<h3>Version 2.0.12</h3>
+
+<h4>Changes:</h4>
+
+<ul>
+<li>Partial functions are now always evaluated in their Boolean context,
+   independent of whether they are par or var. If the result of a partial
+   function is statically known to be undefined (such as division by zero or
+   array access out of bounds), and it is used in a constraint expression,
+   this now results in a warning instead of an
+   error. Warnings can be turned off using the ::maybe_partial annotation.
+   Fixes  <?=bug(43)?> and  <?=bug(74)?>.
+</ul>
+<h4>Bug fixes:</h4>
+
+<ul>
+<li>Fix a bug in the optimisation phase related to unification of aliased
+   variables.
+<li>Fix short-circuit evaluation of Boolean expressions.
+<li>Fix a bug in the optimisation phase related to repeated simplification of
+   some Boolean expressions.
+<li>Handle errors in output produced by solver without solns2out crashing.
+   Fixes  <?=bug(80)?>.
+<li>Fix a bug in the integer bounds computation that caused bool2int with an
+   embedded conditional to crash.
+<li>Fix a problem with short-circuit compilation of == expressions when one
+   side was a var opt bool.
+<li>Stop compilation when model is failed. Fixes a bug where mzn2fzn would
+   sometimes not clean up the FlatZinc enough for the solver.
+</ul>
+
+<h3>Version 2.0.11</h3>
+
+<h4>Bug fixes:</h4>
+
+<ul>
+<li> Fix parsing of hex and octal literals. Fixes <?=bug(71)?>.
+<li> Fix compilation of extended comprehensions. Fixes <?=bug(72)?>.
+<li> Fix computation of float array access bounds.
+<li> Fix aggregation of clauses (could sometimes ignore the negative literals).
+</ul>
+
+<h3>Version 2.0.10</h3>
+
+<h4>Bug fixes:</h4>
+
+<ul>
+<li>Fix a bug in the optimiser that could lead to undefined variables in the
+   generated FlatZinc. Fixes <?=bug(70)?>.
+
+</ul>
+
+<h3>Version 2.0.9</h3>
+
+<h4>Bug fixes:</h4>
+
+<ul>
+<li>Need to take return type into account when copying functions to output
+   model. Fixes <?=bug(55)?>.
+<li>Evaluate calls that result in arrays using eval_arraylit. Fixes <?=bug(57)?>.
+<li>Move inverse function to its own library file, so that it remains available
+   when a solver provides an alternative for the inverse predicate.
+<li>Optimisation phase now recursively checks constraints when elements in an
+   array become fixed.
+<li>Fix CMakeLists file to work for paths that contain spaces.
+<li>Distinguish between infix operators and regular functions in the generated
+   html documentation. Fixes <?=bug(61)?>.
+<li>Made parser more robust against incorrect code.
+<li>Fix increment/decrement operators for IntVals and make all operations throw
+   correct overflow exceptions.
+<li>Fix automatic type coercion for variables declared in let expressions.
+<li>Fix a crash when printing some error messages.
+<li>Fix compute_div_bounds builtin to return correct result for a division by
+   zero.
+<li>Fix optimisation of Boolean constraints to use pointer equality instead of
+   structural equality (same expression can occur multiple times in the
+   FlatZinc).
+<li>Only optimise constraints that have not been removed yet.
+<li>Fix declaration of functional version of bin_packing_load. Fixes <?=bug(64)?>.
+<li>Set type of arrays returned from polymorphic functions. Fixes <?=bug(65)?>.
+<li>Fix parsing of quoted unary operator calls.
+<li>Only compute set functions when bounds are valid. Fixes <?=bug(66)?>.
+<li>Compute proper bounds for if-then-else expressions.
+<li>Report error when no reified version of a constraint is available. Fixes <?=bug(67)?>.
+<li>Fix type checking of annotations on binary operators.
+<li>Keep annotations when rewriting linear constraints and remove is_defined_var
+   annotations from fixed variables. Fixes <?=bug(69)?>.
+</ul>
+
+<h4>Changes:</h4>
+
+<li>Integer, Boolean and float literals are now cached to achieve better memory
+   performance for some models.
+<li>Improve performance of parsing integer literals.
+<li>Improve handling of clause constraints.
+<li>Add source files of MiniZinc specification to the repository.
+<li>Limit maximum array size to enable better error messages.
+<li>Add implied_constraint predicate as a synonym for redundant_constraint.
+
+
+<h3>Version 2.0.8</h3>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fix incorrect negation of some reified comparisons.
+<li> Make lb/ub functions work in more cases.
+<li> Fix several bugs in the optimisation phase (could lead to incorrect
+   FlatZinc and crashes).
+<li> Fix a problem with reverse mapper functions when the result of the reverse
+   mapper can be fixed to a constant.
+</ul>
+
+<h3>Version 2.0.7</h3>
+
+<h4>Changes:</h4>
+<ul>
+<li> Improved propagation of Boolean constants in the optimisation phase. This
+   should result in far fewer aliases and improves simplification of
+   conjunctions, disjunctions and clauses.
+<li> Add special case handling for integer division by 1.
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fix FlatZinc generator phase, need to turn all array literal arguments into
+   1-based single dimensional arrays.
+<li> Fix compilation of if-then-else expressions with var conditions (which didn't
+   implement proper partiality/totality semantics). Fixes <?=bug(42)?>.
+<li> Provide correct bounds for weak opt var arithmetic. Fixes <?=bug(51)?>.
+<li> Need to be able to handle unflattened annotations. Fixes <?=bug(53)?>.
+<li> Fix generation of output model (needs to ignore items that have been removed
+   previously).
+<li> Add missing lb(var set of int) builtin. Fixes <?=bug(47)?>.
+<li> Check that var set declarations have a finite element type. Fixes <?=bug(46)?>.
+<li> Fix translation context for binary operators on arrays.
+<li> Need to access IntVal::infinity as a function, otherwise depending on linker
+   etc it may become 0 in some cases. Fixes <?=bug(40)?>.
+<li> Change pretty printer to use one less digit when printing float literals.
+   This fixes <?=bug(41)?> (or at least provides a workaround), but some double
+   constants may still be rounded incorrectly when pretty printing and reading
+   them back in. The real fix will be to output hex float literals (coming
+   soon).
+<li> Distinguish between generalised comprehensions (iterating over sets) and
+   iterating over arrays. Fixes compilation of comprehensions where iteration
+   over an array is combined with var where clauses. Fixes <?=bug(45)?>.
+<li> Fix bug in creation of output model where sometimes chains of variable
+   definitions could lead to crashes.
+<li> Avoi creating mutually recursive definitions in some corner cases, which
+   could cause the compiler to run into infinite loops.
+<li> Don't copy vardecl items to output model that are already there. Fixes <?=bug(44)?>.
+<li> Remove domain from array declarations in FlatZinc (avoids problems with
+   domains where holes need to be removed and when there are infinities in the
+   domains)
+<li> Fix flattening of equality operator between non-opt and opt vars.
+<li> Check that model contains a single solve and output item during type
+   checking (previously, multiple output items were not detected and resulted
+   in incorrect .ozn files).
+<li> Fix flattening of xor (arguments need to be in mixed context).
+<li> Use is_fixed in cumulative definition.
+<li> Fix bug where a par right hand side of a variable mentioned in the output
+   would cause a crash.
+<li> Fix variable dependency tracking during rewriting in the optimisation phase.
+   Could previously lead to variables being removed that are still required.
+   Fixes <?=bug(54)?>.
+</ul>
+
+<h3>Version 2.0.6</h3>
+
+<h4>Changes:</h4>
+<ul>
+<li> Add parser support for hexadecimal floating point constants.
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fix bounds computation for some calls (abs, int_times).
+<li> Fix flattening of some array declarations (when right hand side is
+   an identifier).
+<li> Add four missing GC locks (could lead to incorrect garbage collection).
+<li> Compact output model only after optimisation phase (could lead to 
+   incorrect items being removed from output model).
+</ul>
+
+<h3>Version 2.0.5</h3>
+
+<h4>Changes:</h4>
+<ul>
+<li> Improve the standard decomposition for the cumulative constraint.
+<li> Better handling of binary operators during type checking and flattening,
+   can sometimes avoid stack overflows (e.g. for large conjunctions).
+<li> Make ++ operator left associative (avoid stack overflows in the parser).
+<li> Add ::domain annotations to linear constraints generated from
+   multi-dimensional element constraints.
+<li> Greatly improved linearisation library.
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fix recursive function calls that contain let expressions.
+<li> Fix compilation of comprehensions inside parametric functions.
+<li> Fix a memory leak in solns2out.
+<li> Fix a problem in the evaluation of binary operators.
+<li> Fix a bug in the flattening of array literals.
+<li> Fix a bug that would crash the parser on certain syntax errors in let
+   expressions.
+</ul>
+
+<h3>Version 2.0.4</h3>
+
+<h4>Changes:</h4>
+<ul><li>Models can now be read from standard input (using the "-" or
+   "--input-from-stdin" command line options). Thanks to Sebastian Kosch.
+   <li>Improved handling of bool2int during FlatZinc generation.
+
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+  <li>Fix unification of aliased variables which could sometimes result in
+   variables being removed although had a constraining right hand side.
+   <li>Fix evaluation of set comprehensions.
+  <li>Fix command line flag --no-output-ozn
+  <li>Fix performance problem when evaluating array expressions inside lets.
+ <li>Fix flattening of bool_xor redefinitions.
+ <li>Fix partial evaluation of some array access expressions with var indexes.
+ <li>Fix definition of geost constraint.
+ <li>User-defined functions are now copied correctly into the output model
+   if they are referenced in the output item.
+ <li>Set comprehensions are fully evaluated.
+</ul>
+
+<h3>Version 2.0.3</h3>
+
+<p>(Internal release that did not contain some essential fixes)</p>
+
+
+<h3>Version 2.0.2</h3>
+
+<h4>Changes:</h4>
+<ul>
+<li>The optimiser now removes simple domain constraints from the FlatZinc
+<li>The compiler now checks for integer overflows in all built-in operations
+<li>Report an error when the FlatZinc or ozn file cannot be opened for writing
+<li>Add support for 3d array literals (e.g.  [| |1,2|3,4|,|5,6|7,8| |] )
+<li>Add show2d and show3d functions for formatting array output
+<li>Add row/col functions for variable arrays (fixes <?=bug(2)?>)
+<li>Introduce builtins for creating random distributions
+<li>Add reverse library function
+<li>Postpone flattening of some reified constraints
+<li>Slightly improved compilation of partial function calls when it can be 
+   inferred at compile time that their result is undefined
+<li>Allow functions with empty argument lists to be declared as
+   function int: foo(); instead of just function int: foo;
+<li>Improve error reporting, in particular for errors in comprehensions
+<li>Enable expressions a..b where a and b are integer variables
+<li>Add redundant_constraint and symmetry_breaking_constraint builtins, these
+   can be rewritten by solver libraries to allow e.g. local search solvers to
+   ignore redundant constraints.
+<li>Improve flattening of predicates that simply return their arguments (makes
+   the redundant_constraint and symmetry_breaking_constraint predicates work
+   in more situations).
+<li>Replace command line option --only-range-domains by optional boolean value
+   so that solver libraries can set the flag directly in their redefinitions
+   file.
+<li>Stop flattening immediately when a model has been found to contain an
+   inconsistency.
+<li>Improve flattening of array access expressions, in particular for nested
+   array accesses that can be combined into a single element constraint
+<li>Add command line option -s or --statistics to print statistics about the
+   generated FlatZinc
+<li>Improve bounds computation for if-then-else expressions
+<li>Clause arguments are compiled in positive and negative contexts instead of
+   mixed. That means that predicates that introduce free variables can now
+   be used in the positive part of a clause.
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li>Fix simplification of linear expressions, negative coefficients could
+   sometimes result in incorrect bounds
+<li>Fix bounds computation for unary minus operator
+<li>Add missing par set comparison builtins
+<li>Fix bounds computation for extended comprehension syntax
+<li>Fix a bug in the garbage collector that could sometimes lead to premature
+   deletion of expressions
+<li>Fix bounds computation for set difference
+<li>Fix duplication of some arrays in the FlatZinc (fixes <?=bug(3)?>)
+<li>Fix bounds inference for variables bound to empty sets (fixes <?=bug(3)?>)
+<li>Fix bug in error reporting function, which would sometimes not report the
+   entire call stack
+<li>Fix the generation of fresh variable names for generator expressions
+<li>Fix subtype check to allow empty arrays as subtype of arrays of sets
+<li>Fix crash when using assert/2
+<li>Fix bug when function used in output referred to par variable
+<li>Fix bug in type checker, the detection of cyclic definitions was not
+   correct and could lead to stack overflows
+<li>Fix parser to accept expressions with two consecutive array accesses
+   (like x[3][4], which are valid MiniZinc if x is an array of sets)
+<li>Fix error reporting when an evaluation error occurs within a comprehension
+   generator
+<li>Report type error on some ambiguous function calls
+<li>Report type error on var sets with element type other than int
+<li>Report type error when trying to coerce a var set into an array
+<li>Report error when calling function with a value that is outside the
+   declared parameter bounds
+<li>Fix arg_sort builtin to implement the correct semantics
+<li>Fix sort_by builtin to sort in non-decreasing order, and work with floats
+<li>Fix bug in type checker, now automatic coercions in functions defined with
+   type variables (like the comparison operators) work correctly
+<li>Check that index sets match for arrays assigned in let expressions
+<li>Fix bug in bounds inference for integer expressions with annotations
+<li>Fix propagation of defines_var annotation to be pushed through calls
+<li>Fix parser to accept empty 2d and 3d array literals
+<li>Fix flattening to remove defines_var annotations with par argument, e.g.
+   defines_var(2), which could be introduced by the optimisation pass
+<li>Fix output model creation for variables that have been redefined, and
+   remove more unused variables from the FlatZinc.
+<li>Fix bug in the garbage collector that could result in function items not
+   being kept alive in rare cases.
+</ul>
+
+<h3>Version 2.0.1</h3>
+
+<h4>Major bugs and changes:</h4>
+<ul>
+<li> Fix optimisation phase, which was previously incorrectly removing variables
+<li> Add support for trigonometric functions (built-ins were missing in 2.0.0)
+   and pow (var versions were missing)
+<li> Fix equality operator on par arrays
+<li> All expressions in output model are now made par
+<li> Improve bounds computation for float variables
+<li> Fix translation of functions that need automatic coercion of their return
+   value
+<li> Fix the array_lb and array_ub builtins, which would return incorrect bounds
+   in some cases
+</ul>
+
+<h4>Minor bugs and changes:</h4>
+<ul>
+<li> Add space between "array" and "[" in the pretty printer, to be compatible
+   with 1.6 output
+<li> Output all par declarations before the var declarations in FlatZinc
+<li> Fix parser, which could sometimes crash on invalid input
+<li> Improve efficiency of bounds computation on some float expressions
+<li> Add special case handling for division by 1
+<li> Add missing float_times definition to the flatzinc builtins
+<li> Use correct version of var_dom for float variables
+<li> Output information about which files are included in verbose mode
+<li> Only compute bounds for "then" expressions if the "if" is not fixed to false
+</ul>
+
+<h3>Version 2.0.0</h3>
+
+<p>
+MiniZinc 2.0 contains many new features and is based on a complete rewrite of
+the MiniZinc-to-FlatZinc compiler. If you are currently using the previous
+version 1.6, the new tools can be used as drop-in replacements. The generated
+FlatZinc is compatible with version 1.6, so all FlatZinc solvers should work
+without changes.
+</p>
+
+<h4>MiniZinc language changes</h4>
+
+<ul>
+<li> MiniZinc now supports user-defined functions. Details have been published
+   in the paper "MiniZinc with Functions". Both functions and predicates can
+   be recursive.
+<li> MiniZinc now supports option types. Details have been published in the
+   paper "Modelling with Option Types in MiniZinc".
+<li> Let expressions have been generalised. They can now contain constraint
+   items in addition to variable declarations.
+<li> Array index sets can be declared using arbitrary set expressions as long as
+   they evaluate to contiguous ranges.
+<li> The if-then-else expression has been generalised to allow the condition to
+   be a var bool expression (instead of only par bool).
+<li> Array and set comprehensions as well as generator calls can now iterate
+   over variables and use var bool where conditions.
+<li> Any bool expression can now automatically coerce to an int expression,
+   likewise for int and float. This means that you don't have to write
+   bool2int or int2float in you models any more.
+<li> Equality constraints can now be posted between array expressions.
+<li> Arbitrary expressions can now be included ("interpolated") into strings,
+   using the syntax "some text \(e) some more text", where e is any
+   expression. It is the same as writing "some text "++show(e)++" some more
+   text".
+</ul>
+
+<h4>New built-in functions</h4>
+
+<ul>
+<li> Array functions: array1d, arrayXd, row, col, has_index, has_element, sort_by,
+sort, arg_sort, arg_min, arg_max
+</ul>
+
+<h4>New global constraints</h4>
+
+<ul>
+<li> arg_max, arg_min
+<li> arg_sort
+<li> k-dimensional diffn
+<li> disjunctive
+<li> geost
+<li> knapsack
+<li> network_flow
+<li> regular with NFAs
+<li> symmetric all different
+<li> optional scheduling constraints: alternative, span, disjunctive, cumulative
+<li> functional versions of many global constraints
+</ul>
+
+<h4>New tool chain</h4>
+<ul>
+<li> There are a few new builtins that solvers can reimplement, these are listed
+   in the redefinitions-2.0 file.
+<li> Include items use a different method for finding included files. Paths are
+   now interpreted as relative to the file that has the include item. That
+   way, the mzn2fzn compiler can be called from a different working directory.
+<li> A new tool, mzn2doc, can produce html output from the documentation
+   comments. The MiniZinc distribution contains the documentation for global
+   constraints and builtins generated directly from the library source code.
+</ul>
+
+<?php
+mznfooter();
+?>  

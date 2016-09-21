@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Channeling constraints</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-sort.html' title='Sorting constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-counting.html' title='Counting constraints'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-globals-channeling'>Channeling constraints</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_set_channel</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                          <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) ) ( x[i] in index_set(y) ) /\ 
+forall ( j in index_set(y) ) ( y[j] subset index_set(x) ) /\ 
+forall ( i in index_set(x), j in index_set(y) ) ( 
+    x[i]==j <-> i in y[j] 
+)
+</div>
+(standard decomposition from int_set_channel.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that array of int variables <span class='mzn-arg'>x</span> and array of set variables <span class='mzn-arg'>y</span>   are related such that (<span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] = <span class='mzn-parm'>j</span>) &#8596; (<span class='mzn-parm'>i</span> in <span class='mzn-arg'>y</span>[<span class='mzn-parm'>j</span>]).</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-fn-id'>inverse</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>f</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [lb_array(f)..ub_array(f)] of var index_set(f): invf, 
+    constraint inverse(f, invf),
+} in (invf)
+</div>
+(standard decomposition from inverse_fn.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Given a function <span class='mzn-arg'>f</span> represented as an array, return the inverse function.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>inverse</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>f</span>,
+                  <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>invf</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(f), j in index_set(invf) ) ( 
+    f[i] in index_set(invf) /\ invf[j] in index_set(f) /\ 
+    (j==f[i] <-> i==invf[j]) 
+)
+</div>
+(standard decomposition from inverse.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains two arrays of int variables, <span class='mzn-arg'>f</span> and <span class='mzn-arg'>invf</span>, to represent   inverse functions.  All the values in each array must be within the index   set of the other array.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>inverse_set</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>f</span>,
+                      <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>invf</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(f) ) ( f[i] subset index_set(invf) ) /\ 
+forall ( j in index_set(invf) ) ( invf[j] subset index_set(f) ) /\ 
+forall ( i in index_set(f), j in index_set(invf) ) ( 
+    j in f[i] <-> i in invf[j] 
+)
+</div>
+(standard decomposition from inverse_set.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains two arrays of set of int variables, <span class='mzn-arg'>f</span> and <span class='mzn-arg'>invf</span>, so that   a <span class='mzn-parm'>j</span> in f[<span class='mzn-parm'>i</span>] iff <span class='mzn-parm'>i</span> in invf[<span class='mzn-parm'>j</span>].  All the values in each array's sets   must be within the index set of the other array.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>link_set_to_booleans</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s</span>,
+                               <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>b</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(ub(s) subset index_set(b), 
+    "link_set_to_booleans: the index set of b must be a superset of the possible values of s", 
+    forall ( i in index_set(b) ) ( 
+    b[i] <-> i in s 
+    ))
+</div>
+(standard decomposition from link_set_to_booleans.mzn:7)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrain the array of Booleans <span class='mzn-arg'>b</span> to be a representation of the set <span class='mzn-arg'>s</span>:   <span class='mzn-parm'>i</span> in <span class='mzn-arg'>s</span> &#8596; <span class='mzn-arg'>b</span>[<span class='mzn-parm'>i</span>].</p><p>
+  The index set of <span class='mzn-arg'>b</span> must be a superset of the possible values of <span class='mzn-arg'>s</span>.</p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

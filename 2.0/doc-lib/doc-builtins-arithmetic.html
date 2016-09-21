@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Arithmetic Builtins</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-compare.html' title='Comparison Builtins'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-explog.html' title='Exponential and logarithmic builtins'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-builtins-arithmetic'>Arithmetic Builtins</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  These builtins implement arithmetic operations.</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>'*'</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x*y</span></p><p>
+  Return <span class='mzn-arg'>x</span> * <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>'*'</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x*y</span></p><p>
+  Return <span class='mzn-arg'>x</span> * <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>'*'</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x*y</span></p><p>
+  Return <span class='mzn-arg'>x</span> * <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>'*'</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x*y</span></p><p>
+  Return <span class='mzn-arg'>x</span> * <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>'+'</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x+y</span></p><p>
+  Return <span class='mzn-arg'>x</span> + <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>'+'</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x+y</span></p><p>
+  Return <span class='mzn-arg'>x</span> + <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>'+'</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x+y</span></p><p>
+  Return <span class='mzn-arg'>x</span> + <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>'+'</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x+y</span></p><p>
+  Return <span class='mzn-arg'>x</span> + <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>'-'</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x-y</span></p><p>
+  Return <span class='mzn-arg'>x</span> - <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>'-'</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x-y</span></p><p>
+  Return <span class='mzn-arg'>x</span> - <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>'-'</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x-y</span></p><p>
+  Return <span class='mzn-arg'>x</span> - <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>'-'</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x-y</span></p><p>
+  Return <span class='mzn-arg'>x</span> - <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>'-'</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">-x</span></p><p>
+  Return negative <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>'-'</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">-x</span></p><p>
+  Return negative <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>'-'</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">-x</span></p><p>
+  Return negative <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>'-'</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">-x</span></p><p>
+  Return negative <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>'/'</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x/y</span></p><p>
+  Return result of floating point division <span class='mzn-arg'>x</span> / <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>'/'</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x/y</span></p><p>
+  Return result of floating point division <span class='mzn-arg'>x</span> / <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>'div'</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x div y</span></p><p>
+  Return result of integer division <span class='mzn-arg'>x</span> / <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>'div'</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if mzn_in_root_context(y) \/ not (0 in dom(y)) then div_t(x, y) 
+else let {constraint y!=0,} in (div_mt(x, y)) 
+endif
+</div>
+(standard decomposition from builtins.mzn:190)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x div y</span></p><p>
+  Return result of integer division <span class='mzn-arg'>x</span> / <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>'mod'</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x mod y</span></p><p>
+  Return remainder of integer division <span class='mzn-arg'>x</span> % <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>'mod'</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if mzn_in_root_context(y) \/ not (0 in dom(y)) then mod_t(x, y) 
+else let {constraint y!=0,} in (mod_mt(x, y)) 
+endif
+</div>
+(standard decomposition from builtins.mzn:198)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x mod y</span></p><p>
+  Return remainder of integer division <span class='mzn-arg'>x</span> % <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>abs</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return absolute value of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>abs</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if has_bounds(x) /\ 
+   lb(x)>=0 then x else let {
+        var 0..max(-lb(x), ub(x)): m, 
+        constraint int_abs(x, m),
+    } in (m) endif
+</div>
+(standard decomposition from builtins.mzn:310)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return absolute value of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>abs</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return absolute value of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>abs</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if has_bounds(x) /\ 
+   lb(x)>=0.0 then x else let {
+        var 0.0..max(-lb(x), ub(x)): m, 
+        constraint float_abs(x, m),
+    } in (m) endif
+</div>
+(standard decomposition from builtins.mzn:320)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return absolute value of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>arg_max</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index of maximum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>arg_max</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index of maximum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>arg_min</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index of minimum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>arg_min</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index of minimum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>$T</span>: <span class='mzn-fn-id'>max</span>(<span class='mzn-ti'>$T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>$T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return maximum of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>$T</span>: <span class='mzn-fn-id'>max</span>(<span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return maximum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>max</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return maximum of elements in set <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>max</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var max(lb(x), lb(y))..max(ub(x), ub(y)): m, 
+    constraint int_max(x, y, m),
+} in (m)
+</div>
+(standard decomposition from builtins.mzn:242)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return maximum of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>max</span>(<span class='mzn-ti'>array [$U] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of var int: xx = array1d(x), 
+    constraint length(x)>=1,
+} in (max_t(xx))
+</div>
+(standard decomposition from builtins.mzn:248)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return maximum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>max</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var float: m, 
+    constraint float_max(x, y, m),
+} in (m)
+</div>
+(standard decomposition from builtins.mzn:271)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return maximum of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>max</span>(<span class='mzn-ti'>array [$U] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of var float: xx = array1d(x), 
+    constraint length(x)>=1,
+} in (max_t(xx))
+</div>
+(standard decomposition from builtins.mzn:277)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return maximum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>$T</span>: <span class='mzn-fn-id'>min</span>(<span class='mzn-ti'>$T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>$T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return minimum of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>$T</span>: <span class='mzn-fn-id'>min</span>(<span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return minimum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>min</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return minimum of elements in set <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>min</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var min(lb(x), lb(y))..min(ub(x), ub(y)): m, 
+    constraint int_min(x, y, m),
+} in (m)
+</div>
+(standard decomposition from builtins.mzn:255)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return minimum of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>min</span>(<span class='mzn-ti'>array [$U] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of var int: xx = array1d(x), 
+    constraint length(x)>=1,
+} in (min_t(xx))
+</div>
+(standard decomposition from builtins.mzn:261)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return minimum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>min</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var float: m, 
+    constraint float_min(x, y, m),
+} in (m)
+</div>
+(standard decomposition from builtins.mzn:284)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return minimum of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>min</span>(<span class='mzn-ti'>array [$U] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [int] of var float: xx = array1d(x), 
+    constraint length(x)>=1,
+} in (min_t(xx))
+</div>
+(standard decomposition from builtins.mzn:290)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return minimum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>pow</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \({\bf x} ^ {{\bf y}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>pow</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    int: yy = if is_fixed(y) then 
+                  fix(y) 
+              else -1 endif,} in (if yy==0 then 
+        1  elseif yy==1 then x  elseif yy==2 then x*x else let {
+            var int: r, 
+            constraint int_pow(x, y, r),
+        } in (r) endif)
+</div>
+(standard decomposition from builtins.mzn:348)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \({\bf x} ^ {{\bf y}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>pow</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \({\bf x} ^ {{\bf y}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>pow</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    float: yy = if is_fixed(y) then 
+                    fix(y) 
+                else -1.0 endif,} in (if yy==0.0 then 
+        1.0  elseif yy==1.0 then x  elseif yy==2.0 then x*x else let {
+            var float: r, 
+            constraint float_pow(x, y, r),
+        } in (r) endif)
+</div>
+(standard decomposition from builtins.mzn:365)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \({\bf x} ^ {{\bf y}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>product</span>(<span class='mzn-ti'>array [$T] of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return product of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>product</span>(<span class='mzn-ti'>array [$T] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>product_rec(array1d(x))
+</div>
+(standard decomposition from builtins.mzn:219)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return product of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>product</span>(<span class='mzn-ti'>array [$T] of float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return product of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>product</span>(<span class='mzn-ti'>array [$T] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>product_rec(array1d(x))
+</div>
+(standard decomposition from builtins.mzn:225)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return product of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>sqrt</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(\sqrt{{\bf x}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>sqrt</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {constraint x>=0.0,} in (sqrt_t(x))
+</div>
+(standard decomposition from builtins.mzn:330)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \(\sqrt{{\bf x}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>sum</span>(<span class='mzn-ti'>array [$T] of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return sum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>sum</span>(<span class='mzn-ti'>array [$T] of var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return sum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>sum</span>(<span class='mzn-ti'>array [$T] of float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return sum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>sum</span>(<span class='mzn-ti'>array [$T] of var float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return sum of elements in array <span class='mzn-arg'>x</span> </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

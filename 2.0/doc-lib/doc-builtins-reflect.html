@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Reflection operations</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-string.html' title='String operations'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-debug.html' title='Assertions and debugging functions'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-builtins-reflect'>Reflection operations</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  These functions return information about declared or inferred variable   bounds and domains.</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>dom</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return domain of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>dom_array</span>(<span class='mzn-ti'>array [$T] of var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return union of all domains of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>dom_bounds_array</span>(<span class='mzn-ti'>array [$T] of var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return approximation of union of all domains of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>dom_size</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>card(dom(x))
+</div>
+(standard decomposition from builtins.mzn:1275)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return cardinality of the domain of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>$T</span>: <span class='mzn-fn-id'>fix</span>(<span class='mzn-ti'>var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Check if the value of <span class='mzn-arg'>x</span> is fixed at this point  in evaluation. If it is fixed, return its value, otherwise abort. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-fn-id'>fix</span>(<span class='mzn-ti'>array [$U] of var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Check if the value of every element of the array <span class='mzn-arg'>x</span> is fixedat this point in evaluation. If all are fixed, return an array of their values, otherwise abort. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>has_bounds</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Test if variable <span class='mzn-arg'>x</span> has declared, finite bounds </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>has_bounds</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Test if variable <span class='mzn-arg'>x</span> has declared, finite bounds </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>has_ub_set</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Test if variable <span class='mzn-arg'>x</span> has a declared, finite upper bound </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>is_fixed</span>(<span class='mzn-ti'>var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Test if <span class='mzn-arg'>x</span> is fixed </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>is_fixed</span>(<span class='mzn-ti'>array [$U] of var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Test if every element of array <span class='mzn-arg'>x</span> is fixed </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>lb</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return lower bound of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>lb</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return lower bound of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>lb</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return lower bound of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>lb</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return lower bound of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$U] of int</span>: <span class='mzn-fn-id'>lb</span>(<span class='mzn-ti'>array [$U] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>arrayXd(x, [ lb(xx) | xx in array1d(x) ])
+</div>
+(standard decomposition from builtins.mzn:1236)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of lower bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$U] of float</span>: <span class='mzn-fn-id'>lb</span>(<span class='mzn-ti'>array [$U] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>arrayXd(x, [ lb(xx) | xx in array1d(x) ])
+</div>
+(standard decomposition from builtins.mzn:1242)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of lower bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$U] of set of int</span>: <span class='mzn-fn-id'>lb</span>(<span class='mzn-ti'>array [$U] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>arrayXd(x, [ lb(xx) | xx in array1d(x) ])
+</div>
+(standard decomposition from builtins.mzn:1248)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of lower bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>lb_array</span>(<span class='mzn-ti'>array [$U] of var opt int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return minimum of all lower bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>lb_array</span>(<span class='mzn-ti'>array [$U] of var float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return minimum of all lower bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>lb_array</span>(<span class='mzn-ti'>array [$U] of var set of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return intersection of all lower bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>ub</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return upper bound of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>ub</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return upper bound of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>ub</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return upper bound of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>ub</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return upper bound of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$U] of int</span>: <span class='mzn-fn-id'>ub</span>(<span class='mzn-ti'>array [$U] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>arrayXd(x, [ ub(xx) | xx in array1d(x) ])
+</div>
+(standard decomposition from builtins.mzn:1239)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of upper bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$U] of float</span>: <span class='mzn-fn-id'>ub</span>(<span class='mzn-ti'>array [$U] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>arrayXd(x, [ ub(xx) | xx in array1d(x) ])
+</div>
+(standard decomposition from builtins.mzn:1245)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of upper bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$U] of set of int</span>: <span class='mzn-fn-id'>ub</span>(<span class='mzn-ti'>array [$U] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>arrayXd(x, [ ub(xx) | xx in array1d(x) ])
+</div>
+(standard decomposition from builtins.mzn:1251)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of upper bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>ub_array</span>(<span class='mzn-ti'>array [$U] of var opt int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return maximum of all upper bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>ub_array</span>(<span class='mzn-ti'>array [$U] of var float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return maximum of all upper bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>ub_array</span>(<span class='mzn-ti'>array [$U] of var set of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return union of all upper bounds of the elements in array <span class='mzn-arg'>x</span> </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

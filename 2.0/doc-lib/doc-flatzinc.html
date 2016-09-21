@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>FlatZinc builtins</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins.html' title='Builtins'>&#8656;</a> <a class='mzn-nav-up' href='doc.html' title='The MiniZinc library'>&#8679;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-flatzinc'>FlatZinc builtins</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  These are the standard constraints that need to be supported by FlatZinc   solvers (or redefined in the redefinitions.mzn file).</p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_bool_and</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>as</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf r} \leftrightarrow \bigwedge_i {\bf as}[i]\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_bool_element</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>,
+                             <span class='mzn-ti'>array [int] of bool</span>: <span class='mzn-id'>as</span>,
+                             <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>as</span>[<span class='mzn-arg'>b</span>] = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_bool_or</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>as</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf r} \leftrightarrow \bigvee_i {\bf as}[i]\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_bool_xor</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>as</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf r} \leftrightarrow \oplus_i\ {\bf as}[i]\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_float_element</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>,
+                              <span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>as</span>,
+                              <span class='mzn-ti'>var float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>as</span>[<span class='mzn-arg'>b</span>] = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_float_maximum</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>m</span> to be the maximum value of the (non-empty)   array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_float_minimum</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>m</span> to be the minimum value of the (non-empty)   array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_int_element</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>,
+                            <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>as</span>,
+                            <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>as</span>[<span class='mzn-arg'>b</span>] = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_int_maximum</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>m</span> to be the maximum value of the (non-empty)   array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_int_minimum</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>m</span> to be the minimum value of the (non-empty)   array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_set_element</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>,
+                            <span class='mzn-ti'>array [int] of set of int</span>: <span class='mzn-id'>as</span>,
+                            <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>as</span>[<span class='mzn-arg'>b</span>] = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_var_bool_element</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>,
+                                 <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>as</span>,
+                                 <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>as</span>[<span class='mzn-arg'>b</span>] = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_var_float_element</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>,
+                                  <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>as</span>,
+                                  <span class='mzn-ti'>var float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>as</span>[<span class='mzn-arg'>b</span>] = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_var_int_element</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>,
+                                <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>as</span>,
+                                <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>as</span>[<span class='mzn-arg'>b</span>] = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>array_var_set_element</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>,
+                                <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>as</span>,
+                                <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>as</span>[<span class='mzn-arg'>b</span>] = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool2int</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> &in; {0,1} and <span class='mzn-arg'>a</span> &harr; <span class='mzn-arg'>b</span>=1 </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_and</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; <span class='mzn-arg'>a</span> &and; <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_clause</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>as</span>,
+                      <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>bs</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( \bigvee_i {\bf as}[i] \land \bigvee_j \lnot {\bf bs}[j] \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_eq</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> = <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_eq_reif</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>a</span> = <span class='mzn-arg'>b</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_le</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> ≤ <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_le_reif</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>a</span> ≤ <span class='mzn-arg'>b</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_lin_eq</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>as</span>,
+                      <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>bs</span>,
+                      <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i] \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_lin_le</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>as</span>,
+                      <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>bs</span>,
+                      <span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf c} \leq \sum_i {\bf as}[i]*{\bf bs}[i] \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_lt</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> < <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_lt_reif</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>a</span> < <span class='mzn-arg'>b</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_not</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> ≠ <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_or</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; <span class='mzn-arg'>a</span> &or; <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_xor</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; <span class='mzn-arg'>a</span> &oplus; <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_xor</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> &oplus; <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_abs</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> to be the absolute value of <span class='mzn-arg'>a</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_acos</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = acos(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_acosh</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = acosh(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_asin</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = asin(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_asinh</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = asinh(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_atan</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = atan(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_atanh</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = atanh(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_cos</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = cos(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_cosh</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = cosh(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_eq</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> = <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_eq_reif</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>a</span> = <span class='mzn-arg'>b</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_exp</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = exp(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_le</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> ≤ <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_le_reif</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>a</span> ≤ <span class='mzn-arg'>b</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_lin_eq</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>as</span>,
+                       <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>bs</span>,
+                       <span class='mzn-ti'>float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i] \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_lin_eq_reif</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>as</span>,
+                            <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>bs</span>,
+                            <span class='mzn-ti'>float</span>: <span class='mzn-id'>c</span>,
+                            <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf r} \leftrightarrow ({\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i]) \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_lin_le</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>as</span>,
+                       <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>bs</span>,
+                       <span class='mzn-ti'>float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf c} \leq \sum_i {\bf as}[i]*{\bf bs}[i] \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_lin_le_reif</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>as</span>,
+                            <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>bs</span>,
+                            <span class='mzn-ti'>float</span>: <span class='mzn-id'>c</span>,
+                            <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf r} \leftrightarrow ({\bf c} \leq \sum_i {\bf as}[i]*{\bf bs}[i]) \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_lin_lt</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>as</span>,
+                       <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>bs</span>,
+                       <span class='mzn-ti'>float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf c} < \sum_i {\bf as}[i]*{\bf bs}[i] \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_lin_lt_reif</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>as</span>,
+                            <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>bs</span>,
+                            <span class='mzn-ti'>float</span>: <span class='mzn-id'>c</span>,
+                            <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf r} \leftrightarrow ({\bf c} < \sum_i {\bf as}[i]*{\bf bs}[i]) \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_lin_ne</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>as</span>,
+                       <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>bs</span>,
+                       <span class='mzn-ti'>float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf c} \neq \sum_i {\bf as}[i]*{\bf bs}[i] \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_lin_ne_reif</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>as</span>,
+                            <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>bs</span>,
+                            <span class='mzn-ti'>float</span>: <span class='mzn-id'>c</span>,
+                            <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf r} \leftrightarrow ({\bf c} \neq \sum_i {\bf as}[i]*{\bf bs}[i]) \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_ln</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = ln(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_log10</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = log<sub>10</sub>(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_log2</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = log<sub>2</sub>(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_lt</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> < <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_lt_reif</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>a</span> < <span class='mzn-arg'>b</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_max</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains max(<span class='mzn-arg'>a</span>, <span class='mzn-arg'>b</span>) = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_min</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains min(<span class='mzn-arg'>a</span>, <span class='mzn-arg'>b</span>) = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_ne</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> ≠ <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_ne_reif</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>a</span> ≠ <span class='mzn-arg'>b</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_plus</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> + <span class='mzn-arg'>b</span> = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_pow</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>z</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>z</span> = \({\bf x} ^ {{\bf y}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_sin</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = sin(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_sinh</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = sinh(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_sqrt</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \({\bf b} = \sqrt{{\bf a}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_tan</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = tan(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_tanh</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> = tanh(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_times</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> * <span class='mzn-arg'>b</span> = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int2float</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>y</span>=<span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_abs</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>b</span> to be the absolute value of <span class='mzn-arg'>a</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_div</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> / <span class='mzn-arg'>b</span> = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_eq</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> to be equal to <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_eq_reif</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains (<span class='mzn-arg'>a</span>=<span class='mzn-arg'>b</span>) &harr; <span class='mzn-arg'>r</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_le</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> to be less than or equal to <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_le_reif</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains (<span class='mzn-arg'>a</span> ≤ <span class='mzn-arg'>b</span>) &harr; <span class='mzn-arg'>r</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_lin_eq</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>as</span>,
+                     <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>bs</span>,
+                     <span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i] \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_lin_eq_reif</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>as</span>,
+                          <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>bs</span>,
+                          <span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>,
+                          <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf r} \leftrightarrow ({\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i]) \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_lin_le</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>as</span>,
+                     <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>bs</span>,
+                     <span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains &Sigma; <span class='mzn-arg'>as</span>[<span class='mzn-parm'>i</span>]*<span class='mzn-arg'>bs</span>[<span class='mzn-parm'>i</span>] ≤ <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_lin_le_reif</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>as</span>,
+                          <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>bs</span>,
+                          <span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>,
+                          <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (&Sigma; <span class='mzn-arg'>as</span>[<span class='mzn-parm'>i</span>]*<span class='mzn-arg'>bs</span>[<span class='mzn-parm'>i</span>] ≤ <span class='mzn-arg'>c</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_lin_ne</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>as</span>,
+                     <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>bs</span>,
+                     <span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf c} \neq \sum_i {\bf as}[i]*{\bf bs}[i] \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_lin_ne_reif</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>as</span>,
+                          <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>bs</span>,
+                          <span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>,
+                          <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf r} \leftrightarrow ({\bf c} \neq \sum_i {\bf as}[i]*{\bf bs}[i]) \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_lt</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> < <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_lt_reif</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>a</span> < <span class='mzn-arg'>b</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_max</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains max(<span class='mzn-arg'>a</span>, <span class='mzn-arg'>b</span>) = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_min</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains min(<span class='mzn-arg'>a</span>, <span class='mzn-arg'>b</span>) = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_mod</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> % <span class='mzn-arg'>b</span> = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_ne</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> ≠ <span class='mzn-arg'>b</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_ne_reif</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>a</span> ≠ <span class='mzn-arg'>b</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_plus</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> + <span class='mzn-arg'>b</span> = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_pow</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>z</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>z</span> = \({\bf x} ^ {{\bf y}}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_times</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>a</span> * <span class='mzn-arg'>b</span> = <span class='mzn-arg'>c</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_card</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>S</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>x</span> = |<span class='mzn-arg'>S</span>| </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_diff</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>,
+                   <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>,
+                   <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> = x &minus; <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_eq</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>x</span> = <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_eq_reif</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>,
+                      <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>,
+                      <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>x</span> = <span class='mzn-arg'>y</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_in</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>x</span> &in; <span class='mzn-arg'>S</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_in</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>S</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>x</span> &in; <span class='mzn-arg'>S</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_in_reif</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>x</span> &in; <span class='mzn-arg'>S</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_in_reif</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>S</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>x</span> &in; <span class='mzn-arg'>S</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_intersect</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>,
+                        <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>,
+                        <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> = x &cap; <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_le</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>x</span> ≤ <span class='mzn-arg'>y</span> (lexicographic order) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_lt</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>x</span> < <span class='mzn-arg'>y</span> (lexicographic order) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_ne</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>x</span> ≠ <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_ne_reif</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>,
+                      <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>,
+                      <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>x</span> ≠ <span class='mzn-arg'>y</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_subset</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>x</span> &sube; <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_subset_reif</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>,
+                          <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>,
+                          <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; (<span class='mzn-arg'>x</span> &sube; <span class='mzn-arg'>y</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_symdiff</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>,
+                      <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>,
+                      <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> to be the symmetric difference of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>set_union</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>,
+                    <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>,
+                    <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> = x &cup; <span class='mzn-arg'>y</span> </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

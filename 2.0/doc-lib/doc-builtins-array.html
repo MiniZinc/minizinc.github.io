@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Array operations</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-set.html' title='Set operations'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-sort.html' title='Array sorting operations'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-builtins-array'>Array operations</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  These functions implement the basic operations on arrays.</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of $T</span>: <span class='mzn-fn-id'>'++'</span>(<span class='mzn-ti'>array [int] of $T</span>: <span class='mzn-id'>x</span>,
+                                 <span class='mzn-ti'>array [int] of $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x++y</span></p><p>
+  Return the concatenation of arrays <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var $T</span>: <span class='mzn-fn-id'>'++'</span>(<span class='mzn-ti'>array [int] of var $T</span>: <span class='mzn-id'>x</span>,
+                                     <span class='mzn-ti'>array [int] of var $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x++y</span></p><p>
+  Return the concatenation of arrays <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var opt $T</span>: <span class='mzn-fn-id'>'++'</span>(<span class='mzn-ti'>array [int] of var opt $T</span>: <span class='mzn-id'>x</span>,
+                                         <span class='mzn-ti'>array [int] of var opt $T</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x++y</span></p><p>
+  Return the concatenation of arrays <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of $V</span>: <span class='mzn-fn-id'>array1d</span>(<span class='mzn-ti'>array [$U] of $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to index set 1..length(<span class='mzn-arg'>x</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var $V</span>: <span class='mzn-fn-id'>array1d</span>(<span class='mzn-ti'>array [$U] of var $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to index set 1..length(<span class='mzn-arg'>x</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var opt $V</span>: <span class='mzn-fn-id'>array1d</span>(<span class='mzn-ti'>array [$U] of var opt $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to index set 1..length(<span class='mzn-arg'>x</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of $V</span>: <span class='mzn-fn-id'>array1d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S</span>, <span class='mzn-ti'>array [$U] of $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to one-dimensional array with index set <span class='mzn-arg'>S</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var $V</span>: <span class='mzn-fn-id'>array1d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S</span>,
+                                        <span class='mzn-ti'>array [$U] of var $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to one-dimensional array with index set <span class='mzn-arg'>S</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var opt $V</span>: <span class='mzn-fn-id'>array1d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S</span>,
+                                            <span class='mzn-ti'>array [$U] of var opt $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to one-dimensional array with index set <span class='mzn-arg'>S</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int] of $V</span>: <span class='mzn-fn-id'>array2d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                        <span class='mzn-ti'>array [$U] of $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to two-dimensional array with index sets <span class='mzn-arg'>S1</span> and <span class='mzn-arg'>S2</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int] of var $V</span>: <span class='mzn-fn-id'>array2d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                            <span class='mzn-ti'>array [$U] of var $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to two-dimensional array with index sets <span class='mzn-arg'>S1</span> and <span class='mzn-arg'>S2</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int] of var opt $V</span>: <span class='mzn-fn-id'>array2d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                <span class='mzn-ti'>array [$U] of var opt $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to two-dimensional array with index sets <span class='mzn-arg'>S1</span> and <span class='mzn-arg'>S2</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int] of $V</span>: <span class='mzn-fn-id'>array3d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                            <span class='mzn-ti'>array [$U] of $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to three-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span> and <span class='mzn-arg'>S3</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int] of var $V</span>: <span class='mzn-fn-id'>array3d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                <span class='mzn-ti'>array [$U] of var $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to three-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span> and <span class='mzn-arg'>S3</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int] of var opt $V</span>: <span class='mzn-fn-id'>array3d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                    <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                    <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                    <span class='mzn-ti'>array [$U] of var opt $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to three-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span> and <span class='mzn-arg'>S3</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int,int] of $V</span>: <span class='mzn-fn-id'>array4d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S4</span>,
+                                                <span class='mzn-ti'>array [$U] of $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to 4-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span>, <span class='mzn-arg'>S3</span> and <span class='mzn-arg'>S4</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int,int] of var $V</span>: <span class='mzn-fn-id'>array4d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                    <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                    <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                    <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S4</span>,
+                                                    <span class='mzn-ti'>array [$U] of var $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to 4-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span>, <span class='mzn-arg'>S3</span> and <span class='mzn-arg'>S4</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int,int] of var opt $V</span>: <span class='mzn-fn-id'>array4d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S4</span>,
+                                                        <span class='mzn-ti'>array [$U] of var opt $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to 4-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span>, <span class='mzn-arg'>S3</span> and <span class='mzn-arg'>S4</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int,int,int] of $V</span>: <span class='mzn-fn-id'>array5d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                    <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                    <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                    <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S4</span>,
+                                                    <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S5</span>,
+                                                    <span class='mzn-ti'>array [$U] of $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to 5-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span>, <span class='mzn-arg'>S3</span>, <span class='mzn-arg'>S4</span> and <span class='mzn-arg'>S5</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int,int,int] of var $V</span>: <span class='mzn-fn-id'>array5d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S4</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S5</span>,
+                                                        <span class='mzn-ti'>array [$U] of var $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to 5-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span>, <span class='mzn-arg'>S3</span>, <span class='mzn-arg'>S4</span> and <span class='mzn-arg'>S5</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int,int,int] of var opt $V</span>: <span class='mzn-fn-id'>array5d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S4</span>,
+                                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S5</span>,
+                                                            <span class='mzn-ti'>array [$U] of var opt $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to 5-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span>, <span class='mzn-arg'>S3</span>, <span class='mzn-arg'>S4</span> and <span class='mzn-arg'>S5</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int,int,int,int] of $V</span>: <span class='mzn-fn-id'>array6d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S4</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S5</span>,
+                                                        <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S6</span>,
+                                                        <span class='mzn-ti'>array [$U] of $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to 6-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span>, <span class='mzn-arg'>S3</span>, <span class='mzn-arg'>S4</span>, <span class='mzn-arg'>S5</span> and <span class='mzn-arg'>S6</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int,int,int,int] of var $V</span>: <span class='mzn-fn-id'>array6d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S4</span>,
+                                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S5</span>,
+                                                            <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S6</span>,
+                                                            <span class='mzn-ti'>array [$U] of var $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to 6-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span>, <span class='mzn-arg'>S3</span>, <span class='mzn-arg'>S4</span>, <span class='mzn-arg'>S5</span> and <span class='mzn-arg'>S6</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int,int,int,int,int,int] of var opt $V</span>: <span class='mzn-fn-id'>array6d</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S1</span>,
+                                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S2</span>,
+                                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S3</span>,
+                                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S4</span>,
+                                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S5</span>,
+                                                                <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>S6</span>,
+                                                                <span class='mzn-ti'>array [$U] of var opt $V</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>x</span> coerced to 6-dimensional array with   index sets <span class='mzn-arg'>S1</span>, <span class='mzn-arg'>S2</span>, <span class='mzn-arg'>S3</span>, <span class='mzn-arg'>S4</span>, <span class='mzn-arg'>S5</span> and <span class='mzn-arg'>S6</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of $V</span>: <span class='mzn-fn-id'>arrayXd</span>(<span class='mzn-ti'>array [$T] of var opt $X</span>: <span class='mzn-id'>x</span>,
+                                   <span class='mzn-ti'>array [$U] of $V</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>y</span> coerced to array with same number of   dimensions and same index sets as array <span class='mzn-arg'>x</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of var $V</span>: <span class='mzn-fn-id'>arrayXd</span>(<span class='mzn-ti'>array [$T] of var opt $X</span>: <span class='mzn-id'>x</span>,
+                                       <span class='mzn-ti'>array [$U] of var $V</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>y</span> coerced to array with same number of   dimensions and same index sets as array <span class='mzn-arg'>x</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of var opt $V</span>: <span class='mzn-fn-id'>arrayXd</span>(<span class='mzn-ti'>array [$T] of var opt $X</span>: <span class='mzn-id'>x</span>,
+                                           <span class='mzn-ti'>array [$U] of var opt $V</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array <span class='mzn-arg'>y</span> coerced to array with same number of   dimensions and same index sets as array <span class='mzn-arg'>x</span></p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of $T</span>: <span class='mzn-fn-id'>col</span>(<span class='mzn-ti'>array [int,int] of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>array1d(index_set_1of2(x), [ x[i, c] | i in index_set_1of2(x) ])
+</div>
+(standard decomposition from builtins.mzn:906)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return column <span class='mzn-arg'>c</span> of array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var $T</span>: <span class='mzn-fn-id'>col</span>(<span class='mzn-ti'>array [int,int] of var $T</span>: <span class='mzn-id'>x</span>,
+                                    <span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>array1d(index_set_1of2(x), [ x[i, c] | i in index_set_1of2(x) ])
+</div>
+(standard decomposition from builtins.mzn:909)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return column <span class='mzn-arg'>c</span> of array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var opt $T</span>: <span class='mzn-fn-id'>col</span>(<span class='mzn-ti'>array [int,int] of var opt $T</span>: <span class='mzn-id'>x</span>,
+                                        <span class='mzn-ti'>int</span>: <span class='mzn-id'>c</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>array1d(index_set_1of2(x), [ x[i, c] | i in index_set_1of2(x) ])
+</div>
+(standard decomposition from builtins.mzn:912)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return column <span class='mzn-arg'>c</span> of array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>has_element</span>(<span class='mzn-ti'>$T</span>: <span class='mzn-id'>e</span>, <span class='mzn-ti'>array [int] of $T</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( x[i]==e )
+</div>
+(standard decomposition from builtins.mzn:918)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Test if <span class='mzn-arg'>e</span> is an element of array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>has_element</span>(<span class='mzn-ti'>$T</span>: <span class='mzn-id'>e</span>, <span class='mzn-ti'>array [int] of var opt $T</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( x[i]==e )
+</div>
+(standard decomposition from builtins.mzn:920)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Test if <span class='mzn-arg'>e</span> is an element of array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>has_index</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>i</span>, <span class='mzn-ti'>array [int] of var opt $T</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>i in index_set(x)
+</div>
+(standard decomposition from builtins.mzn:916)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Test if <span class='mzn-arg'>i</span> is in the index set of <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set</span>(<span class='mzn-ti'>array [int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of one-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_1of2</span>(<span class='mzn-ti'>array [int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of first dimension of two-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_1of3</span>(<span class='mzn-ti'>array [int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of first dimension of 3-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_1of4</span>(<span class='mzn-ti'>array [int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of first dimension of 4-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_1of5</span>(<span class='mzn-ti'>array [int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of first dimension of 5-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_1of6</span>(<span class='mzn-ti'>array [int,int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of first dimension of 6-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_2of2</span>(<span class='mzn-ti'>array [int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of second dimension of two-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_2of3</span>(<span class='mzn-ti'>array [int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of second dimension of 3-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_2of4</span>(<span class='mzn-ti'>array [int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of second dimension of 4-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_2of5</span>(<span class='mzn-ti'>array [int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of second dimension of 5-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_2of6</span>(<span class='mzn-ti'>array [int,int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of second dimension of 6-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_3of3</span>(<span class='mzn-ti'>array [int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of third dimension of 3-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_3of4</span>(<span class='mzn-ti'>array [int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of third dimension of 4-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_3of5</span>(<span class='mzn-ti'>array [int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of third dimension of 5-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_3of6</span>(<span class='mzn-ti'>array [int,int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of third dimension of 6-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_4of4</span>(<span class='mzn-ti'>array [int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of fourth dimension of 4-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_4of5</span>(<span class='mzn-ti'>array [int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of fourth dimension of 5-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_4of6</span>(<span class='mzn-ti'>array [int,int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of fourth dimension of 6-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_5of5</span>(<span class='mzn-ti'>array [int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of fifth dimension of 5-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_5of6</span>(<span class='mzn-ti'>array [int,int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of fifth dimension of 6-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>index_set_6of6</span>(<span class='mzn-ti'>array [int,int,int,int,int,int] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return index set of sixth dimension of 6-dimensional array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>index_sets_agree</span>(<span class='mzn-ti'>array [$T] of var opt $U</span>: <span class='mzn-id'>x</span>,
+                      <span class='mzn-ti'>array [$T] of var opt $W</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Test if <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> have the same index sets </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>length</span>(<span class='mzn-ti'>array [$T] of var opt $U</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return the length of array <span class='mzn-arg'>x</span></p><p>
+  Note that the length is defined as the number of elements in the   array, regardless of its dimensionality.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of $T</span>: <span class='mzn-fn-id'>reverse</span>(<span class='mzn-ti'>array [int] of $T</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {int: l = max(index_set(x))+min(index_set(x)),
+} in (array1d(index_set(x), [ x[l-i] | i in index_set(x) ]))
+</div>
+(standard decomposition from builtins.mzn:683)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return the array <span class='mzn-arg'>x</span> in reverse order</p><p>
+  The resulting array has the same index set as <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var $T</span>: <span class='mzn-fn-id'>reverse</span>(<span class='mzn-ti'>array [int] of var $T</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {int: l = max(index_set(x))+min(index_set(x)),
+} in (array1d(index_set(x), [ x[l-i] | i in index_set(x) ]))
+</div>
+(standard decomposition from builtins.mzn:691)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return the array <span class='mzn-arg'>x</span> in reverse order</p><p>
+  The resulting array has the same index set as <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var opt $T</span>: <span class='mzn-fn-id'>reverse</span>(<span class='mzn-ti'>array [int] of var opt $T</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {int: l = max(index_set(x))+min(index_set(x)),
+} in (array1d(index_set(x), [ x[l-i] | i in index_set(x) ]))
+</div>
+(standard decomposition from builtins.mzn:699)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return the array <span class='mzn-arg'>x</span> in reverse order</p><p>
+  The resulting array has the same index set as <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of $T</span>: <span class='mzn-fn-id'>row</span>(<span class='mzn-ti'>array [int,int] of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>r</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>array1d(index_set_2of2(x), [ x[r, i] | i in index_set_2of2(x) ])
+</div>
+(standard decomposition from builtins.mzn:896)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return row <span class='mzn-arg'>r</span> of array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var $T</span>: <span class='mzn-fn-id'>row</span>(<span class='mzn-ti'>array [int,int] of var $T</span>: <span class='mzn-id'>x</span>,
+                                    <span class='mzn-ti'>int</span>: <span class='mzn-id'>r</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>array1d(index_set_2of2(x), [ x[r, i] | i in index_set_2of2(x) ])
+</div>
+(standard decomposition from builtins.mzn:899)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return row <span class='mzn-arg'>r</span> of array <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var opt $T</span>: <span class='mzn-fn-id'>row</span>(<span class='mzn-ti'>array [int,int] of var opt $T</span>: <span class='mzn-id'>x</span>,
+                                        <span class='mzn-ti'>int</span>: <span class='mzn-id'>r</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>array1d(index_set_2of2(x), [ x[r, i] | i in index_set_2of2(x) ])
+</div>
+(standard decomposition from builtins.mzn:902)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return row <span class='mzn-arg'>r</span> of array <span class='mzn-arg'>x</span> </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

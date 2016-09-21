@@ -1,0 +1,30 @@
+---
+layout: default
+title: "MiniZinc: Version 2 Installation Instructions for Windows"
+---
+
+{% assign mznversion = site.data.version["mznversion"] %}
+{% assign mzndate = site.data.version["mzndate"] %}
+
+<h2>MiniZinc 2</h2>
+
+<h3>Installation Instructions for Windows</h3>
+
+<p>These instructions are for installing MiniZinc 2 from a binary distribution for Windows. Download the installer here:</p>
+
+<ul>
+    <li><b>Windows (32 bit):</b> <a class="download" href="https://github.com/MiniZinc/libminizinc/releases/download/{{ mznversion }}/Install.MiniZinc.{{ mznversion }}.win32.exe">Install.MiniZinc.{{ mznversion }}.win32.exe</a>
+</ul>
+
+<p>
+After downloading, run the installer and follow the instructions.</p>
+
+<h3>Running MiniZinc</h3>
+
+<p>The installer will copy the MiniZinc executables, documentation and examples into the folder you specified (usually the Program Files folder). It also adds shortcuts to the start menu, including a command shell that sets up the path to include the MiniZinc executables.
+</p>
+
+<h3>Using MiniZinc 2.0 with the MiniZinc IDE</h3>
+
+<p>
+  In order to use MiniZinc 2 with the <a href="/ide/index.html">MiniZinc IDE</a>, you need to change the MiniZinc path in the preferences dialog to point to the <tt>bin</tt> directory inside the MiniZinc installation (usually in Program Files). </p>

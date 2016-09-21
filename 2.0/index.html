@@ -1,0 +1,83 @@
+---
+layout: default
+title: "MiniZinc: Version 2"
+---
+
+{% assign mznversion = site.data.version["mznversion"] %}
+{% assign mzndate = site.data.version["mzndate"] %}
+
+<h2>MiniZinc 2</h2>
+
+<p>
+  Version 2 of the MiniZinc constraint modelling language and tool chain is
+  available under the <a href="LICENSE.txt">Mozilla Public License version 2.0</a>.
+</p>
+
+<h3>Download and Installation</h3>
+
+<p>Follow the installation instructions for your operating system of choice. The installation instruction also contain tips how to use MiniZinc 2.0 with the <a href="/ide/index.html">MiniZinc IDE</a>.</p>
+
+<ul>
+  <li><a href="install-windows.html">Windows</a></li>
+  <li><a href="install-mac.html">Mac OS</a></li>
+  <li><a href="install-linux.html">Linux</a></li>
+  <li><a href="install-source.html">Installation from source code</a></li>
+</ul>
+
+<h3>New Features</h3>
+
+<p>
+  MiniZinc 2.0 contains many new features and is based on a complete rewrite of the MiniZinc-to-FlatZinc compiler. If you are currently using the previous version 1.6, the new tools can be used as drop-in replacements. The generated FlatZinc is compatible with version 1.6, so all FlatZinc solvers should work without changes.
+</p>
+
+<h4>MiniZinc language changes</h4>
+<ul>
+<li>MiniZinc now supports user-defined functions. Details have been published in the paper "MiniZinc with Functions". Both functions and predicates can be recursive.
+<li>MiniZinc now supports option types. Details have been published in the paper "Modelling with Option Types in MiniZinc". 
+<li>Let expressions have been generalised. They can now contain constraint items in addition to variable declarations.
+<li>Array index sets can be declared using arbitrary set expressions as long as they evaluate to contiguous ranges.
+<li>The if-then-else expression has been generalised to allow the condition to be a var bool expression (instead of only par bool).
+<li>Array and set comprehensions as well as generator calls can now iterate over variables and use var bool where conditions.
+<li>Any bool expression can now automatically coerce to an int expression, likewise for int and float. This means that you don't have to write <tt>bool2int</tt> or <tt>int2float</tt> in you models any more.
+<li>Equality constraints can now be posted between array expressions.
+<li>Arbitrary expressions can now be included ("interpolated") into strings, using the syntax <tt>"some text \(e) some more text"</tt>, where e is any expression. It is the same as writing <tt>"some text "++show(e)++" some more text"</tt>.
+</ul>
+  
+<h4>New built-in functions</h4>
+<ul>
+  <li>Array functions: <tt>array1d</tt>, <tt>arrayXd</tt>, <tt>row</tt>, <tt>col</tt>, <tt>has_index</tt>, <tt>has_element</tt>, <tt>sort_by</tt>, <tt>sort</tt>, <tt>arg_sort</tt>, <tt>arg_min</tt>, <tt>arg_max</tt>
+</ul>
+
+<h4>New global constraints</h4>
+<ul>
+  <li><tt>arg_max</tt>, <tt>arg_min</tt>
+  <li><tt>arg_sort</tt>
+  <li>k-dimensional <tt>diffn</tt>
+  <li><tt>disjunctive</tt>
+  <li><tt>geost</tt>
+  <li><tt>knapsack</tt>
+  <li><tt>network_flow</tt>
+  <li><tt>regular</tt> with NFAs
+  <li>symmetric all different
+  <li>optional scheduling constraints: <tt>alternative</tt>, <tt>span</tt>, <tt>disjunctive</tt>, <tt>cumulative</tt>
+  <li>functional versions of many global constraints
+</ul>
+
+<h4>New tool chain</h4>
+
+<ul>
+<li>There are a few new builtins that solvers can reimplement, these are listed in the redefinitions-2.0 file.
+<li>Include items use a different method for finding included files. Paths are now interpreted as relative to the file that has the include item. That way, the mzn2fzn compiler can be called from a different working directory.
+<li>A new tool, <tt>mzn2doc</tt>, can produce html output from the documentation comments. The MiniZinc distribution contains the documentation for global constraints and builtins generated directly from the library source code.
+</ul>
+
+<h3>Latest version</h3>
+
+<p>The latest version of MiniZinc is {{ mznversion }}, released on {{ mzndate }}.</p>
+
+<p>For a list of changes, see the <a href="changes.html">change log</a>.</p>
+
+<h3>Bugs</h3>
+
+<p>If you encounter any problems with MiniZinc, please use the <a href="https://github.com/MiniZinc/libminizinc/issues">Issue Tracker on our github page</a> to report any issues or feature requests.
+</p>

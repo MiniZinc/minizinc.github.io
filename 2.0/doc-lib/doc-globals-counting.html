@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Counting constraints</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-channeling.html' title='Channeling constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-packing.html' title='Packing constraints'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-globals-counting'>Counting constraints</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>among</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>v</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var 0..length(x): n, 
+    constraint among(n, x, v),
+} in (n)
+</div>
+(standard decomposition from among_fn.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Returns the number of variables in <span class='mzn-arg'>x</span> that take one of the values in <span class='mzn-arg'>v</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>among</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>n</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>v</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>n==sum ( i in index_set(x) ) ( bool2int(x[i] in v) )
+</div>
+(standard decomposition from among.mzn:4)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Requires exactly <span class='mzn-arg'>n</span> variables in <span class='mzn-arg'>x</span> to take one of the values in <span class='mzn-arg'>v</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>at_least</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>n</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>v</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>sum ( i in index_set(x) ) ( bool2int(x[i]==v) )>=n
+</div>
+(standard decomposition from at_least_int.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Requires at least <span class='mzn-arg'>n</span> variables in <span class='mzn-arg'>x</span> to take the value <span class='mzn-arg'>v</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>at_least</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>n</span>,
+                   <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>,
+                   <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>v</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>sum ( i in index_set(x) ) ( bool2int(x[i]==v) )>=n
+</div>
+(standard decomposition from at_least_set.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Requires at least <span class='mzn-arg'>n</span> variables in <span class='mzn-arg'>x</span> to take the value <span class='mzn-arg'>v</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>at_most</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>n</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>v</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>sum ( i in index_set(x) ) ( bool2int(x[i]==v) )<=n
+</div>
+(standard decomposition from at_most_int.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Requires at most <span class='mzn-arg'>n</span> variables in <span class='mzn-arg'>x</span> to take the value <span class='mzn-arg'>v</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>at_most</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>n</span>,
+                  <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>,
+                  <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>v</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>sum ( i in index_set(x) ) ( bool2int(x[i]==v) )<=n
+</div>
+(standard decomposition from at_most_set.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Requires at most <span class='mzn-arg'>n</span> variables in <span class='mzn-arg'>x</span> to take the value <span class='mzn-arg'>v</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>at_most1</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>s</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(s) where i < j ) ( 
+    card(s[i] intersect s[j])<=1 
+)
+</div>
+(standard decomposition from at_most1.mzn:4)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+     Requires that each pair of sets in <span class='mzn-arg'>s</span> overlap in at most one element.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>count</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var 0..length(x): c, 
+    constraint count(x, y, c),
+} in (c)
+</div>
+(standard decomposition from count_fn.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Returns the number of occurrences of <span class='mzn-arg'>y</span> in <span class='mzn-arg'>x</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>count</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>c==sum ( i in index_set(x) ) ( bool2int(x[i]==y) )
+</div>
+(standard decomposition from count_eq.mzn:4)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains <span class='mzn-arg'>c</span> to be the number of occurrences of <span class='mzn-arg'>y</span> in <span class='mzn-arg'>x</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>count_eq</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>c==sum ( i in index_set(x) ) ( bool2int(x[i]==y) )
+</div>
+(standard decomposition from count_eq.mzn:4)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains <span class='mzn-arg'>c</span> to be the number of occurrences of <span class='mzn-arg'>y</span> in <span class='mzn-arg'>x</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>count_geq</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>c>=sum ( i in index_set(x) ) ( bool2int(x[i]==y) )
+</div>
+(standard decomposition from count_geq.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains <span class='mzn-arg'>c</span> to be greater than or equal to the number of occurrences   of <span class='mzn-arg'>y</span> in <span class='mzn-arg'>x</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>count_gt</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>c > sum ( i in index_set(x) ) ( bool2int(x[i]==y) )
+</div>
+(standard decomposition from count_gt.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains <span class='mzn-arg'>c</span> to be strictly greater than the number of occurrences   of <span class='mzn-arg'>y</span> in <span class='mzn-arg'>x</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>count_leq</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>c<=sum ( i in index_set(x) ) ( bool2int(x[i]==y) )
+</div>
+(standard decomposition from count_leq.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains <span class='mzn-arg'>c</span> to be less than or equal to the number of occurrences   of <span class='mzn-arg'>y</span> in <span class='mzn-arg'>x</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>count_lt</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>c < sum ( i in index_set(x) ) ( bool2int(x[i]==y) )
+</div>
+(standard decomposition from count_lt.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains <span class='mzn-arg'>c</span> to be strictly less than the number of occurrences   of <span class='mzn-arg'>y</span> in <span class='mzn-arg'>x</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>count_neq</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>c</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>c!=sum ( i in index_set(x) ) ( bool2int(x[i]==y) )
+</div>
+(standard decomposition from count_neq.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Constrains <span class='mzn-arg'>c</span> to be not equal to the number of occurrences   of <span class='mzn-arg'>y</span> in <span class='mzn-arg'>x</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-fn-id'>distribute</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>value</span>,
+                                            <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>base</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [index_set(value)] of var 0..length(base): card, 
+    constraint distribute(card, value, base),
+} in (card)
+</div>
+(standard decomposition from distribute_fn.mzn:7)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Returns an array of the number of occurences of <span class='mzn-arg'>value</span>[<span class='mzn-parm'>i</span>] in   <span class='mzn-arg'>base</span>. The values in <span class='mzn-arg'>value</span> need not be distinct.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>distribute</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>card</span>,
+                     <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>value</span>,
+                     <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>base</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(card)==index_set(value), 
+    "distribute: card and value arrays must have identical index sets", 
+    forall ( i in index_set(card) ) ( 
+                                                                            
+    card[i]==sum ( j in index_set(base) ) ( 
+                 bool2int(value[i]==base[j]) 
+             ) 
+                                                                        
+    ))
+</div>
+(standard decomposition from distribute.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that <span class='mzn-arg'>card</span>[<span class='mzn-parm'>i</span>] is the number of occurences of <span class='mzn-arg'>value</span>[<span class='mzn-parm'>i</span>] in   <span class='mzn-arg'>base</span>. The values in <span class='mzn-arg'>value</span> need not be distinct.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>exactly</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>n</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>v</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>n==sum ( i in index_set(x) ) ( bool2int(x[i]==v) )
+</div>
+(standard decomposition from exactly_int.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires exactly <span class='mzn-arg'>n</span> variables in <span class='mzn-arg'>x</span> to take the value <span class='mzn-arg'>v</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>exactly</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>n</span>,
+                  <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>,
+                  <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>v</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>n==sum ( i in index_set(x) ) ( bool2int(x[i]==v) )
+</div>
+(standard decomposition from exactly_set.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires exactly <span class='mzn-arg'>n</span> variables in <span class='mzn-arg'>x</span> to take the value <span class='mzn-arg'>v</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-fn-id'>global_cardinality</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                                                    <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>cover</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [index_set(cover)] of var 0..length(x): counts, 
+    constraint global_cardinality(x, cover, counts),
+} in (counts)
+</div>
+(standard decomposition from global_cardinality_fn.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Returns the number of occurrences of <span class='mzn-arg'>cover</span>[<span class='mzn-parm'>i</span>] in <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>global_cardinality</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                             <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>cover</span>,
+                             <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>counts</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(cover)==index_set(counts), 
+    "global_cardinality: cover and counts must have identical index sets", 
+    forall ( i in index_set(cover) ) ( 
+    count(x, cover[i], counts[i]) 
+    ) /\ 
+    length(x)>=sum(counts))
+</div>
+(standard decomposition from global_cardinality.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that the number of occurrences of <span class='mzn-arg'>cover</span>[<span class='mzn-parm'>i</span>] in <span class='mzn-arg'>x</span> is <span class='mzn-arg'>counts</span>[<span class='mzn-parm'>i</span>].</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-fn-id'>global_cardinality_closed</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                                                           <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>cover</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [index_set(cover)] of var 0..length(x): counts, 
+    constraint global_cardinality_closed(x, cover, counts),
+} in (counts)
+</div>
+(standard decomposition from global_cardinality_closed_fn.mzn:8)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Returns an array with number of occurences of <span class='mzn-parm'>i</span> in <span class='mzn-arg'>x</span>.</p><p>
+  The elements of <span class='mzn-arg'>x</span> must take their values from <span class='mzn-arg'>cover</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>global_cardinality_closed</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                                    <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>cover</span>,
+                                    <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>counts</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(cover)==index_set(counts), 
+    "global_cardinality_closed: "++
+    "cover and counts must have identical index sets", forall ( i in 
+    index_set(x) ) ( x[i] in 
+    { d | d in cover } ) /\ 
+    global_cardinality(x, cover, counts) /\ length(x)==
+    sum(counts))
+</div>
+(standard decomposition from global_cardinality_closed.mzn:6)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that the number of occurences of <span class='mzn-parm'>i</span> in <span class='mzn-arg'>x</span> is <span class='mzn-arg'>counts</span>[<span class='mzn-parm'>i</span>].</p><p>
+  The elements of <span class='mzn-arg'>x</span> must take their values from <span class='mzn-arg'>cover</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>global_cardinality_low_up</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                                    <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>cover</span>,
+                                    <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>lbound</span>,
+                                    <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>ubound</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(cover) ) ( 
+    sum ( j in index_set(x) ) ( bool2int(x[j]==cover[i]) 
+    ) in lbound[i]..ubound[i] 
+)
+</div>
+(standard decomposition from global_cardinality_low_up.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that for all <span class='mzn-parm'>i</span>, the value <span class='mzn-arg'>cover</span>[<span class='mzn-parm'>i</span>] appears at least <span class='mzn-arg'>lbound</span>[<span class='mzn-parm'>i</span>]   and at most <span class='mzn-arg'>ubound</span>[<span class='mzn-parm'>i</span>] times in the array <span class='mzn-arg'>x</span>.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>global_cardinality_low_up_closed</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                                           <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>cover</span>,
+                                           <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>lbound</span>,
+                                           <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>ubound</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) ) ( x[i] in { d | d in array2set(cover) } 
+) /\ 
+global_cardinality_low_up(x, cover, lbound, ubound) /\ 
+length(x) in sum(lbound)..sum(ubound)
+</div>
+(standard decomposition from global_cardinality_low_up_closed.mzn:7)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that for all <span class='mzn-parm'>i</span>, the value <span class='mzn-arg'>cover</span>[<span class='mzn-parm'>i</span>] appears at least <span class='mzn-arg'>lbound</span>[<span class='mzn-parm'>i</span>]   and at most <span class='mzn-arg'>ubound</span>[<span class='mzn-parm'>i</span>] times in the array <span class='mzn-arg'>x</span>.</p><p>
+  The elements of <span class='mzn-arg'>x</span> must take their values from <span class='mzn-arg'>cover</span>.</p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

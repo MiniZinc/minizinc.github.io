@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Option type support for Booleans</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-up' href='doc-optiontypes.html' title='Option type support'>&#8679;</a> <a class='mzn-nav-next' href='doc-optiontypes-int.html' title='Option type support for integers'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-optiontypes-bool'>Option type support for Booleans</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'not'</span>(<span class='mzn-ti'>var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) \/ not deopt(x)
+</div>
+(standard decomposition from stdlib.mzn:269)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">not x</span></p><p>
+  True iff <span class='mzn-arg'>x</span> is absent or false </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>absent</span>(<span class='mzn-ti'>var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>not occurs(x)
+</div>
+(standard decomposition from stdlib.mzn:234)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  True iff <span class='mzn-arg'>x</span> is absent </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>absent</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>not occurs(x)
+</div>
+(standard decomposition from stdlib.mzn:328)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  True iff <span class='mzn-arg'>x</span> is absent </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_eq</span>(<span class='mzn-ti'>var opt bool</span>: <span class='mzn-id'>b0</span>, <span class='mzn-ti'>var opt bool</span>: <span class='mzn-id'>b1</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(b0) /\ absent(b1) \/ 
+occurs(b0) /\ occurs(b1) /\ deopt(b0)==deopt(b1)
+</div>
+(standard decomposition from stdlib.mzn:248)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  True iff both <span class='mzn-arg'>b0</span> and <span class='mzn-arg'>b1</span> are absent or  both are present and have the same value. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_eq</span>(<span class='mzn-ti'>var opt bool</span>: <span class='mzn-id'>b0</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b1</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>occurs(b0) /\ deopt(b0)==b1
+</div>
+(standard decomposition from stdlib.mzn:253)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  True iff <span class='mzn-arg'>b0</span> occurs and is equal to <span class='mzn-arg'>b1</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_eq</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b0</span>, <span class='mzn-ti'>var opt bool</span>: <span class='mzn-id'>b1</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>occurs(b1) /\ deopt(b1)==b0
+</div>
+(standard decomposition from stdlib.mzn:257)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  True iff <span class='mzn-arg'>b1</span> occurs and is equal to <span class='mzn-arg'>b0</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>deopt</span>(<span class='mzn-ti'>var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var bool: b = occurs_internal(x), 
+    var bool: dx = deopt_internal(x), 
+    constraint x==reverse_map(b, dx) :: is_reverse_map,
+} in (dx)
+</div>
+(standard decomposition from stdlib.mzn:226)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return value of <span class='mzn-arg'>x</span> (assumes that <span class='mzn-arg'>x</span> is not absent) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>deopt</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var bool: b = occurs_internal(x), 
+    var int: dx = deopt_internal(x), 
+    constraint x==reverse_map(b, dx) :: is_reverse_map,
+} in (dx)
+</div>
+(standard decomposition from stdlib.mzn:320)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return value of <span class='mzn-arg'>x</span> (assumes that <span class='mzn-arg'>x</span> is not absent) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var opt bool</span>: <span class='mzn-fn-id'>element</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>idx</span>,
+                               <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if absent(idx) then <> else element(deopt(idx), x) endif
+</div>
+(standard decomposition from stdlib.mzn:272)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return absent if <span class='mzn-arg'>idx</span> is absent, otherwise return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx</span>] </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var opt bool</span>: <span class='mzn-fn-id'>element</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>idx1</span>,
+                               <span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>idx2</span>,
+                               <span class='mzn-ti'>array [int,int] of var bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if absent(idx1) \/ absent(idx2) then <> 
+else element(deopt(idx1), deopt(idx2), x) 
+endif
+</div>
+(standard decomposition from stdlib.mzn:276)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return absent if <span class='mzn-arg'>idx1</span> or <span class='mzn-arg'>idx2</span> is absent, otherwise return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx1</span>, <span class='mzn-arg'>idx2</span>] </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var opt bool</span>: <span class='mzn-fn-id'>element</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>idx</span>,
+                               <span class='mzn-ti'>array [int] of var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var opt bool: r, 
+    constraint occurs(r)==element(idx, array1d(index_set(x), 
+    [ occurs(x[i]) | i in index_set(x) ])), 
+    constraint deopt(r)==element(idx, array1d(index_set(x), [ deopt(x
+    [i]) | i in index_set(x) ])),
+} in (r)
+</div>
+(standard decomposition from stdlib.mzn:280)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx</span>] </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var opt bool</span>: <span class='mzn-fn-id'>element</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>idx1</span>,
+                               <span class='mzn-ti'>var int</span>: <span class='mzn-id'>idx2</span>,
+                               <span class='mzn-ti'>array [int,int] of var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var opt bool: r, 
+    constraint occurs(r)==element(idx1, idx2, 
+    array2d(index_set_1of2(x), index_set_2of2(x), [ occurs(x[i, j]) | 
+    i in index_set_1of2(x), j in index_set_2of2(x) ])), 
+    constraint deopt(r)==element(idx1, idx2, 
+    array2d(index_set_1of2(x), index_set_2of2(x), [ deopt(x[i, j]) | i
+     in index_set_1of2(x), j in index_set_2of2(x) ])),
+} in (r)
+</div>
+(standard decomposition from stdlib.mzn:288)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx1</span>, <span class='mzn-arg'>idx2</span>] </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var opt bool</span>: <span class='mzn-fn-id'>element</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>idx</span>,
+                               <span class='mzn-ti'>array [int] of var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if absent(idx) then <> else element(deopt(idx), x) endif
+</div>
+(standard decomposition from stdlib.mzn:298)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return absent if <span class='mzn-arg'>idx</span> is absent, otherwise return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx</span>] </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var opt bool</span>: <span class='mzn-fn-id'>element</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>idx1</span>,
+                               <span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>idx2</span>,
+                               <span class='mzn-ti'>array [int,int] of var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if absent(idx1) \/ absent(idx2) then <> 
+else element(deopt(idx1), deopt(idx2), x) 
+endif
+</div>
+(standard decomposition from stdlib.mzn:302)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return absent if <span class='mzn-arg'>idx1</span> or <span class='mzn-arg'>idx2</span> is absent, otherwise return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx1</span>, <span class='mzn-arg'>idx2</span>] </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>exists</span>(<span class='mzn-ti'>array [int] of var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( occurs(x[i]) /\ deopt(x[i]) )
+</div>
+(standard decomposition from stdlib.mzn:265)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  True iff for at least one <span class='mzn-parm'>i</span>, <span class='mzn-arg'>x</span>[i] occurs and is true </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>forall</span>(<span class='mzn-ti'>array [int] of var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) ) ( absent(x[i]) \/ deopt(x[i]) )
+</div>
+(standard decomposition from stdlib.mzn:261)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  True iff for any <span class='mzn-parm'>i</span>, <span class='mzn-arg'>x</span>[i] is absent or true </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>occurs</span>(<span class='mzn-ti'>var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var bool: b = occurs_internal(x), 
+    var bool: dx = deopt_internal(x), 
+    constraint x==reverse_map(b, dx) :: is_reverse_map,
+} in (b)
+</div>
+(standard decomposition from stdlib.mzn:218)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  True iff <span class='mzn-arg'>x</span> is not absent </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

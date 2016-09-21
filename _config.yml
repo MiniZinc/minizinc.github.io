@@ -18,7 +18,7 @@ email: info@minizinc.org
 description: > # this means to ignore newlines until "baseurl:"
   The MiniZinc constraint modelling system.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://www.minizinc.org" # the base hostname & protocol for your site
+# url: "http://www.minizinc.org" # the base hostname & protocol for your site
 twitter_username: minizinc
 github_username:  minizinc
 

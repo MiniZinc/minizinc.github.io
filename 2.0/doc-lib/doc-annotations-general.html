@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>General annotations</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-up' href='doc-annotations.html' title='Annotations'>&#8679;</a> <a class='mzn-nav-next' href='doc-annotations-prop.html' title='Propagation strength annotations'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-annotations-general'>General annotations</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+ </p>
+</div>
+<div class='mzn-decl-type-par'>
+<div class='mzn-decl-type-heading'>Parameters</div>
+<div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>is_defined_var</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Declare the annotated variable as being functionally defined.  This annotation is introduced into FlatZinc code by the compiler. </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>is_reverse_map</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Declare that the annotated expression is used to map  an expression back from FlatZinc to MiniZinc.  </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>maybe_partial</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Declare that expression may have undefined result (to avoid warnings) </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>output_var</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Declare that the annotated variable should be printed by   the solver. This annotation is introduced into FlatZinc code by  the compiler. </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>promise_total</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Declare function as total, i.e. it does not put  any constraints on its arguments. </p>
+</div></div><div class='mzn-vardecl'>
+<div class='mzn-vardecl-code'>
+<span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>var_is_introduced</span></div><div class='mzn-vardecl-doc'>
+<p>
+  Declare a variable as being introduced by the compiler. </p>
+</div></div></div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>defines_var</span>(<span class='mzn-ti'>var $t</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Declare variable: <span class='mzn-arg'>c</span> as being functionally defined  by the annotated constraint. This annotation is introduced into FlatZinc code by the compiler. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>doc_comment</span>(<span class='mzn-ti'>string</span>: <span class='mzn-id'>s</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Document the function or variable declaration item with   the string <span class='mzn-arg'>s</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>annotation</span> <span class='mzn-fn-id'>output_array</span>(<span class='mzn-ti'>array [$u] of set of int</span>: <span class='mzn-id'>a</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Declare that the annotated array should be printed by   the solver with the given index sets <span class='mzn-arg'>a</span>. This annotation is introduced into FlatZinc code by  the compiler. </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Random Number Generator builtins</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-debug.html' title='Assertions and debugging functions'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-special.html' title='Special constraints'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-builtins-random'>Random Number Generator builtins</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  These functions implement random number generators from different   probability distributions.</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>bernoulli</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>p</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a boolean sample from the Bernoulli distribution defined by probability \({\bf p}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>binomial</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>t</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>p</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the binomial distribution defined by sample number <span class='mzn-arg'>t</span> and probability <span class='mzn-arg'>p</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>cauchy</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>mean</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>scale</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the cauchy distribution defined by \({\bf mean}, {\bf scale}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>cauchy</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>mean</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>scale</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the cauchy distribution defined by \({\bf mean}, {\bf scale}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>chisquared</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>n</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the chi-squared distribution defined by the degree of freedom \({\bf n}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>chisquared</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>n</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the chi-squared distribution defined by the degree of freedom \({\bf n}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>discrete_distribution</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>weights</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the discrete distribution defined by the array of weights \({\bf weights}\) that assigns a weight to each integer starting from zero </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>exponential</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>lambda</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the exponential distribution defined by \({\bf lambda}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>exponential</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>lambda</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the exponential distribution defined by \({\bf lambda}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>fdistribution</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>d1</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>d2</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the Fisher-Snedecor F-distribution defined by the degrees of freedom \({\bf d1}, {\bf d2}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>fdistribution</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>d1</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>d2</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the Fisher-Snedecor F-distribution defined by the degrees of freedom \({\bf d1}, {\bf d2}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>gamma</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>alpha</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>beta</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the gamma distribution defined by \({\bf alpha}, {\bf beta}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>gamma</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>alpha</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>beta</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the gamma distribution defined by \({\bf alpha}, {\bf beta}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>lognormal</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>mean</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>std</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the lognormal distribution defined by \({\bf mean}, {\bf std}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>lognormal</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>mean</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>std</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the lognormal distribution defined by \({\bf mean}, {\bf std}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>normal</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>mean</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>std</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the normal distribution defined by \({\bf mean}, {\bf std}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>normal</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>mean</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>std</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the normal distribution defined by \({\bf mean}, {\bf std}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>poisson</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>mean</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the poisson distribution defined by <span class='mzn-arg'>mean</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>poisson</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>mean</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the poisson distribution defined by an integer <span class='mzn-arg'>mean</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>tdistribution</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>n</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the student's t-distribution defined by the sample size \({\bf n}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>tdistribution</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>n</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the student's t-distribution defined by the sample size \({\bf n}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>uniform</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>lowerbound</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>upperbound</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the uniform distribution defined by \({\bf lowerbound}, {\bf upperbound}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>uniform</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>lowerbound</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>upperbound</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the uniform distribution defined by \({\bf lowerbound}, {\bf upperbound}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>weibull</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>shape</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>scale</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the Weibull distribution defined by \({\bf shape}, {\bf scale}\) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>weibull</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>shape</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>scale</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a sample from the Weibull distribution defined by \({\bf shape}, {\bf scale}\) </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

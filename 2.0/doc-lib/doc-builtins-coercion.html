@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Coercions</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-sort.html' title='Array sorting operations'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-string.html' title='String operations'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-builtins-coercion'>Coercions</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  These functions implement coercions, or channeling, between different types.</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>bool2float</span>(<span class='mzn-ti'>bool</span>: <span class='mzn-id'>b</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if b then 1.0 else 0.0 endif
+</div>
+(standard decomposition from builtins.mzn:1005)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return Boolean <span class='mzn-arg'>b</span> coerced to a float  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of float</span>: <span class='mzn-fn-id'>bool2float</span>(<span class='mzn-ti'>array [$T] of bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of bool: xx = array1d(x),
+} in (arrayXd(x, [ bool2float(xx[i]) | i in index_set(xx) ]))
+</div>
+(standard decomposition from builtins.mzn:1007)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of Booleans <span class='mzn-arg'>x</span> coerced to an array of floats  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of var float</span>: <span class='mzn-fn-id'>bool2float</span>(<span class='mzn-ti'>array [$T] of var bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of var bool: xx = array1d(x),
+} in (arrayXd(x, [ bool2float(xx[i]) | i in index_set(xx) ]))
+</div>
+(standard decomposition from builtins.mzn:1012)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of Booleans <span class='mzn-arg'>x</span> coerced to an array of floats  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>bool2float</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>int2float(bool2int(b))
+</div>
+(standard decomposition from builtins.mzn:1021)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return Boolean <span class='mzn-arg'>b</span> coerced to a float  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>bool2int</span>(<span class='mzn-ti'>bool</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return Boolean <span class='mzn-arg'>b</span> coerced to an integer  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>bool2int</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return Boolean <span class='mzn-arg'>b</span> coerced to an integer  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-fn-id'>bool2int</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of Booleans <span class='mzn-arg'>b</span> coerced to an array of integers  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of int</span>: <span class='mzn-fn-id'>bool2int</span>(<span class='mzn-ti'>array [$T] of bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of bool: xx = array1d(x),
+} in (arrayXd(x, [ bool2int(xx[i]) | i in index_set(xx) ]))
+</div>
+(standard decomposition from builtins.mzn:1036)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of Booleans <span class='mzn-arg'>x</span> coerced to an array of integers  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of set of int</span>: <span class='mzn-fn-id'>bool2int</span>(<span class='mzn-ti'>array [$T] of set of bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of set of bool: xx = array1d(x),
+} in (arrayXd(x, [ bool2int(xx[i]) | i in index_set(xx) ]))
+</div>
+(standard decomposition from builtins.mzn:1042)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of sets of Booleans <span class='mzn-arg'>x</span> coerced to an array of sets of integers  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of var int</span>: <span class='mzn-fn-id'>bool2int</span>(<span class='mzn-ti'>array [$T] of var bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of var bool: xx = array1d(x),
+} in (arrayXd(x, [ bool2int(xx[i]) | i in index_set(xx) ]))
+</div>
+(standard decomposition from builtins.mzn:1048)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of Booleans <span class='mzn-arg'>x</span> coerced to an array of integers  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of var opt int</span>: <span class='mzn-fn-id'>bool2int</span>(<span class='mzn-ti'>array [$T] of var opt bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of var opt bool: xx = array1d(x),
+} in (arrayXd(x, [ bool2int(xx[i]) | i in index_set(xx) ]))
+</div>
+(standard decomposition from builtins.mzn:1054)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of Booleans <span class='mzn-arg'>x</span> coerced to an array of integers  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>ceil</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \( \lceil{ {\bf x}} \rceil \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>floor</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return \( \lfloor{ {\bf x}} \rfloor \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>int2float</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return integer <span class='mzn-arg'>x</span> coerced to a float  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>int2float</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    var int2float(lb(x))..int2float(ub(x)): y, 
+    constraint int2float(x, y),
+} in (y)
+</div>
+(standard decomposition from builtins.mzn:1025)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return integer <span class='mzn-arg'>x</span> coerced to a float  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of float</span>: <span class='mzn-fn-id'>int2float</span>(<span class='mzn-ti'>array [$T] of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of int: xx = array1d(x),
+} in (arrayXd(x, [ int2float(xx[i]) | i in index_set(xx) ]))
+</div>
+(standard decomposition from builtins.mzn:1060)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of integers <span class='mzn-arg'>x</span> coerced to an array of floats  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$T] of var float</span>: <span class='mzn-fn-id'>int2float</span>(<span class='mzn-ti'>array [$T] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of var int: xx = array1d(x),
+} in (arrayXd(x, [ int2float(xx[i]) | i in index_set(xx) ]))
+</div>
+(standard decomposition from builtins.mzn:1066)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return array of integers <span class='mzn-arg'>x</span> coerced to an array of floats  </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>round</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return <span class='mzn-arg'>x</span> rounded to nearest integer </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-fn-id'>set2array</span>(<span class='mzn-ti'>set of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return a set of integers <span class='mzn-arg'>x</span> coerced to an array of integers  </p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<title>Sorting constraints</title>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript'>
+function revealMore(anchor) {
+  morecode = jQuery( anchor ).parent().parent().find('div.mzn-fundecl-more-code');
+  morecode.toggleClass('mzn-fundecl-reveal-code');
+if (morecode.hasClass('mzn-fundecl-reveal-code')) {
+  jQuery(anchor).html('&#9660;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+} else {
+  jQuery(anchor).html('&#9664;');
+  jQuery(anchor).parent().parent().find('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+}
+function revealAll() {  jQuery('a.mzn-fundecl-more').html('&#9660;');
+  jQuery('div.mzn-fundecl-more-code').addClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').addClass('mzn-fundecl-reveal-equals');
+}
+function hideAll() {
+  jQuery('a.mzn-fundecl-more').html('&#9664;');
+  jQuery('div.mzn-fundecl-more-code').removeClass('mzn-fundecl-reveal-code');
+  jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
+}
+</script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <div style="float:left; padding-left:0em; padding-right:1em;">
+    <a href="/">
+    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
+    </a>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
+      <li><a href="doc.html">Documentation</a></li>
+    </ul>
+  </div>
+  <div id="content">
+<div class='mzn-group-level-0'>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-lexicographic.html' title='Lexicographic constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-channeling.html' title='Channeling constraints'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
+</div><div class='mzn-group-name'><a name='doc-globals-sort'>Sorting constraints</a></div>
+<div class='mzn-group-desc'>
+<p>
+</p><p>
+  </p>
+</div>
+<div class='mzn-decl-type-fun'>
+<div class='mzn-decl-type-heading'>Functions and Predicates</div>
+<div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-fn-id'>arg_sort</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if length(x)==0 then 
+    [] else let {
+        int: l = min(index_set(x)), 
+        int: u = max(index_set(x)), 
+        array [1..u-l+1] of var l..u: p, 
+        constraint arg_sort_int(x, p),
+    } in (p) endif
+</div>
+(standard decomposition from arg_sort.mzn:7)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Returns the permutation <span class='mzn-arg'>p</span> which causes <span class='mzn-arg'>x</span> to be in sorted order hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] <= <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]].  The permutation is the stable sort hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] = <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]] \(\rightarrow\) <span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>] < <span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1].</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-fn-id'>arg_sort</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Returns the permutation <span class='mzn-arg'>p</span> which causes <span class='mzn-arg'>x</span> to be in sorted order hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] <= <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]].  The permutation is the stable sort hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] = <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]] \(\rightarrow\) <span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>] < <span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1].</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-fn-id'>arg_sort</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if length(x)==0 then 
+    [] else let {
+        int: l = min(index_set(x)), 
+        int: u = max(index_set(x)), 
+        array [1..u-l+1] of var l..u: p, 
+        constraint arg_sort_float(x, p),
+    } in (p) endif
+</div>
+(standard decomposition from arg_sort.mzn:31)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Returns the permutation <span class='mzn-arg'>p</span> which causes <span class='mzn-arg'>x</span> to be in sorted order hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] <= <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]].  The permutation is the stable sort hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] = <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]] \(\rightarrow\) <span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>] < <span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1].</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>arg_sort</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
+                   <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>p</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(p)==1..length(x), 
+    "arg_sort_int: second argument must have index 1..length(first argument)", 
+    alldifferent(p) /\ 
+                                                                               
+    forall ( j in 1..length(x)-1 ) ( 
+        x[p[j]]<=x[p[j+1]] /\ (x[p[j]]==x[p[j+1]] -> p[j] < p[j+1]) 
+    ))
+</div>
+(standard decomposition from arg_sort_int.mzn:3)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>p</span> to be the permutation which causes <span class='mzn-arg'>x</span> to be in sorted order hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] <= <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]].  The permutation is the stable sort hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] = <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]] \(\rightarrow\) <span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>] < <span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1].</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>arg_sort</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>,
+                   <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>p</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(p)==1..length(x), 
+    "arg_sort_float: second argument must have index 1..length(first argument)", 
+    alldifferent(p) /\ 
+                                                                                 
+    forall ( j in 1..length(x)-1 ) ( 
+        x[p[j]]<=x[p[j+1]] /\ (x[p[j]]==x[p[j+1]] -> p[j] < p[j+1]) 
+    ))
+</div>
+(standard decomposition from arg_sort_float.mzn:3)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>p</span> to be the permutation which causes <span class='mzn-arg'>x</span> to be in sorted order hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] <= <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]].  The permutation is the stable sort hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] = <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]] \(\rightarrow\) <span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>] < <span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1].</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>decreasing</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) diff {min(index_set(x))} ) ( x[i-1]>=x[i] )
+</div>
+(standard decomposition from decreasing_bool.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Requires that the array <span class='mzn-arg'>x</span> is in decreasing order (duplicates are allowed). </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>decreasing</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) diff {min(index_set(x))} ) ( x[i-1]>=x[i] )
+</div>
+(standard decomposition from decreasing_float.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Requires that the array <span class='mzn-arg'>x</span> is in decreasing order (duplicates are allowed). </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>decreasing</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) diff {min(index_set(x))} ) ( x[i-1]>=x[i] )
+</div>
+(standard decomposition from decreasing_int.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Requires that the array <span class='mzn-arg'>x</span> is in decreasing order (duplicates are allowed). </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>decreasing</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) diff {min(index_set(x))} ) ( x[i-1]>=x[i] )
+</div>
+(standard decomposition from decreasing_set.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Requires that the array <span class='mzn-arg'>x</span> is in decreasing order (duplicates are allowed). </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>increasing</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) diff {min(index_set(x))} ) ( x[i-1]<=x[i] )
+</div>
+(standard decomposition from increasing_bool.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Requires that the array <span class='mzn-arg'>x</span> is in increasing order (duplicates are allowed). </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>increasing</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) diff {min(index_set(x))} ) ( x[i-1]<=x[i] )
+</div>
+(standard decomposition from increasing_float.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Requires that the array <span class='mzn-arg'>x</span> is in increasing order (duplicates are allowed). </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>increasing</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) diff {min(index_set(x))} ) ( x[i-1]<=x[i] )
+</div>
+(standard decomposition from increasing_int.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Requires that the array <span class='mzn-arg'>x</span> is in increasing order (duplicates are allowed). </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>increasing</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) diff {min(index_set(x))} ) ( x[i-1]<=x[i] )
+</div>
+(standard decomposition from increasing_set.mzn:5)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Requires that the array <span class='mzn-arg'>x</span> is in increasing order (duplicates are allowed). </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-fn-id'>sort</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
+    array [1..length(x)] of var lb_array(x)..ub_array(x): y, 
+    constraint sort(x, y),
+} in (y)
+</div>
+(standard decomposition from sort_fn.mzn:7)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Return a multiset of values that is the same as the   multiset of values in <span class='mzn-arg'>x</span> but in sorted order.</p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>sort</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(card(index_set(x))==card(index_set(y)), 
+    "sort: x and y must be same sized arrays", let {
+                                                   int: lx = 
+    min(index_set(x)), 
+                                                   int: ux = 
+    max(index_set(x)), 
+                                                   int: ly = 
+    min(index_set(y)), 
+                                                   int: uy = 
+    max(index_set(y)), 
+                                                   array [lx..ux] of 
+    var ly..uy: p,
+                                               } in (
+                                                   forall ( i in 
+    index_set(x) ) ( y[p[i]]==x[i] ) /\ alldifferent(p) /\ 
+                                                   increasing(y)))
+</div>
+(standard decomposition from sort.mzn:8)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+    Requires that the multiset of values in <span class='mzn-arg'>x</span> are the same as the   multiset of values in <span class='mzn-arg'>y</span> but <span class='mzn-arg'>y</span> is in sorted order.</p>
+</div></div></div>
+</div>  </div>
+  <div id="footer">
+    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
+  </div>
+</div>
+</body>
+</html>
