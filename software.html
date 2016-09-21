@@ -1,0 +1,83 @@
+---
+layout: default
+title: MiniZinc - Software
+---
+
+{% assign ideversion = site.data.version["ideversion"] %}
+{% assign mznversion = site.data.version["mznversion"] %}
+
+<h2>Bundled binary packages</h2>
+
+<p>You can download a completely self-contained package including MiniZinc {{ mznversion }},
+  the MiniZinc IDE {{ ideversion }}, and the G12 and Gecode solvers here:
+</p>
+
+<ul>
+  <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled-setup-32.exe">32 bit Windows installer</a></li>
+<!--  <li><a class="download" href="<?=$downloadWin64?>">64 bit Windows installer</a></li> -->
+  <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled.dmg">Mac OS X installer</a></li>
+  <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundle-linux-x86_64.tgz">64 bit Linux binary archive</a></li>
+  <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundle-linux-x86_32.tgz">32 bit Linux binary archive</a></li>
+</ul>
+
+<h2>MiniZinc 2.0</h2>
+
+<ul>
+  <li><p>
+    The MiniZinc compiler developed by NICTA and Monash University is available
+    from the <a href="2.0/index.html">MiniZinc 2.0</a> pages.</p></li>
+</ul>
+
+<h2>Integrated Development Environment</h2>
+
+<ul>
+  <li><p><a href="ide/index.html">MiniZinc IDE</a>.
+      The MiniZinc IDE is a tool for writing and running MiniZinc models.</p></li>
+</ul>
+
+<h2>FlatZinc Implementations</h2>
+<ul>
+  <li><p><a href="http://www.gecode.org/flatzinc.html">Gecode/FlatZinc</a>.
+      The Gecode generic constraint development environment provides a FlatZinc
+      interface.  The source code for the interface stripped of all Gecode-specific
+      code is also available.
+
+  <li><p><a href="http://eclipseclp.org/">ECLiPSe</a>.
+  The ECLiPSe Constraint Programming System provides support for evaluating
+  FlatZinc using ECLiPSe's constraint solvers.  MiniZinc models can be embedded
+  into ECLiPSe code in order to add user-defined search and I/O facilities to
+  the models.
+
+  <li><p><a href="http://www.sics.se/isl/sicstuswww/site/index.html">SICStus Prolog</a>.
+  SICStus (from version 4.0.5) includes a library for evaluating FlatZinc.
+
+  <li><p><a href="http://jacop.osolpro.com/">JaCoP</a>.
+  The JaCoP constraint solver (from version 4.2) has an interface to FlatZinc.
+
+  <li><p><a href="http://scip.zib.de/">SCIP</a>.
+  SCIP, a framework for Constraint Integer Programming, has an interface to FlatZinc.
+
+  <li><p><a href="http://www.opturion.com/cpx.html">Opturion CPX</a>.
+  Opturion CPX, a Constraint Programming solver with eXplanation system, has an 
+  interface to FlatZinc.
+
+  <li><p><a href="https://dtai.cs.kuleuven.be/software/minisatid">MinisatID</a>.
+  MinisatID, an implementation of a search algorithm combining techniques from the fields 
+  of SAT, SAT Module Theories, Constraint Programming and Answer Set Programming, has an 
+  interface to FlatZinc.
+
+  <li><p><a href="http://www.it.uu.se/research/group/astra/software">OscaR/CBLS</a>.
+  A FlatZinc interface to the Constraint Based Local Search component of the
+  <a href="https://www.info.ucl.ac.be/~pschaus/oscar.html">OscaR</a> toolkit.
+
+</ul>
+
+<h2>G12 MiniZinc Distribution 1.6</h2>
+<ul>
+  <li><p>The previous version of MiniZinc, version 1.6, is still available from the
+      <a href="g12distrib.html">G12 MiniZinc Distribution</a>.
+      The G12 MiniZinc Distribution contains executables for the G12
+      MiniZinc-to-FlatZinc converter and the G12 FlatZinc interpreter.
+      It also contains the source code for the MiniZinc-to-FlatZinc converter,
+      a yacc-based parser for FlatZinc and lots of example models and documentation.</p></li>
+</ul>
