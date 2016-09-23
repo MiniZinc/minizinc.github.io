@@ -1,0 +1,977 @@
+---
+layout: default
+title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
+---
+<!--  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+-->
+<h1 id="problems">Problems</h1>
+<p>This table contains all problems used for the MiniZinc Challenge 2008-2015. (RC stands for redundant constraints and SBC symmetry breaking constraints.)</p>
+<table border=1>
+<thead>
+<tr class="header">
+<th align="left">Problem</th>
+<th align="left">Model</th>
+<th align="left">Type</th>
+<th align="left">Kind</th>
+<th align="left">RC</th>
+<th align="left">SBC</th>
+<th align="left">Years</th>
+<th align="left">MiniZinc Globals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">amaze</td>
+<td align="left">amaze</td>
+<td align="left">puzzle</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2012</td>
+<td align="left">count</td>
+</tr>
+<tr class="even">
+<td align="left">amaze</td>
+<td align="left">amaze2</td>
+<td align="left">puzzle</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2012</td>
+</tr>
+<tr class="odd">
+<td align="left">amaze</td>
+<td align="left">amaze3</td>
+<td align="left">puzzle</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013</td>
+<td align="left">count</td>
+</tr>
+<tr class="even">
+<td align="left">bacp</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2010, 2011</td>
+</tr>
+<tr class="odd">
+<td align="left">black-hole</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2009, 2011, 2013</td>
+<td align="left">inverse, table</td>
+</tr>
+<tr class="even">
+<td align="left">cargo</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013</td>
+<td align="left">cumulative, diffn</td>
+</tr>
+<tr class="odd">
+<td align="left">carpet-cutting</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">2011, 2012</td>
+<td align="left">cumulative, diffn</td>
+</tr>
+<tr class="even">
+<td align="left">celar</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013</td>
+</tr>
+<tr class="odd">
+<td align="left">costas_array</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">2010, 2011, 2015</td>
+<td align="left">alldifferent</td>
+</tr>
+<tr class="even">
+<td align="left">cvrp</td>
+<td align="left">cvrp</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">2015</td>
+<td align="left">circuit</td>
+</tr>
+<tr class="odd">
+<td align="left">cyclic-rcpsp</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2011, 2014</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="even">
+<td align="left">debruijn_binary</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2008</td>
+<td align="left">alldifferent, global_cardinality</td>
+</tr>
+<tr class="odd">
+<td align="left">depot_placement</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">2010, 2011</td>
+<td align="left">alldifferent</td>
+</tr>
+<tr class="even">
+<td align="left">elitserien</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+<td align="left">alldifferent, global_cardinality_closed, inverse, member, regular</td>
+</tr>
+<tr class="odd">
+<td align="left">fast-food</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2011, 2012</td>
+</tr>
+<tr class="even">
+<td align="left">fillomino</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2009, 2011, 2014</td>
+</tr>
+<tr class="odd">
+<td align="left">filters</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2010, 2012, 2013</td>
+<td align="left">diffn, maximum</td>
+</tr>
+<tr class="even">
+<td align="left">fjsp</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="odd">
+<td align="left">freepizza</td>
+<td align="left">freepizza</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2015</td>
+</tr>
+<tr class="even">
+<td align="left">gfd-schedule</td>
+<td align="left">gfd-schedule</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">2015</td>
+<td align="left">nvalue, at_most</td>
+</tr>
+<tr class="odd">
+<td align="left">ghoulomb</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2010, 2013</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="even">
+<td align="left">grid-colouring</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2010, 2011, 2015</td>
+</tr>
+<tr class="odd">
+<td align="left">is</td>
+<td align="left">model</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">2015</td>
+<td align="left">circuit, table</td>
+</tr>
+<tr class="even">
+<td align="left">java-routing</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013</td>
+<td align="left">alldifferent, element</td>
+</tr>
+<tr class="odd">
+<td align="left">jp-encoding</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+<td align="left">count</td>
+</tr>
+<tr class="even">
+<td align="left">l2p</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013</td>
+<td align="left">alldifferent</td>
+</tr>
+<tr class="odd">
+<td align="left">largescheduling</td>
+<td align="left">largecumulative</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">2015</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="even">
+<td align="left">league</td>
+<td align="left">2012</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2012</td>
+<td align="left">count</td>
+</tr>
+<tr class="odd">
+<td align="left">league</td>
+<td align="left">2013</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013</td>
+<td align="left">count</td>
+</tr>
+<tr class="even">
+<td align="left">liner-sf-repositioning</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+<td align="left">alldifferent, alldifferent_except_0</td>
+</tr>
+<tr class="odd">
+<td align="left">mapping</td>
+<td align="left">mapping</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2015</td>
+<td align="left">bin_packing_load, count, maximum, network_flow_cost</td>
+</tr>
+<tr class="even">
+<td align="left">mario</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013, 2014</td>
+<td align="left">subcircuit</td>
+</tr>
+<tr class="odd">
+<td align="left">mqueens</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+<td align="left">lex_lesseq</td>
+</tr>
+<tr class="even">
+<td align="left">mspsp</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2012</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="odd">
+<td align="left">multi-knapsack</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+</tr>
+<tr class="even">
+<td align="left">multi-knapsack</td>
+<td align="left">mknapsack_global</td>
+<td align="left">combi</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2015</td>
+<td align="left">knapsack</td>
+</tr>
+<tr class="odd">
+<td align="left">nmseq</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2008, 2013, 2015</td>
+</tr>
+<tr class="even">
+<td align="left">nonogram</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2009, 2011, 2012, 2013</td>
+<td align="left">regular</td>
+</tr>
+<tr class="odd">
+<td align="left">opd</td>
+<td align="left">opd</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">2015</td>
+<td align="left">lex_greatereq</td>
+</tr>
+<tr class="even">
+<td align="left">on-call-rostering</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013</td>
+<td align="left">count</td>
+</tr>
+<tr class="odd">
+<td align="left">open_stacks</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2009, 2011, 2015</td>
+<td align="left">alldifferent</td>
+</tr>
+<tr class="even">
+<td align="left">openshop</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="odd">
+<td align="left">p1f</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">2009, 2015</td>
+<td align="left">alldifferent, inverse, lex_less</td>
+</tr>
+<tr class="even">
+<td align="left">parity-learning</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2012</td>
+</tr>
+<tr class="odd">
+<td align="left">pattern-set-mining</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2011, 2012, 2013</td>
+<td align="left">lex_less</td>
+</tr>
+<tr class="even">
+<td align="left">pentominoes</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2008, 2011, 2013</td>
+<td align="left">regular</td>
+</tr>
+<tr class="odd">
+<td align="left">prize-collecting</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2011</td>
+</tr>
+<tr class="even">
+<td align="left">project-planning</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2012, 2015</td>
+</tr>
+<tr class="odd">
+<td align="left">prop_stress</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2009</td>
+</tr>
+<tr class="even">
+<td align="left">proteindesign12</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013</td>
+<td align="left">table</td>
+</tr>
+<tr class="odd">
+<td align="left">quasigroup7</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2008</td>
+<td align="left">alldifferent</td>
+</tr>
+<tr class="even">
+<td align="left">radiation</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2008, 2012, 2013, 2015</td>
+</tr>
+<tr class="odd">
+<td align="left">rcpsp</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2008, 2013</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="even">
+<td align="left">rcpsp_max</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2010</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="odd">
+<td align="left">rectangle-packing</td>
+<td align="left">2009</td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2009</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="even">
+<td align="left">rectangle-packing</td>
+<td align="left">2014</td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+<td align="left">cumulative, diffn</td>
+</tr>
+<tr class="odd">
+<td align="left">road_construction</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+</tr>
+<tr class="even">
+<td align="left">roster</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2009, 2011, 2015</td>
+<td align="left">at_least, at_most, exactly</td>
+</tr>
+<tr class="odd">
+<td align="left">rubik</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013</td>
+</tr>
+<tr class="even">
+<td align="left">search_stress</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2008</td>
+</tr>
+<tr class="odd">
+<td align="left">search_stress2</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2009</td>
+</tr>
+<tr class="even">
+<td align="left">ship-schedule</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2011, 2012, 2014</td>
+</tr>
+<tr class="odd">
+<td align="left">shortest_path</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2008</td>
+</tr>
+<tr class="even">
+<td align="left">slow_convergence</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2008</td>
+</tr>
+<tr class="odd">
+<td align="left">smelt</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="even">
+<td align="left">solbat</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2010, 2011, 2012, 2014</td>
+</tr>
+<tr class="odd">
+<td align="left">spot5</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014, 2015</td>
+<td align="left">table</td>
+</tr>
+<tr class="even">
+<td align="left">still_life</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2009</td>
+</tr>
+<tr class="odd">
+<td align="left">still-life-wastage</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2012</td>
+</tr>
+<tr class="even">
+<td align="left">stochastic-fjsp</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+</tr>
+<tr class="odd">
+<td align="left">stochastic-vrp</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+<td align="left">circuit</td>
+</tr>
+<tr class="even">
+<td align="left">sugiyama</td>
+<td align="left"></td>
+<td align="left">puzzle</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2010</td>
+</tr>
+<tr class="odd">
+<td align="left">trucking</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2008</td>
+</tr>
+<tr class="even">
+<td align="left">table-layout</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2011</td>
+</tr>
+<tr class="odd">
+<td align="left">tdtsp</td>
+<td align="left">tdtsp</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">2015</td>
+<td align="left">inverse</td>
+</tr>
+<tr class="even">
+<td align="left">tpp</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2012</td>
+<td align="left">subcircuit</td>
+</tr>
+<tr class="odd">
+<td align="left">train</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2012, 2014</td>
+</tr>
+<tr class="even">
+<td align="left">traveling-tppv</td>
+<td align="left"></td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2014</td>
+<td align="left">alldifferent, regular</td>
+</tr>
+<tr class="odd">
+<td align="left">triangular</td>
+<td align="left">triangular</td>
+<td align="left">puzzle</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2015</td>
+<td align="left">inverse</td>
+</tr>
+<tr class="even">
+<td align="left">vrp</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2009, 2011, 2012, 2013</td>
+</tr>
+<tr class="odd">
+<td align="left">wwtp_random</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2010</td>
+</tr>
+<tr class="even">
+<td align="left">wwtp_real</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2010, 2011</td>
+</tr>
+<tr class="odd">
+<td align="left">zyphyrus</td>
+<td align="left"></td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2015</td>
+</tr>
+</tbody>
+</table>
+<h1 id="globals">MiniZinc Globals</h1>
+<p>This table contains all global constraints used for the MiniZinc Challenge 2008-2015.</p>
+<table border=1>
+<thead>
+<tr class="header">
+<th align="left">MiniZinc Global</th>
+<th align="left">Years</th>
+<th align="left">Problems</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">alldifferent</td>
+<td align="left">2008, 2009, 2010, 2011, 2013, 2014, 2015</td>
+<td align="left">costas_array, debruijn_binary, depot_placement, elitserien, java-routing, l2p, liner-sf-repositioning, open_stacks, p1f, quasigroup7, sugiyama, traveling-tppv</td>
+</tr>
+<tr class="even">
+<td align="left">alldifferent_except_0</td>
+<td align="left">2014</td>
+<td align="left">liner-sf-repositioning</td>
+</tr>
+<tr class="odd">
+<td align="left">at_least</td>
+<td align="left">2009, 2011, 2015</td>
+<td align="left">roster</td>
+</tr>
+<tr class="even">
+<td align="left">at_most</td>
+<td align="left">2009, 2011, 2015</td>
+<td align="left">roster, gfd-schedule</td>
+</tr>
+<tr class="odd">
+<td align="left">bin_packing_load</td>
+<td align="left">2015</td>
+<td align="left">mapping</td>
+</tr>
+<tr class="even">
+<td align="left">count</td>
+<td align="left">2012, 2013, 2014, 2015</td>
+<td align="left">amaze (amaze, amaze3), jp-encoding, league (2012, 2013), mapping, on-call-rostering</td>
+</tr>
+<tr class="odd">
+<td align="left">cumulative</td>
+<td align="left">2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015</td>
+<td align="left">cargo, carpet-cutting, cyclic_rcpsp, fjsp, ghoulomb, largescheduling, mspsp, openshop, rcpsp, rcpsp_max, rectangle-packing (2009, 2014), smelt</td>
+</tr>
+<tr class="even">
+<td align="left">circuit</td>
+<td align="left">2014, 2015</td>
+<td align="left">cvrp, is, stochastic-vrp</td>
+</tr>
+<tr class="odd">
+<td align="left">diffn</td>
+<td align="left">2010, 2011, 2012, 2013, 2014</td>
+<td align="left">cargo, carpet-cutting, filters, rectangle-packing (2014)</td>
+</tr>
+<tr class="even">
+<td align="left">element</td>
+<td align="left">2013</td>
+<td align="left">java-routing</td>
+</tr>
+<tr class="odd">
+<td align="left">exactly</td>
+<td align="left">2009, 2011, 2015</td>
+<td align="left">roster</td>
+</tr>
+<tr class="even">
+<td align="left">global_cardinality</td>
+<td align="left">2008</td>
+<td align="left">debruijn_binary</td>
+</tr>
+<tr class="odd">
+<td align="left">global_cardinality_closed</td>
+<td align="left">2014</td>
+<td align="left">elitserien</td>
+</tr>
+<tr class="even">
+<td align="left">inverse</td>
+<td align="left">2009, 2011, 2013, 2014, 2015</td>
+<td align="left">black-hole, elitserien, p1f, tdtsp</td>
+</tr>
+<tr class="odd">
+<td align="left">knapsack</td>
+<td align="left">2015</td>
+<td align="left">multi-knapsack</td>
+</tr>
+<tr class="even">
+<td align="left">lex_greatereq</td>
+<td align="left">2015</td>
+<td align="left">opd</td>
+</tr>
+<tr class="odd">
+<td align="left">lex_less</td>
+<td align="left">2009, 2011, 2012, 2013, 2015</td>
+<td align="left">p1f, pattern-set-mining</td>
+</tr>
+<tr class="even">
+<td align="left">lex_lesseq</td>
+<td align="left">2014</td>
+<td align="left">mqueens</td>
+</tr>
+<tr class="odd">
+<td align="left">maximum</td>
+<td align="left">2010, 2012, 2013, 2015</td>
+<td align="left">filters, mapping</td>
+</tr>
+<tr class="even">
+<td align="left">member</td>
+<td align="left">2014</td>
+<td align="left">elitserien</td>
+</tr>
+<tr class="odd">
+<td align="left">network_flow_cost</td>
+<td align="left">2015</td>
+<td align="left">mapping</td>
+</tr>
+<tr class="even">
+<td align="left">nvalue</td>
+<td align="left">2015</td>
+<td align="left">gfd-schedule</td>
+</tr>
+<tr class="odd">
+<td align="left">regular</td>
+<td align="left">2008, 2009, 2011, 2012, 2013, 2014</td>
+<td align="left">elitserien, nonogram, pentominoes, traveling-tppv</td>
+</tr>
+<tr class="even">
+<td align="left">subcircuit</td>
+<td align="left">2012, 2013, 2014</td>
+<td align="left">mario, tpp</td>
+</tr>
+<tr class="odd">
+<td align="left">table</td>
+<td align="left">2009, 2011, 2013, 2014, 2015</td>
+<td align="left">black-hole, is, proteindesign12, spot5</td>
+</tr>
+</tbody>
+</table>
+<!--
+</body>
+</html>
+-->
+
+<?php
+mznfooter();
+?>  
