@@ -1,0 +1,80 @@
+ The B-Prolog+SAT Solver for the MiniZinc challenge 2012
+
+                  Neng-Fa Zhou
+                           
+       Brooklyn College and Graduate Center
+        The City University of New York
+
+
+B-Prolog provides several tools for tackling combinatorial
+optimization problems, including tabling for dynamic
+programming problems, CLP(FD) for CSPs, and a compiler that
+translates CSPs into SAT. The B-Prolog+SAT solver submitted
+to the MiniZinc challenge uses CLP(FD) and the Lingeling
+SAT solver. When search strategy is specified, it uses
+CLP(FD), and when free ordering is allowed, it uses SAT
+unless the program contains global constraints that are 
+not supported by the SAT compiler.
+
+Like many other CLP(FD) systems, B-Prolog's finite-domain
+constraint solver was heavily influenced by the CHIP
+system. The first fully-fledged solver was released with
+B-Prolog version 2.1 in March 1997. That solver was
+implemented with Delay Clauses. During the past 15 years,
+Delay Clauses has evolved into Action Rules as the
+implementation language for constraint propagators and the
+language has been successfully used to implement many
+global constraints and problem-specific propagators. The
+CLP(FD) system is one of the fastest.
+
+The B-Prolog interface to SAT comprises primitives for
+creating decision variables, specifying constraints, and
+the built-in sat_solve/2 for invoking a solver. The
+interface includes three types of constraints: Boolean,
+arithmetic, and global. The operator and predicate names of
+the constraints in the interface all begin with the symbol $.
+Each constraint in the interface has a counterpart in the
+CLP(FD) language. For example, the operator used for
+equality constraints is $= in the interface and its
+counterpart in CLP(FD) is #=. The same interface is also
+used for MIP solvers. The B-Prolog SAT compiler employs the
+so called log-encoding for compiling domain variables and
+constraints.
+
+The FlatZinc interpreter for B-Prolog is based on the one
+originally developed for ECLiPSe by Joachim Schimpf. The
+source is available at:
+
+   http://probp.com/flatzinc/flatzinc2012.pl
+
+The following global constraints are supported by the interpreter:
+ 
+   alldifferent/1,
+   circuit/1,
+   count_eq/3 (and friends)
+   cumulative/4,
+   element/3,
+   subcircuit/1,
+
+and the following are assumed to be expanded by the MiniZinc compiler:
+
+   atmost/3, 
+   atleast/3, 
+   exactly/3
+   inverse/2, 
+   lex_less/2 (and friends),
+   value_precede/3, 
+   value_precede_chain/2, 
+   regular/6.
+
+
+References:
+
+   N.F. Zhou: The Language Features and Architecture of B-Prolog, 
+   TPLP, Vol. 12, nos.1-2, pp.189-218, 2012.
+
+   BProlog: www.probp.com or www.bprolog.com
+
+   BProlog@Twitter: https://twitter.com/bprolog
+
+   BProlog@Wiki: http://en.wikipedia.org/wiki/B-Prolog

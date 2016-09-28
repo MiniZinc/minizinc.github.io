@@ -1,0 +1,50 @@
+Submitters:
+
+  Timo Berthold
+  Stefan Heinz
+  Michael Winkler
+
+Current involved persons:
+
+  Timo Berthold         Zuse Institite Berlin
+  Gerald Gamrath        Zuse Institite Berlin
+  Stefan Heinz          Zuse Institite Berlin
+  Gregor Hendel         Zuse Institite Berlin
+  Thorsten Koch         Zuse Institite Berlin
+  Marc Pfetsch 	        TU Braunschweig 	
+  Stefan Vigerske 	HU Berlin
+  Michael Winkler       Zuse Institite Berlin
+  Kati Wolter 	        Zuse Institite Berlin
+
+Previous involved persons:
+
+  Tobias Achterberg  	IBM 
+  Alexander Martin 	University of Erlangen-Nuernberg
+
+
+
+What is SCIP?
+
+  A similar technique is used for solving both Integer Programs and
+  Constraint Programs: the problem is successively divided into smaller
+  subproblems (branching) that are solved recursively.
+
+  On the other hand, Integer Programming and Constraint Programming have
+  different strengths: Integer Programming uses LP relaxations and cutting
+  planes to provide strong dual bounds, while Constraint Programming can
+  handle arbitrary (non-linear) constraints and uses propagation to tighten
+  domains of variables.
+
+  SCIP is a framework for Constraint Integer Programming oriented towards
+  the needs of Mathematical Programming experts who want to have total
+  control of the solution process and access detailed information down to
+  the guts of the solver. SCIP can also be used as a pure MIP solver or as
+  a framework for branch-cut-and-price.
+
+  SCIP is implemented as C callable library and provides C++ wrapper
+  classes for user plugins. It can also be used as a standalone program to
+  solve mixed integer programs given in MPS, LP, flatzinc, CNF, OPB, WBO,
+  PIP, or CIP format. Besides that SCIP can directly read ZIMPL model.
+
+http://scip.zib.de
+

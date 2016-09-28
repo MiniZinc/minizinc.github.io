@@ -1,0 +1,56 @@
+SUNNY-CP 2.X
+=================================
+
+Parallel CP Portfolio Solver
+
+sunny-cp tool allows to solve a Constraint (Satisfaction/Optimization) Problem
+defined in the MiniZinc language by using a portfolio approach.
+It essentially implements the SUNNY algorithm described in [1][2][3].
+sunny-cp is a parallel portfolio solver built on top of various state-of-the-art 
+constraint solvers, including:
+
+  Choco, Chuffed, CPX, G12/LazyFD, G12/FD, G12/Gurobi,
+  G12/CBC, Gecode, HaifaCSP, iZplus, MinisatID, OR-Tools, Opturion.
+
+In a nutshell, sunny-cp relies on two sequential steps:
+
+  1. PRE-SOLVING: consists in the parallel execution of a static schedule and 
+                  the neighborhood computation of underlying k-NN algorithm;
+                  
+  2. SOLVING: consists in the parallel execution of a number of predicted 
+              solvers, selected by means of SUNNY algorithm.
+
+This version is an improvement of sunny-cp 2.0 (see [6] for more details).
+
+
+AUTHORS
+=======
+
+sunny-cp is developed by Roberto Amadini and Jacopo Mauro (University of Bologna
+/Lab. Focus INRIA). For any question or information, please contact us at:
+
+  amadini at cs.unibo.it
+
+  jmauro  at cs.unibo.it
+  
+  
+REFERENCES
+==========
+
+  [1]  R. Amadini, M. Gabbrielli, and J. Mauro. SUNNY: a Lazy Portfolio Approach
+       for Constraint Solving 2013. In ICLP, 2014.
+
+  [2]  R. Amadini, M. Gabbrielli, and J. Mauro. Portfolio Approaches for 
+       Constraint Optimization Problems. In LION, 2014.
+
+  [3]  R. Amadini, and P.J. Stuckey. Sequential Time Splitting and Bounds 
+       Communication for a Portfolio of Optimization Solvers. In CP, 2014.
+      
+  [4]  R. Amadini, M. Gabbrielli, and J. Mauro. SUNNY-CP: a Sequential CP 
+       Portfolio Solver. In SAC, 2015.
+
+  [5]  MiniZinc Challenge 2014.
+       http://www.minizinc.org/challenge2014/results2014.html
+       
+  [6]  R. Amadini, M. Gabbrielli, and J. Mauro. A Multicore Tool for Constraint 
+       Solving. In IJCAI, 2015.

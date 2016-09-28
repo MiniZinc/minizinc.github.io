@@ -1,0 +1,7 @@
+Concrete (presented here in version 3.0-B1) is a black-box Contraint Programming system written in Scala 2.11, a modern multi-pradigm (functional/object oriented) programming language targetting the Java Virtual Machine. The objective behind the Concrete solver is to provide an easy to use, small core API based on immutable data structures, focusing on general-purpose constraints. Much effort has been put into extensional constraints (binary, MDD-based and boolean clauses), arithmetic (addition, multiplication, square root, comparison...), reification and a few important global constraints (all-different, linear, lex-leq, element, occurrence, global cardinality). Concrete uses reformulations to implement the "regular" and "sliding-sum" global constraints and most boolean operations using MDDs. Concrete also use advanced autonomous search techniques, suitable for a black-box environment (adaptative heuristics, restarts, automatic bound/domain consistency selection).
+
+Concrete uses the CSPOM modelling API to provide an easy-to-use interface to model programmers. CSPOM is compatible with the XCSP and FlatZinc languages, and provide a reformulation engine to improve models and adapt them to the solver.
+Future work for Concrete/CSPOM includes improved documentation and tutorials, smarter heuristics and improved learning techniques, distributed computing and additional global constraint support.
+
+Concrete and CPSOM are available on GitHub: https://github.com/concrete-cp and Maven Central (groupId is fr.univ-valenciennes).
+

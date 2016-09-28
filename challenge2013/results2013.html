@@ -1,0 +1,283 @@
+---
+layout: default
+title: MiniZinc - Challenge
+---
+<script type="text/javascript"
+src="results.js"
+> </script>
+<script type="text/javascript"
+src="locations.js"
+> </script>
+<script type="text/javascript"
+src="score.js"
+> </script>
+
+<h2>MiniZinc Challenge 2013 Results</h2>
+<h3>Entrants</h3>
+
+<!--<p>
+Presentation of the MiniZinc Challenge 2013 (coming soon)
+(<a href="./challenge_results2013.pdf">results</a>)
+</p>-->
+<ul>
+<li> <a href="http://choco.emn.fr">Choco</a> (<a
+href="description_choco.txt">description</a>).  A Java FD solver.
+
+<li> <a href="http://ima.udg.edu/Recerca/GrupESLIP.html">Fzn2smt</a> (<a
+href="description_fzn2smt.txt">description</a>). Translates
+to SMT, uses <a href="http://yices.csl.sri.com/">Yices</a>.
+</li>
+
+<li> <a href="http://www.gecode.org">Gecode</a> (<a 
+href="description_gecode.txt">description</a>). A C++ FD solver.
+</li>
+
+<li> <a href="http://products.ndis.jp/iz/g12distrib.html">izplus</a> (<a
+href="description_izplus.txt">description</a>).
+
+<li> <a href="http://jacop.osolpro.com">JaCoP</a> (<a 
+href="description_jacop.txt">description</a>). A Java FD solver.
+</li>
+
+<li> Mistral 2.0 (<a
+href="description_mistral.txt">description</a>).
+</li>
+
+<li> Numberjack. A portfolio solver.
+</li>
+
+<li> <a href="http://www.opturion.com/cpx.html">Opturion CPX</a> (<a
+href="description_opturion_cpx.txt">description</a>).
+</li>
+
+<li> <a href="http://code.google.com/p/or-tools">OR-Tools</a> (<a
+href="description_or_tools.txt">description</a>).
+</li>
+
+<li> <a href="picat-lang.org/projects.html">Picat</a> (<a
+href="description_picat.txt">description</a>).
+</li>
+</ul>
+
+<h3>Summary of Results</h3>
+The results for the MiniZinc Challenge 2013 were:
+<ul>
+<li> Fixed search:
+<ul> 
+<li> Gold medal: Opturion/CPX
+<li> Silver medal: OR-Tools
+<li> Bronze medal: gecode
+</ul>
+<li> Free search:
+<ul> 
+<li> Gold medal: Opturion/CPX
+<li> Silver medal: OR-Tools
+<li> Bronze medal: izplus
+</ul>
+<li> Parallel search:
+<ul> 
+<li> Gold medal: OR-Tools
+<li> Silver medal: Choco
+<li> Bronze medal: Opturion/CPX
+</ul>
+<li> Open class:
+<ul> 
+<li> Gold medal: OR-Tools
+<li> Silver medal: Choco
+<li> Bronze medal: Opturion/CPX
+</ul>
+</ul>
+<p>
+
+</p><h3>Description of Results</h3>
+
+<p>All times are given in milliseconds. 
+</p><p> A score of 0.0 indicates a worse answer in quality (worse objective, no proof of optimality, or no answer for satisfaction problems), 1.0 a better solution in quality. When the quality is the same, the 1.0 purse is split with respect to time used.
+</p><p>
+If a promoted entry does not recognize an option (or states that it is just
+ignored), times and solutions from the previous category are used for scoring.
+The suffixes <i>-fd</i>, <i>-free</i>, <i>-par</i> or <i>-port</i> (for the parallel portfolio solver entered) at the end of the solvers names indicate
+which configuration the solvers were run with. 
+</p><p> mzn2fzn was run with the same time and memory limits 
+as the solvers.
+</p><p>
+In the Status column: <br>
+</p><ul>
+<li><b>S</b> indicates that a solution was found,
+</li><li><b>C</b> indicates that the search was complete,
+</li><li><b>INC</b> indicates an incorrect answer
+</li><li><b>MZN</b> indicates that flattening aborted (time-out or out-of-memory)
+</li><li><b>UNK</b> indicates that no answer was returned in the time limit or the solver aborted.
+</li>
+</ul>
+
+<h3>Download all problems</h3>
+All problems are available in a zipped tar-ball <a href="mznc2013-probs.tar.gz">here</a>.
+
+<h3>Selection:</h3>
+Select a list of solvers and benchmarks and click on "Compute Results" to score
+the solvers against each other on the selected benchmarks.
+The entrants for each of the fd search, free search and parallel search
+categories can be selected with the corresponding buttons. 
+
+<p>
+</p><p>
+
+</p><table valign="top">
+<tbody><tr><td>
+<table valign="top" border="2">
+<colgroup>
+<col valign="top"><col><col valign="top"><col> 
+</colgroup><thead>
+</thead>
+<tbody>
+<tr>
+<td valign="top"> Solver selection: </td> 
+<td valign="top"> Problem selection: </td> 
+</tr>
+<tr>
+<td valign="top" id="solver_selection"> 
+</td>
+<td valign="top" id="problem_selection"> 
+</td>
+</tr>
+</tbody></table>
+</td><td valign="top">
+<p>
+</p><table border="2">
+<thead>
+</thead>
+<tbody>
+  <tr>
+    <td>
+      <form name="score"> 
+        <input type="button" name="compute_results" value="Compute Results                  " onclick="computeSelected()">
+      </form>
+    </td>
+    </tr><tr>
+    <td>
+      <form name="score"> 
+        <input type="button" name="clear_selection" value="Clear Selection                      " onclick="clearAll()">
+      </form>
+    </td>
+    </tr><tr>
+    <td>
+      <form name="score"> 
+        <input type="button" name="select_all" value="Select all problems              " onclick="selectAll()">
+      </form>
+    </td>
+    </tr><tr>
+    <td>
+      <form name="score"> 
+        <input type="button" name="select_fd" value="Add FD category solvers   " onclick="selectFD()">
+      </form>
+    </td>
+    </tr><tr>
+    <td>
+      <form name="score"> 
+        <input type="button" name="select_free" value="Add Free category solvers" onclick="selectFree()">
+      </form>
+    </td>
+    </tr><tr>
+    <td>
+      <form name="score"> 
+        <input type="button" name="select_par" value="Add Par category solvers  " onclick="selectPar()">
+      </form>
+    </td>
+    </tr><tr>
+    <td>
+      <form name="score"> 
+        <input type="button" name="select_port" value="Add Open category solvers  " onclick="selectOpen()">
+      </form>
+    </td>
+  </tr>
+</tbody></table>
+</td>
+</tr></tbody></table><table cellspacing="15">
+<tbody><tr>
+
+</tr><tr><td>
+<h3> Summary:</h3>
+</td><td>
+<h3> Total per problem:</h3>
+</td></tr><tr>
+<td valign="top">
+<table border="2" rules="groups" cellpading="20" cellspacing="20" name="total_table">
+<colgroup></colgroup>
+<colgroup></colgroup>
+<colgroup></colgroup>
+<thead> 
+<tr><td><b>Solver </b> 
+</td><td><b>Score </b>
+</td></tr></thead>
+<tbody>
+</tbody></table>
+
+</td><td valign="top">
+<table border="2" rules="groups" cellpading="20" cellspacing="20" name="problem_table">
+<colgroup span="2"></colgroup>
+<colgroup span="1"></colgroup>
+<colgroup span="1"></colgroup>
+<thead> 
+<tr><td><b>Problem </b> 
+</td><td><b>Solver </b> 
+</td><td><b>Score </b>
+</td></tr></thead>
+<tbody>
+</tbody></table>
+
+</td></tr></tbody></table>
+<p>
+</p><h3>Individual results:</h3>
+<table frame="box" border="2" rules="groups" cellpading="20" cellspacing="20" name="instance_table">
+<colgroup span="2"></colgroup>
+<colgroup></colgroup>
+<colgroup></colgroup>
+<colgroup></colgroup>
+<colgroup></colgroup>
+<thead> 
+<tr><td><b> Problem </b> 
+</td><td><b> Instance </b> 
+</td><td><b> Solver </b> 
+</td><td><b> Status </b> 
+</td><td><b> Time </b> 
+</td><td><b> Objective </b> 
+</td><td><b> Score </b>
+
+</td></tr></thead><tbody>
+</tbody></table>
+
+<script type="text/javascript" src="./score.js"> </script>
+
+<!------------------------------------------------------------------------>
+<!--
+<h3>Global constraint per model</h3>
+
+<p>
+The following table lists the global constraints used by each model
+in this year's challenge.
+
+</p><p>
+</p><table frame="box" rules="all">
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Global constraints used</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+  </tr>
+  </tbody>
+</table>
+
+--!>
+
+<!------------------------------------------------------------------------>
+</p><hr>
+
+<p>The files on this page are for MiniZinc version 1.6.</p>
+
+<?php
+mznfooter();
+?>  

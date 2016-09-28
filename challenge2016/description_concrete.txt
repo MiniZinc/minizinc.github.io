@@ -1,0 +1,8 @@
+Concrete is a CSP solving API developed in Scala. Current version is Concrete 3.2.
+
+Based on a Scala rewrite of CSP4J, Concrete has been in development since 2005. It seeks functional purity as much as possible. In its current version, all domain management, constraint state data structures and backtracking management are purely functional. Concrete also feature state-of-the-art algorithms for linear, binary and table constraints.
+
+Concrete is also based upon a powerful modelling API called CSPOM. Current version is CSPOM 2.9, also written in Scala. CSPOM comes with a FlatZinc, XCSP 2.1 and XCSP 3 parsers, a Scala DSL and Java API. It also feature many automatic reformulation routines.
+
+Main developer: Julien Vion <julien.vion@univ-valenciennes.fr>
+Institute: LAMIH CNRS UMR 8201, Université de Valenciennes et du Hainaut-Cambrésis
