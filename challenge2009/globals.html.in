@@ -1,0 +1,126 @@
+<a name="globals">
+<h2>Global constraints used in each model</h2>
+
+<p>
+The following table lists the global constraints used by each model
+in this year's challenge.
+
+<p>
+<table frame="box" rules="cols">
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Global constraints used</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>black-hole</td>
+    <td>inverse, table</td>
+  </tr>
+  <tr>
+    <td>fillomino</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>nonogram</td>
+    <td>regular</td>
+  </tr>
+  <tr>
+    <td>open-stacks</td>
+    <td>all_different</td>
+  </tr>
+  <tr>
+    <td>p1f</td>
+    <td>all_different, inverse, lex_less</td>
+  </tr>
+  <tr>
+    <td>prop_stress</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>rectangle-packing</td>
+    <td>cumulative</td>
+  </tr>
+  <tr>
+    <td>roster</td>
+    <td>at_least, at_most, exactly</td>
+  </tr>
+  <tr>
+    <td>search_stress2</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>still-life</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>vrp</td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
+
+
+<!------------------------------------------------------------------------>
+
+<h2>Builtin global constraints per FlatZinc solver</h2>
+
+<p>
+The following table lists the global constraints that are
+provided as builtins.
+
+<p>
+<table frame="box" rules="cols">
+  <thead>
+    <tr>
+      <th>Solver</th>
+      <th>Builtin global constraints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ECLiPSe/IC</td>
+      <td>all_different, all_disjoint, at_least, at_most, count, cumulative, disjoint, exactly,
+          link_set_to_booleans, maximum, sort
+      </td>
+    </tr>
+    <tr>
+      <td>G12/FD</td>
+      <td>all_different, cumulative</td>
+    </tr>
+    <tr>
+      <td>G12/LazyFD</td>
+      <td>all_different</td>
+    </tr>
+    <tr>
+      <td>Gecode</td>
+      <td>all_different, among, at_least, at_most, count, cumulative, disjoint, distribute, exactly,
+          increasing, inverse, lex_lesseq, lex_less, maximum, minimum, nvalue, partition_set,
+          regular, sort, sum_pred, table</td>
+    </tr>
+    <tr>
+      <td>SICStus</td>
+      <td>all_different, at_least, at_most, cumulative, exactly, global_cardinality, inverse,
+          lex_lesseq, lex_less, maximum, nvalue, sort table
+      </td>
+    </tr>
+          
+  </tbody>
+</table>
+
+<!------------------------------------------------------------------------>
+<hr>
+
+<p>The files on this page are for MiniZinc version 1.0.
+
+<!-- NOT YET -->
+<!--  Versions of these
+files for the current version of MiniZinc are available as part of the
+<a href="g12distrib.html">G12 MiniZinc distribution</a>. -->
+
+<!------------------------------------------------------------------------>
+<hr>
+
+<p>
+<a href="../index.html">Back</a> to MiniZinc home page.
