@@ -1,14 +1,19 @@
-  </div>
-  <div id="footer">
-    &copy;<a href="http://data61.csiro.au">Data61, CSIRO</a>, 2014, 2015, 2016
-  </div>
-</div>
-<script>
-jQuery('.download').attr("target","_blank");
-jQuery('.download').on('click',function() {
-  targetHref = $(this).attr('href');
-  targetFilename = targetHref.split('/').reverse()[0];
-  ga('send','event',targetFilename,'download'); setTimeout(function() { location.href=targetHref }, 200);return false;});
-</script>
-</body>
-</html>
+    <!-- Footer -->
+    <!-- Page Content -->
+    <div class="container">
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; <a href="http://data61.csiro.au">Data61, CSIRO</a>, 2014, 2015, 2016</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+    jQuery('.download').attr("target","_blank");
+    jQuery('.download').on('click',function() {
+      targetHref = $(this).attr('href');
+      targetFilename = targetHref.split('/').reverse()[0];
+      ga('send','event',targetFilename,'download'); setTimeout(function() { location.href=targetHref }, 200);return false;});
+    </script>
