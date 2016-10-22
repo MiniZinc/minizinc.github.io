@@ -1,0 +1,21 @@
+nf = 9;
+n = ["icecream","banana","chocolate cake","lasagna", 
+     "steak","rice","chips","brocolli","beans"];
+
+dd = [| 1, 1200,  50,  10, 120,  400     % icecream
+      | 2,  800, 120,   5,  20,  120     % banana
+      | 3, 2500, 400,  20, 100,  600     % chocolate cake
+      | 4, 3000, 200, 100, 250,  450     % lasagna
+      | 5, 1800, 800,  50, 100, 1200     % steak
+      | 6, 1200,  50,   5,  20,  100     % rice
+      | 7, 2000,  50, 200, 200,  250     % chips
+      | 8,  700, 100,  10,  10,  125     % brocolli
+      | 9, 1900, 250,  60,  90,  150 |]; % beans
+
+min_energy = 3300;
+min_protein = 500;
+max_salt = 180;
+max_fat = 320;
+desserts = {1,2,3};
+mains = {4,5,9};
+sides = {6,7,8};

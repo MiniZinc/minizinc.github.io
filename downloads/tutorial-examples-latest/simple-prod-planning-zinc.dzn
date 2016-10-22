@@ -1,0 +1,11 @@
+% Data file for simple production planning model
+
+% Define Products and Resources
+enum Products = {banana_cake, chocolate_cake};
+enum Resources = {flour, banana, sugar, butter, cocoa};
+
+% Data for Profit/Capacity/Consumption
+profit   = array1d(Products, [400, 450]);
+capacity = array1d(Resources, [4000, 6, 2000, 500, 500]);
+consumption = array2d(Products, Resources, [250, 2, 75, 100, 0,
+                                            200, 0, 150, 150, 75]);
