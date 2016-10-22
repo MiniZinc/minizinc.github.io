@@ -54,6 +54,10 @@
     {% assign resourcesactive='class="active"' %}
   {% when "MiniZinc - Challenge" %}
     {% assign challengeactive='class="active"' %}
+  {% when "MiniZinc - Forum" %}
+    {% assign forumactive='class="active"' %}
+  {% when "MiniZinc - Bugs" %}
+    {% assign bugsactive='class="active"' %}
 {% endcase %}
 
 <div id="container">
@@ -75,8 +79,8 @@
       <li><a {{ softwareactive }} href="/software.html">Software</a></li>
       <li><a {{ resourcesactive }} href="/resources.html">Resources</a></li>
       <li><a {{ challengeactive }} href="/challenge.html">Challenge</a></li>
-      <li><a href="https://groups.google.com/d/forum/minizinc">Forum</a></li>
-      <li><a href="https://github.com/MiniZinc/libminizinc/issues">Bugs</a></li>
+      <li><a {{ forumactive }} href="/forum.html">Discussions</a></li>
+      <li><a {{ bugsactive }} href="/bugs">Bugs</a></li>
     </ul>
   </div>
   <div id="content">
