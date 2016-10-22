@@ -41,4 +41,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    {% if jekyll.environment == 'production' and site.google_analytics %}
+    {% include google-analytics.html %}
+    {% endif %}
+
 </head>
