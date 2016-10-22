@@ -1,0 +1,67 @@
+G12 MiniZinc Distribution version 0.7.1
+---------------------------------------
+
+This is a bug-fix release.
+
+* The implementations of the regular and range constraints in the
+  MiniZinc library have been fixed.
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* The missing support for superset expressions has been added.
+
+* Unused constants are no longer incorrectly changed into vars
+  during flattening.
+
+* Flattening of expressions containing the built-in operation dom
+  no longer cause the converter to abort.
+
+
+Changes to the G12 FlatZinc interpreter:
+
+* A bug that cause the interpreter to check the satisfiability of
+  models containing LP variables has been fixed.
+
+
+G12 MiniZinc Distribution version 0.7 
+--------------------------------------
+
+Changes to the FlatZinc language:
+
+* FlatZinc now supports additional linear equality and disequality builtins.
+
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* The converter now supports now includes a  `--statistics' option that
+  allows its time and memory usage to be printed.
+
+* String concatenation expressions are now flattened properly.
+
+* Escaped single quotes can now be used in string literals.
+
+* The absolute value function for ints is now implemented.
+
+* Some bugs that caused the converter to run out of stack space have
+  been fixed.
+
+
+Changes to the G12 FlatZinc interpreter:
+
+* The interpreter now includes a `--statistics' option that allows its
+  time and memory usage to be printed.
+
+* The interpreter no longer runs out of stack space when reading
+  large models.
+
+
+Other Changes:
+
+* We have added suite of MiniZinc benchmarks to the distribution.
+  The benchmark suite is in the `benchmarks' directory.
+
+
+G12 MiniZinc Distribution version 0.6 
+-------------------------------------
+
+This was the initial public release of the G12 MiniZinc Distribution.

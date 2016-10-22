@@ -1,0 +1,246 @@
+This directory contains the G12 MiniZinc distribution version 1.6.
+It is Copyright (C) 2005-2012
+The University of Melbourne and NICTA, except where otherwise noted.
+See the file COPYING for the license terms.
+
+The directory src/xml2fzn contains a modified copy of the source of the
+XML parser from the Mercury extras distribution.  This source code
+is Copyright (C) 2000, 2001 The University of Melbourne.  It is distributed
+under the GNU LGPL version 2.0.  The Mercury extras distribution is
+available from <http://www.mercury.csse.unimelb.edu.au/>.  (A copy of
+this license is included in src/xml2fzn/XML.LICENSE.)
+
+G12/CPX is released under a separate academic-use only license.
+The text of this license is in the file LICENSE.CPX.
+
+The files in the directories `src/fzn-parser', `benchmarks', `examples',
+`tests', `fcts', and `lib' are in the public domain.
+
+
+CONTENTS
+        
+        benchmarks      A suite of MiniZinc models used for benchmarking 
+                        MiniZinc and FlatZinc implementations.
+
+        bin             Executables: mzn2fzn is a the G12 MiniZinc-to-FlatZinc
+                        converter; flatzinc is the G12 FlatZinc interpreter;
+                        minizinc is the G12 MiniZinc evaluation driver;
+                        fzn2xml is the G12 MiniZinc-to-XML converter; solns2dzn
+                        is a FlatZinc output processing tool; fzn2xcsp is a 
+                        FlatZinc to XCSP converter; solns2out is the G12
+                        MiniZinc solution printing tool; mzn-g12cpx, mzn-g12fd,
+                        mzn-g12lazy, mzn-g12mip and mzn-g12sat are wrapper
+                        scripts for invoking individual solvers.
+
+        doc             Documentation: specifications for the Zinc, MiniZinc
+                        and FlatZinc languages, a description of the MiniZinc-
+                        to-FlatZinc transformation implemented by the mzn2fzn
+                        tool, and the MiniZinc tutorial.
+
+        fcts            A conformance test suite for FlatZinc implementation.
+
+        examples        Sample MiniZinc models.
+
+        lib             The MiniZinc standard library.
+
+        src             A parser for FlatZinc using lex and yacc; Mercury
+                        source code for minizinc, mzn2fzn, fzn2xml, fzn2xcsp,
+                        solns2dzn, solns2out, and xml2fzn.
+
+        tutorial        The models and data files from the MiniZinc tutorial.
+
+        tests           A regression test suite for mzn2fzn and flatzinc.
+                        (See the section TESTING below for further details.)
+
+        tools           Miscellaneous tools related to MiniZinc, e.g.
+                        syntax highlighting files for text editors, etc.
+
+
+INSTALLATION
+
+Step 1. Download and unzip the MiniZinc package.
+
+Packages for various platforms are available from the G12 MiniZinc website
+at <http://www.g12.csse.unimelb.edu.au/minizinc>.
+
+The packages have the form minizinc-1.6-<ARCH>.tar.gz where
+<ARCH> specifies the architecture for which the package was built,
+e.g. Linux/x86.
+
+To unpack the distribution, use:
+        
+        $ tar zxf minizinc-1.6-<ARCH>.tar.gz
+
+if your version of tar supports that.  Otherwise, use:
+
+        $ gunzip -c minizinc-1.6-<ARCH>.tar.gz | tar xf -
+
+`$' is used here to denote the command prompt.
+
+
+Step 2. Configure the distribution
+
+Change into the directory minizinc-1.6 and run the SETUP script
+to configure the distribution.
+
+        $ sh SETUP
+
+
+Step 3.  Try it out!
+
+All of the MiniZinc and FlatZinc tools are installed in the bin directory.
+A variety of sample MiniZinc models is available in the examples directory.
+If the bin directory is in your PATH, the models can be run by:
+
+       $ minizinc zebra.mzn
+
+The minizinc program invokes a number of other tools to convert the MiniZinc to
+Flatzinc, evaluate the FlatZinc to find solutions, and then format and print
+those solutions.  It is equivalent to the following sequence of commands:
+
+      $ mzn2fzn zebra.mzn
+      $ flatzinc zebra.fzn | solns2out zebra.ozn
+
+The mzn2fzn program is the MiniZinc-to-FlatZinc converter, the flatzinc
+program is G12's FlatZinc interpreter and the solns2out program is a tool
+that is responsible for formatting and printing output.
+
+The above invocations of minizinc and mzn2fzn will use the default global
+constraint definitions.  You may get better performance by using the global
+constraint definitions that are specific to G12's finite-domain solver.
+This can be done using the -G option to minizinc or mzn2fzn:
+
+        $ minizinc -G g12_fd zebra.mzn
+
+or:
+
+        $ mzn2fzn -G g12_fd zebra.mzn
+
+
+Other FlatZinc implementations may provide alternative solver-specific 
+global constraint definitions.  (See GLOBAL CONSTRAINTS and RELATED below.)
+Alternative FlatZinc implementations may be plugged into the minizinc
+program -- consult the documentation for the minizinc program for details.      
+
+The following wrapper scripts are provided for the solvers in the G12 MiniZinc
+distribution.  Each wrapper invokes the minizinc program with the options
+required to use the specified solver along with the solver specific global
+constraint definitions appropriate to that solver:
+
+        mzn-g12cpx      - evaluate a model using G12/CPX
+        mzn-g12fd       - evaluate a model using G12/FD
+        mzn-g12lazy     - evaluate a model using G12/LazyFD
+        mzn-g12mip      - evaluate a model with a MIP solver
+        mzn-g12sat      - evaluate a model with a SAT solver
+
+For example, you can evaluate a model using the G12/CPX solver (and using the
+G12/CPX specific global constraint definitions) by doing:
+
+
+        $ mzn-g12cpx model.mzn
+ 
+Further documentation for MiniZinc and FlatZinc can be found in the
+doc directory.
+
+
+SOURCE CODE
+
+The G12 MiniZinc distribution includes the Mercury source code for all of the
+MiniZinc and FlatZinc tools except the G12 FlatZinc interpreter.
+This source code in the subdirectories of the src directory.
+Consult the README files in those subdirectories for further details.
+
+
+GLOBAL CONSTRAINTS
+
+The MiniZinc library contains standard definitions for many global constraints.
+Solver-specific versions of some globals are also provided for use with the
+G12/FD solver, G12/Lazy solver, and LP/MIP solvers.
+
+Where possible, names for global constraints are taken from the Global
+Constraint Catalog, <http://www.emn.fr/x-info/sdemasse/gccat/>.
+The following table lists name differences between the MiniZinc library
+and the catalog:
+
+    MiniZinc            GCC
+    --------            ---
+    sum_pred            sum
+
+
+TESTING
+
+Developers who modify the MiniZinc-to-FlatZinc converter or who
+implement their own FlatZinc interpreters may wish to run their changes
+against the regression and conformance test suites.  The former are
+in the directory `tests', while the latter are in `fcts'.
+
+The directory scripts contains the shell scripts used by the G12 team
+to run the test suites.  For example,
+
+        $ run-tests mzn_mer_fd .mzn tests
+
+will run the regression tests for MiniZinc with the G12/FD solver.
+
+The comments at the head of the various scripts provide further details
+of their use.  (The scripts run-test and run-tests are a good starting
+place.)
+
+
+MINIZINC WIKI
+
+The MiniZinc Wiki at <http://www.g12.csse.unimelb.edu.au/wiki/> contains
+tutorials, documentation and MiniZinc models.
+
+
+OTHER FLATZINC IMPLEMENTATIONS
+
+A FlatZinc interface to the Gecode generic constraint development
+environment, FlatZinc for Gecode, is available.
+
+See the Gecode/FlatZinc WWW page at <http://www.gecode.org/flatzinc.html>.
+
+The ECLiPSe Constraint Programming System provides support for evaluating
+FlatZinc using ECLiPSe's constraint solvers.  MiniZinc models can be embedded
+into ECLiPSe code in order to add user-defined search and I/O facilities to
+the models.
+
+See the ECLiPSe WWW page at <http://eclipseclp.org/>.
+
+SICStus Prolog (from version 4.0.5) includes a library for interpreting
+FlatZinc.
+
+See the SICStus WWW page at
+<http://www.sics.se/isl/sicstuswww/site/index.html>.
+
+The JaCoP constraint solver (from version 2.4) has an interface to
+FlatZinc.
+
+See the JaCoP WWW page at
+<http://jacop.osolpro.com/>.
+
+SCIP, a framework for constraint integer programming, has an interface to
+FlatZinc.
+
+See the SCIP WWW page at
+<http://scip.zib.de/>.
+
+fzn2smt is a compiler from FlatZinc to the SMT-LIB language.  The output
+of fzn2smt can be fed into any SMT solver that supports the SMT-LIB language.
+
+See the fzn2mt WWW page at
+<http://ima.udg.edu/Recerca/ESLIP/fzn2smt/>.
+
+
+FURTHER INFORMATION
+
+The MiniZinc developers can be contacted at minizinc@csse.unimelb.edu.au.
+
+For more information about the G12 project, see the G12 WWW page at
+<http://www.nicta.com.au/research/projects/constraint_programming_platform>.
+
+There is a G12 users mailing list which is intended for general discussion.
+If you would like to join, then send a mail with "subscribe" in the body
+to g12-users-request@csse.unimelb.edu.au.
+
+Please submit bug reports via our bug tracking system which is available at
+<http://bugs.g12.csse.unimelb.edu.au>.

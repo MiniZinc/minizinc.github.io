@@ -1,0 +1,459 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>MiniZinc Tutorial
+</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META name="GENERATOR" content="hevea 1.09">
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:auto;text-align:center}
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea -s -fix mzn-tutorial -->
+<!--CUT DEF section 1 --><TABLE CLASS="title"><TR><TD><H1 CLASS="titlemain">MiniZinc Tutorial</H1><H3 CLASS="titlerest">Ralph Becket<BR>
+<TT>rafe@csse.unimelb.edu.au</TT></H3><H3 CLASS="titlerest">18 June 2007</H3></TD></TR>
+</TABLE><!--TOC section Modelling in MiniZinc-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc1">1</A>&#XA0;&#XA0;Modelling in MiniZinc</H2><!--SEC END --><P>The G12 project defines three closely related modelling languages:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<B>Zinc</B> is a very high level modelling language;
+because of its expressive power mapping Zinc models on to underlying
+solvers is an on-going research problem and existing language support is
+experimental.
+We do not discuss full Zinc further in this document.
+</LI><LI CLASS="li-itemize"><B>MiniZinc</B> is a medium level modelling language that is
+comfortable to work in and for which we do have (very nearly) full
+support.
+</LI><LI CLASS="li-itemize"><B>FlatZinc</B> is a low level modelling language
+intended primarily as input for compliant solvers which we hope will
+become a de facto standard.
+</LI></UL><P>The remainder of this document seeks to explain by example how to write
+and evaluate models in MiniZinc.
+In what follows, FD stands for &#X201C;finite domain&#X201D; and LP stands
+for &#X201C;linear problem&#X201D;.
+FD solvers are used for integer problems while LP solvers are used
+for floating point problems.</P><!--TOC subsection Golomb Rulers (FD)-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc2">1.1</A>&#XA0;&#XA0;Golomb Rulers (FD)</H3><!--SEC END --><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+<HR SIZE=2>
+<PRE CLASS="verbatim"> 1 % Golomb rulers.
+ 2 
+ 3 include "globals.mzn";
+ 4  
+ 5 int: n = 4;
+ 6  
+ 7 array [1..n] of var 0..(n * n): mark;
+ 8  
+ 9 constraint mark[1] = 0;
+10 constraint forall (i in 1..(n - 1)) (mark[i] &lt; mark[i + 1]);
+11 constraint
+12     all_different (i in 1..n, j in (i + 1)..n) (mark[j] - mark[i]);
+13 
+14 solve minimize mark[n];
+15 
+16 output ["golomb: ", show(mark), "\n"];
+</PRE>
+<HR SIZE=2>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 1: MiniZinc model for Golomb Rulers.</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:golomb"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></BLOCKQUOTE><P>A Golomb ruler <I>R</I> is a set of integers such that all pairwise
+differences are different &#X2014; that is,
+&#X2200;  distinct  <I>a</I>, <I>b</I>, <I>c</I>, <I>d</I> &#X2208; <I>R</I>. (<I>a</I> &#X2212; <I>b</I>) = (<I>c</I> &#X2212; <I>d</I>)
+&#X21D2; (<I>a</I>, <I>b</I>) = (<I>c</I>, <I>d</I>).</P><P>Figure <A HREF="#fig:golomb">1</A> shows a MiniZinc model of the problem
+(line numbers in the figure are there for reference and should not be
+included in the model file) and the output from evaluating it with the
+<TT>zinc</TT> interpreter. Let's examine the model in more detail.</P><P><B>Line 1</B> is a comment. Comments begin with <TT>%</TT> and
+extend to the end of the line. Comments can occur anywhere in a model.</P><P><B>Line 3</B> includes the standard MiniZinc library file
+<CODE>globals.mzn</CODE>, which defines various global constraints (such as
+<CODE>all_different</CODE> used on line 12).
+All MiniZinc items that are not comments must be terminated with a semicolon.</P><P><B>Line 5</B> defines an integer parameter <CODE>n</CODE> with value
+<CODE>4</CODE>; this is the number of marks we wish our ruler to have.</P><P><B>Line 7</B> declares an array <CODE>mark</CODE> of <CODE>n</CODE> integer
+variables, indexed from <CODE>1</CODE> to <CODE>n</CODE>, each in the range
+<CODE>0..(n * n)</CODE>. Each array item corresponds to the location of a
+mark on our ruler.</P><P><B>Line 9</B> constrains the first mark to appear at position
+<CODE>0</CODE>.</P><P><B>Line 10</B> constrains the <CODE>mark</CODE> array items to appear in
+strictly ascending order.</P><P><B>Lines 11 and 12</B> use the <CODE>all_different</CODE> global constraint
+to ensure that the difference between each pair of distinct marks on
+the ruler is unique.</P><P><B>Line 14</B> specifies the problem goal: to find values for the
+<CODE>mark</CODE> array such that the last is minimized (the other possible
+solve goals are <CODE>solve maximize mark[n];</CODE> or <CODE>solve satisfy;</CODE>
+which looks for any solution).</P><P><B>Line 16</B> specifies how to print a solution if one is found.
+The function <CODE>show</CODE> converts its argument into a printable string.
+If a solution cannot be found then <CODE>No solution</CODE> will be printed instead.
+Omitting the output item will cause all of the variables in a model to
+be printed, one per line, if a solution is found.</P><P>In order to evaluate a model using the G12 implementation of MiniZinc,
+we must first convert that model into an equivalent FlatZinc model
+using the MiniZinc-to-FlatZinc converter, <TT>mzn2fzn</TT> .</P><P>Assuming that the model lives in the file <CODE>golomb.mzn</CODE> (note that
+all files that contain MiniZinc models must have the extension ".mzn"),
+we can convert it to FlatZinc as follows:
+</P><PRE CLASS="verbatim">$ mzn2fzn golomb.fzn
+</PRE><P>If the model contains errors then <TT>mzn2fzn</TT> will report them, otherwise
+it will output a FlatZinc version of <CODE>golomb.mzn</CODE> in the file
+<CODE>golomb.fzn</CODE>.
+(FlatZinc files must have the extension ".fzn".)</P><P>We can then evaluate the model using a FlatZinc interpreter.
+The G12 FlatZinc interpreter is called <TT>flatzinc</TT> .
+It is invoked as follows:
+</P><PRE CLASS="verbatim">$ flatzinc golomb.fzn
+</PRE><P>The output produced is:
+</P><PRE CLASS="verbatim">[ 0, 1, 4, 6 ]
+</PRE><P>which, as required, has six unique differences: {1, 4, 6, 3, 5, 2}.</P><!--TOC subsubsection Syntactic sugar for arrays-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Syntactic sugar for arrays</H4><!--SEC END --><P>The model uses convenient syntactic sugar for the <CODE>forall</CODE> and
+<CODE>all_different</CODE> constraints. In fact, both of these constraints
+take a single array argument. The form</P><P><CODE>forall (i in 1..(n - 1)) (mark[i] &lt; mark[i + 1]);</CODE></P><P>is a more readable version of</P><P><CODE>forall([mark[i] &lt; mark[i + 1] | i in 1..(n - 1)]);</CODE></P><P>(which uses an <EM>array comprehension</EM>) which in turn is short for</P><P><CODE>forall([mark[1] &lt; mark[2], mark[2] &lt; mark[3], mark[3] &lt; mark[4]]);</CODE></P><P>Observe that array values are written as comma separated sequences of
+expressions, surrounded by brackets.</P><P>Similarly</P><P><CODE>all_different (i in 1..n, j in (i + 1)..n) (mark[j] - mark[i]);</CODE></P><P>is a more readable version of</P><P><CODE>all_different([mark[j] - mark[i] | i in 1..n, j in (i + 1)..n]);</CODE></P><P>which is short for</P><P><CODE>all_different([</CODE><BR>
+<CODE>    mark[2] - mark[1], mark[3] - mark[1], mark[4] - mark[1],</CODE><BR>
+<CODE>    mark[3] - mark[2], mark[2] - mark[2],</CODE><BR>
+<CODE>    mark[4] - mark[3]]);</CODE></P><P>You can use the special syntactic sugar in any expression where a
+function symbol is applied to a single array.</P><!--TOC subsection Sudoku (FD)-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc3">1.2</A>&#XA0;&#XA0;Sudoku (FD)</H3><!--SEC END --><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+<HR SIZE=2>
+<PRE CLASS="verbatim"> 1 % Sudoku solver.
+ 2 
+ 3 include "globals.mzn";
+ 4  
+ 5 array [1..9, 1..9] of var 1..9: sq;
+ 6  
+ 7 predicate row_diff(int: r) =
+ 8     all_different (c in 1..9) (sq[r, c]);
+ 9  
+10 predicate col_diff(int: c) =
+11     all_different (r in 1..9) (sq[r, c]);
+12   
+13 predicate subgrid_diff(int: r, int: c) =
+14     all_different (i, j in 0..2) (sq[r + i, c + j]);
+15   
+16 constraint forall (r in 1..9)         (row_diff(r));
+17 constraint forall (c in 1..9)         (col_diff(c));
+18 constraint forall (r, c in {1, 4, 7}) (subgrid_diff(r, c));
+19   
+20 sq =
+21  [| _, _, _, _, _, _, _, _, _
+22   | _, 6, 8, 4, _, 1, _, 7, _
+23   | _, _, _, _, 8, 5, _, 3, _
+24   | _, 2, 6, 8, _, 9, _, 4, _
+25   | _, _, 7, _, _, _, 9, _, _
+26   | _, 5, _, 1, _, 6, 3, 2, _
+27   | _, 4, _, 6, 1, _, _, _, _
+28   | _, 3, _, 2, _, 7, 6, 9, _
+29   | _, _, _, _, _, _, _, _, _
+30  |];
+31   
+32 solve satisfy;
+33 
+34 output ["sq = ", show(sq), "\n"];
+</PRE>
+<HR SIZE=2>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 2: MiniZinc model for a Sudoku problem.</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:sudoku"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></BLOCKQUOTE><P>A Sudoku problem is a 3&#XD7;3 grid of 3&#XD7;3 subgrids.
+Each square must be assigned a number in the range 1..9 such that
+the numbers in each row, column, and subgrid are distinct.</P><P>Figure <A HREF="#fig:golomb">1</A> shows a MiniZinc model of the problem
+(line numbers in the figure are there for reference and should not be
+included in the model file) and the output from evaluating it with the
+<TT>zinc</TT> interpreter. Let's examine the model in more detail.</P><P><B>Line 3</B> includes <CODE>globals.mzn</CODE> which defines the
+<CODE>all_different</CODE> predicate.</P><P><B>Line 5</B> defines <CODE>sq</CODE>, a two dimensional array of squares,
+indexed by row and column number respectively, of integer variables in
+the range <CODE>1..9</CODE>.</P><P><B>Lines 7 and 8</B> define a predicate <CODE>row_diff(r)</CODE> which
+constrains the squares in row <CODE>r</CODE> to be distinct. <B>Lines 10
+and 11</B> define <CODE>col_diff</CODE> for columns and <B>lines 13 and 14</B>
+define <CODE>subgrid_diff</CODE> for subgrids.</P><P><B>Lines 16 to 18</B> use the predicates to constrain the values in
+the puzzle. Observe that the range for index variables <CODE>r</CODE> and
+<CODE>c</CODE> in line 18 is given as the set <CODE>{1, 4, 7}</CODE>
+(set values are written as comma separated sequences of
+expressions, surrounded by braces)
+the expression <CODE>1..9</CODE> of course being
+shorthand for the set <CODE>{1, 2, 3, 4, 5, 6, 7, 8, 9}</CODE>.</P><P><B>Lines 20 to 30</B> constrains the value of <CODE>sq</CODE>, with the
+underscores denoting &#X201C;don't know&#X201D; values. Note that even though
+<CODE>sq</CODE> is a two-dimensional array, its value is given as a 
+one-dimensional array in row-major order (literal MiniZinc array values
+like this are always one-dimensional).</P><P><B>Line 32</B> tells the solver to search for any solution and halt.</P><P>Running the model we get the following solution (which has been tidied
+up for visual effect):
+</P><PRE CLASS="verbatim">$ mzn2fzn sudoku.mzn
+$ flatzinc sudoku.fzn
+sq = 
+  [ 5, 9, 3,  7, 6, 2,  8, 1, 4,
+    2, 6, 8,  4, 3, 1,  5, 7, 9,
+    7, 1, 4,  9, 8, 5,  2, 3, 6,
+                        
+    3, 2, 6,  8, 5, 9,  1, 4, 7,
+    1, 8, 7,  3, 2, 4,  9, 6, 5,
+    4, 5, 9,  1, 7, 6,  3, 2, 8,
+                        
+    9, 4, 2,  6, 1, 8,  7, 5, 3,
+    8, 3, 5,  2, 4, 7,  6, 9, 1, 
+    6, 7, 1,  5, 9, 3,  4, 8, 2 ];
+</PRE><!--TOC subsection Perfect squares (FD with conditional constraints)-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc4">1.3</A>&#XA0;&#XA0;Perfect squares (FD with conditional constraints)</H3><!--SEC END --><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+<HR SIZE=2>
+<PRE CLASS="verbatim"> 1 % Perfect squares.
+ 2 
+ 3 int: n = 10;                    % Consider squares up to n*n.
+ 4 array [0..n] of 0..n*n: sq = array1d(0..n, [y*y | y in 0..n]);
+ 5 array [0..n] of var 0..n: s;    % Decreasing indices into sq.
+ 6 var 0..n: x;                    % Compute sum equal to sq[x]
+ 7 var 0..n: j;                    % from this many sub-squares.
+ 8 
+ 9 constraint forall (i in 1..n) (s[i] &gt; 0  -&gt;  s[i - 1] &gt; s[i]);
+10 constraint s[0] &lt; x;
+11 constraint sum (i in 0..n) (sq[s[i]])  =  sq[x];
+12 constraint s[j] &gt; 0;
+13 
+14 solve maximize j;
+15 
+16 output [
+17     "x = ", show(x), "\n",
+18     "s = ", show(s), "\n",
+19 ];
+</PRE>
+<HR SIZE=2>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 3: MiniZinc model for computing squares equal to the sum of
+distinct smaller squares.</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:perfsq"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></BLOCKQUOTE><P>We can define a perfect square <I>x</I><SUP>2</SUP> as one satisfying
+<I>x</I><SUP>2</SUP> = &#X2211;&#XA0; {<I>y</I><SUP>2</SUP>&#XA0; |&#XA0; <I>y</I> &#X2208; <I>S</I>} where <I>S</I> is a finite set of natural
+numbers smaller than <I>x</I>.</P><P>Figure <A HREF="#fig:perfsq">3</A> shows a MiniZinc model for computing
+perfect squares. Let's examine the model in more detail.</P><P><B>Line 3</B> fixes an upper bound <CODE>n</CODE> on the number of
+squares the model will consider.</P><P><B>Line 4</B> defines a constant array <CODE>sq</CODE> containing the
+squares from <CODE>0</CODE> up to <CODE>n*n</CODE> by means of an array
+comprehension.</P><P><B>Line 5</B> defines an array <CODE>s</CODE> of variables, each
+being an index into the array <CODE>sq</CODE> (we are going to compute
+<I>x</I><SUP>2</SUP> = &#X2211;<SUB><I>i</I>&#XA0; &#X2208;&#XA0; <TT>0..n</TT></SUB>&#XA0; <CODE>sq[s[</CODE><I>i</I><CODE>]]</CODE> &#X2014;
+this is our encoding of the set <I>S</I>).</P><P><B>Line 6</B> defines a variable <CODE>x</CODE> which is the index of
+<CODE>sq</CODE> containing our perfect square (i.e., <I>x</I><SUP>2</SUP> = <CODE>sq[x]</CODE>).</P><P><B>Line 7</B> defines a variable <CODE>j</CODE> which is the cardinality
+of our set <I>S</I> summing to <CODE>sq[x]</CODE>.</P><P><B>Line 9</B> constrains the array of indices <CODE>s</CODE> to be a strictly
+decreasing sequence followed by zeroes. The arrow <CODE>-&gt;</CODE> denotes 
+logical implication.</P><P><B>Line 10</B> requires the set <I>S</I> to be non-empty.</P><P><B>Line 11</B> constrains the sum of the squares indexed by <CODE>s</CODE>
+to be equal to <CODE>sq[x]</CODE>.</P><P><B>Line 12</B> constrains the members of <I>S</I> to be non-zero
+(<CODE>sq[s[j]]</CODE> is the smallest member of <I>S</I>).</P><P><B>Line 14</B> requires the solver to find the largest set <I>S</I> given
+the bound <CODE>n</CODE>.</P><P>Evaluating the model we get:
+</P><PRE CLASS="verbatim">x = 10
+s = [ 7, 5, 4, 3, 1, 0, 0, 0, 0, 0, 0 ]
+</PRE><P>and indeed 10<SUP>2</SUP> = 7<SUP>2</SUP> + 5<SUP>2</SUP> + 4<SUP>2</SUP> + 3<SUP>2</SUP> + 1<SUP>2</SUP>.</P><!--TOC subsection Production planning (LP)-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc5">1.4</A>&#XA0;&#XA0;Production planning (LP)</H3><!--SEC END --><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+<HR SIZE=2>
+<PRE CLASS="verbatim"> 1 % Simple production planning example adapted from the OPL book.
+ 2   
+ 3 set of int: products = 1..3;   % We make 3 products.
+ 4 set of int: resources = 1..2;  % We use 2 kinds of resources.
+ 5  
+ 6 % Demand, in-house cost, and outsourcing cost for each product:
+ 7 array[products] of float: demand   = [100.0, 200.0, 300.0];
+ 8 array[products] of float: in_cost  = [  0.6,   0.8,   0.3];
+ 9 array[products] of float: out_cost = [  0.8,   0.9,   0.4];
+10  
+11 % Resources of each kind needed to manufacture each product unit:
+12 array[products, resources] of float: consumption = [|0.5, 0.2,
+13                                                     |0.4, 0.4,
+14                                                     |0.3, 0.6|];
+15  
+16 % Current in-house stocks of each resource kind:
+17 array[resources] of float: capacity = [20.0, 40.0];
+18  
+19 % Variables: how much should be made in-house or outsourced:
+20 array[products] of var float: in_house;
+21 array[products] of var float: outsource;
+22  
+23 % Production cannot be negative:
+24 constraint forall (p in products) (in_house[p]  &gt;= 0.0);
+25 constraint forall (p in products) (outsource[p] &gt;= 0.0);
+26   
+27 % In-house production cannot use more than resource stocks:
+28 constraint forall (r in resources) (
+29     sum (p in products) (consumption[p, r] * in_house[p]) &lt;= capacity[r]
+30 );
+31  
+32 % Production must meet demand:
+33 constraint forall (p in products) (
+34       in_house[p] + outsource[p] &gt;= demand[p]
+35 );
+36   
+37 % Goal: minimize costs:
+38 solve minimize sum (p in products) (
+39       in_cost[p] * in_house[p]  +  out_cost[p] * outsource[p]
+40 );
+41 
+42 output [
+43     "in_house  = ", show(in_house),  "\n",
+44     "outsource = ", show(outsource), "\n",
+45 ];
+</PRE>
+<HR SIZE=2>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 4: MiniZinc model for a production planning problem.</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:product"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></BLOCKQUOTE><P>Figure <A HREF="#fig:product">4</A> shows a MiniZinc model for a production
+planning problem (line numbers in the figure are there for reference and
+should not be included in the model file).
+In this problem a company manufactures three kinds of products (e.g.,
+kinds of pasta) using two kinds of resources (e.g., eggs and milk).
+In-house production of each product is limited by the resources in
+stock.
+The model must decide how much of each product to make in-house versus
+how much to outsource in order to meet expected demand and minimize
+costs.</P><P>Let's examine the model in more detail.</P><P><B>Lines 3 and 4</B> define two integer sets giving symbolic names
+to each product and resource kind.</P><P><B>Lines 7 to 9</B> define arrays giving the expected demand, the
+in-house production cost, and the outsourcing production cost for each
+product.
+Note that we can use set expressions (<CODE>products</CODE> in this
+case) as the index sets for arrays.
+Note also that in MiniZinc floating point constants must include
+a fractional part: <CODE>42</CODE> is an <CODE>int</CODE>; <CODE>42.0</CODE>
+is a <CODE>float</CODE>.</P><P><B>Line 12</B> defines a two-dimensional array, indexed by product
+and resource kind respectively, giving the resource requirements for
+in-house manufacturing.</P><P><B>Line 17</B> defines an array giving the available stocks of each
+resource kind.</P><P><B>Lines 20 and 21</B> define arrays of problem variables for the
+amount of each product to manufacture in-house and outsource
+respectively.</P><P><B>Lines 24 and 25</B> constrain the problem variables to be
+non-negative.</P><P><B>Lines 28 to 32</B> state that in-house production cannot use more
+than the available resource stocks.</P><P><B>Lines 34 to 37</B> require that manufacturing plus outsourcing must
+meet demand for each product.</P><P><B>Lines 40 to 42</B> specifies the objective function, namely
+to minimize the cost of meeting the expected demand. </P><P>Running the model we get
+</P><PRE CLASS="verbatim">in_house  = [ 40.0, 0.0, 0.0 ]
+outsource = [ 60.0, 200.0, 300.0 ]
+</PRE><!--TOC subsection Controlling search-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc6">1.5</A>&#XA0;&#XA0;Controlling search</H3><!--SEC END --><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+<HR SIZE=2>
+<PRE CLASS="verbatim"> 1 % Contrived problem.
+ 2  
+ 3 include "globals.mzn";
+ 4  
+ 5 var 0..9: x;
+ 6 var 0..9: y;
+ 7 var 0..9: z;
+ 8  
+ 9 constraint all_different([x, y, z]);
+10 constraint y - 3 &lt; x  /\  x &lt; y + 3;
+11 constraint z - 3 &lt; y  /\  y &lt; z + 3;
+12  
+13 solve satisfy;
+14 
+15 output ["x = ", show(x), "; ",
+16         "y = ", show(y), "; ",
+17  "z = ", show(z), "\n"];
+</PRE>
+<HR SIZE=2>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 5: Contrived MiniZinc model to illustrate search control.</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:searchcontrol"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></BLOCKQUOTE><P>Consider the contrived problem model in figure <A HREF="#fig:searchcontrol">5</A>
+which states that <CODE>x</CODE> must be within <CODE>3</CODE> of <CODE>y</CODE>, <CODE>y</CODE>
+must be within <CODE>3</CODE> of <CODE>z</CODE>, and all three variables must be
+distinct in the range <CODE>0..9</CODE> (observe the use of the logical
+conjunction operator <CODE>/\</CODE> which isn't strictly necessary &#X2014;
+conjunctions can be split into separate constraints &#X2014; but does
+improve readability here).</P><P>The default search procedure produces <TT> x = 2; y = 0; z = 1 </TT>.</P><P>The search procedure can be changed in MiniZinc models by
+annotating the <CODE>solve</CODE> goal. For example, with:
+</P><PRE CLASS="verbatim">solve
+ :: int_search([x, y, z], first_fail, indomain_median, complete)
+    satisfy;
+</PRE><P>we get <TT> x = 5; y = 6; z = 7 </TT>.</P><P>The <CODE>int_search</CODE> annotation takes four arguments:<BR>
+&#X2014; an array of the variables affected by this annotation;<BR>
+&#X2014; a variable selection strategy;<BR>
+&#X2014; a variable domain reduction strategy; and<BR>
+&#X2014; a search strategy<BR>
+respectively.</P><P>In the example annotation the <CODE>first_fail</CODE> variable selection
+strategy always chooses the undecided variable with the smallest domain,
+the <CODE>indomain_median</CODE> nondeterministically splits that variable's
+domain in half (so, for example, <CODE>0..9</CODE> reduces to
+<CODE>0..4</CODE> on one search branch and <CODE>5..9</CODE> on another),
+and the <CODE>complete</CODE> strategy guarantees not to omit solutions from
+the search space.</P><P>Multiple annotations can appear, although the order in which they are
+carried out is not defined.
+For example, with:
+</P><PRE CLASS="verbatim">solve
+ :: int_search([x], first_fail, indomain_median, complete)
+ :: int_search([y, z], smallest, indomain_max, complete)
+    satisfy;
+</PRE><P>we may get either <TT>x = 4; x = 6; z = 8</TT> or
+<TT>x = 7; y = 9; z = 8</TT>.</P><P>We can force the search annotations to be carried out in order
+by using a <CODE>seq_search</CODE> annotation, as in the following:
+</P><PRE CLASS="verbatim">solve
+  :: seq_search([
+       int_search([x], first_fail, indomain_median, complete),
+       int_search([y, z], smallest, indomain_max, complete)])
+  satisfy;
+</PRE><P>Other search annotations, <CODE>float_search</CODE>, <CODE>bool_search</CODE>, and
+<CODE>set_search</CODE> are available for float, bool and set variables
+respectively.</P><!--TOC subsubsection Currently supported variable selection strategies for
+<TT>int_search</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Currently supported variable selection strategies for
+<TT>int_search</TT></H4><!--SEC END --><P>The current implementation of <TT>flatzinc</TT> supports the following variable
+selection strategies for <CODE>int_search</CODE>:<BR>
+- <CODE>first_fail</CODE> which chooses the (undecided) variable with the smallest
+domain;<BR>
+- <CODE>anti_first_fail</CODE> which chooses the variable with the largest
+domain;<BR>
+- <CODE>smallest</CODE> which chooses the variable with the smallest lower
+bound;<BR>
+- <CODE>largest</CODE> which chooses the variable with the largest upper
+bound; and<BR>
+- <CODE>input_order</CODE> which chooses variables in the order specified in
+the array.
+bound;<BR>
+
+</P><!--TOC subsubsection Currently supported domain reduction strategies for
+<TT>int_search</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Currently supported domain reduction strategies for
+<TT>int_search</TT></H4><!--SEC END --><P>The following domain reduction strategies are supported:<BR>
+- <CODE>indomain</CODE> which reduces a domain to a singleton value in an
+arbitrary order;<BR>
+- <CODE>indomain_min</CODE> which reduces a domain to a singleton value in an
+ascending order;<BR>
+- <CODE>indomain_max</CODE> which reduces a domain to a singleton value in a
+descending order;<BR>
+- <CODE>indomain_median</CODE> which splits a domain in half; and<BR>
+- <CODE>indomain_split</CODE> which splits a domain about the mean of its
+lower and upper bounds.</P><!--TOC subsubsection Currently supported search strategies for
+<TT>int_search</TT>-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Currently supported search strategies for
+<TT>int_search</TT></H4><!--SEC END --><P>Only the <CODE>complete</CODE> search strategy is currently supported.</P><!--TOC section Comments, suggestions, and bug reports-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc7">2</A>&#XA0;&#XA0;Comments, suggestions, and bug reports</H2><!--SEC END --><P>Bugs can be reported via the G12 bug tracking system at
+<CODE>bugs.g12.csse.unimelb.edu.au</CODE>.</P><P>Comments, questions and suggestions should be sent to the G12 Users mailing
+list.
+You can subscribe to the list by sending an e-mail containing the word
+<CODE>subscribe</CODE> in the body to <CODE>g12-users-request@csse.unimelb.edu.au</CODE>.
+Thereafter, mail may be sent to <CODE>g12-users@csse.unimelb.edu.au</CODE>.</P><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>

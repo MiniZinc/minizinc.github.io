@@ -1,0 +1,763 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>MiniZinc 1.6: Global Constraints</title>
+<style type="text/css">
+body     { margin:        2em; font-family: sans-serif; }
+.name    { margin-top:    3ex; font-weight: bold; }
+.details { margin-bottom: 2ex; }
+</style>
+</head>
+
+<body>
+<h1>MiniZinc 1.6: Global Constraints</h1>
+
+<p>
+This page lists the global constraints available in version 1.6
+of the MiniZinc library.
+</p>
+
+<hr>
+
+<dl>
+<dt><a href="#alldifferent">alldifferent (all_different)</a></dt>
+<dt><a href="#alldifferent_except_0">alldifferent_except_0</a></dt>
+<dt><a href="#all_disjoint">all_disjoint</a></dt>
+<dt><a href="#all_equal">all_equal</a></dt>
+<dt><a href="#among">among</a></dt>
+<dt><a href="#at_least">at_least (atleast)</a></dt>
+<dt><a href="#at_most">at_most (atmost)</a></dt>
+<dt><a href="#at_most1">at_most1 (atmost1)</a></dt>
+<dt><a href="#bin_packing">bin_packing</a></dt>
+<dt><a href="#bin_packing_capa">bin_packing_capa</a></dt>
+<dt><a href="#bin_packing_load">bin_packing_load</a></dt>
+<dt><a href="#circuit">circuit</a></dt>
+<dt><a href="#count_eq">count_eq (count)</a></dt>
+<dt><a href="#count_geq">count_geq</a></dt>
+<dt><a href="#count_gt">count_gt</a></dt>
+<dt><a href="#count_leq">count_leq</a></dt>
+<dt><a href="#count_lt">count_lt</a></dt>
+<dt><a href="#count_neq">count_neq</a></dt>
+<dt><a href="#cumulative">cumulative</a></dt>
+<dt><a href="#decreasing">decreasing</a></dt>
+<dt><a href="#diffn">diffn</a></dt>
+<dt><a href="#disjoint">disjoint</a></dt>
+<dt><a href="#distribute">distribute</a></dt>
+<dt><a href="#element">element</a></dt>
+<dt><a href="#exactly">exactly</a></dt>
+<dt><a href="#global_cardinality">global_cardinality</a></dt>
+<dt><a href="#global_cardinality">global_cardinality_closed</a></dt>
+<dt><a href="#global_cardinality_low_up">global_cardinality_low_up</a></dt>
+<dt><a href="#global_cardinality_low_up">global_cardinality_low_up_closed</a></dt>
+<dt><a href="#increasing">increasing</a></dt>
+<dt><a href="#int_set_channel">int_set_channel</a></dt>
+<dt><a href="#inverse">inverse</a></dt>
+<dt><a href="#inverse_set">inverse_set</a></dt>
+<dt><a href="#lex_greater">lex_greater</a></dt>
+<dt><a href="#lex_greatereq">lex_greatereq</a></dt>
+<dt><a href="#lex_less">lex_less</a></dt>
+<dt><a href="#lex_lesseq">lex_lesseq</a></dt>
+<dt><a href="#lex2">lex2</a></dt>
+<dt><a href="#link_set_to_booleans">link_set_to_booleans</a></dt>
+<dt><a href="#maximum">maximum</a></dt>
+<dt><a href="#member">member</a></dt>
+<dt><a href="#minimum">minimum</a></dt>
+<dt><a href="#nvalue">nvalue</a></dt>
+<dt><a href="#partition_set">partition_set</a></dt>
+<dt><a href="#range">range</a></dt>
+<dt><a href="#regular">regular</a></dt>
+<dt><a href="#roots">roots</a></dt>
+<dt><a href="#sliding_sum">sliding_sum</a></dt>
+<dt><a href="#sort">sort</a></dt>
+<dt><a href="#strict_lex2">strict_lex2</a></dt>
+<dt><a href="#subcircuit">subcircuit</a></dt>
+<dt><a href="#sum_pred">sum_pred (sum)</a></dt>
+<dt><a href="#table">table</a></dt>
+<dt><a href="#value_precede">value_precede</a></dt>
+<dt><a href="#value_precede_chain">value_precede_chain</a></dt>
+</dl>
+
+
+<hr>
+
+<dl>
+
+<dt class="name"><a name="alldifferent">alldifferent</a></dt>
+<dd>
+<pre>
+alldifferent(array[int] of var int:        x)
+alldifferent(array[int] of var set of int: x)
+</pre>
+<p class="details">
+Constrains the array of objects <i>x</i> to be all different.<br>
+Also available by the name <tt>all_different</tt>.
+</p>
+</dd>
+
+<dt class="name"><a name="alldifferent_except_0">alldifferent_except_0</a></dt>
+<dd>
+<pre>
+alldifferent_except_0(array[int] of var int: x)
+</pre>
+<p class="details">
+Constrains the elements of the array <i>x</i> to be all different except those
+elements that are assigned the value 0.
+</p>
+<dd>
+
+<dt class="name"><a name="all_disjoint">all_disjoint</a></dt>
+<dd>
+<pre>
+all_disjoint(array[int] of var set of int: x)
+</pre>
+<p class="details">
+Ensures that every pair of sets in the array <i>x</i> is disjoint.
+</p>
+</dd>
+
+<dt class="name"><a name="all_equal">all_equal</a></dt>
+<dd>
+<pre>
+all_equal(array[int] of var int:          x)
+all_equal(array[int] of var set of int:   x)
+</pre>
+<p class="details">
+Constrains the array of objects <i>x</i> to have the same value.
+</p>
+</dd>
+
+<dt class="name"><a name="among">among</a></dt>
+<dd>
+<pre>
+among(var int: n, array[int] of var int: x, set of int: v)
+</pre>
+<p class="details">
+Requires exactly <i>n</i> variables in <i>x</i> to take one of the values in <i>v</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="at_least">at_least</a></dt>
+<dd>
+<pre>
+at_least(int: n, array[int] of var int:        x, int:        v)
+at_least(int: n, array[int] of var set of int: x, set of int: v)
+</pre>
+<p class="details">
+Requires at least <i>n</i> variables in <i>x</i> to take the value <i>v</i>.<br>
+Also available by the name <tt>atleast</tt>.
+</p>
+</dd>
+
+<dt class="name"><a name="at_most">at_most</a></dt>
+<dd>
+<pre>
+at_most(int: n, array[int] of var int:        x, int:        v)
+at_most(int: n, array[int] of var set of int: x, set of int: v)
+</pre>
+<p class="details">
+Requires at most <i>n</i> variables in <i>x</i> to take the value <i>v</i>.<br>
+Also available by the name <tt>atmost</tt>.
+</p>
+</dd>
+
+<dt class="name"><a name="at_most1">at_most1</a></dt>
+<dd>
+<pre>
+at_most1(array[int] of var set of int: s)
+</pre>
+<p class="details">
+Requires that each pair of sets in <i>s</i> overlap in at most one element.<br>
+Also available by the name <tt>atmost1</tt>.
+</p>
+</dd>
+
+<dt class="name"><a name="bin_packing">bin_packing</a></dt>
+<dd>
+<pre>
+bin_packing(int: c, array[int] of var int: bin, array[int] of int: w)
+</pre>
+<p class="details">
+Requires that each item <i>i</i> be put into bin <i>bin[i]</i> such that the
+sum of the weights of each item, <i>w[i]</i>, in each bin does not exceed
+the capacity <i>c</i>.<br>
+Aborts if an item has a negative weight or if the capacity is negative.<br>
+Aborts if the index sets of <i>bin</i> and <i>w</i> are not identical.
+</p>
+</dd>
+
+<dt class="name"><a name="bin_packing_capa">bin_packing_capa</a></dt>
+<dd>
+<pre>
+bin_packing_capa(array[int] of int: c, array[int] of var int: bin, array[int] of int:w)
+</pre>
+<p class="details">
+Requires that each item <i>i</i> be put into bin <i>bin[i]</i> such that the
+sum of the weights of each item, <i>w[i]</i>, in each bin <i>b</i> does not
+exceed the capacity <i>c[b]</i>.<br>
+Aborts if an item has negative weight.<br>
+Aborts if the index sets of <i>bin</i> and <i>w</i> are not identical.
+</p>
+</dd>
+
+<dt class="name"><a name="bin_packing_load">bin_packing_load</a></dt>
+<dd>
+<pre>
+bin_backing_load(array[int] of var int: l, array[int] of var int: bin, array[int] of int: w)
+</pre>
+<p class="details">
+Requires that each item <i>i</i> be put into bin <i>bin[i]</i> such that the
+sum of the weights of each item, <i>w[i]</i>, in each bin <i>b</i> is equal to
+the load <i>l[b]</i>.<br>
+Aborts if an item has negative weight.<br>
+Aborts if the index sets of <i>bin</i> and <i>w</i> are not identical.
+</p>
+</dd>
+
+<dt class="name"><a name="circuit">circuit</a></dt>
+<dd>
+<pre>
+circuit[array[int] of var int: x)
+</pre>
+<p class="details">
+Constraints the elements of <i>x</i> to define a circuit where <i>x[i] = j</i>
+mean that <i>j</i> is the successor of <i>i</i>.
+</p>
+</dd>
+
+<!-- The 'comparison_rel_array' constraint is only used by Cadmium produced models -->
+
+<dt class="name"><a name="count_eq">count_eq</a></dt>
+<dd>
+<pre>
+count_eq(array[int] of var int: x, var int: y, var int: c)
+</pre>
+<p class="details">
+Constrains <i>c</i> to be the number of occurrences of <i>y</i> in <i>x</i>.<br>
+Also available by the name <tt>count</tt>.
+</p>
+</dd>
+
+<dt class="name"><a name="count_geq">count_geq</a></dt>
+<dd>
+<pre>
+count_geq(array[int] of var int: x, var int: y, var int: c)
+</pre>
+<p class="details">
+Constrains <i>c</i> to greater than or equal to the number of occurrences of <i>y</i> in <i>x</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="count_gt">count_gt</a></dt>
+<dd>
+<pre>
+count_gt(array[int] of var int: x, var int: y, var int: c)
+</pre>
+<p class="details">
+Constrains <i>c</i> to strictly greater than the number of occurrences of <i>y</i> in <i>x</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="count_leq">count_leq</a></dt>
+<dd>
+<pre>
+count_leq(array[int] of var int: x, var int: y, var int: c)
+</pre>
+<p class="details">
+Constrains <i>c</i> to less than or equal to the number of occurrences of <i>y</i> in <i>x</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="count_lt">count_lt</a></dt>
+<dd>
+<pre>
+count_lt(array[int] of var int: x, var int: y, var int: c)
+</pre>
+<p class="details">
+Constrains <i>c</i> to strictly less than the number of occurrences of <i>y</i> in <i>x</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="count_neq">count_neq</a></dt>
+<dd>
+<pre>
+count_neq(array[int] of var int: x, var int: y, var int: c)
+</pre>
+<p class="details">
+Constrains <i>c</i> to not be the number of occurrences of <i>y</i> in <i>x</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="cumulative">cumulative</a></dt>
+<dd>
+<pre>
+cumulative(array[int] of var int: s, array[int] of var int: d, array[int] of var int: r, var int: b)
+</pre>
+<p class="details">
+Requires that a set of tasks given by start times <i>s</i>, durations <i>d</i>, and
+resource requirements <i>r</i>, never require more than a global resource bound
+<i>b</i> at any one time.<br>
+Aborts if <i>s</i>, <i>d</i>, and <i>r</i> do not have identical index sets.<br>
+Aborts if a duration or resource requirement is negative.
+</p>
+</dd>
+
+<dt class="name"><a name="decreasing">decreasing</a></dt>
+<dd>
+<pre>
+decreasing(array[int] of var bool:       x)
+decreasing(array[int] of var float:      x)
+decreasing(array[int] of var int:        x)
+decreasing(array[int] of var set of int: x)
+</pre>
+<p class="details">
+Requires that the array <i>x</i> is in (non-strictly) decreasing order.
+</p>
+</dd>
+
+<dt class="name"><a name="diffn">diffn</a></dt>
+<dd>
+<pre>
+diffn(array[int] of var int: x,  array[int] of var int: y,
+      array[int] of var int: dx, array[int] of var int: dy)
+</pre>
+<p class="details">
+Constrains rectangles, given by their origins <i>x,y</i> and sizes <i>dx,dy</i>,
+to be non-overlapping.
+<p>
+
+<dt class="name"><a name="disjoint">disjoint</a></dt>
+<dd>
+<pre>
+disjoint(var set of int: s, var set of int: t)
+</pre>
+<p class="details">
+Requires that sets <i>s</i> and <i>t</i> do not intersect.
+<p>
+
+<dt class="name"><a name="distribute">distribute</a></dt>
+<dd>
+<pre>
+distribute(array[int] of var int: card, array[int] of var int: value, array[int] of var int: base)
+</pre>
+<p class="details">
+Requires that <i>card</i>[<i>i</i>] is the number of occurrences of <i>value</i>[<i>i</i>] in <i>base</i>.<br/>
+In this implementation the values in <i>value</i> need not be distinct.<br/>
+Aborts if <i>card</i> and <i>value</i> do not have identical index sets.
+</p>
+</dd>
+
+<dt class="name"><a name="element">element</a></dt>
+<dd>
+<pre>
+element(var int: i, array[int] of var bool:       x, var bool:       y)
+element(var int: i, array[int] of var float:      x, var float:      y)
+element(var int: i, array[int] of var int:        x, var int:        y)
+element(var int: i, array[int] of var set of int: x, var set of int: y)
+</pre>
+<p class="details">
+The same as <i>x</i>[<i>i</i>] = <i>y</i>.
+That is, <i>y</i> is the <i>i</i>th element of the array <i>x</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="exactly">exactly</a></dt>
+<dd>
+<pre>
+exactly(int: n, array[int] of var int:        x, int:        v)
+exactly(int: n, array[int] of var set of int: x, set of int: v)
+</pre>
+<p class="details">
+Requires exactly <i>n</i> variables in <i>x</i> to take the value <i>v</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="global_cardinality">global_cardinality</a></dt>
+<dd>
+<pre>
+global_cardinality(array[int] of var int: x, array[int] of int: cover, array[int] of var int: counts)
+</pre>
+<p class="details">
+Requires that the number of occurrences of <i>cover</i>[<i>i</i>] in <i>x</i> is <i>counts</i>[<i>i</i>].<br/>
+Aborts if <i>cover</i> and <i>counts</i> do not have identical index sets.
+</p>
+</dd>
+
+<dt class="name"><a name="global_cardinality_closed">global_cardinality_closed</a></dt>
+<dd>
+<pre>
+global_cardinality_closed(array[int] of var int: x, array[int] of int: cover, array[int] of var int: counts)
+</pre>
+<p class="details">
+Requires that the number of occurrences of <i>cover</i>[<i>i</i>] in <i>x</i> is <i>counts</i>[<i>i</i>].<br/>
+The elements of <i>x</i> must take their values from <i>cover</i>.<br/>
+Aborts if <i>cover</i> and <i>counts</i> do not have identical index sets.
+</p>
+</dd>
+
+<dt class="name"><a name="global_cardinality_low_up">global_cardinality_low_up</a></dt>
+<dd>
+<pre>
+global_cardinality_low_up(array[int] of var int: x, array[int] of int: cover, array[int] of int: lb, array[int] of int: ub)
+</pre>
+<p class="details">
+Requires that for all <i>i</i>, the value <i>cover</i>[<i>i</i>] appears at least
+<i>lb</i>[<i>i</i>] and at most <i>ub</i>[<i>i</i>] times in the array <i>x</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="global_cardinality_low_up_closed">global_cardinality_low_up_closed</a></dt>
+<dd>
+<pre>
+global_cardinality_low_up_closed(array[int] of var int: x, array[int] of int: cover, array[int] of int: lb, array[int] of int: ub)
+</pre>
+<p class="details">
+Requires that for all <i>i</i>, the value <i>cover</i>[<i>i</i>] appears at least
+<i>lb</i>[<i>i</i>] and at most <i>ub</i>[<i>i</i>] times in the array <i>x</i>.<br/>
+The elements of <i>x</i> must take their values from <i>cover</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="increasing">increasing</a></dt>
+<dd>
+<pre>
+increasing(array[int] of var bool:       x)
+increasing(array[int] of var float:      x)
+increasing(array[int] of var int:        x)
+increasing(array[int] of var set of int: x)
+</pre>
+<p class="details">
+Requires that the array <i>x</i> is in (non-strictly) increasing order.
+</p>
+</dd>
+
+<dt class="name"><a name="int_set_channel">int_set_channel</a></dt>
+<dd>
+<pre>
+int_set_channel(array[int] of var int: x, array[int] of var set of int: y)
+</pre>
+<p class="details">
+Requires that <i>x</i>[<i>i</i>] = <i>j</i> if and only if <i>i</i> &isin; <i>y</i>[<i>j</i>].
+</p>
+</dd>
+
+<dt class="name"><a name="inverse">inverse</a></dt>
+<dd>
+<pre>
+inverse(array[int] of var int: f, array[int] of var int: invf)
+</pre>
+<p class="details">
+Constrains two arrays to represent inverse functions of each other.
+All the values in each array must be within the index
+set of the other array.
+</p>
+</dd>
+
+<dt class="name"><a name="inverse_set">inverse_set</a></dt>
+<dd>
+<pre>
+inverse_set(array[int] of var set of int: f, array[int] of var set of int: invf)
+</pre>
+<p class="details">
+Constrains the two arrays <i>f</i> and <i>invf</i> so that
+a <i>j</i> &isin; <i>f</i>[<i>i</i>] if and only if <i>i</i> &isin; <i>invf</i>[<i>j</i>].
+All the values in each array's sets must be within the index set of the other array.
+</p>
+</dd>
+
+<dt class="name"><a name="lex_greater">lex_greater</a></dt>
+<dd>
+<pre>
+lex_greater(array[int] of var bool:       x, array[int] of var bool:       y)
+lex_greater(array[int] of var float:      x, array[int] of var float:      y)
+lex_greater(array[int] of var int:        x, array[int] of var int:        y)
+lex_greater(array[int] of var set of int: x, array[int] of var set of int: y)
+</pre>
+<p class="details">
+Requires that the array <i>x</i> is strictly lexicographically greater than array <i>y</i>.<br/>
+Compares them from first to last element, regardless of indices.
+</p>
+</dd>
+
+<dt class="name"><a name="lex_greatereq">lex_greatereq</a></dt>
+<dd>
+<pre>
+lex_greatereq(array[int] of var bool:       x, array[int] of var bool:       y)
+lex_greatereq(array[int] of var float:      x, array[int] of var float:      y)
+lex_greatereq(array[int] of var int:        x, array[int] of var int:        y)
+lex_greatereq(array[int] of var set of int: x, array[int] of var set of int: y)
+</pre>
+<p class="details">
+Requires that the array <i>x</i> is lexicographically greater than or equal to
+array <i>y</i>.<br/>
+Compares them from first to last element, regardless of indices.
+</p>
+</dd>
+
+<dt class="name"><a name="lex_less">lex_less</a></dt>
+<dd>
+<pre>
+lex_less(array[int] of var bool:       x, array[int] of var bool:       y)
+lex_less(array[int] of var float:      x, array[int] of var float:      y)
+lex_less(array[int] of var int:        x, array[int] of var int:        y)
+lex_less(array[int] of var set of int: x, array[int] of var set of int: y)
+</pre>
+<p class="details">
+Requires that the array <i>x</i> is strictly lexicographically less than array <i>y</i>.<br/>
+Compares them from first to last element, regardless of indices.
+</p>
+</dd>
+
+<dt class="name"><a name="lex_lesseq">lex_lesseq</a></dt>
+<dd>
+<pre>
+lex_lesseq(array[int] of var bool:       x, array[int] of var bool:       y)
+lex_lesseq(array[int] of var float:      x, array[int] of var float:      y)
+lex_lesseq(array[int] of var int:        x, array[int] of var int:        y)
+lex_lesseq(array[int] of var set of int: x, array[int] of var set of int: y)
+</pre>
+<p class="details">
+Requires that the array <i>x</i> is lexicographically less than or equal to
+array <i>y</i>.<br/>
+Compares them from first to last element, regardless of indices.
+</p>
+</dd>
+
+<dt class="name"><a name="lex2">lex2</a></dt>
+<dd>
+<pre>
+lex2(array[int, int] of var int: x)
+</pre>
+<p class="details">
+Require adjacent rows and adjacent columns in the the array <i>x</i> to
+be lexicographically ordered.
+Adjacent rows and adjacent columns may be equal.
+</p>
+</dd>
+
+<dt class="name"><a name="link_set_to_booleans">link_set_to_booleans</a></dt>
+<dd>
+<pre>
+link_set_to_booleans(var set of int: s, array[int] of var bool: b)
+</pre>
+<p class="details">
+The array of booleans <i>b</i> is the characteristic representation of the set <i>s</i>.<br/>
+Aborts if the index set of <i>b</i> is not a superset of the possible values of <i>s</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="maximum">maximum</a></dt>
+<dd>
+<pre>
+maximum(var int:   m, array[int] of var int:   x)
+maximum(var float: m, array[int] of var float: x)
+</pre>
+<p class="details">
+Constrains <i>m</i> to be the maximum of the values in <i>x</i>.
+(The array <i>x</i> must have at least one element.)
+</p>
+</dd>
+
+<dt class="name"><a name="member">member</a></dt>
+<dd>
+<pre>
+member(array[int] of var bool:       x, var bool:       y)
+member(array[int] of var float:      x, var float:      y)
+member(array[int] of var int:        x, var int:        y)
+member(array[int] of var set of int: x, var set of int: y)
+member(var set of int:               x, var int:        y)
+</pre>
+<p class="details">
+Requires that <i>y</i> occurs in the array or set <i>x</i>.
+</p>
+</dd>
+
+
+<dt class="name"><a name="minimum">minimum</a></dt>
+<dd>
+<pre>
+minimum(var float: m, array[int] of var float: x)
+minimum(var int:   m, array[int] of var int:   x)
+</pre>
+<p class="details">
+Constrains <i>m</i> to be the minimum of the values in <i>x</i>.
+(The array <i>x</i> must have at least one element.)
+</p>
+</dd>
+
+<dt class="name"><a name="nvalue">nvalue</a></dt>
+<dd>
+<pre>
+nvalue(var int: n, array[int] of var int: x)
+</pre>
+<p class="details">
+Requires that the number of distinct values in <i>x</i> is <i>n</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="partition_set">partition_set</a></dt>
+<dd>
+<pre>
+partition_set(array[int] of var set of int: s, set of int: universe)
+</pre>
+<p class="details">
+Partitions <i>universe</i> into disjoint sets.
+</p>
+</dd>
+
+<dt class="name"><a name="range">range</a></dt>
+<dd>
+<pre>
+range(array[int] of var int: x, var set of int: s, var set of int: t)
+</pre>
+<p class="details">
+Requires that the image of function <i>x</i> (represented as an array) on set
+of values <i>s</i> is <i>t</i>.<br>
+Aborts if <i>ub(s)</i> is not a subset of the index set of <i>x</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="regular">regular</a></dt>
+<dd>
+<pre>
+regular(array[int] of var int: x, int: Q, int: S, array[int,int] of int: d, int: q0, set of int: F)
+</pre>
+<p class="details">
+The sequence of values in array <i>x</i> (which must all be in the range 1..<i>S</i>)
+is accepted by the DFA of <i>Q</i> states with input 1..<i>S</i> and transition
+function <i>d</i> (which maps &lang;1..<i>Q</i>, 1..<i>S</i>&rang; to 0..<i>Q</i>)
+and initial state <i>q0</i>
+(which must be in 1..<i>Q</i>) and accepting states <i>F</i> (which all must be in
+1..<i>Q</i>).  State <i>0</i> is reserved to be an always failing state.<br/>
+Aborts if <i>Q</i> &lt; 1.<br>
+Aborts if <i>S</i> &lt; 1.<br>
+Aborts if the transition function <i>d</i> is not in <i>[1..Q, 1..s]</i>.<br>
+Aborts if the start state, <i>q0</i>, is not in <i>1..Q</i>.<br>
+Aborts if <i>F</i> is not a subset of <i>1..Q</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="roots">roots</a></dt>
+<dd>
+<pre>
+roots(array[int] of var int: x, var set of int: s, var set of int: t)
+</pre>
+<p class="details">
+Requires that <i>x</i>[<i>i</i>] &isin; <i>t</i> for all <i>i</i> &isin; <i>s</i>.<br>
+Aborts if <i>ub(s)</i> is not a subset of the index set of <i>x</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="sliding_sum">sliding_sum</a></dt>
+<dd>
+<pre>
+sliding_sum(int: low, int: up, int: seq, array[int] of var int: vs)
+</pre>
+<p class="details">
+Requires that in each subsequence <i>vs</i>[<i>i</i>], ..., <i>vs</i>[<i>i</i> + <i>seq</i> - 1]
+the sum of the values belongs to the interval [<i>low</i>, <i>up</i>].
+</p>
+</dd>
+
+<dt class="name"><a name="sort">sort</a></dt>
+<dd>
+<pre>
+sort(array[int] of var int: x, array[int] of var int: y)
+</pre>
+<p class="details">
+Requires that the multiset of values in <i>x</i> is the same as the
+multiset of values in <i>y</i> but <i>y</i> is in sorted order.<br>
+Aborts if the cardinality of the index sets of <i>x</i> and <i>y</i>
+is not equal.
+</p>
+</dd>
+
+<dt class="name"><a name="strict_lex2">strict_lex2</a></dt>
+<dd>
+<pre>
+strict_lex2(array[int, int] of var int: x)
+</pre>
+<p class="details">
+Require adjacent rows and adjacent columns in the the array <i>x</i> to
+be lexicographically ordered.
+Adjacent rows and adjacent columns cannot be equal.
+</p>
+</dd>
+
+<dt class="name"><a name="subcircuit">subcircuit</a></dt>
+<dd>
+<pre>
+subcircuit(array[int] of var int: x)
+</pre>
+<p class="details">
+Constrains the elements of <i>x</i> to define a subcircuit where <i>x[i] = j</i>
+means that <i>j</i> is the successor of <i>i</i> and <i>x[i] = i</i> means
+that <i>i</i> is not in the circuit.
+</p>
+</dd>
+
+<dt class="name"><a name="sum_pred">sum_pred</a></dt>
+<dd>
+<pre>
+sum_pred(var int: i, array[int] of set of int: sets, array[int] of int: c, var int: s)
+</pre>
+<p class="details">
+Requires that the sum of <i>c</i>[<i>i1</i>]...<i>c</i>[<i>iN</i>] equals <i>s</i>, where <i>i1..iN</i> are the
+elements of the <i>i</i>th set in <i>sets</i>.<br>
+This constraint is usually named <tt>sum</tt>, but using that would conflict with the MiniZinc built-in
+function of the same name.
+</p>
+</dd>
+
+<dt class="name"><a name="table">table</a></dt>
+<dd>
+<pre>
+table(array[int] of var bool: x, array[int, int] of bool: t)
+table(array[int] of var int:  x, array[int, int] of int:  t)
+</pre>
+<p class="details">
+Represents the constraint <i>x &isin; t</i> where we
+consider each row in <i>t</i> to be a tuple and <i>t</i> as a set of tuples.<br>
+Aborts if the second dimension of <i>t</i> does not equal the number of variables in <i>x</i>.<br>
+The default decomposition of this constraint cannot be flattened if it occurs in
+a reified context.
+</p>
+</dd>
+
+<dt class="name"><a name="value_precede">value_precede</a></dt>
+<dd>
+<pre>
+value_precede(int: s, int: t, array[int] of var int: x)
+value_precede(int: s, int: t, array[int] of var set of int: x)
+</pre>
+<p class="details">
+Requires that <i>s</i> precede <i>t</i> in the array <i>x</i>.<br>
+For integer variables this constraint requires that if an element of <i>x</i>
+is equal to <i>t</i>, then another element of <i>x</i> with a lower index
+is equal to <i>s</i>.<br>
+For set variables this constraint requires that if an element of <i>x</i>
+contains <i>t</i> but not <i>s</i>, then another element of <i>x</i> with
+lower index contains <i>s</i> but not <i>t</i>.
+</p>
+</dd>
+
+<dt class="name"><a name="value_precede_chain">value_precede_chain</a></dt>
+<dd>
+<pre>
+value_precede_chain(array[int] of int: c, array[int] of var int: x)
+value_precede_chain(array[int] of int: c, array[int] of var set of int: x)
+</pre>
+<p class="details">
+Requires that the <a href="#value_precede">value_precede</a> constraint is
+true for every pair of adjacent integers in <i>c</i> in the array <i>x</i>.
+</p>
+</dd>
+
+</dl>
+
+<hr>
+
+</body>
+</html>

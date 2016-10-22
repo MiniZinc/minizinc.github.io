@@ -1,0 +1,712 @@
+<!-- XML-FlatZinc DTD Version 2 -->
+<!-- An XML representation of FlatZinc 1.2, 1.3, 1.4, 1.5 and 1.6 -->
+<!-- Author: Julien Fischer -->
+
+<!-- ====================================================================== -->
+<!--                      FlatZinc Model Instances                          -->
+<!-- ====================================================================== -->
+
+<!ELEMENT flatzinc ((predicate*),(parameter*),(variable*),(constraint*),solve)>
+<!ATTLIST flatzinc
+    model CDATA #REQUIRED
+>
+
+<!ELEMENT solve ((satisfy|minimize|maximize),annotation*)>
+
+<!-- ====================================================================== -->
+<!--                            FlatZinc Items                              -->
+<!-- ====================================================================== -->
+
+<!--
+    The names of the arguments of a predicate declaration are not included
+    in XML-FlatZinc.  The rationale for this is that those names are not
+    used by FlatZinc and tools can assign arbitrary names to the arguments
+    when converting from XML-FlatZinc.
+
+    Predicate argument types occur in document order.
+-->
+<!ELEMENT predicate 
+    ( bool                                   | 
+      int                                    | 
+      int-range                              | 
+      int-set                                |    
+      float                                  | 
+      float-range                            |
+      set-of-int                             | 
+      set-of-int-range                       |
+      set-of-int-set                         |
+      array-bool                             |
+      array-int                              |
+      array-int-range                        | 
+      array-int-set                          | 
+      array-float                            | 
+      array-float-range                      |
+      array-set-of-int                       |
+      array-set-of-int-range                 |
+      array-set-of-int-set                   |
+      implicit-array-bool                    |
+      implicit-array-int                     | 
+      implicit-array-int-range               | 
+      implicit-array-int-set                 | 
+      implicit-array-float                   |    
+      implicit-array-float-range             |
+      implicit-array-set-of-int              | 
+      implicit-array-set-of-int-range        | 
+      implicit-array-set-of-int-set          |
+      var-bool                               |   
+      var-int                                |
+      var-int-range                          |
+      var-int-set                            |
+      var-float                              |
+      var-float-range                        |
+      var-set-of-int                         |
+      var-set-of-int-range                   |
+      var-set-of-int-set                     |
+      array-var-bool                         |
+      array-var-int                          |
+      array-var-int-range                    |
+      array-var-int-set                      |
+      array-var-float                        |
+      array-var-float-range                  |
+      array-var-set-of-int                   |
+      array-var-set-of-int-range             |
+      array-var-set-of-int-set               |
+      implicit-array-var-bool                | 
+      implicit-array-var-int                 | 
+      implicit-array-var-int-range           |
+      implicit-array-var-int-set             | 
+      implicit-array-var-float               | 
+      implicit-array-var-float-range         |
+      implicit-array-var-set-of-int          |
+      implicit-array-var-set-of-int-range    | 
+      implicit-array-var-set-of-int-set
+    )+
+>
+
+<!ATTLIST predicate
+    name  CDATA #REQUIRED
+    arity CDATA #REQUIRED
+>
+
+<!--
+     FlatZinc parameters must be assigned.
+     Note that in XML-FlatZinc the type of a parameter is not listed
+     explicitly since it can be inferred from the assignment.
+-->
+<!ELEMENT parameter (
+    ( 
+    bool-literal          |
+    int-literal           | 
+    float-literal         |
+    int-range-expr	  |
+    set-of-int-literal    | 
+    array-bool-literal    |
+    array-int-literal     |
+    array-float-literal   |
+    array-set-of-int-literal
+    ),
+    annotation*)
+>
+<!ATTLIST parameter
+    name CDATA #REQUIRED
+>
+
+<!ELEMENT variable (
+    ( var-bool                   |   
+      var-int                    |
+      var-int-range              |
+      var-int-set                |
+      var-float                  |
+      var-float-range            |
+      var-set-of-int-range       |
+      var-set-of-int-set         |
+      array-var-bool             |
+      array-var-int              |
+      array-var-int-range        |
+      array-var-int-set          |
+      array-var-float            |
+      array-var-float-range      |
+      array-var-set-of-int-range |
+      array-var-set-of-int-set
+    ), 
+    ( id                       |
+      bool-literal             |
+      int-literal              |
+      float-literal            |
+      int-range-expr	       |
+      set-of-int-literal       | 
+      array-bool-literal       |
+      array-int-literal        |
+      array-float-literal      |
+      array-set-of-int-literal |
+      array-id-expr         |
+      array-access-expr     |
+      set-of-int-expr       |
+      array-accesses-expr   |
+      array-expr
+    )?,
+    annotation*)
+>
+<!ATTLIST variable
+    name CDATA #REQUIRED
+    is_defined_var    (yes|no) "no"
+    var_is_introduced (yes|no) "no"
+>
+
+
+<!-- All constraints in FlatZinc are predicate applications.
+     All predicate applications must have at least one argument.
+     Predicate arguments are in document order.
+-->
+
+<!ELEMENT constraint (
+    (
+    id                       |
+    bool-literal             |
+    int-literal              |
+    float-literal            |
+    int-range-expr	     |
+    set-of-int-literal       | 
+    array-bool-literal       |
+    array-int-literal        |
+    array-float-literal      |
+    array-set-of-int-literal |
+    array-id-expr         |
+    array-access-expr     |
+    set-of-int-expr       |
+    array-accesses-expr   |
+    array-expr
+    )+,
+    annotation*)>
+<!ATTLIST constraint
+    name        CDATA #REQUIRED
+    arity       CDATA #REQUIRED
+    defines_var CDATA #IMPLIED
+>
+
+<!-- ====================================================================== -->
+<!--                            FlatZinc Types                              -->
+<!-- ====================================================================== -->
+
+<!-- Type: bool -->     
+<!ELEMENT bool EMPTY>
+
+<!-- Type: int -->
+<!ELEMENT int EMPTY>
+
+<!-- Type: lo..hi (where lo and hi are integers) -->
+<!ELEMENT int-range EMPTY>
+<!ATTLIST int-range
+    lo CDATA #REQUIRED
+    hi CDATA #REQUIRED
+>
+
+<!-- Type: {...} (a set of integers of cardinality card) -->
+<!ELEMENT int-set (#PCDATA)>
+<!ATTLIST int-set
+    card CDATA #REQUIRED
+>
+
+<!-- Type: float -->
+<!ELEMENT float EMPTY>
+
+<!-- Type: lo..hi (where lo and hi are floats) -->
+<!ELEMENT float-range EMPTY>
+<!ATTLIST float-range
+    lo CDATA #REQUIRED
+    hi CDATA #REQUIRED
+>
+
+<!-- Type: set of int -->
+<!ELEMENT set-of-int EMPTY>
+
+<!-- Type: set of lo..hi (where lo and hi are integers) -->
+<!ELEMENT set-of-int-range EMPTY>
+<!ATTLIST set-of-int-range
+    lo CDATA #REQUIRED
+    hi CDATA #REQUIRED
+>
+
+<!-- Type: set of {...} (set of int whose elements are given by 
+     a set of integers of cardinality card)
+-->
+<!ELEMENT set-of-int-set (#PCDATA)>
+<!ATTLIST set-of-int-set
+    card CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of bool -->
+<!ELEMENT array-bool EMPTY>
+<!ATTLIST array-bool size CDATA #REQUIRED>
+
+<!-- Type: array[1..size] of int -->
+<!ELEMENT array-int EMPTY>
+<!ATTLIST array-int size CDATA #REQUIRED>
+
+<!-- Type: array[1..size] of lo..hi -->
+<!ELEMENT array-int-range EMPTY>
+<!ATTLIST array-int-range
+    size CDATA #REQUIRED
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of {...} -->
+<!ELEMENT array-int-set (#PCDATA)>
+<!ATTLIST array-int-set
+    size CDATA #REQUIRED
+    card CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of float -->
+<!ELEMENT array-float EMPTY>
+<!ATTLIST array-float size CDATA #REQUIRED>
+
+<!-- Type: array[1..size] of lo..hi -->
+<!ELEMENT array-float-range EMPTY>
+<!ATTLIST array-float-range
+    size CDATA #REQUIRED
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of set of int -->
+<!ELEMENT array-set-of-int EMPTY>
+<!ATTLIST array-set-of-int
+    size CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of set of lo..hi -->
+<!ELEMENT array-set-of-int-range EMPTY>
+<!ATTLIST array-set-of-int-range
+    size CDATA #REQUIRED
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of set of {...} -->
+<!ELEMENT array-set-of-int-set (#PCDATA)>
+<!ATTLIST array-set-of-int-set
+    size CDATA #REQUIRED
+    card CDATA #REQUIRED
+>
+
+<!-- Type: array[int] of bool -->
+<!ELEMENT implicit-array-bool EMPTY>
+
+<!-- Type: array[int] of int -->
+<!ELEMENT implicit-array-int EMPTY>
+
+<!-- Type: array[int] of lo..hi -->
+<!ELEMENT implicit-array-int-range EMPTY>
+<!ATTLIST implicit-array-int-range
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[int] of {...} -->
+<!ELEMENT implicit-array-int-set (#PCDATA)>
+<!ATTLIST implicit-array-int-set
+    card CDATA #REQUIRED
+>
+
+<!-- Type: array[int] of float -->
+<!ELEMENT implicit-array-float EMPTY>
+
+<!-- Type: array[int] of lo..hi -->
+<!ELEMENT implicit-array-float-range EMPTY>
+<!ATTLIST implicit-array-float-range
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[int] of set of int -->
+<!ELEMENT implicit-array-set-of-int EMPTY>
+
+<!-- Type: array[int] of set of lo..hi -->
+<!ELEMENT implicit-array-set-of-int-range EMPTY>
+<!ATTLIST implicit-array-set-of-int-range
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[int] of set of {...} -->
+<!ELEMENT implicit-array-set-of-int-set (#PCDATA)>
+<!ATTLIST implicit-array-set-of-int-set
+    card CDATA #REQUIRED
+
+>
+<!-- Type: var bool -->
+<!ELEMENT var-bool EMPTY>
+
+<!-- Type: var int -->
+<!ELEMENT var-int EMPTY>
+
+<!-- Type: var lo..hi (where lo and hi are integers) -->
+<!ELEMENT var-int-range EMPTY>
+<!ATTLIST var-int-range
+    lo CDATA #REQUIRED
+    hi CDATA #REQUIRED
+>
+
+<!-- Type: var {...} -->
+<!ELEMENT var-int-set (#PCDATA)>
+<!ATTLIST var-int-set
+    card CDATA #REQUIRED
+>
+
+<!-- Type: var float -->
+<!ELEMENT var-float EMPTY>
+
+<!-- Type: var lo..hi (where lo and hi are floats) -->
+<!ELEMENT var-float-range EMPTY>
+<!ATTLIST var-float-range
+    lo CDATA #REQUIRED
+    hi CDATA #REQUIRED
+>
+
+<!-- Type: var set of int -->
+<!ELEMENT var-set-of-int EMPTY>
+
+<!-- Type: var set of lo..hi -->
+<!ELEMENT var-set-of-int-range EMPTY>
+<!ATTLIST var-set-of-int-range
+    lo CDATA #REQUIRED
+    hi CDATA #REQUIRED
+>
+
+<!-- Type: var set of {...} -->
+<!ELEMENT var-set-of-int-set (#PCDATA)>
+<!ATTLIST var-set-of-int-set
+    card CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of var bool -->
+<!ELEMENT array-var-bool EMPTY>
+<!ATTLIST array-var-bool size CDATA #REQUIRED>
+
+<!-- Type: array[1..size] of var int -->
+<!ELEMENT array-var-int EMPTY>
+<!ATTLIST array-var-int size CDATA #REQUIRED>
+
+<!-- Type: array[1..size] of var lo..hi -->
+<!ELEMENT array-var-int-range EMPTY>
+<!ATTLIST array-var-int-range
+    size CDATA #REQUIRED
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of var {...} -->
+<!ELEMENT array-var-int-set (#PCDATA)>
+<!ATTLIST array-var-int-set
+    size CDATA #REQUIRED
+    card CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of var float -->
+<!ELEMENT array-var-float EMPTY>
+<!ATTLIST array-var-float size CDATA #REQUIRED>
+
+<!-- Type: array[1..size] of var lo..hi -->
+<!ELEMENT array-var-float-range EMPTY>
+<!ATTLIST array-var-float-range
+    size CDATA #REQUIRED
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of var set of int -->
+<!ELEMENT array-var-set-of-int EMPTY>
+<!ATTLIST array-var-set-of-int
+    size CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of var set of lo..hi -->
+<!ELEMENT array-var-set-of-int-range EMPTY>
+<!ATTLIST array-var-set-of-int-range
+    size CDATA #REQUIRED
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[1..size] of var set of {...} -->
+<!ELEMENT array-var-set-of-int-set (#PCDATA)>
+<!ATTLIST array-var-set-of-int-set
+    size CDATA #REQUIRED
+    card CDATA #REQUIRED
+>
+
+<!-- Type: array[int] of var bool -->
+<!ELEMENT implicit-array-var-bool EMPTY>
+
+<!-- Type: array[int] of var int -->
+<!ELEMENT implicit-array-var-int EMPTY>
+
+<!-- Type: array[int] of var lo..hi -->
+<!ELEMENT implicit-array-var-int-range EMPTY>
+<!ATTLIST implicit-array-var-int-range
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[int] of var {...} -->
+<!ELEMENT implicit-array-var-int-set (#PCDATA)>
+<!ATTLIST implicit-array-var-int-set
+    card CDATA #REQUIRED
+>
+
+<!-- Type: array[int] of var float -->
+<!ELEMENT implicit-array-var-float EMPTY>
+
+<!-- Type: array[int] of var lo..hi -->
+<!ELEMENT implicit-array-var-float-range EMPTY>
+<!ATTLIST implicit-array-var-float-range
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[int] of var set of int -->
+<!ELEMENT implicit-array-var-set-of-int EMPTY>
+
+<!-- Type: array[int] of var set of lo..hi -->
+<!ELEMENT implicit-array-var-set-of-int-range EMPTY>
+<!ATTLIST implicit-array-var-set-of-int-range
+    lo   CDATA #REQUIRED
+    hi   CDATA #REQUIRED
+>
+
+<!-- Type: array[int] of var set of {...} -->
+<!ELEMENT implicit-array-var-set-of-int-set (#PCDATA)>
+<!ATTLIST implicit-array-var-set-of-int-set
+    card CDATA #REQUIRED
+>
+
+<!-- ====================================================================== -->
+<!--                        FlatZinc Expressions                            -->
+<!-- ====================================================================== -->
+
+<!ELEMENT array-expr (
+    (
+        id                 |
+        bool-literal       |
+        int-literal        |
+        float-literal      |
+	set-of-int-literal |
+        int-range-expr     |
+        array-access-expr
+    )*)
+>
+<!ATTLIST array-expr
+    size CDATA #REQUIRED
+>
+  
+<!ELEMENT set-of-int-expr ((id|int-literal|array-access-expr)*)>
+<!ATTLIST set-of-int-expr
+    card CDATA #REQUIRED
+>
+
+<!ELEMENT array-access-expr EMPTY>
+<!ATTLIST array-access-expr
+    name  CDATA #REQUIRED
+    index CDATA #REQUIRED
+>
+
+<!ELEMENT id EMPTY>
+<!ATTLIST id
+    name CDATA #REQUIRED
+> 
+
+<!ELEMENT bool-literal EMPTY>
+<!ATTLIST bool-literal
+    value (true|false) #REQUIRED>
+
+<!ELEMENT int-literal EMPTY>
+<!ATTLIST int-literal
+    value CDATA #REQUIRED
+>
+
+<!ELEMENT float-literal EMPTY>
+<!ATTLIST float-literal
+    value CDATA #REQUIRED
+>
+
+<!ELEMENT string-literal EMPTY>
+<!ATTLIST string-literal
+    value CDATA #REQUIRED
+>
+
+<!ELEMENT set-of-int-literal (#PCDATA)>
+<!ATTLIST set-of-int-literal
+    card CDATA #REQUIRED
+>
+
+<!ELEMENT int-range-expr EMPTY>
+<!ATTLIST int-range-expr
+    lo CDATA #REQUIRED
+    hi CDATA #REQUIRED
+>
+
+<!-- 
+
+The following tags for marking up Boolean, integer, and array literals,
+use CDATA in order to avoid individually marking up each of the array's
+elements.
+
+-->
+
+<!--
+
+FlatZinc Boolean array literals are marked up in XML as single string
+in CDATA using the characters "t" and "f" to signify true and false
+respectively.  No other characters may appear in the CDATA.
+
+For example, the FlatZinc expression
+
+    [true, false, true, false, false]
+
+is represented in XML as:
+    
+    <array-bool-literal size="5">tftff</array-bool-literal>
+
+-->
+<!ELEMENT array-bool-literal (#PCDATA)>
+<!ATTLIST array-bool-literal
+    size CDATA #REQUIRED
+>
+
+<!--
+
+FlatZinc integer array literals are encoded in XML as a whitespace
+separated list of FlatZinc int literals in CDATA.  Any amount of whitespace
+may appear before, between, and after the integers. 
+
+For example, the FlatZinc expression
+
+    [-1, 0, 1]
+
+may be represented in XML as:
+    
+     <array-int-literal size="3"> -1 0 1 </array-int-literal>
+
+-->
+<!ELEMENT array-int-literal (#PCDATA)>
+<!ATTLIST array-int-literal
+    size CDATA #REQUIRED
+>
+
+<!-- 
+
+FlatZinc float array literals are encoded in XML as a whitespace
+separated list of FlatZinc float literals in CDATA.  Any amount of
+whitespace may appear before, between and after the floats.
+
+For example:
+    
+     [1.0, 2.0, 3.0, 4.0]
+
+may be represented in XML as:
+
+    <array-float-literal size="4">1.0 2.0 3.0 4.0</array-float-literal>
+
+-->
+<!ELEMENT array-float-literal (#PCDATA)>
+<!ATTLIST array-float-literal
+    size CDATA #REQUIRED
+>
+
+<!ELEMENT array-set-of-int-literal (set-of-int-literal|int-range-expr)*>
+<!ATTLIST array-set-of-int-literal
+    size CDATA #REQUIRED
+>
+
+<!--
+
+Arrays of identifiers are encoded in XML as a whitespace separated
+list of FlatZinc identifiers in CDATA.  Any amount of whitespace may
+appear before, between, and after the identifiers.
+
+For example, the FlatZinc expression
+
+    [foo, bar, baz]
+
+may be represented in XML as:
+
+    <array-id-expr size="3">foo bar baz</array-id-expr>
+
+-->
+
+<!ELEMENT array-id-expr (#PCDATA)>
+<!ATTLIST array-id-expr
+    size CDATA #REQUIRED
+>
+
+
+<!-- 
+
+Arrays of accesses to an array maybe encoded in XML as whitespace separated
+list of indices in CDATA.  Any amount of whitespace may appear before,
+between, and after the indices.
+
+For example, the FlatZinc expression
+
+    [a[1], a[2], a[5]]
+
+may be represent in XML as:
+
+    <array-accesses-expr name="a" size="3">1 2 5</array-accesses-expr>
+
+-->
+
+<!ELEMENT array-accesses-expr (#PCDATA)>
+<!ATTLIST array-accesses-expr
+   name CDATA #REQUIRED
+   size CDATA #REQUIRED 
+>
+
+<!-- ====================================================================== -->
+<!--                           Solve Expressions                            -->
+<!-- ====================================================================== -->
+
+<!ELEMENT satisfy  EMPTY>
+<!ELEMENT minimize (id|array-access-expr)>
+<!ELEMENT maximize (id|array-access-expr)>
+
+<!-- ====================================================================== -->
+<!--                             Annotations                                -->
+<!-- ====================================================================== -->
+
+<!-- Note that annotation arguments appear in document order.  -->
+
+<!ELEMENT annotation    (
+    string-literal        |
+    id                    |
+    bool-literal          |
+    int-literal           |
+    float-literal         |
+    int-range-expr        |
+    set-of-int-literal    | 
+    array-bool-literal    |
+    array-int-literal     |
+    array-float-literal   |
+    array-set-of-int-literal |
+    array-id-expr         |
+    array-access-expr     |
+    set-of-int-expr       |
+    array-accesses-expr   |
+    array-expr            |
+    annotation            |
+    array-annotation)*
+>
+
+<!ATTLIST annotation
+    name  CDATA #REQUIRED
+    arity CDATA #REQUIRED
+>
+
+<!ELEMENT array-annotation (annotation)*>
+<!ATTLIST array-annotation
+     size CDATA #REQUIRED
+>
+
+<!-- ===================== End of XML-FlatZinc DTD ======================= -->

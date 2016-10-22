@@ -1,0 +1,68 @@
+G12/CPX, that is the executable fzn_cpx or fzn_cpx.exe, is distributed under
+"ACADEMIC-USE ONLY Software License" below.
+G12/CPX is Copyright (C) 2012 NICTA.
+
+==============================================================================
+
+ACADEMIC-USE ONLY Software License
+
+G12/CPX ('Licensed Material') is made available to the scientific
+community for non-commercial research purposes such as academic research,
+teaching, scientific publications or personal experimentation. Permission is
+granted by National ICT Australia Limited (NICTA) to you (the 'Licensee') to
+use, copy and distribute the Licensed Material in accordance with the following
+terms and conditions:
+
+1. Licensee must include the name and version number of the software and a
+reference to National ICT Australia Limited (NICTA) in any published work that
+makes use of the Licensed Material.
+
+2. If Licensee alters the content of the Licensed Material or creates any
+derivative work, Licensee must include in the altered Licensed Material or
+derivative work prominent notices to ensure that any recipients know that they
+are not receiving the original Licensed Material.
+
+3. Licensee may not use or distribute the Licensed Material or any derivative
+work for commercial purposes including but not limited to, licensing or selling
+the Licensed Material or using the Licensed Material for commercial gain.
+
+4. The Licensed Material is provided 'AS IS', without any express or implied
+warranties. NICTA does not accept any responsibility for errors or omissions in
+the Licensed Material.
+
+5. This original license notice must be retained in all copies or derivatives
+of the Licensed Material.
+
+6. All rights not expressly granted to the Licensee are reserved by NICTA.
+
+==============================================================================
+
+G12/CPX includes code from Gecode (<http://www.gecode.org.).
+The code from Gecode is licensed according to the following terms:
+   
+   GECODE LICENSE AGREEMENT
+
+   This software and its documentation are copyrighted by the individual
+   authors as listed in each file. The following terms apply to all files
+   associated with the software unless explicitly disclaimed in individual
+   files.
+
+   Permission is hereby granted, free of charge, to any person obtaining a
+   copy of this software and associated documentation files (the
+   "Software"), to deal in the Software without restriction, including
+   without limitation the rights to use, copy, modify, merge, publish,
+   distribute, sublicense, and/or sell copies of the Software, and to
+   permit persons to whom the Software is furnished to do so, subject to
+   the following conditions:
+
+   The above copyright notice and this permission notice shall be included
+   in all copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+

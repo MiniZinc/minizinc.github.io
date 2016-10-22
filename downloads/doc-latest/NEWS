@@ -1,0 +1,1530 @@
+G12 MiniZinc Distribution 1.6
+-----------------------------
+
+Changes to the MiniZinc language:
+
+* MiniZinc now supports implicit array indices in variable declarations,
+  where the array indices can be be inferred from an assignment to the
+  variable.
+
+  For example, you may now write:
+
+      array[int] of int: x = [1, 2, 3, 4];
+
+  instead of
+   
+      array[1..4] of int: x = [1, 2, 3, 4];
+
+  Assigned let-variables may also have implicit array indexes, for example:
+
+      let {
+          array[int] of var int: x = [i | i in 1..p]
+      } in (...)
+
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* The converter now does a much better job of eliminating redundant
+  items from output schema (ozn) files.
+
+* Output schema are no longer generated with constrained type-insts
+  for floating point values; previously the presence of such type-insts
+  together with rounding inaccuracies in the solver output meant that some
+  solutions would not be printed.
+ 
+
+Changes to the G12 FlatZinc interpreter:
+
+* A new command line option `--logging' (-l for short) enable any low-level
+  logging or tracing facilities in the underlying solvers.
+
+
+Other changes in this release:
+
+* The following global constraints have been added to the MiniZinc library:
+      
+      alldifferent_except_0 
+
+
+Bugs fixed in this release:
+
+* A problem that caused G12/CPX to find incorrect (or suboptimal)
+  solutions has been fixed.  [Bug #335]
+
+* A bug that caused G12/CPX to incorrectly compute variable activity
+  counts has been fixed.  This bug was causing default search for
+  G12/CPX to perform very poorly.
+
+
+G12 MiniZinc Distribution 1.5.2
+-------------------------------
+
+Changes in this release:
+
+* We have added a redefinition for the FlatZinc built-in operation
+  array_bool_xor/1 to the "linear" MiniZinc library specialisation.
+
+Bugs fixed in this release:
+
+* A bug in mzn2fzn that caused equality constraints involving an output
+  variable to be incorrectly deleted has been fixed.  [Bug #347]
+
+* Flattening float product expressions is now supported.  [Bug #348]
+
+* Flattening array of string expressions used as generators in
+  comprehensions now works correctly.
+
+* The definition of float literals in the FlatZinc specification has
+  been fixed.  [Bug #352]
+
+* The built-in functions lb_array/1, ub_array/1 and dom_array/1 now abort
+  if their argument is an empty array.
+
+* The incorrect redefinition of the FlatZinc built-in
+  array_var_bool_element/3 for the "linear" MiniZinc library specialisation
+  has been fixed.
+
+* A bug that caused predicate bodies to be flattened in the incorrect
+  reification context has been fixed.  [Bug #380]
+
+* The various wrapper scripts for minizinc now handle their command line
+  arguments correctly.  [Bug #369]
+
+* Flattening of expressions involving the times, min or max operations
+  for var floats no longer results in redundant reification variables
+  being added.  [Bug #349]
+
+
+G12 MiniZinc Distribution 1.5.1
+-------------------------------
+
+* We have added the following variants of the count/3 constraint to
+  the MiniZinc library:
+
+    count_eq	(synonym for count)
+    count_geq
+    count_gt
+    count_leq
+    count_lt
+    count_neq
+
+Bugs fixed in this release:
+
+* mzn2fzn now correctly flattens the built-in functions xorall/1 and
+  iffall/1 when they appear in reified contexts with at least two variables and
+  at least one literal "true" in their array argument.  [Bug #340]
+
+* A bug in mzn2fzn that caused models that were satisfiable under the
+  relational semantics to be incorrectly flattened into unsatisfiable FlatZinc
+  instances has been fixed.  [Bug #337]
+
+* A bug that caused mzn2fzn to infer incorrect bounds for arrays of set
+  variables has been fixed.  [Bug #341]
+
+
+G12 MiniZinc Distribution 1.5
+-----------------------------
+
+* G12/CPX solver
+
+  We have added the solver G12/CPX (Constraint Programming with eXplanations)
+  to the distribution.  G12/CPX is the successor to the LazyFD solver.
+  The FlatZinc interface to G12/CPX is named fzn_cpx and MiniZinc models can
+  be solved with G12/CPX using mzn-g12cpx, for example to solve the model
+  foo.mzn using G12/CPX, do
+  
+     $ mzn-g12cpx foo.mzn
+
+  The existing LazyFD solver is now deprecated and will be removed in a
+  future release.
+
+
+Changes to the MiniZinc language:
+
+* We have added some new built-in functions to assist with formatting
+  complex output: show_int/2, show_float/3, join/2 and concat/1.
+
+* The built-in annotation is_output/0 is no longer supported.
+
+* The built-in functions sum/1, product/1, forall/1, exists/1, xorall/1
+  and iffall/1 now also work with multi-dimensional arrays.
+
+
+Changes to the FlatZinc language:
+
+* We have added two new FlatZinc built-ins: bool_lin_eq/3 and bool_lin_le/3.
+
+
+Other changes in this release:
+
+* The following new global constraints have been added to the MiniZinc
+  library:
+      
+      circuit
+      subcircuit
+
+
+Bugs fixed in this release:
+
+* mzn2fzn now supports flattening expressions containing the built-in
+  operation abort/1.
+
+* mzn2fzn no longer turns optimisation problems that have a fixed
+  objective into satisfaction problems.  [Bug #277]
+
+* The FlatZinc interpreter's MIP backend no longer aborts in the presence
+  of a constant assignment to the objective variable.  [Bug #319]
+
+* The FlatZinc interpreter's FD backend no longer erroneously reports
+  unsatisfiability in the presence of a constant assignment to the
+  objective variable.  [Bug #319]
+
+* mzn2fzn now correctly reports that the built-in fix operation has
+  aborted if given an argument that is not fixed.  [Bug #158]
+
+* A bug in mzn2fzn that caused it to not completely flatten array
+  expressions in var array lookups has been fixed.  [Bug #318]
+
+* A bug that caused the FlatZinc interpreter to not indicate that
+  search was complete for optimization problems has been fixed.
+ 
+
+G12 MiniZinc Distribution 1.4.3
+-------------------------------
+
+Changes in this release:
+
+* We have added more redefinitions of FlatZinc built-ins to the "linear"
+  MiniZinc library specialisation.  This allows a wider range of MiniZinc
+  models to be solved using LP/MIP solvers.
+
+* We have added decompositions of lex_less/2, lex_lesseq/2, lex_greater/2 and
+  lex_greatereq/2 for Boolean arrays.
+
+Bugs fixed in this release:
+
+* We have fixed a bug in mzn2fzn that caused it to generate invalid FlatZinc
+  for some var array lookups.  [Bug #312]
+
+
+G12 MiniZinc Distribution 1.4.2
+-------------------------------
+
+Bugs fixed in this release:
+
+* We have fixed a bug in mzn2fzn that caused it to incorrectly treat
+  the condition of a where clause that evaluated to false as model
+  inconsistency.
+
+* A bug in mzn2fzn that caused it to create self-assignments for
+  introduced variables has been fixed.  [Bug #290]
+
+* A bug in the g12_fd solver's cardinality constraint, which also affected
+  the domain consistent alldifferent constraint, has been fixed.  [Bug #287]
+
+
+G12 MiniZinc Distribution 1.4.1
+-------------------------------
+
+Bugs fixed in this release:
+
+* A bug in mzn2fzn's optimisation pass that caused it to leave dangling
+  variable references in search annotations has been fixed.
+  [Bugs #282 and #283]
+
+* Some bugs that caused mzn2fzn to abort with models containing large
+  2d array literals have been fixed.  [Bug #284]
+
+* The solns2out tool now always outputs solution separators on a separate
+  line even when the model output item does not contain a final newline
+  character.  [Bug #288]
+
+
+G12 MiniZinc Distribution 1.4
+-----------------------------
+
+Changes to the MiniZinc language:
+
+* Input files are now encoded in UTF-8.
+
+* A new built-in function, is_fixed/1, can be used to test whether
+  a value is known to be fixed at flattening time.
+
+* Two new built-in functions, iffall/1 and xorall/1, can be used to perform
+  n-ary xor operations on arrays of Booleans.  They are defined as follows:
+
+     iffall([a1, a2, ..., aN]) <=> a1 xor a2 xor ... xor aN xor true
+
+     xorall([a1, a2, ..., aN]) <=> a1 xor a2 xor ... xor aN xor false
+
+
+Changes to the FlatZinc language:
+
+* Variable and parameter names may now be optionally prefixed with one or more
+  leading underscore.  For example, the following are now valid FlatZinc
+  variable names:
+
+       _A
+       __B
+       ___D
+
+  The rationale for this change is to provide a way for mzn2fzn to name
+  introduced variables in a way that is guaranteed not to clash with the
+  variable and parameter names from the MiniZinc model.
+
+  Names for predicates, predicate parameters and annotations cannot have
+  leading underscores.
+
+* A new FlatZinc builtin has been added: array_bool_xor/1.
+
+
+Changes to the MiniZinc evaluation driver:
+
+* A new command line option, --random-seed, can be used to specify a seed
+  for the FlatZinc implementation's random number generator.
+  (The options -r and --seed are synonyms for this option.)
+
+  The evaluation driver will invoke FlatZinc implementations with the
+  -r option if it is invoked with --random-seed.
+  (See the description of the FlatZinc command line interface in the
+  minizinc(1) manual page for details.)
+
+
+Changes to the G12 FlatZinc interpreter:
+
+* There is now a domain consistent version of the alldifferent/1 constraint
+  for G12/FD.  (The domain consistent version is selected by annotating
+  the constraint with the domain/0 annotation.)
+
+* The --random-seed (-r) command line option described above is now supported
+  by the interpreter.
+
+
+Other changes in this release:
+
+* The global constraints value_precede/3 and value_precede_chain/2 have been
+  added to the MiniZinc globals library.  The existing precedence/1 global
+  constraint has been deprecated in favour of these.
+
+* The problems from the 2011 MiniZinc challenge are now included in the
+  MiniZinc benchmark suite.
+
+
+Bugs fixed in this release:
+
+* A bug in G12/FD's cumulative/4 global constraint that caused poor runtime
+  performance when (extended) edge finding filtering was enabled has been
+  fixed.  [Bug #221]
+
+* A bug that caused mzn2fzn to abort instead of printing an error message if
+  a variable had the same name as a built-in function has been fixed.
+  [Bug #231]
+
+* A bug that caused an abort in flatzinc's LazyFD backend if there was an
+  application of the built-in int_lin_le_reif/4 constraint with a zero
+  coefficient has been fixed. [Bug #232]
+
+* A bug that caused mzn2fzn and solns2out to abort when processing array
+  literals whose elements were all empty set literals has been fixed.
+  [Bug #256] 
+
+* mzn2fzn and solns2out no longer abort on array5d and array6d expressions.
+  [Bug #259]
+
+* The incorrect default definition of the int_set_channel/2 global constraint
+  has been fixed.  [Bug #255]
+
+* A bug that caused mzn2fzn to use the wrong predicate name when flattening
+  an application of a bodyless reified predicate definition has been fixed.
+
+* The incorrect default decomposition of the roots/3 global constraint has
+  been fixed.
+
+* mzn2fzn and solns2out no longer abort if they encounter an arrayNd cast
+  containing an empty array of decision variables.
+
+* A bug that caused mzn2fzn to abort if a model contained an array lookup
+  where the array expression was a literal containing only anonymous
+  variables has been fixed.  [Bug #68]
+
+* A bug that caused reified var array lookups to be incorrectly flattened
+  has been fixed.  [Bug #244]
+
+* Assignments to annotation variables are no longer emitted in MiniZinc
+  output specifications.  [Bug #269]
+
+* solns2out now prints trailing comments in the solution stream if search
+  terminates before it is complete. [Bug #270]
+
+* A bug that caused a stack overflow in solns2out has been fixed.  [Bug #272]
+
+* A bug that caused a stack overflow in mzn2fzn on Windows systems
+  has been fixed.  [Bug #228]
+
+
+G12 MiniZinc Distribution 1.3.2
+-------------------------------
+
+Bugs fixed in this release:
+
+* We have fixed a series of problems in mzn2fzn and solns2out with flattening
+  and printing of expressions that contain anonymous variables.
+  (This also resolves bug #67.)
+
+* A bug that caused mzn2fzn to abort if an annotation contained a string
+  literal argument has been fixed.  [Bug #212]
+
+* A problem with mzn2fzn that caused it to sometimes not print error
+  messages on Windows XP, despite errors being present, has been fixed.
+  [Bugs #97 and #215]
+
+
+Other changes in this release:
+
+* The distribution now includes a language syntax definition for the Zinc
+  family of languages for use with GtkSourceView.  The definition is in
+  the directory tools/gtksourceview.
+
+
+G12 MiniZinc Distribution 1.3.1
+-------------------------------
+
+Bugs fixed in this release:
+
+* The CP-Viz support now correctly renders solutions for optimisation problems.
+
+
+G12 MiniZinc Distribution 1.3
+-----------------------------
+
+* New evaluation and output framework
+
+  We have implemented a new evaluation and output framework for MiniZinc that
+  simplifies evaluating a model and producing output formatted according to
+  the model's output item.
+
+  The new framework is based around two new tools.  The first, solns2out,
+  takes a model output specification produced by mzn2fzn, and reads the
+  solution stream from a FlatZinc implementation.  It then formats and 
+  prints each solution according to the output specification.  An example,
+  of its use is as follows:
+
+     $ mzn2fzn model.mzn
+     $ flatzinc model.fzn | solns2out model.ozn
+
+  Model output specifications are contained in files with the ".ozn"
+  extension.  Such files are now generated by default by mzn2fzn.
+
+  The second new tool, named minizinc, is an evaluation driver that automates
+  the process of evaluating a MiniZinc model.  For example, the following
+  command:
+
+     $ minizinc model.mzn
+
+  will flatten, evaluate, and generate formatted output for the specified
+  model.  The FlatZinc interpreter used by minizinc is pluggable, so any
+  FlatZinc implementation that can be invoked from the command line
+  can in principle be used with it.  (The manual page for minizinc contains
+  a complete description of how it interacts with the FlatZinc implementation.)
+
+  The minizinc program replaces the mzn script; since it also has support for
+  CP-Viz, it also replaces the minizinc-viz script as well.  Unlike the
+  scripts, the minizinc program works directly from the Windows command
+  prompt, i.e. neither Cygwin or MSYS are required to use it.
+
+  We have added some wrapper scripts (on Windows, batch files) around the
+  minizinc program for invoking each of the G12 FlatZinc interpreter's
+  backends with the appropriate global constraint definitions.
+  
+  These new wrapper scripts are:
+
+    mzn-g12fd               (Evaluate MiniZinc using G12/FD.)
+    mzn-g12lazy             (Evaluate MiniZinc using G12/Lazy.)
+    mzn-g12mip              (Evaluate MiniZinc using G12 and a MIP solver.)
+    mzn-g12sat              (Evaluate MiniZinc using G12 and a SAT solver.)
+
+  For example, the following evaluates a MiniZinc model using the G12 Lazy
+  Clause Generation solver:
+
+    $ mzn-g12lazy model.mzn
+
+
+Changes to the MiniZinc language:
+
+* The built-in operation show_cond/3 is no longer supported.
+
+* The built-in annotation is_output/0 is deprecated.  Support for it
+  will be removed in a later release.
+
+* The following operations, which were deprecated in MiniZinc 1.1,
+  are no longer supported:
+
+      int:        lb(array[$T] of var int)
+      float:      lb(array[$T] of var float)
+      set of int: lb(array[$T] of var set of int)
+      int:        ub(array[$T] of var int)
+      float:      ub(array[$T] of var float)
+      set of int: ub(array[$T] of var set of int)
+      set of int: dom(array[$T] of var int)
+
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* The --no-output-pred-decls option is no longer supported.
+
+* The --target-flatzinc-version is no longer supported.
+
+
+Bugs fixed in this release:
+
+* A bug in mzn2fzn that caused it to infer incorrect bounds on
+  absolute value expressions has been fixed.
+
+* A bug in mzn2fzn's optimisation pass that caused it to delete equality
+  constraints between output variables has been fixed.
+
+* The FlatZinc interpreter now rejects output_var/0 annotations on
+  array declarations and output_array/1 annotations on scalar variable
+  declarations.
+
+
+G12 MiniZinc Distribution 1.2.2
+-------------------------------
+
+Changes to the MiniZinc language:
+
+* We have added a new built-in function trace/2 that can be used to
+  print debugging output during flattening, for example the following
+  MiniZinc fragment:
+
+     constraint forall (i in 1 .. 5) (
+	trace("Processing i = " ++ show(i) ++ "\n",
+	    x[i] < x[i + 1]
+	)
+     );
+  
+  will cause mzn2fzn to print the following as the above constraint
+  is flattened:
+
+    Processing i = 1
+    Processing i = 2
+    Processing i = 3
+    Processing i = 4
+    Processing i = 5
+    
+
+Other changes in this release:
+
+* The FlatZinc interpreter's -s option is now a synonym for the
+  --solver-statistics option instead of the --solver-backend option.
+
+* The FlatZinc interpreter's LazyFD backend can now print out the
+  number of search nodes explored after each solution is generated.
+
+* The mzn script has been extended so that comments in the FlatZinc
+  output stream, such as those containing solver statistics, are
+  printed after the output produced by processing the output item.
+
+
+Bugs fixed in this release:
+
+* A bug that caused the mzn script to abort if the model contained
+  a large array literal has been fixed.
+
+
+G12 MiniZinc Distribution 1.2.1
+-------------------------------
+
+Bugs fixed in this release:
+
+* Flattening of expressions containing the built-in operation log/2
+  no longer causes mzn2fzn to abort.
+
+* We have fixed a number of bugs in mzn2fzn and flatzinc that caused
+  them to abort when processing large array literals.
+
+* We have fixed a bug in mzn2fzn that caused it to generate variable
+  declarations in which the variable was initialised with an assignment
+  to itself.
+
+* A bug that caused mzn2fzn to abort if it encountered of an empty array
+  of Boolean, integer or float decision variables as a predicate application
+  argument has been fixed.  [Bug #187]
+
+* Some bugs in mzn2fzn's optimisation pass that resulted in dangling
+  variable references in the generated FlatZinc have been fixed.
+
+
+G12 MiniZinc Distribution 1.2
+-----------------------------
+
+* CP-Viz support
+
+  We have added support for visualizing MiniZinc models using CP-Viz to
+  the FlatZinc interpreter's FD backend.
+
+  See the ``Visualizing MiniZinc models with CP-Viz'' guide in the doc
+  directory for further details.
+
+
+* New MiniZinc tutorial
+
+  We have added a new MiniZinc tutorial.  It introduces the MiniZinc language
+  in much greater depth than the old tutorial and includes chapters on
+  predicates, search, and effective modelling practices.
+
+
+* XML-FlatZinc redesigned
+
+  We have redesigned the XML representation of FlatZinc.  The new version
+  is much less verbose than previous version of XML-FlatZinc.  The conversion
+  tools, fzn2xml and xml2fzn, have been updated to work with new version.
+ 
+  Note that the new version of XML-FlatZinc is *not* compatible with previous
+  versions of XML-FlatZinc.
+
+
+* FlatZinc to XCSP converter
+
+  We have added a new tool, fzn2xcsp, that converts FlatZinc model instances
+  into XCSP 2.1 format.  The MiniZinc globals library contains a new set of
+  solver-specific constraints in the directory "xcsp" for use with models that
+  are going to be converted into XCSP.
+
+
+Changes to the MiniZinc language:
+ 
+* The following built-in operation has been removed from MiniZinc:
+
+      int: dom_size(array[$T] of var int)
+
+
+Changes to the FlatZinc language:
+
+* The following built-in constraints have been removed from FlatZinc:
+
+     bool_clause_reif/3
+     bool_ge/2
+     bool_ge_reif/2
+     bool_gt/2
+     bool_gt_reif/2
+     bool_left_imp/3
+     bool_right_imp/3
+     bool_ne/2
+     bool_ne_reif/3
+
+     float_ge/2
+     float_ge_reif/3
+     float_gt/2
+     float_gt_reif/3
+     float_lin_ge/3
+     float_lin_ge_reif/4
+     float_lin_gt/3
+     float_lin_gt_reif/4
+     float_minus/2
+     float_negate/2
+
+     int_ge/2
+     int_ge_reif/3
+     int_gt/2
+     int_gt_reif/3
+     int_lin_ge/3
+     int_lin_ge_reif/4
+     int_lin_gt/3
+     int_lin_gt_reif/4
+     int_lin_lt/3
+     int_lin_lt_reif/4
+     int_minus/3
+     int_negate/2
+
+     set_ge/2
+     set_ge_reif/3
+     set_gt/2
+     set_gt_reif/3
+     set_superset/2
+     set_superset_reif/3
+
+* Constrained type-insts for parameters are no longer supported in FlatZinc.
+  For example, the following parameter declarations are no longer allowed:
+
+     1..10: p = 4;
+     1.0..10.0: f = 5.0;
+     set of {2, 5, 6} = {2, 5};
+     array[1..2] of set of 1..5 = [{}, {3}];
+
+  Constrained type-insts may still appear in variable declarations and
+  also as the argument types in predicate declarations.
+
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* We have added a FlatZinc optimisation pass to mzn2fzn.  This pass is
+  enabled by default.  Turning the optimiser off (see the '--no-optimise'
+  option) results in faster conversion, but may leave certain obvious
+  simplifications for the backend to handle.  In particular, unoptimised
+  FlatZinc models are likely to contain many intermediate variables with
+  known values.
+
+* mzn2fzn supports a new command line option that allows model data to
+  be specified directly on the command line.  The new option is
+  '--cmdline-data', or '-D 'for short.  An example of its use is:
+
+      mzn2fzn -D "n = 4;" queens.mzn
+
+  The above causes the parameter assignment "n = 4;" to be included
+  when flattening queens.mzn. 
+
+
+Changes to the G12 MiniZinc interpreter:
+
+* The deprecated 1-pass MiniZinc interpreter, minizinc, has been removed from
+  the distribution.
+
+
+Changes to the G12 FlatZinc interpreter:
+
+* "indomain_random" is now supported as a value choice method for integer
+   search in the FD backend.
+
+* We have significantly improved the worst-case complexity of the element
+  constraint in G12/FD.
+
+
+Other changes in this release:
+
+* The problems from the 2010 MiniZinc challenge are now included in the
+  MiniZinc benchmark suite.
+
+* The following new global constraints have been added to the MiniZinc
+  library:
+
+      bin_packing
+      bin_packing_capa
+      bin_packing_load
+
+* We have modified the interface to the global_cardinality constraint
+  so that it conforms more closely to the description in the Global
+  Constraint Catalog.  The new interface is:
+
+      global_cardinality(array[int] of var int: x,
+                         array[int] of int: cover,
+                         array[int] of var int: counts);
+
+  The old definition of the global_cardinality constraint is still
+  available under the name global_cardinality_old, but it is now
+  deprecated and will be removed in a future release.
+
+* We have added "closed" versions of the global_cardinality and
+  global_cardinality_low_up constraints.  In the closed versions
+  the decision variables are restricted to taking their values from
+  the cover.  The closed forms are named:
+
+      global_cardinality_closed
+      global_cardinality_low_up_closed
+
+
+Bugs fixed in this release:
+
+* Flattening of expressions containing the built-in operation dom_size/1
+  is now supported.  [Bug #158]
+
+* A bug that caused mzn2fzn to erroneously report that model was inconsistent
+  if the condition of an if-then-else was false has been fixed.  [Bug #158]
+
+* Output annotations are now attached to decision variables that only occur
+  in the output expression in the where clause of a comprehension.  [Bug #160]
+
+* mzn2fzn now outputs all parameter declarations before any variable
+  declarations, as the FlatZinc specification requires.
+
+* A bug that caused mzn2fzn to erroneously treat assignments to string
+  parameters as a source of model unsatisfiability has been fixed.  [Bug #170]
+
+* The FlatZinc interpreter now emits an error if overloaded predicate
+  declarations are encountered.
+
+
+G12 MiniZinc Distribution 1.1.6
+-------------------------------
+
+Changes in this release:
+
+* We have modified the decomposition of the global constraint lex_lesseq
+  in order to avoid the introduction of an auxiliary Boolean variable.  
+  (Thanks to Chris Mears and Todd Niven for pointing this out.)
+
+
+Bugs fixed in this release:
+
+* mzn2fzn now correctly computes the set of output variables when the
+  output item contains let expressions.  [Bug #141]
+
+* A bug that caused mzn2fzn to infer incorrect bounds for integer and
+  float var array elements has been fixed.  [Bug #149]
+
+* mzn2fzn now prints the source locations of all solve (output) items when
+  the are multiple such items.  [Bug #143]
+
+* mzn2fzn now flattens par expressions containing the built-in operation 
+  pow/2 correctly.
+
+* mzn2fzn now flattens arrayNd expressions containing arrays of strings
+  correctly.
+
+* The mzn script no longer aborts if the model contains an array of
+  decision variables.  [Bug #140]
+
+
+G12 MiniZinc Distribution 1.1.5
+-------------------------------
+
+Bugs fixed in this release:
+
+* We have fixed a number of problems that caused stack overflows in mzn2fzn.
+
+* The FlatZinc interpreter's MIP backend no longer reports "unknown" for
+  satisfaction problems.
+
+
+G12 MiniZinc Distribution 1.1.4
+-------------------------------
+
+Changes in this release:
+
+* We have added a library of global constraint definitions and FlatZinc
+  built-in redefinitions suitable for use with LP/MIP solvers; both are in
+  the "linear" directory of the MiniZinc library.
+ 
+
+Bugs fixed in this release:
+
+* Some performance issues with mzn2fzn that occurred when flattening models
+  that generate and traverse large arrays have been fixed.
+
+* An omission that caused mzn2fzn not to recognise the MiniZinc built-in
+  function round/1 has been corrected.
+
+* A bug in flatzinc that caused the MIP backend to abort when the model instance
+  contained an unused set parameter has been fixed.  [Bug #134]
+
+* A bug in mzn2fzn that caused it not to place domain constraints on the
+  FlatZinc variables generated for an array of variables introduced via a
+  let expression has been fixed.  [Bug #133]
+
+* The implementation of the div propagator in flatzinc's FD backend has been
+  modified to avoid potentially long fixpoint computations.
+
+
+G12 MiniZinc Distribution 1.1.3
+--------------------------------
+
+Changes in this release:
+
+* We have added a new script, mzn, that allows output items to work with 
+  two-pass MiniZinc evaluation.  (The script requires a Unix-like system
+  -- we hope to lift restriction in later versions.)
+
+* The files alldifferent.mzn, atmost1.mzn, atmost.mzn and atleast.mzn have
+  been added to the MiniZinc globals library.  At the moment these files
+  merely cause all_different.mzn, at_most1.mzn etc to be included.
+  Eventually the latter will be replaced by the former.
+
+
+Bugs fixed in this release:
+
+* A bug in mzn2fzn that caused an internal error when flattening predicates
+  with a reified form has been fixed.  [Bug #131]
+
+* The MiniZinc type checker now correctly reports an error when the built-in
+  function index_set/1 is used with arrays that have more than one
+  dimension.  [Bug #68]
+
+* The broken definition for refied all_different for the lazy clause
+  generation solver has been fixed.
+
+* A bug where mzn2fzn was mishandling arrays of strings has been fixed.
+
+
+G12 MiniZinc Distribution 1.1.2
+-------------------------------
+
+Bugs fixed in this release:
+
+* The file diffn.mzn is now included in globals.mzn.
+
+* A bug in mzn2fzn that caused it to abort when flattening int2float
+  expressions has been fixed.
+
+* An error in the FlatZinc specification has been fixed.  All var types
+  may have assignments, not just arrays.
+
+* A bug in mzn2fzn that caused it generate an array_int_element
+  constraint where an array_var_int_element constraint was required
+  has been fixed.  [Bug #122]
+
+* A bug that caused mzn2fzn to generate invalid FlatZinc rather than
+  emit an error message when the bound of an unbounded variable is taken
+  has been fixed.
+
+
+G12 MiniZinc Distribution 1.1.1
+-------------------------------
+
+Bugs fixed in this release:
+
+* A bug that caused predicate arguments to be incorrectly flattened in
+  reifying contexts has been fixed.  [Bug #109]
+
+* A bug in mzn2fzn that caused incorrect bounds to be calculated for the
+  result of a mod operation has been fixed.  [Bug #107]
+
+* A bug in mzn2fzn that caused out of range array accesses to be generated in
+  reified contexts, instead of just making the result of the reification
+  false.  [Bug #110]
+
+* The omission of the null annotation from the Zinc / MiniZinc specification
+  has been fixed.
+
+* The rostering problem in the MiniZinc benchmark suite (benchmarks/roster),
+  has been reformulated.  The old formulation was always unsatisfiable under
+  the change to the semantics of the mod operation introduced in MiniZinc 1.1.
+  [Bug #108]
+
+* A bug in mzn2fzn that caused it to emit the null/0 annotation in the
+  generated FlatZinc. [Bug #111]
+
+
+G12 MiniZinc Distribution version 1.1
+-------------------------------------
+
+Changes to the MiniZinc language:
+
+* The following built-in operations have been introduced:
+
+      int:        lb_array(array[int] of var int)
+      float:      lb_array(array[int] of var float)
+      set of int: lb_array(array[int] of var set of int)
+  
+      int:        ub_array(array[int] of var int)
+      float:      ub_array(array[int] of var float)
+      set of int: ub_array(array[int] of var set of int)
+  
+      set of int: dom_array(array[int] of var int)
+  
+  These new operations are synonyms for the following existing built-in
+  MiniZinc operations:
+
+      int:        lb(array[$T] of var int)
+      float:      lb(array[$T] of var float)
+      set of int: lb(array[$T] of var set of int)
+  
+      int:        ub(array[$T] of var int)
+      float:      ub(array[$T] of var float)
+      set of int: ub(array[$T] of var set of int)
+  
+      set of int: dom(array[$T] of var int)
+
+  These latter operations are now deprecated.  Support for them will
+  be removed in the next release.  This change is being made in order
+  to preserve compatibility with the full Zinc language.
+
+  Note: that only the versions of lb, ub and dom that take an array
+  as a an argument are deprecated.  The MiniZinc lb, ub and dom operations
+  on non-array values are *not* deprecated.
+
+
+Changes to the FlatZinc language:
+
+* Boolean variable expressions as constraints are no longer supported.
+  All constraints in FlatZinc must now be predicate applications.
+
+* String parameters are no longer supported.  String literals are restricted
+  to appearing as the arguments of annotations.
+
+* Set of bool and set of float parameters and literals are no longer
+  supported.
+
+* The int_float_lin/4 objective expression is no longer supported.
+
+* FlatZinc now has two additional evaluation outcomes: "unknown"
+  for when search terminates without having explored the whole search
+  space and "unbounded", for when the objective of an optimization
+  problem is unbounded.
+
+* The semantics of the int_div/3 and int_mod/3 built-ins has been changed.
+  See the ``Specification of FlatZinc'' for further details.
+
+
+Other Changes:
+
+* The single pass MiniZinc interpreter, minizinc, has been deprecated.
+  It will be removed in a future release.
+
+* The MiniZinc-to-FlatZinc converter, mzn2fzn, has been rewritten.
+  The new implementation is smaller and more efficient.
+  Computation of variable bounds has also been improved.
+
+* mzn2fzn now outputs singleton sets as ranges.  [Bug #94]
+
+* A bug that caused expressions containing abs/1 to be incorrectly
+  flattened has been fixed.  [Bug #91]
+
+* The FlatZinc interpreter's finite-domain backend now implements
+  global_cardinality_low_up as a built-in.
+
+* The FlatZinc interpreter's lazy clause generation solver now supports
+  the int_mod/3 built-in.
+
+* Two additional modes of operation have been added to the FlatZinc
+  solution processing tools, solns2dzn, that allow it to extract the first
+  or last solution from a FlatZinc output stream.  Also, there is no longer
+  a default mode of operation for solns2dzn, it must now be specified by
+  the user or an error will occur.
+
+* The following new global constraints have been added to the MiniZinc
+  library:
+
+      all_equal
+      decreasing
+      diffn
+      lex2
+      lex_greater	(Synonym for lex_less with arguments swapped.)
+      lex_greatereq	(Synonym for lex_lesseq with arguments swapped.)
+      sliding_sum
+      strict_lex2
+
+* The following synonyms for existing global constraints have been added
+  to the MiniZinc library (the existing name is given in parentheses):
+
+      alldifferent      (all_different)
+      atleast           (at_least)
+      atmost            (at_most)
+      atmost1           (at_most1)
+
+* The sequence constraint is deprecated.  Models should use the new
+  sliding_sum constraint instead.
+
+* The 'table' constraint decompositions in the MiniZinc library have been
+  modified so as to fit better with the G12 MiniZinc-to-FlatZinc conversion:
+  now no scaling constraints are created.
+
+* The decompositions of the constraints in the 'lex' family have been
+  tweaked to enable a little more propagation.
+
+
+G12 MiniZinc Distribution version 1.0.3
+---------------------------------------
+
+Bugs fixed in this release:
+
+* A fencepost error that was being introduced into flattened array access
+  reifications has been fixed.
+
+* Common subexpression elimination has been improved in order to eliminate
+  redundant int and float linear equations during flattening.
+
+* A bug that caused flattening to abort if array_*_element built-ins were
+  redefined has been fixed.  [Bug #82]
+
+* A bug in the implementation of the FlatZinc set_lt and set_gt built-ins
+  has been fixed.  Note that the expected outputs for the corresponding
+  tests in the FCTS were also previously incomplete.
+
+* The omission of the string_lit tag from the XML-FlatZinc DTD has been
+  corrected.
+
+
+G12 MiniZinc Distribution version 1.0.2
+---------------------------------------
+
+There have been no changes to the definitions of the MiniZinc and FlatZinc
+languages in this release.  There have been no changes to the definition
+of XML-FlatZinc.
+
+
+Changes in this release:
+
+* The FlatZinc interpreter's lazy clause generation solver now supports
+  the int_abs/2 built-in.
+
+* The residual support for output items in the FlatZinc interpreter has been
+  removed.
+
+* The MiniZinc and FlatZinc interpreters now output approximate solutions
+  for optimization problems when asked for more than one solution.
+
+
+Bugs fixed in this release:
+
+* Flattening of MiniZinc array expressions, for example product
+  or array_union, where the argument is an array variable now works.
+
+* The FlatZinc interpreter now ensures that bounds are checked on
+  scalar variable assignments.  [Bug #74]
+
+* A bug in the MiniZinc-to-FlatZinc converter where:
+
+      ann a = foo::bar::baz;
+      constraint p(...)::a;
+
+  would be flattened to:
+
+      constraint p(...)::foo;
+
+  rather than:
+
+      constraint p(...)::foo:bar::baz;
+
+  has been fixed.  [Bug #77]
+
+
+G12 MiniZinc Distribution version 1.0.1
+---------------------------------------
+
+There have been no changes to the definitions of the MiniZinc and FlatZinc
+languages in this release.  There have been no changes to the definition
+of XML-FlatZinc.
+
+
+Changes in this release:
+
+* MiniZinc tools command line changes
+
+  The MiniZinc interpreter and MiniZinc-to-FlatZinc converter now
+  recognise files with the .dzn extension as MiniZinc data files, i.e.
+  you no longer need to use the --data option to use such files as data
+  files.
+
+* FlatZinc output processing tool
+
+  We have added a new tool, solns2dzn, that can be used to process the
+  output of FlatZinc implementations in various ways.  For example, it
+  can extract each individual solution and write it to a separate file.
+
+* The FlatZinc interpreter's lazy clause generation solver now supports
+  the int_times/3 built-in.
+
+* The global_cardinality_low_up global constraint has been added to the
+  MiniZinc library.
+
+* The MiniZinc-to-FlatZinc converter now propagates annotations through
+  assertions during flattening,  For example, the following fragment of
+  MiniZinc:
+
+      predicate foo(int: x, array[int] of var int y);
+
+      predicate bar(int: x, array[int] of var int y) =
+          assert(x > 3, "value of x must be greater than 3", foo(x, y));
+
+      constraint bar(4, ys) :: baz;
+
+  will be flattened into the following fragment of FlatZinc:
+
+      constraint foo(4, ys) :: baz;
+
+
+Bugs fixed in this release:
+
+* A bug in the implementation of the FlatZinc built-in int_mod/3 in the
+  FlatZinc interpreter's finite-domain backend has been fixed.
+
+* The MiniZinc-to-FlatZinc converter now does a better job of extracting
+  output variables from output items.
+
+* The solver-specific global constraint definitions for the G12 lazy
+  clause generation solver are now documented.  They are in the
+  ``g12_lazyfd'' directory of the MiniZinc library.
+
+* A bug that caused a segmentation fault in the type checker when
+  checking large FlatZinc instances has been fixed.
+
+* A bug where a cycle of equalities caused mzn2fzn to go into
+  a loop has been fixed.  [Bug #65]
+
+* mzn2fzn now imposes constraints on arguments induced by predicate
+  parameter types.  [Bug #69]
+
+* Flattening of set2array coercions is now supported.  [Bug #70]
+
+* A bug that caused mzn2fzn to abort on min/max expressions over empty arrays
+  has been fixed.  [Bug #71]
+
+* mzn2fzn now computes bounds on set cardinality variables correctly.
+
+
+G12 MiniZinc Distribution version 1.0
+-------------------------------------
+
+* Licence change
+
+  The source code in the G12 MiniZinc distribution has now been released
+  under a BSD-style licence.  See the files README and COPYING in the
+  distribution for details.
+
+  The MiniZinc examples, global constraint definitions and libraries
+  have been placed in the public domain.
+
+* XML-FlatZinc
+
+  We have defined an XML representation for FlatZinc called XML-FlatZinc.
+  Two new tools, fzn2xml and xml2fzn, can be used to convert between FlatZinc
+  and XML-FlatZinc.
+
+* FlatZinc Conformance Test Suite
+
+  We have added a suite of conformance tests for FlatZinc implementations.
+  It includes tests for built-in constraints, output and the behaviour of the
+  standard search annotations.
+
+
+Changes to the MiniZinc language:
+
+* Reification has been fixed.  It is now a top-down process that correctly
+  handles partial functions such as integer division.  Users can now also
+  supply alternative definitions for reified forms of predicates (this is
+  useful if a backend does not provide reified forms of all predicates).
+
+* Users can supply alternative definitions for FlatZinc built-in constraints
+  (e.g., one can force the generated FlatZinc to use just int_lt rather than
+  int_lt and int_gt).
+
+* A new variable annotation has been added: is_output is used to indicate
+  variables to be printed as part of the solution if no output item is
+  supplied.  This annotation is converted to output_var or output_array as
+  appropriate by mzn2fzn.
+
+
+Changes to the FlatZinc language:
+
+* The outdomain_min and outdomain_max value choice methods are now supported
+  in the finite-domain solver backend.
+
+* A new search annotation, seq_search, allows a sequential ordering to
+  be imposed on search annotations.
+
+* The standard solve annotations now use nested annotations instead of
+  strings to describe variable selection strategies, value choice methods,
+  and exploration strategies.
+
+* FlatZinc model instances may now contain bodyless predicate declarations.
+  This is to allow tools to type check FlatZinc that contains non-standard
+  built-in predicates.
+
+* Two new annotations have been added that allow functional relationships
+  between variables to be defined: is_defined_var on a variable declaration
+  states that this var is defined as a function of some other variables by
+  a constraint; defines_var(x) on a constraint states that the
+  constraint provides a definition for the variable x.
+
+* The FlatZinc specification now specifies how multiple solutions should be
+  output.
+
+* Two new variable annotations have been added to indicate which variables
+  should be printed if a solution is found: output_var is used
+  for non-array variables; output_array([IndexSet1, IndexSet2, ...]) is used
+  for array variables.
+
+* Output items are no longer supported in FlatZinc.  The built-in string
+  operations, show/1 and show_cond/3 have also been removed from the
+  language.
+
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* The converter now outputs array_xxx_element constraints instead of
+  array_var_xxx_element constraints when the array argument is a
+  constant.
+
+* An error is now reported if a variable is defined in a let expression
+  in a negated or reified context.
+
+* The ZINC_STD_SEARCH_DIRS environment variable is no longer supported.
+  The new environment variable MZN_STDLIB_DIR or the command line option
+  ``--stdlib-dir'' can be used to set the MiniZinc library directory.
+
+* String array lookups are now supported.
+
+* Comparison of fixed string expressions is now supported.
+
+* Bodyless predicates in MiniZinc are now emitted at the head of the
+  generated FlatZinc.  For backwards compatibility this behaviour
+  can be disabled using the ``--no-output-pred-decls'' command line
+  option.
+
+
+Changes to the G12 MiniZinc and FlatZinc interpreters:
+
+* There is a new solver backend for the FlatZinc interpreter based upon
+  the G12 lazy clause generation solver.  This backend is selected with
+  the ``lazy'' or ``lazyfd'' argument to the interpreter's ``--backend''
+  option.
+
+* The implementation of the int_negate/2 builtin constraint has been
+  fixed.
+
+* The interpreters now take a flag (--solver-statistics or --solver-stats)
+  causing any statistical information gathered by the solver to be appended to
+  the output in the form of a Zinc comment.
+
+* The interpreters now take a flag (-a or --all-solutions) that causes
+  then to return all solutions.
+
+* The interpreters now take a flag (-n or --num-solutions) taking an
+  integer argument giving the maximum number of solutions to display.
+
+* The MiniZinc interpreter behaviour has changed for models with no
+  output item: now only the values of variables annotated with
+  is_output are printed.
+
+
+Other Changes:
+
+* The following global constraints have been added to the MiniZinc library:
+
+      at_most1
+      nvalue
+      precedence
+      table
+
+
+G12 MiniZinc Distribution version 0.9
+-------------------------------------
+
+The G12 MiniZinc distribution now includes an interpreter for MiniZinc that
+does not go via FlatZinc.  This helps to avoid problems caused by large
+intermediate FlatZinc files.  The new interpreter supports more expressive
+output items.
+
+Since the executable for the new interpreter is named minizinc, the shell
+script of the same name that was found in previous versions has been removed
+from the distribution.
+
+
+Changes to the MiniZinc language:
+
+* The 'ann' type has been added.  It is augmented by each annotation item.
+  It allows annotations to be nested, even recursively, and thus makes them
+  more powerful.
+
+
+Changes to the FlatZinc language:
+
+* The syntax of annotations has changed to allow them to be nested, in line
+  with the corresponding change to MiniZinc.
+
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* Short-circuit evaluation is no longer applied to Boolean expressions.
+  This is because, for instance, the expression (false /\ p(a[10])) should
+  result in an error if 10 is not in the index set of a, rather than be
+  simplified to just (false).
+
+* An problem that resulted in excessive run time for some models
+  has been fixed.
+
+* Bounds inference for introduced variables has been improved.
+
+
+Changes to the FlatZinc language:
+
+* Two new built-ins have been added: bool_clause and bool_clause_reif.
+
+
+Changes to the G12 FlatZinc interpreter:
+
+* The rounding behaviour of the int_div built-in now conforms to the FlatZinc
+  specification.
+
+
+Other Changes:
+
+* The lex_lesseq constraint has been added to globals.mzn.
+
+
+G12 MiniZinc Distribution version 0.8.1
+---------------------------------------
+
+This is primarily a bug-fix release.
+
+Changes to the FlatZinc language:
+
+* "indomain_split_reverse" can now be used a value choice method parameter
+  in the standard search predicates.
+
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* When reifying a predicate that lacks a body, the specification of
+  the MiniZinc-to-FlatZinc translation now requires that the reified
+  version should have the suffix `_reif' added to it along with an
+  extra Boolean argument.  If no such predicate with that name exists
+  then it is a translation-time error.  The MiniZinc-to-FlatZinc
+  converter now implements this behaviour.
+
+* A bug that was causing array types to be replaced by scalars when
+  tightening array bounds has been fixed.
+
+
+Changes to the G12 FlatZinc interpreter:
+
+* "indomain_split_reverse" is now implemented as a value choice method for
+   integer search.
+
+
+Other Changes:
+
+* A bug in the definition of the regular constraint in the MiniZinc
+  globals library has been fixed.
+
+* The MiniZinc examples and benchmark suite have been placed in the public
+  domain.
+
+* We have added some new MiniZinc examples and benchmarks
+
+
+G12 MiniZinc Distribution version 0.8
+-------------------------------------
+
+Changes to the MiniZinc language:
+
+* Output items can now make use of show_cond(A, B, C) expressions.
+  show_cond(A, B, C) is equivalent to show(B) if A is true, and
+  show(C) if not.  Expression A does not have to be decidable at
+  compile time.
+
+* Some aspects of how arrays work have changed.
+  - Array indices no longer are automatically coerced according to context.
+  - 1d array literals (eg. '[1,2,3]') are now always indexed from 1, not 0.
+  - 2d array literal syntax has been introduced.  For example:
+
+      array[1..3,1..3] of int: a = [| 1, 2, 3
+                                    | 4, 5, 6
+                                    | 7, 8, 9 |];
+
+    2d array literals are always (1,1)-indexed.
+
+  The choice to use 1-indexing instead of 0-indexing is because we have
+  found that, in practice, modellers use 1-indexing the vast majority of the
+  time.
+
+
+Changes to the FlatZinc language:
+
+* Output items can now make use of 'show_cond' expressions, as in MiniZinc.
+
+* Solve minimize/maximize items can now specify linear expressions via the
+  'int_float_lin' built-in.
+
+* To match MiniZinc, array variables and literals are now always indexed
+  from 1, not 0.
+
+* Var scalars can now be assigned to when declared, eg. "var int: x = y;".
+
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* A new command line option, `--no-warn-unknown-annotations', allows warnings
+  about unknown annotations to be suppressed.
+
+* A new command line option, `--output-to-file', allows the name of the
+  file in which the FlatZinc is written to be specified.
+
+* The ordering of search directories for the converter has been changed so
+  that its standard search directories come after any user specified
+  search directories.  This allows the default globals.mzn to be more
+  easily overridden with a custom version.
+
+* Numerous bug fixes and other improvements.
+
+
+Changes to the G12 FlatZinc interpreter:
+
+* The interpreter now uses a generic interpretation framework that allows
+  it to support multiple solver backends.  Currently, the only supported
+  solver backend is the finite domain solver backend.  There are a
+  number of other experimental solver backends, e.g. MIP, hybrid FD/MIP,
+  SAT, column generation, that we hope to support in future releases.
+
+* The following command line options have been added in order to provide
+  finer grained control over warnings emitted by the interpreter:
+
+       --no-warn-unknown-annotations
+       --no-warn-false-constraints
+       --no-warn-ignored-annotations
+       --no-warn-empty-initial-domains
+       --no-warn-unsupported-search-params
+
+Other Changes:
+
+* We have added more examples and benchmarks.
+
+
+G12 MiniZinc Distribution version 0.7.1
+---------------------------------------
+
+This is a bug-fix release.
+
+* The implementation of the regular and range constraints in the
+  MiniZinc library has been fixed.
+
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* The missing support for superset expressions has been added.
+
+* Unused constants are no longer incorrectly changed into vars
+  during flattening.
+
+* Flattening of expressions containing the built-in operation dom
+  no longer cause the converter to abort.
+
+
+Changes to the G12 FlatZinc interpreter:
+
+* A bug that with satisfiability checking of models containing LP
+  variables has been fixed.
+
+
+G12 MiniZinc Distribution version 0.7
+-------------------------------------
+
+Changes to the FlatZinc language:
+
+* FlatZinc now supports additional linear equality and disequality builtins.
+
+
+Changes to the G12 MiniZinc-to-FlatZinc converter:
+
+* The converter now supports now includes a  `--statistics' option that
+  allows its time and memory usage to be printed.
+
+* String concatenation expressions are now flattened properly.
+
+* Escaped single quotes can now be used in string literals.
+
+* The absolute value function for ints is now implemented.
+
+* Some bugs that caused the converter to run out of stack space have
+  been fixed.
+
+
+Changes to the G12 FlatZinc interpreter:
+
+* The interpreter now includes a `--statistics' option that allows its
+  time and memory usage to be printed.
+
+* The interpreter no longer runs out of stack space when reading
+  large models.
+
+
+Other Changes:
+
+* We have added suite of MiniZinc benchmarks to the distribution.
+  The benchmark suite is in the `benchmarks' directory.
+
+
+G12 MiniZinc Distribution version 0.6
+-------------------------------------
+
+This was the initial public release of the G12 MiniZinc Distribution.
