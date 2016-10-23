@@ -1,11 +1,8 @@
-<!doctype html>
-<html lang='en'>
-<head>
-<meta charset='utf-8'>
-<link rel='stylesheet' type='text/css' href='style.css'>
-<title>Assertions and debugging functions</title>
-<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+---
+layout: minizinc
+title: "Assertions and debugging functions"
+---
+
 <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
 <script type='text/javascript'>
@@ -30,25 +27,12 @@ function hideAll() {
   jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
 }
 </script>
-</head>
-<body>
 
-<div id="container">
-  <div id="header">
-    <div style="float:left; padding-left:0em; padding-right:1em;">
-    <a href="/">
-    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
-    </a>
-    </div>
-    <div style="clear:both;"></div>
-  </div>
-  <div id="navigation">
-    <ul>
-      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
-      <li><a href="doc.html">Documentation</a></li>
-    </ul>
-  </div>
-  <div id="content">
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+{% raw %}
 <div class='mzn-group-level-0'>
 <div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-reflect.html' title='Reflection operations'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-random.html' title='Random Number Generator builtins'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
@@ -107,10 +91,25 @@ function hideAll() {
 <p>
   Return true, and print message <span class='mzn-arg'>msg</span>. </p>
 </div></div></div>
-</div>  </div>
-  <div id="footer">
-    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
-  </div>
+</div>{% endraw %}
+        </div>
+    </div>
 </div>
-</body>
-</html>
+<script>
+$(document).ready(function(){
+    $(".mzn-group-name").wrap("<h1 id='mymznheader' class='page-header'></h1>");
+    $(".mzn-group-name a").contents().unwrap();
+    $(".mzn-group-nav").wrap("<ol id='mymznnav' class='breadcrumb'><li></li></ol>");
+
+    var nav = $('#mymznnav');
+    var header = $('#mymznheader');
+
+    navClone = nav.clone();
+    headerClone = header.clone();
+
+    if (nav.length > 0) {
+        header.replaceWith(navClone);
+        nav.replaceWith(headerClone);
+    }
+});
+</script>

@@ -1,11 +1,8 @@
-<!doctype html>
-<html lang='en'>
-<head>
-<meta charset='utf-8'>
-<link rel='stylesheet' type='text/css' href='style.css'>
-<title>Array sorting operations</title>
-<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+---
+layout: minizinc
+title: "Array sorting operations"
+---
+
 <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
 <script type='text/javascript'>
@@ -30,25 +27,12 @@ function hideAll() {
   jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
 }
 </script>
-</head>
-<body>
 
-<div id="container">
-  <div id="header">
-    <div style="float:left; padding-left:0em; padding-right:1em;">
-    <a href="/">
-    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
-    </a>
-    </div>
-    <div style="clear:both;"></div>
-  </div>
-  <div id="navigation">
-    <ul>
-      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
-      <li><a href="doc.html">Documentation</a></li>
-    </ul>
-  </div>
-  <div id="content">
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+{% raw %}
 <div class='mzn-group-level-0'>
 <div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-array.html' title='Array operations'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-coercion.html' title='Coercions'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
@@ -64,7 +48,7 @@ function hideAll() {
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-fn-id'>arg_sort</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>sort_by([ i | i in index_set(x) ], x)
 </div>
-(standard decomposition from builtins.mzn:977)</div></div>
+(standard decomposition from builtins.mzn:1000)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Returns the permutation <span class='mzn-arg'>p</span> which causes <span class='mzn-arg'>x</span> to be in sorted order hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] <= <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]].</p><p>
@@ -73,7 +57,7 @@ The permutation is the stable sort hence <span class='mzn-arg'>x</span>[<span cl
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-fn-id'>arg_sort</span>(<span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>sort_by([ i | i in index_set(x) ], x)
 </div>
-(standard decomposition from builtins.mzn:986)</div></div>
+(standard decomposition from builtins.mzn:1009)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Returns the permutation <span class='mzn-arg'>p</span> which causes <span class='mzn-arg'>x</span> to be in sorted order hence <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>]] <= <span class='mzn-arg'>x</span>[<span class='mzn-arg'>p</span>[<span class='mzn-parm'>i</span>+1]].</p><p>
@@ -136,10 +120,25 @@ The sort is stable, i.e. if <span class='mzn-arg'>y</span>[<span class='mzn-parm
   Return array <span class='mzn-arg'>x</span> sorted by the values in <span class='mzn-arg'>y</span> in non-decreasing order</p><p>
 The sort is stable, i.e. if <span class='mzn-arg'>y</span>[<span class='mzn-parm'>i</span>] = <span class='mzn-arg'>y</span>[<span class='mzn-parm'>j</span>] with <span class='mzn-parm'>i</span> < <span class='mzn-parm'>j</span>, then <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] will appear in the output before <span class='mzn-arg'>x</span>[<span class='mzn-parm'>j</span>].</p>
 </div></div></div>
-</div>  </div>
-  <div id="footer">
-    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
-  </div>
+</div>{% endraw %}
+        </div>
+    </div>
 </div>
-</body>
-</html>
+<script>
+$(document).ready(function(){
+    $(".mzn-group-name").wrap("<h1 id='mymznheader' class='page-header'></h1>");
+    $(".mzn-group-name a").contents().unwrap();
+    $(".mzn-group-nav").wrap("<ol id='mymznnav' class='breadcrumb'><li></li></ol>");
+
+    var nav = $('#mymznnav');
+    var header = $('#mymznheader');
+
+    navClone = nav.clone();
+    headerClone = header.clone();
+
+    if (nav.length > 0) {
+        header.replaceWith(navClone);
+        nav.replaceWith(headerClone);
+    }
+});
+</script>

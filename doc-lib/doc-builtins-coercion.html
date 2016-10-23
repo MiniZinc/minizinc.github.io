@@ -1,11 +1,8 @@
-<!doctype html>
-<html lang='en'>
-<head>
-<meta charset='utf-8'>
-<link rel='stylesheet' type='text/css' href='style.css'>
-<title>Coercions</title>
-<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' rel='stylesheet' type='text/css'>
+---
+layout: minizinc
+title: "Coercions"
+---
+
 <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
 <script type='text/javascript'>
@@ -30,25 +27,12 @@ function hideAll() {
   jQuery('span.mzn-fundecl-equals').removeClass('mzn-fundecl-reveal-equals');
 }
 </script>
-</head>
-<body>
 
-<div id="container">
-  <div id="header">
-    <div style="float:left; padding-left:0em; padding-right:1em;">
-    <a href="/">
-    <img src="MiniZn_logo.jpg" alt="[MiniZinc]" width="100">
-    </a>
-    </div>
-    <div style="clear:both;"></div>
-  </div>
-  <div id="navigation">
-    <ul>
-      <li><a href="http://www.minizinc.org/index.html">MiniZinc homepage</a></li>
-      <li><a href="doc.html">Documentation</a></li>
-    </ul>
-  </div>
-  <div id="content">
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+{% raw %}
 <div class='mzn-group-level-0'>
 <div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-sort.html' title='Array sorting operations'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-string.html' title='String operations'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
@@ -65,7 +49,7 @@ function hideAll() {
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>bool2float</span>(<span class='mzn-ti'>bool</span>: <span class='mzn-id'>b</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if b then 1.0 else 0.0 endif
 </div>
-(standard decomposition from builtins.mzn:1005)</div></div>
+(standard decomposition from builtins.mzn:1028)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return Boolean <span class='mzn-arg'>b</span> coerced to a float  </p>
@@ -74,7 +58,7 @@ function hideAll() {
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of bool: xx = array1d(x),
 } in (arrayXd(x, [ bool2float(xx[i]) | i in index_set(xx) ]))
 </div>
-(standard decomposition from builtins.mzn:1007)</div></div>
+(standard decomposition from builtins.mzn:1030)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return array of Booleans <span class='mzn-arg'>x</span> coerced to an array of floats  </p>
@@ -83,7 +67,7 @@ function hideAll() {
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of var bool: xx = array1d(x),
 } in (arrayXd(x, [ bool2float(xx[i]) | i in index_set(xx) ]))
 </div>
-(standard decomposition from builtins.mzn:1012)</div></div>
+(standard decomposition from builtins.mzn:1035)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return array of Booleans <span class='mzn-arg'>x</span> coerced to an array of floats  </p>
@@ -91,7 +75,7 @@ function hideAll() {
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>bool2float</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>int2float(bool2int(b))
 </div>
-(standard decomposition from builtins.mzn:1021)</div></div>
+(standard decomposition from builtins.mzn:1044)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return Boolean <span class='mzn-arg'>b</span> coerced to a float  </p>
@@ -115,7 +99,7 @@ function hideAll() {
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of bool: xx = array1d(x),
 } in (arrayXd(x, [ bool2int(xx[i]) | i in index_set(xx) ]))
 </div>
-(standard decomposition from builtins.mzn:1036)</div></div>
+(standard decomposition from builtins.mzn:1059)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return array of Booleans <span class='mzn-arg'>x</span> coerced to an array of integers  </p>
@@ -124,7 +108,7 @@ function hideAll() {
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of set of bool: xx = array1d(x),
 } in (arrayXd(x, [ bool2int(xx[i]) | i in index_set(xx) ]))
 </div>
-(standard decomposition from builtins.mzn:1042)</div></div>
+(standard decomposition from builtins.mzn:1065)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return array of sets of Booleans <span class='mzn-arg'>x</span> coerced to an array of sets of integers  </p>
@@ -133,7 +117,7 @@ function hideAll() {
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of var bool: xx = array1d(x),
 } in (arrayXd(x, [ bool2int(xx[i]) | i in index_set(xx) ]))
 </div>
-(standard decomposition from builtins.mzn:1048)</div></div>
+(standard decomposition from builtins.mzn:1071)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return array of Booleans <span class='mzn-arg'>x</span> coerced to an array of integers  </p>
@@ -142,7 +126,7 @@ function hideAll() {
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of var opt bool: xx = array1d(x),
 } in (arrayXd(x, [ bool2int(xx[i]) | i in index_set(xx) ]))
 </div>
-(standard decomposition from builtins.mzn:1054)</div></div>
+(standard decomposition from builtins.mzn:1077)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return array of Booleans <span class='mzn-arg'>x</span> coerced to an array of integers  </p>
@@ -168,7 +152,7 @@ function hideAll() {
     constraint int2float(x, y),
 } in (y)
 </div>
-(standard decomposition from builtins.mzn:1025)</div></div>
+(standard decomposition from builtins.mzn:1048)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return integer <span class='mzn-arg'>x</span> coerced to a float  </p>
@@ -177,7 +161,7 @@ function hideAll() {
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of int: xx = array1d(x),
 } in (arrayXd(x, [ int2float(xx[i]) | i in index_set(xx) ]))
 </div>
-(standard decomposition from builtins.mzn:1060)</div></div>
+(standard decomposition from builtins.mzn:1083)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return array of integers <span class='mzn-arg'>x</span> coerced to an array of floats  </p>
@@ -186,7 +170,7 @@ function hideAll() {
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {array [int] of var int: xx = array1d(x),
 } in (arrayXd(x, [ int2float(xx[i]) | i in index_set(xx) ]))
 </div>
-(standard decomposition from builtins.mzn:1066)</div></div>
+(standard decomposition from builtins.mzn:1089)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return array of integers <span class='mzn-arg'>x</span> coerced to an array of floats  </p>
@@ -201,10 +185,25 @@ function hideAll() {
 <p>
   Return a set of integers <span class='mzn-arg'>x</span> coerced to an array of integers  </p>
 </div></div></div>
-</div>  </div>
-  <div id="footer">
-    &copy;<a href="http://www.nicta.com.au">NICTA</a>, 2014
-  </div>
+</div>{% endraw %}
+        </div>
+    </div>
 </div>
-</body>
-</html>
+<script>
+$(document).ready(function(){
+    $(".mzn-group-name").wrap("<h1 id='mymznheader' class='page-header'></h1>");
+    $(".mzn-group-name a").contents().unwrap();
+    $(".mzn-group-nav").wrap("<ol id='mymznnav' class='breadcrumb'><li></li></ol>");
+
+    var nav = $('#mymznnav');
+    var header = $('#mymznheader');
+
+    navClone = nav.clone();
+    headerClone = header.clone();
+
+    if (nav.length > 0) {
+        header.replaceWith(navClone);
+        nav.replaceWith(headerClone);
+    }
+});
+</script>
