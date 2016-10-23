@@ -1,0 +1,19 @@
+<div class="list-group">
+    {% for p in include.pubs %}
+    <li class="list-group-item">
+        <span class="pubAuthors">{{ p.authors }}.</span>
+        <span class="pubTitle">{{ p.title }}.</span>
+        <span class="pubVenue">{{ p.venue }},</span>
+        <span class="pubYear">{{ p.year }}.</span>
+        {% assign strippedContent = p.content | strip | strip_newlines %}
+        {% if strippedContent != "" %}
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseMain{{ forloop.index }}">more...</a>
+            <div id="collapseMain{{ forloop.index }}" class="collapse">
+                <div class="well noMargin">
+                    {{ p.content }}
+                </div>
+            </div>
+        {% endif %}
+    </li>
+    {% endfor %}
+</div>

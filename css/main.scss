@@ -6,3 +6,19 @@
     display: block;
     margin: 10px auto;
 }
+
+.well.nonPadded {
+    padding: 0;
+}
+
+.well.noMargin {
+    margin-bottom: 0;
+}
+
+.pubTitle {
+    font-weight: bold;
+}
+
+.pubVenue {
+    font-style: italic;
+}

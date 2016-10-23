@@ -1,0 +1,25 @@
+---
+authors: "N. Nethercote, P.J. Stuckey, R. Becket, S. Brand, G.J. Duck, and G. Tack"
+title: "MiniZinc: Towards a standard CP modelling language"
+venue: "In C. Bessiere, editor, Proceedings of the 13th International Conference on Principles and Practice of Constraint Programming, volume 4741 of LNCS, pages 529–543. Springer-Verlag, 2007"
+category: main
+year: 2007
+---
+There is no standard modelling language for constraint programming (CP)
+problems. Most solvers have their own modelling language. This makes it
+difficult for modellers to experiment with different solvers for a problem.
+In this paper we present MiniZinc, a simple but expressive CP modelling
+language which is suitable for modelling problems for a range of solvers and
+provides a reasonable compromise between many design possibilities. Equally
+importantly, we also propose a low-level solver-input language called
+FlatZinc, and a straightforward translation from MiniZinc to FlatZinc that
+preserves all solver-supported global constraints. This lets a solver writer
+support MiniZinc with a minimum of effort - they only need to provide a
+simple FlatZinc front-end to their solver, and then combine it with an
+existing MiniZinc-to-FlatZinc translator. Such a front-end may then serve as
+a stepping stone towards a full MiniZinc implementation that is more
+tailored to the particular solver. A standard language for modelling CP
+problems will encourage experimentation with and comparisons between
+different solvers. Although MiniZinc is not perfect - no standard modelling
+language will be - we believe its simplicity, expressiveness, and ease of
+implementation make it a practical choice for a standard language.

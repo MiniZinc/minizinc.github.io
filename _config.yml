@@ -24,6 +24,8 @@ github_username:  minizinc
 google_analytics: UA-63390311-1
 includes_dir: _includes
 data_dir: _data
+collections:
+    - publications
 
 # Build settings
 markdown: kramdown

@@ -1,72 +1,43 @@
 ---
-layout: default
-title: "MiniZinc: Publications"
+layout: minizinc
+title: MiniZinc - Publications
 ---
 
-<h2>Papers defining the MiniZinc or Zinc languages and extensions</h2>
+{% assign mainpubs = site.publications | where:"category","main" | sort: 'year' %}
+{% assign languagepubs = site.publications | where:"category","language" | sort: 'year' | reverse %}
+{% assign otherpubs = site.publications | where:"category","other" | sort: 'year' | reverse %}
 
-<ul>
-  <li>T. Schrijvers, G. Tack, P. Wuille, H. Samulowitz, and P.J. Stuckey. Search combinators. Constraints, 18(2):269–305, 2013.
-  <li>J. Puchinger, P.J. Stuckey, M. Wallace, and S. Brand. Dantzig-wolfe decomposition and branch-and-price solving in G12. Constraints, 16(1):77–99, 2011.
-  <li>K. Marriott, N. Nethercote, R. Rafeh, P.J. Stuckey, M. Garcia de la Banda, and M. Wallace. The design of the Zinc modelling language. Constraints, 13(3):229–267, 2008.
-  <li>Geoffrey Chu and Peter J. Stuckey. Nested constraint programs. In B. O’Sullivan, editor, Proceedings of the 20th International Conference on Principles and Practice of Constraint Programming, volume 8656 of LNCS, pages 240–255. Springer, 2014.
-  <li>Andrea Rendl, Guido Tack, and Peter J. Stuckey. Stochastic MiniZinc. In B. O’Sullivan, editor, Proceedings of the 20th International Conference on Princi- ples and Practice of Constraint Programming, volume 8656 of LNCS, pages 636–645. Springer, 2014.
-  <li>Christopher Mears, Andreas Schutt, Peter J. Stuckey, Guido Tack, Kim Marriott, and Mark Wallace. Modelling with option types in minizinc. In Proceedings of the 11th International Conference on Integration of Artificial Intelligence (AI) and
-Operations Research (OR) techniques in Constraint Programming, number 8451 in LNCS, pages 88–103. Springer, 2014.
-  <li>Peter J. Stuckey and Guido Tack. MiniZinc with functions. In Proceedings of the 10th International Conference on Integration of Artificial Intelligence (AI) and Operations Research (OR) techniques in Constraint Programming, number 7874 in LNCS, pages 268–283. Springer, 2013.
-  <li>T. Feydy, Z. Somogyi, and P.J. Stuckey. Half-reification and flattening. In J.H.M. Lee, editor, Proceedings of the 17th International Conference on Principles and Practice of Constraint Programming, volume 6876 of LNCS, pages 286–301. Springer, 2011.
-  <li>T. Schrijvers, G. Tack, P. Wuille, H. Samulowitz, and P.J. Stuckey. Search combi- nators. In J.H.M. Lee, editor, Proceedings of the 17th International Conference on Principles and Practice of Constraint Programming, volume 6876 of LNCS, pages 774–788. Springer, 2011.
-  <li>A. Frisch and P.J. Stuckey. The proper treatment of undefinedness in constraint languages. In I. Gent, editor, Proceedings of the 15th International Conference on Principles and Practice of Constraint Programming, volume 5732 of LNCS, pages 367–382. Springer-Verlag, 2009.
-  <li>S. Brand, G.J. Duck, J. Puchinger, and P.J. Stuckey. Flexible, rule-based constraint model linearisation. In P. Hudak and D.S. Warren, editors, Proceedings of Tenth International Symposium on Practical Aspects of Declarative Languages, number 4902 in LNCS, pages 68–83. Springer-Verlag, 2008.
-  <li>N. Nethercote, P.J. Stuckey, R. Becket, S. Brand, G.J. Duck, and G. Tack. Miniz- inc: Towards a standard CP modelling language. In C. Bessiere, editor, Proceedings of the 13th International Conference on Principles and Practice of Constraint Pro- gramming, volume 4741 of LNCS, pages 529–543. Springer-Verlag, 2007.
-    
-</ul>
+<div class="container">
 
-<h2>Papers using MiniZinc or Zinc</h2>
-  
-<ul>
-  <li>Peter J. Stuckey, Thibaut Feydy, Andreas Schutt, Guido Tack, and Julien Fischer. The MiniZinc challenge 2008-2013. AI Magazine, 35(2):55–60, 2014.
-  <li>Kathryn Francis and Peter J. Stuckey. Explaining circuit propagation. Constraints, 19(1):1–29, 2014.
-  <li>Rehan Abdul Aziz, Geoffrey Chu, and Peter J. Stuckey. Stable model semantics for founded bounds. Theory and Practice of Logic Programming, 13(4–5):517–532, 2013. Proceedings of the 29th International Conference on Logic Programming.
-  <li>A. Schutt, T. Feydy, P.J. Stuckey, and M. Wallace. Solving RCPSP/max by lazy clause generation. Journal of Scheduling, 16(3):273–289, 2013.
-  <li>G. Chu and P.J. Stuckey. A complete solution to the maximum density still life problem. Artificial Intelligence, 184–185:1–16, 2012.
-  <li>G. Chu, M. Garcia de la Banda, and P.J. Stuckey. Exploiting subproblem dominance in constraint programming. Constraints, 17(1):1–38, 2012.
-  <li>A. Schutt, T. Feydy, P.J. Stuckey, and M. Wallace. Explaining the cumulative propagator. Constraints, 16(3):250–282, 2011.
-  <li>P.J. Stuckey, R. Becket, and J. Fischer. Philosophy of the MiniZinc challenge. Constraints, 15(3):307–316, 2010.
-  <li>Christina Burt, Nir Lipovetzky, Adrian Pearce, and Peter J. Stuckey. Scheduling with fixed maintenance, shared resources and nonlinear feedrate constraints: a mine planning case study. In Proceedings of Twelfth International Conference on Inte- gration of Artificial Intelligence and Operations Research techniques in Constraint Programming (CPAIOR 2015), volume 9075 of LNCS, pages 91–107. Springer, 2015.
-  <li>Geoffrey Chu and Peter J. Stuckey. Learning value heuristics for constraint pro- gramming. In Proceedings of Twelfth International Conference on Integration of Artificial Intelligence and Operations Research techniques in Constraint Programming (CPAIOR 2015), volume 9075 of LNCS, pages 108–123. Springer, 2015.
-  <li>Kathryn Francis and Peter J. Stuckey. Loop untangling. In B. O’Sullivan, edi- tor, Proceedings of the 20th International Conference on Principles and Practice of Constraint Programming, volume 8656 of LNCS, pages 340–355. Springer, 2014.
-  <li>Roberto Amidini and Peter J. Stuckey. Sequential time splitting and bounds com- munication for a portfolio of optimization solvers. In B. O’Sullivan, editor, Proceed- ings of the 20th International Conference on Principles and Practice of Constraint Programming, volume 8656 of LNCS, pages 108–124. Springer, 2014.
-  <li>Gleb Belov, Natashia Boland, Martin W.P. Savelsbergh, and Peter J. Stuckey. Local search for a cargo assembly planning problem. In Proceedings of the 11th Interna- tional Conference on Integration of Artificial Intelligence (AI) and Operations Re- search (OR) techniques in Constraint Programming, number 8451 in LNCS, pages 159–175. Springer, 2014.
-  <li>Geoffrey Chu and Peter J. Stuckey. Dominance driven search. In C. Schulte, edi- tor, Proceedings of the 19th International Conference on Principles and Practice of Constraint Programming, volume 8124 of LNCS, pages 217–229. Springer, 2013.
-  <li>Kathryn Francis, Jorge Navas, and Peter J. Stuckey. Modelling destructive assign- ments. In C. Schulte, editor, Proceedings of the 19th International Conference on Principles and Practice of Constraint Programming, volume 8124 of LNCS, pages 315–330. Springer, 2013.
-  <li>Andreas Schutt, Thibaut Feydy, and Peter J. Stuckey. Scheduling optional tasks with explanation. In C. Schulte, editor, Proceedings of the 19th International Conference on Principles and Practice of Constraint Programming, volume 8124 of LNCS, pages 628–644. Springer, 2013.
-  <li>Andreas Schutt, Thibaut Feydy, and Peter J. Stuckey. Explaining time-table-edge- finding propagation for the cumulative resource constraint. In Proceedings of the 10th International Conference on Integration of Artificial Intelligence (AI) and Operations Research (OR) techniques in Constraint Programming, number 7874 in LNCS, pages 234–250. Springer, 2013.
-  <li>Rafael Caballero, Peter J. Stuckey, and Antonio Tenorio-Fornes. Finite type exten- sions in constraint programming. In T. Schrijvers, editor, Proceedings of the 15th International Symposium on Principles and Practice of Declarative Programming, pages 217–228. ACM Press, 2013.
-	<li>Rehan Abdul Aziz, Peter J. Stuckey, and Zoltan Somogyi. Inductive definitions in constraint programming. In Proceedings of the Thirty-Sixth Australasian Computer Science Conference (ACSC 2013), pages 41–50, 2013.
-	<li>G. Chu and P.J. Stuckey. Inter-problem nogood learning in constraint programming. In M. Milano, editor, Proceedings of the 18th International Conference on Principles and Practice of Constraint Programming, number 7514 in LNCS, pages 238–247. Springer, 2012.
-	<li>G. Chu and P.J. Stuckey. A generic method for systematically identifying and exploiting dominance relations. In M. Milano, editor, Proceedings of the 18th International Conference on Principles and Practice of Constraint Programming, number 7514 in LNCS, pages 6–22. Springer, 2012. 
-	<li>K. Francis, S. Brand, and P.J. Stuckey. Optimization modelling for software devel- opers. In M. Milano, editor, Proceedings of the 18th International Conference on Principles and Practice of Constraint Programming, number 7514 in LNCS, pages 274–289. Springer, 2012.
-	<li>N. Downing, T. Feydy, and P.J. Stuckey. Explaining flow-based propagation. In N. Beldiceanu, N. Jussien, and E. Pinson, editors, International Conference on Inte- gration of Artificial Intelligence and Operations Research Techniques in Constraint Programming for Combinatorial Optimization Problems (CPAIOR), number 7298 in LNCS, pages 146–162. Springer, 2012.
-	<li>N. Downing, T. Feydy, and P.J. Stuckey. Explaining alldifferent. In M. Reynolds and B. Thomas, editors, Proceedings of the Australasian Computer Science Conference (ACSC 2012), volume 122 of CRPIT, pages 115–124, Melbourne, Australia, 2012. ACS.
-	<li>G. Chu, M. Garcia de la Banda, and P.J. Stuckey. Automatically exploiting subprob- lem equivalence in constraint programming. In Integration of AI and OR Techniques in Constraint Programming for Combinatorial Optimization Problems, volume 6140 of LNCS, pages 71–86. Springer, 2010.
-	<li>A. Schutt, T. Feydy, P.J. Stuckey, and M. Wallace. Why cumultive decomposition is not as bad as it sounds. In I. Gent, editor, Proceedings of the 15th International Conference on Principles and Practice of Constraint Programming, volume 5732 of LNCS, pages 746–761. Springer-Verlag, 2009.
-	<li>T. Feydy and P.J. Stuckey. Lazy clause generation reengineered. In I. Gent, edi- tor, Proceedings of the 15th International Conference on Principles and Practice of Constraint Programming, volume 5732 of LNCS, pages 352–366. Springer-Verlag, 2009.
-  <li>Mark Przepiora, Reza Karimpour, and Guenther Ruhe. 2012. A hybrid release planning method and its empirical justification. In Proceedings of the ACM-IEEE international symposium on Empirical software engineering and measurement (ESEM '12). ACM, New York, NY, USA, 115-118.
-  <li>Roberto Amadini, Maurizio Gabbrielli, and Jacopo Mauro. 2014. An enhanced features extractor for a portfolio of constraint solvers. In Proceedings of the 29th Annual ACM Symposium on Applied Computing (SAC '14). ACM, New York, NY, USA, 1357-1359.
-  <li>John A. Hewson, Paul Anderson, and Andrew D. Gordon. 2012. A declarative approach to automated configuration. In Proceedings of the 26th international conference on Large Installation System Administration: strategies, tools, and techniques (lisa'12). USENIX Association, Berkeley, CA, USA, 51-66.
-  <li>Miquel Bofill, Josep Suy,  Mateu Villaret. A System for Solving Constraint Satisfaction Problems with SMT. Theory and Applications of Satisfiability Testing – SAT 2010, Lecture Notes in Computer Science Volume 6175, 2010, pp 300-305
-  <li>Qinghua Lu. MiniMASC+MiniZinc: An Autonomic Business-Driven Decision Making Middleware for Adaptation of Web Service Compositions. Ubiquitous Intelligence & Computing and 7th International Conference on Autonomic & Trusted Computing (UIC/ATC), 2010 7th International Conference on
-  <li>Mehani, O. ; Boreli, R. ; Maher, M. ; Ernst, T., User- and application-centric multihomed flow management, Local Computer Networks (LCN), 2011 IEEE 36th Conference on
-  <li>Gustav Björdal, Jean-Noël Monette, Pierre Flener, Justin Pearson, A constraint-based local search backend for MiniZinc. Constraints. July 2015, Volume 20, Issue 3, pp 325-345
-  <li>Tias Guns, Anton Dries, Guido Tack, Siegfried Nijssen and Luc De Raedt, MiningZinc: A Modeling Language for Constraint-based Mining. Proceedings of the Twenty-Third International Joint Conference on Artificial Intelligence. 1365-1372, 2013.
-  <li>Claudio León de la Barra, Ricardo Soto, Broderick Crawford, Camila Allendes, Hans Berendsen,Eric Monfroy. Modeling the Portfolio Selection Problem with Constraint Programming. HCI International 2013 - Posters’ Extended Abstracts. Communications in Computer and Information Science Volume 373, 2013, pp 645-649
-  <li>Broderick Crawford, Ricardo Soto, Carolina Zec, Eric Monfroy, Fernando Paredes. Easy Modeling of Open Pit Mining Problems via Constraint Programming. HCI International 2014 - Posters’ Extended Abstracts, Communications in Computer and Information Science Volume 434, 2014, pp 519-522
-  <li>Jinbo Huang, Search Strategy Simulation in Constraint Booleanization. Principles of Knowledge Representation and Reasoning: Proceedings of the Thirteenth International Conference, KR 2012, Rome, Italy, June 10-14, 2012. AAAI Press, (2012)	
-  <li>Tripti Saxena and Gabor Karsai. 2010. The GDSE framework: a meta-tool for automated design space exploration. In Proceedings of the 10th Workshop on Domain-Specific Modeling (DSM '10). ACM, New York, NY, USA, , Article 15 , 6 pages.
-  <li>Jinbo Huang. Universal Booleanization of Constraint Models. Principles and Practice of Constraint Programming, Lecture Notes in Computer Science Volume 5202, 2008, pp 144-158
-  <li>Kevin Leo, Christopher Mears, Guido Tack, Maria Garcia de la Banda, Globalizing Constraint Models. Principles and Practice of Constraint Programming - 19th International Conference, CP 2013, Uppsala, Sweden, September 16-20, 2013. Proceedings: 432-447
-  <li>Christopher Mears, Todd Niven, Marcel Jackson, Mark Wallace. Proving Symmetries by Model Transformation. Principles and Practice of Constraint Programming – CP 2011, Lecture Notes in Computer Science Volume 6876, 2011, pp 591-605
-  <li>Hewson, JA, Anderson, P & Gordon, AD 2013, 'Constraint-based Autonomic Reconfiguration'. in Proceedings of 2013 Self-Adaptive and Self-Organizing systems conference (SASO). IEEE Computer Society, pp. 101-110., 10.1109/SASO.2013.23
-</ul>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Publications
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Citing MiniZinc</h2>
+            <p>If you use MiniZinc in your own research or would like to acknowlegde it in a publication, please use
+                the following references.</p>
+            {% include pub.html pubs=mainpubs %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Papers defining the MiniZinc or Zinc languages and extensions</h2>
+            {% include pub.html pubs=languagepubs %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Papers using MiniZinc or Zinc</h2>
+            {% include pub.html pubs=otherpubs %}
+        </div>
+    </div>
+        
   
