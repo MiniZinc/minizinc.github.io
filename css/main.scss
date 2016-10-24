@@ -113,3 +113,20 @@
 a.mzn-nav-up, a.mzn-nav-next, a.mzn-nav-prev {
   text-decoration: none;
 }
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
+    color: #555;
+	font-weight: bold;
+}
+
+
+.myBanner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -100;
+	opacity: .8;
+	background-image:url('../banner.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
