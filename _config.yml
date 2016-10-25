@@ -17,14 +17,16 @@ title: MiniZinc
 email: info@minizinc.org
 description: > # this means to ignore newlines until "baseurl:"
   The MiniZinc constraint modelling system.
+#baseurl: "/~guidot/new_minizinc" # the subpath of your site, e.g. /blog
 baseurl: "" # the subpath of your site, e.g. /blog
-# url: "http://www.minizinc.org" # the base hostname & protocol for your site
+#url: "http://s-cah-mwallace.infotech.monash.edu" # the base hostname & protocol for your site
 twitter_username: minizinc
 github_username:  minizinc
 google_analytics: UA-63390311-1
 includes_dir: _includes
 data_dir: _data
 collections:
+    - people
     - publications
 gems:
   - jekyll-sitemap

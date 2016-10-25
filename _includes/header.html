@@ -14,13 +14,15 @@
     {% assign challengeactive='class="active"' %}
   {% when "MiniZinc - Forum" %}
     {% assign forumactive='class="active"' %}
+  {% when "MiniZinc - Team" %}
+    {% assign teamactive='class="active"' %}
 {% endcase %}
 
     <!-- jQuery -->
-    <script src="/js/jquery.js"></script>
+    <script src="{{ site.baseurl }}/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -33,8 +35,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img class="navbar-brand" src="/MiniZn_logo.png" alt="MiniZinc logo">
-                <a class="navbar-brand" href="/index.html">
+                <img class="navbar-brand" src="{{ site.baseurl }}/MiniZn_logo.png" alt="MiniZinc logo">
+                <a class="navbar-brand" href="{{ site.baseurl }}/index.html">
                     MiniZinc
                 </a>
             </div>
@@ -42,10 +44,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li {{ softwareactive }}><a href="/software.html">Software</a></li>
-                    <li {{ resourcesactive }}><a href="/resources.html">Resources</a></li>
-                    <li {{ challengeactive }}><a href="/challenge.html">Challenge</a></li>
-                    <li {{ forumactive }}><a href="/forum.html">Discussions</a></li>
+                    <li {{ softwareactive }}><a href="{{ site.baseurl }}/software.html">Software</a></li>
+                    <li {{ resourcesactive }}><a href="{{ site.baseurl }}/resources.html">Resources</a></li>
+                    <li {{ challengeactive }}><a href="{{ site.baseurl }}/team.html">Team</a></li>
+                    <li {{ challengeactive }}><a href="{{ site.baseurl }}/challenge.html">Challenge</a></li>
+                    <li {{ forumactive }}><a href="{{ site.baseurl }}/forum.html">Discussions</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
