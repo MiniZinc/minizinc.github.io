@@ -26,7 +26,8 @@ includes_dir: _includes
 data_dir: _data
 collections:
     - publications
-
+gems:
+  - jekyll-sitemap
 # Build settings
 markdown: kramdown
 theme: minima
