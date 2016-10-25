@@ -1,0 +1,886 @@
+---
+layout: minizinc
+title: MiniSearch - Documentation
+---
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        MiniSearch Documentation
+      </h1>
+
+<h3>
+<ol>
+<li><a href="#about">What is MiniSearch?</a></li>
+<li><a href="#quickExample">A quick example</a></li>
+<li><a href="#download">Downloading MiniSearch</a></li>
+<li><a href="#running">Running MiniSearch</a></li>
+<li><a href="#fznsolver">Getting a FlatZinc solver</a></li>
+<li><a href="#builtins">Built-in meta-searches<a/>
+<li><a href="#language">Writing your own meta-search in MiniSearch</a></li>
+<li><a href="#examples">MiniSearch examples</a></li>
+<!--<li>Current limitations of MiniSearch</li>-->
+<li><a href="https://github.com/MiniZinc/libminizinc/issues">Reporting a MiniSearch bug</a></li>
+</ol>
+</h3>
+
+<br>
+<br>
+<ol>
+<li><h3 id="about">What is MiniSearch?</h3>
+<table><tr><td width="1000pt">
+<p>
+MiniSearch is a language for specifying <b>meta-search</b> in a MiniZinc model. 
+Meta-search includes high-level (heuristic) searches such as Large Neighbourhoud Search (LNS). 
+With MiniSearch you can now solve your MiniZinc model using any of the <a href="#builtins">built-in meta-searches</a>
+or your own <a href="#language">handwritten meta-search</a>.
+</p>
+<p>
+MiniSearch is also <b>solver-independent</b>, which means that you can run your
+meta-search <b>with any FlatZinc solver</b>, such as choco, chuffed, gecode or
+or-tools.
+</p>
+</tr></td></table>
+</li>
+
+<br>
+
+<li><h3 id="quickExample">A quick example: Solving a MiniZinc model with LNS</h3>
+<table><tr><td width="1000pt">
+<p>
+Let's consider a sample MiniZinc model that consists of an array of decision variables <tt>x</tt> 
+and an objective variable <tt>obj</tt> that should be minimized (we omit constraints for simplicity):
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+array[int] of var int: x;                  <font color="#555555">% classical MiniZinc model</font>
+var int: obj;
+<font color="#555555">% constraints omitted</font>
+
+solve minimize obj;
+</pre></td></tr>
+</table>
+<p>
+When running the model above in a backend solver, it will be solved with the standard optimisation technique of the
+solver (for instance, branch-and-bound for CP solvers). With MiniSearch we can run other meta-searches, even heuristic
+search, in the backend solver. Let's solve this model using Large Neighbourhood Search (LNS):
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+<mark color="yellow">include "minisearch.mzn";</mark>                   <font color="#555555">% MiniSearch model</font><br>
+array[int] of var int: x;
+var int: obj;
+<font color="#555555">% constraints omitted</font>
+
+int: iterations = 100;
+float: destructionRate = 0.3;
+solve <mark color="yellow">search lns_min(obj, x, iterations, destructionRate);</mark>
+</pre></td></tr>
+</table>
+<p>
+The changes in the model are highlighted in yellow. First, we need to include <code>minisearch.mzn</code>
+which defines the built-in meta-searches (and MiniSearch keywords), including LNS. Then, instead
+of calling <code>solve minimize obj</code> we use the MiniSearch built-in <code>lns_min</code>
+that takes the following parameters:
+</p>
+<ul>
+   <li> <code>obj</code>: the objective variable that is minimized</li>
+   <li> <code>x</code>: the array of decision variables on which LNS is performed</li>
+   <li> <code>iterations</code>: the number of LNS iterations</li> 
+   <li> <code>destructionRate</code>: the percentage (between 0 and 1) of the variables <code>x</code> that will be 'destroyed' (whose value-assignment from the last solution will be lifted). In the example above, the destruction rate of `0.3' means that 30% of the variables in array <code>x</code> will be randomly reset in each iteration.</li>  
+</ul>
+<p>
+You can execute the above MiniSearch model using the executable <code>minisearch</code> by typing the following into your terminal:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><tt>
+minisearch model.mzn data.dzn<br>
+</tt></td></tr>
+</table>
+<p>
+In the above case, <code>minisearch</code> will use the default FlatZinc solver, <code>fzn-gecode</code>, for solving the problem. However, you can use any 
+of your favourite FlatZinc solvers, such as <code>fzn-chuffed</code>:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><tt>
+minisearch --solver fzn-chuffed model.mzn data.dzn<br>
+</tt></td></tr>
+</table>
+<p>
+Note that if the solver executable is not in the <code>PATH</code>, then you must specify the path to your solver.
+At the moment, we only provide a command line version for MiniSearch, but an IDE-version is in the works.
+</p>
+</tr></td></table>
+</li>
+
+<br>
+
+<li><h3 id="download">Downloading MiniSearch</h3>
+<table><tr><td width="1000pt">
+<p>The most recent source code is available on github, on the
+<a href="https://github.com/MiniZinc/libminizinc/tree/feature/minisearch">'feature/minisearch' branch</a> of <a href="https://github.com/MiniZinc/libminizinc">libminizinc</a>.
+To get the source code, use:
+</p>
+<p>
+<code>git clone -b feature/minisearch https://github.com/MiniZinc/libminizinc.git</code>
+</p>
+</tr></td></table>
+</li>
+
+
+<br>
+
+<li><h3 id="running">Running MiniSearch</h3>
+<table><tr><td width="1000pt">
+<p>
+We currently only provide a command-line version of MiniSearch, however, we are working on the integration of MiniSearch
+into the <a href="http://minizinc.org/ide">MiniZinc IDE</a>, which we plan to release soon. 
+</p>
+<p>
+After downloading the <a href="#download">binary package of MiniSearch</a>, you will find the MiniSearch executable, <code>minisearch</code>,
+in the <code>bin/</code> folder. <code>minisearch</code> works similarly to the <code>minizinc</code> executable,
+and takes a model and data file as input, where the model may contain a MiniSearch specification:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><tt>
+minisearch model.mzn data.dzn<br>
+</tt></td></tr>
+</table>
+<p>
+MiniSearch directly executes the FlatZinc solver, so if no solver is given as argument,
+MiniSearch uses <code>fzn-gecode</code>, assuming it is in the <code>PATH</code>.
+Alternatively, you can specify a FlatZinc solver with the <code>--solver</code> option,
+for instance the FlatZinc solver <code>fzn-ortools</code>:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><tt>
+minisearch --solver fzn-ortools model.mzn data.dzn<br>
+</tt></td></tr>
+</table>
+<p>
+If the FlatZinc solver binary is not in the <code>PATH</code>, you need to specify
+its full path:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><tt>
+minisearch --solver /path/to/fzn-ortools model.mzn data.dzn<br>
+</tt></td></tr>
+</table>
+</tr></td></table>
+</li>
+
+<br>
+
+<li><h3 id="fznsolver">Getting a FlatZinc solver</h3>
+<table><tr><td width="1000pt">
+<p>
+A FlatZinc solver is any solver that can read and solve FlatZinc models. Many popular CP solvers provide a 
+FlatZinc solver. Below we give a list of solvers that provide a FlatZinc solver and that we have tested
+with MiniSearch.
+</p>
+<ul>
+<li><a href="http://choco-solver.org"><b>Choco</b></a> is a CP solver written in Java. It provides 
+a FlatZinc solver <code>fzn_choco</code> <a href="https://github.com/chocoteam/choco-parsers/tree/master/src/chocofzn">here</a>.</li>
+<br>
+<li><a href="https://github.com/geoffchu/chuffed"><b>Chuffed</b></a> is a CP solver using lazy-clause generation (LCG) written in C++. 
+Its FlatZinc solver <code>fzn_chuffed</code> can be found in the <a href="https://github.com/geoffchu/chuffed/tree/master/trunk">trunk of its git repository</a>.
+To obtain the executable of <code>fzn_chuffed</code> you need to compile and install the trunk which will create <code>fzn_chuffed</code> in the install directory.</li>
+<br>
+<li><a href="http://gecode.org"><b>Gecode</b></a> is a CP solver written in C++. It ships FlatZinc solver <code>fzn-gecode</code> as 
+part of its <a href="http://www.gecode.org/download.html">binary packages</a>.</li>
+<br>
+<li><a href="https://developers.google.com/optimization/"><b>or-tools</b></a> is Google's software suite for optimisation problems written in C++. Obtain the or-tools
+source code from <a href="https://github.com/google/or-tools">or-tools' github page</a> and after compilation, you will find the or-tools FlatZinc solver <code>fz</code> in the <code>bin/</code> directory.
+</ul>
+<p>Let us know if your FlatZinc solver is missing and you would like to promote it here.
+</p>
+</tr></td></table>
+</li>
+
+<br>
+
+<li><h3 id="builtins">Built-in meta-searches in MiniSearch</h3>
+<table><tr><td width="1000pt">
+MiniSearch provides some builtin meta-searches.
+<ol>
+<li><h4 id="bab">Branch-and-Bound Search</h4></li>
+<p>
+The simplest meta-search is CP-based branch and bound (BAB): 
+after each newly found solution, a constraint is added to find
+a solution with a better bound on the objective. In MiniSearch
+there exist <code>minimize_bab</code> for minimisation and <code>maximize_bab</code>
+for maximisation.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><tt>
+include "minisearch.mzn";<br>
+var int: obj;<br>
+<font color="#555555">% some constraints and other variables</font><br>
+<br>
+solve search <mark color="yellow">minimize_bab(obj)</mark>;<br>
+</tt></td></tr>
+</table>
+<p>Note that for most solvers the behaviour will be almost 
+the same as when writing <code>solve minimize obj</code>.
+</p>
+
+<li><h4 id="lex">Lexicographic Branch-and-Bound Search</h4></li>
+<p>
+Lexicographic BAB can be used for solving multi-objective 
+optimisation problems, if the different objectives can 
+be ranked according to their importance. Then the array
+of objectives is minimised (or maximised) lexicographically.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><tt>
+include "minisearch.mzn";<br>
+<mark color="yellow">array[int] of var int</mark>: obj_array;<br>
+<font color="#555555">% some constraints and other variables</font><br>
+<br>
+solve search <mark color="yellow">minimize_lex(obj_array)</mark>;<br>
+</tt></td></tr>
+</table>
+</li>
+
+
+<li><h4 id="rlns">Randomised Large Neighbourhood Search (LNS)</h4></li>
+<p>Randomised Large Neighbourhood Search (LNS) iteratively 'destroys' a random part of 
+a previously found solution, while fixing the remaining part, and resolves the problem
+to optimality (or until a better solution has been found). 
+</p>
+<p>
+Therefore, the  MiniSearch random LNS built-in <code>lns_min</code> (or <code>lns_max</code> for maximisation)
+takes the following arguments: objective variable <code>obj</code>, the array of variables
+<code>x</code> of which a part will be randomly destroyed, the number of <code>iterations</code>
+and the <code>destructionRate</code> (a value between 0 and 1) which states the percentage 
+of the variables in <code>x</code> that should be destroyed in each iteration.
+<code>lns_min</code> (and <code>lns_max</code>) find the next better solution in each iteration.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><tt>
+include "minisearch.mzn";<br>
+array[int] of var int: x;<br>
+var int: obj;<br>
+<font color="#555555">% some constraints and other variables</font><br>
+<br>
+int: iterations = 100;<br>
+float: destructionRate = 0.3;<br>
+solve search <mark color="yellow">lns_min(obj, x, iterations, destructionRate);</mark><br>
+</tt></td></tr>
+</table>
+<p>
+There also exists an extended version of <code>lns_min</code> (and <code>lns_max</code>) that searches the
+neighbourhood to optimality in each iteration. Because this can be costly in time, this version takes
+a timelimit <code>time_ms</code> in milliseconds for exploring the neighbourhood. If no time limit is required, <code>time_ms</code>
+can be set to zero.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><tt>
+include "minisearch.mzn";<br>
+array[int] of var int: x;<br>
+var int: obj;<br>
+<font color="#555555">% some constraints and other variables</font><br>
+<br>
+int: iterations = 100;<br>
+float: destructionRate = 0.3;<br>
+<mark color="yellow">int: time_ms</mark> = 5*1000; <font color="#555555">% timeout of 5 secs for searching the neighbourhood</font><br>
+solve search <mark color="yellow">lns_min(obj, x, iterations, destructionRate, time_ms);</mark><br>
+</tt></td></tr>
+</table>
+</li>
+
+<li><h4 id="alns">Simple Adaptive LNS</h4></li>
+<p>Adaptive LNS is an extension of randomised LNS where the destruction rate is adapted
+over the iterations. In the simple version that MiniSearch provides, the destruction rate
+is increased by 1% in each iteration where no better solution has been found.
+</p>
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><tt>
+include "minisearch.mzn";<br>
+array[int] of var int: x;<br>
+var int: obj;<br>
+<font color="#555555">% some constraints and other variables</font><br>
+<br>
+int: iterations = 100;<br>
+<mark color="yellow">int: initRate</mark> = 20; <font color="#555555">% start with destroying 20%</font><br>
+int: time_ms = 5*1000;<br>
+solve search <mark color="yellow">adaptive_lns_min</mark>(obj, x, iterations, <mark color="yellow">initRate</mark>, time_ms);<br>
+</tt></td></tr>
+</table>
+<!--<li><h4 id="diverse">Maximally Diverse Solutions</h4></li>-->
+</ol>
+</tr></td></table>
+</li>
+
+<br>
+
+<li><h3 id="language">Writing your own meta-search - The MiniSearch Language</h3>
+<table><tr><td width="1000pt">
+<p>
+Here we describe the MiniSearch language and how to write your own search. 
+Also have a look at the <a href="#examples">MiniSearch examples</a> or at 
+our <a href="minisearch-cp2015.pdf">MiniSearch paper</a>.
+</p>
+<p>
+MiniSearch is a high level meta-search language based on MiniZinc 2.0 with 
+special built-ins for specifying the search. All MiniSearch built-ins are 
+typed as functions returning annotations. Semantically, however, every 
+MiniSearch built-in returns a value that represents either `success' or 
+`failure', with respect to finding a solution.
+</p>
+
+<p>The table below shows
+all MiniSearch builtins in alphabetical order. Below we will discuss the different
+built-ins or 'combinators' in more detail.
+</p>
+
+<table cellpadding="11px" border="1">
+<tr><td> <b>MiniSearch built-in</b> </td><td><b>Description</b></td></tr>
+<tr><td> <code><a href="#andor">s1 /\ s2</a></code> </td><td> run search <code>s1</code> and iff successful, run <code>s2</code></td></tr>
+<tr><td> <code><a href="#andor">s1 \/ s2</a></code> </td><td> run search <code>s1</code> and iff it fails, run <code>s2</code></td></tr>
+<tr><td> <code><a href="#assign">c := v</a></code> </td><td> assign parameter <code>c</code> the value <code>v</code></td></tr>
+<tr><td> <code><a href="#repeat">break</a></code> </td><td> break within a <code><a href="#repeat">repeat</a></code></td></tr>
+<tr><td> <code><a href="#commit">commit()</a></code> </td><td>commit to the last found solution in the <a href="#functionScope">function scope</a></td></tr>
+<tr><td> <code>fail</code> </td><td> return 'failure'</td></tr>
+<tr><td> <code><a href="#sol">hasSol()</a></code> </td><td>returns true if a solution has been found, false otherwise</td></tr>
+<tr><td> <code>if s then s1 else s2</code> </td><td>if search <code>s</code> is successful, run <code>s1</code>, otherwise run <code>s2</code></td></tr>
+<tr><td> <code><a href="#next">next()</a></code> </td><td> find the next solution</td></tr>
+<tr><td> <code><a href="#print">print()<a/></code> </td><td> print last found solution according to the model's output specification</td></tr>
+<tr><td> <code><a href="#print">print (str)</a></code> </td><td> print MiniZinc output string <code>str</code></td></tr>
+<tr><td> <code><a href="#post">post (c)</a></code> </td><td> post MiniZinc constraint <code>c</code> in the current scope</td></tr>
+<tr><td> <code><a href="#repeat">repeat (s)</a></code> </td><td> repeat search <code>s</code> until <code>break</code> is executed</td></tr>
+<tr><td> <code><a href="#repeat">repeat (i in 1..N) (s)</a></code> </td><td> repeat search <code>s</code> for <code>N</code> times, or until <code>break</code> is executed</td></tr>
+<tr><td> <code><a href="#scopes">scope (s)</a></code> </td><td> open a local scope containing search <code>s</code></td></tr>
+<tr><td> <code>skip</code> </td><td> return 'success'</td></tr>
+<tr><td> <code><a href="#sol">sol(x)</a></code> </td><td>return solution value of variable <code>x</code></td></tr>
+<tr><td> <code><a href="#timelimit">time_limit (m,s)</a></code> </td><td> run <code>s</code> until time-limit <code>m</code> (in milliseconds) is reached</td></tr>
+</table>
+
+<br>
+
+<ol>
+<li><h4>A Starting Example: Formulating Branch-and-Bound Search</h4>
+<p>Let's start with a simple example: formulating Branch-And-Bound Search (BAB). In BAB,
+after each found solution, we post a constraint on the objective variable to assure that 
+the next solution has a better objective value than the currently found solution.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+include "minisearch.mzn";
+var int: obj; <font color="#555555">% other variables and constraints not shown</font>
+solve <b>search min_bab</b>(obj);
+output ["Objective: "++show(obj)];
+<br>
+function ann: <b>min_bab</b>(var int: obj) =
+  repeat ( 
+          if next() then 
+             commit() /\ print() /\ post(obj < sol(obj) )
+          else break endif 
+  );
+</pre>
+</td></tr>
+</table>
+<p>
+The first few lines outline the basic MiniZinc model (where we omit constraints and further variables for 
+simplicity). We include the <code>minisearch.mzn</code> library and call our user-defined MiniSearch
+function <code>min_bab</code> in line 3, using the  new </code>search</code> keyword.
+</p>
+
+<p>
+The second part defines the MiniSearch function <code>min_bab</code>.
+The specification can be read as follows: repeatedly try to find the next solution; and if that is successful, 
+commit to the solution, print it and add the constraint that the objective must have a lower value 
+than the current solution. If unsuccessful, break out of the repeat.
+</p>
+
+<p>Have a look at the Golomb Ruler example with a user-defined branch-and-bound search: <a href="golomb_mybab.mzn">golomb_mybab.mzn</a>. You can run this example as it is with MiniSearch.
+</p>
+</li>
+
+
+<br>
+
+
+
+<li><h4>Built-ins involving the solver</h4>
+<p>
+Communication with the solver is restricted to three forms: invoking the solver (to find a new solution), adding constraints/variables to the model, and when creating scopes for temporary variables and constraints.
+</p>
+<br>
+<h4 id="next">Invoking the solver with <code>next()</code></h4>
+<p>
+The MiniSearch instruction for finding the next solution is <code>next()</code>.
+It is successful if a solution has been found, and fails otherwise. 
+The variable/value labelling strategy for the CP tree search (such as first-fail on the smallest domain value) 
+can be set by annotating the <code>solve</code> item (as in standard MiniZinc). This sets the labelling 
+globally, for every call to <code>next()</code>.
+</p>
+
+<br>
+<h4 id="post">Adding constraints with <code>post()</code></h4>
+<p>
+Constraints are added by calling the <code>post (c)</code> built-in with a constraint <code>c</code> as argument.
+Constraints can be formulated using the same MiniZinc constructs as in the model, which includes global 
+constraints, user-defined functions and predicates. 
+</p>
+<p>
+<b>NOTE</b>: In the current beta implementation it is recommended to put all constraints into one call of post. This
+means, it is preferred to write <code>post (c1 /\ c2)</code> instead of <code>post(c1) /\ post(c2)</code>.
+</p>
+
+<br>
+<h4 id="localVars">Adding local variables</h4>
+<p>
+Variables can be dynamically added during search too, using the MiniZinc <code>let</code> construct.
+This construct can be used for adding both constants/parameters as well as decision variables.
+The example below demonstrates how to add local constants and decision variables.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: my_search(int: N) =
+  <b>let {</b>
+         int: i = 0;                    <font color="#555555">% adding a local constant</font>
+         array[1..N] of var 1..N: x;    <font color="#555555">% adding a local variable array</font>
+  <b>} in  (</b>
+     repeat (
+         i := i + 1 /\                <font color="#555555">% change the value of the constant</font>
+         post(alldifferent(x)) /\     <font color="#555555">% post a constraint on local variables</font>
+         <font color="#555555">% some other search</font>
+     )
+  <b>)</b>;
+</pre>
+</td></tr>
+</table>
+<p><b>NOTE</b>: In the current beta implementation we recommend to use 1-dimensional arrays instead of 
+multi-dimensional arrays, because there are still some problems with the latter.
+</p>
+
+<br>
+<h4 id="scopes">Search scopes</h4>
+<p>
+Search scopes define the lifespan of constraints and variables in the model. MiniSearch has an implicit 
+global search scope that contains all variables and constraints of the model. A new search scope can be 
+created by using the <code>scope(s)</code> built-in that takes a MiniSearch specification <code>s</code> 
+as an argument. When entering a scope, search is assumed to start from the root again. This means that 
+in the example below, both calls of next will return the same solution.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: my_search() =
+   next() /\ print() /\  <font color="#555555">% prints first solution in search space</font>
+   
+   <b>scope</b> (               <font color="#555555">% opens a new search scope where search starts at root</font>
+      next() /\ print()  <font color="#555555">% prints first solution in search space</font>
+   )
+
+   /\ 
+   next() /\ print() /\  <font color="#555555">% prints second solution in search space</font>
+</pre>
+</td></tr>
+</table>
+<p>
+Whenever the execution leaves a search scope, all constraints and variables that were added in the 
+scope are removed from the model and the solver. Execution in the enclosing scope resumes from the 
+point where it left off. This is best illustrated on the example of randomised Large Neighbourhood 
+Search (LNS) below. 
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: lns_min (var int: obj, array[int] of var int: x,
+                   int: iterations, float: d) = 
+    repeat (i in 1..iterations) (
+        <b>scope (</b>
+            <mark color="yellow">post(neighbourhoodCts(x,d)) /\</mark>  <font color="#555555">% fix neighbourhood in the local scope</font>
+            <mark color="yellow">next() /\ </mark>                      <font color="#555555">% find next solution in neighbourhood</font>
+            <mark color="yellow">commit()</mark> 
+        <b>)</b> /\
+        post(obj < sol(obj))  <font color="#555555">% post BAB constraint in the global scope</font>
+   );
+</pre>
+</td></tr>
+</table>
+<p>
+The yellow part is the local scope, that searches a random neighbourhood in each
+iteration: the posted neighbourhood constraints are removed from the model at the end of the local 
+scope. In contrast, the BAB constraint that tries to find a better solution in the next iteration,
+is posted in the global scope and is therefore not removed.
+</p>
+</li>
+
+<br>
+<br>
+
+<li><h4 id="functionScope">User-defined functions and function scope</h4>
+<p>
+A MiniSearch strategy is defined as MiniZinc function that can take any argument
+but must return an annotation (<code>ann</code> in short). This is necessary to 
+conform with the MiniSearch type system (and every MiniSearch builtin returns the 
+type <code>ann</code>).
+Below is an example of a user-defined function with empty body:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: <b>my_search</b>() =
+   <font color="#555555">% some search</font>
+;
+</pre>
+</td></tr>
+</table>
+<h4 id="commit">Function scope return values and <code>commit()</code></h4>
+<p>
+Recall that MiniSearch functions implicitly return SAT  (<i>true/success</i>) or UNSAT (<i>false/failure</i>). 
+How to achieve this in your function when the return type is <code>ann</code>? This is done 
+by calling the 
+built-in <code>commit()</code>. 
+<code>commit()</code> is used to commit to the last found solution. 
+If  <code>commit</code> has been executed at least once in the scope of the function 
+(which represents the whole function body and is therefore different
+from the search scope!) then the function will return SAT, and UNSAT otherwise.
+</p>
+<p>
+Let's consider an example for illustration. In the first function below, we never execute
+<code>commit</code>, so this function will ALWAYS implicitly return UNSAT. In the 
+second function however, we commit to a solution after each successful call of <code>next()</code>,
+so if at least one solution has been found the function implicitly returns SAT, and UNSAT otherwise.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+<font color="#555555">% this function will always return UNSAT because we don't commit to a solution</font>
+function ann: <b>my_search_without_commit</b>() =   
+   repeat (  
+     if next() then 
+        print()  
+     else break endif
+   );
+
+
+<font color="#555555">% this function will return SAT if commit() is executed</font>
+function ann: <b>my_search_with_commit</b>() =
+   repeat ( 
+     if next() then 
+        print() /\ commit()
+     else break endif
+   );
+</pre>
+</td></tr>
+</table>
+
+<p>
+<!--When a MiniSearch strategy is defined as a MiniZinc function, a local solution scope is created. This means that any solution found by a call to \mzninline|next()| inside the function is visible for the code in the function body, but not for the caller of the function when the function returns. 
+This architecture allows for calls to \mzninline|next()| to be \emph{encapsulated}, i.e., a function can make ``tentative'' calls to next in a nested search scope and only commit if these succeed. Sect.~\ref{sec:andorsearch} shows how AND/OR search can be implemented based on this principle.
+In order to make the current solution accessible to the caller, the function must call the \mzninline|commit| built-in. A function returns `success' if it called \mzninline|commit()| at least once, and `failure' otherwise, and the last solution committed by the function will then become the current solution of the caller. -->
+</p>
+</li>
+<br>
+<br>
+
+
+<li><h4>MiniSearch control built-ins</h4>
+<p>
+As noted above, all MiniSearch built-ins have an implicit return value that represents either `success' 
+(<it>true</it>) or `failure' (<it>false</it>). Using this concept, we introduce MiniSearch control built-ins.
+All built-ins execute their arguments in order.
+</p>
+
+<br>
+<h4 id="andor"><code>/\</code> and <code>\/</code></h4>
+<p>
+The <code>/\</code>-built-in (`and-built-in') runs its arguments in order and stops to return <it>false</it> as soon as one of 
+its arguments fails. 
+Similarly, the <code>\/</code>-built-in (`or-built-in') stops and returns <it>success</it> as soon as one of its arguments 
+succeeds. Existing control mechanisms of MiniZinc such as <code>if then else endif</code> expressions can be 
+used as well.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: <b>my_search_and</b>() =
+   next() <b>/\</b> print("Found a solution\n");    <font color="#555555">% executes print statement only if next() was successful</font> 
+
+
+function ann: <b>my_search_or</b>() =
+   next() <b>\/</b> print("No solution found\n");   <font color="#555555">% executes print statement only if next() failed</font> 
+</pre>
+</td></tr>
+</table>
+
+<br>
+<h4 id="repeat">Looping with <code>repeat()</code></h4>
+<p>
+The <code>repeat(s)</code> built-in takes a MiniSearch specification <code>s</code> and repeats it until 
+a <code>break</code> built-in is executed. It returns <i>false</i> if a <code>break</code> occurred, 
+otherwise returns what <code>s</code> returned.</p>
+<p>
+ The delimited variant <code>repeat(i in 1..N)(s)</code> will execute <code>s</code> for <code>N</code> iterations (or until <code>break</code> is executed).
+</p>
+<p>
+In the example below, <code>my_search</code> searches for all solutions: 
+<code>repeat</code> is executed until no more solutions can be found, in which
+case <code>break</code> is executed.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: my_search() =
+   <b>repeat</b> (
+     if next() then 
+        print("Found a(nother) solution\n") /\ commit()
+     else <b>break</b> endif     
+   );
+</pre>
+</td></tr>
+</table>
+
+<br>
+<h4 id="timelimit">Limiting search time with <code>time_limit()</code></h4>
+<p>
+The built-in <code>time_limit(ms,s)</code> imposes a time limit <code>ms</code> in milliseconds on <i>any</i> 
+MiniSearch specification <code>s</code>. This way, <code>s</code> stops whenever the time limit is reached, 
+returning its current status. Time-limits are handled transparently by the MiniSearch kernel as an exception.
+</p>
+<p>
+Let's extend the example from above and extend it with a time-limit built-in: the search now finds all solutions
+that can be found within 5 seconds. As soon as it takes longer than 5 seconds, <code>next()</code> will fail
+and <code>break</code> will be executed.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: my_search() =
+   repeat (
+     if <b>time_limit(</b>5*1000, next()<b>)</b> then <font color="#555555">% if a solution is found within 5 seconds</font>
+        print("Found a(nother) solution\n") /\ commit()
+     else break endif     
+   );
+</pre>
+</td></tr>
+</table>
+<p>
+Time-limits can be put everywhere, also on the main call of your model. This makes it easy to control
+the time-limit for your search via data files:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+<font color="#555555">% ----- problem model omitted ----- %</font>
+
+int: timeout;       <font color="#555555">% timeout is specified in data file</font>
+solve search 
+     <b>time_limit(</b>timeout, my_search()<b>)</b>;
+</pre>
+</td></tr>
+</table>
+
+<br>
+<h4 id="assign">Assigning values to constants</h4>
+<p>
+In standard MiniZinc constant parameters such as <code>int: N=10;</code> cannot change their value. 
+However, in MiniSearch we often want to change constants across different iterations. For this purpose, 
+we added the assignment operator '<code>:=</code>' which may only be used inside a MiniSearch specification. 
+It overwrites that constant's current value by the value supplied.
+</p>
+<p>
+As an example, consider using constant <code>i</code> to count the number of found solutions:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: my_search() =
+  let {
+       <b>int: i = 0;</b>  <font color="#555555">% a local constant</font>
+  } in  (
+     repeat (
+         if next() then 
+            <b>i := i + 1</b> /\ <font color="#555555">% increase the constant's value for each new solution</font>
+            commit() /\
+            print("Found solution "++show(<b>i</b>)++"\n") 
+         else break endif
+     )
+  <b>)</b>;
+</pre>
+</td></tr>
+</table>
+
+</li>
+
+<br>
+<br>
+
+<li><h4>Solution Management built-ins</h4>
+<p>
+The strength of any meta-search language lies in using intermediate solutions to guide the remaining search. 
+For instance, branch-and-bound needs to access the objective to post further constraints, and a Large 
+Neighbourhood Search thaws some of the variables in a solution to continue in that neighbourhood.
+</p>
+<br>
+<h4 id="sol"><code>sol()</code> and <code>hasSol()</code></h4>
+<p>
+To facilitate working with solutions, the most recently found solution is always accessible in MiniSearch 
+using the <code>sol</code> built-in, where <code>sol(x)</code> returns the value of <code>x</code> in the 
+last solution. MiniSearch also provides a <code>hasSol()</code> built-in to test whether a solution exists.
+</p>
+<p>
+In the example below, we first try to find the best possible solution within a timeout of <code>t</code>
+milliseconds. Then we test if a solution has been found with <code>hasSol()</code>: if yes, we print
+the solution value, otherwise we print a simple message.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+solve search
+   time_limit(t, minimize_bab(obj))  <font color="#555555">% find the best solution in t milliseconds</font>
+   /\
+   if <b>hasSol()</b> then 
+      print("Found solution with objective "++show(<b>sol(obj)</b>)++" in "++show(t)++" milliseconds\n")
+   else print("No solution found\n") endif
+;
+</pre></td></tr>
+</table>
+<br>
+<h4 id="print">Printing Solutions and Debugging</h4>
+<p>
+The <code>print()</code> function without any arguments prints the last found solution in the format specified 
+in the model's <code>output</code> item. Alternatively, <code>print(s)</code> provides more fine-grained control
+ over the output. It prints the string <code>s</code>, which can be constructed dynamically from values in the 
+solution using calls to <code>sol</code>.
+</p>
+<p>
+In the example below, if we find a solution within the time limit 
+<code>t</code>we print the solution according to the output using <code>print()</code>. Otherwise, if no
+solution could be found, we print a message.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: my_search(int: t) =
+   if time_limit(t, next()) then 
+      <b>print()</b>                                  <font color="#555555">% print the solution according to output model</font>
+   else <b>print("No solution found in "++show(t/1000)++" seconds.\n")</b>    <font color="#555555">% print message</font>
+   endif;
+</pre></td></tr>
+</table>
+<p>
+MiniSearch can be debugged using <code>print()</code> and MiniZinc's <code>trace()</code> function to display 
+values of parameters, variables, and arbitrary expressions during search. <code>trace</code> is a MiniZinc 
+built-in predicate that prints its string argument on stdout and simply returns <i>true</i>.
+</p>
+<p>
+The example below shows a 
+'debug-version' of branch-and-bound search (BAB), where every BAB constraint is also printed on stdout
+using <code>trace</code>. 
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: bab_min_debug(var int: obj) =
+   if next() then 
+      commit() /\
+      post( 
+            obj < sol(obj) /\                        <font color="#555555">% the BAB constraint</font>
+            <b>trace("obj < "++show(sol(obj))++";\n")</b>   <font color="#555555">% prints the BAB constraint for debugging</font>
+      )
+   else break
+   endif;
+</pre></td></tr>
+</table>
+<p>
+Furthermore, the MiniSearch 
+interpreter uses the C++ stack, so C++ debuggers can be used to follow the meta-search.
+</p>
+</li>
+
+</tr></td></table>
+</li>
+
+<br>
+
+<li><h3 id="examples">MiniSearch Examples</h3>
+<table><tr><td width="1000pt">
+<p>
+Here we show some examples for using MiniSearch that we build up step-by-step.
+They have different difficulty levels, depending on the required experience.
+</p>
+
+<ol>
+<li><h4>Finding the first k solutions (beginner)</h4>
+<p>
+We start with an easy example for beginners: finding the first <i>k</i>
+solutions of a problem. Let's begin with the (empty) body of our MiniSearch
+function:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: <b>k_solutions</b>(int: k) =
+  <font color="#555555">% empty function body</font>
+;
+</pre></td></tr>
+</table>
+<p>
+We will repeatedly call <code>next()</code> until we reached the threshold <code>k</code>.
+
+This means we will need to introduce a local constant to count the number of found 
+solutions:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: <b>k_solutions</b>(int: k) =
+ repeat (i in 1..k) (
+      <font color="#555555">% actual search</font>
+ );
+</pre></td></tr>
+</table>
+<p>
+Now let's include the repeated call of <code>next()</code>: if <code>next()</code>
+is successful, then we commit to the solution and print it. Otherwise, we break and print an
+error message, since we found less than <i>k</i> solutions.
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: <b>k_solutions</b>(int: k) =
+ repeat (i in 1..k) (
+    if next() then
+       commit() /\ print("Solution "++show(i)++":\n") /\ print()
+    else 
+       print("No more solutions found.\n") /\ break
+    endif
+ );
+</pre></td></tr>
+</table>
+<p>
+An alternative formulation would use a counter <code>i</code> for each found solution:
+</p>
+<table border="0" cellpadding="15px" bgcolor="#EEEEEE" width="600pt">
+<tr><td><pre>
+function ann: <b>k_solutions_2</b>(int: k) =
+  let { int: i = 0; }
+  in (
+    repeat (
+      if i == k then break else skip endif  <font color="#555555">% check if we already reached k solutions</font>
+      /\
+      if next() then 
+         i := i+1 /\
+         commit() /\ print("Solution "++show(i)++":\n") /\ print()
+      else 
+         print("Only found "++show(i)++" solutions.\n") /\ break
+      endif
+   )
+  );
+</pre></td></tr>
+</table>
+<p>Check out the n-queens problem that uses MiniSearch for finding the first k solutions: 
+<a href="queen_k_sols.mzn">queen_k_sols.mzn</a>. You can run it directly in MiniSearch.
+</p>
+</li>
+
+<li> More examples will come soon.</li>
+
+<!--
+<li>A planning problem with unknown horizon (advanced)</li>
+<li>AND/OR search in a stochastic optimisation problem (advanced)</li>
+-->
+</ol>
+
+</tr></td></table>
+</li>
+
+
+</ol>
+
+</div>
+</div>
+</div>
