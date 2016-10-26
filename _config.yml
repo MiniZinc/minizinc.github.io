@@ -26,8 +26,16 @@ google_analytics: UA-63390311-1
 includes_dir: _includes
 data_dir: _data
 collections:
-    - people
-    - publications
+    people:
+      output: true
+    publications:
+      output: false
+defaults:
+    - scope:
+        path: ""
+        type: people
+      values:
+        layout: teammember
 gems:
   - jekyll-sitemap
 # Build settings

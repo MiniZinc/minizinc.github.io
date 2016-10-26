@@ -66,6 +66,7 @@ title: MiniZinc
                 <h2>News</h2>
 
                 <ul>
+                <li><b>2016-10-26</b> Meet the <a href="team.html">MiniZinc Team</a>!</li>
                 <li><b>2016-10-22</b> The tutorial is now also available in <a href="/tutorial/minizinc-tute-cn.pdf">Chinese</a>!
                 MiniZinc手册<a href="/tutorial/minizinc-tute-cn.pdf">中文版</a>已经提供</li>
                 <li><b>2016-10-20</b> The MiniZinc website is now hosted on GitHub Pages.</li>
@@ -139,14 +140,13 @@ $(document).ready(function(){
     if (navigator.appVersion.toUpperCase().indexOf("WIN")!=-1) {
         downloadURL = baseURL + "bundled-setup-32.exe";
         $("#osname").html("Windows");
-    } else if (navigator.appVersion.toUpperCase().indexOf("MAC")!=-1) {
+    } else if (navigator.appVersion.toUpperCase().indexOf("LIKE MAC")==-1 && navigator.appVersion.toUpperCase().indexOf("MAC")!=-1) {
         downloadURL = baseURL + "bundled.dmg";
         $("#osname").html("Mac OS");
     } else if (navigator.appVersion.toUpperCase().indexOf("LINUX")!=-1) {
         downloadURL = baseURL + "bundle-linux-x86_64.tgz";
         $("#osname").html("Linux");
     }
-    console.log("set url ",downloadURL);
     if (downloadURL !== "") {
         $("#downloadButton").attr('href',downloadURL);
     } else {

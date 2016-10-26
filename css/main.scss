@@ -130,3 +130,18 @@ a.mzn-nav-up, a.mzn-nav-next, a.mzn-nav-prev {
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
+.teamMemberImage, .teamMemberName {
+  margin-top: 10px;
+}
+
+.teamMemberDesc {
+  margin-top: 5px;
+  font-style: italic;
+//  font-size: smaller;
+}
+
+.teamMemberName h4 {
+  display: inline;
+  margin-right: 5px;
+}

@@ -35,7 +35,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img class="navbar-brand" src="{{ site.baseurl }}/MiniZn_logo.png" alt="MiniZinc logo">
+                {% unless page.title == "MiniZinc" %}
+                    <img class="navbar-brand" src="{{ site.baseurl }}/MiniZn_logo.png" alt="MiniZinc logo">
+                {% endunless %}
                 <a class="navbar-brand" href="{{ site.baseurl }}/index.html">
                     MiniZinc
                 </a>

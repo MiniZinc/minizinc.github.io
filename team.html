@@ -6,6 +6,9 @@ title: MiniZinc - Team
 {% assign ideversion = site.data.version["ideversion"] %}
 {% assign mznversion = site.data.version["mznversion"] %}
 
+
+{% assign publications = site.publications | sort: "year" %}
+
 <div class="container">
 
     <div class="row">
@@ -60,17 +63,28 @@ title: MiniZinc - Team
             {% endif %}
 
                 <div class="col-md-2">
-                <div class="well nonPadded">
+                <div class="well nonPadded teamMemberImage">
                         <img class="img-circle centerImage" height="120" src="{{ site.baseurl }}/images/{{ person.img }}" alt="{{ person.name }}">
                 </div>
                 </div>
                 <div class="col-md-4">
-                    <h4>{{ person.name }}</h4>
-                    <p>{{ person.affiliation }}<br>
-                    {% if person.email %}
-                        <a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
-                    {% endif %}
-                    {{ person.content }}
+                    <div class="teamMemberName"><h4>{{ person.name }}</h4>
+                        {% if person.email %}
+                        <a href="mailto:{{ person.email }}"><i class="fa fa-envelope"></i></a>
+                        {% endif %}
+                        {% assign havePub = false %}
+                        {% for p in publications %}
+                          {% if p.authors contains person.name or p.authors_long contains person.name %}
+                            {% assign havePub = true %}
+                            {% break %}
+                          {% endif %}
+                        {% endfor %}
+                        {% if havePub %}
+                          <a href="{{ person.url }}" title="publications"><i class="fa fa-book"></i></a>
+                        {% endif %}
+                    </div>
+                    <div class="teamMemberAffiliation">{{ person.affiliation }}</div>
+                    <div class="teamMemberDesc">{{ person.content }}</div>
                 </div>
             {% if modulo == '1' %}
                 </div>
