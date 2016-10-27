@@ -21,3 +21,27 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous">
     </script>
+
+    {% if page.title == "MiniZinc" %}
+    <script>
+    $(document).ready(function(){
+        var baseURL = "https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-";
+        var downloadURL = "";
+        if (navigator.appVersion.toUpperCase().indexOf("WIN")!=-1) {
+            downloadURL = baseURL + "bundled-setup-32.exe";
+            $("#osname").html("Windows");
+        } else if (navigator.appVersion.toUpperCase().indexOf("LIKE MAC")==-1 && navigator.appVersion.toUpperCase().indexOf("MAC")!=-1) {
+            downloadURL = baseURL + "bundled.dmg";
+            $("#osname").html("Mac OS");
+        } else if (navigator.appVersion.toUpperCase().indexOf("LINUX")!=-1) {
+            downloadURL = baseURL + "bundle-linux-x86_64.tgz";
+            $("#osname").html("Linux");
+        }
+        if (downloadURL !== "") {
+            $("#downloadButton").attr('href',downloadURL);
+        } else {
+            $("#downloadButton").css('display','none');
+        }
+    });
+    </script>
+    {% endif %}
