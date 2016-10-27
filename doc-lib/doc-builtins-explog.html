@@ -32,6 +32,7 @@ function hideAll() {
 
     <div class="row">
         <div class="col-lg-12">
+            <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
 <div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-arithmetic.html' title='Arithmetic Builtins'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-trigonometric.html' title='Trigonometric functions'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
@@ -121,7 +122,7 @@ function hideAll() {
 </div>
 <script>
 $(document).ready(function(){
-    $(".mzn-group-name").wrap("<h1 id='mymznheader' class='page-header'></h1>");
+    $(".mzn-group-name").wrap("<h2 id='mymznheader'></h2>");
     $(".mzn-group-name a").contents().unwrap();
     $(".mzn-group-nav").wrap("<ol id='mymznnav' class='breadcrumb'><li></li></ol>");
 
