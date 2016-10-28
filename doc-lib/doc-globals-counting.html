@@ -1,6 +1,6 @@
 ---
-layout: minizinc
-title: "Counting constraints"
+layout: documentation
+title: "MiniZinc - Standard Library - Counting constraints"
 ---
 
 <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -316,21 +316,3 @@ length(x) in sum(lbound)..sum(ubound)
         </div>
     </div>
 </div>
-<script>
-$(document).ready(function(){
-    $(".mzn-group-name").wrap("<h2 id='mymznheader'></h2>");
-    $(".mzn-group-name a").contents().unwrap();
-    $(".mzn-group-nav").wrap("<ol id='mymznnav' class='breadcrumb'><li></li></ol>");
-
-    var nav = $('#mymznnav');
-    var header = $('#mymznheader');
-
-    navClone = nav.clone();
-    headerClone = header.clone();
-
-    if (nav.length > 0) {
-        header.replaceWith(navClone);
-        nav.replaceWith(headerClone);
-    }
-});
-</script>
