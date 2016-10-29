@@ -42,3 +42,5 @@ gems:
 # Build settings
 markdown: kramdown
 theme: minima
+sass:
+    style: compressed
