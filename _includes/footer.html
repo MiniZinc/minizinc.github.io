@@ -23,6 +23,10 @@
     </script>
 
     {% if page.title == "MiniZinc" %}
+
+    {% assign ideversion = site.data.version["ideversion"] %}
+    {% assign idedate = site.data.version["idedate"] %}
+
     <script>
     $(document).ready(function(){
         var baseURL = "https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-";
