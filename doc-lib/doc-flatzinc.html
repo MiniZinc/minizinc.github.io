@@ -151,7 +151,7 @@ function hideAll() {
                       <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>bs</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
-  Constrains \( \bigvee_i {\bf as}[i] \land \bigvee_j \lnot {\bf bs}[j] \) </p>
+  Constrains \( \bigvee_i {\bf as}[i] \lor \bigvee_j \lnot {\bf bs}[j] \) </p>
 </div></div><div class='mzn-fundecl'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>bool_eq</span>(<span class='mzn-ti'>var bool</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>b</span>)</div>
 <div class='mzn-fundecl-doc'>
@@ -262,6 +262,11 @@ function hideAll() {
 <p>
   Constrains <span class='mzn-arg'>b</span> = cosh(<span class='mzn-arg'>a</span>) </p>
 </div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_dom</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [int] of float</span>: <span class='mzn-id'>as</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains the domain of <span class='mzn-arg'>x</span> using the values in <span class='mzn-arg'>as</span>, using each   pair of values <span class='mzn-arg'>as</span>[2*<span class='mzn-parm'>i</span>-1]..<span class='mzn-arg'>as</span>[2*<span class='mzn-parm'>i</span>] for <span class='mzn-parm'>i</span> in 1..<span class='mzn-parm'>n</span>/2 as a possible range </p>
+</div></div><div class='mzn-fundecl'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_eq</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
@@ -276,6 +281,16 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
   Constrains <span class='mzn-arg'>b</span> = exp(<span class='mzn-arg'>a</span>) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_in</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>c</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains \( {\bf a} \in\ [ {\bf b}, {\bf c} ] \) </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_in_reif</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>c</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>r</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Constrains <span class='mzn-arg'>r</span> &harr; \( {\bf a} \in\ [ {\bf b}, {\bf c} ] \) </p>
 </div></div><div class='mzn-fundecl'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>float_le</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>b</span>)</div>
 <div class='mzn-fundecl-doc'>

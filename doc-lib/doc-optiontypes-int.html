@@ -49,7 +49,15 @@ function hideAll() {
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'<'</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) \/ absent(y) \/ deopt(x) < deopt(y)
 </div>
-(standard decomposition from stdlib.mzn:347)</div></div>
+(standard decomposition from stdlib.mzn:351)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x<y</span></p><p>
+  Weak comparison: true iff either <span class='mzn-arg'>x</span> or <span class='mzn-arg'>y</span> is absent, or both   occur and the value of <span class='mzn-arg'>x</span> is less than the value of <span class='mzn-arg'>y</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'<'</span>(<span class='mzn-ti'>opt int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>opt int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) \/ absent(y) \/ deopt(x) < deopt(y)
+</div>
+(standard decomposition from stdlib.mzn:364)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x<y</span></p><p>
   Weak comparison: true iff either <span class='mzn-arg'>x</span> or <span class='mzn-arg'>y</span> is absent, or both   occur and the value of <span class='mzn-arg'>x</span> is less than the value of <span class='mzn-arg'>y</span>. </p>
@@ -57,7 +65,15 @@ function hideAll() {
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'<='</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) \/ absent(y) \/ deopt(x)<=deopt(y)
 </div>
-(standard decomposition from stdlib.mzn:350)</div></div>
+(standard decomposition from stdlib.mzn:354)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x<=y</span></p><p>
+  Weak comparison: true iff either <span class='mzn-arg'>x</span> or <span class='mzn-arg'>y</span> is absent, or both   occur and the value of <span class='mzn-arg'>x</span> is less than or equal to the value of <span class='mzn-arg'>y</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'<='</span>(<span class='mzn-ti'>opt int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>opt int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) \/ absent(y) \/ deopt(x)<=deopt(y)
+</div>
+(standard decomposition from stdlib.mzn:367)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x<=y</span></p><p>
   Weak comparison: true iff either <span class='mzn-arg'>x</span> or <span class='mzn-arg'>y</span> is absent, or both   occur and the value of <span class='mzn-arg'>x</span> is less than or equal to the value of <span class='mzn-arg'>y</span>. </p>
@@ -65,7 +81,15 @@ function hideAll() {
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'>'</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) \/ absent(y) \/ deopt(x) > deopt(y)
 </div>
-(standard decomposition from stdlib.mzn:341)</div></div>
+(standard decomposition from stdlib.mzn:345)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x>y</span></p><p>
+  Weak comparison: true iff either <span class='mzn-arg'>x</span> or <span class='mzn-arg'>y</span> is absent, or both   occur and the value of <span class='mzn-arg'>x</span> is greater than the value of <span class='mzn-arg'>y</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'>'</span>(<span class='mzn-ti'>opt int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>opt int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) \/ absent(y) \/ deopt(x) > deopt(y)
+</div>
+(standard decomposition from stdlib.mzn:358)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x>y</span></p><p>
   Weak comparison: true iff either <span class='mzn-arg'>x</span> or <span class='mzn-arg'>y</span> is absent, or both   occur and the value of <span class='mzn-arg'>x</span> is greater than the value of <span class='mzn-arg'>y</span>. </p>
@@ -73,7 +97,15 @@ function hideAll() {
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'>='</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) \/ absent(y) \/ deopt(x)>=deopt(y)
 </div>
-(standard decomposition from stdlib.mzn:344)</div></div>
+(standard decomposition from stdlib.mzn:348)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x>=y</span></p><p>
+  Weak comparison: true iff either <span class='mzn-arg'>x</span> or <span class='mzn-arg'>y</span> is absent, or both   occur and the value of <span class='mzn-arg'>x</span> is greater than or equal to the value of <span class='mzn-arg'>y</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'>='</span>(<span class='mzn-ti'>opt int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>opt int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) \/ absent(y) \/ deopt(x)>=deopt(y)
+</div>
+(standard decomposition from stdlib.mzn:361)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x>=y</span></p><p>
   Weak comparison: true iff either <span class='mzn-arg'>x</span> or <span class='mzn-arg'>y</span> is absent, or both   occur and the value of <span class='mzn-arg'>x</span> is greater than or equal to the value of <span class='mzn-arg'>y</span>. </p>
@@ -85,7 +117,7 @@ function hideAll() {
     constraint deopt(xi)==bool2int(deopt(x)),
 } in (xi)
 </div>
-(standard decomposition from stdlib.mzn:409)</div></div>
+(standard decomposition from stdlib.mzn:426)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return optional 0/1 integer that is absent iff <span class='mzn-arg'>x</span>   is absent, and 1 iff <span class='mzn-arg'>x</span> occurs and is true. </p>
@@ -94,7 +126,7 @@ function hideAll() {
                               <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if absent(idx) then <> else element(deopt(idx), x) endif
 </div>
-(standard decomposition from stdlib.mzn:433)</div></div>
+(standard decomposition from stdlib.mzn:454)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return absent if <span class='mzn-arg'>idx</span> is absent, otherwise return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx</span>] </p>
@@ -106,7 +138,7 @@ function hideAll() {
 else element(deopt(idx1), deopt(idx2), x) 
 endif
 </div>
-(standard decomposition from stdlib.mzn:437)</div></div>
+(standard decomposition from stdlib.mzn:458)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return absent if <span class='mzn-arg'>idx1</span> or <span class='mzn-arg'>idx2</span> is absent, otherwise return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx1</span>, <span class='mzn-arg'>idx2</span>] </p>
@@ -121,7 +153,7 @@ endif
     [i]) | i in index_set(x) ])),
 } in (r)
 </div>
-(standard decomposition from stdlib.mzn:441)</div></div>
+(standard decomposition from stdlib.mzn:462)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx</span>] </p>
@@ -139,7 +171,7 @@ endif
      in index_set_1of2(x), j in index_set_2of2(x) ])),
 } in (r)
 </div>
-(standard decomposition from stdlib.mzn:449)</div></div>
+(standard decomposition from stdlib.mzn:470)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx1</span>, <span class='mzn-arg'>idx2</span>] </p>
@@ -148,7 +180,7 @@ endif
                               <span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if absent(idx) then <> else element(deopt(idx), x) endif
 </div>
-(standard decomposition from stdlib.mzn:459)</div></div>
+(standard decomposition from stdlib.mzn:480)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return absent if <span class='mzn-arg'>idx</span> is absent, otherwise return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx</span>] </p>
@@ -160,7 +192,7 @@ endif
 else element(deopt(idx1), deopt(idx2), x) 
 endif
 </div>
-(standard decomposition from stdlib.mzn:463)</div></div>
+(standard decomposition from stdlib.mzn:484)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return absent if <span class='mzn-arg'>idx1</span> or <span class='mzn-arg'>idx2</span> is absent, otherwise return <span class='mzn-arg'>x</span>[<span class='mzn-arg'>idx1</span>, <span class='mzn-arg'>idx2</span>] </p>
@@ -169,7 +201,7 @@ endif
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) /\ absent(y) \/ 
 occurs(x) /\ occurs(y) /\ deopt(x)==deopt(y) :: maybe_partial
 </div>
-(standard decomposition from stdlib.mzn:418)</div></div>
+(standard decomposition from stdlib.mzn:435)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   True iff both <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> are absent or  both are present and have the same value. </p>
@@ -178,7 +210,7 @@ occurs(x) /\ occurs(y) /\ deopt(x)==deopt(y) :: maybe_partial
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x)!=absent(y) \/ 
 occurs(x) /\ occurs(y) /\ deopt(x)!=deopt(y) :: maybe_partial
 </div>
-(standard decomposition from stdlib.mzn:424)</div></div>
+(standard decomposition from stdlib.mzn:441)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   True iff only one of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> is absent or  both are present and have different values. </p>
@@ -200,7 +232,7 @@ occurs(x) /\ occurs(y) /\ deopt(x)!=deopt(y) :: maybe_partial
 } in (
     m)
 </div>
-(standard decomposition from stdlib.mzn:365)</div></div>
+(standard decomposition from stdlib.mzn:382)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return maximum of elements in <span class='mzn-arg'>x</span> that are not absent, or absent if all elements in <span class='mzn-arg'>x</span> are absent. </p>
@@ -222,7 +254,7 @@ occurs(x) /\ occurs(y) /\ deopt(x)!=deopt(y) :: maybe_partial
 } in (
     m)
 </div>
-(standard decomposition from stdlib.mzn:354)</div></div>
+(standard decomposition from stdlib.mzn:371)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return minimum of elements in <span class='mzn-arg'>x</span> that are not absent, or absent if all elements in <span class='mzn-arg'>x</span> are absent. </p>
@@ -234,10 +266,21 @@ occurs(x) /\ occurs(y) /\ deopt(x)!=deopt(y) :: maybe_partial
     constraint x==reverse_map(b, dx) :: is_reverse_map,
 } in (b)
 </div>
-(standard decomposition from stdlib.mzn:312)</div></div>
+(standard decomposition from stdlib.mzn:316)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   True iff <span class='mzn-arg'>x</span> is not absent </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>product</span>(<span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
+<div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>sum ( i in index_set(x) ) ( 
+    let {var int: dx = deopt(x[i]),
+    } in (if occurs(x[i]) then dx else 1 endif) 
+)
+</div>
+(standard decomposition from stdlib.mzn:450)</div></div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return product of non-absent elements of <span class='mzn-arg'>x</span>. </p>
 </div></div><div class='mzn-fundecl'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>sum</span>(<span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>sum ( i in index_set(x) ) ( 
@@ -245,7 +288,7 @@ occurs(x) /\ occurs(y) /\ deopt(x)!=deopt(y) :: maybe_partial
     } in (if occurs(x[i]) then dx else 0 endif) 
 )
 </div>
-(standard decomposition from stdlib.mzn:429)</div></div>
+(standard decomposition from stdlib.mzn:446)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return sum of non-absent elements of <span class='mzn-arg'>x</span>. </p>
@@ -253,7 +296,7 @@ occurs(x) /\ occurs(y) /\ deopt(x)!=deopt(y) :: maybe_partial
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var opt int</span>: <span class='mzn-fn-id'>~*</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if absent(x) \/ absent(y) then <> else deopt(x)*deopt(y) endif
 </div>
-(standard decomposition from stdlib.mzn:398)</div></div>
+(standard decomposition from stdlib.mzn:415)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Weak multiplication. Return product of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> if bothare present, otherwise return absent. </p>
@@ -273,7 +316,7 @@ occurs(x) /\ occurs(y) /\ deopt(x)!=deopt(y) :: maybe_partial
 } in (
     result)
 </div>
-(standard decomposition from stdlib.mzn:376)</div></div>
+(standard decomposition from stdlib.mzn:393)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Weak addition. Return sum of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> if bothare present, otherwise return absent. </p>
@@ -293,7 +336,7 @@ occurs(x) /\ occurs(y) /\ deopt(x)!=deopt(y) :: maybe_partial
 } in (
     result)
 </div>
-(standard decomposition from stdlib.mzn:387)</div></div>
+(standard decomposition from stdlib.mzn:404)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Weak subtraction. Return difference of <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> if bothare present, otherwise return absent. </p>
@@ -301,7 +344,7 @@ occurs(x) /\ occurs(y) /\ deopt(x)!=deopt(y) :: maybe_partial
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>~=</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>absent(x) \/ absent(y) \/ deopt(x)==deopt(y)
 </div>
-(standard decomposition from stdlib.mzn:404)</div></div>
+(standard decomposition from stdlib.mzn:421)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Weak equality. True if either <span class='mzn-arg'>x</span> or <span class='mzn-arg'>y</span> are absent, orpresent and equal.</p>

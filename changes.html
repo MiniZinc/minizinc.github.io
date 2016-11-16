@@ -5,6 +5,46 @@ title: MiniZinc - Change Log
 
 <h2>MiniZinc 2 Change Log</h2>
 
+<h3>Version 2.1.0</h3>
+
+<h4>Changes:</h4>
+
+<ul>
+<li>MiniZinc now supports enumerated types.
+<li>Solvers can be interfaced directly to the MiniZinc library, and MiniZinc
+   comes with direct support for the CBC, Gurobi and CPLEX MIP solvers.
+<li>The linearisation library has been updated, resulting in much better FlatZinc
+   being generated for MIP solvers.
+<li>Data files can be in JSON format, and MiniZinc can produce JSON output
+   (using the --output-mode command line option).
+<li>Variables can be annotated as ::add_to_output instead of writing an output
+   item.
+<li>The compiler can output information about the parameters and output variables
+   of a model (using the --model-interface-only option).
+<li>Floats are handled better (detecting infinities and handling sets of floats).
+<li>Bounds can be computed for more expressions (instead of failing with an error
+   message).
+</ul>
+
+<h4>Bug fixes:</h4>
+
+<ul>
+<li>Fix a bug in optimization that could remove variables even if they are used.
+   Fixes {% include bug.html bug='123' %}.
+<li>Fix float variable declarations with sets of floats as domains.
+   Fixes {% include bug.html bug='117' %} and {% include bug.html bug='98' %}.
+<li>Fix type checking and evaluation of asserts with array arguments. Fixes {% include bug.html bug='109' %}.
+<li>Fix abs(var float) declaration to work on floats without declared bounds.
+   Fixes {% include bug.html bug='106' %}.
+<li>Fix a bug in the computation of int and float bounds that could result in
+   incorrect bounds in some cases. Fixes {% include bug.html bug='94' %}.
+<li>Fix garbage collection when creating output models. Fixes {% include bug.html bug='77' %}.
+<li>Fix binary operators on optional variables (in some cases comparison
+   operators were reversed).
+<li>Fix optimization of unconstrained variables (could sometimes lead to
+   constraints being removed although they were not subsumed).
+</ul>
+
 <h3>Version 2.0.14</h3>
 
 <h4>Changes:</h4>

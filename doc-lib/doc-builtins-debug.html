@@ -35,7 +35,7 @@ function hideAll() {
             <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
-<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-reflect.html' title='Reflection operations'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-random.html' title='Random Number Generator builtins'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-reflect.html' title='Reflection operations'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-enum.html' title='Functions for enums'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
 </div><div class='mzn-group-name'><a name='doc-builtins-debug'>Assertions and debugging functions</a></div>
 <div class='mzn-group-desc'>
@@ -67,6 +67,27 @@ function hideAll() {
 <p>
   If <span class='mzn-arg'>b</span> is true, return <span class='mzn-arg'>x</span>, otherwise abort with message <span class='mzn-arg'>msg</span>. </p>
 </div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-fn-id'>assert</span>(<span class='mzn-ti'>bool</span>: <span class='mzn-id'>b</span>,
+                                  <span class='mzn-ti'>string</span>: <span class='mzn-id'>msg</span>,
+                                  <span class='mzn-ti'>array [$U] of $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  If <span class='mzn-arg'>b</span> is true, return <span class='mzn-arg'>x</span>, otherwise abort with message <span class='mzn-arg'>msg</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$U] of var $T</span>: <span class='mzn-fn-id'>assert</span>(<span class='mzn-ti'>bool</span>: <span class='mzn-id'>b</span>,
+                                      <span class='mzn-ti'>string</span>: <span class='mzn-id'>msg</span>,
+                                      <span class='mzn-ti'>array [$U] of var $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  If <span class='mzn-arg'>b</span> is true, return <span class='mzn-arg'>x</span>, otherwise abort with message <span class='mzn-arg'>msg</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [$U] of var opt $T</span>: <span class='mzn-fn-id'>assert</span>(<span class='mzn-ti'>bool</span>: <span class='mzn-id'>b</span>,
+                                          <span class='mzn-ti'>string</span>: <span class='mzn-id'>msg</span>,
+                                          <span class='mzn-ti'>array [$U] of var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  If <span class='mzn-arg'>b</span> is true, return <span class='mzn-arg'>x</span>, otherwise abort with message <span class='mzn-arg'>msg</span>. </p>
+</div></div><div class='mzn-fundecl'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>assert</span>(<span class='mzn-ti'>bool</span>: <span class='mzn-id'>b</span>, <span class='mzn-ti'>string</span>: <span class='mzn-id'>msg</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
@@ -88,6 +109,26 @@ function hideAll() {
   Return <span class='mzn-arg'>x</span>, and print message <span class='mzn-arg'>msg</span>. </p>
 </div></div><div class='mzn-fundecl'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>trace</span>(<span class='mzn-ti'>string</span>: <span class='mzn-id'>msg</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return true, and print message <span class='mzn-arg'>msg</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>$T</span>: <span class='mzn-fn-id'>trace_stdout</span>(<span class='mzn-ti'>string</span>: <span class='mzn-id'>msg</span>, <span class='mzn-ti'>$T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return <span class='mzn-arg'>x</span>, and print message <span class='mzn-arg'>msg</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var $T</span>: <span class='mzn-fn-id'>trace_stdout</span>(<span class='mzn-ti'>string</span>: <span class='mzn-id'>msg</span>, <span class='mzn-ti'>var $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return <span class='mzn-arg'>x</span>, and print message <span class='mzn-arg'>msg</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var opt $T</span>: <span class='mzn-fn-id'>trace_stdout</span>(<span class='mzn-ti'>string</span>: <span class='mzn-id'>msg</span>, <span class='mzn-ti'>var opt $T</span>: <span class='mzn-id'>x</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return <span class='mzn-arg'>x</span>, and print message <span class='mzn-arg'>msg</span>. </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>trace_stdout</span>(<span class='mzn-ti'>string</span>: <span class='mzn-id'>msg</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return true, and print message <span class='mzn-arg'>msg</span>. </p>

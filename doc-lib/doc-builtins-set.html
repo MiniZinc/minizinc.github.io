@@ -47,7 +47,7 @@ function hideAll() {
 <div class='mzn-decl-type-fun'>
 <div class='mzn-decl-type-heading'>Functions and Predicates</div>
 <div class='mzn-fundecl'>
-<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of int</span>: <span class='mzn-fn-id'>'..'</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>b</span>)</div>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of $$E</span>: <span class='mzn-fn-id'>'..'</span>(<span class='mzn-ti'>$$E</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>$$E</span>: <span class='mzn-id'>b</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">a..b</span></p><p>
   Return the set \(\{{\bf a},\ldots,{\bf b}\}\) </p>
@@ -76,6 +76,16 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x in y</span></p><p>
   <span class='mzn-arg'>x</span> is an element of the set <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'in'</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x in y</span></p><p>
+  Test if <span class='mzn-arg'>x</span> is an element of the set <span class='mzn-arg'>y</span> </p>
+</div></div><div class='mzn-fundecl'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'in'</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of float</span>: <span class='mzn-id'>y</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>Usage: <span class="mzn-arg">x in y</span></p><p>
+  Test if <span class='mzn-arg'>x</span> is an element of the set <span class='mzn-arg'>y</span> </p>
 </div></div><div class='mzn-fundecl'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of $T</span>: <span class='mzn-fn-id'>'intersect'</span>(<span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
@@ -152,7 +162,7 @@ else
         y[u-1]) 
 endif
 </div>
-(standard decomposition from builtins.mzn:669)</div></div>
+(standard decomposition from builtins.mzn:681)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return the intersection of the sets in array <span class='mzn-arg'>x</span> </p>
@@ -178,7 +188,7 @@ else
         y[u-1]) 
 endif
 </div>
-(standard decomposition from builtins.mzn:651)</div></div>
+(standard decomposition from builtins.mzn:663)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return the union of the sets in array <span class='mzn-arg'>x</span> </p>
