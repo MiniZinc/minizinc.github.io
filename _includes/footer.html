@@ -35,16 +35,20 @@
             if (navigator.appVersion.toUpperCase().indexOf("WIN64")!=-1) {
                 downloadURL = baseURL + "bundled-setup-win64.exe";
                 $("#osname").html("Windows 64bit");
+                $("#osnotes").html("(Windows 7 or later)");
             } else {
                 downloadURL = baseURL + "bundled-setup-win32.exe";
                 $("#osname").html("Windows 32bit");                
+                $("#osnotes").html("(Windows 7 or later)");
             }
         } else if (navigator.appVersion.toUpperCase().indexOf("LIKE MAC")==-1 && navigator.appVersion.toUpperCase().indexOf("MAC")!=-1) {
             downloadURL = baseURL + "bundled.dmg";
             $("#osname").html("Mac OS");
+            $("#osnotes").html("(Mac OS 10.9 or later)");
         } else if (navigator.appVersion.toUpperCase().indexOf("LINUX")!=-1) {
             downloadURL = baseURL + "bundle-linux-x86_64.tgz";
             $("#osname").html("Linux 64 bit");
+            $("#osnotes").html("(built for Ubuntu 16.04)");
         }
         if (downloadURL !== "") {
             $("#downloadButton").attr('href',downloadURL);
