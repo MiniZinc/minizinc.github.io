@@ -5,6 +5,27 @@ title: MiniZinc - Change Log
 
 <h2>MiniZinc 2 Change Log</h2>
 
+<h3>Version 2.1.1</h3>
+
+<h4>Changes:</h4>
+<ul>
+<li> Add missing min/max functions for set variables. Can be redefined to solver
+   builtins using the new redefinitions-2.1.1.mzn library file.
+<li> Add support for option type expressions as objective functions.
+<li> Automatically coerce arrays constructed using ++ to any enum index set
+   (in addition to array literals and comprehensions).
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Include cmath header to fix compilation issues with some compilers. Fixes {% include bug.html bug='125' %}.
+<li> Fix a garbage collection bug in the type checking for enumerated types that would
+   sometimes lead to crashes or incorrect error messages.
+<li> Fix type checking of comprehensions that involve enumerated types.
+<li> Fix bounds computation for var sets of enumerated types.
+<li> Support anon_enum function as documented.
+</ul>
+
 <h3>Version 2.1.0</h3>
 
 <h4>Changes:</h4>
