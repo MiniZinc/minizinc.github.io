@@ -35,7 +35,8 @@ function hideAll() {
             <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
-<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-sort.html' title='Sorting constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-counting.html' title='Counting constraints'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-sort.html' title='Sorting constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-counting.html' title='Counting constraints'>&#8658;</a> <a href='doc-index.html'>Index</a>
+<a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
 </div><div class='mzn-group-name'><a name='doc-globals-channeling'>Channeling constraints</a></div>
 <div class='mzn-group-desc'>
@@ -45,7 +46,7 @@ function hideAll() {
 </div>
 <div class='mzn-decl-type-fun'>
 <div class='mzn-decl-type-heading'>Functions and Predicates</div>
-<div class='mzn-fundecl'>
+<div class='mzn-fundecl' id='Ipredicate-int_set_channel-po-array-bo-int-bc-of-var-int-cl-x-cm-array-bo-int-bc-of-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>int_set_channel</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                           <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(x) ) ( x[i] in index_set(y) ) /\ 
@@ -58,7 +59,7 @@ forall ( i in index_set(x), j in index_set(y) ) (
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that array of int variables <span class='mzn-arg'>x</span> and array of set variables <span class='mzn-arg'>y</span>   are related such that (<span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] = <span class='mzn-parm'>j</span>) &#8596; (<span class='mzn-parm'>i</span> in <span class='mzn-arg'>y</span>[<span class='mzn-parm'>j</span>]).</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-array-bo-int-bc-of-var-int-cl-inverse-po-array-bo-int-bc-of-var-int-cl-f-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-fn-id'>inverse</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>f</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     array [lb_array(f)..ub_array(f)] of var index_set(f): invf, 
@@ -69,7 +70,7 @@ forall ( i in index_set(x), j in index_set(y) ) (
 <div class='mzn-fundecl-doc'>
 <p>
     Given a function <span class='mzn-arg'>f</span> represented as an array, return the inverse function.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-inverse-po-array-bo-int-bc-of-var-int-cl-f-cm-array-bo-int-bc-of-var-int-cl-invf-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>inverse</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>f</span>,
                   <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>invf</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(f), j in index_set(invf) ) ( 
@@ -81,7 +82,7 @@ forall ( i in index_set(x), j in index_set(y) ) (
 <div class='mzn-fundecl-doc'>
 <p>
     Constrains two arrays of int variables, <span class='mzn-arg'>f</span> and <span class='mzn-arg'>invf</span>, to represent   inverse functions.  All the values in each array must be within the index   set of the other array.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-inverse_set-po-array-bo-int-bc-of-var-set-of-int-cl-f-cm-array-bo-int-bc-of-var-set-of-int-cl-invf-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>inverse_set</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>f</span>,
                       <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>invf</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in index_set(f) ) ( f[i] subset index_set(invf) ) /\ 
@@ -94,7 +95,7 @@ forall ( i in index_set(f), j in index_set(invf) ) (
 <div class='mzn-fundecl-doc'>
 <p>
     Constrains two arrays of set of int variables, <span class='mzn-arg'>f</span> and <span class='mzn-arg'>invf</span>, so that   a <span class='mzn-parm'>j</span> in f[<span class='mzn-parm'>i</span>] iff <span class='mzn-parm'>i</span> in invf[<span class='mzn-parm'>j</span>].  All the values in each array's sets   must be within the index set of the other array.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-link_set_to_booleans-po-var-set-of-int-cl-s-cm-array-bo-int-bc-of-var-bool-cl-b-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>link_set_to_booleans</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s</span>,
                                <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>b</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(ub(s) subset index_set(b), 

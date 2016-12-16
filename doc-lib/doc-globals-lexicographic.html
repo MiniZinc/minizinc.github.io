@@ -35,7 +35,8 @@ function hideAll() {
             <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
-<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-alldifferent.html' title='All-Different and related constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-sort.html' title='Sorting constraints'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-alldifferent.html' title='All-Different and related constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-sort.html' title='Sorting constraints'>&#8658;</a> <a href='doc-index.html'>Index</a>
+<a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
 </div><div class='mzn-group-name'><a name='doc-globals-lexicographic'>Lexicographic constraints</a></div>
 <div class='mzn-group-desc'>
@@ -45,7 +46,7 @@ function hideAll() {
 </div>
 <div class='mzn-decl-type-fun'>
 <div class='mzn-decl-type-heading'>Functions and Predicates</div>
-<div class='mzn-fundecl'>
+<div class='mzn-fundecl' id='Ipredicate-lex2-po-array-bo-int-cm-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex2</span>(<span class='mzn-ti'>array [int,int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: lbx1 = min(index_set_1of2(x)), 
@@ -66,7 +67,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Require adjacent rows and adjacent columns in the array <span class='mzn-arg'>x</span> to be   lexicographically ordered.  Adjacent rows and adjacent columns may be equal.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_greater-po-array-bo-int-bc-of-var-bool-cl-x-cm-array-bo-int-bc-of-var-bool-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_greater</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>,
                       <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>lex_less(y, x)
@@ -75,7 +76,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is strictly lexicographically greater than   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_greater-po-array-bo-int-bc-of-var-int-cl-x-cm-array-bo-int-bc-of-var-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_greater</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                       <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>lex_less(y, x)
@@ -84,7 +85,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is strictly lexicographically greater than   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_greater-po-array-bo-int-bc-of-var-float-cl-x-cm-array-bo-int-bc-of-var-float-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_greater</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>,
                       <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>lex_less(y, x)
@@ -93,7 +94,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is strictly lexicographically greater than   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_greater-po-array-bo-int-bc-of-var-set-of-int-cl-x-cm-array-bo-int-bc-of-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_greater</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>,
                       <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>lex_less(y, x)
@@ -102,7 +103,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is strictly lexicographically greater than   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_greatereq-po-array-bo-int-bc-of-var-bool-cl-x-cm-array-bo-int-bc-of-var-bool-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_greatereq</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>,
                         <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>lex_lesseq(y, x)
@@ -111,7 +112,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is lexicographically greater than or equal to   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_greatereq-po-array-bo-int-bc-of-var-int-cl-x-cm-array-bo-int-bc-of-var-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_greatereq</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                         <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>lex_lesseq(y, x)
@@ -120,7 +121,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is lexicographically greater than or equal to   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_greatereq-po-array-bo-int-bc-of-var-float-cl-x-cm-array-bo-int-bc-of-var-float-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_greatereq</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>,
                         <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>lex_lesseq(y, x)
@@ -129,7 +130,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is lexicographically greater than or equal to   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_greatereq-po-array-bo-int-bc-of-var-set-of-int-cl-x-cm-array-bo-int-bc-of-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_greatereq</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>,
                         <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>lex_lesseq(y, x)
@@ -138,7 +139,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is lexicographically greater than or equal to   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_less-po-array-bo-int-bc-of-var-bool-cl-x-cm-array-bo-int-bc-of-var-bool-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_less</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>,
                    <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
@@ -159,7 +160,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is strictly lexicographically less than   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_less-po-array-bo-int-bc-of-var-int-cl-x-cm-array-bo-int-bc-of-var-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_less</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                    <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
@@ -180,7 +181,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is strictly lexicographically less than   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_less-po-array-bo-int-bc-of-var-float-cl-x-cm-array-bo-int-bc-of-var-float-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_less</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>,
                    <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
@@ -201,7 +202,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is strictly lexicographically less than   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_less-po-array-bo-int-bc-of-var-set-of-int-cl-x-cm-array-bo-int-bc-of-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_less</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>,
                    <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
@@ -222,7 +223,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is strictly lexicographically less than   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_lesseq-po-array-bo-int-bc-of-var-bool-cl-x-cm-array-bo-int-bc-of-var-bool-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_lesseq</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>,
                      <span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
@@ -244,7 +245,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is lexicographically less than or equal to   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_lesseq-po-array-bo-int-bc-of-var-float-cl-x-cm-array-bo-int-bc-of-var-float-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_lesseq</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>,
                      <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
@@ -266,7 +267,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is lexicographically less than or equal to   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_lesseq-po-array-bo-int-bc-of-var-int-cl-x-cm-array-bo-int-bc-of-var-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_lesseq</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                      <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
@@ -288,7 +289,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is lexicographically less than or equal to   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-lex_lesseq-po-array-bo-int-bc-of-var-set-of-int-cl-x-cm-array-bo-int-bc-of-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>lex_lesseq</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>,
                      <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
@@ -310,7 +311,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the array <span class='mzn-arg'>x</span> is lexicographically less than or equal to   array <span class='mzn-arg'>y</span>. Compares them from first to last element, regardless of indices.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-strict_lex2-po-array-bo-int-cm-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>strict_lex2</span>(<span class='mzn-ti'>array [int,int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: lbx1 = min(index_set_1of2(x)), 
@@ -331,7 +332,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Require adjacent rows and adjacent columns in the array <span class='mzn-arg'>x</span> to be   lexicographically ordered.  Adjacent rows and adjacent columns cannot be equal.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-value_precede-po-int-cl-s-cm-int-cl-t-cm-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>value_precede</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>s</span>, <span class='mzn-ti'>int</span>: <span class='mzn-id'>t</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: imin = min(index_set(x)), 
@@ -352,7 +353,7 @@ function hideAll() {
 <p>
     Requires that <span class='mzn-arg'>s</span> precede <span class='mzn-arg'>t</span> in the array <span class='mzn-arg'>x</span>.</p><p>
   Precedence means that if any element of <span class='mzn-arg'>x</span>   is equal to <span class='mzn-arg'>t</span>, then another element of <span class='mzn-arg'>x</span> with a  lower index is equal   to <span class='mzn-arg'>s</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-value_precede-po-int-cl-s-cm-int-cl-t-cm-array-bo-int-bc-of-var-set-of-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>value_precede</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>s</span>,
                         <span class='mzn-ti'>int</span>: <span class='mzn-id'>t</span>,
                         <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
@@ -375,7 +376,7 @@ function hideAll() {
 <p>
     Requires that <span class='mzn-arg'>s</span> precede <span class='mzn-arg'>t</span> in the array <span class='mzn-arg'>x</span>.</p><p>
   Precedence means that if an element of <span class='mzn-arg'>x</span>   contains <span class='mzn-arg'>t</span> but not <span class='mzn-arg'>s</span>, then another element of <span class='mzn-arg'>x</span> with lower index contains   <span class='mzn-arg'>s</span> but not <span class='mzn-arg'>t</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-value_precede_chain-po-array-bo-int-bc-of-int-cl-c-cm-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>value_precede_chain</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>c</span>,
                               <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in min(index_set(c))+1..max(index_set(c)) ) ( 
@@ -387,7 +388,7 @@ function hideAll() {
 <p>
     Requires that <span class='mzn-arg'>c</span>[<span class='mzn-parm'>i</span>] precedes <span class='mzn-arg'>c</span>[<span class='mzn-parm'>i</span> +1] in the array <span class='mzn-arg'>x</span>.</p><p>
   Precedence means that if any element of <span class='mzn-arg'>x</span>   is equal to <span class='mzn-arg'>\a</span> c[<span class='mzn-parm'>i</span> +1], then another element of <span class='mzn-arg'>x</span> with a  lower index is equal   to <span class='mzn-arg'>\a</span> c[<span class='mzn-parm'>i</span>].</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-value_precede_chain-po-array-bo-int-bc-of-int-cl-c-cm-array-bo-int-bc-of-var-set-of-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>value_precede_chain</span>(<span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>c</span>,
                               <span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i in min(index_set(c))+1..max(index_set(c)) ) ( 

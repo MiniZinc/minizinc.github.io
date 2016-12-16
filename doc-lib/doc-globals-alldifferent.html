@@ -35,7 +35,8 @@ function hideAll() {
             <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
-<div class='mzn-group-nav'><a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-lexicographic.html' title='Lexicographic constraints'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<div class='mzn-group-nav'><a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-lexicographic.html' title='Lexicographic constraints'>&#8658;</a> <a href='doc-index.html'>Index</a>
+<a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
 </div><div class='mzn-group-name'><a name='doc-globals-alldifferent'>All-Different and related constraints</a></div>
 <div class='mzn-group-desc'>
@@ -45,7 +46,7 @@ function hideAll() {
 </div>
 <div class='mzn-decl-type-fun'>
 <div class='mzn-decl-type-heading'>Functions and Predicates</div>
-<div class='mzn-fundecl'>
+<div class='mzn-fundecl' id='Ipredicate-all_different-po-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>all_different</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(x) where i < j ) ( x[i]!=x[j] )
 </div>
@@ -53,7 +54,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Constrain the array of integers <span class='mzn-arg'>x</span> to be all different.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-all_different-po-array-bo-int-bc-of-var-set-of-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>all_different</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(x) where i < j ) ( x[i]!=x[j] )
 </div>
@@ -61,7 +62,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
      Constrain the array of sets of integers <span class='mzn-arg'>x</span> to be all different.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-all_disjoint-po-array-bo-int-bc-of-var-set-of-int-cl-S-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>all_disjoint</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>S</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(S) where i < j ) ( disjoint(S[i], S[j]) )
 </div>
@@ -69,7 +70,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
      Constrain the array of sets of integers <span class='mzn-arg'>S</span> to be pairwise disjoint.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-all_equal-po-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>all_equal</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(x) where i < j ) ( x[i]==x[j] )
 </div>
@@ -77,7 +78,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
      Constrain the array of integers <span class='mzn-arg'>x</span> to be all equal</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-all_equal-po-array-bo-int-bc-of-var-set-of-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>all_equal</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(x) where i < j ) ( x[i]==x[j] )
 </div>
@@ -85,7 +86,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
      Constrain the array of sets of integers <span class='mzn-arg'>x</span> to be all different</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-alldifferent_except_0-po-array-bo-int-bc-of-var-int-cl-vs-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>alldifferent_except_0</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>vs</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>forall ( i, j in index_set(vs) where i < j ) ( 
     vs[i]!=0 /\ vs[j]!=0 -> vs[i]!=vs[j] 
@@ -95,7 +96,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
      Constrain the array of integers <span class='mzn-arg'>vs</span> to be all different except those   elements that are assigned the value 0.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-int-cl-nvalue-po-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>nvalue</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     var 0..length(x): n, 
@@ -106,7 +107,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Returns the number of distinct values in <span class='mzn-arg'>x</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-nvalue-po-var-int-cl-n-cm-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>nvalue</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>n</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: lx = lb_array(x), 
@@ -120,7 +121,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the number of distinct values in <span class='mzn-arg'>x</span> is <span class='mzn-arg'>n</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-symmetric_all_different-po-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>symmetric_all_different</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>all_different(x) /\ 
 forall ( i, j in index_set(x) where i!=j ) ( x[i]==j -> x[j]==i )

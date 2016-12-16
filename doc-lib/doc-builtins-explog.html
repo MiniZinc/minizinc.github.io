@@ -35,7 +35,8 @@ function hideAll() {
             <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
-<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-arithmetic.html' title='Arithmetic Builtins'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-trigonometric.html' title='Trigonometric functions'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-arithmetic.html' title='Arithmetic Builtins'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-trigonometric.html' title='Trigonometric functions'>&#8658;</a> <a href='doc-index.html'>Index</a>
+<a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
 </div><div class='mzn-group-name'><a name='doc-builtins-explog'>Exponential and logarithmic builtins</a></div>
 <div class='mzn-group-desc'>
@@ -46,12 +47,12 @@ function hideAll() {
 </div>
 <div class='mzn-decl-type-fun'>
 <div class='mzn-decl-type-heading'>Functions and Predicates</div>
-<div class='mzn-fundecl'>
+<div class='mzn-fundecl' id='Ifunction-float-cl-exp-po-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>exp</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return \(e ^ {{\bf x}}\) </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-float-cl-exp-po-var-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>exp</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     var float: r, 
@@ -62,12 +63,12 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
   Return \(e ^ {{\bf x}}\) </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-float-cl-ln-po-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>ln</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return \(\ln {\bf x}\) </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-float-cl-ln-po-var-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>ln</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     var float: r, 
@@ -78,17 +79,17 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
   Return \(\ln {\bf x}\) </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-float-cl-log-po-float-cl-x-cm-float-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>log</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return \(\log_{{\bf x}} {\bf y}\) </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-float-cl-log10-po-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>log10</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return \(\log_{10} {\bf x}\) </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-float-cl-log10-po-var-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>log10</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     var float: r, 
@@ -99,12 +100,12 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
   Return \(\log_{10} {\bf x}\) </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-float-cl-log2-po-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>float</span>: <span class='mzn-fn-id'>log2</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return \(\log_{2} {\bf x}\) </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-float-cl-log2-po-var-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var float</span>: <span class='mzn-fn-id'>log2</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     var float: r, 

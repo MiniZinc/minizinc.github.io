@@ -35,7 +35,8 @@ function hideAll() {
             <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
-<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-scheduling.html' title='Scheduling constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-scheduling.html' title='Scheduling constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a href='doc-index.html'>Index</a>
+<a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
 </div><div class='mzn-group-name'><a name='doc-globals-extensional'>Extensional constraints (table, regular etc.)</a></div>
 <div class='mzn-group-desc'>
@@ -44,7 +45,7 @@ function hideAll() {
 </div>
 <div class='mzn-decl-type-fun'>
 <div class='mzn-decl-type-heading'>Functions and Predicates</div>
-<div class='mzn-fundecl'>
+<div class='mzn-fundecl' id='Ipredicate-regular-po-array-bo-int-bc-of-var-int-cl-x-cm-int-cl-Q-cm-int-cl-S-cm-array-bo-int-cm-int-bc-of-int-cl-d-cm-int-cl-q0-cm-set-of-int-cl-F-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>regular</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                   <span class='mzn-ti'>int</span>: <span class='mzn-id'>Q</span>,
                   <span class='mzn-ti'>int</span>: <span class='mzn-id'>S</span>,
@@ -83,7 +84,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     The sequence of values in array <span class='mzn-arg'>x</span> (which must all be in the range 1..<span class='mzn-arg'>S</span>)   is accepted by the DFA of <span class='mzn-arg'>Q</span> states with input 1..<span class='mzn-arg'>S</span> and transition   function <span class='mzn-arg'>d</span> (which maps (1..<span class='mzn-arg'>Q</span>, 1..<span class='mzn-arg'>S</span>) -> 0..<span class='mzn-arg'>Q</span>)) and initial state <span class='mzn-arg'>q0</span>   (which must be in 1..<span class='mzn-arg'>Q</span>) and accepting states <span class='mzn-arg'>F</span> (which all must be in   1..<span class='mzn-arg'>Q</span>).  We reserve state 0 to be an always failing state.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-regular_nfa-po-array-bo-int-bc-of-var-int-cl-x-cm-int-cl-Q-cm-int-cl-S-cm-array-bo-int-cm-int-bc-of-set-of-int-cl-d-cm-int-cl-q0-cm-set-of-int-cl-F-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>regular_nfa</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                       <span class='mzn-ti'>int</span>: <span class='mzn-id'>Q</span>,
                       <span class='mzn-ti'>int</span>: <span class='mzn-id'>S</span>,
@@ -123,7 +124,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     The sequence of values in array <span class='mzn-arg'>x</span> (which must all be in the range 1..<span class='mzn-arg'>S</span>)   is accepted by the NFA of <span class='mzn-arg'>Q</span> states with input 1..<span class='mzn-arg'>S</span> and transition   function <span class='mzn-arg'>d</span> (which maps (1..<span class='mzn-arg'>Q</span>, 1..<span class='mzn-arg'>S</span>) -> set of 1..<span class='mzn-arg'>Q</span>)) and initial state <span class='mzn-arg'>q0</span>   (which must be in 1..<span class='mzn-arg'>Q</span>) and accepting states <span class='mzn-arg'>F</span> (which all must be in   1..<span class='mzn-arg'>Q</span>).</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-table-po-array-bo-int-bc-of-var-bool-cl-x-cm-array-bo-int-cm-int-bc-of-bool-cl-t-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>table</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [int,int] of bool</span>: <span class='mzn-id'>t</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set_2of2(t)==index_set(x), 
     "The second dimension of the table must equal the number of variables "++
@@ -152,7 +153,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Represents the constraint <span class='mzn-arg'>x</span> in <span class='mzn-arg'>t</span> where we   consider each row in <span class='mzn-arg'>t</span> to be a tuple and <span class='mzn-arg'>t</span> as a set of tuples.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-table-po-array-bo-int-bc-of-var-int-cl-x-cm-array-bo-int-cm-int-bc-of-int-cl-t-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>table</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>array [int,int] of int</span>: <span class='mzn-id'>t</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set_2of2(t)==index_set(x), 
     "The second dimension of the table must equal the number of variables "++

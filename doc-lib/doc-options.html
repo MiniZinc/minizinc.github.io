@@ -35,7 +35,8 @@ function hideAll() {
             <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
-<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-optiontypes.html' title='Option type support'>&#8656;</a> <a class='mzn-nav-up' href='doc.html' title='The MiniZinc library'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins.html' title='Builtins'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-optiontypes.html' title='Option type support'>&#8656;</a> <a class='mzn-nav-up' href='doc.html' title='The MiniZinc library'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins.html' title='Builtins'>&#8658;</a> <a href='doc-index.html'>Index</a>
+<a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
 </div><div class='mzn-group-name'><a name='doc-options'>Compiler options</a></div>
 <div class='mzn-group-desc'>
@@ -44,12 +45,12 @@ function hideAll() {
 </div>
 <div class='mzn-decl-type-par'>
 <div class='mzn-decl-type-heading'>Parameters</div>
-<div class='mzn-vardecl'>
+<div class='mzn-vardecl' id='Iopt-bool-mzn_opt_only_range_domains'>
 <div class='mzn-vardecl-code'>
 opt bool: mzn_opt_only_range_domains</div><div class='mzn-vardecl-doc'>
 <p>
   Whether to only generate domains that are contiguous ranges </p>
-</div></div><div class='mzn-vardecl'>
+</div></div><div class='mzn-vardecl' id='Iopt-int-mzn_min_version_required'>
 <div class='mzn-vardecl-code'>
 opt int: mzn_min_version_required</div><div class='mzn-vardecl-doc'>
 <p>
@@ -57,13 +58,13 @@ opt int: mzn_min_version_required</div><div class='mzn-vardecl-doc'>
 </div></div></div>
 <div class='mzn-decl-type-fun'>
 <div class='mzn-decl-type-heading'>Functions and Predicates</div>
-<div class='mzn-fundecl'>
+<div class='mzn-fundecl' id='Itest-mzn_check_only_range_domains'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>mzn_check_only_range_domains</span>()<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if absent(mzn_opt_only_range_domains) then false 
 else deopt(mzn_opt_only_range_domains) 
 endif
 </div>
-(standard decomposition from stdlib.mzn:496)</div></div>
+(standard decomposition from stdlib.mzn:503)</div></div>
 <div class='mzn-fundecl-doc'>
 <p>
   Check whether to only generate domains that are contiguous ranges </p>

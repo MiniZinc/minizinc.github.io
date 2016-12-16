@@ -35,7 +35,8 @@ function hideAll() {
             <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
-<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-logic.html' title='Logical operations'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-array.html' title='Array operations'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-builtins-logic.html' title='Logical operations'>&#8656;</a> <a class='mzn-nav-up' href='doc-builtins.html' title='Builtins'>&#8679;</a> <a class='mzn-nav-next' href='doc-builtins-array.html' title='Array operations'>&#8658;</a> <a href='doc-index.html'>Index</a>
+<a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
 </div><div class='mzn-group-name'><a name='doc-builtins-set'>Set operations</a></div>
 <div class='mzn-group-desc'>
@@ -46,104 +47,104 @@ function hideAll() {
 </div>
 <div class='mzn-decl-type-fun'>
 <div class='mzn-decl-type-heading'>Functions and Predicates</div>
-<div class='mzn-fundecl'>
+<div class='mzn-fundecl' id='Ifunction-set-of-dd-dd-E-cl-tk-..-tk-po-dd-dd-E-cl-a-cm-dd-dd-E-cl-b-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of $$E</span>: <span class='mzn-fn-id'>'..'</span>(<span class='mzn-ti'>$$E</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>$$E</span>: <span class='mzn-id'>b</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">a..b</span></p><p>
   Return the set \(\{{\bf a},\ldots,{\bf b}\}\) </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-set-of-float-cl-tk-..-tk-po-float-cl-a-cm-float-cl-b-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of float</span>: <span class='mzn-fn-id'>'..'</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>a</span>, <span class='mzn-ti'>float</span>: <span class='mzn-id'>b</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">a..b</span></p><p>
   Return the set \(\{{\bf a},\ldots,{\bf b}\}\) </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-set-of-dd-T-cl-tk-diff-tk-po-set-of-dd-T-cl-x-cm-set-of-dd-T-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of $T</span>: <span class='mzn-fn-id'>'diff'</span>(<span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x diff y</span></p><p>
   Return the set difference of sets <span class='mzn-arg'>x</span> &minus; <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-set-of-int-cl-tk-diff-tk-po-var-set-of-int-cl-x-cm-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var set of int</span>: <span class='mzn-fn-id'>'diff'</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x diff y</span></p><p>
   Return the set difference of sets <span class='mzn-arg'>x</span> &minus; <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Itest-tk-in-tk-po-int-cl-x-cm-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'in'</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x in y</span></p><p>
   Test if <span class='mzn-arg'>x</span> is an element of the set <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-tk-in-tk-po-var-int-cl-x-cm-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'in'</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x in y</span></p><p>
   <span class='mzn-arg'>x</span> is an element of the set <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Itest-tk-in-tk-po-float-cl-x-cm-set-of-float-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'in'</span>(<span class='mzn-ti'>float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of float</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x in y</span></p><p>
   Test if <span class='mzn-arg'>x</span> is an element of the set <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-tk-in-tk-po-var-float-cl-x-cm-set-of-float-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'in'</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of float</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x in y</span></p><p>
   Test if <span class='mzn-arg'>x</span> is an element of the set <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-set-of-dd-T-cl-tk-intersect-tk-po-set-of-dd-T-cl-x-cm-set-of-dd-T-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of $T</span>: <span class='mzn-fn-id'>'intersect'</span>(<span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x intersect y</span></p><p>
   Return the intersection of sets <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-set-of-int-cl-tk-intersect-tk-po-var-set-of-int-cl-x-cm-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var set of int</span>: <span class='mzn-fn-id'>'intersect'</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>,
                                      <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x intersect y</span></p><p>
   Return the intersection of sets <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Itest-tk-subset-tk-po-set-of-dd-T-cl-x-cm-set-of-dd-T-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'subset'</span>(<span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x subset y</span></p><p>
   Test if <span class='mzn-arg'>x</span> is a subset of <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-tk-subset-tk-po-var-set-of-int-cl-x-cm-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'subset'</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x subset y</span></p><p>
   <span class='mzn-arg'>x</span> is a subset of <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Itest-tk-superset-tk-po-set-of-dd-T-cl-x-cm-set-of-dd-T-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>test</span> <span class='mzn-fn-id'>'superset'</span>(<span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x superset y</span></p><p>
   Test if <span class='mzn-arg'>x</span> is a superset of <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-tk-superset-tk-po-var-set-of-int-cl-x-cm-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>'superset'</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x superset y</span></p><p>
   <span class='mzn-arg'>x</span> is a superset of <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-set-of-dd-T-cl-tk-symdiff-tk-po-set-of-dd-T-cl-x-cm-set-of-dd-T-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of $T</span>: <span class='mzn-fn-id'>'symdiff'</span>(<span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x symdiff y</span></p><p>
   Return the symmetric set difference of sets <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-set-of-int-cl-tk-symdiff-tk-po-var-set-of-int-cl-x-cm-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var set of int</span>: <span class='mzn-fn-id'>'symdiff'</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>,
                                    <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x symdiff y</span></p><p>
   Return the symmetric set difference of sets <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-set-of-dd-T-cl-tk-union-tk-po-set-of-dd-T-cl-x-cm-set-of-dd-T-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of $T</span>: <span class='mzn-fn-id'>'union'</span>(<span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x union y</span></p><p>
   Return the union of sets <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-set-of-int-cl-tk-union-tk-po-var-set-of-int-cl-x-cm-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var set of int</span>: <span class='mzn-fn-id'>'union'</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>Usage: <span class="mzn-arg">x union y</span></p><p>
   Return the union of sets <span class='mzn-arg'>x</span> and <span class='mzn-arg'>y</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-set-of-dd-U-cl-array_intersect-po-array-bo-dd-T-bc-of-set-of-dd-U-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of $U</span>: <span class='mzn-fn-id'>array_intersect</span>(<span class='mzn-ti'>array [$T] of set of $U</span>: <span class='mzn-id'>x</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return the intersection of the sets in array <span class='mzn-arg'>x</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-set-of-int-cl-array_intersect-po-array-bo-int-bc-of-var-set-of-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var set of int</span>: <span class='mzn-fn-id'>array_intersect</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if length(x)==0 then 
     assert(false, "can\'t be!", -infinity..infinity)  elseif 
@@ -166,12 +167,12 @@ endif
 <div class='mzn-fundecl-doc'>
 <p>
   Return the intersection of the sets in array <span class='mzn-arg'>x</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-set-of-dd-U-cl-array_union-po-array-bo-dd-T-bc-of-set-of-dd-U-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>set of $U</span>: <span class='mzn-fn-id'>array_union</span>(<span class='mzn-ti'>array [$T] of set of $U</span>: <span class='mzn-id'>x</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return the union of the sets in array <span class='mzn-arg'>x</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-set-of-int-cl-array_union-po-array-bo-int-bc-of-var-set-of-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var set of int</span>: <span class='mzn-fn-id'>array_union</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>if length(x)==0 then 
     {}  elseif length(x)==1 then 
@@ -192,16 +193,26 @@ endif
 <div class='mzn-fundecl-doc'>
 <p>
   Return the union of the sets in array <span class='mzn-arg'>x</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-int-cl-card-po-set-of-dd-T-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>int</span>: <span class='mzn-fn-id'>card</span>(<span class='mzn-ti'>set of $T</span>: <span class='mzn-id'>x</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return the cardinality of the set <span class='mzn-arg'>x</span> </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-int-cl-card-po-var-set-of-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>card</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>)</div>
 <div class='mzn-fundecl-doc'>
 <p>
   Return the cardinality of the set <span class='mzn-arg'>x</span> </p>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-dd-dd-E-cl-max-po-var-set-of-dd-dd-E-cl-s-pc'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var $$E</span>: <span class='mzn-fn-id'>max</span>(<span class='mzn-ti'>var set of $$E</span>: <span class='mzn-id'>s</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return the maximum of the set <span class='mzn-arg'>s</span> </p>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-dd-dd-E-cl-min-po-var-set-of-dd-dd-E-cl-s-pc'>
+<div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var $$E</span>: <span class='mzn-fn-id'>min</span>(<span class='mzn-ti'>var set of $$E</span>: <span class='mzn-id'>s</span>)</div>
+<div class='mzn-fundecl-doc'>
+<p>
+  Return the minimum of the set <span class='mzn-arg'>s</span> </p>
 </div></div></div>
 </div>{% endraw %}
         </div>

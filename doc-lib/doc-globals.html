@@ -35,7 +35,8 @@ function hideAll() {
             <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
-<div class='mzn-group-nav'><a class='mzn-nav-up' href='doc.html' title='The MiniZinc library'>&#8679;</a> <a class='mzn-nav-next' href='doc-annotations.html' title='Annotations'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<div class='mzn-group-nav'><a class='mzn-nav-up' href='doc.html' title='The MiniZinc library'>&#8679;</a> <a class='mzn-nav-next' href='doc-annotations.html' title='Annotations'>&#8658;</a> <a href='doc-index.html'>Index</a>
+<a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
 </div><div class='mzn-group-name'><a name='doc-globals'>Global constraints</a></div>
 <div class='mzn-group-desc'>
@@ -58,7 +59,7 @@ function hideAll() {
 <p>Declarations in this section:</p>
 <div class='mzn-decl-type-fun'>
 <div class='mzn-decl-type-heading'>Functions and Predicates</div>
-<div class='mzn-fundecl'>
+<div class='mzn-fundecl' id='Ifunction-var-int-cl-arg_max-po-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>arg_max</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {constraint length(x) > 0,} in (arg_max_total(x))
 </div>
@@ -66,7 +67,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
       Returns the index of the maximum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-int-cl-arg_max-po-array-bo-int-bc-of-var-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>arg_max</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {constraint length(x) > 0,} in (arg_max_total(x))
 </div>
@@ -74,7 +75,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
       Returns the index of the maximum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-int-cl-arg_min-po-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>arg_min</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {constraint length(x) > 0,} in (arg_min_total(x))
 </div>
@@ -82,7 +83,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
       Returns the index of the minimum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-int-cl-arg_min-po-array-bo-int-bc-of-var-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var int</span>: <span class='mzn-fn-id'>arg_min</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {constraint length(x) > 0,} in (arg_min_total(x))
 </div>
@@ -90,7 +91,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
       Returns the index of the minimum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-circuit-po-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>circuit</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     set of int: S = index_set(x), 
@@ -112,7 +113,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Constrains the elements of <span class='mzn-arg'>x</span> to define a circuit where <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] = <span class='mzn-parm'>j</span> means   that <span class='mzn-parm'>j</span> is the successor of <span class='mzn-parm'>i</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-disjoint-po-var-set-of-int-cl-s1-cm-var-set-of-int-cl-s2-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>disjoint</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s1</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s2</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>s1 intersect s2=={}
 </div>
@@ -120,7 +121,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
   Requires that sets <span class='mzn-arg'>s1</span> and <span class='mzn-arg'>s2</span> do not intersect. </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-maximum-po-var-int-cl-m-cm-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>maximum</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: l = min(index_set(x)), 
@@ -137,7 +138,7 @@ function hideAll() {
 <p>
   Constrains <span class='mzn-arg'>m</span> to be the maximum of the values in <span class='mzn-arg'>x</span>.</p><p>
   Assumptions: |<span class='mzn-arg'>x</span>| > 0.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-maximum-po-var-float-cl-m-cm-array-bo-int-bc-of-var-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>maximum</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: l = min(index_set(x)), 
@@ -154,7 +155,7 @@ function hideAll() {
 <p>
   Constrains <span class='mzn-arg'>m</span> to be the maximum of the values in <span class='mzn-arg'>x</span>.</p><p>
   Assumptions: |<span class='mzn-arg'>x</span>| > 0.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-maximum_arg-po-array-bo-int-bc-of-var-int-cl-x-cm-var-int-cl-i-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>maximum_arg</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>i</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: l = min(index_set(x)), 
@@ -175,7 +176,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
       Constrain <span class='mzn-arg'>i</span> to be the index of the maximum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.          Assumption: |x| > 0</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-maximum_arg-po-array-bo-int-bc-of-var-float-cl-x-cm-var-int-cl-i-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>maximum_arg</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>i</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: l = min(index_set(x)), 
@@ -196,7 +197,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
       Constrain <span class='mzn-arg'>i</span> to be the index of the maximum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.          Assumption: |x| > 0</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-member-po-array-bo-int-bc-of-var-bool-cl-x-cm-var-bool-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>member</span>(<span class='mzn-ti'>array [int] of var bool</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var bool</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( x[i]==y )
 </div>
@@ -204,7 +205,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that <span class='mzn-arg'>y</span> occurs in the array <span class='mzn-arg'>x</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-member-po-array-bo-int-bc-of-var-float-cl-x-cm-var-float-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>member</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var float</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( x[i]==y )
 </div>
@@ -212,7 +213,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that <span class='mzn-arg'>y</span> occurs in the array <span class='mzn-arg'>x</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-member-po-array-bo-int-bc-of-var-int-cl-x-cm-var-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>member</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( x[i]==y )
 </div>
@@ -220,7 +221,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that <span class='mzn-arg'>y</span> occurs in the array <span class='mzn-arg'>x</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-member-po-array-bo-int-bc-of-var-set-of-int-cl-x-cm-var-set-of-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>member</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>exists ( i in index_set(x) ) ( x[i]==y )
 </div>
@@ -228,7 +229,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that <span class='mzn-arg'>y</span> occurs in the array <span class='mzn-arg'>x</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-member-po-var-set-of-int-cl-x-cm-var-int-cl-y-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>member</span>(<span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>y</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>y in x
 </div>
@@ -236,7 +237,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that <span class='mzn-arg'>y</span> occurs in the set <span class='mzn-arg'>x</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-minimum-po-var-float-cl-m-cm-array-bo-int-bc-of-var-float-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>minimum</span>(<span class='mzn-ti'>var float</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: l = min(index_set(x)), 
@@ -253,7 +254,7 @@ function hideAll() {
 <p>
   Constrains <span class='mzn-arg'>m</span> to be the minimum of the values in <span class='mzn-arg'>x</span>.</p><p>
   Assumptions: |<span class='mzn-arg'>x</span>| > 0.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-minimum-po-var-int-cl-m-cm-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>minimum</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>m</span>, <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: l = min(index_set(x)), 
@@ -270,7 +271,7 @@ function hideAll() {
 <p>
   Constrains <span class='mzn-arg'>m</span> to be the minimum of the values in <span class='mzn-arg'>x</span>.</p><p>
   Assumptions: |<span class='mzn-arg'>x</span>| > 0.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-minimum_arg-po-array-bo-int-bc-of-var-int-cl-x-cm-var-int-cl-i-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>minimum_arg</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>i</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: l = min(index_set(x)), 
@@ -291,7 +292,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
       Constrain <span class='mzn-arg'>i</span> to be the index of the minimum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.          Assumption: |x| > 0</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-minimum_arg-po-array-bo-int-bc-of-var-float-cl-x-cm-var-int-cl-i-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>minimum_arg</span>(<span class='mzn-ti'>array [int] of var float</span>: <span class='mzn-id'>x</span>, <span class='mzn-ti'>var int</span>: <span class='mzn-id'>i</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     int: l = min(index_set(x)), 
@@ -312,7 +313,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
       Constrain <span class='mzn-arg'>i</span> to be the index of the minimum value in the array <span class='mzn-arg'>x</span>.     When breaking ties the least index is returned.          Assumption: |x| > 0</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-network_flow-po-array-bo-int-cm-1..2-bc-of-int-cl-arc-cm-array-bo-int-bc-of-int-cl-balance-cm-array-bo-int-bc-of-var-int-cl-flow-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>network_flow</span>(<span class='mzn-ti'>array [int,1..2] of int</span>: <span class='mzn-id'>arc</span>,
                        <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>balance</span>,
                        <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>flow</span>)<span class='mzn-fundecl-equals'> =</span>
@@ -345,7 +346,7 @@ function hideAll() {
 <li><span class='mzn-arg'>balance</span>:  the difference between input and output flow for each node.</li>
 <li><span class='mzn-arg'>flow</span>:  the flow going through each arc.</li>
 </ul>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-network_flow_cost-po-array-bo-int-cm-1..2-bc-of-int-cl-arc-cm-array-bo-int-bc-of-int-cl-balance-cm-array-bo-int-bc-of-int-cl-weight-cm-array-bo-int-bc-of-var-int-cl-flow-cm-var-int-cl-cost-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>network_flow_cost</span>(<span class='mzn-ti'>array [int,1..2] of int</span>: <span class='mzn-id'>arc</span>,
                             <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>balance</span>,
                             <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>weight</span>,
@@ -387,7 +388,7 @@ function hideAll() {
 <li><span class='mzn-arg'>flow</span>:  the flow going through each arc.</li>
 <li><span class='mzn-arg'>cost</span>:  the overall cost of the flow.</li>
 </ul>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-partition_set-po-array-bo-int-bc-of-var-set-of-int-cl-S-cm-set-of-int-cl-universe-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>partition_set</span>(<span class='mzn-ti'>array [int] of var set of int</span>: <span class='mzn-id'>S</span>,
                         <span class='mzn-ti'>set of int</span>: <span class='mzn-id'>universe</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>all_disjoint(S) /\ 
@@ -397,7 +398,7 @@ universe==array_union ( i in index_set(S) ) ( S[i] )
 <div class='mzn-fundecl-doc'>
 <p>
     Constrains the sets in array <span class='mzn-arg'>S</span> to partition the <span class='mzn-arg'>universe</span>.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-set-of-int-cl-range-po-array-bo-int-bc-of-var-int-cl-x-cm-var-set-of-int-cl-s-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var set of int</span>: <span class='mzn-fn-id'>range</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                                <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
@@ -409,7 +410,7 @@ universe==array_union ( i in index_set(S) ) ( S[i] )
 <div class='mzn-fundecl-doc'>
 <p>
     Returns the image of function <span class='mzn-arg'>x</span> (represented as an array) on set   of values <span class='mzn-arg'>s</span>.  ub(<span class='mzn-arg'>s</span>) must be a subset of index_set(<span class='mzn-arg'>x</span>) otherwise an   assertion failure will occur.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-range-po-array-bo-int-bc-of-var-int-cl-x-cm-var-set-of-int-cl-s-cm-var-set-of-int-cl-t-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>range</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                 <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s</span>,
                 <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>t</span>)<span class='mzn-fundecl-equals'> =</span>
@@ -428,7 +429,7 @@ universe==array_union ( i in index_set(S) ) ( S[i] )
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that the image of function <span class='mzn-arg'>x</span> (represented as an array) on set   of values <span class='mzn-arg'>s</span> is <span class='mzn-arg'>t</span>.  ub(<span class='mzn-arg'>s</span>) must be a subset of index_set(<span class='mzn-arg'>x</span>) otherwise an   assertion failure will occur.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ifunction-var-set-of-int-cl-roots-po-array-bo-int-bc-of-var-int-cl-x-cm-var-set-of-int-cl-t-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>function</span> <span class='mzn-ti'>var set of int</span>: <span class='mzn-fn-id'>roots</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                                <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>t</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
@@ -440,7 +441,7 @@ universe==array_union ( i in index_set(S) ) ( S[i] )
 <div class='mzn-fundecl-doc'>
 <p>
     Returns <span class='mzn-arg'>s</span> such that <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] in <span class='mzn-arg'>t</span> for all <span class='mzn-parm'>i</span> in <span class='mzn-arg'>s</span></p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-roots-po-array-bo-int-bc-of-var-int-cl-x-cm-var-set-of-int-cl-s-cm-var-set-of-int-cl-t-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>roots</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>,
                 <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>s</span>,
                 <span class='mzn-ti'>var set of int</span>: <span class='mzn-id'>t</span>)<span class='mzn-fundecl-equals'> =</span>
@@ -459,7 +460,7 @@ universe==array_union ( i in index_set(S) ) ( S[i] )
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] in <span class='mzn-arg'>t</span> for all <span class='mzn-parm'>i</span> in <span class='mzn-arg'>s</span></p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-sliding_sum-po-int-cl-low-cm-int-cl-up-cm-int-cl-seq-cm-array-bo-int-bc-of-var-int-cl-vs-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>sliding_sum</span>(<span class='mzn-ti'>int</span>: <span class='mzn-id'>low</span>,
                       <span class='mzn-ti'>int</span>: <span class='mzn-id'>up</span>,
                       <span class='mzn-ti'>int</span>: <span class='mzn-id'>seq</span>,
@@ -477,7 +478,7 @@ universe==array_union ( i in index_set(S) ) ( S[i] )
 <div class='mzn-fundecl-doc'>
 <p>
     Requires that in each subsequence <span class='mzn-arg'>vs</span>[<span class='mzn-parm'>i</span>], ..., <span class='mzn-arg'>vs</span>[<span class='mzn-parm'>i</span> + <span class='mzn-arg'>seq</span> - 1] the sum of the   values belongs to the interval [<span class='mzn-arg'>low</span>, <span class='mzn-arg'>up</span>].</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-subcircuit-po-array-bo-int-bc-of-var-int-cl-x-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>subcircuit</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>x</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>let {
     set of int: S = index_set(x), 
@@ -514,7 +515,7 @@ universe==array_union ( i in index_set(S) ) ( S[i] )
 <div class='mzn-fundecl-doc'>
 <p>
     Constrains the elements of <span class='mzn-arg'>x</span> to define a subcircuit where <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] = <span class='mzn-parm'>j</span>   means that <span class='mzn-parm'>j</span> is the successor of <span class='mzn-parm'>i</span> and <span class='mzn-arg'>x</span>[<span class='mzn-parm'>i</span>] = <span class='mzn-parm'>i</span> means that <span class='mzn-parm'>i</span>   is not in the circuit.</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-sum_pred-po-var-int-cl-i-cm-array-bo-int-bc-of-set-of-int-cl-sets-cm-array-bo-int-bc-of-int-cl-cs-cm-var-int-cl-s-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>sum_pred</span>(<span class='mzn-ti'>var int</span>: <span class='mzn-id'>i</span>,
                    <span class='mzn-ti'>array [int] of set of int</span>: <span class='mzn-id'>sets</span>,
                    <span class='mzn-ti'>array [int] of int</span>: <span class='mzn-id'>cs</span>,

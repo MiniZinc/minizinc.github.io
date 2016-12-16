@@ -35,7 +35,8 @@ function hideAll() {
             <h1 class='page-header'>MiniZinc Documentation - Standard Library</h1>
 {% raw %}
 <div class='mzn-group-level-0'>
-<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-packing.html' title='Packing constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-extensional.html' title='Extensional constraints (table, regular etc.)'>&#8658;</a> <a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
+<div class='mzn-group-nav'><a class='mzn-nav-prev' href='doc-globals-packing.html' title='Packing constraints'>&#8656;</a> <a class='mzn-nav-up' href='doc-globals.html' title='Global constraints'>&#8679;</a> <a class='mzn-nav-next' href='doc-globals-extensional.html' title='Extensional constraints (table, regular etc.)'>&#8658;</a> <a href='doc-index.html'>Index</a>
+<a href='javascript:void(0)' onclick='revealAll()' class='mzn-nav-text'>reveal all</a>
 <a href='javascript:void(0)' onclick='hideAll()' class='mzn-nav-text'>hide all</a>
 </div><div class='mzn-group-name'><a name='doc-globals-scheduling'>Scheduling constraints</a></div>
 <div class='mzn-group-desc'>
@@ -45,7 +46,7 @@ function hideAll() {
 </div>
 <div class='mzn-decl-type-fun'>
 <div class='mzn-decl-type-heading'>Functions and Predicates</div>
-<div class='mzn-fundecl'>
+<div class='mzn-fundecl' id='Ipredicate-alternative-po-var-opt-int-cl-s0-cm-var-int-cl-d0-cm-array-bo-int-bc-of-var-opt-int-cl-s-cm-array-bo-int-bc-of-var-int-cl-d-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>alternative</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>s0</span>,
                       <span class='mzn-ti'>var int</span>: <span class='mzn-id'>d0</span>,
                       <span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>s</span>,
@@ -61,7 +62,7 @@ function hideAll() {
 <div class='mzn-fundecl-doc'>
 <p>
   Alternative constraint for optional tasks. Task (<span class='mzn-arg'>s0</span>,<span class='mzn-arg'>d0</span>) spans the optional tasks (<span class='mzn-arg'>s</span>[<span class='mzn-parm'>i</span>],<span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>]) in the array arguments and at most one can occur</p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-cumulative-po-array-bo-int-bc-of-var-opt-int-cl-s-cm-array-bo-int-bc-of-var-int-cl-d-cm-array-bo-int-bc-of-var-int-cl-r-cm-var-int-cl-b-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>cumulative</span>(<span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>s</span>,
                      <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>,
                      <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>r</span>,
@@ -99,7 +100,7 @@ index_set(s)==index_set(r),
   Assumptions:<ul>
 <li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0 and <span class='mzn-arg'>r</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
 </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-cumulative-po-array-bo-int-bc-of-var-int-cl-s-cm-array-bo-int-bc-of-var-int-cl-d-cm-array-bo-int-bc-of-var-int-cl-r-cm-var-int-cl-b-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>cumulative</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>s</span>,
                      <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>,
                      <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>r</span>,
@@ -149,7 +150,7 @@ index_set(s)==index_set(r),
   Assumptions:<ul>
 <li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0 and <span class='mzn-arg'>r</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
 </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-disjunctive-po-array-bo-int-bc-of-var-opt-int-cl-s-cm-array-bo-int-bc-of-var-int-cl-d-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>disjunctive</span>(<span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>s</span>,
                       <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d), 
@@ -177,7 +178,7 @@ index_set(s)==index_set(r),
   Assumptions:<ul>
 <li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
 </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-disjunctive-po-array-bo-int-bc-of-var-int-cl-s-cm-array-bo-int-bc-of-var-int-cl-d-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>disjunctive</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>s</span>,
                       <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d), 
@@ -203,7 +204,7 @@ index_set(s)==index_set(r),
   Assumptions:<ul>
 <li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
 </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-disjunctive_strict-po-array-bo-int-bc-of-var-opt-int-cl-s-cm-array-bo-int-bc-of-var-int-cl-d-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>disjunctive_strict</span>(<span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>s</span>,
                              <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d), 
@@ -227,7 +228,7 @@ index_set(s)==index_set(r),
   Assumptions:<ul>
 <li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
 </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-disjunctive_strict-po-array-bo-int-bc-of-var-int-cl-s-cm-array-bo-int-bc-of-var-int-cl-d-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>disjunctive_strict</span>(<span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>s</span>,
                              <span class='mzn-ti'>array [int] of var int</span>: <span class='mzn-id'>d</span>)<span class='mzn-fundecl-equals'> =</span>
 <div class='mzn-fundecl-more-code'><div class='mzn-fundecl-body'>assert(index_set(s)==index_set(d), 
@@ -248,7 +249,7 @@ index_set(s)==index_set(r),
   Assumptions:<ul>
 <li> forall <span class='mzn-parm'>i</span>, <span class='mzn-arg'>d</span>[<span class='mzn-parm'>i</span>] >= 0</ul>
 </p>
-</div></div><div class='mzn-fundecl'>
+</div></div><div class='mzn-fundecl' id='Ipredicate-span-po-var-opt-int-cl-s0-cm-var-int-cl-d0-cm-array-bo-int-bc-of-var-opt-int-cl-s-cm-array-bo-int-bc-of-var-int-cl-d-pc'>
 <div class='mzn-fundecl-code'><a href='javascript:void(0)' onclick='revealMore(this)' class='mzn-fundecl-more'>&#9664;</a><span class='mzn-kw'>predicate</span> <span class='mzn-fn-id'>span</span>(<span class='mzn-ti'>var opt int</span>: <span class='mzn-id'>s0</span>,
                <span class='mzn-ti'>var int</span>: <span class='mzn-id'>d0</span>,
                <span class='mzn-ti'>array [int] of var opt int</span>: <span class='mzn-id'>s</span>,
