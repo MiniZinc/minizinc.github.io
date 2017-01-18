@@ -10,10 +10,16 @@ title: "MiniZinc: Version 2 Installation Instructions for Linux"
 
 <h3>Installation Instructions for Linux (binary)</h3>
 
-<p>These instructions are for installing MiniZinc 2 from a binary distribution for 64 bit Linux. Download the installer here:</p>
+<p>These instructions are for installing MiniZinc 2 from a binary distribution for 64 bit Linux.</p>
+
+<p><strong>Note:</strong> This package only contains the MiniZinc compiler, you will need to
+    install FlatZinc solvers manually. For most users, downloading the <a href="../software.html">bundled packages</a>
+    is the preferred option!</p>
+
+<p>Download the installer here:</p>
 
 <ul>
-    <li><b>Linux:</b> <a class="download" href="https://github.com/MiniZinc/libminizinc/releases/download/{{ mznversion }}/minizinc-<?=$mznversion?>-linux64.tar.gz">minizinc-{{ mznversion }}-linux64.tar.gz</a>
+    <li><b>Linux:</b> <a class="download" href="https://github.com/MiniZinc/libminizinc/releases/download/{{ mznversion }}/minizinc-{{ mznversion }}-linux64.tar.gz">minizinc-{{ mznversion }}-linux64.tar.gz</a>
 </ul>
 
 <p>To install, simply unpack the archive anywhere. After unpacking, add the <tt>bin</tt> directory inside the unpacked directory to the PATH.</p>
