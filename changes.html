@@ -3,7 +3,38 @@ layout: default
 title: MiniZinc - Change Log
 ---
 
-<h2>MiniZinc 2 Change Log</h2>
+<h2>MiniZinc Change Log</h2>
+
+<h3>Version 2.1.4</h3>
+
+<h4>Changes:</h4>
+<ul>
+<li> Add warning for MIP solvers that do not support -a option for satisfaction
+   problems.
+<li> Print introduced variable names with additional underscore to make
+   debugging FlatZinc easier. Fixes {% include bug.html bug='147' %}.
+<li> Add support for pow function in linearisation library.
+<li> Add support for parallel solving with CBC.
+<li> Flatten top-level conjunctions in the order defined in the model.
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fix major race condition that would crash the IDE when it didn't detect
+    that a solver process had finished.
+<li> Improve HTML output in the IDE by making sure every line is terminated by a newline.
+<li> Fix a garbage collection bug that could cause dangling pointers when
+   expressions were copied.
+<li> Fix type checker to allow empty arrays to be assigned to variables
+   declared as arrays of enums.
+<li> Fix infeasibility check in MIP translation for some inequality constraints.
+<li> Improved defines_var annotations for reified xor constraints. Fixes {% include bug.html bug='146' %}.
+<li> Fix output of empty integer sets and deal with empty arrays in output models.
+<li> Fix MIP translation when boolean variables were removed due to aliasing.
+<li> Improve corner cases for linearisation of cumulative constraint.
+<li> Properly report undefinedness in par bool expressions.
+<li> Enable some additional constant folding during flattening. Fixes {% include bug.html bug='149' %}.
+</ul>
 
 <h3>Version 2.1.3</h3>
 
