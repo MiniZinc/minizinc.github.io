@@ -5,6 +5,40 @@ title: MiniZinc - Change Log
 
 <h2>MiniZinc Change Log</h2>
 
+<h3>Version 2.1.5</h3>
+
+<h4>Changes:</h4>
+<ul>
+<li> Some improvements to the linearisation library.
+<li> Make parser read multiple .mzn files correctly.
+<li> Enable better bounds computation for array access expressions on
+   fixed arrays.
+<li> Perform better constant folding during optimisation phase. Fixes {% include bug.html bug='155' %}.
+<li> Don't rewrite pow function into multiplication in the case of power of 2.
+<li> Save some memory by making certain internal data structures more compact.
+<li> Improve source code location of identifiers in generator calls (should give
+   more precise error messages).
+<li> Produce an error message when a comprehension attempts to iterate over an
+   infinite set.
+<li> Produce better error messages for operations on infinite values (previously
+   some errors did not contain a source code location).
+<li> Speed up garbage collection by pre-allocating some memory.
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fix range check for float literals in arrays.
+<li> Fix a bug where a constraint could be removed incorrectly. Fixes {% include bug.html bug='150' %}.
+<li> Include variables for dzn and json output from all included models, not
+   just the main model. Fixes {% include bug.html bug='153' %}.
+<li> Produce multi-dimensional arrays in json output. Fixes {% include bug.html bug='156' %} and {% include bug.html bug='157' %}.
+<li> Remove incorrect closing bracket from json output. Fixes {% include bug.html bug='154' %}.
+<li> Fix bounds computation of par int and float arrays.
+<li> Don't allow var access to arrays of strings or annotations (since that would
+   require an element constraint and var string / var ann types).
+<li> Introduce int2float constraints where necessary for some linearisations.
+</ul>
+
 <h3>Version 2.1.4</h3>
 
 <h4>Changes:</h4>
