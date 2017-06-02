@@ -7,15 +7,15 @@ title: MiniZinc - Challenge
 
 <p>
 These are the official rules for the MiniZinc Challenge 2017.
-Version 2.1.3.
+Version 2.1.5.
 <br>
-These rules were last updated on 3 March 2017.
+These rules were last updated on 2 June 2017.
 </p>
 
 <h3>Entrants</h3>
 
 <p>
-The MiniZinc Challenge 2017 will test solvers on problems written in MiniZinc 2.1.3.<br>
+The MiniZinc Challenge 2017 will test solvers on problems written in MiniZinc 2.1.5.<br>
 Let <i>name</i> be the name of the solver system in what follows.
 </p>
 
@@ -58,24 +58,24 @@ The provided VM with the installed solver can be run by the provided scripts ins
     <ul>
     <li><b>FlatZinc Solver</b><br>
     fzn-exec - an executable file in the VM folder /home/user/entry_data that 
-    invokes a FlatZinc solver handling FlatZinc version 2.1.3. If your FlatZinc 
-    solver <strong>only</strong> handles XML-FlatZinc version 2.1.3, please contact 
+    invokes a FlatZinc solver handling FlatZinc version 2.1.5. If your FlatZinc 
+    solver <strong>only</strong> handles XML-FlatZinc version 2.1.5, please contact 
     the organizers.<br>
     This executable will be invoked from the command line/scripts as follows:
     <p style="margin-left:2%; margin-top: 1em">
     <b>fzn-exec</b> [&lt;options&gt;] file.fzn
     </p>
-    The argument <i>file.fzn</i> is the name of a FlatZinc 2.1.3 model instance to evaluate.
+    The argument <i>file.fzn</i> is the name of a FlatZinc 2.1.5 model instance to evaluate.
     </li>
     <li><b> MiniZinc Solver</b><br>
     An executable file needs to provided in the VM folder /home/user/entry_data that
-    invokes a MiniZinc solver handling MiniZinc version 2.1.3. This executable will be 
+    invokes a MiniZinc solver handling MiniZinc version 2.1.5. This executable will be 
     invoked from the command line and/or scripts located at the VM folder /home/user/bin
     as follows:
     <p style="margin-left:2%; margin-top: 1em">
     <b>exec</b> [&lt;options&gt;] -G &lt;mznlibdir&gt; file.mzn [&lt;data.dzn&gt;]
     </p>
-    The arguments <i>file.mzn</i> and <i>data.dzn</i> are names of a MiniZinc 2.1.3 model 
+    The arguments <i>file.mzn</i> and <i>data.dzn</i> are names of a MiniZinc 2.1.5 model 
     and data file, respectively. The argument <i>-G &lt;mznlibdir&gt;</i> points to the location
     of your solver's MiniZinc library directory containing the redefinition or global 
     constraints files.
@@ -147,12 +147,14 @@ that they do not follow the search strategy.
 
 <li>
 <dfn>Free search</dfn>: solvers in this class are free to ignore the search
-strategy. All FD search solvers will be automatically entered in this class
+strategy. All FD search solvers (and local search solver running on a single
+thread) will be automatically entered in this class
 too.
 
 <li>
 <dfn>Parallel search</dfn>: solvers in this class are free to use multiple
 threads or cores to solve the problem.  All entrants in the free search class
+(and the local search class)
 will be automatically entered in this class too, but they will be run in a 
 single threaded mode.
 </li>
@@ -178,7 +180,7 @@ the entry is to be entered in.
 <h3>Problem Format</h3>
 
 <p>
-The problem format will be <a href="../2.0/doc-lib/minizinc-spec.pdf">MiniZinc 2.1.3</a>.<br>
+The problem format will be <a href="../2.0/doc-lib/minizinc-spec.pdf">MiniZinc 2.1.5</a>.<br>
 There will be some restrictions on the problems tested in MiniZinc challenge.
 </p>
 
@@ -315,10 +317,11 @@ During the MiniZinc Challenge 2017 all VMs will run on machines
 with the following specification:
 
 <ul>
-<li>Operating System: <strong>TBA</strong><!--Ubuntu 14.04.4 LTS-->
+<li>Host Operating System: <strong>TBA</strong><!--Ubuntu 14.04.4 LTS-->
+<li>Guest Operating System: Ubuntu 16.04.2 LTS (xenial xerus)
 <li>Processor(s): i7 3770 @ 3.40GHz (8 logical cores)
 <li>Memory: 16 Gb
-<li>VirtualBox <strong>rev TBA</strong> <!--5.0.20r106931-->
+<li>VirtualBox Version: 5.0.20r106931 or later <strong>precise version will be announced later</strong>
 </ul>
 
 <p>
@@ -349,8 +352,8 @@ applies.
 <p>
 In order to collect good benchmarks each entrant is 
 <font color="red">strongly encouraged</font>  to submit
-one or two MiniZinc 2.1.3 models, making use of only the global constraints
-included in the MiniZinc 2.1.3 library, as well as some (preferably 20)
+one or two MiniZinc 2.1.5 models, making use of only the global constraints
+included in the MiniZinc 2.1.5 library, as well as some (preferably 20)
 instance files for each model.
 The instances should range from easy (about a minute)
 to hard (about 15 minutes) if possible.<br>
