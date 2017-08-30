@@ -851,6 +851,10 @@ function modifyInstancePlots(selected_solver, selected_problem) {
     else if (document.getElementById("xaxis_log").checked) {
         xaxis_type = 'log';
     }
+    var lineshape = 'hv';
+    if (document.getElementById("lineshape_lines").checked) {
+        lineshape = 'lines';
+    }
     // Plotting
     for (p = 0; p < nb_p; p++) {
         //Check if the problem was selected
@@ -859,7 +863,7 @@ function modifyInstancePlots(selected_solver, selected_problem) {
         // Problem is selected
         for (k = 0; k < instances[p].length; k++) {
             var i = instances[p][k];
-            var data = getDataForObjectivePlot(selected_solver, p, i);
+            var data = getDataForObjectivePlot(selected_solver, p, i, lineshape);
             var layout = {
                 title: problems[p] + '   ' + benchmarks[i],
                 xaxis: {title: 'time in ms', type: xaxis_type},
@@ -874,7 +878,7 @@ function modifyInstancePlots(selected_solver, selected_problem) {
     }
 }
 
-function getDataForObjectivePlot(selected_s, p, i) {
+function getDataForObjectivePlot(selected_s, p, i, lineshape) {
     var data = [];
     var s = 0;
     var index = 0;
@@ -905,12 +909,24 @@ function getDataForObjectivePlot(selected_s, p, i) {
             if (!selected_s[s])
                 continue;
             if (step_count[s][i] > 0) {
-                var trace = {
-                    x: step_times[s][i],
-                    y: step_obj[s][i],
-                    type: 'scatter',
-                    name: solvers[s]
-                };
+                var trace = {};
+                if (lineshape == 'lines') {
+                    trace = {
+                        x: step_times[s][i],
+                        y: step_obj[s][i],
+                        type: 'scatter',
+                        name: solvers[s]
+                    };
+                }
+                else {
+                    trace = {
+                        x: step_times[s][i],
+                        y: step_obj[s][i],
+                        type: 'scatter',
+                        line: {shape: lineshape},
+                        name: solvers[s]
+                    };
+                }
                 data[index] = trace;
                 index++;
             }
