@@ -5,6 +5,22 @@ title: MiniZinc - Change Log
 
 <h2>MiniZinc Change Log</h2>
 
+<h3>Version 2.1.6</h3>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fully evaluate parameters before binding formal arguments when evaluating
+ call expressions. Fixes  {% include bug.html bug='177' %}.
+<li> Fix incorrect simplification of Boolean constraints assigned to variables
+ that are assigned to false.
+<li> Fix bug in flattening of linear equations that contain the same variable on
+ both sides.
+<li> Fix un-trailing for let expressions, which could sometimes cause incorrect
+ code to be emitted when lets are evaluated in nested loops. Fixes  {% include bug.html bug='166' %}.   
+<li> Fix bug in JSON output of one-dimensional array literals.
+<li> Fix unification of enum type-inst variables.
+</ul>
+
 <h3>Version 2.1.5</h3>
 
 <h4>Changes:</h4>
