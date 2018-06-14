@@ -1,0 +1,817 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Index &#8212; MiniZinc Documentation 2.1.2 documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          MiniZinc Documentation</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="part_1_introduction.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1.1. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#structure">1.1.1. Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#how-to-read-this">1.1.2. How to Read This</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">1.2. Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#binary-packages">1.2.1. Binary Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#compilation-from-source-code">1.2.2. Compilation from Source Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#adding-third-party-solvers">1.2.3. Adding Third-party Solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ide_basic_steps.html">1.3. First steps with the MiniZinc IDE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelling.html">2.1. Basic Modelling in MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modelling.html#our-first-example">2.1.1. Our First Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling.html#an-arithmetic-optimisation-example">2.1.2. An Arithmetic Optimisation Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling.html#datafiles-and-assertions">2.1.3. Datafiles and Assertions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling.html#real-number-solving">2.1.4. Real Number Solving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling.html#basic-structure-of-a-model">2.1.5. Basic structure of a model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html">2.2. More Complex Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#arrays-and-sets">2.2.1. Arrays and Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#global-constraints">2.2.2. Global Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#conditional-expressions">2.2.3. Conditional Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#enumerated-types">2.2.4. Enumerated Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#complex-constraints">2.2.5. Complex Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#set-constraints">2.2.6. Set Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#putting-it-all-together">2.2.7. Putting it all together</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html">2.3. Predicates and Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#global-constraints">2.3.1. Global Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#defining-predicates">2.3.2. Defining Predicates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#defining-functions">2.3.3. Defining Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#reflection-functions">2.3.4. Reflection Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#local-variables">2.3.5. Local Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#context">2.3.6. Context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#local-constraints">2.3.7. Local Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#domain-reflection-functions">2.3.8. Domain Reflection Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#scope">2.3.9. Scope</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optiontypes.html">2.4. Option Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optiontypes.html#declaring-and-using-option-types">2.4.1. Declaring and Using Option Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optiontypes.html#hidden-option-types">2.4.2. Hidden Option Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html">2.5. Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mzn_search.html#finite-domain-search">2.5.1. Finite Domain Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mzn_search.html#search-annotations">2.5.2. Search Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mzn_search.html#annotations">2.5.3. Annotations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">2.6. Effective Modelling Practices in MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#variable-bounds">2.6.1. Variable Bounds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#unconstrained-variables">2.6.2. Unconstrained Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#effective-generators">2.6.3. Effective Generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.4. Redundant Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#modelling-choices">2.6.5. Modelling Choices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.6. Multiple Modelling and Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#symmetry">2.6.7. Symmetry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html">2.7. Boolean Satisfiability Modelling in MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sat.html#modelling-integers">2.7.1. Modelling Integers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sat.html#modelling-disequality">2.7.2. Modelling Disequality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sat.html#modelling-cardinality">2.7.3. Modelling Cardinality</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html">2.8. FlatZinc and Flattening</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#flattening-expressions">2.8.1. Flattening Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#linear-expressions">2.8.2. Linear Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#unrolling-expressions">2.8.3. Unrolling Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#arrays">2.8.4. Arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#reification">2.8.5. Reification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#predicates">2.8.6. Predicates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#let-expressions">2.8.7. Let Expressions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_reference.html">3. MiniZinc Reference Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spec.html">3.1. Specification of MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">3.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#notation">3.1.2. Notation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#overview-of-a-model">3.1.3. Overview of a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#syntax-overview">3.1.4. Syntax Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#high-level-model-structure">3.1.5. High-level Model Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#types-and-type-insts">3.1.6. Types and Type-insts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#expressions">3.1.7. Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#items">3.1.8. Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#annotations">3.1.9. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#partiality">3.1.10. Partiality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#built-in-operations">3.1.11. Built-in Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#content-types">3.1.12. Content-types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#json-support">3.1.13. JSON support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">3.1.14. Full grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-interfacing.html">3.2. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#Symbols"><strong>Symbols</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ 
+</div>
+<h2 id="Symbols">Symbols</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-16">!=</a>
+</li>
+      <li><a href="modelling.html#index-26">*</a>
+</li>
+      <li><a href="modelling.html#index-26">+</a>
+</li>
+      <li><a href="modelling.html#index-26">-</a>
+</li>
+      <li><a href="modelling.html#index-16">&lt;</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-16">&lt;=</a>
+</li>
+      <li><a href="modelling.html#index-16">=</a>
+</li>
+      <li><a href="modelling.html#index-16">==</a>
+</li>
+      <li><a href="modelling.html#index-16">&gt;</a>
+</li>
+      <li><a href="modelling.html#index-16">&gt;=</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling2.html#index-17">aggregation function</a>, <a href="modelling2.html#index-19">[1]</a>
+
+      <ul>
+        <li><a href="modelling2.html#index-17">exists</a>
+</li>
+        <li><a href="modelling2.html#index-17">forall</a>
+</li>
+        <li><a href="modelling2.html#index-17">iffall</a>
+</li>
+        <li><a href="modelling2.html#index-17">max</a>
+</li>
+        <li><a href="modelling2.html#index-17">min</a>
+</li>
+        <li><a href="modelling2.html#index-17">product</a>
+</li>
+        <li><a href="modelling2.html#index-17">sum</a>
+</li>
+        <li><a href="modelling2.html#index-17">xorall</a>
+</li>
+      </ul></li>
+      <li><a href="predicates.html#index-2">alldifferent</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mzn_search.html#index-10">ann</a>
+</li>
+      <li><a href="modelling.html#index-38">annotation</a>, <a href="mzn_search.html#index-0">[1]</a>, <a href="mzn_search.html#index-14">[2]</a>, <a href="mzn_search.html#index-9">[3]</a>
+</li>
+      <li><a href="predicates.html#index-13">argument</a>, <a href="predicates.html#index-45">[1]</a>
+</li>
+      <li><a href="modelling2.html#index-0">array</a>
+
+      <ul>
+        <li><a href="modelling2.html#index-11">access</a>, <a href="modelling2.html#index-28">[1]</a>
+</li>
+        <li><a href="modelling2.html#index-6">index set</a>
+</li>
+        <li><a href="predicates.html#index-14">index set; unbounded</a>
+</li>
+        <li><a href="modelling2.html#index-9">literal; 1D</a>
+</li>
+        <li><a href="modelling2.html#index-10">literal; 2D</a>
+</li>
+      </ul></li>
+      <li><a href="modelling.html#index-31">assert</a>
+</li>
+      <li><a href="modelling.html#index-2">assignment</a>, <a href="predicates.html#index-32">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling2.html#index-27">bool2int</a>, <a href="modelling2.html#index-30">[1]</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mzn_search.html#index-5">bool_search</a>
+</li>
+      <li><a href="modelling.html#index-5">Boolean</a>, <a href="modelling2.html#index-27">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    coercion
+
+      <ul>
+        <li><a href="modelling2.html#index-31">automatic</a>
+</li>
+        <li><a href="modelling2.html#index-31">bool2int</a>
+</li>
+        <li><a href="modelling2.html#index-31">int2float</a>
+</li>
+      </ul></li>
+      <li><a href="predicates.html#index-44">comprehension</a>
+
+      <ul>
+        <li><a href="modelling2.html#index-12">generator</a>
+</li>
+        <li><a href="modelling2.html#index-20">list</a>
+</li>
+        <li><a href="modelling2.html#index-14">set</a>
+</li>
+      </ul></li>
+      <li><a href="modelling.html#index-14">constraint</a>
+
+      <ul>
+        <li><a href="modelling2.html#index-26">complex</a>
+</li>
+        <li><a href="modelling2.html#index-30">higher order</a>
+</li>
+        <li><a href="predicates.html#index-33">local</a>
+</li>
+        <li><a href="efficient.html#index-6">redundant</a>
+</li>
+        <li><a href="modelling2.html#index-32">set</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="predicates.html#index-27">context</a>
+
+      <ul>
+        <li><a href="predicates.html#index-31">!mixed</a>
+</li>
+        <li><a href="predicates.html#index-30">!negative</a>
+</li>
+        <li><a href="predicates.html#index-29">!positive</a>
+</li>
+        <li><a href="predicates.html#index-28">!root</a>
+</li>
+        <li><a href="predicates.html#index-37">mixed</a>
+</li>
+        <li><a href="predicates.html#index-27">negative</a>, <a href="predicates.html#index-36">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="predicates.html#index-3">cumulative</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-29">data file</a>
+
+      <ul>
+        <li><a href="modelling.html#index-30">command line</a>
+</li>
+      </ul></li>
+      <li>
+    decision variable
+
+      <ul>
+        <li>
+    see variable
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="predicates.html#index-7">DFA</a>
+</li>
+      <li><a href="modelling.html#index-26">div</a>
+</li>
+      <li><a href="modelling.html#index-9">domain</a>
+
+      <ul>
+        <li><a href="predicates.html#index-38">reflection</a>, <a href="predicates.html#index-40">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling2.html#index-5">enumerated type</a>, <a href="modelling2.html#index-8">[1]</a>
+</li>
+      <li><a href="modelling.html#index-41">enumerated types</a>
+</li>
+      <li><a href="modelling2.html#index-17">exists</a>
+</li>
+      <li><a href="mzn_search.html#index-12">expression</a>
+
+      <ul>
+        <li><a href="modelling2.html#index-27">Boolean</a>, <a href="predicates.html#index-10">[1]</a>
+</li>
+        <li><a href="modelling.html#index-25">arithmetic</a>
+</li>
+        <li><a href="predicates.html#index-15">assert</a>, <a href="predicates.html#index-16">[1]</a>
+</li>
+        <li><a href="modelling2.html#index-21">conditional</a>
+</li>
+        <li><a href="modelling2.html#index-18">generator call</a>
+</li>
+        <li><a href="predicates.html#index-34">let</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling2.html#index-27">false</a>
+</li>
+      <li><a href="mzn_search.html#index-6">first_fail</a>
+</li>
+      <li><a href="modelling2.html#index-34">fix</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-35">fixed</a>, <a href="modelling2.html#index-15">[1]</a>, <a href="modelling2.html#index-34">[2]</a>
+</li>
+      <li><a href="modelling2.html#index-16">forall</a>, <a href="modelling2.html#index-17">[1]</a>
+</li>
+      <li><a href="predicates.html#index-0">function</a>, <a href="predicates.html#index-25">[1]</a>, <a href="predicates.html#index-27">[2]</a>
+
+      <ul>
+        <li><a href="predicates.html#index-17">definition</a>, <a href="predicates.html#index-18">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="efficient.html#index-4">generator</a>
+</li>
+      <li><a href="modelling2.html#index-18">generator call</a>
+</li>
+      <li><a href="predicates.html#index-1">global constraint</a>
+
+      <ul>
+        <li><a href="predicates.html#index-2">alldifferent</a>
+</li>
+        <li><a href="predicates.html#index-3">cumulative</a>
+</li>
+        <li><a href="predicates.html#index-19">disjunctive</a>
+</li>
+        <li><a href="predicates.html#index-5">regular</a>
+</li>
+        <li><a href="predicates.html#index-4">table</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling2.html#index-17">iffall</a>
+</li>
+      <li><a href="mzn_search.html#index-7">indomain_median</a>
+</li>
+      <li><a href="mzn_search.html#index-7">indomain_min</a>
+</li>
+      <li><a href="mzn_search.html#index-7">indomain_random</a>
+</li>
+      <li><a href="mzn_search.html#index-7">indomain_split</a>
+</li>
+      <li><a href="mzn_search.html#index-6">input_order</a>
+</li>
+      <li><a href="mzn_search.html#index-5">int_search</a>
+</li>
+      <li><a href="modelling.html#index-4">integer</a>
+</li>
+      <li><a href="modelling.html#index-32">item</a>
+
+      <ul>
+        <li><a href="modelling.html#index-48">annotation</a>, <a href="mzn_search.html#index-15">[1]</a>
+</li>
+        <li><a href="modelling.html#index-42">assignment</a>
+</li>
+        <li><a href="modelling.html#index-43">constraint</a>
+</li>
+        <li><a href="modelling.html#index-46">enum</a>
+</li>
+        <li><a href="modelling.html#index-33">include</a>
+</li>
+        <li><a href="modelling.html#index-45">output</a>
+</li>
+        <li><a href="modelling.html#index-47">predicate</a>
+</li>
+        <li><a href="modelling.html#index-44">solve</a>
+</li>
+        <li><a href="modelling.html#index-34">variable declaration</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="predicates.html#index-21">let</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling2.html#index-7">list</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling2.html#index-17">max</a>
+</li>
+      <li><a href="modelling.html#index-27">maximize</a>
+</li>
+      <li><a href="modelling2.html#index-17">min</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-27">minimize</a>
+</li>
+      <li><a href="modelling.html#index-26">mod</a>
+</li>
+      <li><a href="flattening.html#index-0">mzn2fzn</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="predicates.html#index-8">NFA</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-27">objective</a>, <a href="predicates.html#index-26">[1]</a>
+</li>
+      <li>
+    operator
+
+      <ul>
+        <li><a href="modelling2.html#index-27">Boolean</a>
+</li>
+        <li><a href="modelling.html#index-26">integer</a>
+</li>
+        <li><a href="modelling.html#index-15">relational</a>
+</li>
+        <li><a href="modelling2.html#index-3">set</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-27">optimization</a>
+</li>
+      <li><a href="modelling2.html#index-13">option type</a>
+</li>
+      <li><a href="optiontypes.html#index-0">option types</a>
+</li>
+      <li><a href="modelling.html#index-18">output</a>, <a href="modelling.html#index-20">[1]</a>, <a href="modelling2.html#index-22">[2]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-0">parameter</a>, <a href="mzn_search.html#index-11">[1]</a>, <a href="predicates.html#index-23">[2]</a>
+</li>
+      <li><a href="predicates.html#index-0">predicate</a>, <a href="predicates.html#index-24">[1]</a>, <a href="predicates.html#index-27">[2]</a>
+
+      <ul>
+        <li><a href="predicates.html#index-11">definition</a>, <a href="predicates.html#index-20">[1]</a>, <a href="predicates.html#index-9">[2]</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling2.html#index-17">product</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-37">range</a>, <a href="modelling2.html#index-2">[1]</a>, <a href="predicates.html#index-6">[2]</a>
+
+      <ul>
+        <li><a href="modelling.html#index-40">float</a>
+</li>
+        <li><a href="modelling.html#index-39">integer</a>
+</li>
+      </ul></li>
+      <li><a href="predicates.html#index-5">regular</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="flattening.html#index-1">reification</a>
+</li>
+      <li>
+    runtime flag
+
+      <ul>
+        <li><a href="modelling2.html#index-23">--all-solutions</a>
+</li>
+        <li><a href="modelling2.html#index-23">-a</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-17">satisfaction</a>
+</li>
+      <li><a href="predicates.html#index-42">scope</a>
+</li>
+      <li><a href="mzn_search.html#index-1">search</a>
+
+      <ul>
+        <li><a href="mzn_search.html#index-4">annotation</a>
+</li>
+        <li><a href="mzn_search.html#index-7">constrain choice</a>
+</li>
+        <li><a href="mzn_search.html#index-3">depth first</a>
+</li>
+        <li><a href="mzn_search.html#index-2">finite domain</a>
+</li>
+        <li><a href="mzn_search.html#index-8">sequential</a>
+</li>
+        <li><a href="mzn_search.html#index-6">variable choice</a>
+</li>
+      </ul></li>
+      <li><a href="mzn_search.html#index-8">seq_search</a>
+</li>
+      <li><a href="modelling2.html#index-1">set</a>
+</li>
+      <li><a href="mzn_search.html#index-5">set_search</a>
+</li>
+      <li><a href="modelling.html#index-20">show</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling2.html#index-5">single enum</a>
+</li>
+      <li><a href="mzn_search.html#index-6">smallest</a>
+</li>
+      <li><a href="modelling.html#index-19">solution</a>
+
+      <ul>
+        <li><a href="modelling2.html#index-23">all</a>
+</li>
+        <li><a href="modelling.html#index-28">end `==========`</a>
+</li>
+        <li><a href="modelling.html#index-24">separator ----------</a>
+</li>
+      </ul></li>
+      <li><a href="mzn_search.html#index-4">solve</a>
+</li>
+      <li><a href="modelling.html#index-20">string</a>, <a href="modelling.html#index-6">[1]</a>
+
+      <ul>
+        <li><a href="modelling.html#index-21">literal</a>, <a href="modelling.html#index-22">[1]</a>
+</li>
+        <li><a href="modelling.html#index-23">literal; interpolated</a>
+</li>
+      </ul></li>
+      <li><a href="modelling2.html#index-17">sum</a>
+</li>
+      <li>
+    symmetry
+
+      <ul>
+        <li><a href="modelling2.html#index-33">breaking</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="predicates.html#index-4">table</a>
+</li>
+      <li><a href="efficient.html#index-5">trace</a>
+</li>
+      <li><a href="modelling2.html#index-27">true</a>
+</li>
+      <li><a href="modelling.html#index-1">type</a>, <a href="modelling.html#index-11">[1]</a>, <a href="predicates.html#index-12">[2]</a>
+
+      <ul>
+        <li><a href="modelling2.html#index-24">enumerated</a>, <a href="modelling2.html#index-4">[1]</a>
+</li>
+        <li><a href="modelling2.html#index-29">enumerated; anonymous</a>
+</li>
+        <li><a href="predicates.html#index-41">non-finite</a>
+</li>
+        <li><a href="modelling.html#index-3">parameter</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-13">type-inst</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-36">unfixed</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling.html#index-8">variable</a>, <a href="predicates.html#index-22">[1]</a>
+
+      <ul>
+        <li><a href="efficient.html#index-0">bound</a>, <a href="efficient.html#index-1">[1]</a>, <a href="predicates.html#index-39">[2]</a>
+</li>
+        <li><a href="modelling.html#index-10">declaration</a>, <a href="mzn_search.html#index-13">[1]</a>
+</li>
+        <li><a href="modelling2.html#index-25">declaration; enum</a>
+</li>
+        <li><a href="modelling.html#index-12">declaration; integer</a>
+</li>
+        <li><a href="predicates.html#index-43">iterator</a>
+</li>
+        <li><a href="predicates.html#index-21">local</a>, <a href="predicates.html#index-35">[1]</a>
+</li>
+        <li><a href="optiontypes.html#index-1">option type</a>
+</li>
+        <li><a href="efficient.html#index-2">unconstrained</a>, <a href="efficient.html#index-3">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modelling2.html#index-17">xorall</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, 2017, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

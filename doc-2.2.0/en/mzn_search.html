@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2.5. Search &#8212; MiniZinc Documentation 2.1.2 documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2.6. Effective Modelling Practices in MiniZinc" href="efficient.html" />
+    <link rel="prev" title="2.4. Option Types" href="optiontypes.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          MiniZinc Documentation</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_introduction.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1.1. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#structure">1.1.1. Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#how-to-read-this">1.1.2. How to Read This</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">1.2. Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#binary-packages">1.2.1. Binary Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#compilation-from-source-code">1.2.2. Compilation from Source Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#adding-third-party-solvers">1.2.3. Adding Third-party Solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ide_basic_steps.html">1.3. First steps with the MiniZinc IDE</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="modelling.html">2.1. Basic Modelling in MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modelling.html#our-first-example">2.1.1. Our First Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling.html#an-arithmetic-optimisation-example">2.1.2. An Arithmetic Optimisation Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling.html#datafiles-and-assertions">2.1.3. Datafiles and Assertions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling.html#real-number-solving">2.1.4. Real Number Solving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling.html#basic-structure-of-a-model">2.1.5. Basic structure of a model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html">2.2. More Complex Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#arrays-and-sets">2.2.1. Arrays and Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#global-constraints">2.2.2. Global Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#conditional-expressions">2.2.3. Conditional Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#enumerated-types">2.2.4. Enumerated Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#complex-constraints">2.2.5. Complex Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#set-constraints">2.2.6. Set Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modelling2.html#putting-it-all-together">2.2.7. Putting it all together</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html">2.3. Predicates and Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#global-constraints">2.3.1. Global Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#defining-predicates">2.3.2. Defining Predicates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#defining-functions">2.3.3. Defining Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#reflection-functions">2.3.4. Reflection Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#local-variables">2.3.5. Local Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#context">2.3.6. Context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#local-constraints">2.3.7. Local Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#domain-reflection-functions">2.3.8. Domain Reflection Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#scope">2.3.9. Scope</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optiontypes.html">2.4. Option Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optiontypes.html#declaring-and-using-option-types">2.4.1. Declaring and Using Option Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optiontypes.html#hidden-option-types">2.4.2. Hidden Option Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.5. Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#finite-domain-search">2.5.1. Finite Domain Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-annotations">2.5.2. Search Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#annotations">2.5.3. Annotations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">2.6. Effective Modelling Practices in MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#variable-bounds">2.6.1. Variable Bounds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#unconstrained-variables">2.6.2. Unconstrained Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#effective-generators">2.6.3. Effective Generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.4. Redundant Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#modelling-choices">2.6.5. Modelling Choices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.6. Multiple Modelling and Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#symmetry">2.6.7. Symmetry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html">2.7. Boolean Satisfiability Modelling in MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sat.html#modelling-integers">2.7.1. Modelling Integers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sat.html#modelling-disequality">2.7.2. Modelling Disequality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sat.html#modelling-cardinality">2.7.3. Modelling Cardinality</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html">2.8. FlatZinc and Flattening</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#flattening-expressions">2.8.1. Flattening Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#linear-expressions">2.8.2. Linear Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#unrolling-expressions">2.8.3. Unrolling Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#arrays">2.8.4. Arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#reification">2.8.5. Reification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#predicates">2.8.6. Predicates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#let-expressions">2.8.7. Let Expressions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_reference.html">3. MiniZinc Reference Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spec.html">3.1. Specification of MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">3.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#notation">3.1.2. Notation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#overview-of-a-model">3.1.3. Overview of a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#syntax-overview">3.1.4. Syntax Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#high-level-model-structure">3.1.5. High-level Model Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#types-and-type-insts">3.1.6. Types and Type-insts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#expressions">3.1.7. Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#items">3.1.8. Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#annotations">3.1.9. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#partiality">3.1.10. Partiality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#built-in-operations">3.1.11. Built-in Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#content-types">3.1.12. Content-types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#json-support">3.1.13. JSON support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">3.1.14. Full grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-interfacing.html">3.2. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">2.5. Search</a><ul>
+<li><a class="reference internal" href="#finite-domain-search">2.5.1. Finite Domain Search</a></li>
+<li><a class="reference internal" href="#search-annotations">2.5.2. Search Annotations</a></li>
+<li><a class="reference internal" href="#annotations">2.5.3. Annotations</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="optiontypes.html" title="Previous Chapter: 2.4. Option Types"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 2.4. Option Types</span>
+    </a>
+  </li>
+  <li>
+    <a href="efficient.html" title="Next Chapter: 2.6. Effective Modelling Practices in MiniZinc"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2.6. Effectiv... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="search">
+<span id="sec-search"></span><h1>2.5. Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">By default in MiniZinc there is no declaration of how
+we want to search for solutions. This leaves the search
+completely up to the underlying solver.
+But sometimes, particularly for combinatorial integer problems,
+we may want to specify how the search should be undertaken.
+This requires us to communicate to the solver a <span class="target" id="index-1"></span>search strategy.
+Note that the search strategy is <em>not</em> really part
+of the model.
+Indeed it is not required that each solver implements all
+possible search strategies.
+MiniZinc uses a consistent approach to communicating extra information
+to the constraint solver using <em>annotations</em>.</p>
+<div class="section" id="finite-domain-search">
+<h2>2.5.1. Finite Domain Search<a class="headerlink" href="#finite-domain-search" title="Permalink to this headline">¶</a></h2>
+<p id="index-2">Search in a finite domain solver involves examining the
+remaining possible values of variables and choosing to
+constrain some variables further.
+The search then adds a new constraint that
+restricts the remaining values
+of the variable
+(in effect guessing where the solution might lie),
+and then applies propagation to determine what other values
+are still possible in solutions.
+In order to guarantee completeness, the search leaves another
+choice which is the negation of the new constraint.
+The search ends either when
+the finite domain solver detects that all constraints are satisfied,
+and hence a solution has been found, or that the constraints are
+unsatisfiable.
+When unsatisfiability is detected
+the search must proceed down a different set of
+choices.  Typically finite domain solvers use <span class="target" id="index-3"></span>depth first search
+where they undo the last choice made and then try to make a new choice.</p>
+<div class="literal-block-wrapper docutils container" id="ex-queens">
+<div class="code-block-caption"><span class="caption-number">Listing 2.39 </span><span class="caption-text">Model for n-queens (<a class="reference download internal" href="_downloads/nqueens.mzn" download=""><tt class="xref download docutils literal">nqueens.mzn</tt></a>).</span><a class="headerlink" href="#ex-queens" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">q</span><span class="p">;</span><span class="s"> </span><span class="c">% queen is column i is in row q[i]</span><span class="s"></span>
+
+<span class="k">include</span><span class="s"> &quot;alldifferent.mzn&quot;</span><span class="p">;</span><span class="s"></span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="bp">alldifferent</span><span class="p">(</span><span class="nv">q</span><span class="p">);</span><span class="s">                       </span><span class="c">% distinct rows</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">alldifferent</span><span class="p">([</span><span class="s"> </span><span class="nv">q</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]);</span><span class="s"> </span><span class="c">% distinct diagonals</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">alldifferent</span><span class="p">([</span><span class="s"> </span><span class="nv">q</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]);</span><span class="s"> </span><span class="c">% upwards+downwards</span><span class="s"></span>
+
+<span class="c">% search</span><span class="s"></span>
+<span class="k">solve</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="nv">q</span><span class="p">,</span><span class="s"> </span><span class="nv">first_fail</span><span class="p">,</span><span class="s"> </span><span class="nv">indomain_min</span><span class="p">,</span><span class="s"> </span><span class="nv">complete</span><span class="p">)</span><span class="s"></span>
+<span class="s">      </span><span class="k">satisfy</span><span class="p">;</span><span class="s"></span>
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="k">if</span><span class="s"> </span><span class="nb">fix</span><span class="p">(</span><span class="nv">q</span><span class="p">[</span><span class="nv">j</span><span class="p">])</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;Q&quot; </span><span class="k">else</span><span class="s"> &quot;.&quot; </span><span class="k">endif</span><span class="s"> </span><span class="o">++</span><span class="s"></span>
+<span class="s">         </span><span class="k">if</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">n</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot; </span><span class="k">else</span><span class="s"> &quot;&quot; </span><span class="k">endif</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<p>A simple example of a finite domain problem is the <span class="math notranslate nohighlight">\(n\)</span> queens
+problem which requires that we
+place <span class="math notranslate nohighlight">\(n\)</span> queens on an <span class="math notranslate nohighlight">\(n \times n\)</span> chessboard so that none can
+attack another.
+The variable <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"></span></code> records in which row the queen in column <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">i</span><span class="s"></span></code>
+is placed. The <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alldifferent</span><span class="s"></span></code> constraints ensure
+that no two queens are on the same row, or diagonal.
+A typical (partial) search tree
+for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">9</span><span class="s"></span></code> is illustrated in <a class="reference internal" href="#fig-9q-a"><span class="std std-numref">Fig. 2.7</span></a>.
+We first set <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="s"></span></code>, this removes values from the domains of other
+variables, so that e.g. <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="s"></span></code> cannot take the values 1 or 2.
+We then set <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="s"></span></code>, this further removes values from the domains
+of other variables. We set <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">5</span><span class="s"></span></code> (its earliest possible value).
+The state of the chess board after these three decisions is shown in
+<a class="reference internal" href="#fig-9q-b"><span class="std std-numref">Fig. 2.8</span></a> where the queens indicate the position
+of the queens fixed already and
+the stars indicate positions where we cannot place a queen
+since it would be able to take an already placed queen.</p>
+<div class="figure" id="id1">
+<span id="fig-9q-a"></span><img alt="_images/tree-4.svg" src="_images/tree-4.svg" /><p class="caption"><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Partial search trees for 9 queens</span></p>
+</div>
+<div class="figure" id="id2">
+<span id="fig-9q-b"></span><img alt="_images/chess9x9-3.svg" src="_images/chess9x9-3.svg" /><p class="caption"><span class="caption-number">Fig. 2.8 </span><span class="caption-text">The state after the addition of <tt class="docutils literal">q[1] = 1</tt>, <tt class="docutils literal">q[2] = 4</tt>, <tt class="docutils literal">q[3] = 5</tt></span></p>
+</div>
+<div class="figure" id="id3">
+<span id="fig-9q-c"></span><img alt="_images/chess9x9-4.svg" src="_images/chess9x9-4.svg" /><p class="caption"><span class="caption-number">Fig. 2.9 </span><span class="caption-text">The initial propagation on adding further <tt class="docutils literal">q[6] = 4</tt></span></p>
+</div>
+<p>A search strategy determines which choices to make. The decisions we have
+made so far follow the simple strategy of picking the
+first variable which is not fixed yet, and try to set it to its least
+possible value.  Following this strategy the next decision would be
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">4</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">7</span><span class="s"></span></code>.
+An alternate strategy for variable selection is to choose the variable whose
+current set of possible values (<em>domain</em>) is smallest.
+Under this so called <em>first-fail</em>
+variable selection strategy the next decision would be
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">6</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">4</span><span class="s"></span></code>.
+If we make this decision, then initially propagation removes the additional
+values shown in <a class="reference internal" href="#fig-9q-c"><span class="std std-numref">Fig. 2.9</span></a>. But this leaves only one value for
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">8</span><span class="p">]</span><span class="s"></span></code>, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">8</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">7</span><span class="s"></span></code>, so this is forced, but then this leaves only one
+possible value for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">7</span><span class="p">]</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">9</span><span class="p">]</span><span class="s"></span></code>, that is 2. Hence a constraint must be
+violated. We have detected unsatisfiability, and the solver must backtrack
+undoing the last decision <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">6</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">4</span><span class="s"></span></code> and adding its negation <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">6</span><span class="p">]</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="m">4</span><span class="s"></span></code>
+(leading us to state (c) in the tree in <a class="reference internal" href="#fig-9q-a"><span class="std std-numref">Fig. 2.7</span></a>)
+which forces <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="p">[</span><span class="m">6</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">8</span><span class="s"></span></code>. This removes some values from the domain
+and then we again reinvoke the search strategy to decide what to do.</p>
+<p>Many finite domain searches are defined in this way:
+choose a variable to constrain further, and then choose how to
+constrain it further.</p>
+</div>
+<div class="section" id="search-annotations">
+<h2>2.5.2. Search Annotations<a class="headerlink" href="#search-annotations" title="Permalink to this headline">¶</a></h2>
+<p id="index-4">Search annotations in MiniZinc
+specify how to search in order to find a solution to the
+problem. The annotation is attached to the solve item, after the keyword
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">solve</span><span class="s"></span></code>.
+The search annotation</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">solve</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="nv">q</span><span class="p">,</span><span class="s"> </span><span class="nv">first_fail</span><span class="p">,</span><span class="s"> </span><span class="nv">indomain_min</span><span class="p">,</span><span class="s"> </span><span class="nv">complete</span><span class="p">)</span><span class="s"></span>
+<span class="s">      </span><span class="k">satisfy</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>appears on the solve item. Annotations are attached to parts of
+the model using the connector <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="p">::</span><span class="s"></span></code>.
+This search annotation means that we should search by selecting from
+the array of integer variables <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="s"></span></code>, the variable with the smallest
+current domain (this is the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">first_fail</span><span class="s"></span></code> rule), and try setting
+it to its smallest possible value
+(<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">indomain_min</span><span class="s"></span></code>
+value selection), looking across the entire search tree
+(<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">complete</span><span class="s"></span></code> search).</p>
+<div class="admonition-basic-search-annotations admonition" id="defblock-0">
+<p class="first admonition-title">Basic search annotations</p>
+<p id="index-5">There are three basic search annotations corresponding to different
+basic variable types:</p>
+<ul class="simple">
+<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nf">int_search</span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">variables</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">varchoice</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">constrainchoice</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">strategy</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"></span></code>
+where <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;variables&gt;</span><span class="s"></span></code> is a one dimensional array of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="s"></span></code>,
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;varchoice&gt;</span><span class="s"></span></code> is a variable choice annotation discussed below,
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;constrainchoice&gt;</span><span class="s"></span></code> is a choice of how to constrain a variable, discussed
+below, and <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;strategy&gt;</span><span class="s"></span></code> is a search strategy which we will assume for now
+is <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">complete</span><span class="s"></span></code>.</li>
+<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nf">bool_search</span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">variables</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">varchoice</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">constrainchoice</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">strategy</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"></span></code>
+where <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;variables&gt;</span><span class="s"></span></code> is a one dimensional array of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="s"></span></code>
+and the rest are as above.</li>
+<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nf">set_search</span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">variables</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">varchoice</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">constrainchoice</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">strategy</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"></span></code>
+where <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;variables&gt;</span><span class="s"></span></code> is a one dimensional array of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="s"></span></code>
+and the rest are as above.</li>
+<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nf">float_search</span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">variables</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">precision</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">varchoice</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">constrainchoice</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">strategy</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"></span></code>
+where <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;variables&gt;</span><span class="s"></span></code> is a one dimensional array of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="s"></span></code>,
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;precision&gt;</span><span class="s"></span></code> is a fixed float specifying the <span class="math notranslate nohighlight">\(\epsilon\)</span> below which
+two float values are considered equal,
+and the rest are as above.</li>
+</ul>
+<p id="index-6">Example variable choice annotations are:</p>
+<ul class="simple">
+<li><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">input_order</span><span class="s"></span></code>: choose in order from the array</li>
+<li><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">first_fail</span><span class="s"></span></code>: choose the variable with the smallest domain size, and</li>
+<li><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">smallest</span><span class="s"></span></code>: choose the variable with the smallest value in its domain.</li>
+</ul>
+<p id="index-7">Example ways to constrain a variable are:</p>
+<ul class="simple">
+<li><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">indomain_min</span><span class="s"></span></code>: assign the variable its smallest domain value,</li>
+<li><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">indomain_median</span><span class="s"></span></code>: assign the variable its median domain value,</li>
+<li><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">indomain_random</span><span class="s"></span></code>: assign the variable a random value from its domain, and</li>
+<li><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">indomain_split</span><span class="s"></span></code> bisect the variables domain excluding the upper half.</li>
+</ul>
+<p class="last">The <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;strategy&gt;</span><span class="s"></span></code> is almost always <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">complete</span><span class="s"></span></code> for complete search.
+For a complete list of variable and constraint choice annotations
+see the FlatZinc specification in the MiniZinc reference
+documentation.</p>
+</div>
+<p>We can construct more complex search strategies using search
+constructor annotations. There is only one such annotation at present:</p>
+<div class="highlight-minizinc notranslate" id="index-8"><div class="highlight"><pre><span></span><span class="nf">seq_search</span><span class="p">([</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">search</span><span class="o">-</span><span class="kt">ann</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">..</span><span class="s">.</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">search</span><span class="o">-</span><span class="kt">ann</span><span class="o">&gt;</span><span class="s"> </span><span class="p">])</span><span class="s"></span>
+</pre></div>
+</div>
+<p>The sequential search constructor first undertakes the search given
+by the first annotation in its list, when all variables in this annotation
+are fixed it undertakes the second search annotation, etc. until all
+search annotations are complete.</p>
+<p>Consider the jobshop scheduling model shown in <a class="reference internal" href="predicates.html#ex-jobshop3"><span class="std std-numref">Listing 2.32</span></a>.
+We could replace the solve item with</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">solve</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nf">seq_search</span><span class="p">([</span><span class="s"></span>
+<span class="s">             </span><span class="nf">int_search</span><span class="p">(</span><span class="nv">s</span><span class="p">,</span><span class="s"> </span><span class="nv">smallest</span><span class="p">,</span><span class="s"> </span><span class="nv">indomain_min</span><span class="p">,</span><span class="s"> </span><span class="nv">complete</span><span class="p">),</span><span class="s"></span>
+<span class="s">             </span><span class="nf">int_search</span><span class="p">([</span><span class="nv">end</span><span class="p">],</span><span class="s"> </span><span class="nv">input_order</span><span class="p">,</span><span class="s"> </span><span class="nv">indomain_min</span><span class="p">,</span><span class="s"> </span><span class="nv">complete</span><span class="p">)])</span><span class="s"></span>
+<span class="s">      </span><span class="k">minimize</span><span class="s"> </span><span class="nv">end</span><span class="s"></span>
+</pre></div>
+</div>
+<p>which tries to set start times <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">s</span><span class="s"></span></code> by choosing the job that can start
+earliest and setting it to that time. When all start times are complete
+the end time <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">end</span><span class="s"></span></code> may not be fixed. Hence we set it to
+its minimal possible value.</p>
+</div>
+<div class="section" id="annotations">
+<h2>2.5.3. Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline">¶</a></h2>
+<p id="index-9">Annotations are a first class object in MiniZinc. We
+can declare new annotations in a model, and declare and assign
+to annotation variables.</p>
+<div class="admonition-annotations admonition" id="defblock-1">
+<p class="first admonition-title">Annotations</p>
+<p id="index-10">Annotations have a type <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code>.
+You can declare an annotation
+<span class="target" id="index-11"></span>parameter (with optional assignment):</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="kt">ann</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="p">;</span><span class="s"></span>
+<span class="kt">ann</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="cs">&lt;ann-expr&gt;</span><span class="s"> </span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>and assign to an annotation variable just as any other parameter.</p>
+<p><span class="target" id="index-12"></span>Expressions, <span class="target" id="index-13"></span>variable declarations,
+and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">solve</span><span class="s"></span></code> items can all
+be annotated using the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="p">::</span><span class="s"></span></code> operator.</p>
+<p>We can declare a new <span class="target" id="index-14"></span>annotation
+using the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">annotation</span><span class="s"></span></code> <span class="target" id="index-15"></span>item:</p>
+<div class="last highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="cs">&lt;annotation-name&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">arg</span><span class="o">-</span><span class="nv">def</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">..</span><span class="s">.</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">arg</span><span class="o">-</span><span class="nv">def</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="ex-queens-ann">
+<div class="code-block-caption"><span class="caption-number">Listing 2.40 </span><span class="caption-text">Annotated model for n-queens (<a class="reference download internal" href="_downloads/nqueens-ann.mzn" download=""><tt class="xref download docutils literal">nqueens-ann.mzn</tt></a>).</span><a class="headerlink" href="#ex-queens-ann" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">bitdomain</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="nv">nwords</span><span class="p">);</span><span class="s"></span>
+
+<span class="k">include</span><span class="s"> &quot;alldifferent.mzn&quot;</span><span class="p">;</span><span class="s"></span>
+
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">q</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nf">bitdomain</span><span class="p">(</span><span class="nv">n</span><span class="s"> </span><span class="o">div</span><span class="s"> </span><span class="m">32</span><span class="p">);</span><span class="s"></span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="bp">alldifferent</span><span class="p">(</span><span class="nv">q</span><span class="p">)</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nv">domain</span><span class="p">;</span><span class="s">                      </span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">alldifferent</span><span class="p">([</span><span class="s"> </span><span class="nv">q</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">])</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nv">domain</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">alldifferent</span><span class="p">([</span><span class="s"> </span><span class="nv">q</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">])</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nv">domain</span><span class="p">;</span><span class="s"></span>
+
+<span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">search_ann</span><span class="p">;</span><span class="s"></span>
+
+<span class="k">solve</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nv">search_ann</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span><span class="s"></span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="k">if</span><span class="s"> </span><span class="nb">fix</span><span class="p">(</span><span class="nv">q</span><span class="p">[</span><span class="nv">j</span><span class="p">])</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;Q&quot; </span><span class="k">else</span><span class="s"> &quot;.&quot; </span><span class="k">endif</span><span class="s"> </span><span class="o">++</span><span class="s"></span>
+<span class="s">         </span><span class="k">if</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">n</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot; </span><span class="k">else</span><span class="s"> &quot;&quot; </span><span class="k">endif</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<p>The program in <a class="reference internal" href="#ex-queens-ann"><span class="std std-numref">Listing 2.40</span></a> illustrates the use of annotation
+declarations, annotations and annotation variables.
+We declare a new annotation <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">bitdomain</span><span class="s"></span></code> which is meant to tell
+the solver that variables domains should be represented via bit arrays
+of size <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">nwords</span><span class="s"></span></code>.
+The annotation is attached to the declarations of the variables <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="s"></span></code>.
+Each of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alldifferent</span><span class="s"></span></code> constraints is annotated with
+the built in annotation <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">domain</span><span class="s"></span></code>
+which instructs the solver to use
+the domain propagating version of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alldifferent</span><span class="s"></span></code> if it has one.
+An annotation variable <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">search_ann</span><span class="s"></span></code> is declared and used
+to define the search strategy.  We can give the value to the search
+strategy in a separate data file.</p>
+<p>Example search annotations might be the following (where
+we imagine each line is in a separate data file)</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">search_ann</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="nv">q</span><span class="p">,</span><span class="s"> </span><span class="nv">input_order</span><span class="p">,</span><span class="s"> </span><span class="nv">indomain_min</span><span class="p">,</span><span class="s"> </span><span class="nv">complete</span><span class="p">);</span><span class="s"></span>
+<span class="nv">search_ann</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="nv">q</span><span class="p">,</span><span class="s"> </span><span class="nv">input_order</span><span class="p">,</span><span class="s"> </span><span class="nv">indomain_median</span><span class="p">,</span><span class="s"> </span><span class="nv">complete</span><span class="p">);</span><span class="s"></span>
+<span class="nv">search_ann</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="nv">q</span><span class="p">,</span><span class="s"> </span><span class="nv">first_fail</span><span class="p">,</span><span class="s"> </span><span class="nv">indomain_min</span><span class="p">,</span><span class="s"> </span><span class="nv">complete</span><span class="p">);</span><span class="s"></span>
+<span class="nv">search_ann</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="nv">q</span><span class="p">,</span><span class="s"> </span><span class="nv">first_fail</span><span class="p">,</span><span class="s"> </span><span class="nv">indomain_median</span><span class="p">,</span><span class="s"> </span><span class="nv">complete</span><span class="p">);</span><span class="s"></span>
+</pre></div>
+</div>
+<p>The first just tries the queens in order setting them to the
+minimum value, the second tries the queens variables in order, but sets
+them to their median value, the third tries the queen variable with smallest
+domain and sets it to the minimum value, and the final strategy
+tries the queens variable with smallest domain setting it to its median
+value.</p>
+<p>Different search strategies can make a significant difference in
+how easy it is to find solutions.
+A small comparison of the number of choices made to find the first solution
+of the n-queens problems using the 4 different search strategies
+is shown in the table below (where — means more than 100,000 choices).
+Clearly the right search strategy can make a significant difference.</p>
+<table border="1" class="table-nonfluid table-bordered docutils">
+<colgroup>
+<col width="10%" />
+<col width="22%" />
+<col width="29%" />
+<col width="16%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">n</th>
+<th class="head">input-min</th>
+<th class="head">input-median</th>
+<th class="head">ff-min</th>
+<th class="head">ff-median</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>10</td>
+<td>28</td>
+<td>15</td>
+<td>16</td>
+<td>20</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>248</td>
+<td>34</td>
+<td>23</td>
+<td>15</td>
+</tr>
+<tr class="row-even"><td>20</td>
+<td>37330</td>
+<td>97</td>
+<td>114</td>
+<td>43</td>
+</tr>
+<tr class="row-odd"><td>25</td>
+<td>7271</td>
+<td>846</td>
+<td>2637</td>
+<td>80</td>
+</tr>
+<tr class="row-even"><td>30</td>
+<td>—</td>
+<td>385</td>
+<td>1095</td>
+<td>639</td>
+</tr>
+<tr class="row-odd"><td>35</td>
+<td>—</td>
+<td>4831</td>
+<td>—</td>
+<td>240</td>
+</tr>
+<tr class="row-even"><td>40</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>236</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, 2017, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
