@@ -36,12 +36,7 @@ defaults:
         type: people
       values:
         layout: teammember
-include:
-    - doc-2.2.0/en/_downloads
-    - doc-2.2.0/en/_images
-    - doc-2.2.0/en/_sources
-    - doc-2.2.0/en/_static
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
 # Build settings

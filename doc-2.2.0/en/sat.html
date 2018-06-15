@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>2.7. Boolean Satisfiability Modelling in MiniZinc &#8212; MiniZinc Documentation 2.1.2 documentation</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2.8. FlatZinc and Flattening" href="flattening.html" />
@@ -279,7 +279,7 @@ is an <span class="math notranslate nohighlight">\(n \times n\)</span> grid of n
 each number appears exactly once in every row and column.
 An integer model for latin squares is shown in <a class="reference internal" href="#ex-latin"><span class="std std-numref">Listing 2.49</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ex-latin">
-<div class="code-block-caption"><span class="caption-number">Listing 2.49 </span><span class="caption-text">Integer model for Latin Squares (<a class="reference download internal" href="_downloads/latin.mzn" download=""><tt class="xref download docutils literal">latin.mzn</tt></a>).</span><a class="headerlink" href="#ex-latin" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.49 </span><span class="caption-text">Integer model for Latin Squares (<a class="reference download internal" href="downloads/latin.mzn" download=""><tt class="xref download docutils literal">latin.mzn</tt></a>).</span><a class="headerlink" href="#ex-latin" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"> </span><span class="c">% size of latin square</span><span class="s"></span>
 <span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">;</span><span class="s"></span>
 
@@ -305,7 +305,7 @@ We use the <code class="code mzn minizinc docutils literal highlight highlight-m
 exactly once in every row and every column, as well as to encode that exactly
 one of the Booleans corresponding to integer array element <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">a</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"></span></code> is true.</p>
 <div class="literal-block-wrapper docutils container" id="ex-latinbool">
-<div class="code-block-caption"><span class="caption-number">Listing 2.50 </span><span class="caption-text">Boolean model for Latin Squares (<a class="reference download internal" href="_downloads/latinbool.mzn" download=""><tt class="xref download docutils literal">latinbool.mzn</tt></a>).</span><a class="headerlink" href="#ex-latinbool" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.50 </span><span class="caption-text">Boolean model for Latin Squares (<a class="reference download internal" href="downloads/latinbool.mzn" download=""><tt class="xref download docutils literal">latinbool.mzn</tt></a>).</span><a class="headerlink" href="#ex-latinbool" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"> </span><span class="c">% size of latin square</span><span class="s"></span>
 <span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">;</span><span class="s"></span>
 
@@ -345,17 +345,17 @@ is exactly the number in the filled square.</li>
 <p>An example of a Light Up puzzle is shown in <a class="reference internal" href="#fig-lightup"><span class="std std-numref">Fig. 2.12</span></a>
 with its solution in <a class="reference internal" href="#fig-lightup-sol"><span class="std std-numref">Fig. 2.13</span></a>.</p>
 <div class="figure" id="id1">
-<span id="fig-lightup"></span><img alt="_images/lightup.svg" src="_images/lightup.svg" /><p class="caption"><span class="caption-number">Fig. 2.12 </span><span class="caption-text">An example of a Light Up puzzle</span></p>
+<span id="fig-lightup"></span><img alt="images/lightup.svg" src="images/lightup.svg" /><p class="caption"><span class="caption-number">Fig. 2.12 </span><span class="caption-text">An example of a Light Up puzzle</span></p>
 </div>
 <div class="figure" id="id2">
-<span id="fig-lightup-sol"></span><img alt="_images/lightup2.svg" src="_images/lightup2.svg" /><p class="caption"><span class="caption-number">Fig. 2.13 </span><span class="caption-text">The completed solution of the Light Up puzzle</span></p>
+<span id="fig-lightup-sol"></span><img alt="images/lightup2.svg" src="images/lightup2.svg" /><p class="caption"><span class="caption-number">Fig. 2.13 </span><span class="caption-text">The completed solution of the Light Up puzzle</span></p>
 </div>
 <p>It is natural to model this problem
 using Boolean variables to determine which
 squares contain a light and which do not, but there is some integer
 arithmetic to consider for the filled squares.</p>
 <div class="literal-block-wrapper docutils container" id="ex-lightup">
-<div class="code-block-caption"><span class="caption-number">Listing 2.51 </span><span class="caption-text">SAT Model for the Light Up puzzle (<a class="reference download internal" href="_downloads/lightup.mzn" download=""><tt class="xref download docutils literal">lightup.mzn</tt></a>).</span><a class="headerlink" href="#ex-lightup" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.51 </span><span class="caption-text">SAT Model for the Light Up puzzle (<a class="reference download internal" href="downloads/lightup.mzn" download=""><tt class="xref download docutils literal">lightup.mzn</tt></a>).</span><a class="headerlink" href="#ex-lightup" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">h</span><span class="p">;</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">H</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">h</span><span class="p">;</span><span class="s"> </span><span class="c">% board height</span><span class="s"></span>
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">;</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">W</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">w</span><span class="p">;</span><span class="s"> </span><span class="c">% board width</span><span class="s"></span>
 <span class="kt">array</span><span class="p">[</span><span class="nv">H</span><span class="p">,</span><span class="nv">W</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="o">-</span><span class="m">1</span><span class="o">..</span><span class="m">5</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">;</span><span class="s">       </span><span class="c">% board</span><span class="s"></span>
@@ -432,7 +432,7 @@ of the Booleans</li>
 (BDD) that encodes the cardinality constraint.</li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="ex-bboolsum">
-<div class="code-block-caption"><span class="caption-number">Listing 2.53 </span><span class="caption-text">Cardinality constraints by binary adder networks (<a class="reference download internal" href="_downloads/bboolsum.mzn" download=""><tt class="xref download docutils literal">bboolsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-bboolsum" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.53 </span><span class="caption-text">Cardinality constraints by binary adder networks (<a class="reference download internal" href="downloads/bboolsum.mzn" download=""><tt class="xref download docutils literal">bboolsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-bboolsum" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% the sum of booleans x = s</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">bool_sum_eq</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"></span>
 <span class="s">     </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">length</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"></span>
@@ -456,7 +456,7 @@ of the Booleans</li>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="ex-binarysum">
-<div class="code-block-caption"><span class="caption-number">Listing 2.54 </span><span class="caption-text">Code for building binary addition networks (<a class="reference download internal" href="_downloads/binarysum.mzn" download=""><tt class="xref download docutils literal">binarysum.mzn</tt></a>).</span><a class="headerlink" href="#ex-binarysum" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.54 </span><span class="caption-text">Code for building binary addition networks (<a class="reference download internal" href="downloads/binarysum.mzn" download=""><tt class="xref download docutils literal">binarysum.mzn</tt></a>).</span><a class="headerlink" href="#ex-binarysum" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% the sum of bits x = s in binary. </span><span class="s"></span>
 <span class="c">%            s[0], s[1], ..., s[k] where 2^k &gt;= length(x) &gt; 2^(k-1)</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">binary_sum</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span>
@@ -510,7 +510,7 @@ and then summing these two binary numbers using <code class="code mzn minizinc d
 If the list <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> is odd the last bit is saved to use as a carry in
 to the binary addition.</p>
 <div class="literal-block-wrapper docutils container" id="ex-uboolsum">
-<div class="code-block-caption"><span class="caption-number">Listing 2.55 </span><span class="caption-text">Cardinality constraints by sorting networks (<a class="reference download internal" href="_downloads/uboolsum.mzn" download=""><tt class="xref download docutils literal">uboolsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-uboolsum" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.55 </span><span class="caption-text">Cardinality constraints by sorting networks (<a class="reference download internal" href="downloads/uboolsum.mzn" download=""><tt class="xref download docutils literal">uboolsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-uboolsum" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% the sum of booleans x = s</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">bool_sum_eq</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"></span>
 <span class="s">     </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">length</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"></span>
@@ -532,7 +532,7 @@ to the binary addition.</p>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="ex-oesort">
-<div class="code-block-caption"><span class="caption-number">Listing 2.56 </span><span class="caption-text">Odd-even merge sorting networks (<a class="reference download internal" href="_downloads/oesort.mzn" download=""><tt class="xref download docutils literal">oesort.mzn</tt></a>).</span><a class="headerlink" href="#ex-oesort" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.56 </span><span class="caption-text">Odd-even merge sorting networks (<a class="reference download internal" href="downloads/oesort.mzn" download=""><tt class="xref download docutils literal">oesort.mzn</tt></a>).</span><a class="headerlink" href="#ex-oesort" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">%% odd-even sort</span><span class="s"></span>
 <span class="c">%% y is the sorted version of x, all trues before falses</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">oesort</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">y</span><span class="p">)</span><span class="o">=</span><span class="s"></span>
@@ -585,7 +585,7 @@ recursively by splitting
 the input list in 2, sorting each list and merging the two
 sorted lists.</p>
 <div class="literal-block-wrapper docutils container" id="ex-bddsum">
-<div class="code-block-caption"><span class="caption-number">Listing 2.57 </span><span class="caption-text">Cardinality constraints by binary decision diagrams (<a class="reference download internal" href="_downloads/bddsum.mzn" download=""><tt class="xref download docutils literal">bddsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-bddsum" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.57 </span><span class="caption-text">Cardinality constraints by binary decision diagrams (<a class="reference download internal" href="downloads/bddsum.mzn" download=""><tt class="xref download docutils literal">bddsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-bddsum" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% the sum of booleans x = s</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">bool_sum_eq</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"></span>
 <span class="s">     </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">length</span><span class="p">(</span><span class="nv">x</span><span class="p">),</span><span class="s"></span>

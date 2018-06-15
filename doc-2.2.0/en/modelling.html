@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>2.1. Basic Modelling in MiniZinc &#8212; MiniZinc Documentation 2.1.2 documentation</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2.2. More Complex Models" href="modelling2.html" />
@@ -229,7 +229,7 @@
 <div class="section" id="our-first-example">
 <h2>2.1.1. Our First Example<a class="headerlink" href="#our-first-example" title="Permalink to this headline">¶</a></h2>
 <div class="figure" id="id1">
-<span id="fig-aust"></span><img alt="_images/aust.svg" src="_images/aust.svg" /><p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Australian states</span></p>
+<span id="fig-aust"></span><img alt="images/aust.svg" src="images/aust.svg" /><p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Australian states</span></p>
 </div>
 <p>As our first example, imagine that we wish to colour a map
 of Australia as shown in <a class="reference internal" href="#fig-aust"><span class="std std-numref">Fig. 2.1</span></a>.
@@ -237,7 +237,7 @@ It is made up of seven different states and territories
 each of which must be given a  colour so that adjacent regions
 have different colours.</p>
 <div class="literal-block-wrapper docutils container" id="ex-aust">
-<div class="code-block-caption"><span class="caption-number">Listing 2.1 </span><span class="caption-text">A MiniZinc model <a class="reference download internal" href="_downloads/aust.mzn" download=""><tt class="xref download docutils literal">aust.mzn</tt></a> for colouring the states and territories in Australia</span><a class="headerlink" href="#ex-aust" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.1 </span><span class="caption-text">A MiniZinc model <a class="reference download internal" href="downloads/aust.mzn" download=""><tt class="xref download docutils literal">aust.mzn</tt></a> for colouring the states and territories in Australia</span><a class="headerlink" href="#ex-aust" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Colouring Australia using nc colours</span><span class="s"></span>
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">nc</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span><span class="s"></span>
 
@@ -434,7 +434,7 @@ are concatenated in the order they appear in the model.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-gecode aust.mzn
 </pre></div>
 </div>
-<p>where <a class="reference download internal" href="_downloads/aust.mzn" download=""><tt class="xref download docutils literal">aust.mzn</tt></a>
+<p>where <a class="reference download internal" href="downloads/aust.mzn" download=""><tt class="xref download docutils literal">aust.mzn</tt></a>
 is the name of the file containing our MiniZinc model.
 We must use the file extension <tt class="docutils literal">.mzn</tt> to indicate a MiniZinc model.
 The command <tt class="docutils literal">mzn-gecode</tt> uses the Gecode finite domain solver to evaluate
@@ -466,7 +466,7 @@ maximise the profit.
 A possible
 MiniZinc model is shown in <a class="reference internal" href="#ex-cakes"><span class="std std-numref">Listing 2.2</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ex-cakes">
-<div class="code-block-caption"><span class="caption-number">Listing 2.2 </span><span class="caption-text">Model for determining how many banana and chocolate cakes to bake for the school fete (<a class="reference download internal" href="_downloads/cakes.mzn" download=""><tt class="xref download docutils literal">cakes.mzn</tt></a>)</span><a class="headerlink" href="#ex-cakes" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.2 </span><span class="caption-text">Model for determining how many banana and chocolate cakes to bake for the school fete (<a class="reference download internal" href="downloads/cakes.mzn" download=""><tt class="xref download docutils literal">cakes.mzn</tt></a>)</span><a class="headerlink" href="#ex-cakes" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Baking cakes for the school fete</span><span class="s"></span>
 
 <span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">100</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">;</span><span class="s"> </span><span class="c">% no. of banana cakes</span><span class="s"></span>
@@ -554,7 +554,7 @@ running it with different data files.</p>
 <p>Data files must have the file extension <tt class="docutils literal">.dzn</tt> to indicate a MiniZinc data file
 and a model can be run with any number of data files (though a variable/parameter can only be assigned a value in one file).</p>
 <div class="literal-block-wrapper docutils container" id="ex-cakes2">
-<div class="code-block-caption"><span class="caption-number">Listing 2.3 </span><span class="caption-text">Data-independent model for determining how many banana and chocolate cakes to bake for the school fete (<a class="reference download internal" href="_downloads/cakes2.mzn" download=""><tt class="xref download docutils literal">cakes2.mzn</tt></a>)</span><a class="headerlink" href="#ex-cakes2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3 </span><span class="caption-text">Data-independent model for determining how many banana and chocolate cakes to bake for the school fete (<a class="reference download internal" href="downloads/cakes2.mzn" download=""><tt class="xref download docutils literal">cakes2.mzn</tt></a>)</span><a class="headerlink" href="#ex-cakes2" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Baking cakes for the school fete (with data file)</span><span class="s"></span>
 
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">flour</span><span class="p">;</span><span class="s">  </span><span class="c">%no. grams of flour available</span><span class="s"></span>
@@ -598,8 +598,8 @@ and a model can be run with any number of data files (though a variable/paramete
 </div>
 <p>Our new model is shown in <a class="reference internal" href="#ex-cakes2"><span class="std std-numref">Listing 2.3</span></a>.
 We can run it using the command</p>
-<p>where the data file <a class="reference download internal" href="_downloads/pantry.dzn" download=""><tt class="xref download docutils literal">pantry.dzn</tt></a> is defined in
-<a class="reference internal" href="#fig-pantry1"><span class="std std-numref">Listing 2.4</span></a>. This gives the same result as <a class="reference download internal" href="_downloads/cakes.mzn" download=""><tt class="xref download docutils literal">cakes.mzn</tt></a>.
+<p>where the data file <a class="reference download internal" href="downloads/pantry.dzn" download=""><tt class="xref download docutils literal">pantry.dzn</tt></a> is defined in
+<a class="reference internal" href="#fig-pantry1"><span class="std std-numref">Listing 2.4</span></a>. This gives the same result as <a class="reference download internal" href="downloads/cakes.mzn" download=""><tt class="xref download docutils literal">cakes.mzn</tt></a>.
 The output from running the command</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-gecode cakes2.mzn pantry2.dzn
 </pre></div>
@@ -612,7 +612,7 @@ The output from running the command</p>
 <span class="o">==========</span><span class="s"></span>
 </pre></div>
 </div>
-<p>If we remove the output statement from <a class="reference download internal" href="_downloads/cakes.mzn" download=""><tt class="xref download docutils literal">cakes.mzn</tt></a> then
+<p>If we remove the output statement from <a class="reference download internal" href="downloads/cakes.mzn" download=""><tt class="xref download docutils literal">cakes.mzn</tt></a> then
 MiniZinc will use a default output. In this case the resulting
 output  will be</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">b</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span><span class="s"></span>
@@ -628,7 +628,7 @@ decision variable with its value, unless it is assigned an expression
 on its declaration. Note how the output is in the form of a correct datafile.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="fig-pantry1">
-<div class="code-block-caption"><span class="caption-number">Listing 2.4 </span><span class="caption-text">Example data file for <a class="reference download internal" href="_downloads/cakes2.mzn" download=""><tt class="xref download docutils literal">cakes2.mzn</tt></a> (<a class="reference download internal" href="_downloads/pantry.dzn" download=""><tt class="xref download docutils literal">pantry.dzn</tt></a>)</span><a class="headerlink" href="#fig-pantry1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.4 </span><span class="caption-text">Example data file for <a class="reference download internal" href="downloads/cakes2.mzn" download=""><tt class="xref download docutils literal">cakes2.mzn</tt></a> (<a class="reference download internal" href="downloads/pantry.dzn" download=""><tt class="xref download docutils literal">pantry.dzn</tt></a>)</span><a class="headerlink" href="#fig-pantry1" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">flour</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">4000</span><span class="p">;</span><span class="s"> </span>
 <span class="nv">banana</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">6</span><span class="p">;</span><span class="s"> </span>
 <span class="nv">sugar</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">2000</span><span class="p">;</span><span class="s"> </span>
@@ -638,7 +638,7 @@ on its declaration. Note how the output is in the form of a correct datafile.</p
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="fig-pantry2">
-<div class="code-block-caption"><span class="caption-number">Listing 2.5 </span><span class="caption-text">Example data file for <a class="reference download internal" href="_downloads/cakes2.mzn" download=""><tt class="xref download docutils literal">cakes2.mzn</tt></a> (<a class="reference download internal" href="_downloads/pantry2.dzn" download=""><tt class="xref download docutils literal">pantry2.dzn</tt></a>)</span><a class="headerlink" href="#fig-pantry2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.5 </span><span class="caption-text">Example data file for <a class="reference download internal" href="downloads/cakes2.mzn" download=""><tt class="xref download docutils literal">cakes2.mzn</tt></a> (<a class="reference download internal" href="downloads/pantry2.dzn" download=""><tt class="xref download docutils literal">pantry2.dzn</tt></a>)</span><a class="headerlink" href="#fig-pantry2" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">flour</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">8000</span><span class="p">;</span><span class="s"> </span>
 <span class="nv">banana</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">11</span><span class="p">;</span><span class="s"> </span>
 <span class="nv">sugar</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3000</span><span class="p">;</span><span class="s"> </span>
@@ -687,7 +687,7 @@ for one year to be repaid in 4 quarterly instalments.
 A model for this is shown in <a class="reference internal" href="#ex-loan"><span class="std std-numref">Listing 2.6</span></a>. It uses a simple interest
 calculation to calculate the balance after each quarter.</p>
 <div class="literal-block-wrapper docutils container" id="ex-loan">
-<div class="code-block-caption"><span class="caption-number">Listing 2.6 </span><span class="caption-text">Model for determining relationships between a 1 year loan repaying every quarter (<a class="reference download internal" href="_downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a>)</span><a class="headerlink" href="#ex-loan" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.6 </span><span class="caption-text">Model for determining relationships between a 1 year loan repaying every quarter (<a class="reference download internal" href="downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a>)</span><a class="headerlink" href="#ex-loan" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% variables</span><span class="s"></span>
 <span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span><span class="s">        </span><span class="c">% quarterly repayment</span><span class="s"></span>
 <span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">P</span><span class="p">;</span><span class="s">        </span><span class="c">% principal initially borrowed</span><span class="s"></span>
@@ -720,7 +720,7 @@ similar to an integer variable using the keyword <code class="code mzn minizinc 
 <p>We can use the same model to answer a number of different questions.
 The first question is: if I borrow $1000 at 4% and repay $260 per
 quarter, how much do I end up owing? This question is encoded by
-the data file <a class="reference download internal" href="_downloads/loan1.dzn" download=""><tt class="xref download docutils literal">loan1.dzn</tt></a>.</p>
+the data file <a class="reference download internal" href="downloads/loan1.dzn" download=""><tt class="xref download docutils literal">loan1.dzn</tt></a>.</p>
 <p>Since we wish to use real number variables and constraint we need to use a solver
 that supports this type of problem.
 A suitable solver would be one that supports mixed integer linear
@@ -739,7 +739,7 @@ We can invoke it using the command <tt class="docutils literal">mzn-cbc</tt>:</p
 <p>The second question is if I want to borrow $1000 at 4% and owe nothing at
 the end, how much do I need to repay?
 This question is encoded by
-the data file <a class="reference download internal" href="_downloads/loan2.dzn" download=""><tt class="xref download docutils literal">loan2.dzn</tt></a>.
+the data file <a class="reference download internal" href="downloads/loan2.dzn" download=""><tt class="xref download docutils literal">loan2.dzn</tt></a>.
 The output from running the command</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-cbc loan.mzn loan2.dzn
 </pre></div>
@@ -752,7 +752,7 @@ The output from running the command</p>
 </div>
 <p>The third question is if I can repay $250 a quarter, how much can I borrow
 at 4% to end up owing nothing?
-This question is encoded by the data file <a class="reference download internal" href="_downloads/loan3.dzn" download=""><tt class="xref download docutils literal">loan3.dzn</tt></a>.
+This question is encoded by the data file <a class="reference download internal" href="downloads/loan3.dzn" download=""><tt class="xref download docutils literal">loan3.dzn</tt></a>.
 The output from running the command</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12mip loan.mzn loan3.dzn
 </pre></div>
@@ -764,7 +764,7 @@ The output from running the command</p>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 2.7 </span><span class="caption-text">Example data file for <a class="reference download internal" href="_downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a> (<a class="reference download internal" href="_downloads/loan1.dzn" download=""><tt class="xref download docutils literal">loan1.dzn</tt></a>)</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.7 </span><span class="caption-text">Example data file for <a class="reference download internal" href="downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a> (<a class="reference download internal" href="downloads/loan1.dzn" download=""><tt class="xref download docutils literal">loan1.dzn</tt></a>)</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">I</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.04</span><span class="p">;</span><span class="s"></span>
 <span class="nv">P</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1000.0</span><span class="p">;</span><span class="s"></span>
 <span class="nv">R</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">260.0</span><span class="p">;</span><span class="s"></span>
@@ -772,7 +772,7 @@ The output from running the command</p>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 2.8 </span><span class="caption-text">Example data file for <a class="reference download internal" href="_downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a> (<a class="reference download internal" href="_downloads/loan2.dzn" download=""><tt class="xref download docutils literal">loan2.dzn</tt></a>)</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.8 </span><span class="caption-text">Example data file for <a class="reference download internal" href="downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a> (<a class="reference download internal" href="downloads/loan2.dzn" download=""><tt class="xref download docutils literal">loan2.dzn</tt></a>)</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">I</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.04</span><span class="p">;</span><span class="s"></span>
 <span class="nv">P</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1000.0</span><span class="p">;</span><span class="s"></span>
 <span class="nv">B4</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.0</span><span class="p">;</span><span class="s"></span>
@@ -780,7 +780,7 @@ The output from running the command</p>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 2.9 </span><span class="caption-text">Example data file for <a class="reference download internal" href="_downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a> (<a class="reference download internal" href="_downloads/loan3.dzn" download=""><tt class="xref download docutils literal">loan3.dzn</tt></a>)</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.9 </span><span class="caption-text">Example data file for <a class="reference download internal" href="downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a> (<a class="reference download internal" href="downloads/loan3.dzn" download=""><tt class="xref download docutils literal">loan3.dzn</tt></a>)</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">I</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.04</span><span class="p">;</span><span class="s"></span>
 <span class="nv">R</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">250.0</span><span class="p">;</span><span class="s"></span>
 <span class="nv">B4</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.0</span><span class="p">;</span><span class="s"></span>

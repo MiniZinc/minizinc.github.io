@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>2.8. FlatZinc and Flattening &#8212; MiniZinc Documentation 2.1.2 documentation</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="3. MiniZinc Reference Documentation" href="part_3_reference.html" />
@@ -264,7 +264,7 @@ constraints which do not themselves contain structured terms.</p>
 <p>Consider the following model for ensuring that two circles in a rectangular
 box do not overlap:</p>
 <div class="literal-block-wrapper docutils container" id="fig-nonoverlap">
-<div class="code-block-caption"><span class="caption-number">Listing 2.58 </span><span class="caption-text">Modelling non overlap of two circles (<a class="reference download internal" href="_downloads/cnonoverlap.mzn" download=""><tt class="xref download docutils literal">cnonoverlap.mzn</tt></a>).</span><a class="headerlink" href="#fig-nonoverlap" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.58 </span><span class="caption-text">Modelling non overlap of two circles (<a class="reference download internal" href="downloads/cnonoverlap.mzn" download=""><tt class="xref download docutils literal">cnonoverlap.mzn</tt></a>).</span><a class="headerlink" href="#fig-nonoverlap" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">width</span><span class="p">;</span><span class="s">          </span><span class="c">% width of rectangle to hold circles</span><span class="s"></span>
 <span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">height</span><span class="p">;</span><span class="s">         </span><span class="c">% height of rectangle to hold circles</span><span class="s"></span>
 <span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">r1</span><span class="p">;</span><span class="s"></span>
@@ -416,7 +416,7 @@ The translator from MiniZinc to FlatZinc tries to create linear
 constraints, rather than break up linear constraints into many
 subexpressions.</p>
 <div class="literal-block-wrapper docutils container" id="fig-lflat">
-<div class="code-block-caption"><span class="caption-number">Listing 2.59 </span><span class="caption-text">A MiniZinc model to illustrate linear constraint flattening (<a class="reference download internal" href="_downloads/linear.mzn" download=""><tt class="xref download docutils literal">linear.mzn</tt></a>).</span><a class="headerlink" href="#fig-lflat" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.59 </span><span class="caption-text">A MiniZinc model to illustrate linear constraint flattening (<a class="reference download internal" href="downloads/linear.mzn" download=""><tt class="xref download docutils literal">linear.mzn</tt></a>).</span><a class="headerlink" href="#fig-lflat" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s">       </span><span class="nv">d</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">-</span><span class="m">1</span><span class="p">;</span><span class="s"></span>
 <span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">10</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span><span class="s"></span>
 <span class="kt">var</span><span class="s"> </span><span class="o">-</span><span class="m">3</span><span class="o">..</span><span class="m">6</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span><span class="s"></span>

@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>2.4. Option Types &#8212; MiniZinc Documentation 2.1.2 documentation</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2.5. Search" href="mzn_search.html" />
@@ -266,7 +266,7 @@ We require that at most one task runs on any machine using the
 Finally we constrain that at most <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">k</span><span class="s"></span></code> tasks run at any time, a redundant
 constraint that holds on the actual (not optional) tasks.</p>
 <div class="literal-block-wrapper docutils container" id="ex-flexible-js">
-<div class="code-block-caption"><span class="caption-number">Listing 2.38 </span><span class="caption-text">Model for flexible job shop scheduling using option types (<a class="reference download internal" href="_downloads/flexible-js.mzn" download=""><tt class="xref download docutils literal">flexible-js.mzn</tt></a>).</span><a class="headerlink" href="#ex-flexible-js" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.38 </span><span class="caption-text">Model for flexible job shop scheduling using option types (<a class="reference download internal" href="downloads/flexible-js.mzn" download=""><tt class="xref download docutils literal">flexible-js.mzn</tt></a>).</span><a class="headerlink" href="#ex-flexible-js" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">horizon</span><span class="p">;</span><span class="s">                  </span><span class="c">% time horizon</span><span class="s"></span>
 <span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Time</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">horizon</span><span class="p">;</span><span class="s"></span>
 <span class="kt">enum</span><span class="s"> </span><span class="nv">Task</span><span class="p">;</span><span class="s"></span>
