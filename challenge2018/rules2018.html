@@ -19,11 +19,9 @@ The MiniZinc Challenge 2018 will test solvers on problems written in MiniZinc 2.
 Let <i>name</i> be the name of the solver system in what follows.
 </p>
 
-<!--
 <p>
-An entrant in the challenge is a constraint solver that is installed in a virtual 
-machine (VM) provided by the organizers. The download link will be provided after
-registration.
+An entrant in the challenge is a constraint solver that is installed in a Docker image
+that is an extension of the MiniZinc Challenge 2018 image provided by the organizers.
 <br>
 Constraint solvers that have several variants, for example that can alternatively
 use copying or trailing, may submit one entry per variant although the organizers
@@ -38,7 +36,8 @@ Each entrant must provide a gzipped tarball containing the following:
 <ol>
 <li>
 <p>
-A text file named CLASSES specifying which competition CLASS(es) the entry is to be entered in.
+The filled in form  named <a href="EntryClasses.txt">EntryClasses.txt</a> 
+specifying which competition CLASS(es) the entry is to be entered in.
 </li>
 <li>
 <p>
@@ -50,79 +49,19 @@ It should also describe any algorithms or data structures that are not standardl
 systems.<br>
 System descriptions will be posted on the <a href="challenge.html">MiniZinc Challenge 2018 website</a>.
 </li>
+<li>
+A filled in form named <a href="Consent_3rdPartyUsage.txt">Consent_3rdPartyUsage.txt</a>.
+</li>
 
 <li>
 <p>
-The provided VM with the installed solver can be run by the provided scripts inside the VM as FlatZinc or MiniZinc solver, i.e.,
-<ol>
-<li>
-    <ul>
-    <li><b>FlatZinc Solver</b><br>
-    fzn-exec - an executable file in the VM folder /home/user/entry_data that 
-    invokes a FlatZinc solver handling FlatZinc version 2.1.5. If your FlatZinc 
-    solver <strong>only</strong> handles XML-FlatZinc version 2.1.5, please contact 
-    the organizers.<br>
-    This executable will be invoked from the command line/scripts as follows:
-    <p style="margin-left:2%; margin-top: 1em">
-    <b>fzn-exec</b> [&lt;options&gt;] file.fzn
-    </p>
-    The argument <i>file.fzn</i> is the name of a FlatZinc 2.1.5 model instance to evaluate.
-    </li>
-    <li><b> MiniZinc Solver</b><br>
-    An executable file needs to provided in the VM folder /home/user/entry_data that
-    invokes a MiniZinc solver handling MiniZinc version 2.1.5. This executable will be 
-    invoked from the command line and/or scripts located at the VM folder /home/user/bin
-    as follows:
-    <p style="margin-left:2%; margin-top: 1em">
-    <b>exec</b> [&lt;options&gt;] -G &lt;mznlibdir&gt; file.mzn [&lt;data.dzn&gt;]
-    </p>
-    The arguments <i>file.mzn</i> and <i>data.dzn</i> are names of a MiniZinc 2.1.5 model 
-    and data file, respectively. The argument <i>-G &lt;mznlibdir&gt;</i> points to the location
-    of your solver's MiniZinc library directory containing the redefinition or global 
-    constraints files.
-    </li>
-    </ul>
-The FlatZinc and MiniZinc executable should support the following command line options:
-<ol>
-<li> <i>-a</i><br>
-     <ul>
- 	<li><b>Satisfaction problems</b><br>
-	This causes the solver to search for, and output all solutions.<br>
-	When this option is not given the solver should search for, and output the first solution.
-	</li>
-	<li><b>Optimisation problems</b><br>
-	This causes the solver to search for the first optimal solution, and output all found intermediate
-	solutions and the first optimal solution.<br>
-	When this option is not given the solver should search for, and output the first optimal solution.
-	</li>
-     </ul>
-</li>
-<li> <i>-f</i><br>
-     When invoked with this option the solver is free to ignore any specified search strategy.
-
-</li>
-<li><i>-p &lt;n&gt;</i><br>
-     When invoked with this option the solver is free to use multiple threads and/or cores
-     during search.  The argument <i>n</i> specifies the number of cores that are available.
-</li>
-</ol>
-<p>
-Execution of solvers must not require root access.
-
-<li>
-<p>
-Any solver-specific definitions of the global constraints in the MiniZinc library in
-the VM directory <i>/home/user/entry_data/mzn-lib</i>.<br>
-This directory may also contain a file named <i>redefinitions.mzn</i> that contains
-redefinitions of FlatZinc built-ins required by the solver.
-</li> 
-</ol>
-</li>
+A description how to retrieve the entry's Docker image with the installed solver. 
+More information about Docker images is below.
 </ol>
 
 <p>
 The gzipped tar-ball must be made accessible for download for the organizer and the submitter
-must send an email to the organizer describing how to download the modified VM.<br>
+must send an email to the organizer describing how to download the Docker image.<br>
 
 <p>
 The organizers will make reasonable efforts to run each system, including
@@ -130,7 +69,6 @@ communication with the submitters of the system in case of difficulties.
 Nevertheless, the organizers reserve the right to reject an entrant if its
 process proves overly difficult.
 </p>
--->
 
 <p>
 The results will be announced at <a href="http://cp2018.a4cp.org">CP2018</a>. Entrants are encouraged to
@@ -175,9 +113,82 @@ the problem.
 </ul>
 
 <p>
-The CLASSES file included in the entry must specify which competition CLASS(es)
+The <a href="EntryClasses.txt">EntryClasses.txt</a> file included in the entry must specify which competition CLASS(es)
 the entry is to be entered in.
 </p>
+
+
+<h3>Docker Images</h3>
+
+More details about Docker images and how to create a Docker image with your solver is available
+<a href="docker.html">here</a>.
+<p>
+The provided Docker image with the installed solver can be run by the provided scripts inside the image as FlatZinc or MiniZinc solver, i.e.,
+<ol>
+<li>
+    <ul>
+    <li><b>FlatZinc Solver</b><br>
+    fzn-exec - an executable file in the image folder /entry_data that 
+    invokes a FlatZinc solver handling FlatZinc version 2.1.7. If your FlatZinc 
+    solver <strong>only</strong> handles XML-FlatZinc version 2.1.7, please contact 
+    the organizers.<br>
+    This executable will be invoked from the command line/scripts as follows:
+    <p style="margin-left:2%; margin-top: 1em">
+    <b>fzn-exec</b> [&lt;options&gt;] file.fzn
+    </p>
+    The argument <i>file.fzn</i> is the name of a FlatZinc 2.1.7 model instance to evaluate.
+    </li>
+    <li><b> MiniZinc Solver</b><br>
+    An executable file needs to provided in the image folder /entry_data that
+    invokes a MiniZinc solver handling MiniZinc version 2.1.7. This executable will be 
+    invoked from the command line and/or scripts located at the image folder /minizinc
+    as follows:
+    <p style="margin-left:2%; margin-top: 1em">
+    <b>exec</b> [&lt;options&gt;] -G &lt;mznlibdir&gt; file.mzn [&lt;data.dzn&gt;]
+    </p>
+    The arguments <i>file.mzn</i> and <i>data.dzn</i> are names of a MiniZinc 2.1.7 model 
+    and data file, respectively. The argument <i>-G &lt;mznlibdir&gt;</i> points to the location
+    of your solver's MiniZinc library directory containing the redefinition or global 
+    constraints files.
+    </li>
+    </ul>
+The FlatZinc and MiniZinc executable should support the following command line options:
+<ol>
+<li> <i>-a</i><br>
+     <ul>
+ 	<li><b>Satisfaction problems</b><br>
+	This causes the solver to search for, and output all solutions.<br>
+	When this option is not given the solver should search for, and output the first solution.
+	</li>
+	<li><b>Optimisation problems</b><br>
+	This causes the solver to search for the first optimal solution, and output all found intermediate
+	solutions and the first optimal solution.<br>
+	When this option is not given the solver should search for, and output the first optimal solution.
+	</li>
+     </ul>
+</li>
+<li> <i>-f</i><br>
+     When invoked with this option the solver is free to ignore any specified search strategy.
+
+</li>
+<li><i>-p &lt;n&gt;</i><br>
+     When invoked with this option the solver is free to use multiple threads and/or cores
+     during search.  The argument <i>n</i> specifies the number of cores that are available.
+</li>
+</ol>
+<p>
+Execution of solvers must not require root access.
+
+<li>
+<p>
+Any solver-specific definitions of the global constraints in the MiniZinc library in
+the image directory <i>/entry_data/mzn-lib</i>.<br>
+This directory may also contain a file named <i>redefinitions.mzn</i> that contains
+redefinitions of FlatZinc built-ins required by the solver.
+</li> 
+</ol>
+</li>
+
 
 <h3>Problem Format</h3>
 
@@ -314,25 +325,21 @@ that entries flush the output stream after printing each approximate solution.
 
 <h3><a name="execenv">Execution Environment</a></h3>
 
-<strong>TBA</strong>
-<!--
 <p>
-During the MiniZinc Challenge 2018 all VMs will run on machines
-with the following specification:
+During the MiniZinc Challenge 2018 all instances of Docker images 
+will run on machines with the following specification:
 
 <ul>
-<li>Host Operating System: Ubuntu 16.04.2 LTS (xenial xerus)
-<li>Guest Operating System: Ubuntu 16.04.2 LTS (xenial xerus)
-<li>Processor(s): i7 3770 @ 3.40GHz (8 logical cores)
-<li>Memory: 16 Gb
-<li>VirtualBox Version: 5.0.20r106931 or later
+<!--<li>Host Operating System: Ubuntu 16.04.2 LTS (xenial xerus)-->
+<li>Image Operating System: Ubuntu 16.04.2 LTS (xenial xerus)
+<li>Processor(s): TBA <!--i7 3770 @ 3.40GHz (8 logical cores)-->
+<li>Memory: TBA <!--16 Gb-->
 </ul>
 
 <p>
 Except in the Parallel search, Local search, and Open class, only a single core of one processor
 will be used for each entrant.
 </p>
--->
 
 <h3>Benchmark Selection</h3>
 
@@ -357,8 +364,8 @@ applies.
 <p>
 In order to collect good benchmarks each entrant is 
 <font color="red">strongly encouraged</font>  to submit
-one or two MiniZinc 2.1.5 models, making use of only the global constraints
-included in the MiniZinc 2.1.5 library, as well as some (preferably 20)
+one or two MiniZinc 2.1.7 models, making use of only the global constraints
+included in the MiniZinc 2.1.7 library, as well as some (preferably 20)
 instance files for each model.
 The instances should range from easy (about a minute)
 to hard (about 15 minutes) if possible.<br>
