@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>2. A MiniZinc Tutorial &#8212; The MiniZinc Handbook 2.2.0</title>
+    <title>1.3. First steps with MiniZinc &#8212; The MiniZinc Handbook 2.2.0</title>
     <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="static/style.css" />
@@ -19,8 +19,8 @@
     <script type="text/javascript" src="static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2.1. Basic Modelling in MiniZinc" href="modelling.html" />
-    <link rel="prev" title="1.3. First steps with MiniZinc" href="basic_steps.html" />
+    <link rel="next" title="2. A MiniZinc Tutorial" href="part_2_tutorial.html" />
+    <link rel="prev" title="1.2. Installation" href="installation.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -55,7 +55,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="part_1_overview.html">1. Overview</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="intro.html">1.1. Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#structure">1.1.1. Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#how-to-read-this">1.1.2. How to Read This</a></li>
@@ -67,14 +67,14 @@
 <li class="toctree-l3"><a class="reference internal" href="installation.html#adding-third-party-solvers">1.2.3. Adding Third-party Solvers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="basic_steps.html">1.3. First steps with MiniZinc</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-ide">1.3.1. The MiniZinc IDE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-command-line-tool">1.3.2. The MiniZinc command line tool</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.3. First steps with MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-minizinc-ide">1.3.1. The MiniZinc IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-minizinc-command-line-tool">1.3.2. The MiniZinc command line tool</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. A MiniZinc Tutorial</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modelling.html">2.1. Basic Modelling in MiniZinc</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modelling.html#our-first-example">2.1.1. Our First Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modelling.html#an-arithmetic-optimisation-example">2.1.2. An Arithmetic Optimisation Example</a></li>
@@ -228,7 +228,11 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">2. A MiniZinc Tutorial</a></li>
+<li><a class="reference internal" href="#">1.3. First steps with MiniZinc</a><ul>
+<li><a class="reference internal" href="#the-minizinc-ide">1.3.1. The MiniZinc IDE</a></li>
+<li><a class="reference internal" href="#the-minizinc-command-line-tool">1.3.2. The MiniZinc command line tool</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -238,11 +242,11 @@
               
                 
   <li>
-    <a href="basic_steps.html" title="Previous Chapter: 1.3. First steps with MiniZinc"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 1.3. First st...</span>
+    <a href="installation.html" title="Previous Chapter: 1.2. Installation"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 1.2. Installation</span>
     </a>
   </li>
   <li>
-    <a href="modelling.html" title="Next Chapter: 2.1. Basic Modelling in MiniZinc"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2.1. Basic Mo... &raquo;</span>
+    <a href="part_2_tutorial.html" title="Next Chapter: 2. A MiniZinc Tutorial"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2. A MiniZinc... &raquo;</span>
     </a>
   </li>
               
@@ -270,94 +274,87 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="a-minizinc-tutorial">
-<span id="part-tutorial"></span><h1>2. A MiniZinc Tutorial<a class="headerlink" href="#a-minizinc-tutorial" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modelling.html">2.1. Basic Modelling in MiniZinc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modelling.html#our-first-example">2.1.1. Our First Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling.html#an-arithmetic-optimisation-example">2.1.2. An Arithmetic Optimisation Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling.html#datafiles-and-assertions">2.1.3. Datafiles and Assertions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling.html#real-number-solving">2.1.4. Real Number Solving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling.html#basic-structure-of-a-model">2.1.5. Basic structure of a model</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="modelling2.html">2.2. More Complex Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#arrays-and-sets">2.2.1. Arrays and Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#global-constraints">2.2.2. Global Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#conditional-expressions">2.2.3. Conditional Expressions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#enumerated-types">2.2.4. Enumerated Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#complex-constraints">2.2.5. Complex Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#set-constraints">2.2.6. Set Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#putting-it-all-together">2.2.7. Putting it all together</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="predicates.html">2.3. Predicates and Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#global-constraints">2.3.1. Global Constraints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="predicates.html#alldifferent">2.3.1.1. Alldifferent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="predicates.html#cumulative">2.3.1.2. Cumulative</a></li>
-<li class="toctree-l3"><a class="reference internal" href="predicates.html#table">2.3.1.3. Table</a></li>
-<li class="toctree-l3"><a class="reference internal" href="predicates.html#regular">2.3.1.4. Regular</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#defining-predicates">2.3.2. Defining Predicates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#defining-functions">2.3.3. Defining Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#reflection-functions">2.3.4. Reflection Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#local-variables">2.3.5. Local Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#context">2.3.6. Context</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#local-constraints">2.3.7. Local Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#domain-reflection-functions">2.3.8. Domain Reflection Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#scope">2.3.9. Scope</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="optiontypes.html">2.4. Option Types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="optiontypes.html#declaring-and-using-option-types">2.4.1. Declaring and Using Option Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optiontypes.html#hidden-option-types">2.4.2. Hidden Option Types</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="mzn_search.html">2.5. Search</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mzn_search.html#finite-domain-search">2.5.1. Finite Domain Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mzn_search.html#search-annotations">2.5.2. Search Annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mzn_search.html#annotations">2.5.3. Annotations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="efficient.html">2.6. Effective Modelling Practices in MiniZinc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#variable-bounds">2.6.1. Variable Bounds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#effective-generators">2.6.2. Effective Generators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.3. Redundant Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#modelling-choices">2.6.4. Modelling Choices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.5. Multiple Modelling and Channels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#symmetry">2.6.6. Symmetry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#static-symmetry-breaking">2.6.6.1. Static Symmetry Breaking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#other-examples-of-symmetry">2.6.6.2. Other Examples of Symmetry</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="sat.html">2.7. Boolean Satisfiability Modelling in MiniZinc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sat.html#modelling-integers">2.7.1. Modelling Integers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sat.html#modelling-disequality">2.7.2. Modelling Disequality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sat.html#modelling-cardinality">2.7.3. Modelling Cardinality</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="flattening.html">2.8. FlatZinc and Flattening</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#flattening-expressions">2.8.1. Flattening Expressions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="flattening.html#simplification-and-evaluation">2.8.1.1. Simplification and Evaluation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="flattening.html#defining-subexpressions">2.8.1.2. Defining Subexpressions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="flattening.html#flatzinc-constraint-form">2.8.1.3. FlatZinc constraint form</a></li>
-<li class="toctree-l3"><a class="reference internal" href="flattening.html#bounds-analysis">2.8.1.4. Bounds analysis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="flattening.html#objectives">2.8.1.5. Objectives</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#linear-expressions">2.8.2. Linear Expressions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#unrolling-expressions">2.8.3. Unrolling Expressions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#arrays">2.8.4. Arrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#reification">2.8.5. Reification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#predicates">2.8.6. Predicates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#let-expressions">2.8.7. Let Expressions</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="first-steps-with-minizinc">
+<h1>1.3. First steps with MiniZinc<a class="headerlink" href="#first-steps-with-minizinc" title="Permalink to this headline">¶</a></h1>
+<p>We recommend using the bundled binary distribution of MiniZinc introduced in <a class="reference internal" href="installation.html#ch-installation"><span class="std std-numref">Section 1.2</span></a>. It contains the MiniZinc IDE, the MiniZinc compiler, and several pre-configured solvers so you can get started straight away.</p>
+<p>This section introduces the MiniZinc IDE and the command line tool <tt class="docutils literal">minizinc</tt> using some very basic examples. This should be enough to get you started with the MiniZinc tutorial in <a class="reference internal" href="part_2_tutorial.html#part-tutorial"><span class="std std-numref">Section 2</span></a> (in fact, you only need to be able to use one of the two, for instance just stick to the IDE if you are not comfortable with command line tools, or just use the <tt class="docutils literal">minizinc</tt> command if you suffer from fear of mice).</p>
+<div class="section" id="the-minizinc-ide">
+<h2>1.3.1. The MiniZinc IDE<a class="headerlink" href="#the-minizinc-ide" title="Permalink to this headline">¶</a></h2>
+<p>The MiniZinc IDE provides a simple interface to most of MiniZinc’s functionality. It lets you edit model and data files, solve them with any of the solvers supported by MiniZinc, run debugging and profiling tools, and submit solutions to online courses (such as the MiniZinc Coursera courses).</p>
+<p>When you open the MiniZinc IDE for the first time, it will ask you whether you want to be notified when an update is available. If you installed the IDE from sources, it may next ask you to locate your installation of the MiniZinc compiler. Please refer to <a class="reference internal" href="minizinc_ide.html#sec-ide-config"><span class="std std-numref">Section 3.2.6</span></a> for more details on this.</p>
+<p>The IDE will then greet you with the <em>MiniZinc Playground</em>, a window that will look like this:</p>
+<a class="reference internal image-reference" href="images/mzn-ide-playground.jpg"><img alt="images/mzn-ide-playground.jpg" src="images/mzn-ide-playground.jpg" style="width: 600px;" /></a>
+<p>You can start writing your first MiniZinc model! Let’s try something very simple:</p>
+<a class="reference internal image-reference" href="images/mzn-ide-playground2.jpg"><img alt="images/mzn-ide-playground2.jpg" src="images/mzn-ide-playground2.jpg" style="width: 600px;" /></a>
+<p>In order to solve the model, you click on the <em>Run</em> button in the toolbar, or use the keyboard shortcut <em>Ctrl+R</em> (or <em>command+R</em> on macOS):</p>
+<a class="reference internal image-reference" href="images/mzn-ide-playground3.jpg"><img alt="images/mzn-ide-playground3.jpg" src="images/mzn-ide-playground3.jpg" style="width: 600px;" /></a>
+<p>As you can see, an output window pops up that displays a solution to the problem you entered.
+Let us now try a model that requires some additional data.</p>
+<a class="reference internal image-reference" href="images/mzn-ide-playground4.jpg"><img alt="images/mzn-ide-playground4.jpg" src="images/mzn-ide-playground4.jpg" style="width: 600px;" /></a>
+<p>When you run this model, the IDE will ask you to enter a value for the parameter <em>n</em>:</p>
+<a class="reference internal image-reference" href="images/mzn-ide-playground-param.jpg"><img alt="images/mzn-ide-playground-param.jpg" src="images/mzn-ide-playground-param.jpg" style="width: 300px;" /></a>
+<p>After entering, for example, the value 4 and clicking <em>Ok</em>, the solver will execute the model for <em>n=4</em>:</p>
+<a class="reference internal image-reference" href="images/mzn-ide-playground5.jpg"><img alt="images/mzn-ide-playground5.jpg" src="images/mzn-ide-playground5.jpg" style="width: 600px;" /></a>
+<p>Alternatively, data can also come from a file. Let’s create a new file with the data and save it as <tt class="docutils literal">data.dzn</tt>:</p>
+<a class="reference internal image-reference" href="images/mzn-ide-data.jpg"><img alt="images/mzn-ide-data.jpg" src="images/mzn-ide-data.jpg" style="width: 600px;" /></a>
+<p>When you now go back to the <em>Playground</em> tab and click <em>Run</em>, the IDE will give you the option to select a data file:</p>
+<a class="reference internal image-reference" href="images/mzn-ide-select-data.jpg"><img alt="images/mzn-ide-select-data.jpg" src="images/mzn-ide-select-data.jpg" style="width: 300px;" /></a>
+<p>Click on the <tt class="docutils literal">data.dzn</tt> entry, then on <em>Ok</em>, and the model will be run with the given data file:</p>
+<a class="reference internal image-reference" href="images/mzn-ide-playground-data.jpg"><img alt="images/mzn-ide-playground-data.jpg" src="images/mzn-ide-playground-data.jpg" style="width: 600px;" /></a>
+<p>Of course you can save your model to a file, and load it from a file, and the editor supports the usual functionality.</p>
+<p>If you want to know more about the MiniZinc IDE, continue reading from <a class="reference internal" href="minizinc_ide.html#ch-ide"><span class="std std-numref">Section 3.2</span></a>.</p>
+</div>
+<div class="section" id="the-minizinc-command-line-tool">
+<h2>1.3.2. The MiniZinc command line tool<a class="headerlink" href="#the-minizinc-command-line-tool" title="Permalink to this headline">¶</a></h2>
+<p>The MiniZinc command line tool, <tt class="docutils literal">minizinc</tt>, combines the functionality of the MiniZinc compiler, different solver interfaces, and the MiniZinc output processor. After installing MiniZinc from the bundled binary distribution, you may have to set up your <tt class="docutils literal">PATH</tt> in order to use the command line tool (see <a class="reference internal" href="installation.html#ch-installation"><span class="std std-numref">Section 1.2</span></a>).</p>
+<p>Let’s assume we have a file <tt class="docutils literal">model.mzn</tt> with the following contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="mf">1.</span><span class="o">.</span><span class="mi">3</span><span class="p">:</span> <span class="n">x</span><span class="p">;</span>
+<span class="n">var</span> <span class="mf">1.</span><span class="o">.</span><span class="mi">3</span><span class="p">:</span> <span class="n">y</span><span class="p">;</span>
+<span class="n">constraint</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">solve</span> <span class="n">satisfy</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can simply invoke <tt class="docutils literal">minizinc</tt> on that file to solve the model and produce some output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ minizinc model.mzn
+x = 3;
+y = 1;
+----------
+$
+</pre></div>
+</div>
+<p>If you have a model that requires a data file (like the one we used in the IDE example above), you pass both files to <tt class="docutils literal">minizinc</tt>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ minizinc model.mzn data.dzn
+x = 5;
+y = 1;
+----------
+$
+</pre></div>
+</div>
+<p>The <tt class="docutils literal">minizinc</tt> tool supports numerous command line options. One of the most useful options is <tt class="docutils literal">-a</tt>, which switches between <em>one solution</em> mode and <em>all solutions</em> mode. For example, for the first model above, it would result in the following output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ minizinc -a model.mzn
+x = 3;
+y = 1;
+----------
+x = 2;
+y = 2;
+----------
+x = 3;
+y = 2;
+----------
+x = 1;
+y = 3;
+----------
+x = 2;
+y = 3;
+----------
+x = 3;
+y = 3;
+----------
+==========
+$
+</pre></div>
+</div>
+<p>To learn more about the <tt class="docutils literal">minizinc</tt> command, explore the output of <tt class="docutils literal">minizinc --help</tt> or continue reading in <a class="reference internal" href="command_line.html#ch-cmdline"><span class="std std-numref">Section 3.1</span></a>.</p>
 </div>
 </div>
 

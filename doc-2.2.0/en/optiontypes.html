@@ -4,15 +4,15 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>2.4. Option Types &#8212; MiniZinc Documentation 2.1.2 documentation</title>
+    <title>2.4. Option Types &#8212; The MiniZinc Handbook 2.2.0</title>
     <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,9 +37,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">
-          MiniZinc Documentation</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.1</b></span>
+        <a class="navbar-brand" href="index.html"><span><img src="static/MiniZn_logo_2.svg"></span>
+          The MiniZinc Handbook</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -55,7 +55,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="part_1_introduction.html">1. Introduction</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html">1.1. Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#structure">1.1.1. Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#how-to-read-this">1.1.2. How to Read This</a></li>
@@ -67,7 +67,11 @@
 <li class="toctree-l3"><a class="reference internal" href="installation.html#adding-third-party-solvers">1.2.3. Adding Third-party Solvers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ide_basic_steps.html">1.3. First steps with the MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_steps.html">1.3. First steps with MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-ide">1.3.1. The MiniZinc IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-command-line-tool">1.3.2. The MiniZinc command line tool</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul class="current">
@@ -114,12 +118,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="efficient.html">2.6. Effective Modelling Practices in MiniZinc</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="efficient.html#variable-bounds">2.6.1. Variable Bounds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#unconstrained-variables">2.6.2. Unconstrained Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#effective-generators">2.6.3. Effective Generators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.4. Redundant Constraints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#modelling-choices">2.6.5. Modelling Choices</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.6. Multiple Modelling and Channels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#symmetry">2.6.7. Symmetry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#effective-generators">2.6.2. Effective Generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.3. Redundant Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#modelling-choices">2.6.4. Modelling Choices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.5. Multiple Modelling and Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#symmetry">2.6.6. Symmetry</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sat.html">2.7. Boolean Satisfiability Modelling in MiniZinc</a><ul>
@@ -140,25 +143,76 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="part_3_reference.html">3. MiniZinc Reference Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="spec.html">3.1. Specification of MiniZinc</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">3.1.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#notation">3.1.2. Notation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#overview-of-a-model">3.1.3. Overview of a Model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#syntax-overview">3.1.4. Syntax Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#high-level-model-structure">3.1.5. High-level Model Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#types-and-type-insts">3.1.6. Types and Type-insts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#expressions">3.1.7. Expressions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#items">3.1.8. Items</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#annotations">3.1.9. Annotations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#partiality">3.1.10. Partiality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#built-in-operations">3.1.11. Built-in Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#content-types">3.1.12. Content-types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#json-support">3.1.13. JSON support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">3.1.14. Full grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#basic-usage">3.1.1. Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#adding-solvers">3.1.2. Adding Solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#options">3.1.3. Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#user-configuration-files">3.1.4. User Configuration Files</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="fzn-interfacing.html">3.2. Interfacing Solvers to Flatzinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#editing-minizinc-model-files">3.2.1. Editing MiniZinc model files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#configuring-and-running-the-solver">3.2.2. Configuring and Running the Solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#working-with-projects">3.2.3. Working With Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#automatic-solution-checking">3.2.4. Automatic Solution Checking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#submitting-solutions-to-online-courses">3.2.5. Submitting Solutions to Online Courses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#configuration-options">3.2.6. Configuration Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#adding-third-party-solvers">3.2.7. Adding Third-Party Solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpprofiler.html">3.3. CP-Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#connecting-a-solver-execution">3.3.1. Connecting a Solver Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#the-protocol-high-level">3.3.2. The protocol (high level)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#the-protocol-low-level">3.3.3. The protocol (low level)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#traditional-tree-visualisation">3.3.4. Traditional Tree Visualisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#alternative-search-tree-visualisations">3.3.5. Alternative Search Tree Visualisations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#similar-subtree-analysis">3.3.6. Similar Subtree Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#execution-comparison-by-merging">3.3.7. Execution Comparison by Merging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#replaying-search">3.3.8. Replaying Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#nogood-analysis">3.3.9. Nogood Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.4. Using MiniZinc in Jupyter Notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">4.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#notation">4.1.2. Notation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#overview-of-a-model">4.1.3. Overview of a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#syntax-overview">4.1.4. Syntax Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#high-level-model-structure">4.1.5. High-level Model Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#types-and-type-insts">4.1.6. Types and Type-insts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#expressions">4.1.7. Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#items">4.1.8. Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#annotations">4.1.9. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#partiality">4.1.10. Partiality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#built-in-operations">4.1.11. Built-in Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#content-types">4.1.12. Content-types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#json-support">4.1.13. JSON support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">4.1.14. Full grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.1. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html">4.2.2. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-optiontypes.html">4.2.3. Option type support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-options.html">4.2.4. Compiler options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-builtins.html">4.2.5. Builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.6. FlatZinc builtins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#specification-of-flatzinc">4.3.1. Specification of FlatZinc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#output">4.3.2. Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#solver-specific-libraries">4.3.3. Solver-specific Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#command-line-interface">4.3.4. Command Line Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#solver-configuration-files">4.3.5. Solver Configuration Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#grammar">4.3.6. Grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api_interfacing.html">4.4. Interfacing to MiniZinc via its API</a></li>
 </ul>
 </li>
 </ul>
@@ -256,7 +310,7 @@ In the flexible job shop scheduling problem we have <code class="code mzn minizi
 on <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">k</span><span class="s"></span></code> machines, and the time to complete each task on each machine
 may be different. The aim is to minimize the completion time of all tasks.
 A model using option types to encode the problem is given in
-<a class="reference internal" href="#ex-flexible-js"><span class="std std-numref">Listing 2.38</span></a>. We model the problem using <span class="math notranslate nohighlight">\(n \times k\)</span> optional
+<a class="reference internal" href="#ex-flexible-js"><span class="std std-numref">Listing 2.4.1</span></a>. We model the problem using <span class="math notranslate nohighlight">\(n \times k\)</span> optional
 tasks representing the possibility of each task run on each machine.
 We require that start time of the task and its duration spans the optional
 tasks that make it up, and require only one actually runs using the
@@ -266,7 +320,7 @@ We require that at most one task runs on any machine using the
 Finally we constrain that at most <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">k</span><span class="s"></span></code> tasks run at any time, a redundant
 constraint that holds on the actual (not optional) tasks.</p>
 <div class="literal-block-wrapper docutils container" id="ex-flexible-js">
-<div class="code-block-caption"><span class="caption-number">Listing 2.38 </span><span class="caption-text">Model for flexible job shop scheduling using option types (<a class="reference download internal" href="downloads/flexible-js.mzn" download=""><tt class="xref download docutils literal">flexible-js.mzn</tt></a>).</span><a class="headerlink" href="#ex-flexible-js" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.4.1 </span><span class="caption-text">Model for flexible job shop scheduling using option types (<a class="reference download internal" href="downloads/flexible-js.mzn" download=""><tt class="xref download docutils literal">flexible-js.mzn</tt></a>).</span><a class="headerlink" href="#ex-flexible-js" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">horizon</span><span class="p">;</span><span class="s">                  </span><span class="c">% time horizon</span><span class="s"></span>
 <span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Time</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">horizon</span><span class="p">;</span><span class="s"></span>
 <span class="kt">enum</span><span class="s"> </span><span class="nv">Task</span><span class="p">;</span><span class="s"></span>
@@ -364,7 +418,7 @@ For example the above two examples could be rewritten without option types as</p
       
     </p>
     <p>
-        &copy; Copyright 2016, 2017, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
+        &copy; Copyright 2016, 2017, 2018, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
     </p>
   </div>
 </footer>

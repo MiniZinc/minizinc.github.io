@@ -4,23 +4,23 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>3.1. Specification of MiniZinc &#8212; MiniZinc Documentation 2.1.2 documentation</title>
+    <title>4.1. Specification of MiniZinc &#8212; The MiniZinc Handbook 2.2.0</title>
     <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3.2. Interfacing Solvers to Flatzinc" href="fzn-interfacing.html" />
-    <link rel="prev" title="3. MiniZinc Reference Documentation" href="part_3_reference.html" />
+    <link rel="next" title="4.2. The MiniZinc library" href="lib.html" />
+    <link rel="prev" title="4. Reference Manual" href="part_4_reference.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -37,9 +37,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">
-          MiniZinc Documentation</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.1</b></span>
+        <a class="navbar-brand" href="index.html"><span><img src="static/MiniZn_logo_2.svg"></span>
+          The MiniZinc Handbook</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -55,7 +55,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="part_1_introduction.html">1. Introduction</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html">1.1. Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#structure">1.1.1. Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#how-to-read-this">1.1.2. How to Read This</a></li>
@@ -67,7 +67,11 @@
 <li class="toctree-l3"><a class="reference internal" href="installation.html#adding-third-party-solvers">1.2.3. Adding Third-party Solvers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ide_basic_steps.html">1.3. First steps with the MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_steps.html">1.3. First steps with MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-ide">1.3.1. The MiniZinc IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-command-line-tool">1.3.2. The MiniZinc command line tool</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul>
@@ -114,12 +118,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="efficient.html">2.6. Effective Modelling Practices in MiniZinc</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="efficient.html#variable-bounds">2.6.1. Variable Bounds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#unconstrained-variables">2.6.2. Unconstrained Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#effective-generators">2.6.3. Effective Generators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.4. Redundant Constraints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#modelling-choices">2.6.5. Modelling Choices</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.6. Multiple Modelling and Channels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#symmetry">2.6.7. Symmetry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#effective-generators">2.6.2. Effective Generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.3. Redundant Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#modelling-choices">2.6.4. Modelling Choices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.5. Multiple Modelling and Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#symmetry">2.6.6. Symmetry</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sat.html">2.7. Boolean Satisfiability Modelling in MiniZinc</a><ul>
@@ -140,25 +143,62 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="part_3_reference.html">3. MiniZinc Reference Documentation</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Specification of MiniZinc</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">3.1.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#notation">3.1.2. Notation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#overview-of-a-model">3.1.3. Overview of a Model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#syntax-overview">3.1.4. Syntax Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#high-level-model-structure">3.1.5. High-level Model Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#types-and-type-insts">3.1.6. Types and Type-insts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#expressions">3.1.7. Expressions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#items">3.1.8. Items</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#annotations">3.1.9. Annotations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#partiality">3.1.10. Partiality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#built-in-operations">3.1.11. Built-in Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#content-types">3.1.12. Content-types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#json-support">3.1.13. JSON support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#full-grammar">3.1.14. Full grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#basic-usage">3.1.1. Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#adding-solvers">3.1.2. Adding Solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#options">3.1.3. Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#user-configuration-files">3.1.4. User Configuration Files</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="fzn-interfacing.html">3.2. Interfacing Solvers to Flatzinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#editing-minizinc-model-files">3.2.1. Editing MiniZinc model files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#configuring-and-running-the-solver">3.2.2. Configuring and Running the Solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#working-with-projects">3.2.3. Working With Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#automatic-solution-checking">3.2.4. Automatic Solution Checking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#submitting-solutions-to-online-courses">3.2.5. Submitting Solutions to Online Courses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#configuration-options">3.2.6. Configuration Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#adding-third-party-solvers">3.2.7. Adding Third-Party Solvers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. Specification of MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">4.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notation">4.1.2. Notation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview-of-a-model">4.1.3. Overview of a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#syntax-overview">4.1.4. Syntax Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#high-level-model-structure">4.1.5. High-level Model Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types-and-type-insts">4.1.6. Types and Type-insts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expressions">4.1.7. Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#items">4.1.8. Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#annotations">4.1.9. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#partiality">4.1.10. Partiality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#built-in-operations">4.1.11. Built-in Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#content-types">4.1.12. Content-types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#json-support">4.1.13. JSON support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#full-grammar">4.1.14. Full grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.1. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html">4.2.2. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-optiontypes.html">4.2.3. Option type support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-options.html">4.2.4. Compiler options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-builtins.html">4.2.5. Builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.6. FlatZinc builtins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#specification-of-flatzinc">4.3.1. Specification of FlatZinc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#output">4.3.2. Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#solver-specific-libraries">4.3.3. Solver-specific Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#command-line-interface">4.3.4. Command Line Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#solver-configuration-files">4.3.5. Solver Configuration Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#grammar">4.3.6. Grammar</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -174,125 +214,126 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">3.1. Specification of MiniZinc</a><ul>
-<li><a class="reference internal" href="#introduction">3.1.1. Introduction</a><ul>
-<li><a class="reference internal" href="#original-authors">3.1.1.1. Original authors.</a></li>
+<li><a class="reference internal" href="#">4.1. Specification of MiniZinc</a><ul>
+<li><a class="reference internal" href="#introduction">4.1.1. Introduction</a><ul>
+<li><a class="reference internal" href="#original-authors">4.1.1.1. Original authors.</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#notation">3.1.2. Notation</a></li>
-<li><a class="reference internal" href="#overview-of-a-model">3.1.3. Overview of a Model</a><ul>
-<li><a class="reference internal" href="#evaluation-phases">3.1.3.1. Evaluation Phases</a></li>
-<li><a class="reference internal" href="#run-time-outcomes">3.1.3.2. Run-time Outcomes</a></li>
-<li><a class="reference internal" href="#output">3.1.3.3. Output</a></li>
+<li><a class="reference internal" href="#notation">4.1.2. Notation</a></li>
+<li><a class="reference internal" href="#overview-of-a-model">4.1.3. Overview of a Model</a><ul>
+<li><a class="reference internal" href="#evaluation-phases">4.1.3.1. Evaluation Phases</a></li>
+<li><a class="reference internal" href="#run-time-outcomes">4.1.3.2. Run-time Outcomes</a></li>
+<li><a class="reference internal" href="#output">4.1.3.3. Output</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#syntax-overview">3.1.4. Syntax Overview</a><ul>
-<li><a class="reference internal" href="#character-set">3.1.4.1. Character Set</a></li>
-<li><a class="reference internal" href="#comments">3.1.4.2. Comments</a></li>
-<li><a class="reference internal" href="#spec-identifiers">3.1.4.3. Identifiers</a></li>
+<li><a class="reference internal" href="#syntax-overview">4.1.4. Syntax Overview</a><ul>
+<li><a class="reference internal" href="#character-set">4.1.4.1. Character Set</a></li>
+<li><a class="reference internal" href="#comments">4.1.4.2. Comments</a></li>
+<li><a class="reference internal" href="#spec-identifiers">4.1.4.3. Identifiers</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#high-level-model-structure">3.1.5. High-level Model Structure</a><ul>
-<li><a class="reference internal" href="#model-instance-files">3.1.5.1. Model Instance Files</a></li>
-<li><a class="reference internal" href="#namespaces">3.1.5.2. Namespaces</a></li>
-<li><a class="reference internal" href="#scopes">3.1.5.3. Scopes</a></li>
+<li><a class="reference internal" href="#high-level-model-structure">4.1.5. High-level Model Structure</a><ul>
+<li><a class="reference internal" href="#model-instance-files">4.1.5.1. Model Instance Files</a></li>
+<li><a class="reference internal" href="#namespaces">4.1.5.2. Namespaces</a></li>
+<li><a class="reference internal" href="#scopes">4.1.5.3. Scopes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#types-and-type-insts">3.1.6. Types and Type-insts</a><ul>
-<li><a class="reference internal" href="#properties-of-types">3.1.6.1. Properties of Types</a></li>
-<li><a class="reference internal" href="#instantiations">3.1.6.2. Instantiations</a></li>
-<li><a class="reference internal" href="#type-insts">3.1.6.3. Type-insts</a></li>
-<li><a class="reference internal" href="#type-inst-expression-overview">3.1.6.4. Type-inst expression overview</a></li>
-<li><a class="reference internal" href="#built-in-scalar-types-and-type-insts">3.1.6.5. Built-in Scalar Types and Type-insts</a><ul>
-<li><a class="reference internal" href="#booleans">3.1.6.5.1. Booleans</a></li>
-<li><a class="reference internal" href="#integers">3.1.6.5.2. Integers</a></li>
-<li><a class="reference internal" href="#floats">3.1.6.5.3. Floats</a></li>
-<li><a class="reference internal" href="#enumerated-types">3.1.6.5.4. Enumerated Types</a></li>
-<li><a class="reference internal" href="#strings">3.1.6.5.5. Strings</a></li>
+<li><a class="reference internal" href="#types-and-type-insts">4.1.6. Types and Type-insts</a><ul>
+<li><a class="reference internal" href="#properties-of-types">4.1.6.1. Properties of Types</a></li>
+<li><a class="reference internal" href="#instantiations">4.1.6.2. Instantiations</a></li>
+<li><a class="reference internal" href="#type-insts">4.1.6.3. Type-insts</a></li>
+<li><a class="reference internal" href="#type-inst-expression-overview">4.1.6.4. Type-inst expression overview</a></li>
+<li><a class="reference internal" href="#built-in-scalar-types-and-type-insts">4.1.6.5. Built-in Scalar Types and Type-insts</a><ul>
+<li><a class="reference internal" href="#booleans">Booleans</a></li>
+<li><a class="reference internal" href="#integers">Integers</a></li>
+<li><a class="reference internal" href="#floats">Floats</a></li>
+<li><a class="reference internal" href="#enumerated-types">Enumerated Types</a></li>
+<li><a class="reference internal" href="#strings">Strings</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#built-in-compound-types-and-type-insts">3.1.6.6. Built-in Compound Types and Type-insts</a><ul>
-<li><a class="reference internal" href="#sets">3.1.6.6.1. Sets</a></li>
-<li><a class="reference internal" href="#arrays">3.1.6.6.2. Arrays</a></li>
-<li><a class="reference internal" href="#option-types">3.1.6.6.3. Option Types</a></li>
-<li><a class="reference internal" href="#the-annotation-type">3.1.6.6.4. The Annotation Type</a></li>
+<li><a class="reference internal" href="#built-in-compound-types-and-type-insts">4.1.6.6. Built-in Compound Types and Type-insts</a><ul>
+<li><a class="reference internal" href="#sets">Sets</a></li>
+<li><a class="reference internal" href="#arrays">Arrays</a></li>
+<li><a class="reference internal" href="#option-types">Option Types</a></li>
+<li><a class="reference internal" href="#the-annotation-type">The Annotation Type</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constrained-type-insts">3.1.6.7. Constrained Type-insts</a><ul>
-<li><a class="reference internal" href="#set-expression-type-insts">3.1.6.7.1. Set Expression Type-insts</a></li>
-<li><a class="reference internal" href="#float-range-type-insts">3.1.6.7.2. Float Range Type-insts</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#expressions">3.1.7. Expressions</a><ul>
-<li><a class="reference internal" href="#expressions-overview">3.1.7.1. Expressions Overview</a></li>
-<li><a class="reference internal" href="#operators">3.1.7.2. Operators</a></li>
-<li><a class="reference internal" href="#expression-atoms">3.1.7.3. Expression Atoms</a><ul>
-<li><a class="reference internal" href="#spec-identifier-expressions-and-quoted-operator-expressions">3.1.7.3.1. Identifier Expressions and Quoted Operator Expressions</a></li>
-<li><a class="reference internal" href="#anonymous-decision-variables">3.1.7.3.2. Anonymous Decision Variables</a></li>
-<li><a class="reference internal" href="#boolean-literals">3.1.7.3.3. Boolean Literals</a></li>
-<li><a class="reference internal" href="#integer-and-float-literals">3.1.7.3.4. Integer and Float Literals</a></li>
-<li><a class="reference internal" href="#string-literals-and-string-interpolation">3.1.7.3.5. String Literals and String Interpolation</a></li>
-<li><a class="reference internal" href="#set-literals">3.1.7.3.6. Set Literals</a></li>
-<li><a class="reference internal" href="#set-comprehensions">3.1.7.3.7. Set Comprehensions</a></li>
-<li><a class="reference internal" href="#array-literals">3.1.7.3.8. Array Literals</a></li>
-<li><a class="reference internal" href="#d-array-literals">3.1.7.3.9. 2d Array Literals</a></li>
-<li><a class="reference internal" href="#array-comprehensions">3.1.7.3.10. Array Comprehensions</a></li>
-<li><a class="reference internal" href="#array-access-expressions">3.1.7.3.11. Array Access Expressions</a></li>
-<li><a class="reference internal" href="#annotation-literals">3.1.7.3.12. Annotation Literals</a></li>
-<li><a class="reference internal" href="#if-then-else-expressions">3.1.7.3.13. If-then-else Expressions</a></li>
-<li><a class="reference internal" href="#let-expressions">3.1.7.3.14. Let Expressions</a></li>
-<li><a class="reference internal" href="#call-expressions">3.1.7.3.15. Call Expressions</a></li>
-<li><a class="reference internal" href="#generator-call-expressions">3.1.7.3.16. Generator Call Expressions</a></li>
+<li><a class="reference internal" href="#constrained-type-insts">4.1.6.7. Constrained Type-insts</a><ul>
+<li><a class="reference internal" href="#set-expression-type-insts">Set Expression Type-insts</a></li>
+<li><a class="reference internal" href="#float-range-type-insts">Float Range Type-insts</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#items">3.1.8. Items</a><ul>
-<li><a class="reference internal" href="#include-items">3.1.8.1. Include Items</a></li>
-<li><a class="reference internal" href="#variable-declaration-items">3.1.8.2. Variable Declaration Items</a></li>
-<li><a class="reference internal" href="#enum-items">3.1.8.3. Enum Items</a></li>
-<li><a class="reference internal" href="#assignment-items">3.1.8.4. Assignment Items</a></li>
-<li><a class="reference internal" href="#constraint-items">3.1.8.5. Constraint Items</a></li>
-<li><a class="reference internal" href="#solve-items">3.1.8.6. Solve Items</a></li>
-<li><a class="reference internal" href="#output-items">3.1.8.7. Output Items</a></li>
-<li><a class="reference internal" href="#annotation-items">3.1.8.8. Annotation Items</a></li>
-<li><a class="reference internal" href="#user-defined-operations">3.1.8.9. User-defined Operations</a><ul>
-<li><a class="reference internal" href="#basic-properties">3.1.8.9.1. Basic Properties</a></li>
-<li><a class="reference internal" href="#ad-hoc-polymorphism">3.1.8.9.2. Ad-hoc polymorphism</a></li>
-<li><a class="reference internal" href="#local-variables">3.1.8.9.3. Local Variables</a></li>
+<li><a class="reference internal" href="#expressions">4.1.7. Expressions</a><ul>
+<li><a class="reference internal" href="#expressions-overview">4.1.7.1. Expressions Overview</a></li>
+<li><a class="reference internal" href="#operators">4.1.7.2. Operators</a></li>
+<li><a class="reference internal" href="#expression-atoms">4.1.7.3. Expression Atoms</a><ul>
+<li><a class="reference internal" href="#spec-identifier-expressions-and-quoted-operator-expressions">Identifier Expressions and Quoted Operator Expressions</a></li>
+<li><a class="reference internal" href="#anonymous-decision-variables">Anonymous Decision Variables</a></li>
+<li><a class="reference internal" href="#boolean-literals">Boolean Literals</a></li>
+<li><a class="reference internal" href="#integer-and-float-literals">Integer and Float Literals</a></li>
+<li><a class="reference internal" href="#string-literals-and-string-interpolation">String Literals and String Interpolation</a></li>
+<li><a class="reference internal" href="#set-literals">Set Literals</a></li>
+<li><a class="reference internal" href="#set-comprehensions">Set Comprehensions</a></li>
+<li><a class="reference internal" href="#array-literals">Array Literals</a></li>
+<li><a class="reference internal" href="#d-array-literals">2d Array Literals</a></li>
+<li><a class="reference internal" href="#array-comprehensions">Array Comprehensions</a></li>
+<li><a class="reference internal" href="#array-access-expressions">Array Access Expressions</a></li>
+<li><a class="reference internal" href="#array-slice-expressions">Array Slice Expressions</a></li>
+<li><a class="reference internal" href="#annotation-literals">Annotation Literals</a></li>
+<li><a class="reference internal" href="#if-then-else-expressions">If-then-else Expressions</a></li>
+<li><a class="reference internal" href="#let-expressions">Let Expressions</a></li>
+<li><a class="reference internal" href="#call-expressions">Call Expressions</a></li>
+<li><a class="reference internal" href="#generator-call-expressions">Generator Call Expressions</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#annotations">3.1.9. Annotations</a></li>
-<li><a class="reference internal" href="#partiality">3.1.10. Partiality</a><ul>
-<li><a class="reference internal" href="#partial-assignments">3.1.10.1. Partial Assignments</a></li>
-<li><a class="reference internal" href="#partial-predicate-function-and-annotation-arguments">3.1.10.2. Partial Predicate/Function and Annotation Arguments</a></li>
-<li><a class="reference internal" href="#partial-array-accesses">3.1.10.3. Partial Array Accesses</a></li>
+<li><a class="reference internal" href="#items">4.1.8. Items</a><ul>
+<li><a class="reference internal" href="#include-items">4.1.8.1. Include Items</a></li>
+<li><a class="reference internal" href="#variable-declaration-items">4.1.8.2. Variable Declaration Items</a></li>
+<li><a class="reference internal" href="#enum-items">4.1.8.3. Enum Items</a></li>
+<li><a class="reference internal" href="#assignment-items">4.1.8.4. Assignment Items</a></li>
+<li><a class="reference internal" href="#constraint-items">4.1.8.5. Constraint Items</a></li>
+<li><a class="reference internal" href="#solve-items">4.1.8.6. Solve Items</a></li>
+<li><a class="reference internal" href="#output-items">4.1.8.7. Output Items</a></li>
+<li><a class="reference internal" href="#annotation-items">4.1.8.8. Annotation Items</a></li>
+<li><a class="reference internal" href="#user-defined-operations">4.1.8.9. User-defined Operations</a><ul>
+<li><a class="reference internal" href="#basic-properties">Basic Properties</a></li>
+<li><a class="reference internal" href="#ad-hoc-polymorphism">Ad-hoc polymorphism</a></li>
+<li><a class="reference internal" href="#local-variables">Local Variables</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#built-in-operations">3.1.11. Built-in Operations</a><ul>
-<li><a class="reference internal" href="#comparison-operations">3.1.11.1. Comparison Operations</a></li>
-<li><a class="reference internal" href="#arithmetic-operations">3.1.11.2. Arithmetic Operations</a></li>
-<li><a class="reference internal" href="#logical-operations">3.1.11.3. Logical Operations</a></li>
-<li><a class="reference internal" href="#set-operations">3.1.11.4. Set Operations</a></li>
-<li><a class="reference internal" href="#array-operations">3.1.11.5. Array Operations</a></li>
-<li><a class="reference internal" href="#coercion-operations">3.1.11.6. Coercion Operations</a></li>
-<li><a class="reference internal" href="#string-operations">3.1.11.7. String Operations</a></li>
-<li><a class="reference internal" href="#bound-and-domain-operations">3.1.11.8. Bound and Domain Operations</a></li>
-<li><a class="reference internal" href="#option-type-operations">3.1.11.9. Option Type Operations</a></li>
-<li><a class="reference internal" href="#other-operations">3.1.11.10. Other Operations</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#content-types">3.1.12. Content-types</a></li>
-<li><a class="reference internal" href="#json-support">3.1.13. JSON support</a></li>
-<li><a class="reference internal" href="#full-grammar">3.1.14. Full grammar</a><ul>
-<li><a class="reference internal" href="#id1">3.1.14.1. Items</a></li>
-<li><a class="reference internal" href="#type-inst-expressions">3.1.14.2. Type-Inst Expressions</a></li>
-<li><a class="reference internal" href="#id2">3.1.14.3. Expressions</a></li>
-<li><a class="reference internal" href="#miscellaneous-elements">3.1.14.4. Miscellaneous Elements</a></li>
+<li><a class="reference internal" href="#annotations">4.1.9. Annotations</a></li>
+<li><a class="reference internal" href="#partiality">4.1.10. Partiality</a><ul>
+<li><a class="reference internal" href="#partial-assignments">4.1.10.1. Partial Assignments</a></li>
+<li><a class="reference internal" href="#partial-predicate-function-and-annotation-arguments">4.1.10.2. Partial Predicate/Function and Annotation Arguments</a></li>
+<li><a class="reference internal" href="#partial-array-accesses">4.1.10.3. Partial Array Accesses</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#built-in-operations">4.1.11. Built-in Operations</a><ul>
+<li><a class="reference internal" href="#comparison-operations">4.1.11.1. Comparison Operations</a></li>
+<li><a class="reference internal" href="#arithmetic-operations">4.1.11.2. Arithmetic Operations</a></li>
+<li><a class="reference internal" href="#logical-operations">4.1.11.3. Logical Operations</a></li>
+<li><a class="reference internal" href="#set-operations">4.1.11.4. Set Operations</a></li>
+<li><a class="reference internal" href="#array-operations">4.1.11.5. Array Operations</a></li>
+<li><a class="reference internal" href="#coercion-operations">4.1.11.6. Coercion Operations</a></li>
+<li><a class="reference internal" href="#string-operations">4.1.11.7. String Operations</a></li>
+<li><a class="reference internal" href="#bound-and-domain-operations">4.1.11.8. Bound and Domain Operations</a></li>
+<li><a class="reference internal" href="#option-type-operations">4.1.11.9. Option Type Operations</a></li>
+<li><a class="reference internal" href="#other-operations">4.1.11.10. Other Operations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#content-types">4.1.12. Content-types</a></li>
+<li><a class="reference internal" href="#json-support">4.1.13. JSON support</a></li>
+<li><a class="reference internal" href="#full-grammar">4.1.14. Full grammar</a><ul>
+<li><a class="reference internal" href="#id1">4.1.14.1. Items</a></li>
+<li><a class="reference internal" href="#type-inst-expressions">4.1.14.2. Type-Inst Expressions</a></li>
+<li><a class="reference internal" href="#id2">4.1.14.3. Expressions</a></li>
+<li><a class="reference internal" href="#miscellaneous-elements">4.1.14.4. Miscellaneous Elements</a></li>
 </ul>
 </li>
 </ul>
@@ -306,11 +347,11 @@
               
                 
   <li>
-    <a href="part_3_reference.html" title="Previous Chapter: 3. MiniZinc Reference Documentation"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 3. MiniZinc R...</span>
+    <a href="part_4_reference.html" title="Previous Chapter: 4. Reference Manual"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 4. Reference Manual</span>
     </a>
   </li>
   <li>
-    <a href="fzn-interfacing.html" title="Next Chapter: 3.2. Interfacing Solvers to Flatzinc"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">3.2. Interfac... &raquo;</span>
+    <a href="lib.html" title="Next Chapter: 4.2. The MiniZinc library"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4.2. The Mini... &raquo;</span>
     </a>
   </li>
               
@@ -339,9 +380,9 @@
     <div class="col-md-12 content">
       
   <div class="section" id="specification-of-minizinc">
-<h1>3.1. Specification of MiniZinc<a class="headerlink" href="#specification-of-minizinc" title="Permalink to this headline">¶</a></h1>
+<span id="ch-mzn-spec"></span><h1>4.1. Specification of MiniZinc<a class="headerlink" href="#specification-of-minizinc" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>3.1.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>4.1.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>This document defines MiniZinc, a language for modelling constraint
 satisfaction and optimisation problems.</p>
 <p>MiniZinc is a high-level, typed, mostly first-order, functional, modelling
@@ -384,7 +425,7 @@ written in italics, and do not constitute part of the specification as such.
 <em>Rationale: These explanations are present because they are useful to both
 the designers and the users of MiniZinc.</em></p>
 <div class="section" id="original-authors">
-<h3>3.1.1.1. Original authors.<a class="headerlink" href="#original-authors" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.1.1. Original authors.<a class="headerlink" href="#original-authors" title="Permalink to this headline">¶</a></h3>
 <p>The original version of this document was prepared by
 Nicholas Nethercote, Kim Marriott, Reza Rafeh, Mark Wallace
 and Maria Garcia de la Banda.
@@ -405,7 +446,7 @@ The Design of the Zinc Modelling Language.
 </div>
 </div>
 <div class="section" id="notation">
-<span id="spec-syntax-notation"></span><h2>3.1.2. Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h2>
+<span id="spec-syntax-notation"></span><h2>4.1.2. Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h2>
 <p>The basics of the EBNF used in this specification are as follows.</p>
 <ul>
 <li><p class="first">Non-terminals are written between angle brackets, <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;item&gt;</span><span class="s"></span></code>.</p>
@@ -417,10 +458,10 @@ A double quote terminal is written as a sequence of three double quotes: <code c
 e.g. <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="p">[</span><span class="s"> &quot;var&quot; </span><span class="p">]</span><span class="s"></span></code>.</p>
 </li>
 <li><p class="first">Sequences of zero or more items are written with parentheses and a
-star, e.g. <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="p">(</span><span class="s"> &quot;,&quot; </span><span class="o">&lt;</span><span class="nv">ident</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">*</span><span class="s"></span></code>.</p>
+star, e.g. <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="p">(</span><span class="s"> &quot;,&quot; </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">*</span><span class="s"></span></code>.</p>
 </li>
 <li><p class="first">Sequences of one or more items are written with parentheses and a
-plus, e.g. <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">msg</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">+</span><span class="s"></span></code>.</p>
+plus, e.g. <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;msg&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">+</span><span class="s"></span></code>.</p>
 </li>
 <li><p class="first">Non-empty lists are written with an item, a separator/terminator
 terminal, and three dots.  For example, this:</p>
@@ -428,7 +469,7 @@ terminal, and three dots.  For example, this:</p>
 </pre></div>
 </div>
 <p>is short for this:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> &quot;,&quot; </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">*</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;,&quot; </span><span class="p">]</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> &quot;,&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">*</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;,&quot; </span><span class="p">]</span><span class="s"></span>
 </pre></div>
 </div>
 <p>The final terminal is always optional in non-empty lists.</p>
@@ -446,7 +487,7 @@ The following conventions are used:</p>
 </ul>
 </div>
 <div class="section" id="overview-of-a-model">
-<span id="spec-overview"></span><h2>3.1.3. Overview of a Model<a class="headerlink" href="#overview-of-a-model" title="Permalink to this headline">¶</a></h2>
+<span id="spec-overview"></span><h2>4.1.3. Overview of a Model<a class="headerlink" href="#overview-of-a-model" title="Permalink to this headline">¶</a></h2>
 <p>Conceptually, a MiniZinc problem specification has two parts.</p>
 <ol class="arabic simple">
 <li>The <em>model</em>: the main part of the problem specification, which
@@ -467,7 +508,7 @@ ordered according to an objective and
 the aim is to find a solution whose objective is optimal.
 <a class="reference internal" href="#spec-solve-items"><span class="std std-ref">Solve Items</span></a> specifies how the class of problem is chosen.</p>
 <div class="section" id="evaluation-phases">
-<h3>3.1.3.1. Evaluation Phases<a class="headerlink" href="#evaluation-phases" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.3.1. Evaluation Phases<a class="headerlink" href="#evaluation-phases" title="Permalink to this headline">¶</a></h3>
 <p>A MiniZinc model instance is evaluated in two distinct phases.</p>
 <ol class="arabic simple">
 <li>Instance-time: static checking of the model instance.</li>
@@ -490,11 +531,11 @@ if the unsatisfiability is detected at run-time.</p>
 if the objective for an optimisation problem is unbounded.</p>
 </div>
 <div class="section" id="run-time-outcomes">
-<span id="spec-run-time-outcomes"></span><h3>3.1.3.2. Run-time Outcomes<a class="headerlink" href="#run-time-outcomes" title="Permalink to this headline">¶</a></h3>
+<span id="spec-run-time-outcomes"></span><h3>4.1.3.2. Run-time Outcomes<a class="headerlink" href="#run-time-outcomes" title="Permalink to this headline">¶</a></h3>
 <p>Assuming there are no static errors,
 the output from the run-time phase has the following abstract form:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;output&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;no-solutions&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">warnings</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="cs">&lt;free-text&gt;</span><span class="s"></span>
-<span class="cs">           |</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">solution</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">*</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">complete</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">warnings</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="cs">&lt;free-text&gt;</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;output&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;no-solutions&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;warnings&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="cs">&lt;free-text&gt;</span><span class="s"></span>
+<span class="cs">           |</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;solution&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">*</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;complete&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;warnings&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="cs">&lt;free-text&gt;</span><span class="s"></span>
 </pre></div>
 </div>
 <p>If a solution occurs in the output
@@ -514,7 +555,7 @@ For example, it may print
 a summary of benchmarking statistics or resources used.</p>
 </div>
 <div class="section" id="output">
-<span id="spec-output"></span><h3>3.1.3.3. Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
+<span id="spec-output"></span><h3>4.1.3.3. Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
 <p>Implementations must be capable of producing output of content type
 <tt class="docutils literal">application/x-zinc-output</tt>,
 which is described below and also in <a class="reference internal" href="#spec-content-types"><span class="std std-ref">Content-types</span></a>.
@@ -550,9 +591,9 @@ the statement is that the solution set is complete,
 and for an outcome of no better solutions
 the statement is that the last solution is optimal.
 <em>Rationale: These are the logical implications of a search being complete.</em></p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;warnings&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">message</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">+</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;warnings&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;message&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">+</span><span class="s"></span>
 
-<span class="cs">&lt;message&gt;</span><span class="s">  </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">line</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">+</span><span class="s"></span>
+<span class="cs">&lt;message&gt;</span><span class="s">  </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;line&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">+</span><span class="s"></span>
 </pre></div>
 </div>
 <p>If the search is incomplete,
@@ -572,9 +613,9 @@ an unbounded objective is not regarded as a source of incompleteness.</p>
 </div>
 </div>
 <div class="section" id="syntax-overview">
-<span id="spec-syntax-overview"></span><h2>3.1.4. Syntax Overview<a class="headerlink" href="#syntax-overview" title="Permalink to this headline">¶</a></h2>
+<span id="spec-syntax-overview"></span><h2>4.1.4. Syntax Overview<a class="headerlink" href="#syntax-overview" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="character-set">
-<h3>3.1.4.1. Character Set<a class="headerlink" href="#character-set" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.4.1. Character Set<a class="headerlink" href="#character-set" title="Permalink to this headline">¶</a></h3>
 <p>The input files to MiniZinc must be encoded as UTF-8.</p>
 <p>MiniZinc is case sensitive.  There are no places where upper-case or
 lower-case letters must be used.</p>
@@ -582,13 +623,13 @@ lower-case letters must be used.</p>
 (containing spaces, tabs and newlines) is equivalent to any other.</p>
 </div>
 <div class="section" id="comments">
-<h3>3.1.4.2. Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.4.2. Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
 <p>A <tt class="docutils literal">%</tt> indicates that the rest of the line is a comment.  MiniZinc
 also has block comments, using symbols <tt class="docutils literal">/*</tt> and <tt class="docutils literal">*/</tt>
 to mark the beginning and end of a comment.</p>
 </div>
 <div class="section" id="spec-identifiers">
-<span id="identifiers"></span><h3>3.1.4.3. Identifiers<a class="headerlink" href="#spec-identifiers" title="Permalink to this headline">¶</a></h3>
+<span id="identifiers"></span><h3>4.1.4.3. Identifiers<a class="headerlink" href="#spec-identifiers" title="Permalink to this headline">¶</a></h3>
 <p>Identifiers have the following syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="sr">[A-Za-z][A-Za-z0-9_]</span><span class="o">*</span><span class="s">       </span><span class="c">% excluding keywords</span><span class="s"></span>
 <span class="cs">          |</span><span class="s"> &quot;&#39;&quot; </span><span class="sr">[^&#39;\xa\xd\x0]</span><span class="o">*</span><span class="s"> &quot;&#39;&quot;</span>
@@ -656,9 +697,9 @@ for details.</p>
 </div>
 </div>
 <div class="section" id="high-level-model-structure">
-<span id="spec-high-level-model-structure"></span><h2>3.1.5. High-level Model Structure<a class="headerlink" href="#high-level-model-structure" title="Permalink to this headline">¶</a></h2>
+<span id="spec-high-level-model-structure"></span><h2>4.1.5. High-level Model Structure<a class="headerlink" href="#high-level-model-structure" title="Permalink to this headline">¶</a></h2>
 <p>A MiniZinc model consists of multiple <em>items</em>:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;model&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">item</span><span class="o">&gt;</span><span class="s"> &quot;;&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;model&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;item&gt;</span><span class="s"> &quot;;&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"></span>
 </pre></div>
 </div>
 <p>Items can occur in any order; identifiers need not be declared before they are used. Items have the following top-level syntax:</p>
@@ -699,7 +740,7 @@ Predicates, functions, and built-in operators are described collectively as
 <p>Annotation items augment the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code> type, values of which can specify
 non-declarative and/or solver-specific information in a model.</p>
 <div class="section" id="model-instance-files">
-<span id="spec-model-instance-files"></span><h3>3.1.5.1. Model Instance Files<a class="headerlink" href="#model-instance-files" title="Permalink to this headline">¶</a></h3>
+<span id="spec-model-instance-files"></span><h3>4.1.5.1. Model Instance Files<a class="headerlink" href="#model-instance-files" title="Permalink to this headline">¶</a></h3>
 <p>MiniZinc models can be constructed from multiple files using
 include items (see <a class="reference internal" href="#spec-include-items"><span class="std std-ref">Include Items</span></a>).  MiniZinc has no
 module system as such;  all the included files are simply concatenated and
@@ -727,7 +768,7 @@ the variables assigned in the data file.</p>
 definitions are compatible with all the models.</p>
 </div>
 <div class="section" id="namespaces">
-<span id="spec-namespaces"></span><h3>3.1.5.2. Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline">¶</a></h3>
+<span id="spec-namespaces"></span><h3>4.1.5.2. Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline">¶</a></h3>
 <p>All names declared at the top-level belong to a single namespace.
 It includes the following names.</p>
 <ol class="arabic simple">
@@ -744,7 +785,7 @@ for example.</p>
 <p>MiniZinc supports overloading of built-in and user-defined operations.</p>
 </div>
 <div class="section" id="scopes">
-<span id="spec-scopes"></span><h3>3.1.5.3. Scopes<a class="headerlink" href="#scopes" title="Permalink to this headline">¶</a></h3>
+<span id="spec-scopes"></span><h3>4.1.5.3. Scopes<a class="headerlink" href="#scopes" title="Permalink to this headline">¶</a></h3>
 <p>Within the top-level namespace, there are several kinds of local scope that
 introduce local names:</p>
 <ul class="simple">
@@ -757,7 +798,7 @@ names declared in the local scope overshadow identical global names.</p>
 </div>
 </div>
 <div class="section" id="types-and-type-insts">
-<span id="spec-types"></span><h2>3.1.6. Types and Type-insts<a class="headerlink" href="#types-and-type-insts" title="Permalink to this headline">¶</a></h2>
+<span id="spec-types"></span><h2>4.1.6. Types and Type-insts<a class="headerlink" href="#types-and-type-insts" title="Permalink to this headline">¶</a></h2>
 <p>MiniZinc provides four scalar built-in types:  Booleans, integers, floats, and
 strings; enumerated types; two compound built-in types:  sets and multi-dimensional arrays;
 and the user extensible annotation type <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code>.</p>
@@ -773,7 +814,7 @@ type (and if so, its domain), whether it is varifiable, the ordering and
 equality operations, whether its variables must be initialised at
 instance-time, and whether it can be involved in automatic coercions.</p>
 <div class="section" id="properties-of-types">
-<h3>3.1.6.1. Properties of Types<a class="headerlink" href="#properties-of-types" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.6.1. Properties of Types<a class="headerlink" href="#properties-of-types" title="Permalink to this headline">¶</a></h3>
 <p>The following list introduces some general properties of MiniZinc types.</p>
 <ul class="simple">
 <li>Currently all types are monotypes. In the future we may allow types which
@@ -799,7 +840,7 @@ types that contain floats.</li>
 </ul>
 </div>
 <div class="section" id="instantiations">
-<span id="spec-instantiations"></span><h3>3.1.6.2. Instantiations<a class="headerlink" href="#instantiations" title="Permalink to this headline">¶</a></h3>
+<span id="spec-instantiations"></span><h3>4.1.6.2. Instantiations<a class="headerlink" href="#instantiations" title="Permalink to this headline">¶</a></h3>
 <p>When a MiniZinc model is evaluated, the value of each variable may initially
 be unknown.  As it runs, each variable’s <em>domain</em> (the set of
 values it may take) may be reduced, possibly to a single value.</p>
@@ -819,7 +860,7 @@ integers, floats, and sets of integers, and enums.
 Arrays and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code> can contain decision variables.</p>
 </div>
 <div class="section" id="type-insts">
-<span id="spec-type-inst"></span><h3>3.1.6.3. Type-insts<a class="headerlink" href="#type-insts" title="Permalink to this headline">¶</a></h3>
+<span id="spec-type-inst"></span><h3>4.1.6.3. Type-insts<a class="headerlink" href="#type-insts" title="Permalink to this headline">¶</a></h3>
 <p>Because each variable has both a type and an inst, they are often
 combined into a single <em>type-inst</em>.  Type-insts are primarily what
 we deal with when writing models, rather than types.</p>
@@ -842,7 +883,7 @@ Varification is relevant to type-inst synonyms and
 array accesses.</p>
 </div>
 <div class="section" id="type-inst-expression-overview">
-<h3>3.1.6.4. Type-inst expression overview<a class="headerlink" href="#type-inst-expression-overview" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.6.4. Type-inst expression overview<a class="headerlink" href="#type-inst-expression-overview" title="Permalink to this headline">¶</a></h3>
 <p>This section partly describes how to write type-insts in MiniZinc models.
 Further details are given for each type as they are described in the
 following sections.</p>
@@ -870,7 +911,7 @@ Type-inst expressions appear in variable declarations
 <span class="cs">                      |</span><span class="s"> </span><span class="cs">&lt;array-ti-expr-tail&gt;</span><span class="s"></span>
 <span class="cs">                      |</span><span class="s"> &quot;ann&quot;</span>
 <span class="cs">                      |</span><span class="s"> &quot;opt&quot; </span><span class="cs">&lt;base-ti-expr-tail&gt;</span><span class="s"></span>
-<span class="cs">                      |</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">}</span><span class="s"></span>
+<span class="cs">                      |</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">}</span><span class="s"></span>
 <span class="cs">                      |</span><span class="s"> </span><span class="cs">&lt;num-expr&gt;</span><span class="s"> &quot;..&quot; </span><span class="cs">&lt;num-expr&gt;</span><span class="s"></span>
 </pre></div>
 </div>
@@ -902,9 +943,9 @@ type-inst error to have <code class="code mzn minizinc docutils literal highligh
 expression.</p>
 </div>
 <div class="section" id="built-in-scalar-types-and-type-insts">
-<span id="spec-built-in-scalar-types"></span><h3>3.1.6.5. Built-in Scalar Types and Type-insts<a class="headerlink" href="#built-in-scalar-types-and-type-insts" title="Permalink to this headline">¶</a></h3>
+<span id="spec-built-in-scalar-types"></span><h3>4.1.6.5. Built-in Scalar Types and Type-insts<a class="headerlink" href="#built-in-scalar-types-and-type-insts" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="booleans">
-<h4>3.1.6.5.1. Booleans<a class="headerlink" href="#booleans" title="Permalink to this headline">¶</a></h4>
+<h4>Booleans<a class="headerlink" href="#booleans" title="Permalink to this headline">¶</a></h4>
 <p><em>Overview.</em>
 Booleans represent truthhood or falsity.  <em>Rationale: Boolean values are
 not represented by integers.
@@ -931,7 +972,7 @@ Boolean variable need not be.</p>
 <a class="reference internal" href="#spec-integers"><span class="std std-ref">Integers</span></a>.</p>
 </div>
 <div class="section" id="integers">
-<span id="spec-integers"></span><h4>3.1.6.5.2. Integers<a class="headerlink" href="#integers" title="Permalink to this headline">¶</a></h4>
+<span id="spec-integers"></span><h4>Integers<a class="headerlink" href="#integers" title="Permalink to this headline">¶</a></h4>
 <p><em>Overview.</em>
 Integers represent integral numbers.  Integer representations are
 implementation-defined.  This means that the representable range of
@@ -961,7 +1002,7 @@ integer variable need not be.</p>
 <a class="reference internal" href="#spec-floats"><span class="std std-ref">Floats</span></a>.</p>
 </div>
 <div class="section" id="floats">
-<span id="spec-floats"></span><h4>3.1.6.5.3. Floats<a class="headerlink" href="#floats" title="Permalink to this headline">¶</a></h4>
+<span id="spec-floats"></span><h4>Floats<a class="headerlink" href="#floats" title="Permalink to this headline">¶</a></h4>
 <p><em>Overview.</em>
 Floats represent real numbers.  Float representations are
 implementation-defined.  This means that the representable range and
@@ -990,7 +1031,7 @@ float variable need not be.</p>
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">par</span><span class="s"> </span><span class="kt">float</span><span class="s"></span></code> <span class="math notranslate nohighlight">\(\stackrel{c}{\rightarrow}\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="s"></span></code>.</p>
 </div>
 <div class="section" id="enumerated-types">
-<span id="spec-enumerated-types"></span><h4>3.1.6.5.4. Enumerated Types<a class="headerlink" href="#enumerated-types" title="Permalink to this headline">¶</a></h4>
+<span id="spec-enumerated-types"></span><h4>Enumerated Types<a class="headerlink" href="#enumerated-types" title="Permalink to this headline">¶</a></h4>
 <p><em>Overview.</em>
 Enumerated types (or <em>enums</em> for short) provide a set of named
 alternatives. Each alternative is identified by its <em>case name</em>.
@@ -1020,7 +1061,7 @@ enum variable need not be.</p>
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="nv">X</span><span class="s"></span></code> <span class="math notranslate nohighlight">\(\stackrel{c}{\rightarrow}\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="s"></span></code>.</p>
 </div>
 <div class="section" id="strings">
-<span id="spec-strings"></span><h4>3.1.6.5.5. Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h4>
+<span id="spec-strings"></span><h4>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h4>
 <p><em>Overview.</em>
 Strings are primitive, i.e., they are not lists of characters.</p>
 <p>String expressions are used in assertions, output items and
@@ -1045,9 +1086,9 @@ a string using the built-in <code class="code mzn minizinc docutils literal high
 </div>
 </div>
 <div class="section" id="built-in-compound-types-and-type-insts">
-<span id="spec-built-in-compound-types"></span><h3>3.1.6.6. Built-in Compound Types and Type-insts<a class="headerlink" href="#built-in-compound-types-and-type-insts" title="Permalink to this headline">¶</a></h3>
+<span id="spec-built-in-compound-types"></span><h3>4.1.6.6. Built-in Compound Types and Type-insts<a class="headerlink" href="#built-in-compound-types-and-type-insts" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="sets">
-<span id="spec-sets"></span><h4>3.1.6.6.1. Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h4>
+<span id="spec-sets"></span><h4>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h4>
 <p><em>Overview.</em>
 A set is a collection with no duplicates.</p>
 <p><em>Allowed Insts.</em>
@@ -1095,7 +1136,7 @@ set variable need not be.</p>
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">TI</span><span class="s"></span></code> <span class="math notranslate nohighlight">\(\stackrel{c}{\rightarrow}\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">UI</span><span class="s"></span></code>.</p>
 </div>
 <div class="section" id="arrays">
-<h4>3.1.6.6.2. Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h4>
+<h4>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h4>
 <p><em>Overview.</em>
 MiniZinc arrays are maps from fixed integers to values.
 Values can be of any type.
@@ -1152,7 +1193,7 @@ An array’s size must be fixed.  Its indices must also have
 fixed type-insts.  Its elements may be fixed or unfixed.</p>
 <p><em>Syntax.</em>
 An array base type-inst expression tail has this syntax:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;array-ti-expr-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;array&quot; </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">ti</span><span class="o">-</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;of&quot; </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;array-ti-expr-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;array&quot; </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;of&quot; </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"></span>
 <span class="cs">                       |</span><span class="s"> &quot;list&quot; &quot;of&quot; </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"></span>
 </pre></div>
 </div>
@@ -1192,7 +1233,7 @@ so that its length and index set is known.</p>
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">TI0</span><span class="s"></span></code> <span class="math notranslate nohighlight">\(\stackrel{c}{\rightarrow}\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">UI0</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">TI</span><span class="s"></span></code> <span class="math notranslate nohighlight">\(\stackrel{c}{\rightarrow}\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">UI</span><span class="s"></span></code>.</p>
 </div>
 <div class="section" id="option-types">
-<span id="spec-option-types"></span><h4>3.1.6.6.3. Option Types<a class="headerlink" href="#option-types" title="Permalink to this headline">¶</a></h4>
+<span id="spec-option-types"></span><h4>Option Types<a class="headerlink" href="#option-types" title="Permalink to this headline">¶</a></h4>
 <p><em>Overview.</em>
 Option types defined using the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">opt</span><span class="s"></span></code> type constructor, define types
 that may or may not be there. They are similar to <tt class="docutils literal">Maybe</tt> types of
@@ -1219,7 +1260,7 @@ initialised to <code class="code mzn minizinc docutils literal highlight highlig
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">TI</span><span class="s"></span></code> <span class="math notranslate nohighlight">\(\stackrel{c}{\rightarrow}\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">opt</span><span class="s"> </span><span class="nv">UI</span><span class="s"></span></code> if <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">TI</span><span class="s"></span></code> <span class="math notranslate nohighlight">\(\stackrel{c}{\rightarrow}\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">UI</span><span class="s"></span></code>..</p>
 </div>
 <div class="section" id="the-annotation-type">
-<span id="spec-the-annotation-type"></span><h4>3.1.6.6.4. The Annotation Type<a class="headerlink" href="#the-annotation-type" title="Permalink to this headline">¶</a></h4>
+<span id="spec-the-annotation-type"></span><h4>The Annotation Type<a class="headerlink" href="#the-annotation-type" title="Permalink to this headline">¶</a></h4>
 <p><em>Overview.</em>
 The annotation type, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code>, can be used to represent arbitrary term
 structures.  It is augmented by annotation items (<a class="reference internal" href="#spec-annotation-items"><span class="std std-ref">Annotation Items</span></a>).</p>
@@ -1241,12 +1282,12 @@ None.</p>
 </div>
 </div>
 <div class="section" id="constrained-type-insts">
-<span id="spec-constrained-type-insts"></span><h3>3.1.6.7. Constrained Type-insts<a class="headerlink" href="#constrained-type-insts" title="Permalink to this headline">¶</a></h3>
+<span id="spec-constrained-type-insts"></span><h3>4.1.6.7. Constrained Type-insts<a class="headerlink" href="#constrained-type-insts" title="Permalink to this headline">¶</a></h3>
 <p>One powerful feature of MiniZinc is <em>constrained type-insts</em>.  A
 constrained type-inst is a restricted version of a <em>base</em> type-inst,
 i.e., a type-inst with fewer values in its domain.</p>
 <div class="section" id="set-expression-type-insts">
-<span id="spec-set-expression-type-insts"></span><h4>3.1.6.7.1. Set Expression Type-insts<a class="headerlink" href="#set-expression-type-insts" title="Permalink to this headline">¶</a></h4>
+<span id="spec-set-expression-type-insts"></span><h4>Set Expression Type-insts<a class="headerlink" href="#set-expression-type-insts" title="Permalink to this headline">¶</a></h4>
 <p>Three kinds of expressions can be used in type-insts.</p>
 <ol class="arabic simple">
 <li>Integer ranges:  e.g. <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="m">3</span><span class="s"></span></code>.</li>
@@ -1263,7 +1304,7 @@ type-inst <code class="code mzn minizinc docutils literal highlight highlight-mi
 the set itself.</p>
 </div>
 <div class="section" id="float-range-type-insts">
-<h4>3.1.6.7.2. Float Range Type-insts<a class="headerlink" href="#float-range-type-insts" title="Permalink to this headline">¶</a></h4>
+<h4>Float Range Type-insts<a class="headerlink" href="#float-range-type-insts" title="Permalink to this headline">¶</a></h4>
 <p>Float ranges can be used as type-insts, e.g. <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1.0</span><span class="s"> </span><span class="o">..</span><span class="s"> </span><span class="m">3.0</span><span class="s"></span></code>.  These are
 treated similarly to integer range type-insts, although <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1.0</span><span class="s"> </span><span class="o">..</span><span class="s"> </span><span class="m">3.0</span><span class="s"></span></code> is
 not a valid expression whereas <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="s"> </span><span class="o">..</span><span class="s"> </span><span class="m">3</span><span class="s"></span></code> is.</p>
@@ -1272,9 +1313,9 @@ not a valid expression whereas <code class="code mzn minizinc docutils literal h
 </div>
 </div>
 <div class="section" id="expressions">
-<span id="spec-expressions"></span><h2>3.1.7. Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h2>
+<span id="spec-expressions"></span><h2>4.1.7. Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="expressions-overview">
-<span id="spec-expressions-overview"></span><h3>3.1.7.1. Expressions Overview<a class="headerlink" href="#expressions-overview" title="Permalink to this headline">¶</a></h3>
+<span id="spec-expressions-overview"></span><h3>4.1.7.1. Expressions Overview<a class="headerlink" href="#expressions-overview" title="Permalink to this headline">¶</a></h3>
 <p>Expressions represent values.  They occur in various kinds of items.  They
 have the following syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;expr-atom&gt;</span><span class="s"> </span><span class="cs">&lt;expr-binop-tail&gt;</span><span class="s"></span>
@@ -1353,7 +1394,7 @@ range types to be parsed correctly.</p>
 </div>
 </div>
 <div class="section" id="operators">
-<span id="spec-operators"></span><h3>3.1.7.2. Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h3>
+<span id="spec-operators"></span><h3>4.1.7.2. Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h3>
 <p>Operators are functions that are distinguished by their syntax in one or two
 ways.  First, some of them contain non-alphanumeric characters that normal
 functions do not (e.g. <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">+</span><span class="s"></span></code>).  Second, their application is written
@@ -1383,9 +1424,9 @@ syntax is the following:</p>
 </pre></div>
 </div>
 <p>Some operators can be written using their unicode symbols, which are listed
-in <a class="reference internal" href="#bin-ops-unicode"><span class="std std-numref">Table 3.1</span></a> (recall that MiniZinc input is UTF-8).</p>
+in <a class="reference internal" href="#bin-ops-unicode"><span class="std std-numref">Table 4.1.1</span></a> (recall that MiniZinc input is UTF-8).</p>
 <span id="bin-ops-unicode"></span><table border="1" class="table-nonfluid table-bordered docutils" id="id3">
-<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">Unicode equivalents of binary operators</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 4.1.1 </span><span class="caption-text">Unicode equivalents of binary operators</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="33%" />
 <col width="47%" />
@@ -1456,7 +1497,7 @@ in <a class="reference internal" href="#bin-ops-unicode"><span class="std std-nu
 </tr>
 </tbody>
 </table>
-<p>The binary operators are listed in <a class="reference internal" href="#bin-ops"><span class="std std-numref">Table 3.2</span></a>. A lower precedence
+<p>The binary operators are listed in <a class="reference internal" href="#bin-ops"><span class="std std-numref">Table 4.1.2</span></a>. A lower precedence
 number means tighter binding; for example, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1+2</span><span class="o">*</span><span class="m">3</span><span class="s"></span></code> is parsed as
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">+</span><span class="p">(</span><span class="m">2*3</span><span class="p">)</span><span class="s"></span></code> because <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">*</span><span class="s"></span></code> binds tighter than <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">+</span><span class="s"></span></code>. Associativity
 indicates how chains of operators with equal precedences are handled; for
@@ -1465,7 +1506,7 @@ left-associative, <code class="code mzn minizinc docutils literal highlight high
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">++</span><span class="s"></span></code> is right-associative, and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">&lt;</span><span class="nv">x</span><span class="o">&lt;</span><span class="m">2</span><span class="s"></span></code> is a syntax error because
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;</span><span class="s"></span></code> is non-associative.</p>
 <span id="bin-ops"></span><table border="1" class="table-nonfluid table-bordered docutils" id="id4">
-<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Binary infix operators</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 4.1.2 </span><span class="caption-text">Binary infix operators</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="72%" />
 <col width="14%" />
@@ -1611,9 +1652,9 @@ equivalent to <code class="code mzn minizinc docutils literal highlight highligh
 <p>The meaning of each operator is given in <a class="reference internal" href="#spec-builtins"><span class="std std-ref">Built-in Operations</span></a>.</p>
 </div>
 <div class="section" id="expression-atoms">
-<h3>3.1.7.3. Expression Atoms<a class="headerlink" href="#expression-atoms" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.7.3. Expression Atoms<a class="headerlink" href="#expression-atoms" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="spec-identifier-expressions-and-quoted-operator-expressions">
-<span id="identifier-expressions-and-quoted-operator-expressions"></span><h4>3.1.7.3.1. Identifier Expressions and Quoted Operator Expressions<a class="headerlink" href="#spec-identifier-expressions-and-quoted-operator-expressions" title="Permalink to this headline">¶</a></h4>
+<span id="identifier-expressions-and-quoted-operator-expressions"></span><h4>Identifier Expressions and Quoted Operator Expressions<a class="headerlink" href="#spec-identifier-expressions-and-quoted-operator-expressions" title="Permalink to this headline">¶</a></h4>
 <p>Identifier expressions and quoted operator expressions have the following
 syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;ident-or-quoted-op&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"></span>
@@ -1633,7 +1674,7 @@ However, in a valid model any identifier or quoted operator serving as an
 expression must be the name of a variable.</p>
 </div>
 <div class="section" id="anonymous-decision-variables">
-<span id="spec-anonymous-decision-variables"></span><h4>3.1.7.3.2. Anonymous Decision Variables<a class="headerlink" href="#anonymous-decision-variables" title="Permalink to this headline">¶</a></h4>
+<span id="spec-anonymous-decision-variables"></span><h4>Anonymous Decision Variables<a class="headerlink" href="#anonymous-decision-variables" title="Permalink to this headline">¶</a></h4>
 <p>There is a special identifier, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">_</span></code>, that represents an unfixed,
 anonymous decision variable.  It can take on any type that can be a decision
 variable.  It is particularly useful for initialising decision variables
@@ -1647,14 +1688,14 @@ elements are unfixed:</p>
 decision variables is fixed.</p>
 </div>
 <div class="section" id="boolean-literals">
-<h4>3.1.7.3.3. Boolean Literals<a class="headerlink" href="#boolean-literals" title="Permalink to this headline">¶</a></h4>
+<h4>Boolean Literals<a class="headerlink" href="#boolean-literals" title="Permalink to this headline">¶</a></h4>
 <p>Boolean literals have this syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;bool-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;false&quot; </span><span class="gr">|</span><span class="s"> &quot;true&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="integer-and-float-literals">
-<h4>3.1.7.3.4. Integer and Float Literals<a class="headerlink" href="#integer-and-float-literals" title="Permalink to this headline">¶</a></h4>
+<h4>Integer and Float Literals<a class="headerlink" href="#integer-and-float-literals" title="Permalink to this headline">¶</a></h4>
 <p>There are three forms of integer literals - decimal, hexadecimal, and
 octal - with these respective forms:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;int-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="sr">[0-9]</span><span class="o">+</span><span class="s"></span>
@@ -1680,15 +1721,15 @@ literal.  This is because it is not possible in general to distinguish a
 when lexing.</p>
 </div>
 <div class="section" id="string-literals-and-string-interpolation">
-<span id="spec-string-interpolation-expressions"></span><h4>3.1.7.3.5. String Literals and String Interpolation<a class="headerlink" href="#string-literals-and-string-interpolation" title="Permalink to this headline">¶</a></h4>
+<span id="spec-string-interpolation-expressions"></span><h4>String Literals and String Interpolation<a class="headerlink" href="#string-literals-and-string-interpolation" title="Permalink to this headline">¶</a></h4>
 <p>String literals are written as in C:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;string-contents&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">([</span><span class="s">^&quot;</span><span class="se">\n</span><span class="s">\] | \[^</span><span class="se">\n</span><span class="s">(])*</span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;string-contents&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="sr">[^&quot;\n\]</span><span class="s"> </span><span class="gr">|</span><span class="s"> \</span><span class="sr">[^\n(]</span><span class="p">)</span><span class="o">*</span><span class="s"></span>
 
-<span class="s">&lt;string-literal&gt; ::= &quot;&quot;&quot; </span><span class="o">&lt;</span><span class="kt">string</span><span class="o">-</span><span class="nv">contents</span><span class="o">&gt;</span><span class="s"> &quot;&quot;&quot;</span>
-<span class="s">                   | &quot;&quot;&quot; </span><span class="o">&lt;</span><span class="kt">string</span><span class="o">-</span><span class="nv">contents</span><span class="o">&gt;</span><span class="s"> &quot;</span><span class="p">\(</span><span class="s">&quot; &lt;string-interpolate-tail&gt;</span>
+<span class="cs">&lt;string-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;&quot;&quot; </span><span class="cs">&lt;string-contents&gt;</span><span class="s"> &quot;&quot;&quot;</span>
+<span class="cs">                   |</span><span class="s"> &quot;&quot;&quot; </span><span class="cs">&lt;string-contents&gt;</span><span class="s"> &quot;\(&quot; </span><span class="cs">&lt;string-interpolate-tail&gt;</span><span class="s"></span>
 
-<span class="s">&lt;string-interpolate-tail&gt; ::= &lt;expr&gt; &quot;</span><span class="p">)</span><span class="s">&quot;</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">-</span><span class="nv">contents</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">                            | &lt;expr&gt; &quot;</span><span class="gr">)</span><span class="s">&quot;&lt;string-contents&gt;&quot;\</span><span class="p">(</span><span class="s">&quot; &lt;string-interpolate-tail&gt;</span>
+<span class="cs">&lt;string-interpolate-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;)&quot;</span><span class="cs">&lt;string-contents&gt;</span><span class="s">&quot;&quot;&quot;</span>
+<span class="cs">                            |</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;)&quot;</span><span class="cs">&lt;string-contents&gt;</span><span class="s">&quot;\(&quot; </span><span class="cs">&lt;string-interpolate-tail&gt;</span><span class="s"></span>
 </pre></div>
 </div>
 <p>This includes C-style escape sequences, such as <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">\&quot;</span></code> for
@@ -1713,9 +1754,9 @@ inserted into the string.</p>
 </div>
 </div>
 <div class="section" id="set-literals">
-<span id="spec-set-literals"></span><h4>3.1.7.3.6. Set Literals<a class="headerlink" href="#set-literals" title="Permalink to this headline">¶</a></h4>
+<span id="spec-set-literals"></span><h4>Set Literals<a class="headerlink" href="#set-literals" title="Permalink to this headline">¶</a></h4>
 <p>Set literals have this syntax:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;set-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;{&quot; </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;}&quot;</span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;set-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;{&quot; </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;}&quot;</span>
 </pre></div>
 </div>
 <p>For example:</p>
@@ -1729,11 +1770,11 @@ coercible to the same type-inst (as in the last example above, where the
 integer <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="s"></span></code> will be coerced to a <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span><span class="s"></span></code>).</p>
 </div>
 <div class="section" id="set-comprehensions">
-<span id="spec-set-comprehensions"></span><h4>3.1.7.3.7. Set Comprehensions<a class="headerlink" href="#set-comprehensions" title="Permalink to this headline">¶</a></h4>
+<span id="spec-set-comprehensions"></span><h4>Set Comprehensions<a class="headerlink" href="#set-comprehensions" title="Permalink to this headline">¶</a></h4>
 <p>Set comprehensions have this syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;set-comp&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;{&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;|&quot; </span><span class="cs">&lt;comp-tail&gt;</span><span class="s"> &quot;}&quot;</span>
 
-<span class="cs">&lt;comp-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;generator&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">[</span><span class="s"> &quot;where&quot; </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
+<span class="cs">&lt;comp-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;generator&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;where&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">.</span>
 
 <span class="cs">&lt;generator&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;in&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
 </pre></div>
@@ -1757,12 +1798,15 @@ inner-most one.  For example:</p>
 <p>The scope of local generator variables is given by the following rules:</p>
 <ul class="simple">
 <li>They are visible within the head expression (before the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="gr">|</span><span class="s"></span></code>).</li>
-<li>They are visible within the where-expression.</li>
-<li>They are visible within generator expressions in any subsequent
-generators.</li>
+<li>They are visible within the where-expression of their own generator.</li>
+<li>They are visible within generator expressions and where-expressions in any subsequent generators.</li>
 </ul>
 <p>The last of these rules means that the following set comprehension is allowed:</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s"> </span><span class="nv">i</span><span class="o">+</span><span class="nv">j</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">3</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">i</span><span class="s"> </span><span class="p">}</span><span class="s">  </span><span class="c">% { 1+1, 2+1, 2+2, 3+1, 3+2, 3+3 }</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Multiple where-expressions are allowed, as in the following example:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nf">f</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="p">)</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">A1</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nf">p</span><span class="p">(</span><span class="nv">i</span><span class="p">),</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">A2</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nf">q</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">)]</span><span class="s"></span>
 </pre></div>
 </div>
 <p>A generator expression must be an array or a fixed set.</p>
@@ -1772,32 +1816,12 @@ array comprehensions, array generators are required for full expressivity
 array).  Set comprehensions have array generators for consistency with array
 comprehensions, which makes implementations simpler.</em></p>
 <p>The where-expression (if present) must be Boolean.
-It can be var, in which case the type of the comprehension is lifted to an optional type.  Only one
-where-expression per comprehension is allowed.</p>
-<p><em>Rationale:
-Allowing one where-expression per generator is another possibility, and one
-that could seemingly result in more efficient evaluation in some cases.  For
-example, consider the following comprehension:</em></p>
-<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nf">f</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="p">)</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">A1</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">A2</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nf">p</span><span class="p">(</span><span class="nv">i</span><span class="p">)</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nf">q</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">)]</span><span class="s"></span>
-</pre></div>
-</div>
-<p><em>If multiple where-expressions were allowed, this could be expressed more
-efficiently in the following manner, which avoids the fruitless “inner loop
-iterations” for each “outer loop iteration” that does not satisfy</em>
-<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nf">p</span><span class="p">(</span><span class="nv">i</span><span class="p">)</span><span class="s"></span></code>:</p>
-<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nf">f</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="p">)</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">A1</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nf">p</span><span class="p">(</span><span class="nv">i</span><span class="p">),</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">A2</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nf">q</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">)]</span><span class="s"></span>
-</pre></div>
-</div>
-<p><em>However, this efficiency can also be achieved with nested comprehensions:</em></p>
-<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nf">f</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="p">)</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="p">[</span><span class="nv">k</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">k</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">A1</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nf">p</span><span class="p">(</span><span class="nv">k</span><span class="p">)],</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">A2</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nf">q</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">)]</span><span class="s"></span>
-</pre></div>
-</div>
-<p><em>Therefore, a single where-expression is all that is supported.</em></p>
+It can be var, in which case the type of the comprehension is lifted to an optional type.</p>
 </div>
 <div class="section" id="array-literals">
-<span id="spec-array-literals"></span><h4>3.1.7.3.8. Array Literals<a class="headerlink" href="#array-literals" title="Permalink to this headline">¶</a></h4>
+<span id="spec-array-literals"></span><h4>Array Literals<a class="headerlink" href="#array-literals" title="Permalink to this headline">¶</a></h4>
 <p>Array literals have this syntax:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;array-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;[&quot; </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;]&quot;</span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;array-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;[&quot; </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;]&quot;</span>
 </pre></div>
 </div>
 <p>For example:</p>
@@ -1813,9 +1837,9 @@ fixed integer <code class="code mzn minizinc docutils literal highlight highligh
 the length of the literal.</p>
 </div>
 <div class="section" id="d-array-literals">
-<span id="spec-2d-array-literals"></span><h4>3.1.7.3.9. 2d Array Literals<a class="headerlink" href="#d-array-literals" title="Permalink to this headline">¶</a></h4>
+<span id="spec-2d-array-literals"></span><h4>2d Array Literals<a class="headerlink" href="#d-array-literals" title="Permalink to this headline">¶</a></h4>
 <p>Simple 2d array literals have this syntax:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;array-literal-2d&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;[|&quot; </span><span class="p">[</span><span class="s"> </span><span class="p">(</span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">.</span><span class="p">)</span><span class="s"> &quot;|&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;|]&quot;</span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;array-literal-2d&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;[|&quot; </span><span class="p">[</span><span class="s"> </span><span class="p">(</span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">.</span><span class="p">)</span><span class="s"> &quot;|&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;|]&quot;</span>
 </pre></div>
 </div>
 <p>For example:</p>
@@ -1834,7 +1858,7 @@ fixed integer <code class="code mzn minizinc docutils literal highlight highligh
 where <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">m</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"></span></code> are determined by the shape of the literal.</p>
 </div>
 <div class="section" id="array-comprehensions">
-<span id="spec-array-comprehensions"></span><h4>3.1.7.3.10. Array Comprehensions<a class="headerlink" href="#array-comprehensions" title="Permalink to this headline">¶</a></h4>
+<span id="spec-array-comprehensions"></span><h4>Array Comprehensions<a class="headerlink" href="#array-comprehensions" title="Permalink to this headline">¶</a></h4>
 <p>Array comprehensions have this syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;array-comp&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;[&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;|&quot; </span><span class="cs">&lt;comp-tail&gt;</span><span class="s"> &quot;]&quot;</span>
 </pre></div>
@@ -1862,12 +1886,12 @@ For example:</p>
 <span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">10</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="p">];</span><span class="s"></span>
 </pre></div>
 </div>
-<p>The length of the array wtill be 10.</p>
+<p>The length of the array will be 10.</p>
 <p>The indices of an evaluated simple array comprehension are implicitly
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="s"></span></code>, where <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"></span></code> is the length of the evaluated comprehension.</p>
 </div>
 <div class="section" id="array-access-expressions">
-<span id="spec-array-access-expressions"></span><h4>3.1.7.3.11. Array Access Expressions<a class="headerlink" href="#array-access-expressions" title="Permalink to this headline">¶</a></h4>
+<span id="spec-array-access-expressions"></span><h4>Array Access Expressions<a class="headerlink" href="#array-access-expressions" title="Permalink to this headline">¶</a></h4>
 <p>Array elements are accessed using square brackets after an expression:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;array-access-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;[&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;]&quot;</span>
 </pre></div>
@@ -1902,10 +1926,37 @@ enum.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="array-slice-expressions">
+<h4>Array Slice Expressions<a class="headerlink" href="#array-slice-expressions" title="Permalink to this headline">¶</a></h4>
+<p>Arrays can be <em>sliced</em> in order to extract individual rows, columns or blocks. The syntax is that of an array access expression (see above), but where one or more of the expressions inside the square brackets are set-valued.</p>
+<p>For example, the following extracts row 2 from a two-dimensional array:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">4</span><span class="o">..</span><span class="m">8</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">row_2_of_x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="m">2,4</span><span class="o">..</span><span class="m">8</span><span class="p">];</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Note that the resulting array <tt class="docutils literal">row_2_of_x</tt> will have index set <tt class="docutils literal">4..8</tt>.</p>
+<p>A short-hand for all indices of a particular dimension is to use just dots:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">4</span><span class="o">..</span><span class="m">8</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">row_2_of_x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="o">..</span><span class="p">];</span><span class="s"></span>
+</pre></div>
+</div>
+<p>You can also restrict the index set by giving a sub-set of the original index set as the slice:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">4</span><span class="o">..</span><span class="m">8</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">row_2_of_x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="m">2,5</span><span class="o">..</span><span class="m">6</span><span class="p">];</span><span class="s"></span>
+</pre></div>
+</div>
+<p>The resulting array <tt class="docutils literal">row_2_of_x</tt> will now have length 2 and index set <tt class="docutils literal">5..6</tt>.</p>
+<p>The dots notation also allows for partial bounds, for example:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">4</span><span class="o">..</span><span class="m">8</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">row_2_of_x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="o">..</span><span class="m">6</span><span class="p">];</span><span class="s"></span>
+</pre></div>
+</div>
+<p>The resulting array will have length 3 and index set <tt class="docutils literal">4..6</tt>. Of course <tt class="docutils literal">6..</tt> would also be allowed and result in an array with index set <tt class="docutils literal">6..8</tt>.</p>
+</div>
 <div class="section" id="annotation-literals">
-<h4>3.1.7.3.12. Annotation Literals<a class="headerlink" href="#annotation-literals" title="Permalink to this headline">¶</a></h4>
+<h4>Annotation Literals<a class="headerlink" href="#annotation-literals" title="Permalink to this headline">¶</a></h4>
 <p>Literals of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code> type have this syntax:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;ann-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;(&quot; </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;)&quot; </span><span class="p">]</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;ann-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;(&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;)&quot; </span><span class="p">]</span><span class="s"></span>
 </pre></div>
 </div>
 <p>For example:</p>
@@ -1918,10 +1969,10 @@ model;  they are intended to be inspected only by an implementation, e.g., to
 direct compilation.</p>
 </div>
 <div class="section" id="if-then-else-expressions">
-<h4>3.1.7.3.13. If-then-else Expressions<a class="headerlink" href="#if-then-else-expressions" title="Permalink to this headline">¶</a></h4>
+<h4>If-then-else Expressions<a class="headerlink" href="#if-then-else-expressions" title="Permalink to this headline">¶</a></h4>
 <p>MiniZinc provides if-then-else expressions, which provide selection from two
 alternatives based on a condition.  They have this syntax:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;if-then-else-expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;if&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;then&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> &quot;elseif&quot; </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> &quot;then&quot; </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">*</span><span class="s"> &quot;else&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;endif&quot;</span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;if-then-else-expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;if&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;then&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;elseif&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;then&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">]</span><span class="o">*</span><span class="s"> &quot;else&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;endif&quot;</span>
 </pre></div>
 </div>
 <p>For example:</p>
@@ -1945,7 +1996,7 @@ depending on whether the condition succeeded or failed.
 This is not the case if it is <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="s"></span></code>.</p>
 </div>
 <div class="section" id="let-expressions">
-<span id="spec-let-expressions"></span><h4>3.1.7.3.14. Let Expressions<a class="headerlink" href="#let-expressions" title="Permalink to this headline">¶</a></h4>
+<span id="spec-let-expressions"></span><h4>Let Expressions<a class="headerlink" href="#let-expressions" title="Permalink to this headline">¶</a></h4>
 <p>Let expressions provide a way of introducing local names for one or more
 expressions and local constraints
 that can be used within another expression.  They are
@@ -1958,7 +2009,7 @@ particularly useful in user-defined operations.</p>
 </pre></div>
 </div>
 <p>For example:</p>
-<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">4</span><span class="p">;</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span><span class="s"></span>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">4</span><span class="p">;</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span><span class="s"></span>
 <span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span><span class="s"></span>
 <span class="s">      </span><span class="k">constraint</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="o">-</span><span class="nv">y</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="p">(</span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">\/</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">-</span><span class="nv">y</span><span class="p">);</span><span class="s"> </span><span class="p">}</span><span class="s"></span>
 <span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="s"></span>
@@ -2009,12 +2060,13 @@ context.  For example</p>
 <span class="k">constraint</span><span class="s"> </span><span class="nv">b</span><span class="s"> </span><span class="o">-&gt;</span><span class="s"> </span><span class="p">(</span><span class="nv">x</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">4</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="m">1</span><span class="p">);</span><span class="s"></span>
 </pre></div>
 </div>
+<p>For backwards compatibility with older versions of MiniZinc, items inside the <tt class="docutils literal">let</tt> can also be separated by commas instead of semicolons.</p>
 </div>
 <div class="section" id="call-expressions">
-<h4>3.1.7.3.15. Call Expressions<a class="headerlink" href="#call-expressions" title="Permalink to this headline">¶</a></h4>
+<h4>Call Expressions<a class="headerlink" href="#call-expressions" title="Permalink to this headline">¶</a></h4>
 <p>Call expressions are used to call predicates and functions.</p>
 <p>Call expressions have this syntax:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;call-expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident-or-quoted-op&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;(&quot; </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;)&quot; </span><span class="p">]</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;call-expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident-or-quoted-op&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;(&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;)&quot; </span><span class="p">]</span><span class="s"></span>
 </pre></div>
 </div>
 <p>For example:</p>
@@ -2042,7 +2094,7 @@ is declarative, there is no obvious need to specify an evaluation order, and
 leaving it unspecified gives implementors some freedom.</em></p>
 </div>
 <div class="section" id="generator-call-expressions">
-<span id="spec-generator-call-expressions"></span><h4>3.1.7.3.16. Generator Call Expressions<a class="headerlink" href="#generator-call-expressions" title="Permalink to this headline">¶</a></h4>
+<span id="spec-generator-call-expressions"></span><h4>Generator Call Expressions<a class="headerlink" href="#generator-call-expressions" title="Permalink to this headline">¶</a></h4>
 <p>MiniZinc has special syntax for certain kinds of call expressions which makes
 models much more readable.</p>
 <p>Generator call expressions have this syntax:</p>
@@ -2072,10 +2124,10 @@ as those in array comprehensions (<a class="reference internal" href="#spec-arra
 </div>
 </div>
 <div class="section" id="items">
-<span id="spec-items"></span><h2>3.1.8. Items<a class="headerlink" href="#items" title="Permalink to this headline">¶</a></h2>
+<span id="spec-items"></span><h2>4.1.8. Items<a class="headerlink" href="#items" title="Permalink to this headline">¶</a></h2>
 <p>This section describes the top-level program items.</p>
 <div class="section" id="include-items">
-<span id="spec-include-items"></span><h3>3.1.8.1. Include Items<a class="headerlink" href="#include-items" title="Permalink to this headline">¶</a></h3>
+<span id="spec-include-items"></span><h3>4.1.8.1. Include Items<a class="headerlink" href="#include-items" title="Permalink to this headline">¶</a></h3>
 <p>Include items allow a model to be split across multiple files.  They have
 this syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;include-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;include&quot; </span><span class="cs">&lt;string-literal&gt;</span><span class="s"></span>
@@ -2094,9 +2146,9 @@ implementation-defined set of directories.  The search directories must be
 able to be altered with a command line option.</p>
 </div>
 <div class="section" id="variable-declaration-items">
-<span id="spec-declarations"></span><h3>3.1.8.2. Variable Declaration Items<a class="headerlink" href="#variable-declaration-items" title="Permalink to this headline">¶</a></h3>
+<span id="spec-declarations"></span><h3>4.1.8.2. Variable Declaration Items<a class="headerlink" href="#variable-declaration-items" title="Permalink to this headline">¶</a></h3>
 <p>Variable declarations have this syntax:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;var-decl-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ti-expr-and-id&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;var-decl-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ti-expr-and-id&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
 </pre></div>
 </div>
 <p>For example:</p>
@@ -2119,9 +2171,9 @@ instance-time.</p>
 <a class="reference internal" href="#spec-annotations"><span class="std std-ref">Annotations</span></a> has more on annotations.</p>
 </div>
 <div class="section" id="enum-items">
-<span id="spec-enum-items"></span><h3>3.1.8.3. Enum Items<a class="headerlink" href="#enum-items" title="Permalink to this headline">¶</a></h3>
+<span id="spec-enum-items"></span><h3>4.1.8.3. Enum Items<a class="headerlink" href="#enum-items" title="Permalink to this headline">¶</a></h3>
 <p>Enumerated type items have this syntax:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;enum-item&gt;</span><span class="s">  </span><span class="cs">::=</span><span class="s"> &quot;enum&quot; </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="o">&lt;</span><span class="kt">enum</span><span class="o">-</span><span class="nv">cases</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;enum-item&gt;</span><span class="s">  </span><span class="cs">::=</span><span class="s"> &quot;enum&quot; </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="cs">&lt;enum-cases&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
 
 <span class="cs">&lt;enum-cases&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;{&quot; </span><span class="cs">&lt;ident&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;}&quot;</span>
 </pre></div>
@@ -2184,7 +2236,7 @@ model, the variable <code class="code mzn minizinc docutils literal highlight hi
 </div>
 </div>
 <div class="section" id="assignment-items">
-<span id="spec-assignments"></span><h3>3.1.8.4. Assignment Items<a class="headerlink" href="#assignment-items" title="Permalink to this headline">¶</a></h3>
+<span id="spec-assignments"></span><h3>4.1.8.4. Assignment Items<a class="headerlink" href="#assignment-items" title="Permalink to this headline">¶</a></h3>
 <p>Assignments have this syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;assign-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> &quot;=&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
 </pre></div>
@@ -2195,11 +2247,11 @@ model, the variable <code class="code mzn minizinc docutils literal highlight hi
 </div>
 </div>
 <div class="section" id="constraint-items">
-<span id="spec-constraint-items"></span><h3>3.1.8.5. Constraint Items<a class="headerlink" href="#constraint-items" title="Permalink to this headline">¶</a></h3>
+<span id="spec-constraint-items"></span><h3>4.1.8.5. Constraint Items<a class="headerlink" href="#constraint-items" title="Permalink to this headline">¶</a></h3>
 <p>Constraint items form the heart of a model.  Any solutions found for a model
 will satisfy all of its constraints.</p>
 <p>Constraint items have this syntax:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;constraint-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;constraint&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;constraint-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;constraint&quot; </span><span class="cs">&lt;string-annotation&gt;</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
 </pre></div>
 </div>
 <p>For example:</p>
@@ -2211,8 +2263,8 @@ will satisfy all of its constraints.</p>
 not very useful.</p>
 </div>
 <div class="section" id="solve-items">
-<span id="spec-solve-items"></span><h3>3.1.8.6. Solve Items<a class="headerlink" href="#solve-items" title="Permalink to this headline">¶</a></h3>
-<p>Every model must have exactly one solve item.  Solve items have the
+<span id="spec-solve-items"></span><h3>4.1.8.6. Solve Items<a class="headerlink" href="#solve-items" title="Permalink to this headline">¶</a></h3>
+<p>Every model must have exactly one or no solve item.  Solve items have the
 following syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;solve-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;solve&quot; </span><span class="cs">&lt;annotations&gt;</span><span class="s"> &quot;satisfy&quot;</span>
 <span class="cs">               |</span><span class="s"> &quot;solve&quot; </span><span class="cs">&lt;annotations&gt;</span><span class="s"> &quot;minimize&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
@@ -2225,9 +2277,9 @@ following syntax:</p>
 </pre></div>
 </div>
 <p>The solve item determines whether the model represents a constraint
-satisfaction problem or an optimisation problem.  In the latter case the
-given expression is the one to be minimized/maximized.</p>
-<p>The expression in a minimize/maximize solve item can have integer or float type.</p>
+satisfaction problem or an optimisation problem.  If there is no solve item, the model is assumed to be a satisfaction problem.
+For optimisation problems, the given expression is the one to be minimized/maximized.</p>
+<p>The expression in a <tt class="docutils literal">minimize</tt>/<tt class="docutils literal">maximize</tt> solve item can have integer or float type.</p>
 <p><em>Rationale: This is possible because all type-insts have a defined order.</em>
 Note that having an expression with a fixed type-inst in a solve item is not
 very useful as it means that the model requires no optimisation.</p>
@@ -2235,7 +2287,7 @@ very useful as it means that the model requires no optimisation.</p>
 annotations.</p>
 </div>
 <div class="section" id="output-items">
-<span id="spec-output-items"></span><h3>3.1.8.7. Output Items<a class="headerlink" href="#output-items" title="Permalink to this headline">¶</a></h3>
+<span id="spec-output-items"></span><h3>4.1.8.7. Output Items<a class="headerlink" href="#output-items" title="Permalink to this headline">¶</a></h3>
 <p>Output items are used to present the solutions of a model instance.
 They have the following syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;output-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;output&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
@@ -2258,7 +2310,7 @@ the implementation should print all the global variables and their values
 in a readable format.</p>
 </div>
 <div class="section" id="annotation-items">
-<span id="spec-annotation-items"></span><h3>3.1.8.8. Annotation Items<a class="headerlink" href="#annotation-items" title="Permalink to this headline">¶</a></h3>
+<span id="spec-annotation-items"></span><h3>4.1.8.8. Annotation Items<a class="headerlink" href="#annotation-items" title="Permalink to this headline">¶</a></h3>
 <p>Annotation items are used to augment the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code> type.  They have the
 following syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;annotation-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;annotation&quot; </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">&lt;params&gt;</span><span class="s"></span>
@@ -2273,7 +2325,7 @@ than once in a model.</p>
 <p>The use of annotations is described in <a class="reference internal" href="#spec-annotations"><span class="std std-ref">Annotations</span></a>.</p>
 </div>
 <div class="section" id="user-defined-operations">
-<span id="spec-preds-and-fns"></span><h3>3.1.8.9. User-defined Operations<a class="headerlink" href="#user-defined-operations" title="Permalink to this headline">¶</a></h3>
+<span id="spec-preds-and-fns"></span><h3>4.1.8.9. User-defined Operations<a class="headerlink" href="#user-defined-operations" title="Permalink to this headline">¶</a></h3>
 <p>MiniZinc models can contain user-defined operations.  They have this syntax:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;predicate-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;predicate&quot; </span><span class="cs">&lt;operation-item-tail&gt;</span><span class="s"></span>
 
@@ -2281,9 +2333,9 @@ than once in a model.</p>
 
 <span class="cs">&lt;function-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;function&quot; </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"> &quot;:&quot; </span><span class="cs">&lt;operation-item-tail&gt;</span><span class="s"></span>
 
-<span class="cs">&lt;operation-item-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">&lt;params&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
+<span class="cs">&lt;operation-item-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">&lt;params&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
 
-<span class="cs">&lt;params&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">ti</span><span class="o">-</span><span class="nv">expr</span><span class="o">-</span><span class="nv">and</span><span class="o">-</span><span class="nv">id</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">)</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
+<span class="cs">&lt;params&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;ti-expr-and-id&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">)</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
 </pre></div>
 </div>
 <p>The type-inst expressions can include type-inst variables in
@@ -2307,7 +2359,7 @@ forbidden).
 <p>Declarations for user-defined operations can be annotated.
 <a class="reference internal" href="#spec-annotations"><span class="std std-ref">Annotations</span></a> has more details on annotations.</p>
 <div class="section" id="basic-properties">
-<span id="spec-basic-properties"></span><h4>3.1.8.9.1. Basic Properties<a class="headerlink" href="#basic-properties" title="Permalink to this headline">¶</a></h4>
+<span id="spec-basic-properties"></span><h4>Basic Properties<a class="headerlink" href="#basic-properties" title="Permalink to this headline">¶</a></h4>
 <p>The term “predicate” is generally used to refer to both test items and
 predicate items.  When the two kinds must be distinguished, the terms
 “test item” and “predicate item” can be used.</p>
@@ -2324,7 +2376,7 @@ body.  Argument names cannot be repeated within a predicate/function
 declaration.</p>
 </div>
 <div class="section" id="ad-hoc-polymorphism">
-<h4>3.1.8.9.2. Ad-hoc polymorphism<a class="headerlink" href="#ad-hoc-polymorphism" title="Permalink to this headline">¶</a></h4>
+<h4>Ad-hoc polymorphism<a class="headerlink" href="#ad-hoc-polymorphism" title="Permalink to this headline">¶</a></h4>
 <p>MiniZinc supports ad-hoc polymorphism via overloading.  Functions
 and predicates (both built-in and user-defined) can be overloaded.  A name
 can be overloaded as both a function and a predicate.</p>
@@ -2421,7 +2473,7 @@ definition.</p>
 </ol>
 </div>
 <div class="section" id="local-variables">
-<h4>3.1.8.9.3. Local Variables<a class="headerlink" href="#local-variables" title="Permalink to this headline">¶</a></h4>
+<h4>Local Variables<a class="headerlink" href="#local-variables" title="Permalink to this headline">¶</a></h4>
 <p>Local variables in operation bodies are introduced using let expressions.
 For example, the predicate <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">have_common_divisor</span><span class="s"></span></code> takes two
 integer values and checks whether they have a common divisor greater than
@@ -2446,15 +2498,22 @@ following is a version that could be called in a negative context:</p>
 </div>
 </div>
 <div class="section" id="annotations">
-<span id="spec-annotations"></span><h2>3.1.9. Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline">¶</a></h2>
-<p>Annotations - values of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code> type - allow a modeller to specify
+<span id="spec-annotations"></span><h2>4.1.9. Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline">¶</a></h2>
+<p>Annotations allow a modeller to specify
 non-declarative and solver-specific information that is beyond the core
 language.  Annotations do not change the meaning of a model, however, only
 how it is solved.</p>
-<p>Annotations can be attached to variables (on their declarations),
-expresssions, type-inst synonyms, enum items, solve items and on user
+<p>Annotations can be attached to variables (on their declarations), constraints,
+expressions, type-inst synonyms, enum items, solve items and on user
 defined operations.
 They have the following syntax:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;::&quot; </span><span class="cs">&lt;annotation&gt;</span><span class="s"> </span><span class="p">]</span><span class="o">*</span><span class="s"></span>
+
+<span class="cs">&lt;annotation&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;expr-atom-head&gt;</span><span class="s"> </span><span class="cs">&lt;expr-atom-tail&gt;</span><span class="s"></span>
+
+<span class="cs">&lt;string-annotation&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;::&quot; </span><span class="cs">&lt;string-literal&gt;</span><span class="s"></span>
+</pre></div>
+</div>
 <p>For example:</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">::</span><span class="nv">foo</span><span class="p">;</span><span class="s"></span>
 <span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">(</span><span class="m">3</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">4</span><span class="p">)::</span><span class="nf">bar</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="s"> </span><span class="m">9</span><span class="p">)::</span><span class="nf">baz</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">);</span><span class="s"></span>
@@ -2463,9 +2522,8 @@ They have the following syntax:</p>
 </pre></div>
 </div>
 <p>The types of the argument expressions must match the argument types of the
-declared annotation.  Unlike user-defined predicates and functions,
-annotations cannot be overloaded.  <em>Rationale: There is no particular strong
-reason for this, it just seemed to make things simpler.</em></p>
+declared annotation.  Like user-defined predicates and functions,
+annotations can be overloaded.</p>
 <p>Annotation signatures can contain type-inst variables.</p>
 <p>The order and nesting of annotations do not matter.  For the expression case
 it can be helpful to view the annotation connector <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="p">::</span><span class="s"></span></code> as an
@@ -2490,9 +2548,18 @@ allows all nested combinations of annotations to be treated as if they are
 flat, thus avoiding the need to determine what is the meaning of an
 annotated annotation.  It also makes the MiniZinc abstract syntax tree simpler
 by avoiding the need to represent nesting.</em></p>
+<p>Annotations have to be values of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code> type or string literals. The
+latter are used for <em>naming</em> constraints and expressions, for example</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="p">::</span><span class="s">&quot;first constraint&quot; </span><span class="bp">alldifferent</span><span class="p">(</span><span class="nv">x</span><span class="p">);</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="p">::</span><span class="s">&quot;second constraint&quot; </span><span class="bp">alldifferent</span><span class="p">(</span><span class="nv">y</span><span class="p">);</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="s"> </span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)</span><span class="s"> </span><span class="p">(</span><span class="nf">my_constraint</span><span class="p">(</span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">],</span><span class="nv">y</span><span class="p">[</span><span class="nv">i</span><span class="p">])::</span><span class="s">&quot;constraint </span><span class="p">\(</span><span class="nv">i</span><span class="p">)</span><span class="s">&quot;</span><span class="p">);</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Note that constraint items can <em>only</em> be annotated with string literals.</p>
+<p><em>Rationale: Allowing arbitrary annotations on constraint items makes the grammar ambiguous, and seems unneccessary since we can just as well annotate the constraint expression.</em></p>
 </div>
 <div class="section" id="partiality">
-<span id="spec-partiality"></span><h2>3.1.10. Partiality<a class="headerlink" href="#partiality" title="Permalink to this headline">¶</a></h2>
+<span id="spec-partiality"></span><h2>4.1.10. Partiality<a class="headerlink" href="#partiality" title="Permalink to this headline">¶</a></h2>
 <p>The presence of constrained type-insts in MiniZinc means that
 various operations are potentially <em>partial</em>, i.e., not clearly defined
 for all possible inputs.  For example, what happens if a function expecting
@@ -2512,7 +2579,7 @@ because during search a decision variable might become fixed and then
 backtracking will cause this value to be reverted, in which case aborting is
 a bad idea.</em></p>
 <div class="section" id="partial-assignments">
-<h3>3.1.10.1. Partial Assignments<a class="headerlink" href="#partial-assignments" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.10.1. Partial Assignments<a class="headerlink" href="#partial-assignments" title="Permalink to this headline">¶</a></h3>
 <p>The first operation involving partiality is assignment.  There are four
 distinct cases for assignments.</p>
 <ul>
@@ -2576,14 +2643,14 @@ following sections as well.  <em>Rationale: This ensures that failures cannot
 mask aborts, which seems desirable.</em></p>
 </div>
 <div class="section" id="partial-predicate-function-and-annotation-arguments">
-<h3>3.1.10.2. Partial Predicate/Function and Annotation Arguments<a class="headerlink" href="#partial-predicate-function-and-annotation-arguments" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.10.2. Partial Predicate/Function and Annotation Arguments<a class="headerlink" href="#partial-predicate-function-and-annotation-arguments" title="Permalink to this headline">¶</a></h3>
 <p>The second kind of operation involving partiality is calls and annotations.</p>
 <p>The semantics is similar to assignments:  fixed arguments that fail their constraints
 will cause aborts, and unfixed arguments that fail their constraints will
 cause failure, which bubbles up to the nearest enclosing Boolean scope.</p>
 </div>
 <div class="section" id="partial-array-accesses">
-<h3>3.1.10.3. Partial Array Accesses<a class="headerlink" href="#partial-array-accesses" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.10.3. Partial Array Accesses<a class="headerlink" href="#partial-array-accesses" title="Permalink to this headline">¶</a></h3>
 <p>The third kind of operation involving partiality is array access.  There
 are two distinct cases.</p>
 <ul>
@@ -2610,7 +2677,7 @@ sometimes do use array accesses that can fail.   In such cases, the
 </div>
 </div>
 <div class="section" id="built-in-operations">
-<span id="spec-builtins"></span><h2>3.1.11. Built-in Operations<a class="headerlink" href="#built-in-operations" title="Permalink to this headline">¶</a></h2>
+<span id="spec-builtins"></span><h2>4.1.11. Built-in Operations<a class="headerlink" href="#built-in-operations" title="Permalink to this headline">¶</a></h2>
 <p>This appendix lists built-in operators, functions and
 predicates.  They may be implemented as true built-ins, or in libraries that
 are automatically imported for all models.  Many of them are overloaded.</p>
@@ -2621,7 +2688,7 @@ named <code class="code mzn minizinc docutils literal highlight highlight-minizi
 and returns a value with type-inst <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">TI</span><span class="s"></span></code>.  This is slightly more
 compact than the usual MiniZinc syntax, in that it omits argument names.</p>
 <div class="section" id="comparison-operations">
-<h3>3.1.11.1. Comparison Operations<a class="headerlink" href="#comparison-operations" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.11.1. Comparison Operations<a class="headerlink" href="#comparison-operations" title="Permalink to this headline">¶</a></h3>
 <p>Less than.  Other comparisons are similar:
 greater than (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&gt;</span><span class="s"></span></code>),
 less than or equal (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;=</span><span class="s"></span></code>),
@@ -2634,7 +2701,7 @@ and disequality (<code class="code mzn minizinc docutils literal highlight highl
 </div>
 </div>
 <div class="section" id="arithmetic-operations">
-<h3>3.1.11.2. Arithmetic Operations<a class="headerlink" href="#arithmetic-operations" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.11.2. Arithmetic Operations<a class="headerlink" href="#arithmetic-operations" title="Permalink to this headline">¶</a></h3>
 <p>Addition.  Other numeric operations are similar:
 subtraction (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">-</span><span class="s"></span></code>), and
 multiplication (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">*</span><span class="s"></span></code>).</p>
@@ -2741,7 +2808,7 @@ inverse hyperbolic sine (<code class="code mzn minizinc docutils literal highlig
 </div>
 </div>
 <div class="section" id="logical-operations">
-<h3>3.1.11.3. Logical Operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.11.3. Logical Operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">¶</a></h3>
 <p>Conjunction.  Other logical operations are similar:
 disjunction (<tt class="docutils literal">\/</tt>)
 reverse implication (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;-</span><span class="s"></span></code>),
@@ -2774,7 +2841,7 @@ of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"
 </div>
 </div>
 <div class="section" id="set-operations">
-<h3>3.1.11.4. Set Operations<a class="headerlink" href="#set-operations" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.11.4. Set Operations<a class="headerlink" href="#set-operations" title="Permalink to this headline">¶</a></h3>
 <p>Set membership.</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="s">    </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nf">&#39;in&#39;</span><span class="p">(</span><span class="s">     $</span><span class="nv">T</span><span class="p">,</span><span class="s">       </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $</span><span class="nv">T</span><span class="s"> </span><span class="p">)</span><span class="s"></span>
 <span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nf">&#39;in&#39;</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">,</span><span class="s">   </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">)</span><span class="s"></span>
@@ -2811,7 +2878,7 @@ Intersection of multiple sets (<code class="code mzn minizinc docutils literal h
 </div>
 </div>
 <div class="section" id="array-operations">
-<h3>3.1.11.5. Array Operations<a class="headerlink" href="#array-operations" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.11.5. Array Operations<a class="headerlink" href="#array-operations" title="Permalink to this headline">¶</a></h3>
 <p>Length of an array.</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nb">length</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="s">$</span><span class="nv">T</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="gr">any</span><span class="s"> $</span><span class="nv">U</span><span class="p">)</span><span class="s"></span>
 </pre></div>
@@ -2850,7 +2917,7 @@ versions exist for arrays up to 6 dimensions.</p>
 </div>
 </div>
 <div class="section" id="coercion-operations">
-<h3>3.1.11.6. Coercion Operations<a class="headerlink" href="#coercion-operations" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.11.6. Coercion Operations<a class="headerlink" href="#coercion-operations" title="Permalink to this headline">¶</a></h3>
 <p>Round a float towards <span class="math notranslate nohighlight">\(+\infty\)</span>, <span class="math notranslate nohighlight">\(-\infty\)</span>, and the nearest integer,
 respectively.</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nb">ceil</span><span class="s"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="s"></span>
@@ -2868,7 +2935,7 @@ respectively.</p>
 </div>
 </div>
 <div class="section" id="string-operations">
-<h3>3.1.11.7. String Operations<a class="headerlink" href="#string-operations" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.11.7. String Operations<a class="headerlink" href="#string-operations" title="Permalink to this headline">¶</a></h3>
 <p>To-string conversion.  Converts any value to a string for output purposes.
 The exact form of the resulting string is implementation-dependent.</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="gr">any</span><span class="s"> $</span><span class="nv">T</span><span class="p">)</span><span class="s"></span>
@@ -2913,7 +2980,7 @@ Returns the the empty string if the array is empty.</p>
 </div>
 </div>
 <div class="section" id="bound-and-domain-operations">
-<h3>3.1.11.8. Bound and Domain Operations<a class="headerlink" href="#bound-and-domain-operations" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.11.8. Bound and Domain Operations<a class="headerlink" href="#bound-and-domain-operations" title="Permalink to this headline">¶</a></h3>
 <p>The bound operations <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">lb</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">ub</span><span class="s"></span></code> return fixed, correct lower/upper bounds
 to the expression.
 For numeric types, they return a lower/upper bound value,
@@ -2990,7 +3057,7 @@ and the connecting operators.</li>
 </ul>
 </div>
 <div class="section" id="option-type-operations">
-<span id="spec-option-type-operations"></span><h3>3.1.11.9. Option Type Operations<a class="headerlink" href="#option-type-operations" title="Permalink to this headline">¶</a></h3>
+<span id="spec-option-type-operations"></span><h3>4.1.11.9. Option Type Operations<a class="headerlink" href="#option-type-operations" title="Permalink to this headline">¶</a></h3>
 <p>The option type value (<span class="math notranslate nohighlight">\(\top\)</span>) is written</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">opt</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s">  </span><span class="nv">&#39;&lt;&gt;&#39;</span><span class="p">;</span><span class="s"></span>
 </pre></div>
@@ -3011,7 +3078,7 @@ function <code class="code mzn minizinc docutils literal highlight highlight-min
 </div>
 </div>
 <div class="section" id="other-operations">
-<span id="spec-other-operations"></span><h3>3.1.11.10. Other Operations<a class="headerlink" href="#other-operations" title="Permalink to this headline">¶</a></h3>
+<span id="spec-other-operations"></span><h3>4.1.11.10. Other Operations<a class="headerlink" href="#other-operations" title="Permalink to this headline">¶</a></h3>
 <p>Check a Boolean expression is true, and abort if not, printing the second
 argument as the error message.  The first one returns the third argument, and
 is particularly useful for sanity-checking arguments to predicates and
@@ -3049,7 +3116,7 @@ where a fixed value is needed, such as if-then-else conditions.</p>
 </div>
 </div>
 <div class="section" id="content-types">
-<span id="spec-content-types"></span><h2>3.1.12. Content-types<a class="headerlink" href="#content-types" title="Permalink to this headline">¶</a></h2>
+<span id="spec-content-types"></span><h2>4.1.12. Content-types<a class="headerlink" href="#content-types" title="Permalink to this headline">¶</a></h2>
 <p>The content-type <tt class="docutils literal">application/x-zinc-output</tt> defines
 a text output format for Zinc.
 The format extends the abstract syntax and semantics
@@ -3057,8 +3124,8 @@ given in <a class="reference internal" href="#spec-run-time-outcomes"><span clas
 and is discussed in detail in <a class="reference internal" href="#spec-output"><span class="std std-ref">Output</span></a>.</p>
 <p>The full syntax is as follows:</p>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="c">% Output</span><span class="s"></span>
-<span class="cs">&lt;output&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;no-solutions&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">warnings</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="cs">&lt;free-text&gt;</span><span class="s"></span>
-<span class="cs">           |</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">solution</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">*</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">complete</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">warnings</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="cs">&lt;free-text&gt;</span><span class="s"></span>
+<span class="cs">&lt;output&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;no-solutions&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;warnings&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="cs">&lt;free-text&gt;</span><span class="s"></span>
+<span class="cs">           |</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;solution&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">*</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;complete&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;warnings&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="cs">&lt;free-text&gt;</span><span class="s"></span>
 
 <span class="c">% Solutions</span><span class="s"></span>
 <span class="cs">&lt;solution&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;solution-text&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> \</span><span class="nv">n</span><span class="s"> </span><span class="p">]</span><span class="s"> &quot;----------&quot; \</span><span class="nv">n</span><span class="s"></span>
@@ -3070,9 +3137,9 @@ and is discussed in detail in <a class="reference internal" href="#spec-output">
 <span class="cs">&lt;complete&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;==========&quot; \</span><span class="nv">n</span><span class="s"></span>
 
 <span class="c">% Messages</span><span class="s"></span>
-<span class="cs">&lt;warnings&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">message</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">+</span><span class="s"></span>
+<span class="cs">&lt;warnings&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;message&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">+</span><span class="s"></span>
 
-<span class="cs">&lt;message&gt;</span><span class="s">  </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">line</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">+</span><span class="s"></span>
+<span class="cs">&lt;message&gt;</span><span class="s">  </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;line&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">+</span><span class="s"></span>
 <span class="cs">&lt;line&gt;</span><span class="s">     </span><span class="cs">::=</span><span class="s"> &quot;%&quot; </span><span class="sr">[^\n]</span><span class="o">*</span><span class="s"> \</span><span class="nv">n</span><span class="s"></span>
 </pre></div>
 </div>
@@ -3081,7 +3148,7 @@ as described in <a class="reference internal" href="#spec-output-items"><span cl
 A newline must be appended if the solution text does not end with a newline.</p>
 </div>
 <div class="section" id="json-support">
-<span id="spec-json"></span><h2>3.1.13. JSON support<a class="headerlink" href="#json-support" title="Permalink to this headline">¶</a></h2>
+<span id="spec-json"></span><h2>4.1.13. JSON support<a class="headerlink" href="#json-support" title="Permalink to this headline">¶</a></h2>
 <p>MiniZinc can support reading input parameters and providing output formatted
 as JSON objects. A JSON input file needs to have the following structure:</p>
 <ul class="simple">
@@ -3112,11 +3179,11 @@ arrays must be of the same size in order to map to a (rectangular) MiniZinc
 two-dimensional array. The third parameter is an array of sets of integers.</p>
 </div>
 <div class="section" id="full-grammar">
-<span id="spec-grammar"></span><h2>3.1.14. Full grammar<a class="headerlink" href="#full-grammar" title="Permalink to this headline">¶</a></h2>
+<span id="spec-grammar"></span><h2>4.1.14. Full grammar<a class="headerlink" href="#full-grammar" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
-<h3>3.1.14.1. Items<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.14.1. Items<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="c">% A MiniZinc model</span><span class="s"></span>
-<span class="cs">&lt;model&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">item</span><span class="o">&gt;</span><span class="s"> &quot;;&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"></span>
+<span class="cs">&lt;model&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;item&gt;</span><span class="s"> &quot;;&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"></span>
 
 <span class="c">% Items</span><span class="s"></span>
 <span class="cs">&lt;item&gt;</span><span class="s">  </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;include-item&gt;</span><span class="s"></span>
@@ -3137,10 +3204,10 @@ two-dimensional array. The third parameter is an array of sets of integers.</p>
 <span class="cs">&lt;include-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;include&quot; </span><span class="cs">&lt;string-literal&gt;</span><span class="s"></span>
 
 <span class="c">% Variable declaration items</span><span class="s"></span>
-<span class="cs">&lt;var-decl-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ti-expr-and-id&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
+<span class="cs">&lt;var-decl-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ti-expr-and-id&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
 
 <span class="c">% Enum items</span><span class="s"></span>
-<span class="cs">&lt;enum-item&gt;</span><span class="s">  </span><span class="cs">::=</span><span class="s"> &quot;enum&quot; </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="o">&lt;</span><span class="kt">enum</span><span class="o">-</span><span class="nv">cases</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
+<span class="cs">&lt;enum-item&gt;</span><span class="s">  </span><span class="cs">::=</span><span class="s"> &quot;enum&quot; </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="cs">&lt;enum-cases&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
 
 <span class="cs">&lt;enum-cases&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;{&quot; </span><span class="cs">&lt;ident&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;}&quot;</span>
 
@@ -3148,7 +3215,7 @@ two-dimensional array. The third parameter is an array of sets of integers.</p>
 <span class="cs">&lt;assign-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> &quot;=&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
 
 <span class="c">% Constraint items</span><span class="s"></span>
-<span class="cs">&lt;constraint-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;constraint&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
+<span class="cs">&lt;constraint-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;constraint&quot; </span><span class="cs">&lt;string-annotation&gt;</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
 
 <span class="c">% Solve item</span><span class="s"></span>
 <span class="cs">&lt;solve-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;solve&quot; </span><span class="cs">&lt;annotations&gt;</span><span class="s"> &quot;satisfy&quot;</span>
@@ -3168,14 +3235,14 @@ two-dimensional array. The third parameter is an array of sets of integers.</p>
 
 <span class="cs">&lt;function-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;function&quot; </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"> &quot;:&quot; </span><span class="cs">&lt;operation-item-tail&gt;</span><span class="s"></span>
 
-<span class="cs">&lt;operation-item-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">&lt;params&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
+<span class="cs">&lt;operation-item-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">&lt;params&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;=&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
 
-<span class="cs">&lt;params&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">ti</span><span class="o">-</span><span class="nv">expr</span><span class="o">-</span><span class="nv">and</span><span class="o">-</span><span class="nv">id</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">)</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
+<span class="cs">&lt;params&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;ti-expr-and-id&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">)</span><span class="s"> </span><span class="p">]</span><span class="s"></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="type-inst-expressions">
-<h3>3.1.14.2. Type-Inst Expressions<a class="headerlink" href="#type-inst-expressions" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.14.2. Type-Inst Expressions<a class="headerlink" href="#type-inst-expressions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;ti-expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;base-ti-expr&gt;</span><span class="s"></span>
 
 <span class="cs">&lt;base-ti-expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;var-par&gt;</span><span class="s"> </span><span class="cs">&lt;base-ti-expr-tail&gt;</span><span class="s"></span>
@@ -3194,7 +3261,7 @@ two-dimensional array. The third parameter is an array of sets of integers.</p>
 <span class="cs">                      |</span><span class="s"> </span><span class="cs">&lt;array-ti-expr-tail&gt;</span><span class="s"></span>
 <span class="cs">                      |</span><span class="s"> &quot;ann&quot;</span>
 <span class="cs">                      |</span><span class="s"> &quot;opt&quot; </span><span class="cs">&lt;base-ti-expr-tail&gt;</span><span class="s"></span>
-<span class="cs">                      |</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">}</span><span class="s"></span>
+<span class="cs">                      |</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">}</span><span class="s"></span>
 <span class="cs">                      |</span><span class="s"> </span><span class="cs">&lt;num-expr&gt;</span><span class="s"> &quot;..&quot; </span><span class="cs">&lt;num-expr&gt;</span><span class="s"></span>
 
 <span class="c">% Type-inst variables</span><span class="s"></span>
@@ -3204,13 +3271,13 @@ two-dimensional array. The third parameter is an array of sets of integers.</p>
 <span class="cs">&lt;set-ti-expr-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;set&quot; &quot;of&quot; </span><span class="cs">&lt;base-type&gt;</span><span class="s"></span>
 
 <span class="c">% Array type-inst expressions</span><span class="s"></span>
-<span class="cs">&lt;array-ti-expr-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;array&quot; </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">ti</span><span class="o">-</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;of&quot; </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"></span>
+<span class="cs">&lt;array-ti-expr-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;array&quot; </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;of&quot; </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"></span>
 <span class="cs">                       |</span><span class="s"> &quot;list&quot; &quot;of&quot; </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
-<h3>3.1.14.3. Expressions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.14.3. Expressions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;expr-atom&gt;</span><span class="s"> </span><span class="cs">&lt;expr-binop-tail&gt;</span><span class="s"></span>
 
 <span class="cs">&lt;expr-atom&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;expr-atom-head&gt;</span><span class="s"> </span><span class="cs">&lt;expr-atom-tail&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"></span>
@@ -3288,58 +3355,58 @@ two-dimensional array. The third parameter is an array of sets of integers.</p>
 <span class="cs">                  |</span><span class="s"> </span><span class="sr">[0-9]</span><span class="o">+</span><span class="sr">[Ee][-+]</span><span class="s">?</span><span class="sr">[0-9]</span><span class="o">+</span><span class="s"></span>
 
 <span class="c">% String literals</span><span class="s"></span>
-<span class="cs">&lt;string-contents&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">([</span><span class="s">^&quot;</span><span class="se">\n</span><span class="s">\] | \[^</span><span class="se">\n</span><span class="s">(])*</span>
+<span class="cs">&lt;string-contents&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="sr">[^&quot;\n\]</span><span class="s"> </span><span class="gr">|</span><span class="s"> \</span><span class="sr">[^\n(]</span><span class="p">)</span><span class="o">*</span><span class="s"></span>
 
-<span class="s">&lt;string-literal&gt; ::= &quot;&quot;&quot; </span><span class="o">&lt;</span><span class="kt">string</span><span class="o">-</span><span class="nv">contents</span><span class="o">&gt;</span><span class="s"> &quot;&quot;&quot;</span>
-<span class="s">                   | &quot;&quot;&quot; </span><span class="o">&lt;</span><span class="kt">string</span><span class="o">-</span><span class="nv">contents</span><span class="o">&gt;</span><span class="s"> &quot;</span><span class="p">\(</span><span class="s">&quot; &lt;string-interpolate-tail&gt;</span>
+<span class="cs">&lt;string-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;&quot;&quot; </span><span class="cs">&lt;string-contents&gt;</span><span class="s"> &quot;&quot;&quot;</span>
+<span class="cs">                   |</span><span class="s"> &quot;&quot;&quot; </span><span class="cs">&lt;string-contents&gt;</span><span class="s"> &quot;\(&quot; </span><span class="cs">&lt;string-interpolate-tail&gt;</span><span class="s"></span>
 
-<span class="s">&lt;string-interpolate-tail&gt; ::= &lt;expr&gt; &quot;</span><span class="p">)</span><span class="s">&quot;</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">-</span><span class="nv">contents</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">                            | &lt;expr&gt; &quot;</span><span class="gr">)</span><span class="s">&quot;&lt;string-contents&gt;&quot;\</span><span class="p">(</span><span class="s">&quot; &lt;string-interpolate-tail&gt;</span>
+<span class="cs">&lt;string-interpolate-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;)&quot;</span><span class="cs">&lt;string-contents&gt;</span><span class="s">&quot;&quot;&quot;</span>
+<span class="cs">                            |</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;)&quot;</span><span class="cs">&lt;string-contents&gt;</span><span class="s">&quot;\(&quot; </span><span class="cs">&lt;string-interpolate-tail&gt;</span><span class="s"></span>
 
-<span class="s">% Set literals</span>
-<span class="s">&lt;set-literal&gt; ::= &quot;</span><span class="p">{</span><span class="s">&quot; [ &lt;expr&gt; &quot;</span><span class="p">,</span><span class="s">&quot; ... ] &quot;</span><span class="p">}</span><span class="s">&quot;</span>
+<span class="c">% Set literals</span><span class="s"></span>
+<span class="cs">&lt;set-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;{&quot; </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;}&quot;</span>
 
-<span class="s">% Set comprehensions</span>
-<span class="s">&lt;set-comp&gt; ::= &quot;</span><span class="p">{</span><span class="s">&quot; &lt;expr&gt; &quot;</span><span class="p">|</span><span class="s">&quot; &lt;comp-tail&gt; &quot;</span><span class="p">}</span><span class="s">&quot;</span>
+<span class="c">% Set comprehensions</span><span class="s"></span>
+<span class="cs">&lt;set-comp&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;{&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;|&quot; </span><span class="cs">&lt;comp-tail&gt;</span><span class="s"> &quot;}&quot;</span>
 
-<span class="s">&lt;comp-tail&gt; ::= &lt;generator&gt; &quot;</span><span class="p">,</span><span class="s">&quot; ... [ &quot;</span><span class="k">where</span><span class="s">&quot; &lt;expr&gt; ]</span>
+<span class="cs">&lt;comp-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;generator&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;where&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">]</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">.</span>
 
-<span class="s">&lt;generator&gt; ::= &lt;ident&gt; &quot;</span><span class="p">,</span><span class="s">&quot; ... &quot;</span><span class="k">in</span><span class="s">&quot; &lt;expr&gt;</span>
+<span class="cs">&lt;generator&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;in&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
 
-<span class="s">% Array literals</span>
-<span class="s">&lt;array-literal&gt; ::= &quot;</span><span class="p">[</span><span class="s">&quot; [ &lt;expr&gt; &quot;</span><span class="p">,</span><span class="s">&quot; ... ] &quot;</span><span class="p">]</span><span class="s">&quot;</span>
+<span class="c">% Array literals</span><span class="s"></span>
+<span class="cs">&lt;array-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;[&quot; </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;]&quot;</span>
 
-<span class="s">% 2D Array literals</span>
-<span class="s">&lt;array-literal-2d&gt; ::= &quot;</span><span class="p">[|</span><span class="s">&quot; [ (&lt;expr&gt; &quot;</span><span class="p">,</span><span class="s">&quot; ...) &quot;</span><span class="p">|</span><span class="s">&quot; ... ] &quot;</span><span class="p">|]</span><span class="s">&quot;</span>
+<span class="c">% 2D Array literals</span><span class="s"></span>
+<span class="cs">&lt;array-literal-2d&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;[|&quot; </span><span class="p">[</span><span class="s"> </span><span class="p">(</span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">.</span><span class="p">)</span><span class="s"> &quot;|&quot; </span><span class="o">..</span><span class="s">. </span><span class="p">]</span><span class="s"> &quot;|]&quot;</span>
 
-<span class="s">% Array comprehensions</span>
-<span class="s">&lt;array-comp&gt; ::= &quot;</span><span class="p">[</span><span class="s">&quot; &lt;expr&gt; &quot;</span><span class="p">|</span><span class="s">&quot; &lt;comp-tail&gt; &quot;</span><span class="p">]</span><span class="s">&quot;</span>
+<span class="c">% Array comprehensions</span><span class="s"></span>
+<span class="cs">&lt;array-comp&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;[&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;|&quot; </span><span class="cs">&lt;comp-tail&gt;</span><span class="s"> &quot;]&quot;</span>
 
-<span class="s">% Array access</span>
-<span class="s">&lt;array-access-tail&gt; ::= &quot;</span><span class="p">[</span><span class="s">&quot; &lt;expr&gt; &quot;</span><span class="p">,</span><span class="s">&quot; ... &quot;</span><span class="p">]</span><span class="s">&quot;</span>
+<span class="c">% Array access</span><span class="s"></span>
+<span class="cs">&lt;array-access-tail&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;[&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;]&quot;</span>
 
-<span class="s">% Annotation literals</span>
-<span class="s">&lt;ann-literal&gt; ::= &lt;ident&gt; [ &quot;</span><span class="p">(</span><span class="s">&quot; &lt;expr&gt; &quot;</span><span class="p">,</span><span class="s">&quot; ... &quot;</span><span class="p">)</span><span class="s">&quot; ]</span>
+<span class="c">% Annotation literals</span><span class="s"></span>
+<span class="cs">&lt;ann-literal&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;(&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;)&quot; </span><span class="p">]</span><span class="s"></span>
 
-<span class="s">% If-then-else expressions</span>
-<span class="s">&lt;if-then-else-expr&gt; ::= &quot;</span><span class="k">if</span><span class="s">&quot; &lt;expr&gt; &quot;</span><span class="k">then</span><span class="s">&quot; &lt;expr&gt; ( &quot;</span><span class="k">elseif</span><span class="s">&quot; &lt;expr&gt; &quot;</span><span class="k">then</span><span class="s">&quot; &lt;expr&gt; )* &quot;</span><span class="k">else</span><span class="s">&quot; &lt;expr&gt; &quot;</span><span class="k">endif</span><span class="s">&quot;</span>
+<span class="c">% If-then-else expressions</span><span class="s"></span>
+<span class="cs">&lt;if-then-else-expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;if&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;then&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;elseif&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;then&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="p">]</span><span class="o">*</span><span class="s"> &quot;else&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;endif&quot;</span>
 
-<span class="s">% Call expressions</span>
-<span class="s">&lt;call-expr&gt; ::= &lt;ident-or-quoted-op&gt; [ &quot;</span><span class="p">(</span><span class="s">&quot; &lt;expr&gt; &quot;</span><span class="p">,</span><span class="s">&quot; ... &quot;</span><span class="p">)</span><span class="s">&quot; ]</span>
+<span class="c">% Call expressions</span><span class="s"></span>
+<span class="cs">&lt;call-expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident-or-quoted-op&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;(&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;,&quot; </span><span class="o">..</span><span class="s">. &quot;)&quot; </span><span class="p">]</span><span class="s"></span>
 
-<span class="s">% Let expressions</span>
-<span class="s">&lt;let-expr&gt; ::= &quot;</span><span class="k">let</span><span class="s">&quot; &quot;</span><span class="p">{</span><span class="s">&quot; &lt;let-item&gt; &quot;</span><span class="p">;</span><span class="s">&quot; ... &quot;</span><span class="p">}</span><span class="s">&quot; &quot;</span><span class="k">in</span><span class="s">&quot; &lt;expr&gt;</span>
+<span class="c">% Let expressions</span><span class="s"></span>
+<span class="cs">&lt;let-expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;let&quot; &quot;{&quot; </span><span class="cs">&lt;let-item&gt;</span><span class="s"> &quot;;&quot; </span><span class="o">..</span><span class="s">. &quot;}&quot; &quot;in&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
 
-<span class="s">&lt;let-item&gt; ::= &lt;var-decl-item&gt;</span>
-<span class="s">             | &lt;constraint-item&gt;</span>
+<span class="cs">&lt;let-item&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;var-decl-item&gt;</span><span class="s"></span>
+<span class="cs">             |</span><span class="s"> </span><span class="cs">&lt;constraint-item&gt;</span><span class="s"></span>
 
-<span class="s">% Generator call expressions</span>
-<span class="s">&lt;gen-call-expr&gt; ::= &lt;ident-or-quoted-op&gt; &quot;</span><span class="p">(</span><span class="s">&quot; &lt;comp-tail&gt; &quot;</span><span class="p">)</span><span class="s">&quot; &quot;</span><span class="p">(</span><span class="s">&quot; &lt;expr&gt; &quot;</span><span class="p">)</span><span class="s">&quot;</span>
+<span class="c">% Generator call expressions</span><span class="s"></span>
+<span class="cs">&lt;gen-call-expr&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;ident-or-quoted-op&gt;</span><span class="s"> &quot;(&quot; </span><span class="cs">&lt;comp-tail&gt;</span><span class="s"> &quot;)&quot; &quot;(&quot; </span><span class="cs">&lt;expr&gt;</span><span class="s"> &quot;)&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="miscellaneous-elements">
-<h3>3.1.14.4. Miscellaneous Elements<a class="headerlink" href="#miscellaneous-elements" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.14.4. Miscellaneous Elements<a class="headerlink" href="#miscellaneous-elements" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="c">% Identifiers</span><span class="s"></span>
 <span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="sr">[A-Za-z][A-Za-z0-9_]</span><span class="o">*</span><span class="s"> </span><span class="gr">|</span><span class="s"> ’</span><span class="sr">[^’\xa\xd\x0]</span><span class="o">*</span><span class="s">’</span>
 
@@ -3348,9 +3415,11 @@ two-dimensional array. The third parameter is an array of sets of integers.</p>
 <span class="cs">                       |</span><span class="s"> ’</span><span class="cs">&lt;builtin-op&gt;</span><span class="s">’</span>
 
 <span class="c">% Annotations</span><span class="s"></span>
-<span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">(</span><span class="s"> &quot;::&quot; </span><span class="o">&lt;</span><span class="k">annotation</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="o">*</span><span class="s"></span>
+<span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;::&quot; </span><span class="cs">&lt;annotation&gt;</span><span class="s"> </span><span class="p">]</span><span class="o">*</span><span class="s"></span>
 
 <span class="cs">&lt;annotation&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> </span><span class="cs">&lt;expr-atom-head&gt;</span><span class="s"> </span><span class="cs">&lt;expr-atom-tail&gt;</span><span class="s"></span>
+
+<span class="cs">&lt;string-annotation&gt;</span><span class="s"> </span><span class="cs">::=</span><span class="s"> &quot;::&quot; </span><span class="cs">&lt;string-literal&gt;</span><span class="s"></span>
 </pre></div>
 </div>
 </div>
@@ -3369,7 +3438,7 @@ two-dimensional array. The third parameter is an array of sets of integers.</p>
       
     </p>
     <p>
-        &copy; Copyright 2016, 2017, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
+        &copy; Copyright 2016, 2017, 2018, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
     </p>
   </div>
 </footer>

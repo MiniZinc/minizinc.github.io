@@ -4,15 +4,15 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>2.7. Boolean Satisfiability Modelling in MiniZinc &#8212; MiniZinc Documentation 2.1.2 documentation</title>
+    <title>2.7. Boolean Satisfiability Modelling in MiniZinc &#8212; The MiniZinc Handbook 2.2.0</title>
     <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,9 +37,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">
-          MiniZinc Documentation</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.1</b></span>
+        <a class="navbar-brand" href="index.html"><span><img src="static/MiniZn_logo_2.svg"></span>
+          The MiniZinc Handbook</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -55,7 +55,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="part_1_introduction.html">1. Introduction</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html">1.1. Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#structure">1.1.1. Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#how-to-read-this">1.1.2. How to Read This</a></li>
@@ -67,7 +67,11 @@
 <li class="toctree-l3"><a class="reference internal" href="installation.html#adding-third-party-solvers">1.2.3. Adding Third-party Solvers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ide_basic_steps.html">1.3. First steps with the MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_steps.html">1.3. First steps with MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-ide">1.3.1. The MiniZinc IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-command-line-tool">1.3.2. The MiniZinc command line tool</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul class="current">
@@ -114,12 +118,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="efficient.html">2.6. Effective Modelling Practices in MiniZinc</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="efficient.html#variable-bounds">2.6.1. Variable Bounds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#unconstrained-variables">2.6.2. Unconstrained Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#effective-generators">2.6.3. Effective Generators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.4. Redundant Constraints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#modelling-choices">2.6.5. Modelling Choices</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.6. Multiple Modelling and Channels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#symmetry">2.6.7. Symmetry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#effective-generators">2.6.2. Effective Generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.3. Redundant Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#modelling-choices">2.6.4. Modelling Choices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.5. Multiple Modelling and Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#symmetry">2.6.6. Symmetry</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2.7. Boolean Satisfiability Modelling in MiniZinc</a><ul>
@@ -140,25 +143,76 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="part_3_reference.html">3. MiniZinc Reference Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="spec.html">3.1. Specification of MiniZinc</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">3.1.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#notation">3.1.2. Notation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#overview-of-a-model">3.1.3. Overview of a Model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#syntax-overview">3.1.4. Syntax Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#high-level-model-structure">3.1.5. High-level Model Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#types-and-type-insts">3.1.6. Types and Type-insts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#expressions">3.1.7. Expressions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#items">3.1.8. Items</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#annotations">3.1.9. Annotations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#partiality">3.1.10. Partiality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#built-in-operations">3.1.11. Built-in Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#content-types">3.1.12. Content-types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#json-support">3.1.13. JSON support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">3.1.14. Full grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#basic-usage">3.1.1. Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#adding-solvers">3.1.2. Adding Solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#options">3.1.3. Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#user-configuration-files">3.1.4. User Configuration Files</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="fzn-interfacing.html">3.2. Interfacing Solvers to Flatzinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#editing-minizinc-model-files">3.2.1. Editing MiniZinc model files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#configuring-and-running-the-solver">3.2.2. Configuring and Running the Solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#working-with-projects">3.2.3. Working With Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#automatic-solution-checking">3.2.4. Automatic Solution Checking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#submitting-solutions-to-online-courses">3.2.5. Submitting Solutions to Online Courses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#configuration-options">3.2.6. Configuration Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#adding-third-party-solvers">3.2.7. Adding Third-Party Solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpprofiler.html">3.3. CP-Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#connecting-a-solver-execution">3.3.1. Connecting a Solver Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#the-protocol-high-level">3.3.2. The protocol (high level)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#the-protocol-low-level">3.3.3. The protocol (low level)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#traditional-tree-visualisation">3.3.4. Traditional Tree Visualisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#alternative-search-tree-visualisations">3.3.5. Alternative Search Tree Visualisations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#similar-subtree-analysis">3.3.6. Similar Subtree Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#execution-comparison-by-merging">3.3.7. Execution Comparison by Merging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#replaying-search">3.3.8. Replaying Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#nogood-analysis">3.3.9. Nogood Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.4. Using MiniZinc in Jupyter Notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">4.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#notation">4.1.2. Notation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#overview-of-a-model">4.1.3. Overview of a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#syntax-overview">4.1.4. Syntax Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#high-level-model-structure">4.1.5. High-level Model Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#types-and-type-insts">4.1.6. Types and Type-insts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#expressions">4.1.7. Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#items">4.1.8. Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#annotations">4.1.9. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#partiality">4.1.10. Partiality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#built-in-operations">4.1.11. Built-in Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#content-types">4.1.12. Content-types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#json-support">4.1.13. JSON support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">4.1.14. Full grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.1. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html">4.2.2. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-optiontypes.html">4.2.3. Option type support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-options.html">4.2.4. Compiler options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-builtins.html">4.2.5. Builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.6. FlatZinc builtins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#specification-of-flatzinc">4.3.1. Specification of FlatZinc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#output">4.3.2. Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#solver-specific-libraries">4.3.3. Solver-specific Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#command-line-interface">4.3.4. Command Line Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#solver-configuration-files">4.3.5. Solver Configuration Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#grammar">4.3.6. Grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api_interfacing.html">4.4. Interfacing to MiniZinc via its API</a></li>
 </ul>
 </li>
 </ul>
@@ -277,9 +331,9 @@ preferable.</p>
 <p>Let us consider modelling a latin squares problem. A latin square
 is an <span class="math notranslate nohighlight">\(n \times n\)</span> grid of numbers from <span class="math notranslate nohighlight">\(1..n\)</span> such that
 each number appears exactly once in every row and column.
-An integer model for latin squares is shown in <a class="reference internal" href="#ex-latin"><span class="std std-numref">Listing 2.49</span></a>.</p>
+An integer model for latin squares is shown in <a class="reference internal" href="#ex-latin"><span class="std std-numref">Listing 2.7.1</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ex-latin">
-<div class="code-block-caption"><span class="caption-number">Listing 2.49 </span><span class="caption-text">Integer model for Latin Squares (<a class="reference download internal" href="downloads/latin.mzn" download=""><tt class="xref download docutils literal">latin.mzn</tt></a>).</span><a class="headerlink" href="#ex-latin" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.7.1 </span><span class="caption-text">Integer model for Latin Squares (<a class="reference download internal" href="downloads/latin.mzn" download=""><tt class="xref download docutils literal">latin.mzn</tt></a>).</span><a class="headerlink" href="#ex-latin" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"> </span><span class="c">% size of latin square</span><span class="s"></span>
 <span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">;</span><span class="s"></span>
 
@@ -298,14 +352,14 @@ An integer model for latin squares is shown in <a class="reference internal" hre
 in the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alldifferent</span><span class="s"></span></code> constraint.
 The value representation is the best way of representing disequality.
 A Boolean only model for latin squares is shown in
-<a class="reference internal" href="#ex-latinbool"><span class="std std-numref">Listing 2.50</span></a>.
+<a class="reference internal" href="#ex-latinbool"><span class="std std-numref">Listing 2.7.2</span></a>.
 Note each integer array element <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">a</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"></span></code> is replaced by an array of
 Booleans.
 We use the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">exactlyone</span><span class="s"></span></code> predicate to encode that each value is used
 exactly once in every row and every column, as well as to encode that exactly
 one of the Booleans corresponding to integer array element <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">a</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"></span></code> is true.</p>
 <div class="literal-block-wrapper docutils container" id="ex-latinbool">
-<div class="code-block-caption"><span class="caption-number">Listing 2.50 </span><span class="caption-text">Boolean model for Latin Squares (<a class="reference download internal" href="downloads/latinbool.mzn" download=""><tt class="xref download docutils literal">latinbool.mzn</tt></a>).</span><a class="headerlink" href="#ex-latinbool" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.7.2 </span><span class="caption-text">Boolean model for Latin Squares (<a class="reference download internal" href="downloads/latinbool.mzn" download=""><tt class="xref download docutils literal">latinbool.mzn</tt></a>).</span><a class="headerlink" href="#ex-latinbool" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"> </span><span class="c">% size of latin square</span><span class="s"></span>
 <span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">;</span><span class="s"></span>
 
@@ -342,20 +396,20 @@ uninterupted line of blank squares</li>
 <li>The number of lights adjacent to a numbered filled square
 is exactly the number in the filled square.</li>
 </ul>
-<p>An example of a Light Up puzzle is shown in <a class="reference internal" href="#fig-lightup"><span class="std std-numref">Fig. 2.12</span></a>
-with its solution in <a class="reference internal" href="#fig-lightup-sol"><span class="std std-numref">Fig. 2.13</span></a>.</p>
+<p>An example of a Light Up puzzle is shown in <a class="reference internal" href="#fig-lightup"><span class="std std-numref">Fig. 2.7.1</span></a>
+with its solution in <a class="reference internal" href="#fig-lightup-sol"><span class="std std-numref">Fig. 2.7.2</span></a>.</p>
 <div class="figure" id="id1">
-<span id="fig-lightup"></span><img alt="images/lightup.svg" src="images/lightup.svg" /><p class="caption"><span class="caption-number">Fig. 2.12 </span><span class="caption-text">An example of a Light Up puzzle</span></p>
+<span id="fig-lightup"></span><img alt="images/lightup.svg" src="images/lightup.svg" /><p class="caption"><span class="caption-number">Fig. 2.7.1 </span><span class="caption-text">An example of a Light Up puzzle</span></p>
 </div>
 <div class="figure" id="id2">
-<span id="fig-lightup-sol"></span><img alt="images/lightup2.svg" src="images/lightup2.svg" /><p class="caption"><span class="caption-number">Fig. 2.13 </span><span class="caption-text">The completed solution of the Light Up puzzle</span></p>
+<span id="fig-lightup-sol"></span><img alt="images/lightup2.svg" src="images/lightup2.svg" /><p class="caption"><span class="caption-number">Fig. 2.7.2 </span><span class="caption-text">The completed solution of the Light Up puzzle</span></p>
 </div>
 <p>It is natural to model this problem
 using Boolean variables to determine which
 squares contain a light and which do not, but there is some integer
 arithmetic to consider for the filled squares.</p>
 <div class="literal-block-wrapper docutils container" id="ex-lightup">
-<div class="code-block-caption"><span class="caption-number">Listing 2.51 </span><span class="caption-text">SAT Model for the Light Up puzzle (<a class="reference download internal" href="downloads/lightup.mzn" download=""><tt class="xref download docutils literal">lightup.mzn</tt></a>).</span><a class="headerlink" href="#ex-lightup" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.7.3 </span><span class="caption-text">SAT Model for the Light Up puzzle (<a class="reference download internal" href="downloads/lightup.mzn" download=""><tt class="xref download docutils literal">lightup.mzn</tt></a>).</span><a class="headerlink" href="#ex-lightup" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">h</span><span class="p">;</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">H</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">h</span><span class="p">;</span><span class="s"> </span><span class="c">% board height</span><span class="s"></span>
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">;</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">W</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">w</span><span class="p">;</span><span class="s"> </span><span class="c">% board width</span><span class="s"></span>
 <span class="kt">array</span><span class="p">[</span><span class="nv">H</span><span class="p">,</span><span class="nv">W</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="o">-</span><span class="m">1</span><span class="o">..</span><span class="m">5</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">;</span><span class="s">       </span><span class="c">% board</span><span class="s"></span>
@@ -398,11 +452,11 @@ arithmetic to consider for the filled squares.</p>
 </pre></div>
 </div>
 </div>
-<p>A model for the problem is given in <a class="reference internal" href="#ex-lightup"><span class="std std-numref">Listing 2.51</span></a>.
-A data file for the problem shown in <a class="reference internal" href="#fig-lightup"><span class="std std-numref">Fig. 2.12</span></a>
-is shown in <a class="reference internal" href="#fig-lightupdzn"><span class="std std-numref">Listing 2.52</span></a>.</p>
+<p>A model for the problem is given in <a class="reference internal" href="#ex-lightup"><span class="std std-numref">Listing 2.7.3</span></a>.
+A data file for the problem shown in <a class="reference internal" href="#fig-lightup"><span class="std std-numref">Fig. 2.7.1</span></a>
+is shown in <a class="reference internal" href="#fig-lightupdzn"><span class="std std-numref">Listing 2.7.4</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="fig-lightupdzn">
-<div class="code-block-caption"><span class="caption-number">Listing 2.52 </span><span class="caption-text">Datafile for the Light Up puzzle instance shown in <a class="reference internal" href="#fig-lightup"><span class="std std-numref">Fig. 2.12</span></a>.</span><a class="headerlink" href="#fig-lightupdzn" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.7.4 </span><span class="caption-text">Datafile for the Light Up puzzle instance shown in <a class="reference internal" href="#fig-lightup"><span class="std std-numref">Fig. 2.7.1</span></a>.</span><a class="headerlink" href="#fig-lightupdzn" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">h</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">7</span><span class="p">;</span><span class="s"></span>
 <span class="nv">w</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">7</span><span class="p">;</span><span class="s"></span>
 <span class="nv">b</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[|</span><span class="s"> </span><span class="o">-</span><span class="m">1</span><span class="p">,</span><span class="o">-</span><span class="m">1</span><span class="p">,</span><span class="o">-</span><span class="m">1</span><span class="p">,</span><span class="o">-</span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="o">-</span><span class="m">1</span><span class="p">,</span><span class="o">-</span><span class="m">1</span><span class="s"> </span>
@@ -432,7 +486,7 @@ of the Booleans</li>
 (BDD) that encodes the cardinality constraint.</li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="ex-bboolsum">
-<div class="code-block-caption"><span class="caption-number">Listing 2.53 </span><span class="caption-text">Cardinality constraints by binary adder networks (<a class="reference download internal" href="downloads/bboolsum.mzn" download=""><tt class="xref download docutils literal">bboolsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-bboolsum" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.7.5 </span><span class="caption-text">Cardinality constraints by binary adder networks (<a class="reference download internal" href="downloads/bboolsum.mzn" download=""><tt class="xref download docutils literal">bboolsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-bboolsum" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% the sum of booleans x = s</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">bool_sum_eq</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"></span>
 <span class="s">     </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">length</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"></span>
@@ -456,7 +510,7 @@ of the Booleans</li>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="ex-binarysum">
-<div class="code-block-caption"><span class="caption-number">Listing 2.54 </span><span class="caption-text">Code for building binary addition networks (<a class="reference download internal" href="downloads/binarysum.mzn" download=""><tt class="xref download docutils literal">binarysum.mzn</tt></a>).</span><a class="headerlink" href="#ex-binarysum" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.7.6 </span><span class="caption-text">Code for building binary addition networks (<a class="reference download internal" href="downloads/binarysum.mzn" download=""><tt class="xref download docutils literal">binarysum.mzn</tt></a>).</span><a class="headerlink" href="#ex-binarysum" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% the sum of bits x = s in binary. </span><span class="s"></span>
 <span class="c">%            s[0], s[1], ..., s[k] where 2^k &gt;= length(x) &gt; 2^(k-1)</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">binary_sum</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span>
@@ -500,9 +554,9 @@ of the Booleans</li>
 </div>
 </div>
 <p>We can implement <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">bool_sum_eq</span><span class="s"></span></code> using binary adder networks
-using the code shown in <a class="reference internal" href="#ex-bboolsum"><span class="std std-numref">Listing 2.53</span></a>.
+using the code shown in <a class="reference internal" href="#ex-bboolsum"><span class="std std-numref">Listing 2.7.5</span></a>.
 The predicate <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">binary_sum</span><span class="s"></span></code>
-defined in <a class="reference internal" href="#ex-binarysum"><span class="std std-numref">Listing 2.54</span></a>
+defined in <a class="reference internal" href="#ex-binarysum"><span class="std std-numref">Listing 2.7.6</span></a>
 creates a binary representation
 of the sum of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> by splitting the list into two,
 summing up each half to create a binary representation
@@ -510,7 +564,7 @@ and then summing these two binary numbers using <code class="code mzn minizinc d
 If the list <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> is odd the last bit is saved to use as a carry in
 to the binary addition.</p>
 <div class="literal-block-wrapper docutils container" id="ex-uboolsum">
-<div class="code-block-caption"><span class="caption-number">Listing 2.55 </span><span class="caption-text">Cardinality constraints by sorting networks (<a class="reference download internal" href="downloads/uboolsum.mzn" download=""><tt class="xref download docutils literal">uboolsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-uboolsum" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.7.7 </span><span class="caption-text">Cardinality constraints by sorting networks (<a class="reference download internal" href="downloads/uboolsum.mzn" download=""><tt class="xref download docutils literal">uboolsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-uboolsum" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% the sum of booleans x = s</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">bool_sum_eq</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"></span>
 <span class="s">     </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">length</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"></span>
@@ -532,7 +586,7 @@ to the binary addition.</p>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="ex-oesort">
-<div class="code-block-caption"><span class="caption-number">Listing 2.56 </span><span class="caption-text">Odd-even merge sorting networks (<a class="reference download internal" href="downloads/oesort.mzn" download=""><tt class="xref download docutils literal">oesort.mzn</tt></a>).</span><a class="headerlink" href="#ex-oesort" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.7.8 </span><span class="caption-text">Odd-even merge sorting networks (<a class="reference download internal" href="downloads/oesort.mzn" download=""><tt class="xref download docutils literal">oesort.mzn</tt></a>).</span><a class="headerlink" href="#ex-oesort" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">%% odd-even sort</span><span class="s"></span>
 <span class="c">%% y is the sorted version of x, all trues before falses</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">oesort</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">y</span><span class="p">)</span><span class="o">=</span><span class="s"></span>
@@ -576,7 +630,7 @@ to the binary addition.</p>
 </div>
 </div>
 <p>We can implement <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">bool_sum_eq</span><span class="s"></span></code> using unary sorting networks
-using the code shown in <a class="reference internal" href="#ex-uboolsum"><span class="std std-numref">Listing 2.55</span></a>.
+using the code shown in <a class="reference internal" href="#ex-uboolsum"><span class="std std-numref">Listing 2.7.7</span></a>.
 The cardinality constraint is defined by expanding the input
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> to have length a power of 2, and sorting the resulting bits
 using an odd-even merge sorting network.
@@ -585,7 +639,7 @@ recursively by splitting
 the input list in 2, sorting each list and merging the two
 sorted lists.</p>
 <div class="literal-block-wrapper docutils container" id="ex-bddsum">
-<div class="code-block-caption"><span class="caption-number">Listing 2.57 </span><span class="caption-text">Cardinality constraints by binary decision diagrams (<a class="reference download internal" href="downloads/bddsum.mzn" download=""><tt class="xref download docutils literal">bddsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-bddsum" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.7.9 </span><span class="caption-text">Cardinality constraints by binary decision diagrams (<a class="reference download internal" href="downloads/bddsum.mzn" download=""><tt class="xref download docutils literal">bddsum.mzn</tt></a>).</span><a class="headerlink" href="#ex-bddsum" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% the sum of booleans x = s</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">bool_sum_eq</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"></span>
 <span class="s">     </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">length</span><span class="p">(</span><span class="nv">x</span><span class="p">),</span><span class="s"></span>
@@ -630,7 +684,7 @@ to avoid creating many equivalent constraints.</p>
       
     </p>
     <p>
-        &copy; Copyright 2016, 2017, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
+        &copy; Copyright 2016, 2017, 2018, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
     </p>
   </div>
 </footer>

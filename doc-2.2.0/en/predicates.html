@@ -4,15 +4,15 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>2.3. Predicates and Functions &#8212; MiniZinc Documentation 2.1.2 documentation</title>
+    <title>2.3. Predicates and Functions &#8212; The MiniZinc Handbook 2.2.0</title>
     <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,9 +37,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">
-          MiniZinc Documentation</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.1</b></span>
+        <a class="navbar-brand" href="index.html"><span><img src="static/MiniZn_logo_2.svg"></span>
+          The MiniZinc Handbook</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -55,7 +55,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="part_1_introduction.html">1. Introduction</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html">1.1. Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#structure">1.1.1. Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#how-to-read-this">1.1.2. How to Read This</a></li>
@@ -67,7 +67,11 @@
 <li class="toctree-l3"><a class="reference internal" href="installation.html#adding-third-party-solvers">1.2.3. Adding Third-party Solvers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ide_basic_steps.html">1.3. First steps with the MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_steps.html">1.3. First steps with MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-ide">1.3.1. The MiniZinc IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-command-line-tool">1.3.2. The MiniZinc command line tool</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul class="current">
@@ -114,12 +118,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="efficient.html">2.6. Effective Modelling Practices in MiniZinc</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="efficient.html#variable-bounds">2.6.1. Variable Bounds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#unconstrained-variables">2.6.2. Unconstrained Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#effective-generators">2.6.3. Effective Generators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.4. Redundant Constraints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#modelling-choices">2.6.5. Modelling Choices</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.6. Multiple Modelling and Channels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#symmetry">2.6.7. Symmetry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#effective-generators">2.6.2. Effective Generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.3. Redundant Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#modelling-choices">2.6.4. Modelling Choices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.5. Multiple Modelling and Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#symmetry">2.6.6. Symmetry</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sat.html">2.7. Boolean Satisfiability Modelling in MiniZinc</a><ul>
@@ -140,25 +143,76 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="part_3_reference.html">3. MiniZinc Reference Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="spec.html">3.1. Specification of MiniZinc</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">3.1.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#notation">3.1.2. Notation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#overview-of-a-model">3.1.3. Overview of a Model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#syntax-overview">3.1.4. Syntax Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#high-level-model-structure">3.1.5. High-level Model Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#types-and-type-insts">3.1.6. Types and Type-insts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#expressions">3.1.7. Expressions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#items">3.1.8. Items</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#annotations">3.1.9. Annotations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#partiality">3.1.10. Partiality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#built-in-operations">3.1.11. Built-in Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#content-types">3.1.12. Content-types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#json-support">3.1.13. JSON support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">3.1.14. Full grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#basic-usage">3.1.1. Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#adding-solvers">3.1.2. Adding Solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#options">3.1.3. Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#user-configuration-files">3.1.4. User Configuration Files</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="fzn-interfacing.html">3.2. Interfacing Solvers to Flatzinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#editing-minizinc-model-files">3.2.1. Editing MiniZinc model files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#configuring-and-running-the-solver">3.2.2. Configuring and Running the Solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#working-with-projects">3.2.3. Working With Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#automatic-solution-checking">3.2.4. Automatic Solution Checking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#submitting-solutions-to-online-courses">3.2.5. Submitting Solutions to Online Courses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#configuration-options">3.2.6. Configuration Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#adding-third-party-solvers">3.2.7. Adding Third-Party Solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpprofiler.html">3.3. CP-Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#connecting-a-solver-execution">3.3.1. Connecting a Solver Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#the-protocol-high-level">3.3.2. The protocol (high level)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#the-protocol-low-level">3.3.3. The protocol (low level)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#traditional-tree-visualisation">3.3.4. Traditional Tree Visualisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#alternative-search-tree-visualisations">3.3.5. Alternative Search Tree Visualisations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#similar-subtree-analysis">3.3.6. Similar Subtree Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#execution-comparison-by-merging">3.3.7. Execution Comparison by Merging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#replaying-search">3.3.8. Replaying Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#nogood-analysis">3.3.9. Nogood Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.4. Using MiniZinc in Jupyter Notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">4.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#notation">4.1.2. Notation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#overview-of-a-model">4.1.3. Overview of a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#syntax-overview">4.1.4. Syntax Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#high-level-model-structure">4.1.5. High-level Model Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#types-and-type-insts">4.1.6. Types and Type-insts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#expressions">4.1.7. Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#items">4.1.8. Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#annotations">4.1.9. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#partiality">4.1.10. Partiality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#built-in-operations">4.1.11. Built-in Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#content-types">4.1.12. Content-types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#json-support">4.1.13. JSON support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">4.1.14. Full grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.1. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html">4.2.2. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-optiontypes.html">4.2.3. Option type support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-options.html">4.2.4. Compiler options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-builtins.html">4.2.5. Builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.6. FlatZinc builtins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#specification-of-flatzinc">4.3.1. Specification of FlatZinc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#output">4.3.2. Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#solver-specific-libraries">4.3.3. Solver-specific Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#command-line-interface">4.3.4. Command Line Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#solver-configuration-files">4.3.5. Solver Configuration Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#grammar">4.3.6. Grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api_interfacing.html">4.4. Interfacing to MiniZinc via its API</a></li>
 </ul>
 </li>
 </ul>
@@ -261,8 +315,8 @@ A use of the <code class="code mzn minizinc docutils literal highlight highlight
 <p>The <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alldifferent</span><span class="s"></span></code> constraint is one of the most studied and used global constraints in
 constraint programming.  It is used to define assignment subproblems, and
 efficient global propagators for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alldifferent</span><span class="s"></span></code> exist.
-The models <a class="reference download internal" href="downloads/send-more-money.mzn" download=""><tt class="xref download docutils literal">send-more-money.mzn</tt></a> (<a class="reference internal" href="modelling2.html#ex-smm"><span class="std std-numref">Listing 2.13</span></a>)
-and <a class="reference download internal" href="downloads/sudoku.mzn" download=""><tt class="xref download docutils literal">sudoku.mzn</tt></a> (<a class="reference internal" href="modelling2.html#ex-sudoku"><span class="std std-numref">Listing 2.14</span></a>)
+The models <a class="reference download internal" href="downloads/send-more-money.mzn" download=""><tt class="xref download docutils literal">send-more-money.mzn</tt></a> (<a class="reference internal" href="modelling2.html#ex-smm"><span class="std std-numref">Listing 2.2.4</span></a>)
+and <a class="reference download internal" href="downloads/sudoku.mzn" download=""><tt class="xref download docutils literal">sudoku.mzn</tt></a> (<a class="reference internal" href="modelling2.html#ex-sudoku"><span class="std std-numref">Listing 2.2.5</span></a>)
 are examples of models using <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alldifferent</span><span class="s"></span></code>.</p>
 </div>
 <div class="section" id="cumulative">
@@ -277,7 +331,7 @@ usage.</p>
 and resource requirements <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">r</span><span class="s"></span></code>, never require more
 than a global resource bound <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">b</span><span class="s"></span></code> at any one time.</p>
 <div class="literal-block-wrapper docutils container" id="ex-moving">
-<div class="code-block-caption"><span class="caption-number">Listing 2.25 </span><span class="caption-text">Model for moving furniture using <tt class="docutils literal">cumulative</tt> (<a class="reference download internal" href="downloads/moving.mzn" download=""><tt class="xref download docutils literal">moving.mzn</tt></a>).</span><a class="headerlink" href="#ex-moving" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.1 </span><span class="caption-text">Model for moving furniture using <tt class="docutils literal">cumulative</tt> (<a class="reference download internal" href="downloads/moving.mzn" download=""><tt class="xref download docutils literal">moving.mzn</tt></a>).</span><a class="headerlink" href="#ex-moving" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;cumulative.mzn&quot;</span><span class="p">;</span><span class="s"></span>
 
 <span class="kt">enum</span><span class="s"> </span><span class="nv">OBJECTS</span><span class="p">;</span><span class="s"></span>
@@ -304,7 +358,7 @@ than a global resource bound <code class="code mzn minizinc docutils literal hig
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="ex-movingd">
-<div class="code-block-caption"><span class="caption-number">Listing 2.26 </span><span class="caption-text">Data for moving furniture using <tt class="docutils literal">cumulative</tt> (<a class="reference download internal" href="downloads/moving.dzn" download=""><tt class="xref download docutils literal">moving.dzn</tt></a>).</span><a class="headerlink" href="#ex-movingd" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.2 </span><span class="caption-text">Data for moving furniture using <tt class="docutils literal">cumulative</tt> (<a class="reference download internal" href="downloads/moving.dzn" download=""><tt class="xref download docutils literal">moving.dzn</tt></a>).</span><a class="headerlink" href="#ex-movingd" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">OBJECTS</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">piano</span><span class="p">,</span><span class="s"> </span><span class="nv">fridge</span><span class="p">,</span><span class="s"> </span><span class="nv">doublebed</span><span class="p">,</span><span class="s"> </span><span class="nv">singlebed</span><span class="p">,</span><span class="s"> </span>
 <span class="s">            </span><span class="nv">wardrobe</span><span class="p">,</span><span class="s"> </span><span class="nv">chair1</span><span class="p">,</span><span class="s"> </span><span class="nv">chair2</span><span class="p">,</span><span class="s"> </span><span class="bp">table</span><span class="s"> </span><span class="p">};</span><span class="s"></span>
 
@@ -318,31 +372,31 @@ than a global resource bound <code class="code mzn minizinc docutils literal hig
 </pre></div>
 </div>
 </div>
-<p>The model in <a class="reference internal" href="#ex-moving"><span class="std std-numref">Listing 2.25</span></a> finds a schedule for moving furniture
+<p>The model in <a class="reference internal" href="#ex-moving"><span class="std std-numref">Listing 2.3.1</span></a> finds a schedule for moving furniture
 so that each piece of furniture has enough handlers (people) and enough trolleys
 available during the move. The available time, handlers
 and trolleys are given, and the data gives for each object the move
 duration,
 the number of handlers and the number of trolleys required.
 Using the data shown in <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">ex</span><span class="o">-</span><span class="nv">movingd</span><span class="s"></span></code>, the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-gecode moving.mzn moving.dzn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc moving.mzn moving.dzn
 </pre></div>
 </div>
 <p>may result in the output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">105</span><span class="p">]</span>
-<span class="n">end</span> <span class="o">=</span> <span class="mi">140</span>
-<span class="o">----------</span>
-<span class="o">==========</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>start = [0, 60, 60, 90, 120, 0, 15, 105]
+end = 140
+----------
+==========
 </pre></div>
 </div>
-<p><a class="reference internal" href="#fig-histogram-a"><span class="std std-numref">Fig. 2.4</span></a> and <a class="reference internal" href="#fig-histogram-b"><span class="std std-numref">Fig. 2.5</span></a>
+<p><a class="reference internal" href="#fig-histogram-a"><span class="std std-numref">Fig. 2.3.1</span></a> and <a class="reference internal" href="#fig-histogram-b"><span class="std std-numref">Fig. 2.3.2</span></a>
 show the requirements for handlers and
 trolleys at each time in the move for this solution.</p>
 <div class="figure" id="id1">
-<span id="fig-histogram-a"></span><img alt="images/handlers.svg" src="images/handlers.svg" /><p class="caption"><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Histogram of usage of handlers in the move.</span></p>
+<span id="fig-histogram-a"></span><img alt="images/handlers.svg" src="images/handlers.svg" /><p class="caption"><span class="caption-number">Fig. 2.3.1 </span><span class="caption-text">Histogram of usage of handlers in the move.</span></p>
 </div>
 <div class="figure" id="id2">
-<span id="fig-histogram-b"></span><img alt="images/trolleys.svg" src="images/trolleys.svg" /><p class="caption"><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Histogram of usage of trolleys in the move.</span></p>
+<span id="fig-histogram-b"></span><img alt="images/trolleys.svg" src="images/trolleys.svg" /><p class="caption"><span class="caption-number">Fig. 2.3.2 </span><span class="caption-text">Histogram of usage of trolleys in the move.</span></p>
 </div>
 </div>
 <div class="section" id="table">
@@ -360,7 +414,7 @@ The constraint enforces <span class="math notranslate nohighlight">\(x \in t\)</
 and each row in <span class="math notranslate nohighlight">\(t\)</span> to be a tuple,
 and <span class="math notranslate nohighlight">\(t\)</span> to be a set of tuples.</p>
 <div class="literal-block-wrapper docutils container" id="ex-meal">
-<div class="code-block-caption"><span class="caption-number">Listing 2.27 </span><span class="caption-text">Model for meal planning using <tt class="docutils literal">table</tt> constraint (<a class="reference download internal" href="downloads/meal.mzn" download=""><tt class="xref download docutils literal">meal.mzn</tt></a>).</span><a class="headerlink" href="#ex-meal" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.3 </span><span class="caption-text">Model for meal planning using <tt class="docutils literal">table</tt> constraint (<a class="reference download internal" href="downloads/meal.mzn" download=""><tt class="xref download docutils literal">meal.mzn</tt></a>).</span><a class="headerlink" href="#ex-meal" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Planning a balanced meal</span><span class="s"></span>
 <span class="k">include</span><span class="s"> &quot;table.mzn&quot;</span><span class="p">;</span><span class="s"></span>
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">min_energy</span><span class="p">;</span><span class="s"></span>
@@ -401,7 +455,7 @@ and <span class="math notranslate nohighlight">\(t\)</span> to be a set of tuple
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="ex-meald">
-<div class="code-block-caption"><span class="caption-number">Listing 2.28 </span><span class="caption-text">Data for meal planning defining the <tt class="docutils literal">table</tt> used (<a class="reference download internal" href="downloads/meal.dzn" download=""><tt class="xref download docutils literal">meal.dzn</tt></a>).</span><a class="headerlink" href="#ex-meald" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.4 </span><span class="caption-text">Data for meal planning defining the <tt class="docutils literal">table</tt> used (<a class="reference download internal" href="downloads/meal.dzn" download=""><tt class="xref download docutils literal">meal.dzn</tt></a>).</span><a class="headerlink" href="#ex-meald" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">FOODS</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">icecream</span><span class="p">,</span><span class="s"> </span><span class="nv">banana</span><span class="p">,</span><span class="s"> </span><span class="nv">chocolatecake</span><span class="p">,</span><span class="s"> </span><span class="nv">lasagna</span><span class="p">,</span><span class="s"> </span>
 <span class="s">          </span><span class="nv">steak</span><span class="p">,</span><span class="s"> </span><span class="nv">rice</span><span class="p">,</span><span class="s"> </span><span class="nv">chips</span><span class="p">,</span><span class="s"> </span><span class="nv">brocolli</span><span class="p">,</span><span class="s"> </span><span class="nv">beans</span><span class="p">}</span><span class="s"> </span><span class="p">;</span><span class="s"></span>
 
@@ -425,7 +479,7 @@ and <span class="math notranslate nohighlight">\(t\)</span> to be a set of tuple
 </pre></div>
 </div>
 </div>
-<p>The model in <a class="reference internal" href="#ex-meal"><span class="std std-numref">Listing 2.27</span></a> searches for balanced meals.
+<p>The model in <a class="reference internal" href="#ex-meal"><span class="std std-numref">Listing 2.3.3</span></a> searches for balanced meals.
 Each meal item has a name (encoded as an integer), a kilojoule count,
 protein in grams, salt in milligrams, and fat in grams, as well as cost
 in cents.  The relationship between these items is encoded using
@@ -454,13 +508,13 @@ and transition function <code class="code mzn minizinc docutils literal highligh
 (which all must be in <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">Q</span><span class="s"></span></code>).
 State 0 is reserved to be an always failing state.</p>
 <div class="figure" id="id3">
-<span id="fig-dfa"></span><img alt="images/dfa.svg" src="images/dfa.svg" /><p class="caption"><span class="caption-number">Fig. 2.6 </span><span class="caption-text">A DFA determining correct rosters.</span></p>
+<span id="fig-dfa"></span><img alt="images/dfa.svg" src="images/dfa.svg" /><p class="caption"><span class="caption-number">Fig. 2.3.3 </span><span class="caption-text">A DFA determining correct rosters.</span></p>
 </div>
 <p>Consider a nurse rostering problem. Each nurse is scheduled for each day as
 either: (d) on day shift, (n) on night shift, or (o) off.
 In each four day period a nurse must have at least one day off, and
 no nurse can be scheduled for 3 night shifts in a row.
-This can be encoded using the incomplete DFA shown in <a class="reference internal" href="#fig-dfa"><span class="std std-numref">Fig. 2.6</span></a>.
+This can be encoded using the incomplete DFA shown in <a class="reference internal" href="#fig-dfa"><span class="std std-numref">Fig. 2.3.3</span></a>.
 We can encode this DFA as having start state <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="s"></span></code>, final states <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="m">6</span><span class="s"></span></code>,
 and transition function</p>
 <table border="1" class="table-nonfluid table-bordered docutils">
@@ -511,13 +565,13 @@ and transition function</p>
 </tbody>
 </table>
 <p>Note that state 0 in the table indicates an error state.
-The model shown in <a class="reference internal" href="#ex-nurse"><span class="std std-numref">Listing 2.29</span></a> finds a schedule for
+The model shown in <a class="reference internal" href="#ex-nurse"><span class="std std-numref">Listing 2.3.5</span></a> finds a schedule for
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">num_nurses</span><span class="s"></span></code> nurses over <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">num_days</span><span class="s"></span></code> days, where we
 require <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">req_day</span><span class="s"></span></code> nurses on day shift each day, and
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">req_night</span><span class="s"></span></code> nurses on night shift, and that each nurse
 takes at least <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">min_night</span><span class="s"></span></code> night shifts.</p>
 <div class="literal-block-wrapper docutils container" id="ex-nurse">
-<div class="code-block-caption"><span class="caption-number">Listing 2.29 </span><span class="caption-text">Model for nurse rostering using <tt class="docutils literal">regular</tt> constraint (<a class="reference download internal" href="downloads/nurse.mzn" download=""><tt class="xref download docutils literal">nurse.mzn</tt></a>)</span><a class="headerlink" href="#ex-nurse" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.5 </span><span class="caption-text">Model for nurse rostering using <tt class="docutils literal">regular</tt> constraint (<a class="reference download internal" href="downloads/nurse.mzn" download=""><tt class="xref download docutils literal">nurse.mzn</tt></a>)</span><a class="headerlink" href="#ex-nurse" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Simple nurse rostering</span><span class="s"></span>
 <span class="k">include</span><span class="s"> &quot;regular.mzn&quot;</span><span class="p">;</span><span class="s"></span>
 <span class="kt">enum</span><span class="s"> </span><span class="nv">NURSE</span><span class="p">;</span><span class="s"></span>
@@ -557,20 +611,20 @@ takes at least <code class="code mzn minizinc docutils literal highlight highlig
 </div>
 </div>
 <p>Running the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-gecode nurse.mzn nurse.dzn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc nurse.mzn nurse.dzn
 </pre></div>
 </div>
 <p>finds a 10 day schedule for 7 nurses, requiring 3 on each day shift
 and 2 on each night shift, with a minimum 2 night shifts per nurse.
 A possible output is</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">o</span> <span class="n">d</span> <span class="n">n</span> <span class="n">n</span> <span class="n">o</span> <span class="n">n</span> <span class="n">n</span> <span class="n">d</span> <span class="n">o</span> <span class="n">o</span>
-<span class="n">d</span> <span class="n">o</span> <span class="n">n</span> <span class="n">d</span> <span class="n">o</span> <span class="n">d</span> <span class="n">n</span> <span class="n">n</span> <span class="n">o</span> <span class="n">n</span>
-<span class="n">o</span> <span class="n">d</span> <span class="n">d</span> <span class="n">o</span> <span class="n">d</span> <span class="n">o</span> <span class="n">d</span> <span class="n">n</span> <span class="n">n</span> <span class="n">o</span>
-<span class="n">d</span> <span class="n">d</span> <span class="n">d</span> <span class="n">o</span> <span class="n">n</span> <span class="n">n</span> <span class="n">d</span> <span class="n">o</span> <span class="n">n</span> <span class="n">n</span>
-<span class="n">d</span> <span class="n">o</span> <span class="n">d</span> <span class="n">n</span> <span class="n">n</span> <span class="n">o</span> <span class="n">d</span> <span class="n">o</span> <span class="n">d</span> <span class="n">d</span>
-<span class="n">n</span> <span class="n">n</span> <span class="n">o</span> <span class="n">d</span> <span class="n">d</span> <span class="n">d</span> <span class="n">o</span> <span class="n">d</span> <span class="n">d</span> <span class="n">d</span>
-<span class="n">n</span> <span class="n">n</span> <span class="n">o</span> <span class="n">d</span> <span class="n">d</span> <span class="n">d</span> <span class="n">o</span> <span class="n">d</span> <span class="n">d</span> <span class="n">d</span>
-<span class="o">----------</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>o d n n o n n d o o
+d o n d o d n n o n
+o d d o d o d n n o
+d d d o n n d o n n
+d o d n n o d o d d
+n n o d d d o d d d
+n n o d d d o d d d
+----------
 </pre></div>
 </div>
 <p>There is an alternate form of the regular constraint
@@ -602,7 +656,7 @@ abstract and modularise their model. It also allows re-use of constraints in
 different models and allows the development of application specific
 libraries defining the standard constraints and types.</p>
 <div class="literal-block-wrapper docutils container" id="ex-jobshop2">
-<div class="code-block-caption"><span class="caption-number">Listing 2.30 </span><span class="caption-text">Model for job shop scheduling using predicates (<a class="reference download internal" href="downloads/jobshop2.mzn" download=""><tt class="xref download docutils literal">jobshop2.mzn</tt></a>)</span><a class="headerlink" href="#ex-jobshop2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.6 </span><span class="caption-text">Model for job shop scheduling using predicates (<a class="reference download internal" href="downloads/jobshop2.mzn" download=""><tt class="xref download docutils literal">jobshop2.mzn</tt></a>)</span><a class="headerlink" href="#ex-jobshop2" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">jobs</span><span class="p">;</span><span class="s">                                    </span><span class="c">% no of jobs</span><span class="s"></span>
 <span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">JOB</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">jobs</span><span class="p">;</span><span class="s"></span>
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">tasks</span><span class="p">;</span><span class="s">                                   </span><span class="c">% no of tasks per job</span><span class="s"></span>
@@ -642,7 +696,7 @@ libraries defining the standard constraints and types.</p>
 </div>
 <p>We start with a simple example, revisiting the job shop scheduling problem
 from the previous section.  The model is shown in
-<a class="reference internal" href="#ex-jobshop2"><span class="std std-numref">Listing 2.30</span></a>. The item of interest is the
+<a class="reference internal" href="#ex-jobshop2"><span class="std std-numref">Listing 2.3.6</span></a>. The item of interest is the
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">predicate</span><span class="s"></span></code>
 item:</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">no_overlap</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s1</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">d1</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s2</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">d2</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"></span>
@@ -665,7 +719,7 @@ For example</p>
 <div class="admonition-predicate-definitions admonition" id="defblock-0">
 <p class="first admonition-title">Predicate definitions</p>
 <p id="index-11">Predicates are defined by a statement of the form</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="cs">&lt;pred-name&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">arg</span><span class="o">-</span><span class="nv">def</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">..</span><span class="s">.</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">arg</span><span class="o">-</span><span class="nv">def</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="cs">&lt;bool-exp&gt;</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="cs">&lt;pred-name&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;arg-def&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">..</span><span class="s">.</span><span class="p">,</span><span class="s"> </span><span class="cs">&lt;arg-def&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="cs">&lt;bool-exp&gt;</span><span class="s"></span>
 </pre></div>
 </div>
 <p>The <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;pred-name&gt;</span><span class="s"></span></code> must be a valid MiniZinc identifier, and
@@ -673,13 +727,13 @@ each <code class="code mzndef minizincdef docutils literal highlight highlight-m
 <p>One relaxation of <span class="target" id="index-13"></span>argument
 definitions is that the index types for arrays
 can be <span class="target" id="index-14"></span>unbounded, written <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span><span class="s"></span></code>.</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="cs">&lt;pred-name&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">arg</span><span class="o">-</span><span class="nv">def</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">..</span><span class="s">.</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">arg</span><span class="o">-</span><span class="nv">def</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="cs">&lt;bool-exp&gt;</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="cs">&lt;pred-name&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;arg-def&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">..</span><span class="s">.</span><span class="p">,</span><span class="s"> </span><span class="cs">&lt;arg-def&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="cs">&lt;bool-exp&gt;</span><span class="s"></span>
 </pre></div>
 </div>
 <p>The <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;bool-exp&gt;</span><span class="s"></span></code> of the body must be fixed.</p>
 <p>We also introduce a new form of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span><span class="s"></span></code> command for use in
 predicates.</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="nb">assert</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">-</span><span class="nb">exp</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="kt">string</span><span class="o">-</span><span class="nb">exp</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nb">exp</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="nb">assert</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;bool-exp&gt;</span><span class="p">,</span><span class="s"> </span><span class="cs">&lt;string-exp&gt;</span><span class="p">,</span><span class="s"> </span><span class="cs">&lt;exp&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
 <p class="last">The type of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span><span class="s"></span></code>
@@ -714,7 +768,7 @@ of the <span class="math notranslate nohighlight">\(a1^{th}\)</span> row of the 
 </pre></div>
 </div>
 <p>With this definition we can replace the last constraint in the
-Sudoku problem shown in <a class="reference internal" href="modelling2.html#ex-sudoku"><span class="std std-numref">Listing 2.14</span></a> by</p>
+Sudoku problem shown in <a class="reference internal" href="modelling2.html#ex-sudoku"><span class="std std-numref">Listing 2.2.5</span></a> by</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="nv">o</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">SubSquareRange</span><span class="p">)(</span><span class="s"></span>
 <span class="s">                  </span><span class="bp">alldifferent</span><span class="p">([</span><span class="s"> </span><span class="nv">puzzle</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="nf">posn</span><span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="nv">a0</span><span class="p">),</span><span class="s"> </span><span class="nf">posn</span><span class="p">(</span><span class="nv">o</span><span class="p">,</span><span class="nv">o1</span><span class="p">)</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"></span>
 <span class="s">                                         </span><span class="nv">a1</span><span class="p">,</span><span class="nv">o1</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">SubSquareRange</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="p">);</span><span class="s"></span>
@@ -734,9 +788,9 @@ can be expressed as:</p>
 <span class="s">         </span><span class="nb">abs</span><span class="p">(</span><span class="nv">x1</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">x2</span><span class="p">)</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nb">abs</span><span class="p">(</span><span class="nv">y1</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">y2</span><span class="p">);</span><span class="s"></span>
 </pre></div>
 </div>
-<p>The complete model is shown in <a class="reference internal" href="#ex-manhattan"><span class="std std-numref">Listing 2.31</span></a>.</p>
+<p>The complete model is shown in <a class="reference internal" href="#ex-manhattan"><span class="std std-numref">Listing 2.3.7</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ex-manhattan">
-<div class="code-block-caption"><span class="caption-number">Listing 2.31 </span><span class="caption-text">Model for a number placement problem illustrating the use of functions (<a class="reference download internal" href="downloads/manhattan.mzn" download=""><tt class="xref download docutils literal">manhattan.mzn</tt></a>).</span><a class="headerlink" href="#ex-manhattan" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.7 </span><span class="caption-text">Model for a number placement problem illustrating the use of functions (<a class="reference download internal" href="downloads/manhattan.mzn" download=""><tt class="xref download docutils literal">manhattan.mzn</tt></a>).</span><a class="headerlink" href="#ex-manhattan" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"></span>
 <span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">NUM</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">;</span><span class="s"></span>
 
@@ -774,7 +828,7 @@ can be expressed as:</p>
 <div class="admonition-function-definitions admonition" id="defblock-1">
 <p class="first admonition-title">Function definitions</p>
 <p id="index-18">Functions are defined by a statement of the form</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="cs">&lt;ret-type&gt;</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;func-name&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">arg</span><span class="o">-</span><span class="nv">def</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">..</span><span class="s">.</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">arg</span><span class="o">-</span><span class="nv">def</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="cs">&lt;exp&gt;</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="cs">&lt;ret-type&gt;</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;func-name&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="cs">&lt;arg-def&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">..</span><span class="s">.</span><span class="p">,</span><span class="s"> </span><span class="cs">&lt;arg-def&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="cs">&lt;exp&gt;</span><span class="s"></span>
 </pre></div>
 </div>
 <p class="last">The <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;func-name&gt;</span><span class="s"></span></code> must be a valid MiniZinc identifier, and
@@ -793,9 +847,9 @@ are used mulitple times in a model.</p>
 <p>To help write generic tests and predicates, various reflection functions
 return information about array index sets, var set domains and decision
 variable ranges. Those for index sets are
-<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">index_set</span><span class="p">(</span><span class="o">&lt;</span><span class="m">1</span><span class="o">-</span><span class="nv">D</span><span class="s"> </span><span class="kt">array</span><span class="o">&gt;</span><span class="p">)</span><span class="s"></span></code>,
-<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">index_set_1of2</span><span class="p">(</span><span class="o">&lt;</span><span class="m">2</span><span class="o">-</span><span class="nv">D</span><span class="s"> </span><span class="kt">array</span><span class="o">&gt;</span><span class="p">)</span><span class="s"></span></code>,
-<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">index_set_2of2</span><span class="p">(</span><span class="o">&lt;</span><span class="m">2</span><span class="o">-</span><span class="nv">D</span><span class="s"> </span><span class="kt">array</span><span class="o">&gt;</span><span class="p">)</span><span class="s"></span></code>,
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">index_set</span><span class="p">(</span><span class="cs">&lt;1-D array&gt;</span><span class="p">)</span><span class="s"></span></code>,
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">index_set_1of2</span><span class="p">(</span><span class="cs">&lt;2-D array&gt;</span><span class="p">)</span><span class="s"></span></code>,
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">index_set_2of2</span><span class="p">(</span><span class="cs">&lt;2-D array&gt;</span><span class="p">)</span><span class="s"></span></code>,
 and so on for higher
 dimensional arrays.</p>
 <p>A better model of the job shop conjoins all the non-overlap constraints for a
@@ -804,9 +858,9 @@ An advantage of this approach is that while we may initially model this
 simply as a conjunction of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">non</span><span class="o">-</span><span class="nv">overlap</span><span class="s"></span></code> constraints, if the underlying solver has a
 better approach to solving disjunctive constraints we can use that instead,
 with minimal changes to our model. The model is shown in
-<a class="reference internal" href="#ex-jobshop3"><span class="std std-numref">Listing 2.32</span></a>.</p>
+<a class="reference internal" href="#ex-jobshop3"><span class="std std-numref">Listing 2.3.8</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ex-jobshop3">
-<div class="code-block-caption"><span class="caption-number">Listing 2.32 </span><span class="caption-text">Model for job shop scheduling using <tt class="docutils literal">disjunctive</tt> predicate (<a class="reference download internal" href="downloads/jobshop3.mzn" download=""><tt class="xref download docutils literal">jobshop3.mzn</tt></a>).</span><a class="headerlink" href="#ex-jobshop3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.8 </span><span class="caption-text">Model for job shop scheduling using <tt class="docutils literal">disjunctive</tt> predicate (<a class="reference download internal" href="downloads/jobshop3.mzn" download=""><tt class="xref download docutils literal">jobshop3.mzn</tt></a>).</span><a class="headerlink" href="#ex-jobshop3" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;disjunctive.mzn&quot;</span><span class="p">;</span><span class="s"></span>
 
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">jobs</span><span class="p">;</span><span class="s">                                    </span><span class="c">% no of jobs</span><span class="s"></span>
@@ -850,7 +904,7 @@ signature</p>
 </pre></div>
 </div>
 <p>We can use the disjunctive constraint to define the non-overlap of tasks as
-shown in <a class="reference internal" href="#ex-jobshop3"><span class="std std-numref">Listing 2.32</span></a>.
+shown in <a class="reference internal" href="#ex-jobshop3"><span class="std std-numref">Listing 2.3.8</span></a>.
 We assume a definition for the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span><span class="s"></span></code> predicate is given
 by the file <a class="reference download internal" href="downloads/disjunctive.mzn" download=""><tt class="xref download docutils literal">disjunctive.mzn</tt></a> which is included in the model.
 If the underlying system
@@ -864,14 +918,14 @@ The simplest implementation simply makes use of the <code class="code mzn minizi
 predicate defined above.
 A better implementation is to make use of a global <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">cumulative</span><span class="s"></span></code>
 constraint assuming it is supported by the underlying solver.
-<a class="reference internal" href="#ex-disj"><span class="std std-numref">Listing 2.33</span></a> shows an implementation of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span><span class="s"></span></code>.
+<a class="reference internal" href="#ex-disj"><span class="std std-numref">Listing 2.3.9</span></a> shows an implementation of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span><span class="s"></span></code>.
 Note how we use the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">index_set</span><span class="s"></span></code> reflection function to
 (a) check that the arguments to <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span><span class="s"></span></code> make sense,
 and (b) construct the array of resource utilisations of the appropriate
 size for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">cumulative</span><span class="s"></span></code>.
 Note also that we use a ternary version of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span><span class="s"></span></code> here.</p>
 <div class="literal-block-wrapper docutils container" id="ex-disj">
-<div class="code-block-caption"><span class="caption-number">Listing 2.33 </span><span class="caption-text">Defining a <tt class="docutils literal">disjunctive</tt> predicate using <tt class="docutils literal">cumulative</tt> (<a class="reference download internal" href="downloads/disjunctive.mzn" download=""><tt class="xref download docutils literal">disjunctive.mzn</tt></a>).</span><a class="headerlink" href="#ex-disj" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.9 </span><span class="caption-text">Defining a <tt class="docutils literal">disjunctive</tt> predicate using <tt class="docutils literal">cumulative</tt> (<a class="reference download internal" href="downloads/disjunctive.mzn" download=""><tt class="xref download docutils literal">disjunctive.mzn</tt></a>).</span><a class="headerlink" href="#ex-disj" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;cumulative.mzn&quot;</span><span class="p">;</span><span class="s"></span>
 
 <span class="k">predicate</span><span class="s"> </span><span class="bp">disjunctive</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">d</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"></span>
@@ -909,13 +963,13 @@ for eliminating common subexpressions:</p>
 </div>
 <p>Local variables can be used anywhere and can be quite useful
 for simplifying complex expressions.
-<a class="reference internal" href="#ex-wedding2"><span class="std std-numref">Listing 2.34</span></a>
+<a class="reference internal" href="#ex-wedding2"><span class="std std-numref">Listing 2.3.10</span></a>
 gives a revised version of the wedding model, using local variables to
 define the <span class="target" id="index-26"></span>objective function,
 rather than adding lots of variables
 to the model explicitly.</p>
 <div class="literal-block-wrapper docutils container" id="ex-wedding2">
-<div class="code-block-caption"><span class="caption-number">Listing 2.34 </span><span class="caption-text">Using local variables to define a complex objective function (<a class="reference download internal" href="downloads/wedding2.mzn" download=""><tt class="xref download docutils literal">wedding2.mzn</tt></a>).</span><a class="headerlink" href="#ex-wedding2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.10 </span><span class="caption-text">Using local variables to define a complex objective function (<a class="reference download internal" href="downloads/wedding2.mzn" download=""><tt class="xref download docutils literal">wedding2.mzn</tt></a>).</span><a class="headerlink" href="#ex-wedding2" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">enum</span><span class="s"> </span><span class="nv">Guests</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">bride</span><span class="p">,</span><span class="s"> </span><span class="nv">groom</span><span class="p">,</span><span class="s"> </span><span class="nv">bestman</span><span class="p">,</span><span class="s"> </span><span class="nv">bridesmaid</span><span class="p">,</span><span class="s"> </span><span class="nv">bob</span><span class="p">,</span><span class="s"> </span><span class="nv">carol</span><span class="p">,</span><span class="s"> </span>
 <span class="s">  </span><span class="nv">ted</span><span class="p">,</span><span class="s"> </span><span class="nv">alice</span><span class="p">,</span><span class="s"> </span><span class="nv">ron</span><span class="p">,</span><span class="s"> </span><span class="nv">rona</span><span class="p">,</span><span class="s"> </span><span class="nv">ed</span><span class="p">,</span><span class="s"> </span><span class="nv">clara</span><span class="p">};</span><span class="s"> </span>
 <span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Seats</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">12</span><span class="p">;</span><span class="s"></span>
@@ -1066,7 +1120,7 @@ usage is in defining functions.</p>
 <p id="index-34"><span class="target" id="index-35"></span>Local variables
 can be introduced in any expression with a <em>let expression</em>
 of the form:</p>
-<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">dec</span><span class="o">&gt;</span><span class="p">;</span><span class="s"> </span><span class="o">..</span><span class="s">. </span><span class="o">&lt;</span><span class="nv">dec</span><span class="o">&gt;</span><span class="s"> </span><span class="p">;</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="cs">&lt;exp&gt;</span><span class="s"></span>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="cs">&lt;dec&gt;</span><span class="p">;</span><span class="s"> </span><span class="o">..</span><span class="s">. </span><span class="cs">&lt;dec&gt;</span><span class="s"> </span><span class="p">;</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="cs">&lt;exp&gt;</span><span class="s"></span>
 </pre></div>
 </div>
 <p>The declarations <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;dec&gt;</span><span class="s"></span></code>
@@ -1099,7 +1153,7 @@ superset of the possible values of <code class="code mzn minizinc docutils liter
 Again it is usually the declared values, and again if it is not
 declared as finite then there is an error.</p>
 <div class="literal-block-wrapper docutils container" id="ex-reflect">
-<div class="code-block-caption"><span class="caption-number">Listing 2.35 </span><span class="caption-text">Using reflection predicates (<a class="reference download internal" href="downloads/reflection.mzn" download=""><tt class="xref download docutils literal">reflection.mzn</tt></a>).</span><a class="headerlink" href="#ex-reflect" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.11 </span><span class="caption-text">Using reflection predicates (<a class="reference download internal" href="downloads/reflection.mzn" download=""><tt class="xref download docutils literal">reflection.mzn</tt></a>).</span><a class="headerlink" href="#ex-reflect" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="o">-</span><span class="m">10</span><span class="o">..</span><span class="m">10</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span><span class="s"></span>
 <span class="k">constraint</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">4</span><span class="p">;</span><span class="s"></span>
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">lb</span><span class="p">(</span><span class="nv">x</span><span class="p">);</span><span class="s"></span>
@@ -1109,17 +1163,17 @@ declared as finite then there is an error.</p>
 </pre></div>
 </div>
 </div>
-<p>For example, the model show in <a class="reference internal" href="#ex-reflect"><span class="std std-numref">Listing 2.35</span></a>
+<p>For example, the model show in <a class="reference internal" href="#ex-reflect"><span class="std std-numref">Listing 2.3.11</span></a>
 may output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
-<span class="n">D</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10.</span><span class="o">.</span><span class="mi">10</span>
-<span class="o">----------</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y = -10
+D = -10..10
+----------
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">D</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-<span class="o">----------</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y = 0
+D = {0, 1, 2, 3, 4}
+----------
 </pre></div>
 </div>
 <p>or any answer with
@@ -1140,11 +1194,11 @@ more solutions than the weaker initial approximation.</p>
 <p id="index-40">There are reflection functions to interrogate
 the possible values of expressions containing variables:</p>
 <ul class="simple">
-<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">dom</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">exp</span><span class="o">&gt;</span><span class="p">)</span><span class="s"></span></code>
+<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">dom</span><span class="p">(</span><span class="cs">&lt;exp&gt;</span><span class="p">)</span><span class="s"></span></code>
 returns a safe approximation to the possible values of the expression.</li>
-<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">lb</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">exp</span><span class="o">&gt;</span><span class="p">)</span><span class="s"></span></code>
+<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">lb</span><span class="p">(</span><span class="cs">&lt;exp&gt;</span><span class="p">)</span><span class="s"></span></code>
 returns a safe approximation to the lower bound value of the expression.</li>
-<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">ub</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">exp</span><span class="o">&gt;</span><span class="p">)</span><span class="s"></span></code>
+<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">ub</span><span class="p">(</span><span class="cs">&lt;exp&gt;</span><span class="p">)</span><span class="s"></span></code>
 returns a safe approximation to the upper bound value of the expression.</li>
 </ul>
 <p>The expressions for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">lb</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">ub</span><span class="s"></span></code>
@@ -1158,13 +1212,13 @@ then an error can occur.</p>
 <p>There are also versions that work directly on arrays of expressions (with
 similar restrictions):</p>
 <ul class="last simple">
-<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">dom_array</span><span class="p">(</span><span class="o">&lt;</span><span class="kt">array</span><span class="o">-</span><span class="nb">exp</span><span class="o">&gt;</span><span class="p">)</span><span class="s"></span></code>:
+<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">dom_array</span><span class="p">(</span><span class="cs">&lt;array-exp&gt;</span><span class="p">)</span><span class="s"></span></code>:
 returns a safe approximation to the union of all
 possible values of the expressions appearing in the array.</li>
-<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">lb_array</span><span class="p">(</span><span class="o">&lt;</span><span class="kt">array</span><span class="o">-</span><span class="nb">exp</span><span class="o">&gt;</span><span class="p">)</span><span class="s"></span></code>
+<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">lb_array</span><span class="p">(</span><span class="cs">&lt;array-exp&gt;</span><span class="p">)</span><span class="s"></span></code>
 returns a safe approximation to the lower bound of all expressions appearing
 in the array.</li>
-<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">ub_array</span><span class="p">(</span><span class="o">&lt;</span><span class="kt">array</span><span class="o">-</span><span class="nb">exp</span><span class="o">&gt;</span><span class="p">)</span><span class="s"></span></code>
+<li><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">ub_array</span><span class="p">(</span><span class="cs">&lt;array-exp&gt;</span><span class="p">)</span><span class="s"></span></code>
 returns a safe approximation to the upper bound of all expressions appearing
 in the array.</li>
 </ul>
@@ -1173,9 +1227,9 @@ in the array.</li>
 allows the definition of complex global constraints by decomposition.
 We can define the time based decomposition
 of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">cumulative</span><span class="s"></span></code>
-constraint using the code shown in <a class="reference internal" href="#ex-cumul"><span class="std std-numref">Listing 2.36</span></a>.</p>
+constraint using the code shown in <a class="reference internal" href="#ex-cumul"><span class="std std-numref">Listing 2.3.12</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ex-cumul">
-<div class="code-block-caption"><span class="caption-number">Listing 2.36 </span><span class="caption-text">Defining a <tt class="docutils literal">cumulative</tt> predicate by decomposition (<a class="reference download internal" href="downloads/cumulative.mzn" download=""><tt class="xref download docutils literal">cumulative.mzn</tt></a>).</span><a class="headerlink" href="#ex-cumul" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.12 </span><span class="caption-text">Defining a <tt class="docutils literal">cumulative</tt> predicate by decomposition (<a class="reference download internal" href="downloads/cumulative.mzn" download=""><tt class="xref download docutils literal">cumulative.mzn</tt></a>).</span><a class="headerlink" href="#ex-cumul" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">%--------------------------------------------------------------------%</span><span class="s"></span>
 <span class="c">% Requires that a set of tasks given by start times &#39;s&#39;, </span><span class="s"></span>
 <span class="c">% durations &#39;d&#39;, and resource requirements &#39;r&#39;, </span><span class="s"></span>
@@ -1230,7 +1284,7 @@ variables in <span class="target" id="index-44"></span>comprehension expressions
 <p>Any local scoped variable overshadows the outer scoped variables
 of the same name.</p>
 <div class="literal-block-wrapper docutils container" id="ex-scope">
-<div class="code-block-caption"><span class="caption-number">Listing 2.37 </span><span class="caption-text">A model for illustrating scopes of variables (<a class="reference download internal" href="downloads/scope.mzn" download=""><tt class="xref download docutils literal">scope.mzn</tt></a>).</span><a class="headerlink" href="#ex-scope" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.3.13 </span><span class="caption-text">A model for illustrating scopes of variables (<a class="reference download internal" href="downloads/scope.mzn" download=""><tt class="xref download docutils literal">scope.mzn</tt></a>).</span><a class="headerlink" href="#ex-scope" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span><span class="s"></span>
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">4</span><span class="p">;</span><span class="s"></span>
 <span class="k">predicate</span><span class="s"> </span><span class="nf">smallx</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">y</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">-</span><span class="nv">x</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span><span class="s"></span>
@@ -1241,7 +1295,7 @@ of the same name.</p>
 </pre></div>
 </div>
 </div>
-<p>For example, in the model shown in <a class="reference internal" href="#ex-scope"><span class="std std-numref">Listing 2.37</span></a>
+<p>For example, in the model shown in <a class="reference internal" href="#ex-scope"><span class="std std-numref">Listing 2.3.13</span></a>
 the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> in <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">-</span><span class="nv">x</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">y</span><span class="s"></span></code> is the global <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code>,
 the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> in
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nf">smallx</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="s"></span></code> is the iterator <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">u</span><span class="s"></span></code>,
@@ -1262,7 +1316,7 @@ argument of the predicate.</p>
       
     </p>
     <p>
-        &copy; Copyright 2016, 2017, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
+        &copy; Copyright 2016, 2017, 2018, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
     </p>
   </div>
 </footer>

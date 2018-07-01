@@ -1,0 +1,712 @@
+.. _ch-lib-annotations:
+
+Annotations
+###########
+
+
+
+These annotations control evaluation and solving behaviour.
+
+
+
+General annotations
+===================
+
+
+
+
+
+Parameters
+----------
+
+.. index::
+   pair: Annotations; add_to_output
+
+.. code-block:: minizinc
+
+  annotation add_to_output
+
+Declare that the annotated variable should be added to the output
+of the model. This annotation only has an effect when the model does not have an output item. 
+
+.. index::
+   pair: Annotations; is_defined_var
+
+.. code-block:: minizinc
+
+  annotation is_defined_var
+
+Declare the annotated variable as being functionally defined.
+This annotation is introduced into FlatZinc code by the compiler. 
+
+.. index::
+   pair: Annotations; is_reverse_map
+
+.. code-block:: minizinc
+
+  annotation is_reverse_map
+
+Declare that the annotated expression is used to map
+an expression back from FlatZinc to MiniZinc.  
+
+.. index::
+   pair: Annotations; maybe_partial
+
+.. code-block:: minizinc
+
+  annotation maybe_partial
+
+Declare that expression may have undefined result (to avoid warnings) 
+
+.. index::
+   pair: Annotations; mzn_break_here
+
+.. code-block:: minizinc
+
+  annotation mzn_break_here
+
+With debug build of mzn2fzn, call MiniZinc::mzn_break_here when
+flattening this expression to make debugging easier. This annotation is ignored by the
+release build.
+
+.. index::
+   pair: Annotations; mzn_check_var
+
+.. code-block:: minizinc
+
+  annotation mzn_check_var
+
+Declare that the annotated variable is required for checking solutions. 
+
+.. index::
+   pair: Annotations; output_var
+
+.. code-block:: minizinc
+
+  annotation output_var
+
+Declare that the annotated variable should be printed by
+the solver. This annotation is introduced into FlatZinc code by
+the compiler. 
+
+.. index::
+   pair: Annotations; promise_total
+
+.. code-block:: minizinc
+
+  annotation promise_total
+
+Declare function as total, i.e. it does not put
+any constraints on its arguments. 
+
+.. index::
+   pair: Annotations; var_is_introduced
+
+.. code-block:: minizinc
+
+  annotation var_is_introduced
+
+Declare a variable as being introduced by the compiler. 
+
+Functions and Predicates
+------------------------
+
+.. index::
+   pair: Annotations; constraint_name
+
+.. code-block:: minizinc
+
+  annotation constraint_name(string: s)
+
+Used to attach a name  ``s``  to a constraint and its decomposition. String
+annotations on constraint keywords are re-written as constraint_name annotations *
+
+
+.. index::
+   pair: Annotations; defines_var
+
+.. code-block:: minizinc
+
+  annotation defines_var(var $t: c)
+
+Declare variable:  ``c``  as being functionally defined
+by the annotated constraint. This annotation is introduced into FlatZinc code by the compiler. 
+
+
+.. index::
+   pair: Annotations; doc_comment
+
+.. code-block:: minizinc
+
+  annotation doc_comment(string: s)
+
+Document the function or variable declaration item with
+the string  ``s`` . 
+
+
+.. index::
+   pair: Annotations; expression_name
+
+.. code-block:: minizinc
+
+  annotation expression_name(string: s)
+
+Used to attach a name  ``s``  to an expression, this should also propagate to
+any sub-expressions or decomposition of the annotated expression. String annotations on expressions
+are re-written as expression_name annotations *
+
+
+.. index::
+   pair: Annotations; mzn_constraint_name
+
+.. code-block:: minizinc
+
+  annotation mzn_constraint_name(string)
+
+Declare a name for the annotated constraint. 
+
+
+.. index::
+   pair: Annotations; mzn_expression_name
+
+.. code-block:: minizinc
+
+  annotation mzn_expression_name(string)
+
+Declare a name for the annotated expression. 
+
+
+.. index::
+   pair: Annotations; mzn_path
+
+.. code-block:: minizinc
+
+  annotation mzn_path(string: s)
+
+Representation of the call-stack when the annotated item
+was introduced, as a string  ``s`` . Can be used to uniquely identify variables and constraints across different
+compilations of a model that may have different names. This annotations is introduced into
+FlatZinc code by the compiler and is retained if --keep-paths argument is used. 
+
+
+.. index::
+   pair: Annotations; output_array
+
+.. code-block:: minizinc
+
+  annotation output_array(array [$u] of set of int: a)
+
+Declare that the annotated array should be printed by
+the solver with the given index sets  ``a`` . This annotation is introduced into FlatZinc code by
+the compiler. 
+
+
+Propagation strength annotations
+================================
+
+
+
+
+
+.. index::
+   pair: Annotations; bounds
+
+.. code-block:: minizinc
+
+  annotation bounds
+
+Annotate a constraint to use bounds propagation 
+
+.. index::
+   pair: Annotations; domain
+
+.. code-block:: minizinc
+
+  annotation domain
+
+Annotate a constraint to use domain propagation 
+
+Search annotations
+==================
+
+
+
+
+
+Variable selection annotations
+------------------------------
+
+
+
+
+
+.. index::
+   pair: Annotations; anti_first_fail
+
+.. code-block:: minizinc
+
+  annotation anti_first_fail
+
+Choose the variable with the largest domain 
+
+.. index::
+   pair: Annotations; dom_w_deg
+
+.. code-block:: minizinc
+
+  annotation dom_w_deg
+
+Choose the variable with largest domain, divided
+by the number of attached constraints weighted by how often they have caused failure 
+
+.. index::
+   pair: Annotations; first_fail
+
+.. code-block:: minizinc
+
+  annotation first_fail
+
+Choose the variable with the smallest domain 
+
+.. index::
+   pair: Annotations; impact
+
+.. code-block:: minizinc
+
+  annotation impact
+
+Choose the variable with the highest impact so
+far during the search  
+
+.. index::
+   pair: Annotations; input_order
+
+.. code-block:: minizinc
+
+  annotation input_order
+
+Search variables in the given order 
+
+.. index::
+   pair: Annotations; largest
+
+.. code-block:: minizinc
+
+  annotation largest
+
+Choose the variable with the largest value in its domain 
+
+.. index::
+   pair: Annotations; max_regret
+
+.. code-block:: minizinc
+
+  annotation max_regret
+
+Choose the variable with largest difference
+between the two smallest values in its domain  
+
+.. index::
+   pair: Annotations; most_constrained
+
+.. code-block:: minizinc
+
+  annotation most_constrained
+
+Choose the variable with the smallest domain,
+breaking ties using the number of attached constraints 
+
+.. index::
+   pair: Annotations; occurrence
+
+.. code-block:: minizinc
+
+  annotation occurrence
+
+Choose the variable with the largest number of attached constraints 
+
+.. index::
+   pair: Annotations; smallest
+
+.. code-block:: minizinc
+
+  annotation smallest
+
+Choose the variable with the smallest value in its domain 
+
+Value choice annotations
+------------------------
+
+
+
+
+
+.. index::
+   pair: Annotations; indomain
+
+.. code-block:: minizinc
+
+  annotation indomain
+
+Assign values in ascending order 
+
+.. index::
+   pair: Annotations; indomain_interval
+
+.. code-block:: minizinc
+
+  annotation indomain_interval
+
+
+If the domain consists of several contiguous intervals, reduce the
+domain to the first interval. Otherwise bisect the domain.
+
+
+.. index::
+   pair: Annotations; indomain_max
+
+.. code-block:: minizinc
+
+  annotation indomain_max
+
+Assign the largest value in the domain 
+
+.. index::
+   pair: Annotations; indomain_median
+
+.. code-block:: minizinc
+
+  annotation indomain_median
+
+Assign the middle value in the domain 
+
+.. index::
+   pair: Annotations; indomain_middle
+
+.. code-block:: minizinc
+
+  annotation indomain_middle
+
+Assign the value in the domain closest to
+the mean of its current bounds 
+
+.. index::
+   pair: Annotations; indomain_min
+
+.. code-block:: minizinc
+
+  annotation indomain_min
+
+Assign the smallest value in the domain 
+
+.. index::
+   pair: Annotations; indomain_random
+
+.. code-block:: minizinc
+
+  annotation indomain_random
+
+Assign a random value from the domain 
+
+.. index::
+   pair: Annotations; indomain_reverse_split
+
+.. code-block:: minizinc
+
+  annotation indomain_reverse_split
+
+Bisect the domain, excluding the lower half first 
+
+.. index::
+   pair: Annotations; indomain_split
+
+.. code-block:: minizinc
+
+  annotation indomain_split
+
+Bisect the domain, excluding the upper half first 
+
+.. index::
+   pair: Annotations; indomain_split_random
+
+.. code-block:: minizinc
+
+  annotation indomain_split_random
+
+Bisect the domain, randomly selecting which half to exclude first 
+
+.. index::
+   pair: Annotations; outdomain_max
+
+.. code-block:: minizinc
+
+  annotation outdomain_max
+
+Exclude the largest value from the domain 
+
+.. index::
+   pair: Annotations; outdomain_median
+
+.. code-block:: minizinc
+
+  annotation outdomain_median
+
+Exclude the middle value from the domain 
+
+.. index::
+   pair: Annotations; outdomain_min
+
+.. code-block:: minizinc
+
+  annotation outdomain_min
+
+Exclude the smallest value from the domain 
+
+.. index::
+   pair: Annotations; outdomain_random
+
+.. code-block:: minizinc
+
+  annotation outdomain_random
+
+Exclude a random value from the domain 
+
+Exploration strategy annotations
+--------------------------------
+
+
+
+
+
+.. index::
+   pair: Annotations; complete
+
+.. code-block:: minizinc
+
+  annotation complete
+
+Perform a complete search 
+
+Other declarations
+------------------
+
+.. index::
+   pair: Annotations; bool_search
+
+.. code-block:: minizinc
+
+  annotation bool_search(array [int] of var bool: x,
+                         ann: select,
+                         ann: choice,
+                         ann: explore)
+
+Specify search on variables  ``x`` , with variable selection
+strategy  ``select`` , value choice strategy  ``choice`` , and exploration strategy
+``explore`` .
+
+
+
+.. index::
+   pair: Annotations; float_search
+
+.. code-block:: minizinc
+
+  annotation float_search(array [int] of var float: x,
+                          float: prec,
+                          ann: select,
+                          ann: choice,
+                          ann: explore)
+
+Specify search on variables  ``x`` , 
+with precision  ``prec`` , variable selection
+strategy  ``select`` , value choice strategy  ``choice`` , and exploration strategy
+``explore`` .
+
+
+
+.. index::
+   pair: Annotations; int_search
+
+.. code-block:: minizinc
+
+  annotation int_search(array [int] of var int: x,
+                        ann: select,
+                        ann: choice,
+                        ann: explore)
+
+Specify search on variables  ``x`` , with variable selection
+strategy  ``select`` , value choice strategy  ``choice`` , and exploration strategy
+``explore`` .
+
+
+
+.. index::
+   pair: Annotations; seq_search
+
+.. code-block:: minizinc
+
+  annotation seq_search(array [int] of ann: s)
+
+Sequentially perform the searches specified in array  ``s``  
+
+
+.. index::
+   pair: Annotations; set_search
+
+.. code-block:: minizinc
+
+  annotation set_search(array [int] of var set of int: x,
+                        ann: select,
+                        ann: choice,
+                        ann: explore)
+
+Specify search on variables  ``x`` , with variable selection
+strategy  ``select`` , value choice strategy  ``choice`` , and exploration strategy
+``explore`` .
+
+
+
+Warm start annotations
+======================
+
+
+
+To be put on the solve item, similar to search annotations.
+A variable can be mentioned several times and in different
+annotations but only one of the values is taken
+
+
+
+Warm start annotations with optional values
+-------------------------------------------
+
+
+
+The value arrays can contain <> elements (absent values).
+The following decompositions eliminate those elements
+because FlatZinc 1.6 does not support optionals.
+
+
+
+.. index::
+   pair: Annotations; warm_start
+
+.. code-block:: minizinc
+
+  annotation warm_start(array [int] of var bool: x,
+                        array [int] of opt bool: v)
+
+Specify warm start values  ``v``  for an array of booleans  ``x``  
+
+.. only:: builder_html
+
+    `More... <https://github.com/MiniZinc/libminizinc/blob/2.2.0/share/minizinc/std/stdlib.mzn#L255-L263>`__
+
+
+.. index::
+   pair: Annotations; warm_start
+
+.. code-block:: minizinc
+
+  annotation warm_start(array [int] of var int: x,
+                        array [int] of opt int: v)
+
+Specify warm start values  ``v``  for an array of integers  ``x``  
+
+.. only:: builder_html
+
+    `More... <https://github.com/MiniZinc/libminizinc/blob/2.2.0/share/minizinc/std/stdlib.mzn#L265-L273>`__
+
+
+.. index::
+   pair: Annotations; warm_start
+
+.. code-block:: minizinc
+
+  annotation warm_start(array [int] of var float: x,
+                        array [int] of opt float: v)
+
+Specify warm start values  ``v``  for an array of floats  ``x``  
+
+.. only:: builder_html
+
+    `More... <https://github.com/MiniZinc/libminizinc/blob/2.2.0/share/minizinc/std/stdlib.mzn#L275-L283>`__
+
+
+.. index::
+   pair: Annotations; warm_start
+
+.. code-block:: minizinc
+
+  annotation warm_start(array [int] of var set of int: x,
+                        array [int] of opt set of int: v)
+
+Specify warm start values  ``v``  for an array of sets  ``x``  
+
+.. only:: builder_html
+
+    `More... <https://github.com/MiniZinc/libminizinc/blob/2.2.0/share/minizinc/std/stdlib.mzn#L285-L293>`__
+
+
+Other declarations
+------------------
+
+.. index::
+   pair: Annotations; warm_start
+
+.. code-block:: minizinc
+
+  annotation warm_start(array [int] of var bool: x,
+                        array [int] of bool: v)
+
+Specify warm start values  ``v``  for an array of booleans  ``x``  
+
+
+.. index::
+   pair: Annotations; warm_start
+
+.. code-block:: minizinc
+
+  annotation warm_start(array [int] of var int: x, array [int] of int: v)
+
+Specify warm start values  ``v``  for an array of integers  ``x``  
+
+
+.. index::
+   pair: Annotations; warm_start
+
+.. code-block:: minizinc
+
+  annotation warm_start(array [int] of var float: x,
+                        array [int] of float: v)
+
+Specify warm start values  ``v``  for an array of floats  ``x``  
+
+
+.. index::
+   pair: Annotations; warm_start
+
+.. code-block:: minizinc
+
+  annotation warm_start(array [int] of var set of int: x,
+                        array [int] of set of int: v)
+
+Specify warm start values  ``v``  for an array of sets  ``x``  
+
+
+.. index::
+   pair: Annotations; warm_start_array
+
+.. code-block:: minizinc
+
+  annotation warm_start_array(array [int] of ann: w)
+
+Specify an array  ``w``  of warm_start annotations
+or other warm_start_array annotations. Can be useful to keep the annotation
+order in FlatZinc for manual updating.
+
+Note: if you have search annotations as well, put warm_starts into seq_search
+in order to have precedence between both, which may matter.
+
+
+

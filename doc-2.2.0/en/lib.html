@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>2. A MiniZinc Tutorial &#8212; The MiniZinc Handbook 2.2.0</title>
+    <title>4.2. The MiniZinc library &#8212; The MiniZinc Handbook 2.2.0</title>
     <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="static/style.css" />
@@ -19,8 +19,8 @@
     <script type="text/javascript" src="static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2.1. Basic Modelling in MiniZinc" href="modelling.html" />
-    <link rel="prev" title="1.3. First steps with MiniZinc" href="basic_steps.html" />
+    <link rel="next" title="4.2.1. Global constraints" href="lib-globals.html" />
+    <link rel="prev" title="4.1. Specification of MiniZinc" href="spec.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -74,7 +74,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. A MiniZinc Tutorial</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modelling.html">2.1. Basic Modelling in MiniZinc</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modelling.html#our-first-example">2.1.1. Our First Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modelling.html#an-arithmetic-optimisation-example">2.1.2. An Arithmetic Optimisation Example</a></li>
@@ -161,22 +161,9 @@
 <li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#adding-third-party-solvers">3.2.7. Adding Third-Party Solvers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cpprofiler.html">3.3. CP-Profiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#connecting-a-solver-execution">3.3.1. Connecting a Solver Execution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#the-protocol-high-level">3.3.2. The protocol (high level)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#the-protocol-low-level">3.3.3. The protocol (low level)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#traditional-tree-visualisation">3.3.4. Traditional Tree Visualisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#alternative-search-tree-visualisations">3.3.5. Alternative Search Tree Visualisations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#similar-subtree-analysis">3.3.6. Similar Subtree Analysis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#execution-comparison-by-merging">3.3.7. Execution Comparison by Merging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#replaying-search">3.3.8. Replaying Search</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#nogood-analysis">3.3.9. Nogood Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.4. Using MiniZinc in Jupyter Notebooks</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">4.1.1. Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="spec.html#notation">4.1.2. Notation</a></li>
@@ -194,7 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">4.1.14. Full grammar</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. The MiniZinc library</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.1. Global constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lib-annotations.html">4.2.2. Annotations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lib-optiontypes.html">4.2.3. Option type support</a></li>
@@ -212,7 +199,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#grammar">4.3.6. Grammar</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api_interfacing.html">4.4. Interfacing to MiniZinc via its API</a></li>
 </ul>
 </li>
 </ul>
@@ -228,7 +214,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">2. A MiniZinc Tutorial</a></li>
+<li><a class="reference internal" href="#">4.2. The MiniZinc library</a></li>
 </ul>
 </ul>
 </li>
@@ -238,11 +224,11 @@
               
                 
   <li>
-    <a href="basic_steps.html" title="Previous Chapter: 1.3. First steps with MiniZinc"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 1.3. First st...</span>
+    <a href="spec.html" title="Previous Chapter: 4.1. Specification of MiniZinc"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 4.1. Specific...</span>
     </a>
   </li>
   <li>
-    <a href="modelling.html" title="Next Chapter: 2.1. Basic Modelling in MiniZinc"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2.1. Basic Mo... &raquo;</span>
+    <a href="lib-globals.html" title="Next Chapter: 4.2.1. Global constraints"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4.2.1. Global... &raquo;</span>
     </a>
   </li>
               
@@ -270,91 +256,82 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="a-minizinc-tutorial">
-<span id="part-tutorial"></span><h1>2. A MiniZinc Tutorial<a class="headerlink" href="#a-minizinc-tutorial" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="the-minizinc-library">
+<h1>4.2. The MiniZinc library<a class="headerlink" href="#the-minizinc-library" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modelling.html">2.1. Basic Modelling in MiniZinc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modelling.html#our-first-example">2.1.1. Our First Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling.html#an-arithmetic-optimisation-example">2.1.2. An Arithmetic Optimisation Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling.html#datafiles-and-assertions">2.1.3. Datafiles and Assertions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling.html#real-number-solving">2.1.4. Real Number Solving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling.html#basic-structure-of-a-model">2.1.5. Basic structure of a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib-globals.html">4.2.1. Global constraints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#all-different-and-related-constraints">4.2.1.1. All-Different and related constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#lexicographic-constraints">4.2.1.2. Lexicographic constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#sorting-constraints">4.2.1.3. Sorting constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#channeling-constraints">4.2.1.4. Channeling constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#counting-constraints">4.2.1.5. Counting constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#packing-constraints">4.2.1.6. Packing constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#scheduling-constraints">4.2.1.7. Scheduling constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#extensional-constraints-table-regular-etc">4.2.1.8. Extensional constraints (table, regular etc.)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#other-declarations">4.2.1.9. Other declarations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modelling2.html">2.2. More Complex Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#arrays-and-sets">2.2.1. Arrays and Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#global-constraints">2.2.2. Global Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#conditional-expressions">2.2.3. Conditional Expressions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#enumerated-types">2.2.4. Enumerated Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#complex-constraints">2.2.5. Complex Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#set-constraints">2.2.6. Set Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modelling2.html#putting-it-all-together">2.2.7. Putting it all together</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib-annotations.html">4.2.2. Annotations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-annotations.html#general-annotations">4.2.2.1. General annotations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#functions-and-predicates">Functions and Predicates</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="predicates.html">2.3. Predicates and Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#global-constraints">2.3.1. Global Constraints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="predicates.html#alldifferent">2.3.1.1. Alldifferent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="predicates.html#cumulative">2.3.1.2. Cumulative</a></li>
-<li class="toctree-l3"><a class="reference internal" href="predicates.html#table">2.3.1.3. Table</a></li>
-<li class="toctree-l3"><a class="reference internal" href="predicates.html#regular">2.3.1.4. Regular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-annotations.html#propagation-strength-annotations">4.2.2.2. Propagation strength annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-annotations.html#search-annotations">4.2.2.3. Search annotations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#variable-selection-annotations">Variable selection annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#value-choice-annotations">Value choice annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#exploration-strategy-annotations">Exploration strategy annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#other-declarations">Other declarations</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#defining-predicates">2.3.2. Defining Predicates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#defining-functions">2.3.3. Defining Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#reflection-functions">2.3.4. Reflection Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#local-variables">2.3.5. Local Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#context">2.3.6. Context</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#local-constraints">2.3.7. Local Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#domain-reflection-functions">2.3.8. Domain Reflection Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicates.html#scope">2.3.9. Scope</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="optiontypes.html">2.4. Option Types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="optiontypes.html#declaring-and-using-option-types">2.4.1. Declaring and Using Option Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optiontypes.html#hidden-option-types">2.4.2. Hidden Option Types</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="mzn_search.html">2.5. Search</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mzn_search.html#finite-domain-search">2.5.1. Finite Domain Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mzn_search.html#search-annotations">2.5.2. Search Annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mzn_search.html#annotations">2.5.3. Annotations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="efficient.html">2.6. Effective Modelling Practices in MiniZinc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#variable-bounds">2.6.1. Variable Bounds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#effective-generators">2.6.2. Effective Generators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#redundant-constraints">2.6.3. Redundant Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#modelling-choices">2.6.4. Modelling Choices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#multiple-modelling-and-channels">2.6.5. Multiple Modelling and Channels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient.html#symmetry">2.6.6. Symmetry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#static-symmetry-breaking">2.6.6.1. Static Symmetry Breaking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="efficient.html#other-examples-of-symmetry">2.6.6.2. Other Examples of Symmetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-annotations.html#warm-start-annotations">4.2.2.4. Warm start annotations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#warm-start-annotations-with-optional-values">Warm start annotations with optional values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#id1">Other declarations</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sat.html">2.7. Boolean Satisfiability Modelling in MiniZinc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sat.html#modelling-integers">2.7.1. Modelling Integers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sat.html#modelling-disequality">2.7.2. Modelling Disequality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sat.html#modelling-cardinality">2.7.3. Modelling Cardinality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib-optiontypes.html">4.2.3. Option type support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-optiontypes.html#option-type-support-for-booleans">4.2.3.1. Option type support for Booleans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-optiontypes.html#option-type-support-for-integers">4.2.3.2. Option type support for integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-optiontypes.html#other-declarations">4.2.3.3. Other declarations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="flattening.html">2.8. FlatZinc and Flattening</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#flattening-expressions">2.8.1. Flattening Expressions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="flattening.html#simplification-and-evaluation">2.8.1.1. Simplification and Evaluation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="flattening.html#defining-subexpressions">2.8.1.2. Defining Subexpressions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="flattening.html#flatzinc-constraint-form">2.8.1.3. FlatZinc constraint form</a></li>
-<li class="toctree-l3"><a class="reference internal" href="flattening.html#bounds-analysis">2.8.1.4. Bounds analysis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="flattening.html#objectives">2.8.1.5. Objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib-options.html">4.2.4. Compiler options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-options.html#parameters">4.2.4.1. Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-options.html#functions-and-predicates">4.2.4.2. Functions and Predicates</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#linear-expressions">2.8.2. Linear Expressions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#unrolling-expressions">2.8.3. Unrolling Expressions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#arrays">2.8.4. Arrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#reification">2.8.5. Reification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#predicates">2.8.6. Predicates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flattening.html#let-expressions">2.8.7. Let Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib-builtins.html">4.2.5. Builtins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#comparison-builtins">4.2.5.1. Comparison Builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#arithmetic-builtins">4.2.5.2. Arithmetic Builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#exponential-and-logarithmic-builtins">4.2.5.3. Exponential and logarithmic builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#trigonometric-functions">4.2.5.4. Trigonometric functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#logical-operations">4.2.5.5. Logical operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#set-operations">4.2.5.6. Set operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#array-operations">4.2.5.7. Array operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#array-sorting-operations">4.2.5.8. Array sorting operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#coercions">4.2.5.9. Coercions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#string-operations">4.2.5.10. String operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#reflection-operations">4.2.5.11. Reflection operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#assertions-and-debugging-functions">4.2.5.12. Assertions and debugging functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#functions-for-enums">4.2.5.13. Functions for enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#random-number-generator-builtins">4.2.5.14. Random Number Generator builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#special-constraints">4.2.5.15. Special constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#language-information">4.2.5.16. Language information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lib-flatzinc.html">4.2.6. FlatZinc builtins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#integer-flatzinc-builtins">4.2.6.1. Integer FlatZinc builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#bool-flatzinc-builtins">4.2.6.2. Bool FlatZinc builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#set-flatzinc-builtins">4.2.6.3. Set FlatZinc builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#float-flatzinc-builtins">4.2.6.4. Float FlatZinc builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#flatzinc-builtins-added-in-minizinc-2-0-0">4.2.6.5. FlatZinc builtins added in MiniZinc 2.0.0.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#flatzinc-builtins-added-in-minizinc-2-0-2">4.2.6.6. FlatZinc builtins added in MiniZinc 2.0.2.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#flatzinc-builtins-added-in-minizinc-2-1-0">4.2.6.7. FlatZinc builtins added in MiniZinc 2.1.0.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#flatzinc-builtins-added-in-minizinc-2-1-1">4.2.6.8. FlatZinc builtins added in MiniZinc 2.1.1.</a></li>
 </ul>
 </li>
 </ul>

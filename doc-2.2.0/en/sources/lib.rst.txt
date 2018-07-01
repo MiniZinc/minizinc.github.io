@@ -1,0 +1,14 @@
+The MiniZinc library
+####################
+
+
+
+
+.. toctree::
+
+  lib-globals
+  lib-annotations
+  lib-optiontypes
+  lib-options
+  lib-builtins
+  lib-flatzinc

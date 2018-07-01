@@ -4,15 +4,15 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>2.6. Effective Modelling Practices in MiniZinc &#8212; MiniZinc Documentation 2.1.2 documentation</title>
+    <title>2.6. Effective Modelling Practices in MiniZinc &#8212; The MiniZinc Handbook 2.2.0</title>
     <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,9 +37,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">
-          MiniZinc Documentation</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.1</b></span>
+        <a class="navbar-brand" href="index.html"><span><img src="static/MiniZn_logo_2.svg"></span>
+          The MiniZinc Handbook</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -55,7 +55,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="part_1_introduction.html">1. Introduction</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html">1.1. Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#structure">1.1.1. Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#how-to-read-this">1.1.2. How to Read This</a></li>
@@ -67,7 +67,11 @@
 <li class="toctree-l3"><a class="reference internal" href="installation.html#adding-third-party-solvers">1.2.3. Adding Third-party Solvers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ide_basic_steps.html">1.3. First steps with the MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_steps.html">1.3. First steps with MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-ide">1.3.1. The MiniZinc IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_steps.html#the-minizinc-command-line-tool">1.3.2. The MiniZinc command line tool</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul class="current">
@@ -114,12 +118,11 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2.6. Effective Modelling Practices in MiniZinc</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#variable-bounds">2.6.1. Variable Bounds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#unconstrained-variables">2.6.2. Unconstrained Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#effective-generators">2.6.3. Effective Generators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#redundant-constraints">2.6.4. Redundant Constraints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#modelling-choices">2.6.5. Modelling Choices</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#multiple-modelling-and-channels">2.6.6. Multiple Modelling and Channels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#symmetry">2.6.7. Symmetry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#effective-generators">2.6.2. Effective Generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#redundant-constraints">2.6.3. Redundant Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modelling-choices">2.6.4. Modelling Choices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-modelling-and-channels">2.6.5. Multiple Modelling and Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#symmetry">2.6.6. Symmetry</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sat.html">2.7. Boolean Satisfiability Modelling in MiniZinc</a><ul>
@@ -140,25 +143,76 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="part_3_reference.html">3. MiniZinc Reference Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="spec.html">3.1. Specification of MiniZinc</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">3.1.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#notation">3.1.2. Notation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#overview-of-a-model">3.1.3. Overview of a Model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#syntax-overview">3.1.4. Syntax Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#high-level-model-structure">3.1.5. High-level Model Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#types-and-type-insts">3.1.6. Types and Type-insts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#expressions">3.1.7. Expressions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#items">3.1.8. Items</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#annotations">3.1.9. Annotations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#partiality">3.1.10. Partiality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#built-in-operations">3.1.11. Built-in Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#content-types">3.1.12. Content-types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#json-support">3.1.13. JSON support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">3.1.14. Full grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#basic-usage">3.1.1. Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#adding-solvers">3.1.2. Adding Solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#options">3.1.3. Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#user-configuration-files">3.1.4. User Configuration Files</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="fzn-interfacing.html">3.2. Interfacing Solvers to Flatzinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#editing-minizinc-model-files">3.2.1. Editing MiniZinc model files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#configuring-and-running-the-solver">3.2.2. Configuring and Running the Solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#working-with-projects">3.2.3. Working With Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#automatic-solution-checking">3.2.4. Automatic Solution Checking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#submitting-solutions-to-online-courses">3.2.5. Submitting Solutions to Online Courses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#configuration-options">3.2.6. Configuration Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#adding-third-party-solvers">3.2.7. Adding Third-Party Solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpprofiler.html">3.3. CP-Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#connecting-a-solver-execution">3.3.1. Connecting a Solver Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#the-protocol-high-level">3.3.2. The protocol (high level)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#the-protocol-low-level">3.3.3. The protocol (low level)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#traditional-tree-visualisation">3.3.4. Traditional Tree Visualisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#alternative-search-tree-visualisations">3.3.5. Alternative Search Tree Visualisations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#similar-subtree-analysis">3.3.6. Similar Subtree Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#execution-comparison-by-merging">3.3.7. Execution Comparison by Merging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#replaying-search">3.3.8. Replaying Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpprofiler.html#nogood-analysis">3.3.9. Nogood Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.4. Using MiniZinc in Jupyter Notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#introduction">4.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#notation">4.1.2. Notation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#overview-of-a-model">4.1.3. Overview of a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#syntax-overview">4.1.4. Syntax Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#high-level-model-structure">4.1.5. High-level Model Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#types-and-type-insts">4.1.6. Types and Type-insts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#expressions">4.1.7. Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#items">4.1.8. Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#annotations">4.1.9. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#partiality">4.1.10. Partiality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#built-in-operations">4.1.11. Built-in Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#content-types">4.1.12. Content-types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#json-support">4.1.13. JSON support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html#full-grammar">4.1.14. Full grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.1. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html">4.2.2. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-optiontypes.html">4.2.3. Option type support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-options.html">4.2.4. Compiler options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-builtins.html">4.2.5. Builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.6. FlatZinc builtins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#specification-of-flatzinc">4.3.1. Specification of FlatZinc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#output">4.3.2. Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#solver-specific-libraries">4.3.3. Solver-specific Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#command-line-interface">4.3.4. Command Line Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#solver-configuration-files">4.3.5. Solver Configuration Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fzn-spec.html#grammar">4.3.6. Grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api_interfacing.html">4.4. Interfacing to MiniZinc via its API</a></li>
 </ul>
 </li>
 </ul>
@@ -176,14 +230,13 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">2.6. Effective Modelling Practices in MiniZinc</a><ul>
 <li><a class="reference internal" href="#variable-bounds">2.6.1. Variable Bounds</a></li>
-<li><a class="reference internal" href="#unconstrained-variables">2.6.2. Unconstrained Variables</a></li>
-<li><a class="reference internal" href="#effective-generators">2.6.3. Effective Generators</a></li>
-<li><a class="reference internal" href="#redundant-constraints">2.6.4. Redundant Constraints</a></li>
-<li><a class="reference internal" href="#modelling-choices">2.6.5. Modelling Choices</a></li>
-<li><a class="reference internal" href="#multiple-modelling-and-channels">2.6.6. Multiple Modelling and Channels</a></li>
-<li><a class="reference internal" href="#symmetry">2.6.7. Symmetry</a><ul>
-<li><a class="reference internal" href="#static-symmetry-breaking">2.6.7.1. Static Symmetry Breaking</a></li>
-<li><a class="reference internal" href="#other-examples-of-symmetry">2.6.7.2. Other Examples of Symmetry</a></li>
+<li><a class="reference internal" href="#effective-generators">2.6.2. Effective Generators</a></li>
+<li><a class="reference internal" href="#redundant-constraints">2.6.3. Redundant Constraints</a></li>
+<li><a class="reference internal" href="#modelling-choices">2.6.4. Modelling Choices</a></li>
+<li><a class="reference internal" href="#multiple-modelling-and-channels">2.6.5. Multiple Modelling and Channels</a></li>
+<li><a class="reference internal" href="#symmetry">2.6.6. Symmetry</a><ul>
+<li><a class="reference internal" href="#static-symmetry-breaking">2.6.6.1. Static Symmetry Breaking</a></li>
+<li><a class="reference internal" href="#other-examples-of-symmetry">2.6.6.2. Other Examples of Symmetry</a></li>
 </ul>
 </li>
 </ul>
@@ -249,7 +302,7 @@ variables involved.  They can also behave badly with problems which
 have subexpressions that take large integer values, since they may
 implicitly limit the size of integer variables.</p>
 <div class="literal-block-wrapper docutils container" id="ex-grocery">
-<div class="code-block-caption"><span class="caption-number">Listing 2.41 </span><span class="caption-text">A model with unbounded variables (<a class="reference download internal" href="downloads/grocery.mzn" download=""><tt class="xref download docutils literal">grocery.mzn</tt></a>).</span><a class="headerlink" href="#ex-grocery" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.6.1 </span><span class="caption-text">A model with unbounded variables (<a class="reference download internal" href="downloads/grocery.mzn" download=""><tt class="xref download docutils literal">grocery.mzn</tt></a>).</span><a class="headerlink" href="#ex-grocery" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">item1</span><span class="p">;</span><span class="s"> </span>
 <span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">item2</span><span class="p">;</span><span class="s"></span>
 <span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">item3</span><span class="p">;</span><span class="s"></span>
@@ -268,15 +321,15 @@ implicitly limit the size of integer variables.</p>
 </pre></div>
 </div>
 </div>
-<p>The grocery problem shown in <a class="reference internal" href="#ex-grocery"><span class="std std-numref">Listing 2.41</span></a> finds 4 items
+<p>The grocery problem shown in <a class="reference internal" href="#ex-grocery"><span class="std std-numref">Listing 2.6.1</span></a> finds 4 items
 whose prices in dollars add up to 7.11 and multiply up to 7.11.
 The variables are declared unbounded. Running</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12fd grocery.mzn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver g12fd grocery.mzn
 </pre></div>
 </div>
 <p>yields</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=====</span><span class="n">UNSATISFIABLE</span><span class="o">=====</span>
-<span class="o">%</span> <span class="n">grocery</span><span class="o">.</span><span class="n">fzn</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="n">model</span> <span class="n">inconsistency</span> <span class="n">detected</span> <span class="n">before</span> <span class="n">search</span><span class="o">.</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>=====UNSATISFIABLE=====
+% /tmp/mznfile85EWzj.fzn:11: warning: model inconsistency detected before search.
 </pre></div>
 </div>
 <p>This is because the
@@ -296,14 +349,14 @@ values that the intermediate expressions may need to take.</p>
 <p>results in a better model, since now MiniZinc can infer bounds on the
 intermediate expressions and use these rather than the default bounds.
 With this modification, executing the model gives</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">120</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">316</span><span class="p">}</span>
-<span class="o">----------</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{120,125,150,316}
+----------
 </pre></div>
 </div>
 <p>Note however that even the improved model may be too difficult for
 some solvers.
 Running</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12lazy grocery.mzn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver g12lazy grocery.mzn
 </pre></div>
 </div>
 <p>does not return an answer, since the solver builds a huge representation
@@ -320,100 +373,9 @@ immediately defined as equal to an expression. Usually MiniZinc will be
 able to infer effective bounds from the expression.</p>
 </div>
 </div>
-<div class="section" id="unconstrained-variables">
-<h2>2.6.2. Unconstrained Variables<a class="headerlink" href="#unconstrained-variables" title="Permalink to this headline">¶</a></h2>
-<p id="index-2">Sometimes when modelling it is easier to introduce more variables than
-actually required to model the problem.</p>
-<div class="literal-block-wrapper docutils container" id="ex-unc">
-<div class="code-block-caption"><span class="caption-number">Listing 2.42 </span><span class="caption-text">A model for Golomb rulers with unconstrained variables (<a class="reference download internal" href="downloads/golomb.mzn" download=""><tt class="xref download docutils literal">golomb.mzn</tt></a>).</span><a class="headerlink" href="#ex-unc" title="Permalink to this code">¶</a></div>
-<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;alldifferent.mzn&quot;</span><span class="p">;</span><span class="s"></span>
-
-<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"> </span><span class="c">% number of marks on ruler</span><span class="s"></span>
-<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">;</span><span class="s"> </span><span class="c">% max length of ruler</span><span class="s"></span>
-
-<span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">m</span><span class="p">:</span><span class="s"> </span><span class="nv">mark</span><span class="p">;</span><span class="s"></span>
-<span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">m</span><span class="p">:</span><span class="s"> </span><span class="nv">diffs</span><span class="p">;</span><span class="s"></span>
-
-<span class="k">constraint</span><span class="s"> </span><span class="nv">mark</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0</span><span class="p">;</span><span class="s"></span>
-<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="o">-</span><span class="m">1</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="nv">mark</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">mark</span><span class="p">[</span><span class="nv">i</span><span class="o">+</span><span class="m">1</span><span class="p">]</span><span class="s"> </span><span class="p">);</span><span class="s"></span>
-<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="s"> </span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="nv">j</span><span class="p">)</span><span class="s">          </span><span class="c">% (diff)</span><span class="s"></span>
-<span class="s">                  </span><span class="p">(</span><span class="nv">diffs</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">mark</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">mark</span><span class="p">[</span><span class="nv">j</span><span class="p">]);</span><span class="s">  </span><span class="c">% (diff)</span><span class="s"></span>
-<span class="k">constraint</span><span class="s"> </span><span class="bp">alldifferent</span><span class="p">([</span><span class="s"> </span><span class="nv">diffs</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="nv">j</span><span class="p">]);</span><span class="s"></span>
-<span class="k">constraint</span><span class="s"> </span><span class="nv">diffs</span><span class="p">[</span><span class="m">2,1</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">diffs</span><span class="p">[</span><span class="nv">n</span><span class="p">,</span><span class="nv">n</span><span class="o">-</span><span class="m">1</span><span class="p">];</span><span class="s">  </span><span class="c">% symmetry break</span><span class="s"></span>
-
-<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span><span class="s"></span>
-
-<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;marks = &quot;</span><span class="p">,</span><span class="nb">show</span><span class="p">(</span><span class="nv">mark</span><span class="p">),</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span><span class="s"></span>
-</pre></div>
-</div>
-</div>
-<p>Consider the model for Golomb rulers shown in <a class="reference internal" href="#ex-unc"><span class="std std-numref">Listing 2.42</span></a>.
-A Golomb ruler of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"></span></code> marks is one where the absolute differences
-between any two marks are different.
-It creates a two dimensional array of difference variables, but
-only uses those of the form <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">diff</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"></span></code> where <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">i</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="nv">j</span><span class="s"></span></code>.
-Running the model as</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12fd golomb.mzn -D <span class="s2">&quot;n = 4; m = 6;&quot;</span>
-</pre></div>
-</div>
-<p>results in output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mark</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
-<span class="n">diffs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
-<span class="o">----------</span>
-</pre></div>
-</div>
-<p>and everything seems fine with the model.
-But if we ask for all solutions using</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12fd -a golomb.mzn -D <span class="s2">&quot;n = 4; m = 6;&quot;</span>
-</pre></div>
-</div>
-<p>we are presented with a never ending list of the same solution!</p>
-<p>What is going on?  In order for the finite domain solver to finish
-it needs to fix all variables, including the variables <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">diff</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"></span></code>
-where <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">j</span><span class="s"></span></code>, which means there are countless ways of generating a
-solution, simply by changing these variables to take arbitrary values.</p>
-<p>We can avoid problems with unconstrained variables, by modifying
-the model so that they are fixed to some value. For example replacing
-the lines marked <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="c">% (diff}</span><span class="s"></span></code> in <a class="reference internal" href="#ex-unc"><span class="std std-numref">Listing 2.42</span></a>
-to</p>
-<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)</span><span class="s"></span>
-<span class="s">                 </span><span class="p">(</span><span class="nv">diffs</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="k">if</span><span class="s"> </span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="nv">j</span><span class="p">)</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="nv">mark</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">mark</span><span class="p">[</span><span class="nv">j</span><span class="p">]</span><span class="s"></span>
-<span class="s">                               </span><span class="k">else</span><span class="s"> </span><span class="m">0</span><span class="s"> </span><span class="k">endif</span><span class="p">);</span><span class="s"></span>
-</pre></div>
-</div>
-<p>ensures that the extra variables are all fixed to 0. With this change
-the solver returns just one solution.</p>
-<p>MiniZinc will automatically remove variables which are unconstrained
-and not used in the output.  An alternate solution to the above problem is
-simply to remove the output of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">diffs</span><span class="s"></span></code> array by changing the
-output statement to</p>
-<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;mark = </span><span class="p">\(</span><span class="nv">mark</span><span class="p">)</span><span class="s">;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span><span class="s"></span>
-</pre></div>
-</div>
-<p>With this change running</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12fd -a golomb.mzn -D <span class="s2">&quot;n = 4; m = 6;&quot;</span>
-</pre></div>
-</div>
-<p>simply results in</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mark</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
-<span class="o">----------</span>
-<span class="o">==========</span>
-</pre></div>
-</div>
-<p>illustrating the unique solution.</p>
-<div class="admonition-unconstrained-variables admonition" id="defblock-1">
-<p class="first admonition-title">Unconstrained Variables</p>
-<p class="last" id="index-3">Models should never have unconstrained variables. Sometimes it is
-difficult to model without unnecessary variables.
-If this is the case add
-constraints to fix the unnecessary variables,
-so they cannot influence the
-solving.</p>
-</div>
-</div>
 <div class="section" id="effective-generators">
-<h2>2.6.3. Effective Generators<a class="headerlink" href="#effective-generators" title="Permalink to this headline">¶</a></h2>
-<p id="index-4">Imagine we want to count the number of triangles (<span class="math notranslate nohighlight">\(K_3\)</span> subgraphs)
+<h2>2.6.2. Effective Generators<a class="headerlink" href="#effective-generators" title="Permalink to this headline">¶</a></h2>
+<p id="index-2">Imagine we want to count the number of triangles (<span class="math notranslate nohighlight">\(K_3\)</span> subgraphs)
 appearing in a graph.  Suppose the graph is defined by
 an adjacency matrix: <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">adj</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"></span></code> is true if nodes <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">i</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">j</span><span class="s"></span></code> are
 adjacent.  We might write</p>
@@ -424,13 +386,13 @@ adjacent.  We might write</p>
 <p>which is certainly correct, but it examines all triples of nodes.
 If the graph is sparse we can do better by realising that some
 tests can be applied as soon as we select <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">i</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">j</span><span class="s"></span></code>.</p>
-<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">count</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NODES</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">])</span><span class="s"></span>
-<span class="s">     </span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="m">1</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">k</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NODES</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">k</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">k</span><span class="p">]</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">j</span><span class="p">,</span><span class="nv">k</span><span class="p">]]));</span><span class="s"></span>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">count</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">sum</span><span class="s"> </span><span class="p">([</span><span class="s"> </span><span class="m">1</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NODES</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">j</span><span class="s">  </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">],</span><span class="s"></span>
+<span class="s">                        </span><span class="nv">k</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NODES</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">k</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">k</span><span class="p">]</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">j</span><span class="p">,</span><span class="nv">k</span><span class="p">]]);</span><span class="s"></span>
 </pre></div>
 </div>
-<p>You can use the builitin <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">trace</span><span class="s"></span></code> <span class="target" id="index-5"></span>function to help
+<p>You can use the builitin <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">trace</span><span class="s"></span></code> <span class="target" id="index-3"></span>function to help
 determine what is happening inside generators.</p>
-<div class="admonition-tracing admonition" id="defblock-2">
+<div class="admonition-tracing admonition" id="defblock-1">
 <p class="first admonition-title">Tracing</p>
 <p class="last">The function <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">trace</span><span class="p">(</span><span class="nv">s</span><span class="p">,</span><span class="nv">e</span><span class="p">)</span><span class="s"></span></code> prints the string <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">s</span><span class="s"></span></code> before
 evaluating the expression <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e</span><span class="s"></span></code> and returning its value.
@@ -449,18 +411,18 @@ loop for both versions of the calculation.</p>
 </pre></div>
 </div>
 <p>Produces the output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span>
-<span class="o">----------</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+----------
 </pre></div>
 </div>
 <p>indicating the inner loop is evaluated 64 times while</p>
-<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">count</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NODES</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">])</span><span class="s"></span>
-<span class="s">  </span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="m">1</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">k</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NODES</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nb">trace</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">k</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">k</span><span class="p">]</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">j</span><span class="p">,</span><span class="nv">k</span><span class="p">])]));</span><span class="s"></span>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="s">  </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">count</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">sum</span><span class="s"> </span><span class="p">([</span><span class="s"> </span><span class="m">1</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NODES</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">j</span><span class="s">  </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">],</span><span class="s"></span>
+<span class="s">                          </span><span class="nv">k</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NODES</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nb">trace</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">k</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">k</span><span class="p">]</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">adj</span><span class="p">[</span><span class="nv">j</span><span class="p">,</span><span class="nv">k</span><span class="p">])]);</span><span class="s"></span>
 </pre></div>
 </div>
 <p>Produces the output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">++++++++++++++++</span>
-<span class="o">----------</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>++++++++++++++++
+----------
 </pre></div>
 </div>
 <p>indicating the inner loop is evaluated 16 times.</p>
@@ -473,38 +435,39 @@ understand what is happening during model creation.</p>
 </div>
 <p>will print out each of triangles that is found in the calculation.
 It produces the output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="o">----------</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(1,2,3)
+----------
 </pre></div>
 </div>
+<p>We have to admit that we cheated a bit here: In certain circumstances, the MiniZinc compiler is in fact able to re-order the arguments in a <tt class="docutils literal">where</tt> clause automatically, so that they are evaluated as early as possible. In this case, adding the <tt class="docutils literal">trace</tt> function in fact <em>prevented</em> this optimisation. In general, it is however a good idea to help the compiler get it right, by splitting the <tt class="docutils literal">where</tt> clauses and placing them as close to the generators as possible.</p>
 </div>
 <div class="section" id="redundant-constraints">
-<h2>2.6.4. Redundant Constraints<a class="headerlink" href="#redundant-constraints" title="Permalink to this headline">¶</a></h2>
-<p id="index-6">The form of a model will affect how well the constraint solver can solve it.
+<h2>2.6.3. Redundant Constraints<a class="headerlink" href="#redundant-constraints" title="Permalink to this headline">¶</a></h2>
+<p id="index-4">The form of a model will affect how well the constraint solver can solve it.
 In many cases adding constraints which are redundant, i.e. are logically
 implied by the existing model, may improve the search for
 solutions by making more information available to the solver earlier.</p>
 <p>Consider the magic series problem from <a class="reference internal" href="modelling2.html#sec-complex"><span class="std std-ref">Complex Constraints</span></a>.
 Running this for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">16</span><span class="s"></span></code> as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12fd --all-solutions --statistics magic-series.mzn -D <span class="s2">&quot;n=16;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --all-solutions --statistics magic-series.mzn -D <span class="s2">&quot;n=16;&quot;</span>
 </pre></div>
 </div>
 <p>might result in output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
-<span class="o">----------</span>
-<span class="o">==========</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>s = [12, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0];
+----------
+==========
 </pre></div>
 </div>
-<p>and the statistics showing 174 choice points required.</p>
+<p>and the statistics showing 89 failures required.</p>
 <p>We can add redundant constraints to the model. Since each number
 in the sequence counts the number of occurrences of a number we know
 that they sum up to <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"></span></code>. Similarly we know that the sum of
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nv">i</span><span class="s"></span></code> must also add up to <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"></span></code> because the sequence is magic.
 Adding these constraints
 gives the model in
-<a class="reference internal" href="#ex-magic-series2"><span class="std std-numref">Listing 2.43</span></a>.</p>
+<a class="reference internal" href="#ex-magic-series2"><span class="std std-numref">Listing 2.6.2</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ex-magic-series2">
-<div class="code-block-caption"><span class="caption-number">Listing 2.43 </span><span class="caption-text">Model solving the magic series problem with redundant constraints (<a class="reference download internal" href="downloads/magic-series2.mzn" download=""><tt class="xref download docutils literal">magic-series2.mzn</tt></a>).</span><a class="headerlink" href="#ex-magic-series2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.6.2 </span><span class="caption-text">Model solving the magic series problem with redundant constraints (<a class="reference download internal" href="downloads/magic-series2.mzn" download=""><tt class="xref download docutils literal">magic-series2.mzn</tt></a>).</span><a class="headerlink" href="#ex-magic-series2" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"></span>
 <span class="kt">array</span><span class="p">[</span><span class="m">0</span><span class="o">..</span><span class="nv">n</span><span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">;</span><span class="s"></span>
 
@@ -520,21 +483,21 @@ gives the model in
 </div>
 </div>
 <p>Running the same problem as before</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12fd --all-solutions --statistics magic-series2.mzn -D <span class="s2">&quot;n=16;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --all-solutions --statistics magic-series2.mzn -D <span class="s2">&quot;n=16;&quot;</span>
 </pre></div>
 </div>
-<p>results in the same output, but with statistics showing just 13 choicepoints
+<p>results in the same output, but with statistics showing just 14 failures
 explored. The redundant constraints have allowed the solver to prune the
 search much earlier.</p>
 </div>
 <div class="section" id="modelling-choices">
-<h2>2.6.5. Modelling Choices<a class="headerlink" href="#modelling-choices" title="Permalink to this headline">¶</a></h2>
+<h2>2.6.4. Modelling Choices<a class="headerlink" href="#modelling-choices" title="Permalink to this headline">¶</a></h2>
 <p>There are many ways to model the same problem in MiniZinc,
 although some may be more natural than others.
 Different models may have very different efficiency of solving, and worse
 yet, different models may be better or worse for different solving backends.
 There are however some guidelines for usually producing better models:</p>
-<div class="admonition-choosing-between-models admonition" id="defblock-3">
+<div class="admonition-choosing-between-models admonition" id="defblock-2">
 <p class="first admonition-title">Choosing between models</p>
 <p>The better model is likely to have some of the following features</p>
 <ul class="simple">
@@ -553,9 +516,9 @@ from 1 to <span class="math notranslate nohighlight">\(n\)</span> such that the 
 also form a permutation of numbers 1 to <span class="math notranslate nohighlight">\(n-1\)</span>.
 Note that the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">u</span><span class="s"></span></code> variables are functionally defined by
 the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> variables so the raw search space is <span class="math notranslate nohighlight">\(n^n\)</span>.
-The obvious way to model this problem is shown in <a class="reference internal" href="#ex-allint"><span class="std std-numref">Listing 2.44</span></a>.</p>
+The obvious way to model this problem is shown in <a class="reference internal" href="#ex-allint"><span class="std std-numref">Listing 2.6.3</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ex-allint">
-<div class="code-block-caption"><span class="caption-number">Listing 2.44 </span><span class="caption-text">A natural model for the all interval series problem <tt class="docutils literal">prob007</tt> in CSPlib (<a class="reference download internal" href="downloads/allinterval.mzn" download=""><tt class="xref download docutils literal">allinterval.mzn</tt></a>).</span><a class="headerlink" href="#ex-allint" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.6.3 </span><span class="caption-text">A natural model for the all interval series problem <tt class="docutils literal">prob007</tt> in CSPlib (<a class="reference download internal" href="downloads/allinterval.mzn" download=""><tt class="xref download docutils literal">allinterval.mzn</tt></a>).</span><a class="headerlink" href="#ex-allint" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;alldifferent.mzn&quot;</span><span class="p">;</span><span class="s"></span>
 
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"></span>
@@ -576,7 +539,7 @@ The obvious way to model this problem is shown in <a class="reference internal" 
 <p>In this model the array <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> represents the permutation of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"></span></code>
 numbers and the constraints are naturally represented using <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alldifferent</span><span class="s"></span></code>.</p>
 <p>Running the model</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12fd -all-solutions --statistics allinterval.mzn -D <span class="s2">&quot;n=10;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver g12fd --all-solutions --statistics allinterval.mzn -D <span class="s2">&quot;n=10;&quot;</span>
 </pre></div>
 </div>
 <p>finds all solutions in 84598 choice points and 3s.</p>
@@ -595,10 +558,10 @@ which also tell us that the position of difference <code class="code mzn minizin
 the earlier of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="p">[</span><span class="nv">n</span><span class="p">]</span><span class="s"></span></code>, i.e.
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">v</span><span class="p">[</span><span class="nv">n</span><span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">min</span><span class="p">(</span><span class="nv">y</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="s"> </span><span class="nv">y</span><span class="p">[</span><span class="nv">n</span><span class="p">])</span><span class="s"></span></code>.
 With this we can model the problem
-as shown in <a class="reference internal" href="#ex-allint2"><span class="std std-numref">Listing 2.45</span></a>. The output statement recreates the
+as shown in <a class="reference internal" href="#ex-allint2"><span class="std std-numref">Listing 2.6.4</span></a>. The output statement recreates the
 original sequence <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> from the array of positions <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="s"></span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="ex-allint2">
-<div class="code-block-caption"><span class="caption-number">Listing 2.45 </span><span class="caption-text">An inverse model for the all interval series problem <tt class="docutils literal">prob007</tt> in CSPlib (<a class="reference download internal" href="downloads/allinterval2.mzn" download=""><tt class="xref download docutils literal">allinterval2.mzn</tt></a>).</span><a class="headerlink" href="#ex-allint2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.6.4 </span><span class="caption-text">An inverse model for the all interval series problem <tt class="docutils literal">prob007</tt> in CSPlib (<a class="reference download internal" href="downloads/allinterval2.mzn" download=""><tt class="xref download docutils literal">allinterval2.mzn</tt></a>).</span><a class="headerlink" href="#ex-allint2" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;alldifferent.mzn&quot;</span><span class="p">;</span><span class="s"></span>
 
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"></span>
@@ -630,7 +593,7 @@ indirect way of modelling the relationship between the <code class="code mzn min
 as opposed to the relationship between <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">u</span><span class="s"></span></code> variables.
 Hence we might expect the original model to be better.</p>
 <p>The command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12fd --all-solutions --statistics allinterval2.mzn -D <span class="s2">&quot;n=10;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver g12fd --all-solutions --statistics allinterval2.mzn -D <span class="s2">&quot;n=10;&quot;</span>
 </pre></div>
 </div>
 <p>finds all the solutions in  75536 choice points and 18s.
@@ -640,12 +603,12 @@ The lack of succinctness means that even though the search requires
 less choice it is substantially slower.</p>
 </div>
 <div class="section" id="multiple-modelling-and-channels">
-<span id="sec-multiple-modelling-and-channels"></span><h2>2.6.6. Multiple Modelling and Channels<a class="headerlink" href="#multiple-modelling-and-channels" title="Permalink to this headline">¶</a></h2>
+<span id="sec-multiple-modelling-and-channels"></span><h2>2.6.5. Multiple Modelling and Channels<a class="headerlink" href="#multiple-modelling-and-channels" title="Permalink to this headline">¶</a></h2>
 <p>When we have two models for the same problem it may be
 useful to use both models together by tying the variables in the two models
 together, since each can give different information to the solver.</p>
 <div class="literal-block-wrapper docutils container" id="ex-allint3">
-<div class="code-block-caption"><span class="caption-number">Listing 2.46 </span><span class="caption-text">A dual model for the all interval series problem <tt class="docutils literal">prob007</tt> in CSPlib (<a class="reference download internal" href="downloads/allinterval3.mzn" download=""><tt class="xref download docutils literal">allinterval3.mzn</tt></a>).</span><a class="headerlink" href="#ex-allint3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.6.5 </span><span class="caption-text">A dual model for the all interval series problem <tt class="docutils literal">prob007</tt> in CSPlib (<a class="reference download internal" href="downloads/allinterval3.mzn" download=""><tt class="xref download docutils literal">allinterval3.mzn</tt></a>).</span><a class="headerlink" href="#ex-allint3" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;inverse.mzn&quot;</span><span class="p">;</span><span class="s"></span>
 
 <span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span><span class="s"></span>
@@ -670,7 +633,7 @@ together, since each can give different information to the solver.</p>
 </pre></div>
 </div>
 </div>
-<p><a class="reference internal" href="#ex-allint3"><span class="std std-numref">Listing 2.46</span></a> gives a dual model combining features of
+<p><a class="reference internal" href="#ex-allint3"><span class="std std-numref">Listing 2.6.5</span></a> gives a dual model combining features of
 <a class="reference download internal" href="downloads/allinterval.mzn" download=""><tt class="xref download docutils literal">allinterval.mzn</tt></a> and <a class="reference download internal" href="downloads/allinterval2.mzn" download=""><tt class="xref download docutils literal">allinterval2.mzn</tt></a>.
 The beginning of the model is taken from <a class="reference download internal" href="downloads/allinterval.mzn" download=""><tt class="xref download docutils literal">allinterval.mzn</tt></a>.
 We then introduce the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">v</span><span class="s"></span></code> variables from <a class="reference download internal" href="downloads/allinterval2.mzn" download=""><tt class="xref download docutils literal">allinterval2.mzn</tt></a>.
@@ -679,7 +642,7 @@ global
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">inverse</span><span class="s"></span></code> constraint:
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">inverse</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="nv">y</span><span class="p">)</span><span class="s"></span></code> holds if <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="s"></span></code> is the inverse function of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> (and vice versa),
 that is <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">&lt;-&gt;</span><span class="s"> </span><span class="nv">y</span><span class="p">[</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">i</span><span class="s"></span></code>. A definition
-is shown in <a class="reference internal" href="#ex-inverse"><span class="std std-numref">Listing 2.47</span></a>.
+is shown in <a class="reference internal" href="#ex-inverse"><span class="std std-numref">Listing 2.6.6</span></a>.
 The model does not include the constraints relating the
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">v</span><span class="s"></span></code> variables, they are redundant (and indeed propagation
 redundant)
@@ -690,7 +653,7 @@ constraints.
 The only constraints are the relationships of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">u</span><span class="s"></span></code> variables
 and the redundant constraints on <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">v</span><span class="s"></span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="ex-inverse">
-<div class="code-block-caption"><span class="caption-number">Listing 2.47 </span><span class="caption-text">A definition of the <tt class="docutils literal">inverse</tt> global constraint (<a class="reference download internal" href="downloads/inverse.mzn" download=""><tt class="xref download docutils literal">inverse.mzn</tt></a>).</span><a class="headerlink" href="#ex-inverse" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.6.6 </span><span class="caption-text">A definition of the <tt class="docutils literal">inverse</tt> global constraint (<a class="reference download internal" href="downloads/inverse.mzn" download=""><tt class="xref download docutils literal">inverse.mzn</tt></a>).</span><a class="headerlink" href="#ex-inverse" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">inverse</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">f</span><span class="p">,</span><span class="s"></span>
 <span class="s">                  </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">invf</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"></span>
 <span class="s">    </span><span class="k">forall</span><span class="p">(</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">invf</span><span class="p">))(</span><span class="nv">invf</span><span class="p">[</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">f</span><span class="p">))</span><span class="s"> </span><span class="o">/\</span><span class="s"></span>
@@ -704,7 +667,7 @@ and the redundant constraints on <code class="code mzn minizinc docutils literal
 <p>One of the benefits of the dual model is that there is more scope for
 defining different search strategies.
 Running the dual model,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mzn-g12fd -all-solutions --statistics allinterval3.mzn -D <span class="s2">&quot;n=10;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver g12fd --all-solutions --statistics allinterval3.mzn -D <span class="s2">&quot;n=10;&quot;</span>
 </pre></div>
 </div>
 <p>which uses the search strategy of
@@ -714,24 +677,24 @@ Note that running the same model with labelling on the <code class="code mzn min
 requires 13142 choice points and 1.5s.</p>
 </div>
 <div class="section" id="symmetry">
-<h2>2.6.7. Symmetry<a class="headerlink" href="#symmetry" title="Permalink to this headline">¶</a></h2>
-<p>Symmetry is very common in constraint satisfaction and optimisation problems. To illustrate this, let us look again at the n-queens problem from <a class="reference internal" href="mzn_search.html#ex-queens"><span class="std std-numref">Listing 2.39</span></a>. The top left chess board in <a class="reference internal" href="#fig-queens-sym"><span class="std std-numref">Fig. 2.10</span></a> shows a solution to the 8-queens problems (labeled “original”). The remaining chess boards show seven symmetric variants of the same solution: rotated by 90, 180 and 270 degrees, and flipped vertically.</p>
+<h2>2.6.6. Symmetry<a class="headerlink" href="#symmetry" title="Permalink to this headline">¶</a></h2>
+<p>Symmetry is very common in constraint satisfaction and optimisation problems. To illustrate this, let us look again at the n-queens problem from <a class="reference internal" href="mzn_search.html#ex-queens"><span class="std std-numref">Listing 2.5.1</span></a>. The top left chess board in <a class="reference internal" href="#fig-queens-sym"><span class="std std-numref">Fig. 2.6.1</span></a> shows a solution to the 8-queens problems (labeled “original”). The remaining chess boards show seven symmetric variants of the same solution: rotated by 90, 180 and 270 degrees, and flipped vertically.</p>
 <div class="figure" id="id1">
-<span id="fig-queens-sym"></span><img alt="images/queens_symm.svg" src="images/queens_symm.svg" /><p class="caption"><span class="caption-number">Fig. 2.10 </span><span class="caption-text">Symmetric variants of an 8-queens solution</span></p>
+<span id="fig-queens-sym"></span><img alt="images/queens_symm.svg" src="images/queens_symm.svg" /><p class="caption"><span class="caption-number">Fig. 2.6.1 </span><span class="caption-text">Symmetric variants of an 8-queens solution</span></p>
 </div>
 <p>If we wanted to enumerate <em>all</em> solutions to the 8-queens problem, we could obviously save the solver some work by only enumerating <em>non-symmetric</em> solutions, and then generating the symmetric variants ourselves. This is one reason why we want to get rid of symmetry in constraint models. The other, much more important reason, is that the solver may also <strong>explore symmetric variants of non-solution states!</strong></p>
-<p>For example, a typical constraint solver may try to place the queen in column 1 into row 1 (which is fine), and then try to put the column 2 queen into row 3, which, at first sight, does not violate any of the constraints. However, this configuration cannot be completed to a full solution (which the solver finds out after a little search). <a class="reference internal" href="#fig-queens-sym-unsat"><span class="std std-numref">Fig. 2.11</span></a> shows this configuration on the top left chess board. Now nothing prevents the solver from trying, e.g., the second configuration from the left in the bottom row of <a class="reference internal" href="#fig-queens-sym-unsat"><span class="std std-numref">Fig. 2.11</span></a>, where the queen in column 1 is still in row 1, and the queen in column 3 is placed in row 2. Therefore, even when only searching for a single solution, the solver may explore many symmetric states that it has already seen and proven unsatisfiable before!</p>
+<p>For example, a typical constraint solver may try to place the queen in column 1 into row 1 (which is fine), and then try to put the column 2 queen into row 3, which, at first sight, does not violate any of the constraints. However, this configuration cannot be completed to a full solution (which the solver finds out after a little search). <a class="reference internal" href="#fig-queens-sym-unsat"><span class="std std-numref">Fig. 2.6.2</span></a> shows this configuration on the top left chess board. Now nothing prevents the solver from trying, e.g., the second configuration from the left in the bottom row of <a class="reference internal" href="#fig-queens-sym-unsat"><span class="std std-numref">Fig. 2.6.2</span></a>, where the queen in column 1 is still in row 1, and the queen in column 3 is placed in row 2. Therefore, even when only searching for a single solution, the solver may explore many symmetric states that it has already seen and proven unsatisfiable before!</p>
 <div class="figure" id="id2">
-<span id="fig-queens-sym-unsat"></span><img alt="images/queens_symm_unsat.svg" src="images/queens_symm_unsat.svg" /><p class="caption"><span class="caption-number">Fig. 2.11 </span><span class="caption-text">Symmetric variants of an 8-queens unsatisfiable partial assignment</span></p>
+<span id="fig-queens-sym-unsat"></span><img alt="images/queens_symm_unsat.svg" src="images/queens_symm_unsat.svg" /><p class="caption"><span class="caption-number">Fig. 2.6.2 </span><span class="caption-text">Symmetric variants of an 8-queens unsatisfiable partial assignment</span></p>
 </div>
 <div class="section" id="static-symmetry-breaking">
-<h3>2.6.7.1. Static Symmetry Breaking<a class="headerlink" href="#static-symmetry-breaking" title="Permalink to this headline">¶</a></h3>
+<h3>2.6.6.1. Static Symmetry Breaking<a class="headerlink" href="#static-symmetry-breaking" title="Permalink to this headline">¶</a></h3>
 <p>The modelling technique for dealing with symmetry is called <em>symmetry breaking</em>, and in its simplest form, involves adding constraints to the model that rule out all symmetric variants of a (partial) assignment to the variables except one. These constraints are called <em>static symmetry breaking constraints</em>.</p>
 <p>The basic idea behind symmetry breaking is to impose an <em>order</em>. For example, to rule out any vertical flips of the chess board, we could simply add the constraint that the queen in the first column must be in the top half of the board:</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="nv">q</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">n</span><span class="s"> </span><span class="o">div</span><span class="s"> </span><span class="m">2</span><span class="p">;</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Convince yourself that this would remove exactly half of the symmetric variants in <a class="reference internal" href="#fig-queens-sym"><span class="std std-numref">Fig. 2.10</span></a>. In order to remove <em>all</em> symmetry, we need to work a bit harder.</p>
+<p>Convince yourself that this would remove exactly half of the symmetric variants in <a class="reference internal" href="#fig-queens-sym"><span class="std std-numref">Fig. 2.6.1</span></a>. In order to remove <em>all</em> symmetry, we need to work a bit harder.</p>
 <p>Whenever we can express all symmetries as permutations of the array of variables, a set of <em>lexicographic ordering constraints</em> can be used to break all symmetry. For example, if the array of variables is called <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code>, and reversing the array is a symmetry of the problem, then the following constraint will break that symmetry:</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="bp">lex_lesseq</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="nf">reverse</span><span class="p">(</span><span class="nv">x</span><span class="p">));</span><span class="s"></span>
 </pre></div>
@@ -743,9 +706,9 @@ requires 13142 choice points and 1.5s.</p>
 </div>
 <p>The great thing about using lexicographic ordering constraints is that we can add multiple ones (to break several symmetries simultaneously), without them interfering with each other, as long as we keep the order in the first argument the same.</p>
 <p>For the n-queens problem, unfortunately this technique does not immediately apply, because some of its symmetries cannot be described as permutations of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="s"></span></code> array. The trick to overcome this is to express the n-queens problem in terms of Boolean variables that model, for each field of the board, whether it contains a queen or not. Now all the symmetries can be modeled as permutations of this array. Since the main constraints of the n-queens problem are much easier to express with the integer <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q</span><span class="s"></span></code> array, we simply use both models together and add channeling constraints between them, as explained in <a class="reference internal" href="#sec-multiple-modelling-and-channels"><span class="std std-ref">Multiple Modelling and Channels</span></a>.</p>
-<p>The full model, with added Boolean variables, channeling constraints and symmetry breaking constraints is shown in <a class="reference internal" href="#ex-queens-sym"><span class="std std-numref">Listing 2.48</span></a>. We can conduct a little experiment to check whether it successfully breaks all the symmetry. Try running the model with increasing values for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"></span></code>, e.g. from 1 to 10, counting the number of solutions (e.g., by using the <tt class="docutils literal">-s</tt> flag with the Gecode solver, or selecting “Print all solutions” as well as “Statistics for solving” in the IDE). You should get the following sequence of numbers of solutions: 1, 0, 0, 1, 2, 1, 6, 12, 46, 92. To verify the sequence, you can search for it in the <em>On-Line Encyclopedia of Integer Sequences</em> (<a class="reference external" href="http://oeis.org">http://oeis.org</a>).</p>
+<p>The full model, with added Boolean variables, channeling constraints and symmetry breaking constraints is shown in <a class="reference internal" href="#ex-queens-sym"><span class="std std-numref">Listing 2.6.7</span></a>. We can conduct a little experiment to check whether it successfully breaks all the symmetry. Try running the model with increasing values for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"></span></code>, e.g. from 1 to 10, counting the number of solutions (e.g., by using the <tt class="docutils literal">-s</tt> flag with the Gecode solver, or selecting “Print all solutions” as well as “Statistics for solving” in the IDE). You should get the following sequence of numbers of solutions: 1, 0, 0, 1, 2, 1, 6, 12, 46, 92. To verify the sequence, you can search for it in the <em>On-Line Encyclopedia of Integer Sequences</em> (<a class="reference external" href="http://oeis.org">http://oeis.org</a>).</p>
 <div class="literal-block-wrapper docutils container" id="ex-queens-sym">
-<div class="code-block-caption"><span class="caption-number">Listing 2.48 </span><span class="caption-text">Partial model for n-queens with symmetry breaking (full model: <a class="reference download internal" href="downloads/nqueens_sym.mzn" download=""><tt class="xref download docutils literal">nqueens_sym.mzn</tt></a>).</span><a class="headerlink" href="#ex-queens-sym" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2.6.7 </span><span class="caption-text">Partial model for n-queens with symmetry breaking (full model: <a class="reference download internal" href="downloads/nqueens_sym.mzn" download=""><tt class="xref download docutils literal">nqueens_sym.mzn</tt></a>).</span><a class="headerlink" href="#ex-queens-sym" title="Permalink to this code">¶</a></div>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Map each position i,j to a Boolean telling us whether there is a queen at i,j</span><span class="s"></span>
 <span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">qb</span><span class="p">;</span><span class="s"></span>
 
@@ -767,7 +730,7 @@ requires 13142 choice points and 1.5s.</p>
 </div>
 </div>
 <div class="section" id="other-examples-of-symmetry">
-<h3>2.6.7.2. Other Examples of Symmetry<a class="headerlink" href="#other-examples-of-symmetry" title="Permalink to this headline">¶</a></h3>
+<h3>2.6.6.2. Other Examples of Symmetry<a class="headerlink" href="#other-examples-of-symmetry" title="Permalink to this headline">¶</a></h3>
 <p>Many other problems have inherent symmetries, and breaking these can often make a significant difference in solving performance. Here is a list of some common cases:</p>
 <ul class="simple">
 <li>Bin packing: when trying to pack items into bins, any two bins that have
@@ -799,7 +762,7 @@ equipment.</li>
       
     </p>
     <p>
-        &copy; Copyright 2016, 2017, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
+        &copy; Copyright 2016, 2017, 2018, Peter J. Stuckey, Kim Marriott, Guido Tack.<br/>
     </p>
   </div>
 </footer>
