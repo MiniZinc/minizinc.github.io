@@ -740,8 +740,8 @@ search).</p>
 Non-array output variables are annotated with
 <tt class="docutils literal">output_var</tt>.
 Array output variables are annotated with
-<tt class="docutils literal">output_array([</tt><span class="math notranslate nohighlight">\(x_1\\)</span>..`` <span class="math notranslate nohighlight">\(x_2\)</span> <tt class="docutils literal">, ... ])</tt>
-where <span class="math notranslate nohighlight">\(x_1\\)</span>..`` <span class="math notranslate nohighlight">\(x_2\)</span> <tt class="docutils literal">, ...</tt> are the index set ranges of the
+<tt class="docutils literal">output_array([</tt> <span class="math notranslate nohighlight">\(x_1\)</span> <tt class="docutils literal">..</tt> <span class="math notranslate nohighlight">\(x_2\)</span> <tt class="docutils literal">, ... ])</tt>
+where <span class="math notranslate nohighlight">\(x_1\)</span> <tt class="docutils literal">..</tt> <span class="math notranslate nohighlight">\(x_2\)</span> <tt class="docutils literal">, ...</tt> are the index set ranges of the
 original MiniZinc array (which
 may have had multiple dimensions and/or index sets that do not start at
 1). See <a class="reference internal" href="#ch-fzn-output"><span class="std std-numref">Section 4.3.2</span></a> for details on the output format.</p>
@@ -1023,7 +1023,7 @@ found (i.e., the problem is unsatisfiable).</p>
 </div>
 </div>
 <div class="section" id="solver-specific-libraries">
-<h2>4.3.3. Solver-specific Libraries<a class="headerlink" href="#solver-specific-libraries" title="Permalink to this headline">¶</a></h2>
+<span id="ch-solver-specific-libraries"></span><h2>4.3.3. Solver-specific Libraries<a class="headerlink" href="#solver-specific-libraries" title="Permalink to this headline">¶</a></h2>
 <p>Constraints in FlatZinc can call standard predicates as well as solver-specific predicates. Standard predicates are the ones that the MiniZinc compiler assumes to be present in all solvers. Without further customisation, the compiler will try to compile the entire model into a set of these standard predicates.</p>
 <p>Solvers can use custom predicates and <em>redefine</em> standard predicates by supplying a <em>solver specific library</em> of predicate declarations. Examples of such libraries can be found in the binary distribution of MiniZinc, inside the <tt class="docutils literal">share/minizinc/gecode</tt> and <tt class="docutils literal">share/minizinc/chuffed</tt> directories.</p>
 <p>The solver-specific library needs to be made available to the MiniZinc compiler by specifying its location in the solver’s configuration file, see <a class="reference internal" href="#sec-cmdline-conffiles"><span class="std std-numref">Section 4.3.5</span></a>.</p>
@@ -1141,7 +1141,7 @@ may be using).</p>
 <li>In the directory <tt class="docutils literal">$HOME/.minizinc/solvers</tt> on Linux and macOS systems, and the Application Data directory on Windows systems.</li>
 <li>In any directory listed on the <tt class="docutils literal">MZN_SOLVER_PATH</tt> environment variable (directories are separated by <tt class="docutils literal">:</tt> on Linux and macOS, and by <tt class="docutils literal">;</tt> on Windows systems).</li>
 <li>In any directory listed in the <tt class="docutils literal">mzn_solver_path</tt> option of the global or user-specific configuration file (see <a class="reference internal" href="command_line.html#ch-user-config"><span class="std std-numref">Section 3.1.4</span></a>)</li>
-<li>Alternatively, you can use the MiniZinc IDE to create solver configuration files, see <a class="reference internal" href="minizinc_ide.html#sec-ide-add-solvers"><span class="std std-numref">Section 3.2.7</span></a> for details.</li>
+<li>Alternatively, you can use the MiniZinc IDE to create solver configuration files, see <a class="reference internal" href="minizinc_ide.html#sec-ide-add-solvers"><span class="std std-numref">Section 3.2.5.2</span></a> for details.</li>
 </ul>
 <p>Solver configuration files must be valid JSON or <tt class="docutils literal">.dzn</tt> files. As a JSON file, it must be an object with certain fields. As a <tt class="docutils literal">.dzn</tt> file, it must consist of assignment items.</p>
 <p>For example, a simple solver configuration in JSON format could look like this:</p>
@@ -1334,7 +1334,9 @@ may be using).</p>
         &copy; Copyright 2016, 2017, 2018, Peter J. Stuckey, Kim Marriott, Guido Tack.
 
     </p>
-  </div> 
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
 
 </footer>
 
