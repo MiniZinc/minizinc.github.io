@@ -230,7 +230,7 @@ any constraints on its arguments.</p>
 <div class="highlight-minizinc notranslate" id="index-9"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">constraint_name</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Used to attach a name to a constraint and its decomposition. String
+<p>Used to attach a name  <tt class="docutils literal">s</tt>  to a constraint and its decomposition. String
 annotations on constraint keywords are re-written as constraint_name annotations *</p>
 <div class="highlight-minizinc notranslate" id="index-10"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">defines_var</span><span class="p">(</span><span class="kt">var</span><span class="s"> $</span><span class="nv">t</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
 </pre></div>
@@ -245,7 +245,7 @@ the string  <tt class="docutils literal">s</tt> .</p>
 <div class="highlight-minizinc notranslate" id="index-12"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">expression_name</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Used to attach a name to an expression, this should also propagate to
+<p>Used to attach a name  <tt class="docutils literal">s</tt>  to an expression, this should also propagate to
 any sub-expressions or decomposition of the annotated expression. String annotations on expressions
 are re-written as expression_name annotations *</p>
 <div class="highlight-minizinc notranslate" id="index-13"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">mzn_constraint_name</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="s"></span>
@@ -259,8 +259,8 @@ are re-written as expression_name annotations *</p>
 <div class="highlight-minizinc notranslate" id="index-15"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">mzn_path</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>String representation of the call-stack when the annotated item
-was introduced. Can be used to uniquely identify variables and constraints across different
+<p>Representation of the call-stack when the annotated item
+was introduced, as a string  <tt class="docutils literal">s</tt> . Can be used to uniquely identify variables and constraints across different
 compilations of a model that may have different names. This annotations is introduced into
 FlatZinc code by the compiler and is retained if –keep-paths argument is used.</p>
 <div class="highlight-minizinc notranslate" id="index-16"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">output_array</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">u</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">)</span><span class="s"></span>
@@ -459,25 +459,25 @@ because FlatZinc 1.6 does not support optionals.</p>
 <span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Specify warm start values for an array of booleans</p>
+<p>Specify warm start values  <tt class="docutils literal">v</tt>  for an array of booleans  <tt class="docutils literal">x</tt></p>
 <p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.0/share/minizinc/std/stdlib.mzn#L255-L263">More…</a></p>
 <div class="highlight-minizinc notranslate" id="index-50"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
 <span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Specify warm start values for an array of integers</p>
+<p>Specify warm start values  <tt class="docutils literal">v</tt>  for an array of integers  <tt class="docutils literal">x</tt></p>
 <p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.0/share/minizinc/std/stdlib.mzn#L265-L273">More…</a></p>
 <div class="highlight-minizinc notranslate" id="index-51"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
 <span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Specify warm start values for an array of floats</p>
+<p>Specify warm start values  <tt class="docutils literal">v</tt>  for an array of floats  <tt class="docutils literal">x</tt></p>
 <p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.0/share/minizinc/std/stdlib.mzn#L275-L283">More…</a></p>
 <div class="highlight-minizinc notranslate" id="index-52"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
 <span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Specify warm start values for an array of sets</p>
+<p>Specify warm start values  <tt class="docutils literal">v</tt>  for an array of sets  <tt class="docutils literal">x</tt></p>
 <p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.0/share/minizinc/std/stdlib.mzn#L285-L293">More…</a></p>
 </div>
 <div class="section" id="id1">
@@ -486,21 +486,21 @@ because FlatZinc 1.6 does not support optionals.</p>
 <span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Specify warm start values for an array of booleans</p>
+<p>Specify warm start values  <tt class="docutils literal">v</tt>  for an array of booleans  <tt class="docutils literal">x</tt></p>
 <div class="highlight-minizinc notranslate" id="index-54"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Specify warm start values for an array of integers</p>
+<p>Specify warm start values  <tt class="docutils literal">v</tt>  for an array of integers  <tt class="docutils literal">x</tt></p>
 <div class="highlight-minizinc notranslate" id="index-55"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
 <span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Specify warm start values for an array of floats</p>
+<p>Specify warm start values  <tt class="docutils literal">v</tt>  for an array of floats  <tt class="docutils literal">x</tt></p>
 <div class="highlight-minizinc notranslate" id="index-56"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
 <span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>
-<p>Specify warm start values for an array of sets</p>
+<p>Specify warm start values  <tt class="docutils literal">v</tt>  for an array of sets  <tt class="docutils literal">x</tt></p>
 <div class="highlight-minizinc notranslate" id="index-57"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start_array</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">)</span><span class="s"></span>
 </pre></div>
 </div>

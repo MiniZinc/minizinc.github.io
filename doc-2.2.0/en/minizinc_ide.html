@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="static/style.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Reference Manual" href="part_4_reference.html" />
+    <link rel="next" title="3.3. Globalizer" href="globalizer.html" />
     <link rel="prev" title="3.1. The MiniZinc Command Line Tool" href="command_line.html" /> 
 
   
@@ -110,6 +110,9 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html">3.3. Globalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html">3.4. FindMUS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.5. Using MiniZinc in Jupyter Notebooks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
@@ -288,18 +291,32 @@ x = 1000;
 </div>
 <div class="section" id="configuration-options">
 <span id="sec-ide-config"></span><h2>3.2.5. Configuration Options<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h2>
-<p>The MiniZinc IDE can be configured through the <em>Preferences</em> dialog in the <em>MiniZinc</em> menu (on Windows and Linux) or the <em>MiniZincIDE</em> menu (on macOS), see <a class="reference internal" href="#fig-ide-preferences"><span class="std std-numref">Fig. 3.2.4</span></a>.</p>
-<div class="figure" id="fig-ide-preferences" style="width: 500px">
-<img alt="images/ide-preferences.jpg" src="images/ide-preferences.jpg" />
+<p>The MiniZinc IDE can be configured through the <em>Preferences</em> dialog in the <em>MiniZinc</em> menu (on Windows and Linux) or the <em>MiniZincIDE</em> menu (on macOS), as shown in <a class="reference internal" href="#fig-ide-gurobi"><span class="std std-numref">Fig. 3.2.4</span></a>.</p>
+<div class="figure" id="fig-ide-gurobi" style="width: 500px">
+<img alt="images/ide-gurobi.jpg" src="images/ide-gurobi.jpg" />
 </div>
 <div class="section" id="locating-the-minizinc-installation">
 <h3>3.2.5.1. Locating the MiniZinc installation<a class="headerlink" href="#locating-the-minizinc-installation" title="Permalink to this headline">¶</a></h3>
-<p>The most important configuration option is the path to the <tt class="docutils literal">minizinc</tt> executable. In the example in <a class="reference internal" href="#fig-ide-preferences"><span class="std std-numref">Fig. 3.2.4</span></a>, the MiniZinc installation is located in <tt class="docutils literal">/home/me/minizinc-2.2.0/bin</tt>. You can select a directory from a file dialog using the <em>Select</em> button, or enter it manually. If you leave the field empty, the IDE will try to run <tt class="docutils literal">minizinc</tt> from the default <tt class="docutils literal">PATH</tt> environment variable. Typically, in a bundled binary installation of MiniZinc, this field can be left empty. Clicking the <em>Check</em> button will check that <tt class="docutils literal">minizinc</tt> can in fact be run, and has the right version. The version of <tt class="docutils literal">minizinc</tt> that was found is displayed below the path input field.</p>
+<p>The most important configuration option is the path to the <tt class="docutils literal">minizinc</tt> executable. In the example in <a class="reference internal" href="#fig-ide-gurobi"><span class="std std-numref">Fig. 3.2.4</span></a>, this field has been left empty, in which case <tt class="docutils literal">minizinc</tt> is assumed to be on the standard search path (usually the <tt class="docutils literal">PATH</tt> environment variable). Typically, in a bundled binary installation of MiniZinc, this field can therefore be left empty.</p>
+<p>If you installed MiniZinc from sources, or want to switch between different versions of the compiler, you can add the path to the directory that contains the <tt class="docutils literal">minizinc</tt> executable here. You can select a directory from a file dialog using the <em>Select</em> button, or enter it manually. Clicking the <em>Check</em> button will check that <tt class="docutils literal">minizinc</tt> can in fact be run, and has the right version. The version of <tt class="docutils literal">minizinc</tt> that was found is displayed below the path input field. <a class="reference internal" href="#fig-ide-preferences"><span class="std std-numref">Fig. 3.2.5</span></a> below shows an example where MiniZinc is located at <tt class="docutils literal">/home/me/minizinc-2.2.0/bin</tt>.</p>
 <p>You can have the MiniZinc IDE check once a day whether a new version of MiniZinc is available.</p>
 </div>
 <div class="section" id="adding-third-party-solvers">
 <span id="sec-ide-add-solvers"></span><h3>3.2.5.2. Adding Third-Party Solvers<a class="headerlink" href="#adding-third-party-solvers" title="Permalink to this headline">¶</a></h3>
-<p>The <em>Solver</em> section of the configuration dialog can be used to inspect the solvers that are currently available to MiniZinc, and to add new solvers to the system. The example in <a class="reference internal" href="#fig-ide-preferences"><span class="std std-numref">Fig. 3.2.4</span></a> shows a potential configuration for Gecode, which was installed in <tt class="docutils literal">/home/me/gecode</tt>.</p>
+<p>The <em>Solver</em> section of the configuration dialog can be used to inspect the solvers that are currently available to MiniZinc, and to add new solvers to the system.</p>
+<div class="section" id="configuring-existing-solvers">
+<h4>Configuring existing solvers<a class="headerlink" href="#configuring-existing-solvers" title="Permalink to this headline">¶</a></h4>
+<p>You can use the configuration dialog to set up defaults for the installed solvers. In the current version of the MiniZinc IDE, this is limited to configuring the CPLEX and Gurobi backends. The bundled binary version of MiniZinc comes with support for loading CPLEX and Gurobi as <em>plugins</em>, i.e., MiniZinc does not ship with the code for these solvers but can load them dynamically if they are installed.</p>
+<p>For example, <a class="reference internal" href="#fig-ide-gurobi"><span class="std std-numref">Fig. 3.2.4</span></a> shows a potential configuration for Gurobi. On Windows, the library is called <tt class="docutils literal">gurobiXX.dll</tt> (in the same directory as the <tt class="docutils literal">gurobi</tt> executable), and on Linux and macOS is it <tt class="docutils literal">libgurobiXX.so</tt> (in the <tt class="docutils literal">lib</tt> directory of your Gurobi installation), where <tt class="docutils literal">XX</tt> stands for the version number of Gurobi.</p>
+<p>If you select the CPLEX solver, a similar option appears (<tt class="docutils literal">--cplex-dll</tt>).
+On Windows, the CPLEX library is called <tt class="docutils literal">cplexXXXX.dll</tt> and typically found in same directory as the <tt class="docutils literal">cplex</tt> executable. On Linux it is <tt class="docutils literal">libcplexXXX.so</tt>, and on macOS <tt class="docutils literal">libcplexXXXX.jnilib</tt>, where <tt class="docutils literal">XXX</tt> and <tt class="docutils literal">XXXX</tt> stand for the version number of CPLEX.</p>
+</div>
+<div class="section" id="adding-new-solvers">
+<h4>Adding new solvers<a class="headerlink" href="#adding-new-solvers" title="Permalink to this headline">¶</a></h4>
+<p>The example in <a class="reference internal" href="#fig-ide-preferences"><span class="std std-numref">Fig. 3.2.5</span></a> shows a potential configuration for Gecode, which was installed in <tt class="docutils literal">/home/me/gecode</tt>.</p>
+<div class="figure" id="fig-ide-preferences" style="width: 500px">
+<img alt="images/ide-preferences.jpg" src="images/ide-preferences.jpg" />
+</div>
 <p>Each solver needs to be given</p>
 <ul class="simple">
 <li>a name;</li>
@@ -315,6 +332,7 @@ x = 1000;
 </div>
 </div>
 </div>
+</div>
 
 
            </div>
@@ -324,7 +342,7 @@ x = 1000;
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="part_4_reference.html" class="btn btn-neutral float-right" title="4. Reference Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="globalizer.html" class="btn btn-neutral float-right" title="3.3. Globalizer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="command_line.html" class="btn btn-neutral" title="3.1. The MiniZinc Command Line Tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
