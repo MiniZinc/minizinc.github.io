@@ -4,7 +4,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 ---
 
 <h1 id="problems">Problems</h1>
-<p>This table contains all problems used for the MiniZinc Challenge 2008-2015. (RC stands for redundant constraints and SBC symmetry breaking constraints.)</p>
+<p>This table contains all problems used for the MiniZinc Challenge 2008-2017. (RC stands for redundant constraints and SBC for symmetry breaking constraints.)</p>
 <table class="table table-condensed table-striped">
 <thead>
 <tr class="header">
@@ -76,7 +76,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2013</td>
+<td align="left">2013, 2017</td>
 <td align="left">cumulative, diffn</td>
 </tr>
 <tr class="odd">
@@ -86,7 +86,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left">X</td>
-<td align="left">2011, 2012</td>
+<td align="left">2011, 2012, 2016</td>
 <td align="left">cumulative, diffn</td>
 </tr>
 <tr class="even">
@@ -96,10 +96,20 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2013</td>
+<td align="left">2013, 2016</td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
+<td align="left">city-position</td>
+<td align="left">city-position</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">2017</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
 <td align="left">costas_array</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -108,6 +118,36 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">X</td>
 <td align="left">2010, 2011, 2015</td>
 <td align="left">alldifferent</td>
+</tr>
+<tr class="odd">
+<td align="left">crosswords</td>
+<td align="left">crossword_opt</td>
+<td align="left">puzzle</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2017</td>
+<td align="left">alldifferent</td>
+</tr>
+<tr class="even">
+<td align="left">cryptanalysis</td>
+<td align="left">step1_aes</td>
+<td align="left">real</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2016</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">community-detection</td>
+<td align="left">community-detection</td>
+<td align="left">combi</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2017</td>
+<td align="left">value_precede_chain, global_cardinality_low_up</td>
 </tr>
 <tr class="even">
 <td align="left">cvrp</td>
@@ -146,20 +186,30 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left">X</td>
-<td align="left">2010, 2011</td>
+<td align="left">2010, 2011, 2016</td>
 <td align="left">alldifferent</td>
 </tr>
 <tr class="even">
+<td align="left">diameterc-mst</td>
+<td align="left">dcmst</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">2016</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
 <td align="left">elitserien</td>
 <td align="left"></td>
 <td align="left">combi</td>
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2014</td>
+<td align="left">2014, 2016</td>
 <td align="left">alldifferent, global_cardinality_closed, inverse, member, regular</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">fast-food</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -169,7 +219,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2011, 2012</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">fillomino</td>
 <td align="left"></td>
 <td align="left">puzzle</td>
@@ -179,17 +229,17 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2009, 2011, 2014</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">filters</td>
 <td align="left"></td>
 <td align="left">combi</td>
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2010, 2012, 2013</td>
+<td align="left">2010, 2012, 2013, 2016</td>
 <td align="left">diffn, maximum</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">fjsp</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -199,7 +249,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2013</td>
 <td align="left">cumulative</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">freepizza</td>
 <td align="left">freepizza</td>
 <td align="left">real</td>
@@ -208,6 +258,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left"></td>
 <td align="left">2015</td>
 <td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">gbac</td>
+<td align="left">gbac</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2016, 2017</td>
+<td align="left">bin_packing_load, global_cardinality_low_up_closed</td>
 </tr>
 <tr class="even">
 <td align="left">gfd-schedule</td>
@@ -220,6 +280,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">nvalue, at_most</td>
 </tr>
 <tr class="odd">
+<td align="left"></td>
+<td align="left">gfd-schedule2</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">2016</td>
+<td align="left">at_most, cumulative, nvalue</td>
+</tr>
+<tr class="even">
 <td align="left">ghoulomb</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -229,7 +299,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2010, 2013</td>
 <td align="left">cumulative</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">grid-colouring</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -239,7 +309,27 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2010, 2011, 2015</td>
 <td align="left"></td>
 </tr>
+<tr class="even">
+<td align="left">groupsplitter</td>
+<td align="left">group</td>
+<td align="left">combi</td>
+<td align="left">max</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">2017</td>
+<td align="left">count, table</td>
+</tr>
 <tr class="odd">
+<td align="left">hrc</td>
+<td align="left">hrc</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2017</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
 <td align="left">is</td>
 <td align="left">model</td>
 <td align="left">real</td>
@@ -248,6 +338,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left"></td>
 <td align="left">2015</td>
 <td align="left">circuit, table</td>
+</tr>
+<tr class="odd">
+<td align="left">java-auto-gen</td>
+<td align="left">*</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2016</td>
+<td align="left">alldifferent, element</td>
 </tr>
 <tr class="even">
 <td align="left">java-routing</td>
@@ -266,7 +366,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2014</td>
+<td align="left">2014, 2017</td>
 <td align="left">count</td>
 </tr>
 <tr class="even">
@@ -326,18 +426,38 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2015</td>
+<td align="left">2015, 2016</td>
 <td align="left">bin_packing_load, count, maximum, network_flow_cost</td>
 </tr>
 <tr class="even">
 <td align="left">mario</td>
 <td align="left"></td>
 <td align="left">puzzle</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2013, 2014, 2017</td>
+<td align="left">subcircuit</td>
+</tr>
+<tr class="odd">
+<td align="left">maximum-dag</td>
+<td align="left">maximum-dag</td>
+<td align="left">combi</td>
+<td align="left">max</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2016</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ma-path-finding</td>
+<td align="left">mapf</td>
+<td align="left">combi</td>
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2013, 2014</td>
-<td align="left">subcircuit</td>
+<td align="left">2017</td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">mqueens</td>
@@ -350,6 +470,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">lex_lesseq</td>
 </tr>
 <tr class="even">
+<td align="left">mrcpsp</td>
+<td align="left">mrcpsp</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">2016</td>
+<td align="left">cumulative, element</td>
+</tr>
+<tr class="odd">
 <td align="left">mspsp</td>
 <td align="left"></td>
 <td align="left">real</td>
@@ -359,7 +489,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2012</td>
 <td align="left">cumulative</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">multi-knapsack</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -369,8 +499,8 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2014</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
-<td align="left">multi-knapsack</td>
+<tr class="odd">
+<td align="left"></td>
 <td align="left">mknapsack_global</td>
 <td align="left">combi</td>
 <td align="left">max</td>
@@ -378,6 +508,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left"></td>
 <td align="left">2015</td>
 <td align="left">knapsack</td>
+</tr>
+<tr class="even">
+<td align="left">nfc</td>
+<td align="left">nfc</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2016</td>
+<td align="left">network_flow_cost</td>
 </tr>
 <tr class="odd">
 <td align="left">nmseq</td>
@@ -406,7 +546,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left">X</td>
-<td align="left">2015</td>
+<td align="left">2015, 2017</td>
 <td align="left">lex_greatereq</td>
 </tr>
 <tr class="even">
@@ -420,6 +560,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">count</td>
 </tr>
 <tr class="odd">
+<td align="left">oocsp_racks</td>
+<td align="left">oocsp_racks</td>
+<td align="left">real</td>
+<td align="left">sat</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2016</td>
+<td align="left">global_cardinality, increasing</td>
+</tr>
+<tr class="even">
 <td align="left">open_stacks</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -429,7 +579,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2009, 2011, 2015</td>
 <td align="left">alldifferent</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">openshop</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -438,6 +588,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left"></td>
 <td align="left">2014</td>
 <td align="left">cumulative</td>
+</tr>
+<tr class="even">
+<td align="left">opt-cryptanalysis</td>
+<td align="left">mznc2017_aes_opt</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2017</td>
+<td align="left">table</td>
 </tr>
 <tr class="odd">
 <td align="left">p1f</td>
@@ -486,7 +646,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">max</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2011</td>
+<td align="left">2011, 2016</td>
 <td align="left"></td>
 </tr>
 <tr class="even">
@@ -560,6 +720,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">cumulative</td>
 </tr>
 <tr class="odd">
+<td align="left">rcpsp-wet</td>
+<td align="left">rcpsp-wet</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">2016, 2017</td>
+<td align="left">cumulative</td>
+</tr>
+<tr class="even">
 <td align="left">rectangle-packing</td>
 <td align="left">2009</td>
 <td align="left">combi</td>
@@ -569,7 +739,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2009</td>
 <td align="left">cumulative</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">rectangle-packing</td>
 <td align="left">2014</td>
 <td align="left">combi</td>
@@ -579,6 +749,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2014</td>
 <td align="left">cumulative, diffn</td>
 </tr>
+<tr class="even">
+<td align="left">rel2onto</td>
+<td align="left">rel2onto</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">2017</td>
+<td align="left">alldifferent</td>
+</tr>
 <tr class="odd">
 <td align="left">road_construction</td>
 <td align="left"></td>
@@ -586,7 +766,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2014</td>
+<td align="left">2014, 2017</td>
 <td align="left"></td>
 </tr>
 <tr class="even">
@@ -600,6 +780,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">at_least, at_most, exactly</td>
 </tr>
 <tr class="odd">
+<td align="left">routing-flexible</td>
+<td align="left">*</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2017</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
 <td align="left">rubik</td>
 <td align="left"></td>
 <td align="left">puzzle</td>
@@ -609,7 +799,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2013</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">search_stress</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -619,7 +809,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2008</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">search_stress2</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -629,7 +819,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2009</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">ship-schedule</td>
 <td align="left"></td>
 <td align="left">real</td>
@@ -639,7 +829,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2011, 2012, 2014</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">shortest_path</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -649,7 +839,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2008</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">slow_convergence</td>
 <td align="left"></td>
 <td align="left">combi</td>
@@ -659,7 +849,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2008</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">smelt</td>
 <td align="left"></td>
 <td align="left">puzzle</td>
@@ -669,17 +859,17 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2014</td>
 <td align="left">cumulative</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">solbat</td>
 <td align="left"></td>
 <td align="left">combi</td>
 <td align="left">sat</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2010, 2011, 2012, 2014</td>
+<td align="left">2010, 2011, 2012, 2014, 2016</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">spot5</td>
 <td align="left"></td>
 <td align="left">real</td>
@@ -688,6 +878,16 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left"></td>
 <td align="left">2014, 2015</td>
 <td align="left">table</td>
+</tr>
+<tr class="odd">
+<td align="left">steelmillslab</td>
+<td align="left">steelmillslab</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">2017</td>
+<td align="left">bin_packing_load</td>
 </tr>
 <tr class="even">
 <td align="left">still_life</td>
@@ -760,26 +960,36 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left"></td>
 </tr>
 <tr class="odd">
+<td align="left">tc-graph-color</td>
+<td align="left">tcgc2</td>
+<td align="left">combi</td>
+<td align="left">min</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2017</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
 <td align="left">tdtsp</td>
 <td align="left">tdtsp</td>
 <td align="left">real</td>
 <td align="left">min</td>
 <td align="left">X</td>
 <td align="left"></td>
-<td align="left">2015</td>
+<td align="left">2015, 2017</td>
 <td align="left">inverse</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">tpp</td>
 <td align="left"></td>
 <td align="left">combi</td>
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2012</td>
+<td align="left">2012, 2016</td>
 <td align="left">subcircuit</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">train</td>
 <td align="left"></td>
 <td align="left">real</td>
@@ -789,17 +999,17 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2012, 2014</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">traveling-tppv</td>
 <td align="left"></td>
 <td align="left">combi</td>
 <td align="left">min</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">2014</td>
+<td align="left">2014, 2017</td>
 <td align="left">alldifferent, regular</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">triangular</td>
 <td align="left">triangular</td>
 <td align="left">puzzle</td>
@@ -809,7 +1019,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2015</td>
 <td align="left">inverse</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">vrp</td>
 <td align="left"></td>
 <td align="left">real</td>
@@ -819,7 +1029,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2009, 2011, 2012, 2013</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">wwtp_random</td>
 <td align="left"></td>
 <td align="left">real</td>
@@ -829,7 +1039,7 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2010</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">wwtp_real</td>
 <td align="left"></td>
 <td align="left">real</td>
@@ -839,8 +1049,8 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2010, 2011</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
-<td align="left">zyphyrus</td>
+<tr class="even">
+<td align="left">zephyrus</td>
 <td align="left"></td>
 <td align="left">real</td>
 <td align="left">min</td>
@@ -849,10 +1059,20 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <td align="left">2015</td>
 <td align="left"></td>
 </tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">zephyrus</td>
+<td align="left">real</td>
+<td align="left">min</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">2016</td>
+<td align="left">lex_greatereq, lex_less</td>
+</tr>
 </tbody>
 </table>
 <h1 id="globals">MiniZinc Globals</h1>
-<p>This table contains all global constraints used for the MiniZinc Challenge 2008-2015.</p>
+<p>This table contains all global constraints used for the MiniZinc Challenge 2008-2017.</p>
 <table class="table table-condensed table-striped">
 <thead>
 <tr class="header">
@@ -864,8 +1084,8 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 <tbody>
 <tr class="odd">
 <td align="left">alldifferent</td>
-<td align="left">2008, 2009, 2010, 2011, 2013, 2014, 2015</td>
-<td align="left">costas_array, debruijn_binary, depot_placement, elitserien, java-routing, l2p, liner-sf-repositioning, open_stacks, p1f, quasigroup7, sugiyama, traveling-tppv</td>
+<td align="left">2008, 2009, 2010, 2011, 2013, 2014, 2015, 2016, 2017</td>
+<td align="left">costas_array, crosswords, debruijn_binary, depot_placement, elitserien, java-auto-gen, java-routing, l2p, liner-sf-repositioning, open_stacks, p1f, quasigroup7, rel2onto, sugiyama, traveling-tppv</td>
 </tr>
 <tr class="even">
 <td align="left">alldifferent_except_0</td>
@@ -879,23 +1099,23 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 </tr>
 <tr class="even">
 <td align="left">at_most</td>
-<td align="left">2009, 2011, 2015</td>
-<td align="left">roster, gfd-schedule</td>
+<td align="left">2009, 2011, 2015, 2016</td>
+<td align="left">roster, gfd-schedule (gfd-schedule, gfd-schedule2)</td>
 </tr>
 <tr class="odd">
 <td align="left">bin_packing_load</td>
-<td align="left">2015</td>
-<td align="left">mapping</td>
+<td align="left">2015, 2016, 2017</td>
+<td align="left">gbac, mapping, steelmillslab</td>
 </tr>
 <tr class="even">
 <td align="left">count</td>
-<td align="left">2012, 2013, 2014, 2015</td>
-<td align="left">amaze (amaze, amaze3), jp-encoding, league (2012, 2013), mapping, on-call-rostering</td>
+<td align="left">2012, 2013, 2014, 2015, 2016, 2017</td>
+<td align="left">amaze (amaze, amaze3), groupsplitter, jp-encoding, league (2012, 2013), mapping, on-call-rostering</td>
 </tr>
 <tr class="odd">
 <td align="left">cumulative</td>
-<td align="left">2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015</td>
-<td align="left">cargo, carpet-cutting, cyclic_rcpsp, fjsp, ghoulomb, largescheduling, mspsp, openshop, rcpsp, rcpsp_max, rectangle-packing (2009, 2014), smelt</td>
+<td align="left">2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017</td>
+<td align="left">cargo, carpet-cutting, cyclic_rcpsp, fjsp, gfd-schedule (gdf-schedule2), ghoulomb, largescheduling, maximum-dag, mrcpsp, mspsp, openshop, rcpsp, rcpsp_max, rcpsp-wet, rectangle-packing (2009, 2014), smelt</td>
 </tr>
 <tr class="even">
 <td align="left">circuit</td>
@@ -904,13 +1124,13 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 </tr>
 <tr class="odd">
 <td align="left">diffn</td>
-<td align="left">2010, 2011, 2012, 2013, 2014</td>
+<td align="left">2010, 2011, 2012, 2013, 2014, 2016, 2017</td>
 <td align="left">cargo, carpet-cutting, filters, rectangle-packing (2014)</td>
 </tr>
 <tr class="even">
 <td align="left">element</td>
-<td align="left">2013</td>
-<td align="left">java-routing</td>
+<td align="left">2013, 2016</td>
+<td align="left">java-auto-gen, java-routing, mrcpsp</td>
 </tr>
 <tr class="odd">
 <td align="left">exactly</td>
@@ -919,17 +1139,27 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 </tr>
 <tr class="even">
 <td align="left">global_cardinality</td>
-<td align="left">2008</td>
-<td align="left">debruijn_binary</td>
+<td align="left">2008, 2016</td>
+<td align="left">debruijn_binary, oocsp_racks</td>
 </tr>
 <tr class="odd">
 <td align="left">global_cardinality_closed</td>
-<td align="left">2014</td>
+<td align="left">2014, 2016</td>
 <td align="left">elitserien</td>
 </tr>
 <tr class="even">
+<td align="left">global_cardinality_low_up</td>
+<td align="left">2017</td>
+<td align="left">community-detection</td>
+</tr>
+<tr class="odd">
+<td align="left">global_cardinality_low_up_closed</td>
+<td align="left">2016, 2017</td>
+<td align="left">gbac</td>
+</tr>
+<tr class="even">
 <td align="left">inverse</td>
-<td align="left">2009, 2011, 2013, 2014, 2015</td>
+<td align="left">2009, 2011, 2013, 2014, 2015, 2016, 2017</td>
 <td align="left">black-hole, elitserien, p1f, tdtsp</td>
 </tr>
 <tr class="odd">
@@ -939,13 +1169,13 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 </tr>
 <tr class="even">
 <td align="left">lex_greatereq</td>
-<td align="left">2015</td>
-<td align="left">opd</td>
+<td align="left">2015, 2016, 2017</td>
+<td align="left">opd, zephyrus</td>
 </tr>
 <tr class="odd">
 <td align="left">lex_less</td>
-<td align="left">2009, 2011, 2012, 2013, 2015</td>
-<td align="left">p1f, pattern-set-mining</td>
+<td align="left">2009, 2011, 2012, 2013, 2015, 2016</td>
+<td align="left">p1f, pattern-set-mining, zephyrus</td>
 </tr>
 <tr class="even">
 <td align="left">lex_lesseq</td>
@@ -954,42 +1184,43 @@ title: MiniZinc - List of Problems and Globals used in the MiniZinc Challenges
 </tr>
 <tr class="odd">
 <td align="left">maximum</td>
-<td align="left">2010, 2012, 2013, 2015</td>
+<td align="left">2010, 2012, 2013, 2015, 2016</td>
 <td align="left">filters, mapping</td>
 </tr>
 <tr class="even">
 <td align="left">member</td>
-<td align="left">2014</td>
+<td align="left">2014, 2016</td>
 <td align="left">elitserien</td>
 </tr>
 <tr class="odd">
 <td align="left">network_flow_cost</td>
-<td align="left">2015</td>
-<td align="left">mapping</td>
+<td align="left">2015, 2016</td>
+<td align="left">mapping, nfc</td>
 </tr>
 <tr class="even">
 <td align="left">nvalue</td>
-<td align="left">2015</td>
+<td align="left">2015, 2016</td>
 <td align="left">gfd-schedule</td>
 </tr>
 <tr class="odd">
 <td align="left">regular</td>
-<td align="left">2008, 2009, 2011, 2012, 2013, 2014</td>
+<td align="left">2008, 2009, 2011, 2012, 2013, 2014, 2016, 2017</td>
 <td align="left">elitserien, nonogram, pentominoes, traveling-tppv</td>
 </tr>
 <tr class="even">
 <td align="left">subcircuit</td>
-<td align="left">2012, 2013, 2014</td>
+<td align="left">2012, 2013, 2014, 2016, 2017</td>
 <td align="left">mario, tpp</td>
 </tr>
 <tr class="odd">
 <td align="left">table</td>
-<td align="left">2009, 2011, 2013, 2014, 2015</td>
-<td align="left">black-hole, is, proteindesign12, spot5</td>
+<td align="left">2009, 2011, 2013, 2014, 2015, 2017</td>
+<td align="left">black-hole, groupsplitter, is, opt-cryptanalysis, proteindesign12, spot5</td>
+</tr>
+<tr class="even">
+<td align="left">value_precede_chain</td>
+<td align="left">2017</td>
+<td align="left">community-detection</td>
 </tr>
 </tbody>
 </table>
-<!--
-</body>
-</html>
--->
