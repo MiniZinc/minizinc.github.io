@@ -327,18 +327,20 @@ that entries flush the output stream after printing each approximate solution.
 
 <p>
 During the MiniZinc Challenge 2018 all instances of Docker images 
-will run on machines with the following specification:
+will run on Amazon EC2 M5 Instance from the Amazon Web Services with 
+the following specification:
 
 <ul>
-<!--<li>Host Operating System: Ubuntu 16.04.2 LTS (xenial xerus)-->
+<!--<li>Host Operating System for FD, FREE category: Ubuntu 16.04.2 LTS (xenial xerus)-->
 <li>Image Operating System: Ubuntu 16.04.2 LTS (xenial xerus)
-<li>Processor(s): TBA <!--i7 3770 @ 3.40GHz (8 logical cores)-->
-<li>Memory: TBA <!--16 Gb-->
+<li>Processor(s): 2.5 GHz Intel Xeon® Platinum 8175
+<li>Model for FD, FREE: m5.xlarge (vCPU: 4; Memory: 16 GiB)
+<li>Model for PAR, OPEN: m5.2xlarge (vCPU: 8; Memory: 32 GiB)
 </ul>
 
 <p>
-Except in the Parallel search, Local search, and Open class, only a single core of one processor
-will be used for each entrant.
+Except in the Parallel search, Open class, and local search solver using multiply cores, 
+only a single core of one processor will be used for each entrant.
 </p>
 
 <h3>Benchmark Selection</h3>
@@ -412,7 +414,7 @@ time used by the solver, or <i>timeLimit(p)</i> if it was still running at the t
 <p>
 There three different scoring procedure: <strong>complete</strong>, <strong>incomplete</strong>, and
 <strong>area</strong>. 
-Which one is used for ranking the solver for prices is <strong>TBA</strong>.
+For prices, the solver ranking <strong>TBA</strong> is used.
 </p>
 
 <h4>Complete Scoring Procedure</h4>
