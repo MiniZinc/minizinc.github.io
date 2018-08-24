@@ -377,17 +377,19 @@ For example <code class="code mzn minizinc docutils literal highlight highlight-
 are concatenated in the order they appear in the model.</p>
 </div>
 <p>We can evaluate our model by clicking the <em>Run</em> button in the MiniZinc IDE, or by typing</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver Gecode aust.mzn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver gecode aust.mzn
 </pre></div>
 </div>
 <p>where <a class="reference download internal" href="downloads/aust.mzn" download=""><tt class="xref download docutils literal">aust.mzn</tt></a>
 is the name of the file containing our MiniZinc model.
 We must use the file extension <tt class="docutils literal">.mzn</tt> to indicate a MiniZinc model.
-The command <tt class="docutils literal">minizinc</tt> with the option <tt class="docutils literal">--solver Gecode</tt> uses the Gecode finite domain solver to evaluate
-our model. If you use the MiniZinc binary distribution, this solver is in fact the default, so you can just run <tt class="docutils literal">minizinc aust.mzn</tt> instead.</p>
+The command <tt class="docutils literal">minizinc</tt> with the option <tt class="docutils literal">--solver gecode</tt>
+uses the Gecode finite domain solver to evaluate
+our model. If you use the MiniZinc binary distribution,
+this solver is in fact the default, so you can just run <tt class="docutils literal">minizinc aust.mzn</tt> instead.</p>
 <p>When we run this we obtain the result:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wa=2   nt=3    sa=1
-q=2    nsw=3   v=2
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wa=3   nt=2    sa=1
+q=3   nsw=2    v=3
 t=1
 ----------
 </pre></div>
@@ -399,8 +401,8 @@ by the MiniZinc output to indicate a solution has been found.</p>
 <h2>2.1.2. An Arithmetic Optimisation Example<a class="headerlink" href="#an-arithmetic-optimisation-example" title="Permalink to this headline">¶</a></h2>
 <p>Our second example is motivated by the need to bake some cakes for a fete at
 our local school.
-We know how to make two sorts of cakes.footnote{WARNING: please don’t use
-these recipes at home}
+We know how to make two sorts of cakes (WARNING: please don’t use
+these recipes at home).
 A banana cake which takes 250g of self-raising flour, 2 mashed bananas, 75g
 sugar and 100g of butter, and a chocolate cake which takes 200g of self-raising
 flour, 75g of cocoa, 150g sugar and 150g of butter.
@@ -854,7 +856,8 @@ As we have seen they have one of three forms:</p>
 <span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="cs">&lt;arithmetic expression&gt;</span><span class="p">;</span><span class="s"></span>
 </pre></div>
 </div>
-<p>A model is required to have exactly one solve item.</p>
+<p>A model is required to have at most one solve item. If its omitted it is
+treated as <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="s"></span></code>.</p>
 </li>
 <li><p class="first"><span class="target" id="index-45"></span>Output items are for nicely presenting the results of the model execution.
 They have the form:</p>

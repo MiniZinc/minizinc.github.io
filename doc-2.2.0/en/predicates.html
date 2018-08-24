@@ -509,11 +509,11 @@ takes at least <code class="code mzn minizinc docutils literal highlight highlig
 <p>finds a 10 day schedule for 7 nurses, requiring 3 on each day shift
 and 2 on each night shift, with a minimum 2 night shifts per nurse.
 A possible output is</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>o d n n o n n d o o
-d o n d o d n n o n
-o d d o d o d n n o
-d d d o n n d o n n
-d o d n n o d o d d
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>d o n o n o d n o o
+d o d n n o d d n o
+o d d n o n d n o n
+o d d d o n n o n n
+d d n o d d n o d d
 n n o d d d o d d d
 n n o d d d o d d d
 ----------
@@ -521,7 +521,7 @@ n n o d d d o d d d
 </div>
 <p>There is an alternate form of the regular constraint
 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">regular_nfa</span><span class="s"></span></code> which specifies the regular
-expression using an NFA (without <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">\</span><span class="nv">epsilon</span><span class="s"></span></code> arcs).
+expression using an NFA (without <span class="math notranslate nohighlight">\(\epsilon\)</span> arcs).
 This constraint has the form</p>
 <div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="bp">regular_nfa</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Q</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">,</span><span class="s"></span>
 <span class="s">        </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">q0</span><span class="p">,</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">F</span><span class="p">)</span><span class="s"></span>
@@ -941,7 +941,7 @@ and similarly <code class="code mzn minizinc docutils literal highlight highligh
 <p>The context for a Boolean expression is given by:</p>
 <dl class="docutils">
 <dt>root</dt>
-<dd><p class="first">root context is the context for any expression $e$ appearing as
+<dd><p class="first">root context is the context for any expression <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e</span><span class="s"></span></code> appearing as
 the argument of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">constraint</span><span class="s"></span></code> or as an
 <span class="target" id="index-32"></span>assignment item, or appearing as a sub expression <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"></span></code>
 or <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e2</span><span class="s"></span></code> in an expression <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">e2</span><span class="s"></span></code> occuring in a root context.</p>

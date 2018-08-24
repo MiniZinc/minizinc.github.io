@@ -216,12 +216,11 @@ implicitly limit the size of integer variables.</p>
 <p>The grocery problem shown in <a class="reference internal" href="#ex-grocery"><span class="std std-numref">Listing 2.6.1</span></a> finds 4 items
 whose prices in dollars add up to 7.11 and multiply up to 7.11.
 The variables are declared unbounded. Running</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver g12fd grocery.mzn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver chuffed grocery.mzn
 </pre></div>
 </div>
 <p>yields</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>=====UNSATISFIABLE=====
-% /tmp/mznfile85EWzj.fzn:11: warning: model inconsistency detected before search.
 </pre></div>
 </div>
 <p>This is because the
@@ -341,7 +340,7 @@ implied by the existing model, may improve the search for
 solutions by making more information available to the solver earlier.</p>
 <p>Consider the magic series problem from <a class="reference internal" href="modelling2.html#sec-complex"><span class="std std-ref">Complex Constraints</span></a>.
 Running this for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">16</span><span class="s"></span></code> as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --all-solutions --statistics magic-series.mzn -D <span class="s2">&quot;n=16;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver gecode --all-solutions --statistics magic-series.mzn -D <span class="s2">&quot;n=16;&quot;</span>
 </pre></div>
 </div>
 <p>might result in output</p>
@@ -375,7 +374,7 @@ gives the model in
 </div>
 </div>
 <p>Running the same problem as before</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --all-solutions --statistics magic-series2.mzn -D <span class="s2">&quot;n=16;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver gecode --all-solutions --statistics magic-series2.mzn -D <span class="s2">&quot;n=16;&quot;</span>
 </pre></div>
 </div>
 <p>results in the same output, but with statistics showing just 14 failures
@@ -424,17 +423,17 @@ The obvious way to model this problem is shown in <a class="reference internal" 
 
 <span class="k">solve</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="nv">first_fail</span><span class="p">,</span><span class="s"> </span><span class="nv">indomain_min</span><span class="p">,</span><span class="s"> </span><span class="nv">complete</span><span class="p">)</span><span class="s"></span>
 <span class="s">      </span><span class="k">satisfy</span><span class="p">;</span><span class="s"></span>
-<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;x = &quot;</span><span class="p">,</span><span class="nb">show</span><span class="p">(</span><span class="nv">x</span><span class="p">),</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span><span class="s"></span>
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;x = </span><span class="p">\(</span><span class="nv">x</span><span class="p">)</span><span class="s">;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span><span class="s"></span>
 </pre></div>
 </div>
 </div>
 <p>In this model the array <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> represents the permutation of the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span><span class="s"></span></code>
 numbers and the constraints are naturally represented using <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alldifferent</span><span class="s"></span></code>.</p>
 <p>Running the model</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver g12fd --all-solutions --statistics allinterval.mzn -D <span class="s2">&quot;n=10;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver gecode --all-solutions --statistics allinterval.mzn -D <span class="s2">&quot;n=10;&quot;</span>
 </pre></div>
 </div>
-<p>finds all solutions in 84598 choice points and 3s.</p>
+<p>finds all solutions in 16077 nodes and 71ms</p>
 <p>An alternate model uses array <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="s"></span></code> where <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"></span></code> gives the
 position of the number <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">i</span><span class="s"></span></code> in the sequence.
 We also model the positions of the differences using variables
@@ -473,9 +472,9 @@ original sequence <code class="code mzn minizinc docutils literal highlight high
 <span class="k">solve</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="nv">first_fail</span><span class="p">,</span><span class="s"> </span><span class="nv">indomain_min</span><span class="p">,</span><span class="s"> </span><span class="nv">complete</span><span class="p">)</span><span class="s"></span>
 <span class="s">      </span><span class="k">satisfy</span><span class="p">;</span><span class="s"></span>
 
-<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;x = [&quot;</span><span class="p">,]</span><span class="s"> </span><span class="o">++</span><span class="s"></span>
-<span class="s">       </span><span class="p">[</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">i</span><span class="p">)</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="k">if</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">n</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;]</span><span class="se">\n</span><span class="s">;&quot; </span><span class="k">else</span><span class="s"> &quot;, &quot; </span><span class="k">endif</span><span class="s"> </span>
-<span class="s">         </span><span class="p">|</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nb">fix</span><span class="p">(</span><span class="nv">y</span><span class="p">[</span><span class="nv">i</span><span class="p">])</span><span class="s"> </span><span class="p">];</span><span class="s"></span>
+<span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="nv">output_only</span><span class="s"></span>
+<span class="s">  </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)(</span><span class="nv">i</span><span class="o">*</span><span class="p">(</span><span class="nb">fix</span><span class="p">(</span><span class="nv">y</span><span class="p">[</span><span class="nv">j</span><span class="p">])</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">i</span><span class="p">)</span><span class="s"> </span><span class="gr">|</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="s"> </span><span class="gr">]</span><span class="p">;</span><span class="s"></span>
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;x = </span><span class="p">\(</span><span class="nv">x</span><span class="p">)</span><span class="s">;</span><span class="se">\n</span><span class="s">&quot; </span><span class="p">]</span><span class="s"></span>
 </pre></div>
 </div>
 </div>
@@ -485,14 +484,26 @@ indirect way of modelling the relationship between the <code class="code mzn min
 as opposed to the relationship between <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">u</span><span class="s"></span></code> variables.
 Hence we might expect the original model to be better.</p>
 <p>The command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver g12fd --all-solutions --statistics allinterval2.mzn -D <span class="s2">&quot;n=10;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver gecode --all-solutions --statistics allinterval2.mzn -D <span class="s2">&quot;n=10;&quot;</span>
 </pre></div>
 </div>
-<p>finds all the solutions in  75536 choice points and 18s.
-Interestingly, although the model is not as succinct here, the search on the
-<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="s"></span></code> variables is better than searching on the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> variables.
-The lack of succinctness means that even though the search requires
-less choice it is substantially slower.</p>
+<p>finds all the solutions in  98343 nodes and 640 ms.
+So the more direct modelling of the constraints is clearly paying off.</p>
+<p>Note that the inverse model prints out the answers using the same <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> view of
+the solution.  The way this is managed is using <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">output_only</span><span class="s"></span></code> annotations.
+The array <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> is defined as a fixed array and annotated as <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">output_only</span><span class="s"></span></code>.
+This means it will only be evaluated, and can only be used in output statements.
+Once a solution for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="s"></span></code> is discovered the value of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"></span></code> is calculated
+during output processing, and hence can be displayed in the output.</p>
+<div class="admonition-output-only-annotation admonition" id="defblock-3">
+<p class="first admonition-title">Output_only annotation</p>
+<p class="last" id="index-5">The <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nv">output_only</span><span class="s"></span></code> annotation can be applied to variable definitions.
+The variable defined must not be a <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"></span></code> type, it can only be <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">par</span><span class="s"></span></code>.
+The variable must also have a right hand side definition giving its value.
+This right hand side definition can make use of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">fix</span><span class="s"></span></code> functions to access
+the values of decision variables, since it is evaluated at solution processing
+time</p>
+</div>
 </div>
 <div class="section" id="multiple-modelling-and-channels">
 <span id="sec-multiple-modelling-and-channels"></span><h2>2.6.5. Multiple Modelling and Channels<a class="headerlink" href="#multiple-modelling-and-channels" title="Permalink to this headline">¶</a></h2>

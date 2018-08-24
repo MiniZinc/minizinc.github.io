@@ -676,12 +676,17 @@ support the starred options):</p>
 <td>&#160;</td>
 <td>Choose the variable with the largest difference between the two smallest values in its domain.</td>
 </tr>
+<tr class="row-odd"><td><tt class="docutils literal">dom_w_deg</tt></td>
+<td>&#160;</td>
+<td>Choose the variable with the smallest value of domain size divided by weighted degree,
+where the weighted degree is the number of times the variables been in a constraint which failed</td>
+</tr>
 </tbody>
 </table>
 <p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;assignmentannotation&gt;</span><span class="s"></span></code> specifies how the chosen variable should be
 constrained.
 Possible choices are as follows (it is recommended that implementations
-support the starred options):</p>
+support at least the starred options):</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -1175,7 +1180,7 @@ may be using).</p>
 </ul>
 </li>
 <li><tt class="docutils literal">stdFlags</tt> (list of strings, default empty): Which of the standard solver command line flags are supported by this solver. The standard flags are <tt class="docutils literal">-a</tt>, <tt class="docutils literal">-n</tt>, <tt class="docutils literal">-s</tt>, <tt class="docutils literal">-v</tt>, <tt class="docutils literal">-p</tt>, <tt class="docutils literal">-r</tt>, <tt class="docutils literal">-f</tt>.</li>
-<li><tt class="docutils literal">extraFlags</tt> (list of list of strings, default empty): Extra command line flags supported by the solver. Each entry should be a list two, three or four strings. The first string is the name of the option (e.g. <tt class="docutils literal">"--special-algorithm"</tt>). The second string is a description that can be used to generate help output (e.g. <tt class="docutils literal">"which special algorithm to use"</tt>). The third string specifies the type of the argument (as a MiniZinc type). The fourth string is the default value. If no type is specified, <tt class="docutils literal">"bool"</tt> is assumed.</li>
+<li><tt class="docutils literal">extraFlags</tt> (list of list of strings, default empty): Extra command line flags supported by the solver. Each entry must be a list of four strings. The first string is the name of the option (e.g. <tt class="docutils literal">"--special-algorithm"</tt>). The second string is a description that can be used to generate help output (e.g. <tt class="docutils literal">"which special algorithm to use"</tt>). The third string specifies the type of the argument (<tt class="docutils literal">"int"</tt>,``”bool”<tt class="docutils literal">,</tt>”float”`` or <tt class="docutils literal">"string"</tt>). The fourth string is the default value.</li>
 <li><tt class="docutils literal">supportsMzn</tt> (bool, default <tt class="docutils literal">false</tt>): Whether the solver can run MiniZinc directly (i.e., it implements its own compilation or interpretation of the model).</li>
 <li><tt class="docutils literal">supportsFzn</tt> (bool, default <tt class="docutils literal">true</tt>): Whether the solver can run FlatZinc. This should be the case for most solvers</li>
 <li><tt class="docutils literal">needsSolns2Out</tt> (bool, default <tt class="docutils literal">true</tt>): Whether the output of the solver needs to be passed through the MiniZinc output processor.</li>
