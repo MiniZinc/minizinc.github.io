@@ -33,6 +33,8 @@ title: MiniZinc - Software
             
             <p>
                 Both the compiler tool chain and the IDE are available as free and open source software.
+                Please follow the <a href="doc-latest/en/installation.html">installation instructions</a>
+                in the MiniZinc Handbook.
             </p>
 
             <h3>Bundled binary packages (recommended)</h3>
@@ -46,42 +48,23 @@ title: MiniZinc - Software
 
             <ul>
                 <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled-setup-win64.exe">64 bit Windows installer</a></li>
-                <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled-setup-win32.exe">32 bit Windows installer</a></li>
                 <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled.dmg">Mac OS X installer (10.9 or later)</a></li>
                 <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundle-linux-x86_64.tgz">64 bit Linux binary archive (Ubuntu 16 or later)</a></li>
                 <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundle-linux-x86_32.tgz">32 bit Linux binary archive (Ubuntu 16 or later)</a></li>
             </ul>
-
-            <h3>Binary packages (only compiler)</h3>
-
-            <p>To install binary packages of the standalone MiniZinc compiler (without the IDE or bundled solvers),
-                please follow the installation instructions for your operating system below:
-            </p>
-            
-            <ul>
-                <li><a href="2.0/install-windows.html">Windows</a></li>
-                <li><a href="2.0/install-mac.html">Mac OS</a></li>
-                <li><a href="2.0/install-linux.html">Linux</a></li>
-            </ul>
-
-            <h3>MiniZinc IDE</h3>
-
-            <p>You can install the MiniZinc IDE separately. Please follow the <a href="ide/index.html">MiniZinc IDE
-                installation instructions</a>.
-            </p>
             
             <h3>Source code</h3>
             
             <p>
                 The source code of the compiler and the IDE is available from
                 our <a href="https://github.com/MiniZinc">GitHub project page</a>.
-                MiniZinc is distributed under the <a href="2.0/LICENSE.txt">Mozilla Public License version 2.0</a>.
+                MiniZinc is distributed under the <a href="LICENSE.txt">Mozilla Public License version 2.0</a>.
                 The MiniZinc IDE is developed using the <a href="http://qt-project.org">Qt toolkit</a>,
                 which is available under <a href="http://qt-project.org/products/licensing">several licenses
                     including the LGPL</a>.
             </p>
 
-            <p>Please follow the <a href="2.0/install-source.html">installation instructions</a>.</p>
+            <p>Please follow the <a href="doc-latest/en/installation.html">installation instructions</a>.</p>
             
             <h2>Bugs</h2>
 
@@ -102,7 +85,7 @@ title: MiniZinc - Software
             
             <h2 id="flatzinc">FlatZinc implementations</h2>
             
-            <p>The MiniZinc library contains direct interfaces to <a href="https://projects.coin-or.org/Cbc">COIN-OR CBC</a>,
+            <p>The MiniZinc system contains direct interfaces to <a href="https://projects.coin-or.org/Cbc">COIN-OR CBC</a>,
                 <a href="http://gurobi.com">Gurobi</a> and
                 <a href="https://www-01.ibm.com/software/commerce/optimization/cplex-optimizer/">IBM ILOG CPLEX</a>. Furthermore,
                 the following projects have developed FlatZinc interfaces:
