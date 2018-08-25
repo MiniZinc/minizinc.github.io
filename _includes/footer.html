@@ -32,15 +32,9 @@
         var baseURL = "https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-";
         var downloadURL = "";
         if (navigator.appVersion.toUpperCase().indexOf("WIN")!=-1) {
-            if (navigator.appVersion.toUpperCase().indexOf("WIN64")!=-1) {
-                downloadURL = baseURL + "bundled-setup-win64.exe";
-                $("#osname").html("Windows 64bit");
-                $("#osnotes").html("(Windows 7 or later)");
-            } else {
-                downloadURL = baseURL + "bundled-setup-win32.exe";
-                $("#osname").html("Windows 32bit");                
-                $("#osnotes").html("(Windows 7 or later)");
-            }
+            downloadURL = baseURL + "bundled-setup-win64.exe";
+            $("#osname").html("Windows 64bit");
+            $("#osnotes").html("(Windows 7 or later)");
         } else if (navigator.appVersion.toUpperCase().indexOf("LIKE MAC")==-1 && navigator.appVersion.toUpperCase().indexOf("MAC")!=-1) {
             downloadURL = baseURL + "bundled.dmg";
             $("#osname").html("Mac OS");
