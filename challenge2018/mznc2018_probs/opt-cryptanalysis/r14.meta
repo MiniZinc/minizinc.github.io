@@ -1,0 +1,5 @@
+MODEL=mznc2017_aes_opt.mzn
+DATA=r14.dzn
+METHOD=min
+TAGS=challenge2018,opt-cryptanalysis
+TIMELIMIT=1200

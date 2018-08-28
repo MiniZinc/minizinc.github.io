@@ -1,0 +1,45 @@
+es_decr_min = int_search([es[20],es[15],es[9],es[7],es[14],es[13],es[11],es[1],es[5],es[10],es[16],es[6],es[19],es[17],es[12],es[3],es[4],es[2],es[8],es[18],vs[1],vs[4],vs[5],vs[13],vs[16],vs[7],vs[2],vs[15],vs[8],vs[10],vs[14],vs[6],vs[17],vs[12],vs[11],vs[9],vs[3]], input_order, indomain_min, complete);
+nbV = 17;
+nbE = 20;
+nbT = 10;
+adj = [|false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true
+|false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,true
+|false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+|false,false,false,false,false,false,false,false,false,false,false,false,true,true,true,true,false,false,false,false
+|false,false,false,false,false,false,false,false,true,true,true,false,false,false,false,false,false,false,false,false
+|false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false
+|true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+|false,false,false,false,false,false,true,true,false,false,false,false,false,false,false,false,false,false,false,false
+|false,false,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+|false,false,false,false,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+|false,true,false,true,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+|true,false,true,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false
+|false,false,false,false,true,false,false,false,true,false,false,false,false,false,false,true,false,false,false,false
+|false,false,false,false,false,false,false,false,false,false,true,true,false,false,false,false,false,false,true,false
+|false,false,false,false,false,false,false,false,false,true,false,true,false,false,true,false,false,false,false,false
+|false,false,false,false,false,false,true,false,false,false,false,false,true,false,false,false,true,false,false,false
+|false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,true,true,false,false
+|];
+endnodes = [|false,false,false,false,false,false,true,false,false,false,false,true,false,false,false,false,false
+|false,false,true,false,false,false,false,false,false,false,true,false,false,false,false,false,false
+|false,false,false,false,false,false,false,false,true,false,false,true,false,false,false,false,false
+|false,false,false,false,false,false,false,false,true,false,true,false,false,false,false,false,false
+|false,false,false,false,false,false,false,false,false,true,false,false,true,false,false,false,false
+|false,false,false,false,false,false,false,false,false,true,true,false,false,false,false,false,false
+|false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,true,false
+|false,false,false,false,false,false,false,true,false,false,false,true,false,false,false,false,false
+|false,false,false,false,true,false,false,false,false,false,false,false,true,false,false,false,false
+|false,false,false,false,true,false,false,false,false,false,false,false,false,false,true,false,false
+|false,false,false,false,true,false,false,false,false,false,false,false,false,true,false,false,false
+|false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,false,false
+|false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,true,false
+|false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,true
+|false,false,false,true,false,false,false,false,false,false,false,false,false,false,true,false,false
+|false,false,false,true,false,false,false,false,false,false,false,false,true,false,false,false,false
+|false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true
+|false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true
+|false,false,false,false,false,true,false,false,false,false,false,false,false,true,false,false,false
+|true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+|];
+terminals = {1,2,3,4,5,6,7,8,9,10};
+ws = [2460294,346167,612566,415167,2244563,1722284,3731651,258478,3776236,1980013,2648943,668930,2984464,3676819,3776236,1980013,692355,92920,1645757,4616396];

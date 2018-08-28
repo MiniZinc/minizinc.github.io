@@ -1,0 +1,98 @@
+============================================================
+  iZplus (fzn_izplus)
+     -- iZ based solver for MiniZinc Challenge 2018 --
+
+  Copyright (C) 2012-2018 NTT DATA SEKISUI SYSTEMS CORPORATION.
+============================================================
+
+* What is fzn_izplus
+
+  fzn_izplus is a FlatZinc solver using iZ-C constraint programming
+library which is developed by NTT DATA SEKISUI SYSTEMS CORPORATION.
+
+iZ-C provides :
+  * many built-in constraints
+  * constraint propagation mechanism
+  * simple search strategy
+
+And in fzn_izplus, following algorithms are 'plus'ed.
+
+  * Randomized restarting in search
+    For fast random number generation, Xorshift128 algorithm is used.
+       http://www.jstatsoft.org/v08/i14/paper
+
+    Restart strategy is geometirc, but counter will be rewinded
+    periodically like Luby strategy.
+
+  * Local search for optimization problem
+      In real world problems, sometimes finding 'good' solution using
+    short time is more important than finding 'best' solution using
+    long time. And it is known empirically that 'good' solutions are
+    similar to each other, then local search can be a good strategy.
+    
+      For optimization problem, fzn_izplus tries to find first solution
+    using constraint propagation and search. After one solution was found,
+    it searches similar solutions better than first one.
+
+  * Local search for satisfying problem
+      fzn_izplus tries to maxmize count of assinged variables without
+     conflict. (Local solution will be relaxed after limited restarting)
+
+  * Variable reordering
+      Failures occured while searching are recorded and variable selection
+     order is changed using this information.
+
+      Domain size and weighted constraint count are also used.
+
+  * NG learning
+      NG learning is implemented as described in:
+        http://ijcai.org/papers07/Papers/IJCAI07-019.pdf
+
+      (To keep NG set small, inactive NGs are removed from learnt set.)
+
+
+* Author
+
+  Toshimitsu FUJIWARA <t.fujiwara@sekisui.com>
+    developer at NTT DATA SEKISUI SYSTEMS CORPORATION
+
+
+* Acknowledgement
+
+  FlatZinc parser in fzn_izplus is based on 'FlatZinc parser skeleton'
+written by Guido Tack. 
+
+    http://www.gecode.org/flatzinc.html/
+
+  License of FlatZinc parser skelton (part of Gecode) is: 
+
+    Copyright:
+       Guido Tack, 2007
+
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+  
+    The above copyright notice and this permission notice shall be
+    included in all copies or substantial portions of the Software.
+  
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+    OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+    WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+  Special thanks to Guido Tack and Gecode team.
+
+  iZ-C is a constraint programming library developed by
+NTT DATA SEKISUI SYSTEMS CORPORATION.
+
+   http://www.constraint.org/ja/izc_download.html
+
+(Sorry, above web page is NOT written in English.)

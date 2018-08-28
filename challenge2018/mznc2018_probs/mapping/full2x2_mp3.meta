@@ -1,0 +1,5 @@
+MODEL=mapping.mzn
+DATA=full2x2_mp3.dzn
+METHOD=min
+TAGS=challenge2018,mapping
+TIMELIMIT=1200

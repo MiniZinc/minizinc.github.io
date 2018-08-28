@@ -1,0 +1,5 @@
+MODEL=largecumulative.mzn
+DATA=instance-0400-4.dzn
+METHOD=min
+TAGS=challenge2018,largescheduling
+TIMELIMIT=1200

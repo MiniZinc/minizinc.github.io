@@ -1,0 +1,5 @@
+MODEL=train.mzn
+DATA=instance.5.dzn
+METHOD=min
+TAGS=challenge2018,train
+TIMELIMIT=1200

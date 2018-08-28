@@ -1,0 +1,5 @@
+MODEL=steiner-tree.mzn
+DATA=es10fst03.stp.dzn
+METHOD=min
+TAGS=challenge2018,steiner-tree
+TIMELIMIT=1200

@@ -1,0 +1,5 @@
+MODEL=oc-roster.mzn
+DATA=4s-100d.dzn
+METHOD=min
+TAGS=challenge2018,on-call-rostering
+TIMELIMIT=1200
