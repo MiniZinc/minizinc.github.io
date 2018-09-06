@@ -2,7 +2,7 @@
 import os
 import sys
 latest = sys.argv[1]
-for htmlfile in os.listdir("doc-"+latest+"/en"):
+for htmlfile in os.listdir("doc-"+latest+"/en")+["downloads/index.html"]:
     if htmlfile.endswith(".html"):
         with open("doc-latest/en/"+htmlfile,"w") as f:
             f.write("---\n")
