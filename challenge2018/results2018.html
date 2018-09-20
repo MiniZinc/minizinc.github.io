@@ -8,13 +8,16 @@ title: MiniZinc - Challenge
 <script type="text/javascript" src="score.js"> </script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
+
 <h2>MiniZinc Challenge 2018 Results</h2>
 
 <p>
 CP 2018 presentation slides of the MiniZinc Challenge 2018
 will be available here after the announcement.
-(<a href="./challenge_results2018.pdf">results</a>).
+(<a href="./challenge_results2018.pdf">results</a>). 
+Note that the slides do not contain the amendments of the results.
 </p>
+
 
 <h3>Entrants</h3>
 
@@ -79,6 +82,26 @@ were automatically included in the free search category, while entries in the fr
 were automatically included in the parallel search category. 
 Lastly, all entries in the parallel search category and promoted entries into that category were automatically included in the open search category.
 
+<h3>Amendments of Results - 20 September 2018</h3>
+
+Unfortunately, there was an issue with the re-implemented solution checker this year. 
+The checker considered redundant and symmetry breaking constraints in the model for
+checking the correctness of the solvers' solutions leading to false positives. The
+issue has been addressed now and all solutions of each solver were re-checked leading
+to following changes.
+<ul>
+<li> The solvers OscaR/CBLS and Yuck pass all previously-failed tests (24 instances each).
+<li> The solvers MZN/Cbc and MZN/CPLEX pass three previously-failed instances each.
+<li> The solver sunny-cp</a><sup>&#151;</sup> fails one previously-passed instance.
+</ul>
+Due to these changes, there were changes in the rankings, which also affected the
+Bronze medal in the free search category. The solver Choco 4 overtook the solver
+HaifaCSP in this category. The Judges were informed and decided to jointly award
+the Bronze medal to both solvers, because the solvers' scores differ only by a small
+margin and the issue with the checker was out of their control.
+
+We deeply regret and apologise for our mistake and thank to Gustav Björdal and Michael Marte,
+who independently reported us about this mistake. 
 
 <h3>Summary of Results</h3>
 The results for the MiniZinc Challenge 2018 are
@@ -98,7 +121,7 @@ The results for the MiniZinc Challenge 2018 are
                 <tr><td> Free </td>
                     <td> <font color="gold">OR-Tools</font> </td>
                     <td> <font color="silver">Picat SAT</font> </td>
-                    <td> <font color="bronze">HaifaCSP</font> </td>
+                    <td> <font color="bronze">Choco 4</font> and <font color="bronze">HaifaCSP</font> </td>
                 </tr>
                 <tr><td> Parallel </td>
                     <td> <font color="gold">OR-Tools</font> </td>
