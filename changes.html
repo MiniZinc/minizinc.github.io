@@ -5,6 +5,89 @@ title: MiniZinc - Change Log
 
 <h2>MiniZinc Change Log</h2>
 
+<p>For detailed bug reports consult the issue tracker at <a href="https://github.com/MiniZinc/libminizinc/issues">https://github.com/MiniZinc/libminizinc/issues</a>.</p>
+
+<h3>Version 2.2.2</h3>
+
+<h4>Changes:</h4>
+<ul>
+<li> Some changes to the optimisation phase of the compiler, to take into account
+   more variables and constraints.
+</li>
+<li> Preliminary support for MIP cuts based on graph algorithms (only available
+   when compiled with boost C++ libraries; not part of the binary distribution).
+</li>
+<li> Set Release as default build type when nothing is specified (for CMake
+   platforms that do not support multiple build types, like Makefiles).
+</li>
+<li> Add builtins outputJSON() and outputJSONParameters() for creating an
+   array of strings that capture the output and parameters of the model as JSON.
+</li>
+<li> On Linux and macOS, add /usr/share/minizinc/solvers and
+   /usr/local/share/minizinc/solvers to list of paths where solver configuration files
+   can be placed.
+</li>
+<li> Add OSICBC_INCLUDEDIR and OSICBC_LIBDIR cmake flags.
+</li>
+<li> Output search paths for solver configurations using --solvers command line option.
+</li>
+<li> Add support for Gurobi 8.1
+</li>
+<li> Support parsing from stdin and files at the same time.
+</li>
+<li>IDE: Add line/column display in status bar.</li>
+<li>IDE: Optional parameters don't have to be defined in input dialog.</li>
+<li>IDE: Provide mzn-json-init / mzn-json-init-end handlers to initialise HTML window
+    before first solution is produced.</li>
+<li>Add version information and minimum system version into Info.plist on macOS.</li>
+<li>Manage multiple open visualisation windows, and implement re-solve function
+    that can be initiated from a visualisation.</li>
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fix crash when flattening top-level array comprehensions with var where
+   clauses.
+</li>
+<li> Support input files with more than 1M lines.
+</li>
+<li> Special case handling for array literals in top-level foralls: flatten in root context.
+</li>
+<li> Fix translation of if-then-else for branches with undefined right hand sides.
+</li>
+<li> Only propagate defines_var annotation to the variable that's actually being defined
+   (not others that arise from the same decomposition).
+</li>
+<li> Don't flatten arguments of predicates like symmetry_breaking_constraint.
+</li>
+<li> Remove output_var and output_array annotations from user models (these
+   could cause crashes).
+</li>
+<li> Fix precedences for weak operators (~+, ~-, ~=, ~*).
+</li>
+<li> Fix min and max for opt var arrays to work when the bounds of the arrays are unknown.
+</li>
+<li> Fix a bug in bounds computations for function calls.
+</li>
+<li> Add missing superset FlatZinc builtin.
+</li>
+<li> Fix includes in file values.hh for some platforms.
+</li>
+<li> Fix a garbage collection issue when printing solutions.
+</li>
+<li> Deal with the case that a variable that's required for output is assigned to a par variable.
+</li>
+<li> Throw type error when an array has only absent values.
+</li>
+<li> Flatten all arrays in FlatZinc, also those coming from functional definitions.
+</li>
+<li> Use list of strings as mzn_solver_path entry in the preferences json file.
+</li>
+<li> Fix crash when output variable is defined using recursive function
+</li>
+<li>IDE: Fix race condition in constructor of HTMLWindow.</li>
+</ul>
+
 <h3>Version 2.2.1</h3>
 
 <h4>Changes:</h4>
@@ -32,19 +115,19 @@ title: MiniZinc - Change Log
 <li> show2d/show3d functions now do not add quotes around array elements and
    work for empty arrays.
 </li>
-<li> Add support for slicing of arrays with enumerated types. Fixes #229.
+<li> Add support for slicing of arrays with enumerated types.
 </li>
 <li> Fix slicing of 1d arrays.
 </li>
-<li> Fix bounds computation for float variable declarations. Fixes #225.
+<li> Fix bounds computation for float variable declarations.
 </li>
 <li> When FlatZinc solver is terminated due to a timeout, do not report this
    as an error.
 </li>
 <li> Fix pretty-printing of multi-dimensional arrays where dimensions other than
-   the first one are empty. Fixes #236.
+   the first one are empty.
 </li>
-<li> Add support for where clauses on generator assignment expressions. Fixes #237.
+<li> Add support for where clauses on generator assignment expressions.
 </li>
 <li>MiniZinc IDE: Improve dark mode by changing line numbers to dark background.</li>
 <li>MiniZinc IDE: Make parameter input dialog scrollable.</li>
