@@ -1,0 +1,547 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2.3. Option type support &mdash; The MiniZinc Handbook 2.2.2</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-optiontypes.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.4. Compiler options" href="lib-options.html" />
+    <link rel="prev" title="4.2.2. Annotations" href="lib-annotations.html" /> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.2.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.1. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html">4.2.2. Annotations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">4.2.3. Option type support</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#option-type-support-for-booleans">4.2.3.1. Option type support for Booleans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#option-type-support-for-integers">4.2.3.2. Option type support for integers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-declarations">4.2.3.3. Other declarations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-options.html">4.2.4. Compiler options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-builtins.html">4.2.5. Builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.6. FlatZinc builtins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_4_reference.html">4. Reference Manual</a> &raquo;</li>
+        
+          <li><a href="lib.html">4.2. The MiniZinc library</a> &raquo;</li>
+        
+      <li>4.2.3. Option type support</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="option-type-support">
+<span id="ch-lib-optiontypes"></span><h1>4.2.3. Option type support<a class="headerlink" href="#option-type-support" title="Permalink to this headline">¶</a></h1>
+<p>These functions and predicates implement the standard library for working
+with option types. Note that option type support is still incomplete.</p>
+<div class="section" id="option-type-support-for-booleans">
+<h2>4.2.3.1. Option type support for Booleans<a class="headerlink" href="#option-type-support-for-booleans" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-minizinc notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">&#39;not&#39;</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Usage: <tt class="docutils literal">not x</tt></p>
+<p>True iff <tt class="docutils literal">x</tt>  is absent or false</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L458-L458">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-1"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">absent</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff <tt class="docutils literal">x</tt>  is absent</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L421-L421">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-2"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">absent</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff <tt class="docutils literal">x</tt>  is absent</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L517-L517">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-3"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_eq</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b0</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b1</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff both <tt class="docutils literal">b0</tt>  and <tt class="docutils literal">b1</tt>  are absent or
+both are present and have the same value.</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L437-L439">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-4"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_eq</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b0</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b1</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff <tt class="docutils literal">b0</tt>  occurs and is equal to <tt class="docutils literal">b1</tt></p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L442-L443">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-5"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_eq</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b0</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b1</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff <tt class="docutils literal">b1</tt>  occurs and is equal to <tt class="docutils literal">b0</tt></p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L446-L447">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-6"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">deopt</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return value of <tt class="docutils literal">x</tt>  (assumes that <tt class="docutils literal">x</tt>  is not absent)</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L413-L418">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-7"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">deopt</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return value of <tt class="docutils literal">x</tt>  (assumes that <tt class="docutils literal">x</tt>  is not absent)</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L509-L514">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-8"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">,</span><span class="s"></span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return absent if <tt class="docutils literal">idx</tt>  is absent, otherwise return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L461-L462">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-9"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                               </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return absent if <tt class="docutils literal">idx1</tt>  or <tt class="docutils literal">idx2</tt>  is absent, otherwise return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx1</tt> , <tt class="docutils literal">idx2</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L465-L466">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-10"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">,</span><span class="s"></span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L469-L474">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-11"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                               </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx1</tt> , <tt class="docutils literal">idx2</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L477-L484">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-12"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">,</span><span class="s"></span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return absent if <tt class="docutils literal">idx</tt>  is absent, otherwise return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L487-L488">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-13"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                               </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return absent if <tt class="docutils literal">idx1</tt>  or <tt class="docutils literal">idx2</tt>  is absent, otherwise return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx1</tt> , <tt class="docutils literal">idx2</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L491-L492">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-14"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">exists</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff for at least one <tt class="docutils literal">i</tt> , <tt class="docutils literal">x</tt> [i] occurs and is true</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L454-L455">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-15"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff for any <tt class="docutils literal">i</tt> , <tt class="docutils literal">x</tt> [i] is absent or true</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L450-L451">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-16"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">occurs</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff <tt class="docutils literal">x</tt>  is not absent</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L405-L410">More…</a></p>
+</div>
+<div class="section" id="option-type-support-for-integers">
+<h2>4.2.3.2. Option type support for integers<a class="headerlink" href="#option-type-support-for-integers" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-minizinc notranslate" id="index-17"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">&#39;&lt;&#39;</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Usage: <tt class="docutils literal">x < y</tt></p>
+<p>Weak comparison: true iff either <tt class="docutils literal">x</tt>  or <tt class="docutils literal">y</tt>  is absent, or both
+occur and the value of <tt class="docutils literal">x</tt>  is less than the value of <tt class="docutils literal">y</tt> .</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L549-L549">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-18"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="nf">&#39;&lt;&#39;</span><span class="p">(</span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Usage: <tt class="docutils literal">x < y</tt></p>
+<p>Weak comparison: true iff either <tt class="docutils literal">x</tt>  or <tt class="docutils literal">y</tt>  is absent, or both
+occur and the value of <tt class="docutils literal">x</tt>  is less than the value of <tt class="docutils literal">y</tt> .</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L562-L562">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-19"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">&#39;&lt;=&#39;</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Usage: <tt class="docutils literal">x <= y</tt></p>
+<p>Weak comparison: true iff either <tt class="docutils literal">x</tt>  or <tt class="docutils literal">y</tt>  is absent, or both
+occur and the value of <tt class="docutils literal">x</tt>  is less than or equal to the value of <tt class="docutils literal">y</tt> .</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L552-L552">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-20"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="nf">&#39;&lt;=&#39;</span><span class="p">(</span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Usage: <tt class="docutils literal">x <= y</tt></p>
+<p>Weak comparison: true iff either <tt class="docutils literal">x</tt>  or <tt class="docutils literal">y</tt>  is absent, or both
+occur and the value of <tt class="docutils literal">x</tt>  is less than or equal to the value of <tt class="docutils literal">y</tt> .</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L565-L565">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-21"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">&#39;&gt;&#39;</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Usage: <tt class="docutils literal">x > y</tt></p>
+<p>Weak comparison: true iff either <tt class="docutils literal">x</tt>  or <tt class="docutils literal">y</tt>  is absent, or both
+occur and the value of <tt class="docutils literal">x</tt>  is greater than the value of <tt class="docutils literal">y</tt> .</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L543-L543">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-22"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="nf">&#39;&gt;&#39;</span><span class="p">(</span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Usage: <tt class="docutils literal">x > y</tt></p>
+<p>Weak comparison: true iff either <tt class="docutils literal">x</tt>  or <tt class="docutils literal">y</tt>  is absent, or both
+occur and the value of <tt class="docutils literal">x</tt>  is greater than the value of <tt class="docutils literal">y</tt> .</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L556-L556">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-23"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">&#39;&gt;=&#39;</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Usage: <tt class="docutils literal">x >= y</tt></p>
+<p>Weak comparison: true iff either <tt class="docutils literal">x</tt>  or <tt class="docutils literal">y</tt>  is absent, or both
+occur and the value of <tt class="docutils literal">x</tt>  is greater than or equal to the value of <tt class="docutils literal">y</tt> .</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L546-L546">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-24"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="nf">&#39;&gt;=&#39;</span><span class="p">(</span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Usage: <tt class="docutils literal">x >= y</tt></p>
+<p>Weak comparison: true iff either <tt class="docutils literal">x</tt>  or <tt class="docutils literal">y</tt>  is absent, or both
+occur and the value of <tt class="docutils literal">x</tt>  is greater than or equal to the value of <tt class="docutils literal">y</tt> .</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L559-L559">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-25"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nb">bool2int</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return optional 0/1 integer that is absent iff <tt class="docutils literal">x</tt>
+is absent, and 1 iff <tt class="docutils literal">x</tt>  occurs and is true.</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L626-L631">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-26"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return absent if <tt class="docutils literal">idx</tt>  is absent, otherwise return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L654-L655">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-27"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return absent if <tt class="docutils literal">idx1</tt>  or <tt class="docutils literal">idx2</tt>  is absent, otherwise return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx1</tt> , <tt class="docutils literal">idx2</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L658-L659">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-28"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L662-L667">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-29"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx1</tt> , <tt class="docutils literal">idx2</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L670-L677">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-30"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return absent if <tt class="docutils literal">idx</tt>  is absent, otherwise return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L680-L681">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-31"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return absent if <tt class="docutils literal">idx1</tt>  or <tt class="docutils literal">idx2</tt>  is absent, otherwise return <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx1</tt> , <tt class="docutils literal">idx2</tt> ]</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L684-L685">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-32"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_eq</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff both <tt class="docutils literal">x</tt>  and <tt class="docutils literal">y</tt>  are absent or
+both are present and have the same value.</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L635-L637">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-33"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_ne</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff only one of <tt class="docutils literal">x</tt>  and <tt class="docutils literal">y</tt>  is absent or
+both are present and have different values.</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L641-L643">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-34"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nb">max</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return maximum of elements in <tt class="docutils literal">x</tt>  that are not absent, or
+absent if all elements in <tt class="docutils literal">x</tt>  are absent.</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L581-L589">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-35"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nb">min</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return minimum of elements in <tt class="docutils literal">x</tt>  that are not absent, or
+absent if all elements in <tt class="docutils literal">x</tt>  are absent.</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L569-L577">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-36"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">occurs</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>True iff <tt class="docutils literal">x</tt>  is not absent</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L501-L506">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-37"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nb">product</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return product of non-absent elements of <tt class="docutils literal">x</tt> .</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L650-L651">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-38"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return sum of non-absent elements of <tt class="docutils literal">x</tt> .</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L646-L647">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-39"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> ~</span><span class="o">*</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Weak multiplication. Return product of <tt class="docutils literal">x</tt>  and <tt class="docutils literal">y</tt>  if both
+are present, otherwise return absent.</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L615-L617">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-40"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> ~</span><span class="o">+</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Weak addition. Return sum of <tt class="docutils literal">x</tt>  and <tt class="docutils literal">y</tt>  if both
+are present, otherwise return absent.</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L593-L600">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-41"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> ~</span><span class="o">-</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Weak subtraction. Return difference of <tt class="docutils literal">x</tt>  and <tt class="docutils literal">y</tt>  if both
+are present, otherwise return absent.</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L604-L611">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-42"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> ~</span><span class="o">=</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Weak equality. True if either <tt class="docutils literal">x</tt>  or <tt class="docutils literal">y</tt>  are absent, or
+present and equal.</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L621-L622">More…</a></p>
+</div>
+<div class="section" id="other-declarations">
+<h2>4.2.3.3. Other declarations<a class="headerlink" href="#other-declarations" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-minizinc notranslate" id="index-43"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="nf">absent</span><span class="p">(</span><span class="kt">var</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Test if <tt class="docutils literal">x</tt>  is absent (always returns false)</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L396-L396">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-44"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="nf">absent</span><span class="p">(</span><span class="nv">opt</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Test if <tt class="docutils literal">x</tt>  is absent</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L398-L398">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-45"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nf">deopt</span><span class="p">(</span><span class="nv">opt</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return value of <tt class="docutils literal">x</tt>  if <tt class="docutils literal">x</tt>  is not absent. Aborts
+when evaluated on absent value.</p>
+<div class="highlight-minizinc notranslate" id="index-46"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nf">deopt</span><span class="p">(</span><span class="kt">var</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Return value <tt class="docutils literal">x</tt>  unchanged (since <tt class="docutils literal">x</tt>  is guaranteed
+to be non-optional).</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L389-L389">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-47"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="nf">occurs</span><span class="p">(</span><span class="kt">var</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Test if <tt class="docutils literal">x</tt>  is not absent (always returns true)</p>
+<p><a class="reference external" href="https://github.com/MiniZinc/libminizinc/blob/2.2.3/share/minizinc/std//stdlib.mzn#L392-L392">More…</a></p>
+<div class="highlight-minizinc notranslate" id="index-48"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="nf">occurs</span><span class="p">(</span><span class="nv">opt</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Test if <tt class="docutils literal">x</tt>  is not absent</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lib-options.html" class="btn btn-neutral float-right" title="4.2.4. Compiler options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lib-annotations.html" class="btn btn-neutral" title="4.2.2. Annotations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.2.2',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
