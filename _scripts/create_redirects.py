@@ -16,3 +16,8 @@ for htmlfile in os.listdir("doc-"+latest+"/chi")+["downloads/index.html"]:
             f.write("redirect_to: \"/doc-"+latest+"/chi/"+htmlfile+"\"\n")
             f.write("---\n")
 
+for lang in ["en","chi"]:
+    with open("doc-latest/"+lang+"/handbook.html","w") as f:
+        f.write("---\n")
+        f.write("redirect_to: \"/doc-"+latest+"/"+lang+"/MiniZinc Handbook.pdf\"\n")
+        f.write("---\n")
