@@ -44,3 +44,8 @@ markdown: kramdown
 theme: minima
 sass:
     style: compressed
+defaults:
+    - scope:
+         path: "downloads/doc-*"
+      values:
+         sitemap: false
