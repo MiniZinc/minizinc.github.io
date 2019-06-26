@@ -7,6 +7,168 @@ title: MiniZinc - Change Log
 
 <p>For detailed bug reports consult the issue tracker at <a href="https://github.com/MiniZinc/libminizinc/issues">https://github.com/MiniZinc/libminizinc/issues</a>.</p>
 
+<h3>Version 2.3.0</h3>
+
+<h4>Major changes:</h4>
+<ul>
+<li>The compiler can now generate FlatZinc with half reified constraints. See
+  <a href="https://www.minizinc.org/doc-2.3.0/en/fzn-spec.html#reified-and-half-reified-predicates">
+      https://www.minizinc.org/doc-2.3.0/en/fzn-spec.html#reified-and-half-reified-predicates</a> for more details.
+</li>
+<li>The standard library of global constraints has been reorganised, making it
+  easier for solvers to override just the bits that they support.
+  See <a href="https://www.minizinc.org/doc-2.3.0/en/fzn-spec.html#solver-specific-libraries">https://www.minizinc.org/doc-2.3.0/en/fzn-spec.html#solver-specific-libraries</a>
+  for more details.
+</li>
+<li>There is experimental support for solvers that can read AMPL NL files. See
+ <a href="https://www.minizinc.org/doc-2.3.0/en/solvers.html#non-linear-solvers">
+     https://www.minizinc.org/doc-2.3.0/en/solvers.html#non-linear-solvers</a> for details.
+</li>
+</ul>
+
+<h4>Minor changes:</h4>
+<ul>
+<li>The JSON input and output has been improved, with full support for enums and
+  optional types.
+</li>
+<li>A new compiler option -g has been added, which turns variable domain changes
+  into constraints (useful for debugging models).
+</li>
+<li>The SCIP interface has been updated, with support for indicator constraints,
+  bounds disjunctions and a native cumulative constraint.
+</li>
+<li>Error reporting has been improved, with location information available for
+  errors in par float expressions as well as include items.
+</li>
+<li>The timeout command line parameter now also applies to compilation itself
+  ({% include bug.html bug='281' %}).
+</li>
+<li>Operations on par float values are now checked for overflows.
+</li>
+<li>The arg_min/arg_max constraints have been improved, with new special versions
+  for Boolean variables, and a better standard decomposition.
+</li>
+<li>if-then-else-endif expressions with variable conditions are now compiled to a
+  predicate call (rather than handled by the compiler), which enables solver
+  libraries to implement these as native constraints or special decompositions.
+</li>
+<li>Dividing a variable by a constant is now translated as a multiplication (to
+  keep the constraints linear).
+</li>
+<li>A new piecewise_linear predicate has been added to the library to make it
+  easier to specify piecewise linear constraints.
+</li>
+<li>Print number of solutions as mzn-stat after solving ({% include bug.html bug='244' %}).
+</li>
+<li>Make search annotations work for arbitrary array index sets.
+</li>
+<li>MiniZinc IDE: The IDE will now check MiniZinc code for syntax and type errors, and the
+    editor performs simple code completion for MiniZinc keywords
+</li>
+<li>MiniZinc IDE: The find/replace dialog is now an inline widget and supports incremental search.
+</li>
+<li>MiniZinc IDE: Now supports dark mode on macOS.
+</li>
+<li>MiniZinc IDE: Add support for extra solver flags (parsed from solver configuration).
+</li>
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+</li>
+<li>Translate let expressions that contain constraints or variables as var
+  type-inst. Fixes {% include bug.html bug='263' %}.
+</li>
+<li>Fix JSON array parsing by counting elements instead of commas.
+</li>
+<li>Fix parsing of the -p flag ({% include bug.html bug='271' %}).
+</li>
+<li>Fix type checking for array declarations with single enum type inst 
+  identifier. E.g. array[$$T] of $U previously matched any multi-dimensional 
+  array, and now only matches one-dimensional arrays with any enum index set.
+</li>
+<li>Fix computation of function return type when using type inst variables ({% include bug.html bug='272' %}).
+</li>
+<li>Evaluate each variable declaration only once in a par let expression.
+</li>
+<li>Check domain constraints on variable declarations in par let expressions.
+</li>
+<li>Try .exe/.bat on windows when using (constructed) absolute paths.
+</li>
+<li>Fix array slicing to support empty slices ({% include bug.html bug='275' %}).
+</li>
+<li>Fix a bug in the parser that could cause crashes on certain syntax errors.
+</li>
+<li>Fix the type of bool2int for arrays.
+</li>
+<li>Initialise counter for introduced variable ids based on names in original 
+  model. This avoids reusing variable names if the user model contains names 
+  such as X_INTRODUCED_0_.
+</li>
+<li>Fix compilation of nested clause/exist constraints, and improve handling of 
+  negation. Tries to use primitive negation instead of creating negated 
+  constraints. Should help with half-reification by creating more positive 
+  contexts.
+</li>
+<li>Reorder fields in basic data structures to reduce padding on 64 bit platforms 
+  (improved memory footprint).
+</li>
+<li>Perform type coercion after desugaring array slicing.
+</li>
+<li>Translate arguments to bool2int, exists, forall in positive context even if 
+  those functions are redefined.
+</li>
+<li>Don't evaluate par array literals twice (inefficient, and can lead to 
+  incorrect results when using random number generators).
+</li>
+<li>Terminate child processes when minizinc process is terminated by signal.
+</li>
+<li>Fix function return value array index check for empty arrays ({% include bug.html bug='286' %}).
+</li>
+<li>Fix translation of constant false where clause in array comprehension.
+</li>
+<li>Report error when json multi-dimensional array is not rectangular.
+</li>
+<li>Check index sets of function arguments ({% include bug.html bug='273' %}).
+</li>
+<li>Ignore partiality variables from CSE table when compiling _reif and _imp 
+  predicates ({% include bug.html bug='269' %}).
+</li>
+<li>Flatten comprehensions with variable generators or where conditions before 
+  evaluating any par functions on them ({% include bug.html bug='259' %}).
+</li>
+<li>Add missing redefinitions of basic operators and search annotations for 
+  optional integers.
+</li>
+<li>Resolve filenames given on the command line relative to working directory,
+  and warn if file in working directory has same name as included file from the
+  library. Fixes {% include bug.html bug='276' %}.
+</li>
+<li>Update nosets library with a valid redefinition of set_less over booleans.
+</li>
+<li>Fix translation of showJSON ({% include bug.html bug='294' %}).
+</li>
+<li>Only apply set2array coercion for supported types, otherwise report error 
+  ({% include bug.html bug='295' %}).
+</li>
+<li>Improve special case reasoning for abs on strictly negative variables.
+</li>
+<li>Add bounds for floating point min/max result in the standard library.
+</li>
+<li>MiniZinc IDE: Ensure cursor is visible (editor scrolls to cursor position) when pressing 
+    tab or enter. Fixes {% include bug_ide.html bug='71' %}.
+</li>
+<li>MiniZinc IDE: Re-dock configuration editor when closing un-docked window.
+</li>
+<li>MiniZinc IDE: Handle quotes when parsing additional solver command line arguments.
+    Fixes {% include bug_ide.html bug='77' %}.
+</li>
+<li>MiniZinc IDE: Add workaround for the missing libnss requirements. Fixes {% include bug_ide.html bug='79' %}.
+</li>
+<li>MiniZinc IDE: Allow spaces in $DIR in MiniZincIDE.sh Fixes {% include bug_ide.html bug='81' %}.
+</li>
+</ul>
+
 <h3>Version 2.2.3</h3>
 
 <h4>Bug fixes:</h4>
