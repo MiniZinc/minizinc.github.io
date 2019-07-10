@@ -7,6 +7,48 @@ title: MiniZinc - Change Log
 
 <p>For detailed bug reports consult the issue tracker at <a href="https://github.com/MiniZinc/libminizinc/issues">https://github.com/MiniZinc/libminizinc/issues</a>.</p>
 
+<h3><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.3.1">Version 2.3.1</a></h3>
+
+<p>(released 10 July 2019)</p>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li>Report error when trying to assign an array literal to an array variable with incompatible index set.
+</li>
+<li>Fix partial evaluation of expressions, so that only par expressions are fully evaluated. Fixes {% include bug.html bug='298' %}.
+</li>
+<li>Remove carriage returns when reading piped solver output on Windows.
+</li>
+<li>Canonicalize paths of executables to avoid spurious warnings about multiple executables for the same solver.
+</li>
+<li>Add implementations for != on arrays.
+</li>
+<li>Compute quotient bounds before decomposition of int_div in linearisation library.
+</li>
+<li>Propagate domain constraints on variables that are aliased (previously domain constraints could get lost).
+</li>
+<li>Propagate domain constraints from left-hand-side to right-hand-side in variable assignments.
+</li>
+<li>piecewise-linear: reuse decomposition for X when only Y-values change.
+</li>
+<li>nosets: add set_in_imp(var set) and simplify set_in_reif, set_eq(var set, var set).
+</li>
+<li>linearisation: improved compilation of set_in constraints.
+</li>
+<li>MiniZinc IDE: Remove incorrect symbolic link and fix qt.conf for some bundled distributions.
+</li>
+<li>MiniZinc IDE: Fix check for availability of dark mode on older versions of macOS.
+</li>
+<li>MiniZinc IDE: Fix a typo in the cheat sheet.
+</li>
+<li>MiniZinc IDE: Provide more robust solution for checking the model parameters, which will get rid of some "internal error" messages.
+</li>
+<li>MiniZinc IDE: Always show directory selection dialog in the Windows installer. Addresses {% include bug_ide.html bug='89' %}.
+</li>
+<li>MiniZinc IDE: Improved the configuration files for some bundled solvers, provides nicer configuration interface.
+</li>
+</ul>
+
 <h3><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.3.0">Version 2.3.0</a></h3>
 
 <p>(released 26 June 2019)</p>
@@ -77,7 +119,6 @@ title: MiniZinc - Change Log
 
 <h4>Bug fixes:</h4>
 <ul>
-</li>
 <li>Translate let expressions that contain constraints or variables as var
   type-inst. Fixes {% include bug.html bug='263' %}.
 </li>

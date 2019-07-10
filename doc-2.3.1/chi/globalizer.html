@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.3. Globalizer &mdash; The MiniZinc Handbook 2.3.1</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/globalizer.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3.4. FindMUS" href="find_mus.html" />
+    <link rel="prev" title="3.2. The MiniZinc IDE" href="minizinc_ide.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.3.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. Globalizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-usage">3.3.1. Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#caveats">3.3.2. Caveats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-constraints">3.3.3. Supported Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-globalizer-in-the-minizinc-ide">3.3.4. Using Globalizer in the MiniZinc IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-it-works">3.3.5. How it works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performance-tips">3.3.6. Performance tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limitations-future-work">3.3.7. Limitations / Future work</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html">3.4. FindMUS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.5. Using MiniZinc in Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">3.6. Python Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_3_user_manual.html">3. User Manual</a> &raquo;</li>
+        
+      <li>3.3. Globalizer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="globalizer">
+<h1>3.3. Globalizer<a class="headerlink" href="#globalizer" title="Permalink to this headline">¶</a></h1>
+<p>Globalizer <a class="footnote-reference" href="#id4" id="id1">[1]</a> analyses a model and set of data to provide suggestions of
+global constraints that can replace or enhance a user’s model.</p>
+<div class="section" id="basic-usage">
+<h2>3.3.1. Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<p>To use Globalizer simply execute it on a model and set of data files:</p>
+<p><tt class="docutils literal">minizinc --solver org.minizinc.globalizer model.mzn data-1.dzn data-2.dzn</tt></p>
+<p>Note: Globalizer may also be executed on a non-parameterised model with
+no data files.</p>
+<p>The following demonstrates the basic usage of Globalizer.
+Below, we see a simple model for the car sequencing problem <a class="footnote-reference" href="#id5" id="id2">[2]</a>, <tt class="docutils literal">cars.mzn</tt>.</p>
+<div class="literal-block-wrapper docutils container" id="ex-glob-cars">
+<div class="code-block-caption"><span class="caption-number">Listing 3.3.1 </span><span class="caption-text">Model for the car sequencing problem (<a class="reference download internal" href="downloads/cars.mzn" download=""><tt class="xref download docutils literal">cars.mzn</tt></a>).</span><a class="headerlink" href="#ex-glob-cars" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% cars.mzn</span><span class="s"></span>
+<span class="k">include</span><span class="s"> &quot;globals.mzn&quot;</span><span class="p">;</span><span class="s"></span>
+
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n_cars</span><span class="p">;</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n_options</span><span class="p">;</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n_classes</span><span class="p">;</span><span class="s"></span>
+
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">steps</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n_cars</span><span class="p">;</span><span class="s"></span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">options</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n_options</span><span class="p">;</span><span class="s"></span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">classes</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n_classes</span><span class="p">;</span><span class="s"></span>
+
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">options</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">max_per_block</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">options</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">block_size</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">classes</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">cars_in_class</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">classes</span><span class="p">,</span><span class="s"> </span><span class="nv">options</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">1</span><span class="p">:</span><span class="s"> </span><span class="nv">need</span><span class="p">;</span><span class="s"></span>
+
+<span class="c">% The class of car being started at each step.</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">steps</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">classes</span><span class="p">:</span><span class="s"> </span><span class="nv">class</span><span class="p">;</span><span class="s"></span>
+
+<span class="c">% Which options are required by the car started at each step.</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">steps</span><span class="p">,</span><span class="s"> </span><span class="nv">options</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">1</span><span class="p">:</span><span class="s"> </span><span class="nv">used</span><span class="p">;</span><span class="s"></span>
+
+<span class="c">% Block p must be used at step s if the class of the car to be</span><span class="s"></span>
+<span class="c">% produced at step s needs it.</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="s"> </span><span class="p">(</span><span class="nv">s</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">steps</span><span class="p">,</span><span class="s"> </span><span class="nv">p</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">options</span><span class="p">)</span><span class="s"> </span><span class="p">(</span><span class="nv">used</span><span class="p">[</span><span class="nv">s</span><span class="p">,</span><span class="s"> </span><span class="nv">p</span><span class="p">]</span><span class="o">=</span><span class="nv">need</span><span class="p">[</span><span class="nv">class</span><span class="p">[</span><span class="nv">s</span><span class="p">],</span><span class="s"> </span><span class="nv">p</span><span class="p">]);</span><span class="s"></span>
+
+<span class="c">% For each option p with block size b and maximum limit m, no consecutive</span><span class="s"></span>
+<span class="c">% sequence of b cars contains more than m that require option p.</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"></span>
+<span class="s">    </span><span class="k">forall</span><span class="s"> </span><span class="p">(</span><span class="nv">p</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">options</span><span class="p">,</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="s">..</span><span class="p">(</span><span class="nv">n_cars</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="p">(</span><span class="nv">block_size</span><span class="p">[</span><span class="nv">p</span><span class="p">]</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="m">1</span><span class="p">)))</span><span class="s"> </span><span class="p">(</span><span class="s"></span>
+<span class="s">        </span><span class="nb">sum</span><span class="s"> </span><span class="p">(</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">0</span><span class="s">..</span><span class="p">(</span><span class="nv">block_size</span><span class="p">[</span><span class="nv">p</span><span class="p">]</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="m">1</span><span class="p">))</span><span class="s"> </span><span class="p">(</span><span class="nv">used</span><span class="p">[</span><span class="nv">i</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">j</span><span class="p">,</span><span class="s"> </span><span class="nv">p</span><span class="p">])</span><span class="s"></span>
+<span class="s">            </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">max_per_block</span><span class="p">[</span><span class="nv">p</span><span class="p">]);</span><span class="s"></span>
+
+<span class="c">% Require that the right number of cars in each class are produced.</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="s"> </span><span class="p">(</span><span class="nv">c</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">classes</span><span class="p">)</span><span class="s"> </span><span class="p">(</span><span class="bp">count</span><span class="p">(</span><span class="nv">class</span><span class="p">,</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span><span class="s"> </span><span class="nv">cars_in_class</span><span class="p">[</span><span class="nv">c</span><span class="p">]));</span><span class="s"></span>
+
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span><span class="s"> </span><span class="c">% Find any solution.</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<p>And here we have a data file <tt class="docutils literal">cars_data.dzn</tt>.</p>
+<div class="literal-block-wrapper docutils container" id="ex-glob-cars-data">
+<div class="code-block-caption"><span class="caption-number">Listing 3.3.2 </span><span class="caption-text">Data for the car sequencing problem (<a class="reference download internal" href="downloads/cars_data.dzn" download=""><tt class="xref download docutils literal">cars_data.dzn</tt></a>).</span><a class="headerlink" href="#ex-glob-cars-data" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% cars_data.dzn</span><span class="s"></span>
+<span class="nv">n_cars</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">10</span><span class="p">;</span><span class="s"></span>
+<span class="nv">n_options</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">5</span><span class="p">;</span><span class="s"></span>
+<span class="nv">n_classes</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">6</span><span class="p">;</span><span class="s"></span>
+<span class="nv">max_per_block</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">];</span><span class="s"></span>
+<span class="nv">block_size</span><span class="s"> </span><span class="o">=</span><span class="s">    </span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">3</span><span class="p">,</span><span class="s"> </span><span class="m">3</span><span class="p">,</span><span class="s"> </span><span class="m">5</span><span class="p">,</span><span class="s"> </span><span class="m">5</span><span class="p">];</span><span class="s"></span>
+<span class="nv">cars_in_class</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">];</span><span class="s"></span>
+
+<span class="nv">need</span><span class="s"> </span><span class="o">=</span><span class="s">  </span><span class="nb">array2d</span><span class="p">(</span><span class="m">1</span><span class="o">..</span><span class="m">6</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">5</span><span class="p">,</span><span class="s"> </span><span class="p">[</span><span class="s"></span>
+<span class="s">    </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"></span>
+<span class="s">    </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"></span>
+<span class="s">    </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"></span>
+<span class="s">    </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"></span>
+<span class="s">    </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"></span>
+<span class="s">    </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="s"></span>
+<span class="p">]);</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<p>Executing Globalizer on this model and data file we get the following output:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="c">% minizinc --solver globalizer cars.mzn cars_data.dzn</span><span class="s"></span>
+<span class="nv">cars</span><span class="s">.</span><span class="nv">mzn</span><span class="gr">|</span><span class="m">33|12</span><span class="gr">|</span><span class="m">33|69</span><span class="s"> </span><span class="p">[</span><span class="s">  </span><span class="p">]</span><span class="s"> </span><span class="nf">gcc</span><span class="p">(</span><span class="nv">class</span><span class="p">,</span><span class="nv">cars_in_class</span><span class="p">)</span><span class="s"></span>
+<span class="nv">cars</span><span class="s">.</span><span class="nv">mzn</span><span class="gr">|</span><span class="m">33|35</span><span class="gr">|</span><span class="m">33|68</span><span class="s"> </span><span class="p">[</span><span class="s">  </span><span class="p">]</span><span class="s"> </span><span class="bp">count</span><span class="p">(</span><span class="nv">class</span><span class="p">,</span><span class="nv">c</span><span class="p">,</span><span class="nv">cars_in_class</span><span class="sr">[c]</span><span class="p">)</span><span class="s"></span>
+<span class="nv">cars</span><span class="s">.</span><span class="nv">mzn</span><span class="gr">|</span><span class="m">28|27</span><span class="gr">|</span><span class="m">28|65</span><span class="p">;</span><span class="nv">cars</span><span class="s">.</span><span class="nv">mzn</span><span class="gr">|</span><span class="m">29|9</span><span class="gr">|</span><span class="m">30|32</span><span class="s"> </span><span class="p">[</span><span class="s">  </span><span class="p">]</span><span class="s"> </span><span class="bp">sliding_sum</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nv">max_per_block</span><span class="sr">[p]</span><span class="p">,</span><span class="nv">block_size</span><span class="sr">[p]</span><span class="p">,</span><span class="nv">used</span><span class="sr">[_, p]</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Each line of output is comprised of three elements.</p>
+<ol class="arabic simple">
+<li>Expression locations (separated by semicolon ‘;’) that the constraint might be able to replace.</li>
+<li>(Between square brackets ‘[‘ ‘]’) the context under which the constraint might replace the expressions of 1.</li>
+<li>The replacement constraint.</li>
+</ol>
+<p>From the example above we see that a <tt class="docutils literal">gcc</tt> constraint and a <tt class="docutils literal">sliding_sum</tt>
+constraint can replace some constraints in the model. Taking the <tt class="docutils literal">sliding_sum</tt>
+case, we see that it replaces the expression <tt class="docutils literal">cars.mzn|28|27|28|65</tt> which
+corresponds to <tt class="docutils literal">i in 1..(n_cars - (block_size[p] - 1))</tt> and <tt class="docutils literal">cars.mzn|29|27|28|65</tt>
+which corresponds to the <tt class="docutils literal"><=</tt> expression including the <tt class="docutils literal">sum</tt>.
+The original constraint can be replaced with:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="s"> </span><span class="p">(</span><span class="nv">p</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">options</span><span class="p">)</span><span class="s"> </span><span class="p">(</span><span class="s"></span>
+<span class="s">    </span><span class="bp">sliding_sum</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="nv">max_per_block</span><span class="sr">[p]</span><span class="p">,</span><span class="s"> </span><span class="nv">block_size</span><span class="sr">[p]</span><span class="p">,</span><span class="s"> </span><span class="nv">used</span><span class="sr">[..,p]</span><span class="p">));</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="caveats">
+<h2>3.3.2. Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">¶</a></h2>
+<p><strong>MiniZinc syntax support.</strong>
+Globalizer was implemented with support for a subset of an early version
+of the MiniZinc 2.0 language. As a result there are some limitations.
+First, Globalizer does not support <tt class="docutils literal">set</tt> variables or <tt class="docutils literal">enum</tt> types.
+The array slicing syntax supported in MiniZinc was not decided upon when
+Globalizer was implemented so it uses an incompatible syntax. Globalizer
+uses <tt class="docutils literal">_</tt> instead of <tt class="docutils literal">..</tt>. This can be seen above in the translation
+of <tt class="docutils literal">used[_,p]</tt> to <tt class="docutils literal">used[..,p]</tt>.</p>
+<p><strong>New constraint.</strong>
+A special two argument version of the <tt class="docutils literal">global_cardinality</tt> constraint
+called <tt class="docutils literal">gcc</tt> has been added which is not in the standard library. It is
+defined as follows:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">gcc</span><span class="p">(</span><span class="kt">array</span><span class="sr">[int]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="sr">[int]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">counts</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"></span>
+<span class="s">  </span><span class="bp">global_cardinality</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                     </span><span class="p">[</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">counts</span><span class="p">)</span><span class="s"> </span><span class="p">],</span><span class="s"></span>
+<span class="s">                     </span><span class="nb">array1d</span><span class="p">(</span><span class="nv">counts</span><span class="p">));</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="supported-constraints">
+<h2>3.3.3. Supported Constraints<a class="headerlink" href="#supported-constraints" title="Permalink to this headline">¶</a></h2>
+<p>Globalizer currently supports detection of the following constraints:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="bp">alldifferent</span><span class="s">               </span><span class="bp">alldifferent_except_0</span><span class="s">      </span><span class="nv">all_equal_int</span><span class="s"></span>
+<span class="bp">bin_packing</span><span class="s">                </span><span class="bp">bin_packing_capa</span><span class="s">           </span><span class="bp">bin_packing_load</span><span class="s"></span>
+<span class="nv">binaries_represent_int</span><span class="s">     </span><span class="nv">binaries_represent_int_3A</span><span class="s">  </span><span class="nv">binaries_represent_int_3B</span><span class="s"></span>
+<span class="nv">binaries_represent_int_3C</span><span class="s">  </span><span class="nv">channel</span><span class="s">                    </span><span class="nv">channelACB</span><span class="s"></span>
+<span class="bp">count_geq</span><span class="s">                  </span><span class="nv">cumulative_assert</span><span class="s">          </span><span class="bp">decreasing</span><span class="s"></span>
+<span class="nv">gcc</span><span class="s">                        </span><span class="bp">global_cardinality</span><span class="s">         </span><span class="bp">inverse</span><span class="s"></span>
+<span class="nv">lex_lesseq_int_checking</span><span class="s">    </span><span class="nv">lex2_checking</span><span class="s">              </span><span class="nv">maximum_int_checking</span><span class="s"></span>
+<span class="nv">minimum_int_checking</span><span class="s">       </span><span class="bp">member</span><span class="s">                     </span><span class="bp">nvalue</span><span class="s"></span>
+<span class="nv">strict_lex2_checking</span><span class="s">       </span><span class="nv">subcircuit_checking</span><span class="s">        </span><span class="l">true</span><span class="s"></span>
+<span class="nv">atleast</span><span class="s">                    </span><span class="nv">atmost</span><span class="s">                     </span><span class="nv">bin_packing_load_ub</span><span class="s"></span>
+<span class="nv">circuit_checking</span><span class="s">           </span><span class="bp">count</span><span class="s">                      </span><span class="bp">diffn</span><span class="s"></span>
+<span class="bp">distribute</span><span class="s">                 </span><span class="nv">element</span><span class="s">                    </span><span class="bp">increasing</span><span class="s"></span>
+<span class="nv">lex_less_int_checking</span><span class="s">      </span><span class="bp">sliding_sum</span><span class="s">                </span><span class="nv">sort_checking</span><span class="s"></span>
+<span class="nv">unary</span><span class="s">                      </span><span class="nv">value_precede_checking</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-globalizer-in-the-minizinc-ide">
+<h2>3.3.4. Using Globalizer in the MiniZinc IDE<a class="headerlink" href="#using-globalizer-in-the-minizinc-ide" title="Permalink to this headline">¶</a></h2>
+<p>To use the Globalizer in the MiniZinc IDE, open a model, and several
+data files.
+Select <tt class="docutils literal">Globalizer</tt> from the solver configuration dropdown menu.
+Click the solve button (play symbol).
+If you did not select any data file, a dialog should pop up that allows
+you to select data files.
+To select multiple data files hold the <tt class="docutils literal">Ctrl</tt> or <tt class="docutils literal">Cmd</tt> key while
+clicking on each data file.</p>
+<img alt="images/ide_select_data.png" src="images/ide_select_data.png" />
+<p>Click run. While processing your model and data files the MiniZinc IDE
+will display a progress bar on the toolbar.</p>
+<img alt="images/ide_globalized.png" src="images/ide_globalized.png" />
+<p>Any discovered global constraints will be listed in the output pane
+of the IDE. Clicking on one of these constraints will highlight in the
+model the expressions that might be replaceable or strengthened by the
+constraint.</p>
+</div>
+<div class="section" id="how-it-works">
+<h2>3.3.5. How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>A summary of the algorithm is presented here. For a more detailed
+exploration of the approach see the Globalizing Constraint Models paper <a class="footnote-reference" href="#id4" id="id3">[1]</a>.</p>
+<ul>
+<li><p class="first"><strong>Normalize.</strong>
+In this step the model is transformed to make analysis easier.</p>
+<ul class="simple">
+<li>Conjunctions of constraints are broken into individual constraints.
+For example: <tt class="docutils literal">C1 /\ C2;</tt> becomes <tt class="docutils literal">C1; C2</tt>;</li>
+<li>Conjunctions under <tt class="docutils literal">forall</tt> constraints are broken into individual
+<tt class="docutils literal">forall</tt> constraints. For example: <tt class="docutils literal">forall(...) (C1 /\ C2);</tt>
+becomes <tt class="docutils literal">forall(...) (C1); forall(...) (C2)</tt></li>
+</ul>
+</li>
+<li><p class="first"><strong>Generate submodels.</strong>
+In this step all subsets containing 1 or 2 constraints (this can be
+configured using <tt class="docutils literal">--numConstraints</tt> argument) are enumerated.</p>
+</li>
+<li><p class="first"><strong>Instantiate and unroll into groups.</strong>
+Each submodel is instantiated with the provided data files. These
+instantiated submodels are further used to produce more submodels
+by unrolling loops. For example, a constraint such as
+<tt class="docutils literal">forall(i in 1..n) (c(i));</tt> will be used to produce the constraints:
+<tt class="docutils literal">c(1)</tt> and <tt class="docutils literal">c(n)</tt> for each instantiation of n in the data files.
+All instantiated submodels are then grouped together.</p>
+</li>
+<li><p class="first"><strong>Process groups.</strong>
+For each submodel in a group a set of 30 random solutions are found.
+(configurable using the <tt class="docutils literal">--randomSolutions</tt> argument).
+A template model with all of these random solutions is created.</p>
+<p>The different variables (including arrays and array accesses) and
+parameters used by a submodel are collected into a set of potential
+arguments along with the constant 0 and a special blank symbol
+representing an argument that can be inferred based on others used.</p>
+<p>The list of constraints above is filtered based on the arguments
+available.  For example, the <tt class="docutils literal">alldifferent</tt> constraint will
+be removed from the list of candidates if the submodel does not
+reference any arrays of variables.</p>
+<p>Finally the set of constraints are filtered by adding them to the
+template and solving it. If the template is satisfiable, the
+constraint accepts all of the random solutions.</p>
+<p>30 sample solutions for each candidate constraint are generated.
+(configurable using the <tt class="docutils literal">--sampleSolutions</tt> argument).
+The candidate is then ranked based on how many of these solutions
+are also solutions to the original submodel. If its score is less
+than some threshold the candidate is removed from the set of
+candidates for this group and will not be tested on later
+submodels.</p>
+</li>
+<li><p class="first"><strong>Report.</strong>
+The remaining candidates are presented to the user.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="performance-tips">
+<h2>3.3.6. Performance tips<a class="headerlink" href="#performance-tips" title="Permalink to this headline">¶</a></h2>
+<p>Globalizing constraint models can be a time consuming task. If</p>
+<ul class="simple">
+<li><strong>Use small or relatively easy instances.</strong>
+Globalizer solves many subproblems while processing your model and data files. Using easier instances can speed up the process considerably.</li>
+<li><strong>Disable the initial pass.</strong>
+As discussed above, Globalizer performs two passes. The first pass tries to detect alternate viewpoints that can be added to your model. If you are confident that this will not be useful we recommend disabling this first pass using the <tt class="docutils literal">--no-initial-pass</tt> argument.</li>
+<li><strong>Narrow search using filters.</strong>
+Globalizer attempts to match a large selection of global constraints to subproblems in your model.
+If you wish to check if only a few specific constraints are present you can focus Globalizer using the <tt class="docutils literal">--constraintFilter</tt> or <tt class="docutils literal">-f</tt> arguments followed by a comma separated list of strings.
+Only global constraints where one of the strings is a substring will be included in the search.</li>
+<li><strong>Disable implies check.</strong>
+The implication check can also be disabled to improve performance. This results in less accurate results but may still help a user to understand the structure of their model.</li>
+<li><strong>Free-search.</strong>
+To improve accuracy and to avoid false positives, subproblems solved by Globalizer are solved using a random heuristic and restarts. If the subproblems are particularly difficult to solve a random heuristic may be prohibitive and the solver may not be able to produce enough samples within the solving timelimit.
+In these circumstances a user can either increase the solver timeout using the <tt class="docutils literal">-t</tt> argument followed by the number of milliseconds a solver should be given to find samples.
+Alternatively the <tt class="docutils literal">--free-search</tt> argument can be used to force Globalizer to use the solver’s free search to find samples.
+This has the downside of reducing the diversity of samples but allows enough samples to be found to allow suggested globals to be found.</li>
+</ul>
+</div>
+<div class="section" id="limitations-future-work">
+<h2>3.3.7. Limitations / Future work<a class="headerlink" href="#limitations-future-work" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Globalizer supports only a subset of the MiniZinc language and as such
+cannot be executed on all MiniZinc models.</li>
+<li>There are some relatively cheap syntactic approaches that should
+be performed before Globalization that currently is not implemented.
+For example, there are several common formulations of an <tt class="docutils literal">alldifferent</tt>
+constraint that can be detected syntactically.  This would be much
+cheaper than using Globalizer.</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Leo, K. et al., “Globalizing Constraint Models”, 2013.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://www.csplib.org/Problems/prob001/">http://www.csplib.org/Problems/prob001/</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="find_mus.html" class="btn btn-neutral float-right" title="3.4. FindMUS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="minizinc_ide.html" class="btn btn-neutral" title="3.2. The MiniZinc IDE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.3.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
