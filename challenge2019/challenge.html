@@ -17,7 +17,7 @@ and solving technologies.
 Entrants to the challenge provide a FlatZinc or MiniZinc solver and global constraint
 definitions specialized for their solver.
 Each solver is run on 100 MiniZinc model instances.
-For FlatZinc solvers, we run the translator <tt>mzn2fzn</tt> on the MiniZinc model and instance
+For FlatZinc solvers, we run the <tt>minizinc</tt> compiler on the MiniZinc model and instance
 using the provided global constraint definitions to create a FlatZinc file.
 The FlatZinc file is input to the provided FlatZinc solver.
 For MiniZinc solvers, the MiniZinc model and instance are input to the provided solver.
@@ -26,27 +26,19 @@ of solutions (for optimization problems).
 
 <h3>Announcements</h3>
 
-<p>
 <ul>
-<!--
-<li><b>2019-09-20</b> Amendments of the results had to been made to an issue with the solution checker. More details are available <a href="results2019.html">here</a>. Thanks to Gustav Björdal and Michael Marte for reporting.</li>
-<li><b>2019-08-28</b> Announcement of the results available <a href="results2019.html">here</a>. </li>
-<li><b>2019-07-30</b> Submission deadline was extended. </li>
-<li><b>2019-06-27</b> Official Call for Participation for the MiniZinc Challenge has been made. </li>
--->
-<li><b>2019-03-07</b> Initial <a href="call_for_problems.html">Call for MiniZinc Problems</a> has been made. </li>
+<li><b>2019-07-15</b> Official Call for Participation for the MiniZinc Challenge. </li>
+<li><b>2019-03-07</b> Initial <a href="call_for_problems.html">Call for MiniZinc Problems</a>.</li>
 </ul>
 
 <h3>Dates</h3>
 <ul>
-<li>Registration opens: <strong>TBA</strong>.
-<li>Problem submission deadline: Sun, 26 May 2019.
-<!--
-<li>Initial submission round begins: <strong>Sun, 15 July 2019</strong>.
-<li>Initial submission round ends: <strong>Sat, 21 July 2019</strong>.
--->
-<li>Final submissions: <strong>TBA</strong>.
-<li>Announcement of results at <a href="http://cp2019.a4cp.org"><abbr>CP2019</abbr></a>: 
+<li>Registration opens: <strong>Now</strong>.</li>
+<li>Problem submission deadline: Sun, 26 May 2019.</li>
+<li>Initial submission round begins: <strong>Mon, 15 July 2019</strong>.</li>
+<li>Initial submission round ends: <strong>Sat, 27 July 2019</strong>.</li>
+<li>Final submissions: <strong>Sun, 8 September 2019</strong>.
+<li>Announcement of results at <a href="https://cp2019.a4cp.org"><abbr>CP2019</abbr></a>: 
 <strong>30 September - 4 October</strong> (Stamford, CT, USA).
 </ul>
 
@@ -54,7 +46,7 @@ of solutions (for optimization problems).
 
 <p>
 Entrants must register their intention to enter the contest <em>before</em>
-the first submission round.<br>
+the final submission round.<br>
 The first submission round is an opportunity for us to provide feedback
 concerning your entry; it does not count towards the final result.<br>
 Feel free to register and later withdraw.
@@ -80,17 +72,14 @@ we can contact you and the name of your solver.
 
 <h3>Submission</h3>
 
-<strong>TBA</strong>
-<!--
 <p>
 All entrants need to extend the MiniZinc docker image (available at
 <a href="https://hub.docker.com/r/minizinc/mznc2019/">https://hub.docker.com/r/minizinc/mznc2019/</a>, tag 1.0) 
-with their solver. A detail information how to do and about docker
+with their solver. Detailed information how to prepare the docker image
 are available <a href="docker.html">here</a>. The entrant will
-upload the extended image to Docker Hub and sent the location of
+upload the extended image to Docker Hub and send the location of
 the extenstion to the MiniZinc organisers. Please read
 <a href="rules2019.html">the rules</a> before submission.
--->
 
 <h3>Problem Submission</h3>
 
@@ -130,7 +119,7 @@ vetting the results, and ruling on any questions that arise during the competiti
 <h3>Feedback</h3>
 
 <p>
-This is the tenth time this challenge is run, and there are many 
+This is the 11th time this challenge is run, and there are many 
 possibilities for comparing CP solvers. The rules try to make a sensible
 set of choices for the comparison. 
 We would welcome any comments or suggestions regarding the running of this challenge.
@@ -157,7 +146,7 @@ a list of resources related to MiniZinc and FlatZinc.
 </p>
 
 <p>
-The <a href="../doc-2.2.3/en/index.html">MiniZinc 2.2.3 Distribution</a>
+The <a href="../doc-2.3.1/en/index.html">MiniZinc 2.3.1 Distribution</a>
 includes a MiniZinc-to-FlatZinc converter and a large suite of MiniZinc examples and benchmarks.
 </p>
 

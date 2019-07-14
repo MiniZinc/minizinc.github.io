@@ -3,19 +3,19 @@ layout: default
 title: MiniZinc - Challenge
 ---
 
-<h2>MiniZinc Challenge 2019 -- Rules</h2>
+<h2>MiniZinc Challenge 2019 - Rules</h2>
 
 <p>
 These are the official rules for the MiniZinc Challenge 2019.
-Version 2.2.0.
+Version 2.3.1.
 <br>
-These rules were last updated on 7 March 2019.
+These rules were last updated on 15 July 2019.
 </p>
 
 <h3>Entrants</h3>
 
 <p>
-The MiniZinc Challenge 2019 will test solvers on problems written in MiniZinc 2.2.3.<br>
+The MiniZinc Challenge 2019 will test solvers on problems written in MiniZinc 2.3.1.<br>
 Let <i>name</i> be the name of the solver system in what follows.
 </p>
 
@@ -23,9 +23,9 @@ Let <i>name</i> be the name of the solver system in what follows.
 An entrant in the challenge is a constraint solver that is installed in a Docker image
 that is an extension of the MiniZinc Challenge 2019 image provided by the organizers.
 <br>
-Constraint solvers that have several variants, for example that can alternatively
-use copying or trailing, may submit one entry per variant although the organizers
-reserve the right to reject such variations if they not sufficiently interesting,
+Constraint solvers that have several variants (for example that can alternatively
+use copying or trailing, or learning and non-learning solvers), may submit one entry per variant although the organizers
+reserve the right to reject such variations if they are not sufficiently interesting,
 (e.g. multiple copies of the same solver with differing parameters).
 </p>
 
@@ -56,22 +56,22 @@ A filled in form named <a href="Consent_3rdPartyUsage.txt">Consent_3rdPartyUsage
 <li>
 <p>
 A description how to retrieve the entry's Docker image with the installed solver. 
-More information about Docker images is below.
+More information about Docker images can be found below.
 </ol>
 
 <p>
-The gzipped tar-ball must be made accessible for download for the organizer and the submitter
-must send an email to the organizer describing how to download the Docker image.<br>
+The gzipped tar-ball must be made accessible for download for the organisers and the submitter
+must send an email to the organisers describing how to download the Docker image.<br>
 
 <p>
-The organizers will make reasonable efforts to run each system, including
+The organisers will make reasonable efforts to run each system, including
 communication with the submitters of the system in case of difficulties.
-Nevertheless, the organizers reserve the right to reject an entrant if its
+Nevertheless, the organisers reserve the right to reject an entrant if its
 process proves overly difficult.
 </p>
 
 <p>
-The results will be announced at <a href="http://cp2019.a4cp.org">CP2019</a>. Entrants are encouraged to
+The results will be announced at <a href="https://cp2019.a4cp.org">CP2019</a>. Entrants are encouraged to
 physically attend CP2019, but are not required to in order to participate or
 win. 
 </p>
@@ -120,10 +120,10 @@ the entry is to be entered in.
 
 <h3>Docker Images</h3>
 
-<strong>TBA</strong>
-<!---
+<p>
 More details about Docker images and how to create a Docker image with your solver is available
 <a href="docker.html">here</a>.
+</p>
 <p>
 The provided Docker image with the installed solver can be run by the provided scripts inside the image as FlatZinc or MiniZinc solver, i.e.,
 <ol>
@@ -131,24 +131,22 @@ The provided Docker image with the installed solver can be run by the provided s
     <ul>
     <li><b>FlatZinc Solver</b><br>
     fzn-exec - an executable file in the image folder /entry_data that 
-    invokes a FlatZinc solver handling FlatZinc version 2.1.7. If your FlatZinc 
-    solver <strong>only</strong> handles XML-FlatZinc version 2.1.7, please contact 
-    the organizers.<br>
+    invokes a FlatZinc solver handling FlatZinc version 2.3.1. <br>
     This executable will be invoked from the command line/scripts as follows:
     <p style="margin-left:2%; margin-top: 1em">
     <b>fzn-exec</b> [&lt;options&gt;] file.fzn
     </p>
-    The argument <i>file.fzn</i> is the name of a FlatZinc 2.1.7 model instance to evaluate.
+    The argument <i>file.fzn</i> is the name of a FlatZinc 2.3.1 model instance to evaluate.
     </li>
     <li><b> MiniZinc Solver</b><br>
     An executable file needs to provided in the image folder /entry_data that
-    invokes a MiniZinc solver handling MiniZinc version 2.1.7. This executable will be 
+    invokes a MiniZinc solver handling MiniZinc version 2.3.1. This executable will be 
     invoked from the command line and/or scripts located at the image folder /minizinc
     as follows:
     <p style="margin-left:2%; margin-top: 1em">
     <b>exec</b> [&lt;options&gt;] -G &lt;mznlibdir&gt; file.mzn [&lt;data.dzn&gt;]
     </p>
-    The arguments <i>file.mzn</i> and <i>data.dzn</i> are names of a MiniZinc 2.1.7 model 
+    The arguments <i>file.mzn</i> and <i>data.dzn</i> are names of a MiniZinc 2.3.1 model 
     and data file, respectively. The argument <i>-G &lt;mznlibdir&gt;</i> points to the location
     of your solver's MiniZinc library directory containing the redefinition or global 
     constraints files.
@@ -190,17 +188,16 @@ redefinitions of FlatZinc built-ins required by the solver.
 </li> 
 </ol>
 </li>
--->
 
 <h3>Problem Format</h3>
 
 <p>
-The problem format will be <a href="../doc-2.2.3/en/MiniZinc Handbook.pdf">MiniZinc 2.2.3</a>.<br>
+The problem format will be <a href="../doc-2.3.1/en/MiniZinc Handbook.pdf">MiniZinc 2.3.1</a>.<br>
 There will be some restrictions on the problems tested in MiniZinc challenge.
 </p>
 
 <ol>
-<li>No floats may be involved in any model. This is to avoid accuracy
+<li>No float variables may be involved in any model. This is to avoid accuracy
 differences and simplify entry requirements. 
 
 <li>No variable sets of integers may be used in any model. This is to
@@ -327,8 +324,6 @@ that entries flush the output stream after printing each approximate solution.
 
 <h3><a name="execenv">Execution Environment</a></h3>
 
-<strong>TBA</strong>
-<!--
 <p>
 During the MiniZinc Challenge 2019 all instances of Docker images 
 will run on Amazon EC2 M5 Instance from the Amazon Web Services with 
@@ -345,7 +340,6 @@ the following specification:
 Except in the Parallel search, Open class, and local search solver using multiply cores, 
 only a single core of one processor will be used for each entrant.
 </p>
--->
 
 <h3>Benchmark Selection</h3>
 
@@ -370,8 +364,8 @@ applies.
 <p>
 In order to collect good benchmarks each entrant is 
 <font color="red">strongly encouraged</font>  to submit
-one or two MiniZinc 2.2.3 models, making use of only the global constraints
-included in the MiniZinc 2.2.3 library, as well as some (preferably 20)
+one or two MiniZinc 2.3.1 models, making use of only the global constraints
+included in the MiniZinc 2.3.1 library, as well as some (preferably 20)
 instance files for each model.
 The instances should range from easy (about a minute)
 to hard (about 15 minutes) if possible.
@@ -382,7 +376,6 @@ Note that the model must conform to the problem format restrictions above.
 <p>
 Submitted benchmarks must be placed in the public domain.
 
-<!--
 <h3>Initial Submission Round</h3> 
 <p>
 There will be an initial submission round, which will provide the
@@ -391,13 +384,12 @@ compatibility with the competition hardware, compliance with the
 FlatZinc specification and any other matters that may arise.
 Submission in the initial round is not required in order to qualify
 for the final round, but it is <strong>strongly</strong> encouraged.
--->
 
 <h3>The Challenge</h3>
 <p>
 The challenge will require solvers to process 100 MiniZinc models
 with a run-time limit of 20 minutes (process time) per problem.<br>
-<strong>NOTE</strong> that the MiniZinc to FlatZinc/XML-FlatZinc time
+<strong>NOTE</strong> that the MiniZinc to FlatZinc time
 will be included in this time.
 </p>
 
