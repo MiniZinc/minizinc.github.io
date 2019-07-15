@@ -1,0 +1,21 @@
+---
+authors: "P.J. Stuckey and G. Tack"
+authors_long: "Peter J. Stuckey and Guido Tack"
+title: "Compiling Conditional Constraints"
+venue: "In Simon de Givry and Thomas Schiex, editors, Proceedings of the 25th International Conference on Principles and Practice of Constraint Programming. Springer. To appear."
+category: language
+year: 2019
+pdflink: /pub/mzn_conditionals.pdf
+---
+Conditionals are a core concept in all programming languages.
+They are also a natural and powerful mechanism for expressing complex
+constraints in constraint modelling languages.
+The behaviour of conditionals is complicated by undefinedness.
+In this paper we show how to most effectively translate conditional constraints
+for underlying solvers. We show that the simple translation into implications can be improved,
+at least in terms of reasoning strength, for both constraint programming
+and mixed integer programming solvers.  Unit testing shows that
+the new translations are more efficient, but the benefits are
+not so clear on full models
+where the interaction with other features such as learning is more
+complicated. 

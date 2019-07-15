@@ -7,12 +7,15 @@
         <span class="pubYear">{{ p.year }}.</span>
         {% assign strippedContent = p.content | strip | strip_newlines %}
         {% if strippedContent != "" %}
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseMain{{ forloop.index }}">more...</a>
-            <div id="collapseMain{{ forloop.index }}" class="collapse">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ p.category }}{{ forloop.index }}">more...</a>
+            <div id="collapse{{ p.category }}{{ forloop.index }}" class="collapse">
                 <div class="well well-sm noMargin">
                     {{ p.content }}
                 </div>
             </div>
+        {% endif %}
+        {% if p.pdflink %}
+        <br /><a href="{{ p.pdflink }}">PDF</a>
         {% endif %}
     </li>
     {% endfor %}
