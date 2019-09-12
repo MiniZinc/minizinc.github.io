@@ -7,6 +7,52 @@ title: MiniZinc - Change Log
 
 <p>For detailed bug reports consult the issue tracker at <a href="https://github.com/MiniZinc/libminizinc/issues">https://github.com/MiniZinc/libminizinc/issues</a>.</p>
 
+<h3><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.3.2">Version 2.3.2</a></h3>
+
+<p>(released 12 September 2019)</p>
+
+<h4>Changes:</h4>
+<ul>
+<li> Add warm starts and subtour cuts to CBC interface.</li>
+<li> Add documentation and assertion requiring that mdds are deterministic,
+  and add nondeterministic variant of mdd constraint.</li>
+<li> Add -s to the standard flags supported by MIP interfaces.</li>
+<li> Add flag --output-output-item to include user specified output item in
+  the formatted JSON and DZN output.</li>
+</ul>
+
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fix a bug that could leave unused variables in the resulting FlatZinc.
+</li>
+<li> bounded_dpath should rewrite to fzn_bounded_dpath. Fixes {% include bug.html bug='300' %}.
+</li>
+<li> Fix definition of sum_set.
+</li>
+<li> Check if overloaded function required for output. Fixes {% include bug.html bug='303' %}.
+</li>
+<li> Move regular constraint with set argument to its own file.
+</li>
+<li> Flatten assignment generators if necessary.
+</li>
+<li> Simplify fzn_value_precede_chain_int and avoid use of element predicate.
+  Fixes {% include bug.html bug='307' %}.
+</li>
+<li> Only initialise par opt variables as absent if they are not arrays.
+</li>
+<li> Fix the description of the neural_net predicate.
+</li>
+<li> Fix regular constraint with regular expressions (stopped working in 2.3.0).
+</li>
+<li> Fix the model interface output to include the same variables as the generated
+  output statement.
+</li>
+<li> Fix CSE for removed variable declarations. Could lead to reified constraints
+  not being compiled correctly when the control variable got fixed to true.
+</li>
+</ul>
+
 <h3><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.3.1">Version 2.3.1</a></h3>
 
 <p>(released 10 July 2019)</p>
