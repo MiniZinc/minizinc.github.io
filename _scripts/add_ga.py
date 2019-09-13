@@ -9,8 +9,8 @@ for lang in ["en","chi"]:
             cur = []
             with open("doc-"+version+"/"+lang+"/"+htmlfile,"r") as f:
                 for l in f:
-                    if "<head>" in l and "<-- analytics -->" not in l:
-                        cur.append(l.strip()+"<-- analytics -->\n")
+                    if "<head>" in l and "<!-- analytics -->" not in l:
+                        cur.append(l.strip()+"<!-- analytics -->\n")
                         cur.append("""
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
