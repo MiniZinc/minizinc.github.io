@@ -1,0 +1,5 @@
+MODEL=hrc.mzn
+DATA=exp1-1-5110.dzn
+METHOD=min
+TAGS=challenge2019,hrc
+TIMELIMIT=1200

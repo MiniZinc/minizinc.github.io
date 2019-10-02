@@ -1,0 +1,5 @@
+MODEL=zephyrus.mzn
+DATA=14__6__6__3.dzn
+METHOD=min
+TAGS=challenge2019,zephyrus
+TIMELIMIT=1200

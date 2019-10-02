@@ -1,0 +1,5 @@
+MODEL=steelmillslab.mzn
+DATA=bench_19_6.dzn
+METHOD=min
+TAGS=challenge2019,steelmillslab
+TIMELIMIT=1200

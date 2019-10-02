@@ -1,0 +1,5 @@
+MODEL=mknapsack_global.mzn
+DATA=mknap2-10.dzn
+METHOD=max
+TAGS=challenge2019,multi-knapsack
+TIMELIMIT=1200

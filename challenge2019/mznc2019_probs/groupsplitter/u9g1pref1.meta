@@ -1,0 +1,5 @@
+MODEL=group.mzn
+DATA=u9g1pref1.dzn
+METHOD=max
+TAGS=challenge2019,groupsplitter
+TIMELIMIT=1200
