@@ -1287,7 +1287,7 @@ output [
     "y = array1d(0..\(MAXP), \(y));\n",
     "r = array1d(-1..\(MAXT), \(r));\n",
     "objective = \(objective);\n"
-]
+];
 %++
 %    ["\"cost\": "]   ++ [show(objective)] ++ ["\n"] ++
 %    ["\"cycles\": "]      ++ [show(c)]   ++ ["\n"] ++
