@@ -1,0 +1,102 @@
+---
+layout: minizinc
+title: MiniZinc - License
+---
+
+{% assign ideversion = site.data.version["ideversion"] %}
+{% assign mznversion = site.data.version["mznversion"] %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                MiniZinc License Information
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>MiniZinc is Free and Open Source Software</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <p>
+                The core tools of MiniZinc, i.e., the MiniZinc compiler and the MiniZinc IDE,                
+                are distributed under the <a href="LICENSE.txt">Mozilla Public License version 2.0</a>.
+                This license is classified as <a href="http://www.opensource.org/licenses/MPL-2.0">open
+                source</a> and <a href="http://www.gnu.org/licenses/license-list.html#MPL-2.0">free
+                software</a>.
+            </p>
+            <p>
+                The Mozilla project maintains a <a href="https://www.mozilla.org/en-US/MPL/2.0/FAQ/">useful
+                FAQ about the Mozilla license</a>. In particular, the FAQ explains your obligations
+                if you want to use the MiniZinc source code or binaries we provide, or re-distribute the binaries,
+                or distribute binaries that you created from the MiniZinc source code.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Third-party software in the MiniZinc binary distribution</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <p>The MiniZinc binary distribution contains several pieces of software in addition to the
+              MiniZinc compiler and IDE. These are distributed under the following licenses:
+            </p>
+            <ul>
+              <li>
+                  The MiniZinc IDE is developed using the <a href="http://qt-project.org">Qt toolkit</a>,
+                  which is available under <a href="http://qt-project.org/products/licensing">several licenses
+                  including the LGPL</a>. In the MiniZinc binary distributions, the MiniZinc IDE links against
+                  the dynamic libraries provided by the Qt framework. You can therefore replace those Qt
+                  libraries with your own version, as required by the LGPL. If you intend to re-distribute
+                  the MiniZinc IDE in a setting where you cannot comply with the terms of the LGPL, you may have
+                  to get a commercial license for Qt, or use MiniZinc without the IDE.
+              </li>
+              <li><b>Gecode:</b> The source code for the <a href="https://www.gecode.org">Gecode solver</a>
+                is <a href="https://github.com/gecode/gecode">available from GitHub</a> under the
+                <a href="https://www.gecode.org/license.html">MIT license</a>. In the MiniZinc binary distribution,
+                Gecode is included as a stand-alone binary <tt>fzn-gecode</tt> (or <tt>fzn-gecode.exe</tt>, and statically linked
+                as part of the MiniZinc compiler (<tt>minizinc</tt>). The binary <tt>fzn-gecode-gist</tt> (or <tt>fzn-gecode-gist.exe</tt>)
+                additionally links against the Qt framework (see above), with the same licensing implications.
+              </li>
+              <li><b>Chuffed:</b> The source code for the Chuffed solver is
+                <a href="https://github.com/chuffed/chuffed">available from GitHub</a> under the
+                MIT license. In the MiniZinc binary distribution,
+                Chuffed is included as a stand-alone binary <tt>fzn-chuffed</tt> (or <tt>fzn-chuffed.exe</tt>).
+              </li>
+              <li><b>COIN-OR CBC:</b> The source code for the COIN-OR branch and cut solver
+                is <a href="https://github.com/coin-or/Cbc">available from GitHub</a> under the
+                  Eclipse Public License 1.0. In the MiniZinc binary distribution, CBC is statically
+                  linked into the MiniZinc compiler (<tt>minizinc</tt>).                  
+              </li>
+            </ul>
+            <p>All open-source licenses above permit linking to and distributing binary versions
+              of the software.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>MiniZinc documentation</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+          <p>
+            The source code for the MiniZinc documentation is <a href="https://github.com/minizinc/minizinc-doc">available from GitHub</a>.
+            The source code and the documentation itself is available under the terms of the
+            <a href="https://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</a>
+            license.
+          </p>
+        </div>
+    </div>
+    
+</div>
