@@ -29,25 +29,15 @@
 
     <script>
     $(document).ready(function(){
-        var baseURL = "https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-";
-        var downloadURL = "";
         if (navigator.appVersion.toUpperCase().indexOf("WIN")!=-1) {
-            downloadURL = baseURL + "bundled-setup-win64.exe";
-            $("#osname").html("Windows 64bit");
-            $("#osnotes").html("(Windows 7 or later)");
+            $(".osLinux").addClass("hidden");
+            $(".osMac").addClass("hidden");
         } else if (navigator.appVersion.toUpperCase().indexOf("LIKE MAC")==-1 && navigator.appVersion.toUpperCase().indexOf("MAC")!=-1) {
-            downloadURL = baseURL + "bundled.dmg";
-            $("#osname").html("Mac OS");
-            $("#osnotes").html("(Mac OS 10.9 or later)");
+            $(".osWin").addClass("hidden");
+            $(".osLinux").addClass("hidden");
         } else if (navigator.appVersion.toUpperCase().indexOf("LINUX")!=-1) {
-            downloadURL = baseURL + "bundle-linux-x86_64.tgz";
-            $("#osname").html("Linux 64 bit");
-            $("#osnotes").html("(built for Ubuntu 16.04)");
-        }
-        if (downloadURL !== "") {
-            $("#downloadButton").attr('href',downloadURL);
-        } else {
-            $("#downloadButton").css('display','none');
+            $(".osMac").addClass("hidden");
+            $(".osWin").addClass("hidden");
         }
     });
     </script>
