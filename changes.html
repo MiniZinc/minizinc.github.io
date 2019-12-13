@@ -7,6 +7,191 @@ title: MiniZinc - Change Log
 
 <p>For detailed bug reports consult the issue tracker at <a href="https://github.com/MiniZinc/libminizinc/issues">https://github.com/MiniZinc/libminizinc/issues</a>.</p>
 
+<h3 id="v2.4.0"><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.4.0">Version 2.4.0</a></h3>
+
+<p>(released 13 December 2019)</p>
+
+<h4>Changes:</h4>
+<ul>
+<li>The compiler now detects counting constraints in expressions such as
+  count(i in x)(x=3) <= 4 and rewrites them into global counting constraints. This
+  is now the preferred way to specify counting. The atmost/atleast/exactly constraints
+  on integer variables have been deprecated, and versions of count predicates with
+  par variables have been added. FlatZinc solvers that supported atmost/atleast/exactly
+  should now support the corresponding fzn_count_?_par predicates.
+</li>
+<li>The compiler now supports the command line option --output-detailed-timing, which
+  provides timing information for each toplevel constraint item, or for each line of
+  code when used in conjunction with the --keep-paths option.
+</li>
+<li>The library now contains annotations for deprecated library functions.
+</li>
+<li>A par version of the inverse function has been added (include inverse_fn.mzn to use it).
+</li>
+<li>The common case of sums of optional variables is now handled more efficiently. This
+  case often arises from generator expressions with variable where clauses.
+</li>
+<li>Added set_to_ranges built-ins to enable efficient iteration over sets. These are used
+  to implement set_in for float variables, which was missing before.
+</li>
+<li>The Gurobi and CPLEX backends now support the --random-seed command line option.
+</li>
+<li>The Gurobi and CPLEX backends now use nodefile for search trees exceeding 500 MB
+  (--nodefilestart can change this value and --nodefiledir the folder.)
+</li>
+<li>The MIPDomains optimisations have been switched back on by default. The optimisations
+  have also been strengthened for some special cases.
+</li>
+<li>Without the MIPdomains postprocessing, linearisation of variable domains with holes
+  now uses set_in instead of individual not-equal constraints, which may result in more
+  compact FlatZinc.
+</li>
+<li>Linearisation of multiplication can now consider the exact domain of a factor.
+</li>
+<li>The product functions have been made non-recursive in order to support longer
+  arrays.
+</li>
+<li>Bounds inference for results of if-then-else expressions has been improved.
+</li>
+<li>Support for optional float variables has been added.
+</li>
+<li>The interfaces to CBC, CPLEX and Gurobi now report correctly that they support
+  verbose output during solving (so that the "verbose solving" option is available
+  from the MiniZinc IDE).
+</li>
+<li>IDE: Parse timing and statistics output produced by compiler, and display as
+  profiling information next to each line in the model.
+</li>
+<li>IDE: Enable run/compile action on data files. This automatically selects the
+  model file if there is only one, or presents a dialog for selecting the
+  model if there are multiple.
+</li>
+<li>IDE: Select first data file in parameter dialog if there was no previous
+  selection, and always focus parameter dialog.
+</li>
+<li>IDE: Highlight current line.
+</li>
+<li>IDE: Support .json as file extension for data files.
+</li>
+<li>IDE: Remember whether wrap around, case sensitivity and regular expression
+  was selected in find/replace dialog, pre-select the find/replace text
+  when find/replace widget is openend, and close find/replace widget when
+  ESC is pressed while editor has focus.
+</li>
+</ul>
+
+
+<h4>Bug fixes:</h4>
+<ul>
+<li>Fixed output handling on Windows (output is now processed on the main thread,
+  so that exceptions thrown during output are printed correctly, and memory
+  management is thread safe).
+</li>
+<li>Fixed decomposition of reified mdd constraint, and strengthened decompositions
+  of mdd and cost_mdd.
+</li>
+<li>Fix handling of variable re-definitions (e.g. converting sets to arrays of bools),
+  which would previously sometimes result in variables being removed although they
+  were required for output, or the reverse mapping function not being available
+  in the output model.
+</li>
+<li>Include regular.mzn from regular_regexp.mzn. ({% include bug.html bug='351' %})
+</li>
+<li>Inlining of function calls has been moved from the flattener into the type checker, and
+  it now is more strict about which functions can be inlined in order to avoid overloading
+  issues.
+</li>
+<li>Updated fzn_count_{neq,leq,lt,geq,gt}, fzn_global_cardinality_low_up{,_reif} to use use
+  the count_eq predicate. ({% include bug.html bug='334' %}, {% include bug.html bug='335' %})
+</li>
+<li>Fixed the documentation for several constraints, which did not display as bullet point
+  lists as intended.
+</li>
+<li>Copy function/predicate declarations into FlatZinc without annotations, since most
+  FlatZinc parsers would not expect annotations and fail to parse.
+</li>
+<li>Process right hand side of par VarDecls to make sure any identifiers it uses are copied
+  into the output model. Fixes {% include bug.html bug='336' %}.
+</li>
+<li>Fix type checking for conditionals where the else branch has enum type but the then
+  branch has int type.
+</li>
+<li>Make the deopt function return correct enum instead of int type.
+</li>
+<li>Fix for path handling when 'needRangeDomains' is active. Avoids infinite recursion in
+  the compiler.
+</li>
+<li>Fix race condition in temporary file generator for Windows. ({% include bug.html bug='349' %})
+</li>
+<li>Register fzn_ names for Gecode presolver. Fixes command line flags -O3 and above.
+</li>
+<li>Fix par evaluation of float and bool set comprehensions.
+</li>
+<li>Fix documentation of array_bool_xor. Fixes {% include bug_doc.html bug='13' %}.
+</li>
+<li>Fix the round() built-in to correctly round negative numbers
+</li>
+<li>Fix computation of intersection of domains when assigning an array to an array variable.
+  Fixes {% include bug.html bug='310' %}.
+</li>
+<li>Add defines_var annotations for functional global constraints. Fixes {% include bug.html bug='345' %}.
+</li>
+<li>Add set_lt_reif/set_le_reif to flatzinc builtins library. Fixes {% include bug.html bug='338' %}.
+</li>
+<li>Clarify set order based on spec. Fixes {% include bug.html bug='339' %}.
+</li>
+<li>Don't return already removed VarDecl objects from CSE. Fixes {% include bug.html bug='346' %}.
+</li>
+<li>Do not post y!=0 constraint if 0 is not in the domain (workaround for a limitation in the
+  handling of basic float constraints). Fixes {% include bug.html bug='344' %}.
+</li>
+<li>Help type checker by making deopt/occurs argument types explicit. Fixes {% include bug.html bug='331' %}.
+</li>
+<li>Fix transfer of domains when aliasing one variable to another
+</li>
+<li>MIP: fix for aux_float_ne_if_1
+</li>
+<li>MIP: int_(eq/ne)_imp: don't force eq_encode without MIPdomains
+</li>
+<li>Fix a typo in the definition of fzn_at_least_int{,_reif}
+</li>
+<li>Fix dependency problem in the gecode_presolver table specification
+</li>
+<li>Add seq_precede_chain.mzn to globals.mzn. Fixes {% include bug.html bug='332' %}.
+</li>
+<li>Don't assign right hand side of set variables if domain is singleton. Fixes {% include bug.html bug='330' %}.
+</li>
+<li>Don't invalidate float bound just because an expression contains an integer.
+</li>
+<li>Fix copying of let expressions.
+</li>
+<li>Put lexer and parser helper functions into MiniZinc namespace to avoid linker issues.
+  Fixes {% include bug.html bug='325' %}.
+</li>
+<li>Reset array index sets defined in lets inside recursive function calls.
+</li>
+<li>Arrays copied into output model need to have par type-inst. Fixes {% include bug.html bug='322' %}.
+</li>
+<li>Don't complain when same function is registered twice. Fixes {% include bug.html bug='323' %}.
+</li>
+<li>Fix partiality handling of if-then-else expressions.
+</li>
+<li>Track whether variable is used in an output array before making decision to compress
+  implication chains. Fixes {% include bug.html bug='318' %}.
+</li>
+<li>IDE: Fix dark mode detection on macOS 10.15, improve dark mode colors a bit
+and fixed some dark mode bugs.
+</li>
+<li>IDE: Make background compilation of a model (used to display syntax and type
+    errors) a bit more stable.
+</li>
+<li>IDE: Avoid infinite loop in wrap around replace all.
+</li>
+<li>IDE: Fix memory management for HTML visualisation windows, and resize docked
+    HTML visualisation widgets to take up equal space.
+</li>  
+</ul>
+
 <h3 id="v2.3.2"><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.3.2">Version 2.3.2</a></h3>
 
 <p>(released 12 September 2019)</p>
