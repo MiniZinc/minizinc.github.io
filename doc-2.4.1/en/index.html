@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The MiniZinc Handbook &mdash; The MiniZinc Handbook 2.4.1</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/index.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Overview" href="part_1_overview.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.4.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="#" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>The MiniZinc Handbook</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-minizinc-handbook">
+<h1>The MiniZinc Handbook<a class="headerlink" href="#the-minizinc-handbook" title="Permalink to this headline">¶</a></h1>
+<p>MiniZinc is a free and open-source constraint modeling language. You can use MiniZinc to model constraint satisfaction and optimization problems in a high-level, solver-independent way, taking advantage of a large library of pre-defined constraints.</p>
+<p>This handbook consists of four parts: <a class="reference internal" href="part_1_overview.html#part-introduction"><span class="std std-numref">Section 1</span></a> covers installation and basic steps; <a class="reference internal" href="part_2_tutorial.html#part-tutorial"><span class="std std-numref">Section 2</span></a> is a tutorial-style introduction into modelling with MiniZinc; <a class="reference internal" href="part_3_user_manual.html#part-manual"><span class="std std-numref">Section 3</span></a> is a user manual for the individual tools in the MiniZinc tool chain; and <a class="reference internal" href="part_4_reference.html#part-reference"><span class="std std-numref">Section 4</span></a> is a reference to the language.</p>
+<p>This documentation is licensed under a
+<a class="reference external" href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>. This means that you are free to copy and redistribute the material in any medium or format
+for any purpose, even commercially. However, you must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. If you remix, transform, or build upon the material, you may <strong>not</strong> distribute the modified material.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">1.2. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_steps.html">1.3. First steps with MiniZinc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelling.html">2.1. Basic Modelling in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html">2.2. More Complex Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html">2.3. Predicates and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optiontypes.html">2.4. Option Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html">2.5. Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">2.6. Effective Modelling Practices in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html">2.7. Boolean Satisfiability Modelling in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html">2.8. FlatZinc and Flattening</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solvers.html">3.3. Solving Technologies and Solver Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="checkers.html">3.4. Automatic Solution Checking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html">3.5. Globalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html">3.6. FindMUS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.7. Using MiniZinc in Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">3.8. Python Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_detailed.html">3.9. Installation from Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="part_1_overview.html" class="btn btn-neutral float-right" title="1. Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.4.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -7,6 +7,80 @@ title: MiniZinc - Change Log
 
 <p>For detailed bug reports consult the issue tracker at <a href="https://github.com/MiniZinc/libminizinc/issues">https://github.com/MiniZinc/libminizinc/issues</a>.</p>
 
+<h3 id="v2.4.1"><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.4.1">Version 2.4.1</a></h3>
+
+<p>(released 20 December 2019)</p>
+
+<h4>Changes:</h4>
+<ul>
+<li> Improve compiler optimisation for some linear, multiplication and
+  Boolean constraints.
+</li>
+<li> Improved translation of lex and all_equal constraints when the
+  arrays have no or only one variable.
+</li>
+<li>IDE: Display error message when submission to MOOC provider fails.
+</li>
+<li>IDE: Make "previous tab" and "next tab" actions cycle rather than stop at
+    first/last tab.
+</li>
+
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fixed regular expression constraint for expressions containing negated character
+  classes (^ operator).
+</li>
+<li> Fix element constraint in nosets.mzn library when set domains are not
+  contiguous.
+</li>
+<li> Correctly identify Windows paths starting with // or \\ as absolute
+  (this enables the parser to open files stored on network drives).
+</li>
+<li> Use set_in constraints (rather than int_in) for internal Gecode-based
+  presolver. This fixes some issues when compiling with -O3.
+</li>
+<li> The optimisation phase of the compiler now fully substitutes par bool
+  variables (these can be introduced into the FlatZinc during multipass
+  compilation). ({% include bug.html bug='357' %})
+</li>
+<li> Fixed the reference counting for variables that are re-used in
+  multipass compilation. ({% include bug.html bug='357' %})
+</li>
+<li> Remove incorrect error handling when parsing from strings rather than
+  files. Partially fixes ({% include bug.html bug='357' %})
+</li>
+<li> Made the is_fixed builtin work for more types. ({% include bug.html bug='356' %})
+</li>
+<li> Enable rewriting of sum(i in x)(i=c) op d and count(x,y) op z into
+  global counting constraints.
+</li>
+<li> Split up count global constraints into separate files for reified
+  versions.
+</li>
+<li> Use contiguous range for array index set in set_lt for nosets.mzn.
+</li>
+<li> Negate results of conditionals if required. ({% include bug.html bug='355' %})
+</li>
+<li> Partiality of conditional needs to be translated in root context
+  (even if conditional itself is negated). ({% include bug.html bug='355' %})
+</li>
+<li> Don't copy function into output again if it was already copied (and
+  made par) before. ({% include bug.html bug='323' %})
+</li>
+<li> Define card function on var sets in terms of set_card FlatZinc builtin.
+</li>
+<li> Don't set bounds for set variables in internal Gecode presolver.
+</li>
+<li>IDE: Fix shift left and shift right indentation behaviour when selecting
+    text backwards.
+</li>
+<li>Fix OpenSSL library in binary distribution to enable update checks and
+    submission to MOOCs again.
+</li>
+</ul>
+
 <h3 id="v2.4.0"><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.4.0">Version 2.4.0</a></h3>
 
 <p>(released 13 December 2019)</p>
