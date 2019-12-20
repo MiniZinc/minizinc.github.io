@@ -30,12 +30,6 @@ collections:
       output: true
     publications:
       output: false
-defaults:
-    - scope:
-        path: ""
-        type: people
-      values:
-        layout: teammember
 plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
@@ -49,3 +43,8 @@ defaults:
          path: "downloads/doc-*"
       values:
          sitemap: false
+    - scope:
+         path: ""
+         type: "people"
+      values:
+         layout: "teammember"
