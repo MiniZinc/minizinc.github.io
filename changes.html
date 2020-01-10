@@ -7,6 +7,33 @@ title: MiniZinc - Change Log
 
 <p>For detailed bug reports consult the issue tracker at <a href="https://github.com/MiniZinc/libminizinc/issues">https://github.com/MiniZinc/libminizinc/issues</a>.</p>
 
+<h3 id="v2.4.2"><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.4.2">Version 2.4.2</a></h3>
+
+<p>(released 10 January 2020)</p>
+
+<h4>Changes:</h4>
+<ul>
+<li>The test suite is now integrated into the continuous integration system.</li>
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li> Fix flattening of negated disjunctions ({% include bug.html bug='359' %}).
+    </li>
+<li> Fix simplification of Boolean constraints (repeated simplification
+  could sometimes crash).
+  </li>
+<li> Fix memory management during flattening of conditionals ({% include bug.html bug='358' %}).</li>
+<li> Fix type inference for rewriting of sums into count constraints,
+  and only apply the rewriting for var type-insts.</li>
+<li> Fix handling of solution checkers (these used to produce spurious
+  error messages).</li>
+<li> IDE: Fix syntax highlighting of keywords, and add syntax highlighting for
+   interpolated strings.</li>
+<li> IDE: Redraw when switching to/from dark mode, and fix dark mode header colours.</li>
+<li> IDE: Fix "Select all" menu item.</li>
+</ul>
+
 <h3 id="v2.4.1"><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.4.1">Version 2.4.1</a></h3>
 
 <p>(released 20 December 2019)</p>

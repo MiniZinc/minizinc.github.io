@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2. The MiniZinc library &mdash; The MiniZinc Handbook 2.4.2</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.1. Annotations" href="lib-annotations.html" />
+    <link rel="prev" title="4.1. Specification of MiniZinc" href="spec.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.4.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. The MiniZinc library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html">4.2.1. Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-optiontypes.html">4.2.2. Option type support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-options.html">4.2.3. Compiler options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-builtins.html">4.2.4. Builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.5. FlatZinc builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.6. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html">4.2.7. Additional declarations for Gecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.8. Additional declarations for Chuffed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_4_reference.html">4. Reference Manual</a> &raquo;</li>
+        
+      <li>4.2. The MiniZinc library</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-minizinc-library">
+<h1>4.2. The MiniZinc library<a class="headerlink" href="#the-minizinc-library" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lib-annotations.html">4.2.1. Annotations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-annotations.html#general-annotations">4.2.1.1. General annotations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#functions-and-predicates">Functions and Predicates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lib-annotations.html#propagation-strength-annotations">4.2.1.2. Propagation strength annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-annotations.html#search-annotations">4.2.1.3. Search annotations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#variable-selection-annotations">Variable selection annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#value-choice-annotations">Value choice annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#exploration-strategy-annotations">Exploration strategy annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#restart-annotations">Restart annotations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lib-annotations.html#id1">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-annotations.html#id2">Functions and Predicates</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#other-declarations">Other declarations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lib-annotations.html#warm-start-annotations">4.2.1.4. Warm start annotations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#warm-start-annotations-with-optional-values">Warm start annotations with optional values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-annotations.html#id3">Other declarations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lib-optiontypes.html">4.2.2. Option type support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-optiontypes.html#option-type-support-for-booleans">4.2.2.1. Option type support for Booleans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-optiontypes.html#option-type-support-for-integers">4.2.2.2. Option type support for integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-optiontypes.html#option-type-support-for-floats">4.2.2.3. Option type support for floats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-optiontypes.html#other-declarations">4.2.2.4. Other declarations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lib-options.html">4.2.3. Compiler options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-options.html#parameters">4.2.3.1. Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-options.html#functions-and-predicates">4.2.3.2. Functions and Predicates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lib-builtins.html">4.2.4. Builtins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#comparison-builtins">4.2.4.1. Comparison Builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#arithmetic-builtins">4.2.4.2. Arithmetic Builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#exponential-and-logarithmic-builtins">4.2.4.3. Exponential and logarithmic builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#trigonometric-functions">4.2.4.4. Trigonometric functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#logical-operations">4.2.4.5. Logical operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#set-operations">4.2.4.6. Set operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#conditionals">4.2.4.7. Conditionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#array-operations">4.2.4.8. Array operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#array-sorting-operations">4.2.4.9. Array sorting operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#coercions">4.2.4.10. Coercions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#string-operations">4.2.4.11. String operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#reflection-operations">4.2.4.12. Reflection operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#assertions-and-debugging-functions">4.2.4.13. Assertions and debugging functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#functions-for-enums">4.2.4.14. Functions for enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#random-number-generator-builtins">4.2.4.15. Random Number Generator builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#special-constraints">4.2.4.16. Special constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-builtins.html#language-information">4.2.4.17. Language information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lib-flatzinc.html">4.2.5. FlatZinc builtins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#integer-flatzinc-builtins">4.2.5.1. Integer FlatZinc builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#bool-flatzinc-builtins">4.2.5.2. Bool FlatZinc builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#set-flatzinc-builtins">4.2.5.3. Set FlatZinc builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#float-flatzinc-builtins">4.2.5.4. Float FlatZinc builtins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#flatzinc-builtins-added-in-minizinc-2-0-0">4.2.5.5. FlatZinc builtins added in MiniZinc 2.0.0.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#flatzinc-builtins-added-in-minizinc-2-0-2">4.2.5.6. FlatZinc builtins added in MiniZinc 2.0.2.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#flatzinc-builtins-added-in-minizinc-2-1-0">4.2.5.7. FlatZinc builtins added in MiniZinc 2.1.0.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-flatzinc.html#flatzinc-builtins-added-in-minizinc-2-1-1">4.2.5.8. FlatZinc builtins added in MiniZinc 2.1.1.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lib-globals.html">4.2.6. Global constraints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#counting-constraints">4.2.6.1. Counting constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#all-different-and-related-constraints">4.2.6.2. All-Different and related constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#lexicographic-constraints">4.2.6.3. Lexicographic constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#sorting-constraints">4.2.6.4. Sorting constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#channeling-constraints">4.2.6.5. Channeling constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#packing-constraints">4.2.6.6. Packing constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#scheduling-constraints">4.2.6.7. Scheduling constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#graph-constraints">4.2.6.8. Graph constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#extensional-constraints-table-regular-etc">4.2.6.9. Extensional constraints (table, regular etc.)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#machine-learning-constraints">4.2.6.10. Machine learning constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#deprecated-constraints">4.2.6.11. Deprecated constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-globals.html#other-declarations">4.2.6.12. Other declarations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lib-gecode.html">4.2.7. Additional declarations for Gecode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode.html#additional-gecode-search-annotations">4.2.7.1. Additional Gecode search annotations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html#functions-and-predicates">Functions and Predicates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode.html#additional-gecode-constraints">4.2.7.2. Additional Gecode constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lib-chuffed.html">4.2.8. Additional declarations for Chuffed</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-chuffed.html#additional-chuffed-search-annotations">4.2.8.1. Additional Chuffed search annotations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html#functions-and-predicates">Functions and Predicates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lib-annotations.html" class="btn btn-neutral float-right" title="4.2.1. Annotations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="spec.html" class="btn btn-neutral" title="4.1. Specification of MiniZinc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.4.2',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
