@@ -7,6 +7,70 @@ title: MiniZinc - Change Log
 
 <p>For detailed bug reports consult the issue tracker at <a href="https://github.com/MiniZinc/libminizinc/issues">https://github.com/MiniZinc/libminizinc/issues</a>.</p>
 
+<h3 id="v2.4.3"><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.4.3">Version 2.4.3</a></h3>
+
+<p>(released 4 March 2020)</p>
+
+<h4>Changes:</h4>
+<ul>
+<li>Enable CPLEX 12.10.
+</li><li>Add checker output to generated output items.
+</li><li>Short-circuit evaluation for mixed par/var conjunctions, disjunctions,
+  and clauses.
+</li><li>Add inverse_in_range global.
+</li><li>Pretty printing set ranges now uses union instead of ++ to be compatible
+  with DZN.
+</li><li>Add array2set for par bool and float arrays
+</li><li>The _objective variable is no longer added to FlatZinc input files.
+</li><li>JSON representation of sets with ranges can now be parsed
+  (previously they could only be output).
+</li><li>Check index sets to arguments of global_cardinality_low_up.
+</li><li>Xpress and SCIP are not compiled as plugins and no longer require recompilation
+  to enable.
+</li><li>If-then-else for opt are no longer written in terms of the non-opt version,
+  allowing them to return absent.
+</li>
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li>Fix checking of domains and index sets in par arrays inside lets.
+</li><li>Remove duplicate call stack items to improve error messages.
+</li><li>Ignore absent values when computing domains.
+</li><li>Generate call for actual binary operator (after optimising double negation).
+  Fixes {% include bug.html bug='364' %}.
+</li><li>Fix non-associative operators on optional values.
+</li><li>Only output optional parameters in model interface if they were undefined
+  (rather than assigned to &lt;&gt;).
+</li><li>Fix some issues with evaluating par opt expressions.
+</li><li>Make solution checkers work for multi-dimensional arrays
+  and arrays with enum index sets
+</li><li>Fix Boolean aggregation for expressions that are defined recursively.
+</li><li>Use correct index set for nosets set_lt and similar (partial fix for {% include bug.html bug='369' %})
+</li><li>Fix coercion of sets to arrays (previously, coercing a set of X to
+  an array of X to an array of Y did not work correctly).
+</li><li>Fix infinite loop when printing infinite set range
+</li><li>Add assertion so that array2set can only be used for arrays with bounds ({% include bug.html bug='370' %}, {% include bug.html bug='371' %}).
+</li><li>Fix typing and pretty printing of par bool sets.
+</li><li>Use output_array dims for output vars in FlatZinc files
+  (previously, a type-checker error would occur when running a solver through
+  MiniZinc on a FlatZinc file with multidimensional arrays).
+</li><li>The Xpress backend was made functional again.
+</li><li>Fix segmentation fault in output_only type-checking.
+</li><li>Compute correct array enum type for array slices ({% include bug.html bug='372' %}).
+</li><li>Fix behaviour of using undefined expressions in var comprehensions guarded
+  against by where clauses (previously, these undefined expressions would bubble
+  up regardless of the where clause, constraining the model).
+</li><li>IDE: Disable menu items that don't make sense when all tabs are closed,
+fix behaviour of stop button when all tabs closed (fixes several crashes).
+</li><li>IDE: Add x86_64 suffix to linux package name ({% include bug_ide.html bug='96' %}).
+</li><li>IDE: Make boolean extra solver options with a default of true functional.
+</li><li>IDE: Only read linter results if it exited normally ({% include bug_ide.html bug='97' %}).
+</li><li>IDE: Resolve paths in _mooc to paths
+(allowing submission of models in subdirectories).
+</li>
+</ul>
+
 <h3 id="v2.4.2"><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.4.2">Version 2.4.2</a></h3>
 
 <p>(released 10 January 2020)</p>
