@@ -1,0 +1,68 @@
+---
+layout: default
+title: MiniZinc - Challenge 2020 - Call for Problem Submission
+---
+
+<h2>Call for Problem Submission for the MiniZinc Challenge 2020</h2>
+
+<p>
+The MiniZinc Challenge is an annual solver competition in the 
+Constraint Programming (CP) community held before the International 
+Conference on Principles and Practice of Constraint Programming. 
+The MiniZinc Challenge 2020 is seeking interesting problem sets on 
+which various constraint solving technologies should be compared on 
+this year. Everyone is allowed to submit problems regardless of 
+whether they are an entrant in the challenge.
+<p>
+
+<h3>Important dates and deadlines:</h3>
+<ul>
+<li>Problem submission open: now
+<li>Problem submission deadline: Fri, 24 July 2020
+</ul>
+
+<h3>Problem submission</h3>
+<ul>
+<li>Send an email with the subject line “[MZNC20] benchmark” to mzn-challenge 'at' lists.csiro.au
+</ul>
+
+<p>
+There are no restrictions on the kind of problems, but ideally they 
+should be of interesting nature such as practice-related problems and 
+puzzles etc. Problem submissions with real-world instances are particulary 
+welcome.
+Models for the 2020 challenge can only use integer and Boolean 
+variables.
+
+<p>
+As in the previous years, we anticipate local search entrants in this years 
+challenge again. Ideally a MiniZinc model should wrap symmetry breaking 
+constraints in a predicate "symmetry_breaking_constraint" defined as
+<pre>
+predicate symmetry_breaking_constraint(var bool: c) = c;
+</pre>
+and wrap redundant constraints in a predicate "redundant_constraint" defined similarly as
+<pre>
+predicate redundant_constraint(var bool: c) = c;
+</pre>
+The aim of this wrapping is that local search solvers can "turn off" symmetry 
+breaking and redundant constraints, in order to improve solving.
+
+
+<p>
+The problem submitter provides a MiniZinc model of the problem and 
+at least 20 instances ranging from easy-to-solve to hard-to-solve for an 
+“ordinary” CP system. In addition, there should be at least one "toy" instance
+for testing purposes. It is strongly encouraged to make use of the 
+global constraint definitions provided in the MiniZinc 2.4 distribution. 
+If you have an instance generator, we are more than happy to receive it.
+Please, follow the links below for submission instructions and requirements.
+<p>
+
+<a href="http://www.minizinc.org/challenge2020/challenge.html">www.minizinc.org/challenge2020/challenge.html</a><br>
+<a href="http://www.minizinc.org/challenge2020/rules2020.html">www.minizinc.org/challenge2020/rules2020.html</a><br>
+<p>
+
+<?php
+mznfooter();
+?>  
