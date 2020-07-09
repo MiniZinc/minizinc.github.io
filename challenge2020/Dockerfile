@@ -37,7 +37,7 @@ RUN \
     echo "#----------------------------------------------------------#" >> /minizinc/mzn-exec-free && \
     echo "# FlatZinc Solver                                           " >> /minizinc/mzn-exec-free && \
     echo "# (comment following line for MiniZinc solver)              " >> /minizinc/mzn-exec-free && \
-    echo "minizinc --solver \"org.minizinc.mzn-fzn\" -k --fzn-cmd \"\$FZNEXEC -f\" -G exec \"\$@\"             " >> /minizinc/mzn-exec-free && \
+    echo "minizinc --solver \"org.minizinc.mzn-fzn\" -k --fzn-cmd \"\$FZNEXEC\" -f -G exec \"\$@\"             " >> /minizinc/mzn-exec-free && \
     echo "#----------------------------------------------------------#" >> /minizinc/mzn-exec-free && \
     echo "# MiniZinc Solver                                           " >> /minizinc/mzn-exec-free && \
     echo "# (add call to your solver here, e.g.)                      " >> /minizinc/mzn-exec-free && \
@@ -123,7 +123,7 @@ RUN \
 # Setup of the base image
 
 # Get base image from the latest Ubuntu LTS
-FROM minizinc/minizinc:ubuntu_2.3.1
+FROM minizinc/minizinc:2.4.3
 
 # Copy unpacked MiniZinc installation from the build image
 COPY --from=builder /minizinc /minizinc
