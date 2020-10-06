@@ -216,6 +216,11 @@ a.mzn-nav-up, a.mzn-nav-next, a.mzn-nav-prev {
 }
 
 h3 {
-  padding-top: 60px;
-  margin-top: -50px;
+    padding-top: 60px;
+    margin-top: -50px;
+    pointer-events: none;
+}
+
+h3 * {
+  pointer-events: auto;
 }
