@@ -7,6 +7,121 @@ title: MiniZinc - Change Log
 
 <p>For detailed bug reports consult the issue tracker at <a href="https://github.com/MiniZinc/libminizinc/issues">https://github.com/MiniZinc/libminizinc/issues</a>.</p>
 
+<h3 id="v2.5.1"><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.5.1">Version 2.5.1</a></h3>
+
+<p>(released 22 October 2020)</p>
+
+<h4>Changes:</h4>
+<ul>
+<li>Rewrite alldifferent_except_0 to fzn_alldifferent_except_0, to enable solvers
+  to implement that constraint if it is available ({% include bug.html bug='414' %}).
+</li>
+<li>Propagate domains for variables even when reverse-mapped. This ensures that
+  variables with multiple encodings can be created with the tightest possible
+  bounds.
+</li>
+<li>Fail instead of producing empty domains when simplifying int_le constraints.
+</li>
+<li>Allow parsing of nested objects in parameter configuration files.
+</li>
+<li>Add --backend-flags option to provide a uniform way of passing flags to an
+  underlying solver.
+</li>
+<li>Add extra flags support to the MIP solver interfaces, allowing parameters
+  to be set in the IDE.
+</li>
+<li>Improve automatic detection of the Xpress solver and license file.
+</li>
+<li>Allow the use of spaces in the --solver flag argument.
+</li>
+<li>Automatically add the last part of the solver ID as a tag.
+</li>
+<li>Improve handling of var functions in output, automatically creating par
+  versions of var functions if possible.
+</li>
+</ul>
+
+<h4>Bug fixes:</h4>
+<ul>
+<li>Fix parsing of empty multidimensional JSON arrays.
+</li>
+<li>Allow use of --parallel long form option in MIP solvers.
+</li>
+<li>Fix item lookup when increasing annotation usage in annotate builtin.
+</li>
+<li>Fix JSON array coercion to handle arrays with 1 unknown index.
+</li>
+<li>Don't try to access array dimensions for output of empty multi-dimensional
+  arrays.
+</li>
+<li>Print verbose version information to stderr instead of stdout.
+</li>
+<li>Fix context handling when flattening par expressions that contain variables
+  ({% include bug.html bug='415' %}).
+</li>
+<li>Flatten string expressions if they contain variable parts in
+  assert/abort/trace calls.
+</li>
+<li>Fix breakage on older versions of Windows due to UTF-8 conversion failing.
+</li>
+<li>Remove defines_var/is_defined_var annotations when simplifying boolean
+  constraints.
+</li>
+<li>Fix transfer of cv status from where parts to newly generated conjunctions
+  during typechecking.
+</li>
+<li>Fix multiple issues with the defined_var / is_defined_var annotations.
+</li>
+<li>Move all included files from stdlib into solver_redefinitions.mzn, so that
+  solver redefinitions are not marked as belonging to the standard library
+  ({% include bug.html bug='416' %}).
+</li>
+<li>Fix documentation group for standard annotations ({% include bug.html bug='417' %}).
+</li>
+<li>Show correct version of solver plugins which have their DLLs specified using
+  a command-line parameter ({% include bug.html bug='411' %}).
+</li>
+<li>Fix arbitrary flag support for NL solvers.
+</li>
+<li>Kill child processes if exception occurs during solns2out on Unix-like
+  platforms.
+</li>
+</ul>
+
+<h4>Changes in the IDE:</h4>
+
+<ul>
+<li>Fix typo when passing solver statistics option to minizinc ({% include bug_ide.html bug='112' %}).
+</li>
+<li>Fix missing statistics output ({% include bug_ide.html bug='112' %}).
+</li>
+<li>Add support for colour themes ({% include bug_ide.html bug='110' %}).
+</li>
+<li>Don't prompt for saving after adding/removing files from the Untitled
+  project.
+</li>
+<li>Fix running of compiled FlatZinc files.
+</li>
+<li>Show error message when trying to load an invalid configuration file.
+</li>
+<li>Ensure all output is sent to the output console, and that fragments in
+  standard error output appear when a newline is written to standard output
+  ({% include bug_ide.html bug='114' %}).
+</li>
+<li>Fix running of solver configurations from the project explorer.
+</li>
+<li>Improve performance of adding a large number of extra flags at once.
+</li>
+<li>Add support for 64-bit integer extra flags.
+</li>
+<li>Add support for setting both solver backend flags and MiniZinc command flags
+  ({% include bug_ide.html bug='113' %}).
+</li>
+<li>Improve interface for adding extra parameters, allowing search/filter and
+  multiselection of known parameters.
+</li>
+</ul>
+
 <h3 id="v2.5.0"><a href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/2.5.0">Version 2.5.0</a></h3>
 
 <p>(released 6 October 2020)</p>
