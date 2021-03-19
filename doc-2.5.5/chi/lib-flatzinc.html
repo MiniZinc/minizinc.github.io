@@ -1,0 +1,1011 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2.3. FlatZinc builtins &mdash; The MiniZinc Handbook 2.5.5</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-flatzinc.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="lib-optiontypes.html" />
+    <link rel="prev" title="4.2.2. Standard Library" href="lib-stdlib.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.5.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.1. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-stdlib.html">4.2.2. Standard Library</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">4.2.3. FlatZinc builtins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#integer-flatzinc-builtins">4.2.3.1. Integer FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bool-flatzinc-builtins">4.2.3.2. Bool FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-flatzinc-builtins">4.2.3.3. Set FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#float-flatzinc-builtins">4.2.3.4. Float FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flatzinc-builtins-added-in-minizinc-2-0-0">4.2.3.5. FlatZinc builtins added in MiniZinc 2.0.0.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flatzinc-builtins-added-in-minizinc-2-0-2">4.2.3.6. FlatZinc builtins added in MiniZinc 2.0.2.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flatzinc-builtins-added-in-minizinc-2-1-0">4.2.3.7. FlatZinc builtins added in MiniZinc 2.1.0.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flatzinc-builtins-added-in-minizinc-2-1-1">4.2.3.8. FlatZinc builtins added in MiniZinc 2.1.1.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flatzinc-builtins-added-in-minizinc-2-2-1">4.2.3.9. FlatZinc builtins added in MiniZinc 2.2.1.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flatzinc-builtins-added-in-minizinc-2-3-3">4.2.3.10. FlatZinc builtins added in MiniZinc 2.3.3.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flatzinc-builtins-added-in-minizinc-2-5-2">4.2.3.11. FlatZinc builtins added in MiniZinc 2.5.2.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_4_reference.html">4. Reference Manual</a> &raquo;</li>
+        
+          <li><a href="lib.html">4.2. The MiniZinc library</a> &raquo;</li>
+        
+      <li>4.2.3. FlatZinc builtins</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="flatzinc-builtins">
+<span id="ch-lib-flatzinc"></span><h1>4.2.3. FlatZinc builtins<a class="headerlink" href="#flatzinc-builtins" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div>These are the standard constraints that need to be supported by FlatZinc
+solvers (or redefined in the redefinitions.mzn file).</div></blockquote>
+<div class="section" id="integer-flatzinc-builtins">
+<h2>4.2.3.1. Integer FlatZinc builtins<a class="headerlink" href="#integer-flatzinc-builtins" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-minizinc notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_int_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">as</tt> [ <tt class="docutils literal">b</tt> ] = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-1"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_int_maximum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">m</tt>  to be the maximum value of the (non-empty)
+array <tt class="docutils literal">x</tt></p>
+<div class="highlight-minizinc notranslate" id="index-2"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_int_minimum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">m</tt>  to be the minimum value of the (non-empty)
+array <tt class="docutils literal">x</tt></p>
+<div class="highlight-minizinc notranslate" id="index-3"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_int_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">as</tt> [ <tt class="docutils literal">b</tt> ] = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-4"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_abs</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  to be the absolute value of <tt class="docutils literal">a</tt></p>
+<div class="highlight-minizinc notranslate" id="index-5"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_div</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  / <tt class="docutils literal">b</tt>  = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-6"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_eq</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  to be equal to <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-7"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_eq_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains ( <tt class="docutils literal">a</tt> = <tt class="docutils literal">b</tt> ) <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> <tt class="docutils literal">r</tt></p>
+<div class="highlight-minizinc notranslate" id="index-8"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_le</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  to be less than or equal to <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-9"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_le_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains ( <tt class="docutils literal">a</tt>  ≤ <tt class="docutils literal">b</tt> ) <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> <tt class="docutils literal">r</tt></p>
+<div class="highlight-minizinc notranslate" id="index-10"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_eq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                     </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                     </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-11"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_eq_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i])\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-12"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_le</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                     </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                     </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\(\sum\)</span> <tt class="docutils literal">as</tt> [ <tt class="docutils literal">i</tt> ]* <tt class="docutils literal">bs</tt> [ <tt class="docutils literal">i</tt> ] ≤ <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-13"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_le_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> (<span class="math notranslate nohighlight">\(\sum\)</span> <tt class="docutils literal">as</tt> [ <tt class="docutils literal">i</tt> ]* <tt class="docutils literal">bs</tt> [ <tt class="docutils literal">i</tt> ] ≤ <tt class="docutils literal">c</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-14"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_ne</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                     </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                     </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf c} \neq \sum_i {\bf as}[i]*{\bf bs}[i]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-15"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_ne_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf c} \neq \sum_i {\bf as}[i]*{\bf bs}[i])\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-16"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lt</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  &lt; <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-17"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lt_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">a</tt>  &lt; <tt class="docutils literal">b</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-18"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_max</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains max( <tt class="docutils literal">a</tt> , <tt class="docutils literal">b</tt> ) = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-19"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_min</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains min( <tt class="docutils literal">a</tt> , <tt class="docutils literal">b</tt> ) = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-20"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_mod</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  % <tt class="docutils literal">b</tt>  = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-21"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_ne</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  ≠ <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-22"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_ne_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p><tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">a</tt>  ≠ <tt class="docutils literal">b</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-23"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_plus</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  + <tt class="docutils literal">b</tt>  = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-24"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_pow</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">z</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">z</tt>  = <span class="math notranslate nohighlight">\({\bf x} ^ {{\bf y}}\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-25"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_times</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  * <tt class="docutils literal">b</tt>  = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-26"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_in</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  <span class="math notranslate nohighlight">\(\in\)</span> <tt class="docutils literal">S</tt></p>
+</div>
+<div class="section" id="bool-flatzinc-builtins">
+<h2>4.2.3.2. Bool FlatZinc builtins<a class="headerlink" href="#bool-flatzinc-builtins" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-minizinc notranslate" id="index-27"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_bool_and</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow \bigwedge_i {\bf as}[i]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-28"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_bool_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"></span>
+<span class="s">                             </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                             </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">as</tt> [ <tt class="docutils literal">b</tt> ] = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-29"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_bool_or</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow \bigvee_i {\bf as}[i]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-30"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_bool_xor</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\(\oplus_i\ {\bf as}[i]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-31"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_bool_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                 </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">as</tt> [ <tt class="docutils literal">b</tt> ] = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-32"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nb">bool2int</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf b} \in \{0,1\}\)</span> and <span class="math notranslate nohighlight">\({\bf a} \leftrightarrow {\bf b}=1\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-33"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_and</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow {\bf a} \land {\bf b}\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-34"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_clause</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\(\bigvee_i {\bf as}[i] \lor \bigvee_j \lnot {\bf bs}[j]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-35"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_eq</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  = <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-36"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_eq_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">a</tt>  = <tt class="docutils literal">b</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-37"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_le</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  ≤ <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-38"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_le_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">a</tt>  ≤ <tt class="docutils literal">b</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-39"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_lin_eq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-40"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_lin_le</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\(\sum_i {\bf as}[i]*{\bf bs}[i] \leq {\bf c}\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-41"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_lt</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  &lt; <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-42"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_lt_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">a</tt>  &lt; <tt class="docutils literal">b</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-43"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_not</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  ≠ <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-44"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_or</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow {\bf a} \lor {\bf b}\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-45"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_xor</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow {\bf a} \oplus {\bf b}\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-46"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_xor</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  <span class="math notranslate nohighlight">\(\oplus\)</span> <tt class="docutils literal">b</tt></p>
+</div>
+<div class="section" id="set-flatzinc-builtins">
+<h2>4.2.3.3. Set FlatZinc builtins<a class="headerlink" href="#set-flatzinc-builtins" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-minizinc notranslate" id="index-47"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_set_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">as</tt> [ <tt class="docutils literal">b</tt> ] = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-48"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_set_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">as</tt> [ <tt class="docutils literal">b</tt> ] = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-49"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_card</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  = | <tt class="docutils literal">S</tt> |</p>
+<div class="highlight-minizinc notranslate" id="index-50"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_diff</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  = <tt class="docutils literal">x</tt>  <span class="math notranslate nohighlight">\(\setminus\)</span> <tt class="docutils literal">y</tt></p>
+<div class="highlight-minizinc notranslate" id="index-51"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_eq</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  = <tt class="docutils literal">y</tt></p>
+<div class="highlight-minizinc notranslate" id="index-52"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_eq_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">x</tt>  = <tt class="docutils literal">y</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-53"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_in</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  <span class="math notranslate nohighlight">\(\in\)</span> <tt class="docutils literal">S</tt></p>
+<div class="highlight-minizinc notranslate" id="index-54"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_in_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} \in {\bf S})\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-55"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_in_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} \in {\bf S})\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-56"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_intersect</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                        </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                        </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  = <tt class="docutils literal">x</tt>  <span class="math notranslate nohighlight">\(\cap\)</span> <tt class="docutils literal">y</tt></p>
+<div class="highlight-minizinc notranslate" id="index-57"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_le</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  ≤ <tt class="docutils literal">y</tt>  (lexicographic order of the sorted lists of elements)</p>
+<div class="highlight-minizinc notranslate" id="index-58"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_le_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} \leq {\bf y})\)</span> (lexicographic order of the sorted lists of elements)</p>
+<div class="highlight-minizinc notranslate" id="index-59"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_lt</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  &lt; <tt class="docutils literal">y</tt>  (lexicographic order of the sorted lists of elements)</p>
+<div class="highlight-minizinc notranslate" id="index-60"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_lt_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} &lt; {\bf y})\)</span> (lexicographic order of the sorted lists of elements)</p>
+<div class="highlight-minizinc notranslate" id="index-61"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_ne</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  ≠ <tt class="docutils literal">y</tt></p>
+<div class="highlight-minizinc notranslate" id="index-62"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_ne_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">x</tt>  ≠ <tt class="docutils literal">y</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-63"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_subset</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  <span class="math notranslate nohighlight">\(\subseteq\)</span> <tt class="docutils literal">y</tt></p>
+<div class="highlight-minizinc notranslate" id="index-64"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_subset_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} \subseteq {\bf y})\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-65"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_superset</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  <span class="math notranslate nohighlight">\(\supseteq\)</span> <tt class="docutils literal">y</tt></p>
+<div class="highlight-minizinc notranslate" id="index-66"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_superset_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} \subseteq {\bf y})\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-67"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_symdiff</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  to be the symmetric difference of <tt class="docutils literal">x</tt>  and <tt class="docutils literal">y</tt></p>
+<div class="highlight-minizinc notranslate" id="index-68"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_union</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  = <tt class="docutils literal">x</tt>  <span class="math notranslate nohighlight">\(\cup\)</span> <tt class="docutils literal">y</tt></p>
+</div>
+<div class="section" id="float-flatzinc-builtins">
+<h2>4.2.3.4. Float FlatZinc builtins<a class="headerlink" href="#float-flatzinc-builtins" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-minizinc notranslate" id="index-69"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_float_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">as</tt> [ <tt class="docutils literal">b</tt> ] = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-70"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_float_maximum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">m</tt>  to be the maximum value of the (non-empty)
+array <tt class="docutils literal">x</tt></p>
+<div class="highlight-minizinc notranslate" id="index-71"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_float_minimum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">m</tt>  to be the minimum value of the (non-empty)
+array <tt class="docutils literal">x</tt></p>
+<div class="highlight-minizinc notranslate" id="index-72"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_float_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                  </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                  </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">as</tt> [ <tt class="docutils literal">b</tt> ] = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-73"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_abs</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  to be the absolute value of <tt class="docutils literal">a</tt></p>
+<div class="highlight-minizinc notranslate" id="index-74"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_acos</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = acos( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-75"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_acosh</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = acosh( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-76"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_asin</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = asin( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-77"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_asinh</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = asinh( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-78"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_atan</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = atan( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-79"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_atanh</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = atanh( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-80"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_cos</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = cos( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-81"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_cosh</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = cosh( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-82"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_div</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  / <tt class="docutils literal">b</tt>  = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-83"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_dom</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains the domain of <tt class="docutils literal">x</tt>  using the values in <tt class="docutils literal">as</tt> , using each
+pair of values <tt class="docutils literal">as</tt> [2* <tt class="docutils literal">i</tt> -1].. <tt class="docutils literal">as</tt> [2* <tt class="docutils literal">i</tt> ] for <tt class="docutils literal">i</tt>  in 1.. <tt class="docutils literal">n</tt> /2 as a possible range</p>
+<div class="highlight-minizinc notranslate" id="index-84"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_eq</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  = <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-85"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_eq_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">a</tt>  = <tt class="docutils literal">b</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-86"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_exp</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = exp( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-87"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_in</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf a} \in\ [ {\bf b}, {\bf c} ]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-88"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_in_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> <span class="math notranslate nohighlight">\({\bf a} \in\ [ {\bf b}, {\bf c} ]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-89"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_le</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  ≤ <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-90"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_le_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">a</tt>  ≤ <tt class="docutils literal">b</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-91"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_lin_eq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                       </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-92"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_lin_eq_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i])\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-93"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_lin_le</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                       </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\(\sum_i {\bf as}[i]*{\bf bs}[i] \leq {\bf c}\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-94"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_lin_le_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow (\sum_i {\bf as}[i]*{\bf bs}[i] \leq {\bf c})\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-95"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_lin_lt</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                       </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\(\sum_i {\bf as}[i]*{\bf bs}[i] &lt; {\bf c}\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-96"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_lin_lt_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow (\sum_i {\bf as}[i]*{\bf bs}[i] &lt; {\bf c})\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-97"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_lin_ne</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                       </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf c} \neq \sum_i {\bf as}[i]*{\bf bs}[i]\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-98"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_lin_ne_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf c} \neq \sum_i {\bf as}[i]*{\bf bs}[i])\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-99"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_ln</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = ln( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-100"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_log10</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = log&lt;sub&gt;10&lt;/sub&gt;( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-101"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_log2</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = log&lt;sub&gt;2&lt;/sub&gt;( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-102"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_lt</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  &lt; <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-103"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_lt_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">a</tt>  &lt; <tt class="docutils literal">b</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-104"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_max</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains max( <tt class="docutils literal">a</tt> , <tt class="docutils literal">b</tt> ) = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-105"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_min</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains min( <tt class="docutils literal">a</tt> , <tt class="docutils literal">b</tt> ) = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-106"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_ne</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  ≠ <tt class="docutils literal">b</tt></p>
+<div class="highlight-minizinc notranslate" id="index-107"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_ne_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">r</tt>  <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> ( <tt class="docutils literal">a</tt>  ≠ <tt class="docutils literal">b</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-108"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_plus</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  + <tt class="docutils literal">b</tt>  = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-109"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_pow</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">z</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">z</tt>  = <span class="math notranslate nohighlight">\({\bf x} ^ {{\bf y}}\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-110"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_sin</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = sin( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-111"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_sinh</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = sinh( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-112"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_sqrt</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <span class="math notranslate nohighlight">\({\bf b} = \sqrt{{\bf a}}\)</span></p>
+<div class="highlight-minizinc notranslate" id="index-113"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_tan</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = tan( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-114"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_tanh</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">b</tt>  = tanh( <tt class="docutils literal">a</tt> )</p>
+<div class="highlight-minizinc notranslate" id="index-115"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_times</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  * <tt class="docutils literal">b</tt>  = <tt class="docutils literal">c</tt></p>
+<div class="highlight-minizinc notranslate" id="index-116"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nb">int2float</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">y</tt> = <tt class="docutils literal">x</tt></p>
+</div>
+<div class="section" id="flatzinc-builtins-added-in-minizinc-2-0-0">
+<h2>4.2.3.5. FlatZinc builtins added in MiniZinc 2.0.0.<a class="headerlink" href="#flatzinc-builtins-added-in-minizinc-2-0-0" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>These functions and predicates define built-in operations of the MiniZinc language
+that have been added in MiniZinc 2.0.0. Solvers that support these natively need
+to include a file called redefinitions-2.0.mzn in their solver library that
+redefines these predicates as builtins.</div></blockquote>
+<div class="highlight-minizinc notranslate" id="index-117"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_float_maximum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">m</tt>  to be the maximum value in array <tt class="docutils literal">x</tt> .</p>
+<div class="highlight-minizinc notranslate" id="index-118"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_float_minimum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"></span>
+<span class="s">                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">m</tt>  to be the minimum value in array <tt class="docutils literal">x</tt> .</p>
+<div class="highlight-minizinc notranslate" id="index-119"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_int_maximum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">m</tt>  to be the maximum value in array <tt class="docutils literal">x</tt> .</p>
+<div class="highlight-minizinc notranslate" id="index-120"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_int_minimum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">m</tt>  to be the minimum value in array <tt class="docutils literal">x</tt> .</p>
+<div class="highlight-minizinc notranslate" id="index-121"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">bool_clause_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span><span class="s"></span>
+<span class="s">                           </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Reified clause constraint.
+Constrains <span class="math notranslate nohighlight">\({\bf b} \leftrightarrow \bigvee_i {\bf as}[i] \lor \bigvee_j \lnot {\bf bs}[j]\)</span></p>
+</div>
+<div class="section" id="flatzinc-builtins-added-in-minizinc-2-0-2">
+<h2>4.2.3.6. FlatZinc builtins added in MiniZinc 2.0.2.<a class="headerlink" href="#flatzinc-builtins-added-in-minizinc-2-0-2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>These functions and predicates define built-in operations of the MiniZinc language
+that have been added in MiniZinc 2.0.2. Solvers that support these natively need
+to include a file called redefinitions-2.0.2.mzn in their solver library that
+redefines these predicates as builtins.</div></blockquote>
+<div class="highlight-minizinc notranslate" id="index-122"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_bool_element_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Element constraint on array with MiniZinc index set, constrains <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx</tt> ] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</p>
+<div class="highlight-minizinc notranslate" id="index-123"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_float_element_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Element constraint on array with MiniZinc index set, constrains <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx</tt> ] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</p>
+<div class="highlight-minizinc notranslate" id="index-124"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_int_element_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                           </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Element constraint on array with MiniZinc index set, constrains <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx</tt> ] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</p>
+<div class="highlight-minizinc notranslate" id="index-125"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_set_element_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                           </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Element constraint on array with MiniZinc index set, constrains <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx</tt> ] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</p>
+</div>
+<div class="section" id="flatzinc-builtins-added-in-minizinc-2-1-0">
+<h2>4.2.3.7. FlatZinc builtins added in MiniZinc 2.1.0.<a class="headerlink" href="#flatzinc-builtins-added-in-minizinc-2-1-0" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>These functions and predicates define built-in operations of the MiniZinc language
+that have been added in MiniZinc 2.1.0. Solvers that support these natively need
+to include a file called redefinitions-2.1.0.mzn in their solver library that
+redefines these predicates as builtins.</div></blockquote>
+<div class="highlight-minizinc notranslate" id="index-126"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_dom</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  to take one of the values in <tt class="docutils literal">as</tt></p>
+<div class="highlight-minizinc notranslate" id="index-127"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_in</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">a</tt>  ≤ <tt class="docutils literal">x</tt>  ≤ <tt class="docutils literal">b</tt></p>
+</div>
+<div class="section" id="flatzinc-builtins-added-in-minizinc-2-1-1">
+<h2>4.2.3.8. FlatZinc builtins added in MiniZinc 2.1.1.<a class="headerlink" href="#flatzinc-builtins-added-in-minizinc-2-1-1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>These functions and predicates define built-in operations of the MiniZinc language
+that have been added in MiniZinc 2.1.1. Solvers that support these natively need
+to include a file called redefinitions-2.1.1.mzn in their solver library that
+redefines these predicates as builtins.</div></blockquote>
+<div class="highlight-minizinc notranslate" id="index-128"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nb">max</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Returns variable constrained to be equal to the maximum of the set <tt class="docutils literal">s</tt> .
+An alternative implementation can be found in the comments of the source code.</p>
+<div class="highlight-minizinc notranslate" id="index-129"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nb">min</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Returns variable constrained to be equal to the minimum of the set <tt class="docutils literal">s</tt> .
+An alternative implementation can be found in the comments of the source code.</p>
+</div>
+<div class="section" id="flatzinc-builtins-added-in-minizinc-2-2-1">
+<h2>4.2.3.9. FlatZinc builtins added in MiniZinc 2.2.1.<a class="headerlink" href="#flatzinc-builtins-added-in-minizinc-2-2-1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>These functions and predicates define built-in operations of the MiniZinc language
+that have been added in MiniZinc 2.2.1. Solvers that support these natively need
+to include a file called redefinitions-2.2.1.mzn in their solver library that
+redefines these predicates as builtins.</div></blockquote>
+<div class="highlight-minizinc notranslate" id="index-130"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_pow_fixed</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">z</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">z</tt>  = <span class="math notranslate nohighlight">\({\bf x} ^ {{\bf y}}\)</span></p>
+</div>
+<div class="section" id="flatzinc-builtins-added-in-minizinc-2-3-3">
+<h2>4.2.3.10. FlatZinc builtins added in MiniZinc 2.3.3.<a class="headerlink" href="#flatzinc-builtins-added-in-minizinc-2-3-3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>These functions and predicates define built-in operations of the MiniZinc language
+that have been added in MiniZinc 2.3.3. Solvers that support these natively need
+to include a file called redefinitions-2.3.3.mzn in their solver library that
+redefines these predicates as builtins.</div></blockquote>
+<div class="highlight-minizinc notranslate" id="index-131"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">float_set_in</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Constrains <tt class="docutils literal">x</tt>  <span class="math notranslate nohighlight">\(\in\)</span> <tt class="docutils literal">S</tt></p>
+</div>
+<div class="section" id="flatzinc-builtins-added-in-minizinc-2-5-2">
+<h2>4.2.3.11. FlatZinc builtins added in MiniZinc 2.5.2.<a class="headerlink" href="#flatzinc-builtins-added-in-minizinc-2-5-2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>These functions and predicates define built-in operations of the MiniZinc language
+that have been added in MiniZinc 2.5.2. Solvers that support these natively need
+to include a file called redefinitions-2.5.2.mzn in their solver library that
+redefines these predicates as builtins.</div></blockquote>
+<div class="highlight-minizinc notranslate" id="index-132"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_bool_element2d_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                              </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                              </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Element constraint on 2d array with MiniZinc index set, constrains <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx1</tt> ,idx2] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</p>
+<div class="highlight-minizinc notranslate" id="index-133"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_float_element2d_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                               </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                               </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Element constraint on 2d array with MiniZinc index set, constrains <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx1</tt> ,idx2] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</p>
+<div class="highlight-minizinc notranslate" id="index-134"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_int_element2d_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Element constraint on 2d array with MiniZinc index set, constrains <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx1</tt> ,idx2] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</p>
+<div class="highlight-minizinc notranslate" id="index-135"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_set_element2d_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Element constraint on 2d array with MiniZinc index set, constrains <tt class="docutils literal">x</tt> [ <tt class="docutils literal">idx1</tt> ,idx2] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lib-optiontypes.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lib-stdlib.html" class="btn btn-neutral" title="4.2.2. Standard Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.5.5',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
