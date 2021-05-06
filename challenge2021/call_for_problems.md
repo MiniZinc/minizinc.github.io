@@ -40,5 +40,5 @@ we can arrange an alternative.
 Please follow the links below for submission instructions and
 requirements.
 
-[www.minizinc.org/challenge2021/challenge.html]({{ site.baseurl }}/challenge2021challenge.html)  
+[www.minizinc.org/challenge2021/challenge.html]({{ site.baseurl }}/challenge2021/challenge.html)  
 [www.minizinc.org/challenge2021/rules2021.html]({{ site.baseurl }}/challenge2021/rules2021.html)
