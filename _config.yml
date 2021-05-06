@@ -35,6 +35,9 @@ plugins:
   - jekyll-redirect-from
 # Build settings
 markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
 theme: minima
 sass:
     style: compressed
