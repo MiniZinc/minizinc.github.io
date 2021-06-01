@@ -22,7 +22,7 @@ title: MiniSearch - Documentation
 <li><a href="#language">Writing your own meta-search in MiniSearch</a></li>
 <li><a href="#examples">MiniSearch examples</a></li>
 <!--<li>Current limitations of MiniSearch</li>-->
-<li><a href="https://github.com/MiniZinc/libminizinc/issues">Reporting a MiniSearch bug</a></li>
+<li><a href="https://github.com/MiniZinc/MiniSearch/issues">Reporting a MiniSearch bug</a></li>
 </ol>
 </h3>
 
@@ -119,12 +119,11 @@ At the moment, we only provide a command line version for MiniSearch, but an IDE
 
 <li><h3 id="download">Downloading MiniSearch</h3>
 <table><tr><td width="1000pt">
-<p>The most recent source code is available on github, on the
-<a href="https://github.com/MiniZinc/libminizinc/tree/feature/minisearch">'feature/minisearch' branch</a> of <a href="https://github.com/MiniZinc/libminizinc">libminizinc</a>.
+<p>The most recent source code is available on <a href="https://github.com/minizinc/minisearch">GitHub</a>.
 To get the source code, use:
 </p>
 <p>
-<code>git clone -b feature/minisearch https://github.com/MiniZinc/libminizinc.git</code>
+<code>git clone https://github.com/minizinc/minisearch.git</code>
 </p>
 </tr></td></table>
 </li>
@@ -136,7 +135,7 @@ To get the source code, use:
 <table><tr><td width="1000pt">
 <p>
 We currently only provide a command-line version of MiniSearch, however, we are working on the integration of MiniSearch
-into the <a href="http://minizinc.org/ide">MiniZinc IDE</a>, which we plan to release soon. 
+into the <a href="https://www.minizinc.org/ide">MiniZinc IDE</a>, which we plan to release soon. 
 </p>
 <p>
 After downloading the <a href="#download">binary package of MiniSearch</a>, you will find the MiniSearch executable, <code>minisearch</code>,
@@ -181,14 +180,14 @@ FlatZinc solver. Below we give a list of solvers that provide a FlatZinc solver 
 with MiniSearch.
 </p>
 <ul>
-<li><a href="http://choco-solver.org"><b>Choco</b></a> is a CP solver written in Java. It provides 
+<li><a href="https://choco-solver.org"><b>Choco</b></a> is a CP solver written in Java. It provides 
 a FlatZinc solver <code>fzn_choco</code> <a href="https://github.com/chocoteam/choco-parsers/tree/master/src/chocofzn">here</a>.</li>
 <br>
-<li><a href="https://github.com/geoffchu/chuffed"><b>Chuffed</b></a> is a CP solver using lazy-clause generation (LCG) written in C++. 
-Its FlatZinc solver <code>fzn_chuffed</code> can be found in the <a href="https://github.com/geoffchu/chuffed/tree/master/trunk">trunk of its git repository</a>.
-To obtain the executable of <code>fzn_chuffed</code> you need to compile and install the trunk which will create <code>fzn_chuffed</code> in the install directory.</li>
+<li><a href="https://github.com/chuffed/chuffed"><b>Chuffed</b></a> is a CP solver using lazy-clause generation (LCG) written in C++. 
+Its FlatZinc solver <code>fzn-chuffed</code> can be found in the <a href="https://github.com/chuffed/chuffed/tree/master">trunk of its git repository</a>.
+To obtain the executable of <code>fzn_chuffed</code> you need to compile and install the trunk which will create <code>fzn-chuffed</code> in the install directory.</li>
 <br>
-<li><a href="http://gecode.org"><b>Gecode</b></a> is a CP solver written in C++. It ships FlatZinc solver <code>fzn-gecode</code> as 
+<li><a href="https://gecode.org"><b>Gecode</b></a> is a CP solver written in C++. It ships FlatZinc solver <code>fzn-gecode</code> as 
 part of its <a href="http://www.gecode.org/download.html">binary packages</a>.</li>
 <br>
 <li><a href="https://developers.google.com/optimization/"><b>or-tools</b></a> is Google's software suite for optimisation problems written in C++. Obtain the or-tools
