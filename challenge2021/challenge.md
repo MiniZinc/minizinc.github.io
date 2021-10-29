@@ -21,6 +21,7 @@ solutions (for optimization problems).
 
 ### Announcements
 
+*   **2021-10-29** Announcements of the results are [here](results2021.html).
 *   **2021-05-07** Official [Call for Problems](call_for_problems.html) for the MiniZinc Challenge.
 
 ### Dates

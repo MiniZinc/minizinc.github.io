@@ -1,0 +1,62 @@
+SICStus Prolog, http://sicstus.sics.se
+
+Authors: Mats Carlsson et al., RISE, Sweden
+
+Prolog development environment with a finite domain constraint programming module, global constraints, indexicals, MiniZinc/FlatZinc interface
+
+APIs:	MiniZinc, FlatZinc, Prolog, C++, C, C#, Java, Tcl
+
+Global constraints:
+    (arithmetical),
+    (Boolean),
+    all_different/[1,2],
+    all_different_except_0/1,
+    all_distinct/[1,2],
+    all_distinct_except_0/1,
+    all_equal/1,
+    all_equal_reif/2,
+    assignment/[2,3],
+    automaton/[3,8,9],
+    bin_packing/2,
+    bool_and/2,
+    bool_channel/4,
+    bool_or/2,
+    bool_xor/2,
+    case/[3,4],
+    circuit/[1,2],
+    count/4,
+    cumulative/[1,2],
+    cumulatives/[2,3],
+    diffn/[1,2],
+    disjoint1/[1,2],
+    disjoint2/[1,2],
+    element/[2,3],
+    geost/[2,3,4],
+    global_cardinality/[2,3],
+    keysorting/[2,3],
+    lex_chain/[1,2],
+    maximum/2,
+    maximum_arg/2,
+    minimum/2,
+    minimum_arg/2,
+    multi_cumulative/[2,3],
+    nvalue/2,
+    regular/2,
+    relation/3,
+    scalar_product/[4,5],
+    scalar_product_reif/[5,6],
+    seq_precede_chain/[1,2],
+    smt/1,
+    sorting/3,
+    subcircuit/[1,2],
+    sum/3,
+    symmetric_all_different/1,
+    symmetric_all_distinct/1,
+    table/[2,3],
+    value_precede_chain/[2,3].
+
+Standards:	ISO Prolog standard, IPv4, IPv6, Unicode 5.0
+
+Since:	1995
+
+Current release:	SICStus Prolog 4.7.0, Aug 9, 2021
