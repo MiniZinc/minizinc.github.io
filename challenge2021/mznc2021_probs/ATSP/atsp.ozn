@@ -1,0 +1,16 @@
+output ["job_program = array1d(1..25, ",show(job_program),");\n","job_length = array1d(1..25, ",show(job_length),");\n","job_moulds = array3d(1..25, 1..4, 1..1, ",show(job_moulds),");\n","total_job_moulds = array3d(1..25, 1..4, 1..1, ",show(total_job_moulds),");\n","job_end = array1d(1..25, ",show(job_end),");\n","job_time = array1d(1..25, ",show(job_time),");\n","demand_end = array1d(1..7, ",show(demand_end),");\n","demand_end_job = array1d(1..7, ",show(demand_end_job),");\n","makespan = ",show(makespan),";\n","waste = ",show(waste),";\n","tardiness = ",show(tardiness),";\n"];
+set of int: jobs = 1..25;
+set of int: colors = 1..1;
+set of int: moulds = 1..4;
+set of int: demands = 1..7;
+array [jobs] of int: job_program;
+array [jobs] of int: job_length;
+array [jobs,moulds,colors] of int: job_moulds;
+array [jobs,moulds,colors] of int: total_job_moulds;
+array [jobs] of int: job_end;
+array [jobs] of int: job_time;
+array [demands] of int: demand_end;
+array [demands] of int: demand_end_job;
+int: makespan;
+int: waste;
+int: tardiness;

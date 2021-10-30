@@ -1,0 +1,17 @@
+iZplus (fzn_izplus) is a FlatZinc solver using iZ-C constraint programming
+library which is developed by NTT DATA SEKISUI SYSTEMS CORPORATION.
+
+iZplus has the following additional featuers:
+
+ * Randomized restarting in search
+ * Local search for optimization problem
+ * Local search for satisfying problem
+ * Variable reordering
+ * NG learning
+ * flatzinc parser (using FlatZinc parser skeleton)
+
+iZ-C: Constraint Programming Library
+  http://www.constraint.org/en/izc_download/
+
+FlatZinc parser skeleton
+  https://www.gecode.org/download/flatzinc_skeleton-1.3.zip
