@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.2. Installation &mdash; The MiniZinc Handbook 2.5.6</title>
+  <title>1.2. Installation &mdash; The MiniZinc Handbook 2.6.0</title>
   
 
   
@@ -77,7 +77,7 @@
           
             
               <div class="version">
-                2.5.6
+                2.6.0
               </div>
             
           
@@ -198,7 +198,7 @@
 <p>After installation is complete, you can find the MiniZinc IDE installed as a Windows application. The file extensions <tt class="docutils literal">.mzn</tt>, <tt class="docutils literal">.dzn</tt> and <tt class="docutils literal">.fzn</tt> are linked to the IDE, so double-clicking any MiniZinc file should open it in the IDE.</p>
 <p>If you want to use MiniZinc from a command prompt, you need to add the installation directory to the PATH environment variable. In a Windows command prompt you could use the following command:</p>
 <pre class="literal-block">
-C:\&gt;setx PATH &quot;%PATH%;C:\Program Files\MiniZinc 2.5.6 (bundled)\&quot;
+C:\&gt;setx PATH &quot;%PATH%;C:\Program Files\MiniZinc 2.6.0 (bundled)\&quot;
 </pre>
 </div>
 <div class="section" id="linux">
@@ -220,31 +220,31 @@ C:\&gt;setx PATH &quot;%PATH%;C:\Program Files\MiniZinc 2.5.6 (bundled)\&quot;
 <h3>1.2.2.2. AppImage<a class="headerlink" href="#appimage" title="Permalink to this headline">¶</a></h3>
 <p>The MiniZinc AppImage provides a way of installing the MiniZinc bundles without any added requirements. AppImages (<a class="reference external" href="https://appimage.org/">https://appimage.org/</a>) provide self-contained versions of applications with all their required dependencies. To use the MiniZinc AppImage you simply download the AppImage, make it executable, and run:</p>
 <pre class="literal-block">
-$ chmod +x MiniZincIDE-2.5.6-x86_64.AppImage
-$ ./MiniZincIDE-2.5.6-x86_64.AppImage
+$ chmod +x MiniZincIDE-2.6.0-x86_64.AppImage
+$ ./MiniZincIDE-2.6.0-x86_64.AppImage
 </pre>
 <p>AppImages have no standard integration with the desktop environment. A script has been added to the MiniZinc AppImage to integrate the application into both the terminal and the desktop environment. The one requirement for this script is that the AppImage <em>CANNOT be moved</em> after the install script has been run. A suggestion would be to store the AppImages in <tt class="docutils literal">~/Applications/</tt> or <tt class="docutils literal">/opt/Applications/</tt>. The following commands move the AppImage to the second location and install <tt class="docutils literal">minizinc</tt> and <tt class="docutils literal">MiniZincIDE</tt> to <tt class="docutils literal">/usr/local/bin</tt> and will add a desktop entry and its corresponding icon to <tt class="docutils literal">$HOME/.local/share/{applications,icons}</tt>:</p>
 <pre class="literal-block">
-$ mv ./MiniZincIDE-2.5.6-x86_64.AppImage /opt/Applications/
-$ /opt/Applications/MiniZincIDE-2.5.6-x86_64.AppImage install
+$ mv ./MiniZincIDE-2.6.0-x86_64.AppImage /opt/Applications/
+$ /opt/Applications/MiniZincIDE-2.6.0-x86_64.AppImage install
 </pre>
 <p><strong>Note:</strong> to change the installation locations can be changed using the environmental variables <tt class="docutils literal">$BIN_LOCATION</tt> and <tt class="docutils literal">$DESKTOP_LOCATION</tt>. The default behaviour can be achieved using the following command:</p>
 <pre class="literal-block">
-$ BIN_LOCATION=/usr/local/bin DESKTOP_LOCATION=$HOME/.local/share ./MiniZincIDE-2.5.6-x86_64.AppImage install
+$ BIN_LOCATION=/usr/local/bin DESKTOP_LOCATION=$HOME/.local/share ./MiniZincIDE-2.6.0-x86_64.AppImage install
 </pre>
 </div>
 <div class="section" id="archive">
 <h3>1.2.2.3. Archive<a class="headerlink" href="#archive" title="Permalink to this headline">¶</a></h3>
 <p>The MiniZinc archive bundle is straightforward, but doesn’t offer any automatic integrations with the desktop environment. After downloading, uncompress the archive, for example in your home directory or any other location where you want to install it:</p>
 <pre class="literal-block">
-$ tar xf MiniZincIDE-2.5.6-bundle-linux-x86_64.tgz
+$ tar xf MiniZincIDE-2.6.0-bundle-linux-x86_64.tgz
 </pre>
 <p>This will unpack MiniZinc into a directory that is called the same as the archive file (without the <tt class="docutils literal">.tgz</tt>). You can start the MiniZinc IDE using the <tt class="docutils literal">MiniZincIDE.sh</tt> shell script, which sets up a number of paths and environment variables.</p>
 <p>In order to use the command line tools, after unpacking, make the following changes to some environment variables (assuming a bash-like shell):</p>
 <pre class="literal-block">
-$ export PATH=MiniZincIDE-2.5.6-bundle-linux-x86_64/bin:$PATH
-$ export LD_LIBRARY_PATH=MiniZincIDE-2.5.6-bundle-linux-x86_64/lib:$LD_LIBRARY_PATH
-$ export QT_PLUGIN_PATH=MiniZincIDE-2.5.6-bundle-linux-x86_64/plugins:$QT_PLUGIN_PATH
+$ export PATH=MiniZincIDE-2.6.0-bundle-linux-x86_64/bin:$PATH
+$ export LD_LIBRARY_PATH=MiniZincIDE-2.6.0-bundle-linux-x86_64/lib:$LD_LIBRARY_PATH
+$ export QT_PLUGIN_PATH=MiniZincIDE-2.6.0-bundle-linux-x86_64/plugins:$QT_PLUGIN_PATH
 </pre>
 </div>
 </div>
@@ -306,7 +306,7 @@ $ export QT_PLUGIN_PATH=MiniZincIDE-2.5.6-bundle-linux-x86_64/plugins:$QT_PLUGIN
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.5.6',
+            VERSION:'2.6.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
