@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. User Manual &mdash; The MiniZinc Handbook 2.5.6</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/part_3_user_manual.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3.1. The MiniZinc Command Line Tool" href="command_line.html" />
+    <link rel="prev" title="2.8. FlatZinc和展平" href="flattening.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.5.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html">3.3. Globalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html">3.4. FindMUS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.5. Using MiniZinc in Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">3.6. Python Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>3. User Manual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-manual">
+<span id="part-manual"></span><h1>3. User Manual<a class="headerlink" href="#user-manual" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#basic-usage">3.1.1. Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#adding-solvers">3.1.2. Adding Solvers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#configuration-files">3.1.2.1. Configuration files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#configuration-for-mip-solvers">3.1.2.2. Configuration for MIP solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#options">3.1.3. Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#general-options">3.1.3.1. General options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#solving-options">3.1.3.2. Solving options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#flattener-input-options">3.1.3.3. Flattener input options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="command_line.html#flattener-two-pass-options">Flattener two-pass options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="command_line.html#flattener-output-options">Flattener output options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#solution-output-options">3.1.3.4. Solution output options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#user-configuration-files">3.1.4. User Configuration Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#command-line-parameter-files">3.1.5. Command-line Parameter Files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html#editing-files">3.2.1. Editing files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#editing-functions">3.2.1.1. Editing functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#fonts-and-dark-mode">3.2.1.2. Fonts and dark mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html#configuring-and-running-a-solver">3.2.2. Configuring and Running a Solver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#running-a-model">3.2.2.1. Running a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#solver-configurations">3.2.2.2. Solver configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#automatic-solution-checking">3.2.2.3. Automatic Solution Checking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#compiling-a-model">3.2.2.4. Compiling a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#profiling-a-model">3.2.2.5. Profiling a model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html#working-with-projects">3.2.3. Working With Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html#submitting-solutions-to-online-courses">3.2.4. Submitting Solutions to Online Courses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html#configuration-options">3.2.5. Configuration Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#locating-the-minizinc-installation">3.2.5.1. Locating the MiniZinc installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#adding-third-party-solvers">3.2.5.2. Adding Third-Party Solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="minizinc_ide.html#configuring-existing-solvers">Configuring existing solvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="minizinc_ide.html#adding-new-solvers">Adding new solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#editing-options">3.2.5.3. Editing options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minizinc_ide.html#output-options">3.2.5.4. Output options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="globalizer.html">3.3. Globalizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html#basic-usage">3.3.1. Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html#caveats">3.3.2. Caveats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html#supported-constraints">3.3.3. Supported Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html#using-globalizer-in-the-minizinc-ide">3.3.4. Using Globalizer in the MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html#how-it-works">3.3.5. How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html#performance-tips">3.3.6. Performance tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html#limitations-future-work">3.3.7. Limitations / Future work</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="find_mus.html">3.4. FindMUS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html#basic-usage">3.4.1. Basic Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="find_mus.html#commandline-arguments">3.4.1.1. Commandline arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="find_mus.html#example">3.4.1.2. Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html#using-findmus-in-the-minizinc-ide">3.4.2. Using FindMUS in the MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html#how-it-works">3.4.3. How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html#performance-tips">3.4.4. Performance tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html#limitations-future-work">3.4.5. Limitations / Future work</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="jupyter.html">3.5. Using MiniZinc in Jupyter Notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html#installation">3.5.1. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html#basic-usage">3.5.2. Basic usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">3.6. Python Interface</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="command_line.html" class="btn btn-neutral float-right" title="3.1. The MiniZinc Command Line Tool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="flattening.html" class="btn btn-neutral" title="2.8. FlatZinc和展平" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.5.6',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
