@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Minizinc 指南 &mdash; The MiniZinc Handbook 2.6.1</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/part_2_tutorial.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2.1. MiniZinc基本模型" href="modelling.html" />
+    <link rel="prev" title="1.3. First steps with MiniZinc" href="basic_steps.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.6.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Minizinc 指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelling.html">2.1. MiniZinc基本模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html">2.2. 更多复杂模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html">2.3. 谓词和函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optiontypes.html">2.4. 选项类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html">2.5. 搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">2.6. MiniZinc中的有效建模实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html">2.7. 在MiniZinc中对布尔可满足性问题建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html">2.8. FlatZinc和展平</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>2. Minizinc 指南</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="minizinc">
+<span id="part-tutorial"></span><h1>2. Minizinc 指南<a class="headerlink" href="#minizinc" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modelling.html">2.1. MiniZinc基本模型</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelling.html#id1">2.1.1. 第一个实例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling.html#id2">2.1.2. 算术优化实例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling.html#index-29">2.1.3. 数据文件和谓词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling.html#id4">2.1.4. 实数求解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling.html#id5">2.1.5. 模型的基本结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modelling2.html">2.2. 更多复杂模型</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html#sec-arrayset">2.2.1. 数组和集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html#id3">2.2.2. 全局约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html#id4">2.2.3. 条件表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html#sec-enum">2.2.4. 枚举类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html#sec-complex">2.2.5. 复杂约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html#id7">2.2.6. 集合约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html#id8">2.2.7. 汇总</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="predicates.html">2.3. 谓词和函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html#sec-globals">2.3.1. 全局约束</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#alldifferent">2.3.1.1. Alldifferent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#cumulative">2.3.1.2. Cumulative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#table">2.3.1.3. Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="predicates.html#regular">2.3.1.4. Regular</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html#id3">2.3.2. 定义谓词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html#id4">2.3.3. 定义函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html#id5">2.3.4. 反射函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html#id6">2.3.5. 局部变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html#id7">2.3.6. 语境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html#id8">2.3.7. 局部约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html#id9">2.3.8. 定义域反射函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html#id10">2.3.9. 作用域</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="optiontypes.html">2.4. 选项类型</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="optiontypes.html#id2">2.4.1. 声明和使用选项类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optiontypes.html#id3">2.4.2. 隐藏选项类型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mzn_search.html">2.5. 搜索</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html#id2">2.5.1. 有限域搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html#id3">2.5.2. 搜索注解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html#id4">2.5.3. 注解</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="efficient.html">2.6. MiniZinc中的有效建模实践</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html#id1">2.6.1. 变量界限</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html#id2">2.6.2. 有效的生成元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html#id3">2.6.3. 冗余约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html#id4">2.6.4. 模型选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html#sec-multiple-modelling-and-channels">2.6.5. 多重建模和连通</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html#id6">2.6.6. 对称</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#id7">2.6.6.1. 静态的对称性破缺</a></li>
+<li class="toctree-l3"><a class="reference internal" href="efficient.html#id8">2.6.6.2. 其他对称的例子</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sat.html">2.7. 在MiniZinc中对布尔可满足性问题建模</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sat.html#id1">2.7.1. 整型建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html#id2">2.7.2. 非等式建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html#id3">2.7.3. 势约束建模</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flattening.html">2.8. FlatZinc和展平</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html#id1">2.8.1. 展平表达式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#id2">2.8.1.1. 简化和求值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#sec-flat-sub">2.8.1.2. 定义子表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#sec-flat-fzn">2.8.1.3. FlatZinc约束形式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#id5">2.8.1.4. 边界分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flattening.html#id6">2.8.1.5. 目标函数</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html#id7">2.8.2. 线性表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html#sec-unroll">2.8.3. 展开表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html#id9">2.8.4. 数组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html#id10">2.8.5. 具体化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html#id11">2.8.6. 谓词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html#let">2.8.7. Let表达式</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modelling.html" class="btn btn-neutral float-right" title="2.1. MiniZinc基本模型" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basic_steps.html" class="btn btn-neutral" title="1.3. First steps with MiniZinc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.6.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
