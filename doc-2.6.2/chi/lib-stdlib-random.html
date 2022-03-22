@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2.1.10. Random Number Generator builtins &mdash; The MiniZinc Handbook 2.6.2</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-stdlib-random.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.1.11. Stuctured Output" href="lib-stdlib-output.html" />
+    <link rel="prev" title="4.2.1.9. Assertions and debugging functions" href="lib-stdlib-debug.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.6.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="lib-stdlib.html">4.2.1. Standard Library</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-builtins.html">4.2.1.1. Built-in functions and operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-annotations.html">4.2.1.2. Annotations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-optiontypes.html">4.2.1.3. Option type support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-sort.html">4.2.1.4. Array sorting operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-language.html">4.2.1.5. Language information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-options.html">4.2.1.6. Compiler options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-ifthenelse.html">4.2.1.7. Conditionals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-reflect.html">4.2.1.8. Reflection operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-debug.html">4.2.1.9. Assertions and debugging functions</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.1.10. Random Number Generator builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-output.html">4.2.1.11. Stuctured Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.2. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-ide.html">4.2.6. MiniZincIDE tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_4_reference.html">4. Reference Manual</a> &raquo;</li>
+        
+          <li><a href="lib.html">4.2. The MiniZinc library</a> &raquo;</li>
+        
+          <li><a href="lib-stdlib.html">4.2.1. Standard Library</a> &raquo;</li>
+        
+      <li>4.2.1.10. Random Number Generator builtins</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="random-number-generator-builtins">
+<span id="ch-lib-stdlib-random"></span><h1>4.2.1.10. Random Number Generator builtins<a class="headerlink" href="#random-number-generator-builtins" title="Permalink to this headline">¶</a></h1>
+<p>These functions implement random number generators from different
+probability distributions.</p>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-random-bernoulli"><span class="std std-ref">bernoulli</span></a>, <a class="reference internal" href="#mzn-stdlib-random-binomial"><span class="std std-ref">binomial</span></a>, <a class="reference internal" href="#mzn-stdlib-random-cauchy"><span class="std std-ref">cauchy</span></a>, <a class="reference internal" href="#mzn-stdlib-random-chisquared"><span class="std std-ref">chisquared</span></a>, <a class="reference internal" href="#mzn-stdlib-random-discrete-distribution"><span class="std std-ref">discrete_distribution</span></a>, <a class="reference internal" href="#mzn-stdlib-random-exponential"><span class="std std-ref">exponential</span></a>, <a class="reference internal" href="#mzn-stdlib-random-fdistribution"><span class="std std-ref">fdistribution</span></a>, <a class="reference internal" href="#mzn-stdlib-random-gamma"><span class="std std-ref">gamma</span></a>, <a class="reference internal" href="#mzn-stdlib-random-lognormal"><span class="std std-ref">lognormal</span></a>, <a class="reference internal" href="#mzn-stdlib-random-normal"><span class="std std-ref">normal</span></a>, <a class="reference internal" href="#mzn-stdlib-random-poisson"><span class="std std-ref">poisson</span></a>, <a class="reference internal" href="#mzn-stdlib-random-tdistribution"><span class="std std-ref">tdistribution</span></a>, <a class="reference internal" href="#mzn-stdlib-random-uniform"><span class="std std-ref">uniform</span></a>, <a class="reference internal" href="#mzn-stdlib-random-weibull"><span class="std std-ref">weibull</span></a>.</p>
+<div class="mzn-docitem section" id="bernoulli">
+<span id="mzn-stdlib-random-bernoulli"></span><span id="index-0"></span><h2>bernoulli<a class="headerlink" href="#bernoulli" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-bernoulli"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="nf">bernoulli</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">p</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a boolean sample from the Bernoulli distribution defined by probability <span class="math notranslate nohighlight">\({\bf p}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="binomial">
+<span id="mzn-stdlib-random-binomial"></span><span id="index-1"></span><h2>binomial<a class="headerlink" href="#binomial" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-binomial"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">binomial</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">p</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the binomial distribution defined by sample number <tt class="docutils literal">t</tt> and probability <tt class="docutils literal">p</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="cauchy">
+<span id="mzn-stdlib-random-cauchy"></span><span id="index-2"></span><h2>cauchy<a class="headerlink" href="#cauchy" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-cauchy"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">cauchy</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">mean</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">scale</span><span class="p">)</span><span class="s"></span>
+<span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">cauchy</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">mean</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">scale</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the cauchy distribution defined by <span class="math notranslate nohighlight">\({\bf mean}, {\bf scale}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="chisquared">
+<span id="mzn-stdlib-random-chisquared"></span><span id="index-3"></span><h2>chisquared<a class="headerlink" href="#chisquared" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-chisquared"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">chisquared</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">)</span><span class="s"></span>
+<span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">chisquared</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the chi-squared distribution defined by the degree of freedom <span class="math notranslate nohighlight">\({\bf n}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="discrete-distribution">
+<span id="mzn-stdlib-random-discrete-distribution"></span><span id="index-4"></span><h2>discrete_distribution<a class="headerlink" href="#discrete-distribution" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-discrete-distribution"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">discrete_distribution</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">weights</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the discrete distribution defined by the array of weights <span class="math notranslate nohighlight">\({\bf weights}\)</span> that assigns a weight to each integer starting from zero</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="exponential">
+<span id="mzn-stdlib-random-exponential"></span><span id="index-5"></span><h2>exponential<a class="headerlink" href="#exponential" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-exponential"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">exponential</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">lambda</span><span class="p">)</span><span class="s"></span>
+<span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">exponential</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">lambda</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the exponential distribution defined by <span class="math notranslate nohighlight">\({\bf lambda}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="fdistribution">
+<span id="mzn-stdlib-random-fdistribution"></span><span id="index-6"></span><h2>fdistribution<a class="headerlink" href="#fdistribution" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-fdistribution"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">fdistribution</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">d1</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">d2</span><span class="p">)</span><span class="s"></span>
+<span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">fdistribution</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d1</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d2</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the Fisher-Snedecor F-distribution defined by the degrees of freedom <span class="math notranslate nohighlight">\({\bf d1}, {\bf d2}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="gamma">
+<span id="mzn-stdlib-random-gamma"></span><span id="index-7"></span><h2>gamma<a class="headerlink" href="#gamma" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-gamma"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">gamma</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">alpha</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">beta</span><span class="p">)</span><span class="s"></span>
+<span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">gamma</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">alpha</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">beta</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the gamma distribution defined by <span class="math notranslate nohighlight">\({\bf alpha}, {\bf beta}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="lognormal">
+<span id="mzn-stdlib-random-lognormal"></span><span id="index-8"></span><h2>lognormal<a class="headerlink" href="#lognormal" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-lognormal"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">lognormal</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">mean</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">std</span><span class="p">)</span><span class="s"></span>
+<span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">lognormal</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">mean</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">std</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the lognormal distribution defined by <span class="math notranslate nohighlight">\({\bf mean}, {\bf std}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="normal">
+<span id="mzn-stdlib-random-normal"></span><span id="index-9"></span><h2>normal<a class="headerlink" href="#normal" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-normal"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">normal</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">mean</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">std</span><span class="p">)</span><span class="s"></span>
+<span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">normal</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">mean</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">std</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the normal distribution defined by <span class="math notranslate nohighlight">\({\bf mean}, {\bf std}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="poisson">
+<span id="mzn-stdlib-random-poisson"></span><span id="index-10"></span><h2>poisson<a class="headerlink" href="#poisson" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-poisson"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">poisson</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">mean</span><span class="p">)</span><span class="s"></span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">poisson</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">mean</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="first last arabic">
+<li><div class="mzncodedoc first docutils container">
+<p>Return a sample from the poisson distribution defined by <tt class="docutils literal">mean</tt></p>
+</div>
+</li>
+<li><div class="mzncodedoc first docutils container">
+<p>Return a sample from the poisson distribution defined by an integer <tt class="docutils literal">mean</tt></p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="tdistribution">
+<span id="mzn-stdlib-random-tdistribution"></span><span id="index-11"></span><h2>tdistribution<a class="headerlink" href="#tdistribution" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-tdistribution"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">tdistribution</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">)</span><span class="s"></span>
+<span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">tdistribution</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the student’s t-distribution defined by the sample size <span class="math notranslate nohighlight">\({\bf n}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="uniform">
+<span id="mzn-stdlib-random-uniform"></span><span id="index-12"></span><h2>uniform<a class="headerlink" href="#uniform" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-uniform"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">uniform</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">lowerbound</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">upperbound</span><span class="p">)</span><span class="s"></span>
+<span class="k">function</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">uniform</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">lowerbound</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">upperbound</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the uniform distribution defined by <span class="math notranslate nohighlight">\({\bf lowerbound}, {\bf upperbound}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="weibull">
+<span id="mzn-stdlib-random-weibull"></span><span id="index-13"></span><h2>weibull<a class="headerlink" href="#weibull" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-stdlib-random-weibull"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">weibull</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">shape</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">scale</span><span class="p">)</span><span class="s"></span>
+<span class="k">function</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">weibull</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">shape</span><span class="p">,</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">scale</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Return a sample from the Weibull distribution defined by <span class="math notranslate nohighlight">\({\bf shape}, {\bf scale}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lib-stdlib-output.html" class="btn btn-neutral float-right" title="4.2.1.11. Stuctured Output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lib-stdlib-debug.html" class="btn btn-neutral" title="4.2.1.9. Assertions and debugging functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.6.2',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

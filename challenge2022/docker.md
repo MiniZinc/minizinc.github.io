@@ -13,7 +13,7 @@ must comply wih the following requirements:
 - Your image must use the base image of `minizinc/mznc2022:latest`
 - Running `minizinc` with the default solver (i.e. without the `--solver` option) must run your
   solver. This can be achieved through one of the following:
-  - If you have a [solver configuration file](/doc-2.6.1/en/fzn-spec.html#solver-configuration-files)
+  - If you have a [solver configuration file](/doc-2.6.2/en/fzn-spec.html#solver-configuration-files)
     (`.msc`) for your solver (recommended), you must add it to the user configuration file as the
     default solver.
 
@@ -77,11 +77,11 @@ announce that we have made changes to the base image).
 docker pull minizinc/mznc2022:latest
 ```
 
-The image contains a minimal installation of Ubuntu 20.04 and MiniZinc 2.6.1, which is installed in
+The image contains a minimal installation of Ubuntu 20.04 and MiniZinc 2.6.2, which is installed in
 the `/usr/local/bin` directory. It is recommended that you create a 
-[Solver Configuration File](/doc-2.6.1/en/fzn-spec.html#solver-configuration-files) for your solver,
+[Solver Configuration File](/doc-2.6.2/en/fzn-spec.html#solver-configuration-files) for your solver,
 and set it as the default solver using a
-[User Configuration File](/doc-2.6.1/en/command_line.html#user-configuration-files) (the details
+[User Configuration File](/doc-2.6.2/en/command_line.html#user-configuration-files) (the details
 of how to do this are in the following section), however the 
 method of setting up scripts as in previous years is still available.
 
@@ -161,7 +161,7 @@ COPY --from=builder /install /chuffed
 
 # Add Chuffed to the MiniZinc search path and set it as the default solver.
 #
-# See https://www.minizinc.org/doc-2.6.1/en/command_line.html#user-configuration-files
+# See https://www.minizinc.org/doc-2.6.2/en/command_line.html#user-configuration-files
 RUN echo '{"mzn_solver_path": ["/chuffed/share/minizinc/solvers"],' > $HOME/.minizinc/Preferences.json && \
     echo '"tagDefaults": [["", "org.chuffed.chuffed"]]}'           >> $HOME/.minizinc/Preferences.json
 ```
@@ -237,7 +237,7 @@ A solver configuration file (`.msc`) is a JSON configuration file specifying how
 It is the recommended way to add your solver to your image, and it is also the easiest way to
 allow your solver to be installed by others for use with MiniZinc.
 
-See the documentation [here](/doc-2.6.1/en/fzn-spec.html#sec-cmdline-conffiles) for more information.
+See the documentation [here](/doc-2.6.2/en/fzn-spec.html#sec-cmdline-conffiles) for more information.
 
 A FlatZinc solver called My Solver which is a binary file `./fzn-mysolver` and a library at
 `./mysolver-mznlib` may have the following solver configuration file:
