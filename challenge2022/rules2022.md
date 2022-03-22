@@ -6,11 +6,11 @@ title: MiniZinc Challenge 2022 - Rules
 ## MiniZinc Challenge 2022 - Rules
 
 These are the official rules for the MiniZinc Challenge 2022. Version 1.0.  
-These rules were last updated on 10 March 2022.
+These rules were last updated on 22 March 2022.
 
 ### Solver Submission
 
-The MiniZinc Challenge 2022 will test solvers on problems written in MiniZinc 2.6.1.
+The MiniZinc Challenge 2022 will test solvers on problems written in MiniZinc 2.6.2.
 
 A _participant_ is a person or entity (usually a solver developer) who has notified the challenge
 organisers of their intent to enter one or more solvers in the challenge. This must be done prior to
@@ -89,8 +89,8 @@ solver for the image with options depending on the entry CLASS.
 - FREE: `minizinc -i --output-mode dzn --output-objective -f <model.dzn> [data.dzn]`
 -  PAR: `minizinc -i --output-mode dzn --output-objective -p 4 <model.dzn> [data.dzn]`
 
-FlatZinc solvers must accept the following [standard options](/doc-2.6.1/en/fzn-spec.html#command-line-interface-and-standard-options), and they must be included in the supported
-`stdFlags` of the [solver configuration](/doc-2.6.1/en/fzn-spec.html#sec-cmdline-conffiles):
+FlatZinc solvers must accept the following [standard options](/doc-2.6.2/en/fzn-spec.html#command-line-interface-and-standard-options), and they must be included in the supported
+`stdFlags` of the [solver configuration](/doc-2.6.2/en/fzn-spec.html#sec-cmdline-conffiles):
 
 - One or more of:
   - `-a` (output all solutions/intermediate solutions), or
@@ -110,7 +110,7 @@ FlatZinc solvers must accept the following [standard options](/doc-2.6.1/en/fzn-
 - `-p <n>` (use the specified number `n` of threads and/or cores).  
   Entries competing in the `PAR` and `OPEN` classes must accept the `-p` flag.
 
-MiniZinc solvers must support the following [options](doc-2.6.1/en/command_line.html#options)
+MiniZinc solvers must support the following [options](doc-2.6.2/en/command_line.html#options)
 (by placing them in the solver configuration  `stdFlags` or in `extraFlags` for long-form options):
 
 - `--output-mode dzn`  
@@ -133,7 +133,7 @@ More details about Docker images and how to create a Docker image with your solv
 #### Output Requirements
 
 Output from FlatZinc solver entries must conform to the
-[FlatZinc 2.6.1 specification](https://www.minizinc.org/doc-2.6.1/en/fzn-spec.html#output).
+[FlatZinc 2.6.2 specification](https://www.minizinc.org/doc-2.6.2/en/fzn-spec.html#output).
 
 MiniZinc solver entries must correctly implement the `--output-mode dzn` and `--output-objective` 
 options (that is, output must exactly match the format that MiniZinc itself would output given
@@ -165,7 +165,7 @@ will be present during testing and when running the Challenge).
 ### Benchmark Problem Specification
 
 Solver entries will be run with models that are compatible with
-[MiniZinc 2.6.1](../doc-2.6.1/en/MiniZinc%20Handbook.pdf).  
+[MiniZinc 2.6.2](../doc-2.6.2/en/MiniZinc%20Handbook.pdf).  
 These models will adhere to the following restrictions:
 
 1.  Models may only use following types of variables:
@@ -269,7 +269,7 @@ These models will adhere to the following restrictions:
     the choice `x = 1`, then setting `x >= 2` in most FD solvers will have domains for `x :: 2..5`
     and `objective :: 8..10` and this time `objective` will be selected as the next variable to
     label. A full specification of the available choices is given in the
-    [FlatZinc 2.6.1 specification](https://www.minizinc.org/doc-2.6.1/en/fzn-spec.html#search-annotations).
+    [FlatZinc 2.6.2 specification](https://www.minizinc.org/doc-2.6.2/en/fzn-spec.html#search-annotations).
 
 5.  All variables appearing in the search strategy (that is, variables where if all fixed, would
     allow a propagation solver to check a solution) must be annotated with `output` (or must not
@@ -305,7 +305,7 @@ such restriction applies.
 
 In order to collect good benchmarks each participant is
 <span style="color:red">strongly encouraged</span> to submit one or two MiniZinc models, making use 
-of only the global constraints included in the MiniZinc 2.6.1 library, as well as some (preferably 
+of only the global constraints included in the MiniZinc 2.6.2 library, as well as some (preferably 
 1)  instance files for each model. The instances should range from easy (about a minute) to hard 
 (about 15 minutes) if possible. In addition, the submitter should provide one "toy" instance
 for testing purposes.  

@@ -1,0 +1,700 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2.3.3. Set FlatZinc builtins &mdash; The MiniZinc Handbook 2.6.2</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-flatzinc-set.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.3.4. Float FlatZinc builtins" href="lib-flatzinc-float.html" />
+    <link rel="prev" title="4.2.3.2. Bool FlatZinc builtins" href="lib-flatzinc-bool.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.6.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lib-stdlib.html">4.2.1. Standard Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.2. Global constraints</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-int.html">4.2.3.1. Integer FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-bool.html">4.2.3.2. Bool FlatZinc builtins</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.3.3. Set FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-float.html">4.2.3.4. Float FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-two.html">4.2.3.5. FlatZinc builtins added in MiniZinc 2.0.0.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twootwo.html">4.2.3.6. FlatZinc builtins added in MiniZinc 2.0.2.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twoone.html">4.2.3.7. FlatZinc builtins added in MiniZinc 2.1.0.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twooneone.html">4.2.3.8. FlatZinc builtins added in MiniZinc 2.1.1.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twotwoone.html">4.2.3.9. FlatZinc builtins added in MiniZinc 2.2.1.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twothreethree.html">4.2.3.10. FlatZinc builtins added in MiniZinc 2.3.3.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twofivetwo.html">4.2.3.11. FlatZinc builtins added in MiniZinc 2.5.2.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-ide.html">4.2.6. MiniZincIDE tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_4_reference.html">4. Reference Manual</a> &raquo;</li>
+        
+          <li><a href="lib.html">4.2. The MiniZinc library</a> &raquo;</li>
+        
+          <li><a href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a> &raquo;</li>
+        
+      <li>4.2.3.3. Set FlatZinc builtins</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="set-flatzinc-builtins">
+<span id="ch-lib-flatzinc-set"></span><h1>4.2.3.3. Set FlatZinc builtins<a class="headerlink" href="#set-flatzinc-builtins" title="Permalink to this headline">¶</a></h1>
+<p>In this section: <a class="reference internal" href="#mzn-flatzinc-set-array-set-element"><span class="std std-ref">array_set_element</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-array-var-set-element"><span class="std std-ref">array_var_set_element</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-card"><span class="std std-ref">set_card</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-diff"><span class="std std-ref">set_diff</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-eq"><span class="std std-ref">set_eq</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-eq-reif"><span class="std std-ref">set_eq_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-in"><span class="std std-ref">set_in</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-in-reif"><span class="std std-ref">set_in_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-intersect"><span class="std std-ref">set_intersect</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-le"><span class="std std-ref">set_le</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-le-reif"><span class="std std-ref">set_le_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-lt"><span class="std std-ref">set_lt</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-lt-reif"><span class="std std-ref">set_lt_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-ne"><span class="std std-ref">set_ne</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-ne-reif"><span class="std std-ref">set_ne_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-subset"><span class="std std-ref">set_subset</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-subset-reif"><span class="std std-ref">set_subset_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-superset"><span class="std std-ref">set_superset</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-superset-reif"><span class="std std-ref">set_superset_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-symdiff"><span class="std std-ref">set_symdiff</span></a>, <a class="reference internal" href="#mzn-flatzinc-set-set-union"><span class="std std-ref">set_union</span></a>.</p>
+<div class="mzn-docitem section" id="array-set-element">
+<span id="mzn-flatzinc-set-array-set-element"></span><span id="index-0"></span><h2>array_set_element<a class="headerlink" href="#array-set-element" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-array-set-element"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_set_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">as</tt>[<tt class="docutils literal">b</tt>] = <tt class="docutils literal">c</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="array-var-set-element">
+<span id="mzn-flatzinc-set-array-var-set-element"></span><span id="index-1"></span><h2>array_var_set_element<a class="headerlink" href="#array-var-set-element" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-array-var-set-element"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_set_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">as</tt>[<tt class="docutils literal">b</tt>] = <tt class="docutils literal">c</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-card">
+<span id="mzn-flatzinc-set-set-card"></span><span id="index-2"></span><h2>set_card<a class="headerlink" href="#set-card" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-card"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_card</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">x</tt> = |<tt class="docutils literal">S</tt>|</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-diff">
+<span id="mzn-flatzinc-set-set-diff"></span><span id="index-3"></span><h2>set_diff<a class="headerlink" href="#set-diff" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-diff"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_diff</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">r</tt> = <tt class="docutils literal">x</tt> <span class="math notranslate nohighlight">\(\setminus\)</span> <tt class="docutils literal">y</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-eq">
+<span id="mzn-flatzinc-set-set-eq"></span><span id="index-4"></span><h2>set_eq<a class="headerlink" href="#set-eq" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-eq"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_eq</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">x</tt> = <tt class="docutils literal">y</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-eq-reif">
+<span id="mzn-flatzinc-set-set-eq-reif"></span><span id="index-5"></span><h2>set_eq_reif<a class="headerlink" href="#set-eq-reif" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-eq-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_eq_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">r</tt> <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> (<tt class="docutils literal">x</tt> = <tt class="docutils literal">y</tt>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-in">
+<span id="mzn-flatzinc-set-set-in"></span><span id="index-6"></span><h2>set_in<a class="headerlink" href="#set-in" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-in"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_in</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">x</tt> <span class="math notranslate nohighlight">\(\in\)</span> <tt class="docutils literal">S</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-in-reif">
+<span id="mzn-flatzinc-set-set-in-reif"></span><span id="index-7"></span><h2>set_in_reif<a class="headerlink" href="#set-in-reif" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-in-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_in_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+<span class="k">predicate</span><span class="s"> </span><span class="nf">set_in_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} \in {\bf S})\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-intersect">
+<span id="mzn-flatzinc-set-set-intersect"></span><span id="index-8"></span><h2>set_intersect<a class="headerlink" href="#set-intersect" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-intersect"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_intersect</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                        </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                        </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">r</tt> = <tt class="docutils literal">x</tt> <span class="math notranslate nohighlight">\(\cap\)</span> <tt class="docutils literal">y</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-le">
+<span id="mzn-flatzinc-set-set-le"></span><span id="index-9"></span><h2>set_le<a class="headerlink" href="#set-le" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-le"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_le</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">x</tt> ≤ <tt class="docutils literal">y</tt> (lexicographic order of the sorted lists of elements)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-le-reif">
+<span id="mzn-flatzinc-set-set-le-reif"></span><span id="index-10"></span><h2>set_le_reif<a class="headerlink" href="#set-le-reif" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-le-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_le_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} \leq {\bf y})\)</span> (lexicographic order of the sorted lists of elements)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-lt">
+<span id="mzn-flatzinc-set-set-lt"></span><span id="index-11"></span><h2>set_lt<a class="headerlink" href="#set-lt" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-lt"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_lt</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">x</tt> &lt; <tt class="docutils literal">y</tt> (lexicographic order of the sorted lists of elements)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-lt-reif">
+<span id="mzn-flatzinc-set-set-lt-reif"></span><span id="index-12"></span><h2>set_lt_reif<a class="headerlink" href="#set-lt-reif" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-lt-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_lt_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} &lt; {\bf y})\)</span> (lexicographic order of the sorted lists of elements)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-ne">
+<span id="mzn-flatzinc-set-set-ne"></span><span id="index-13"></span><h2>set_ne<a class="headerlink" href="#set-ne" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-ne"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_ne</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">x</tt> ≠ <tt class="docutils literal">y</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-ne-reif">
+<span id="mzn-flatzinc-set-set-ne-reif"></span><span id="index-14"></span><h2>set_ne_reif<a class="headerlink" href="#set-ne-reif" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-ne-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_ne_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">r</tt> <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> (<tt class="docutils literal">x</tt> ≠ <tt class="docutils literal">y</tt>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-subset">
+<span id="mzn-flatzinc-set-set-subset"></span><span id="index-15"></span><h2>set_subset<a class="headerlink" href="#set-subset" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-subset"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_subset</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">x</tt> <span class="math notranslate nohighlight">\(\subseteq\)</span> <tt class="docutils literal">y</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-subset-reif">
+<span id="mzn-flatzinc-set-set-subset-reif"></span><span id="index-16"></span><h2>set_subset_reif<a class="headerlink" href="#set-subset-reif" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-subset-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_subset_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} \subseteq {\bf y})\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-superset">
+<span id="mzn-flatzinc-set-set-superset"></span><span id="index-17"></span><h2>set_superset<a class="headerlink" href="#set-superset" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-superset"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_superset</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">x</tt> <span class="math notranslate nohighlight">\(\supseteq\)</span> <tt class="docutils literal">y</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-superset-reif">
+<span id="mzn-flatzinc-set-set-superset-reif"></span><span id="index-18"></span><h2>set_superset_reif<a class="headerlink" href="#set-superset-reif" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-superset-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_superset_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf x} \subseteq {\bf y})\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-symdiff">
+<span id="mzn-flatzinc-set-set-symdiff"></span><span id="index-19"></span><h2>set_symdiff<a class="headerlink" href="#set-symdiff" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-symdiff"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_symdiff</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                      </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">r</tt> to be the symmetric difference of <tt class="docutils literal">x</tt> and <tt class="docutils literal">y</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-union">
+<span id="mzn-flatzinc-set-set-union"></span><span id="index-20"></span><h2>set_union<a class="headerlink" href="#set-union" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-set-set-union"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_union</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"></span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Constrains <tt class="docutils literal">r</tt> = <tt class="docutils literal">x</tt> <span class="math notranslate nohighlight">\(\cup\)</span> <tt class="docutils literal">y</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lib-flatzinc-float.html" class="btn btn-neutral float-right" title="4.2.3.4. Float FlatZinc builtins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lib-flatzinc-bool.html" class="btn btn-neutral" title="4.2.3.2. Bool FlatZinc builtins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.6.2',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
