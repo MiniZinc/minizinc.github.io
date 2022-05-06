@@ -21,6 +21,8 @@ solutions (for optimization problems).
 
 ### Announcements
 
+*   **2022-05-09** Call for solver registrations for the MiniZinc Challenge.
+*   **2022-05-09** Docker base image for the MiniZinc Challenge now available.
 *   **2022-03-10** Official [Call for Problems](call_for_problems.html) for the MiniZinc Challenge.
 
 ### Dates
@@ -93,7 +95,7 @@ would like to join then sign up for the [MiniZinc forums](../forum).
 
 The [MiniZinc](../index.html) page includes a list of resources related to MiniZinc and FlatZinc.
 
-The [MiniZinc 2.6.2 Distribution](../doc-2.6.2/en/index.html) includes a MiniZinc-to-FlatZinc
+The [MiniZinc 2.6.3 Distribution](../doc-2.6.3/en/index.html) includes a MiniZinc-to-FlatZinc
 converter and a large suite of MiniZinc examples and benchmarks.
 
 The [MiniZinc Challenges 2008-2021](../challenge.html) webpage, includes the results from each

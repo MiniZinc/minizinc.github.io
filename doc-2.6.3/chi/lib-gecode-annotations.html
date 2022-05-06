@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2.4.1. Additional Gecode search annotations &mdash; The MiniZinc Handbook 2.6.3</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-gecode-annotations.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.4.2. Additional Gecode constraints" href="lib-gecode-constraints.html" />
+    <link rel="prev" title="4.2.4. Additional declarations for Gecode" href="lib-gecode.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.6.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lib-stdlib.html">4.2.1. Standard Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.2. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.4.1. Additional Gecode search annotations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-gecode-constraints.html">4.2.4.2. Additional Gecode constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-ide.html">4.2.6. MiniZincIDE tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_4_reference.html">4. Reference Manual</a> &raquo;</li>
+        
+          <li><a href="lib.html">4.2. The MiniZinc library</a> &raquo;</li>
+        
+          <li><a href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a> &raquo;</li>
+        
+      <li>4.2.4.1. Additional Gecode search annotations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="additional-gecode-search-annotations">
+<span id="ch-lib-gecode-annotations"></span><h1>4.2.4.1. Additional Gecode search annotations<a class="headerlink" href="#additional-gecode-search-annotations" title="Permalink to this headline">¶</a></h1>
+<p>In this section: <a class="reference internal" href="#mzn-gecode-annotations-activity-max"><span class="std std-ref">activity_max</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-activity-min"><span class="std std-ref">activity_min</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-activity-size-max"><span class="std std-ref">activity_size_max</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-activity-size-min"><span class="std std-ref">activity_size_min</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-afc-max"><span class="std std-ref">afc_max</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-afc-min"><span class="std std-ref">afc_min</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-afc-size-max"><span class="std std-ref">afc_size_max</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-afc-size-min"><span class="std std-ref">afc_size_min</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-bool-default-search"><span class="std std-ref">bool_default_search</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-float-default-search"><span class="std std-ref">float_default_search</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-int-default-search"><span class="std std-ref">int_default_search</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-random"><span class="std std-ref">random</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-relax-and-reconstruct"><span class="std std-ref">relax_and_reconstruct</span></a>, <a class="reference internal" href="#mzn-gecode-annotations-set-default-search"><span class="std std-ref">set_default_search</span></a>.</p>
+<div class="mzn-docitem section" id="activity-max">
+<span id="mzn-gecode-annotations-activity-max"></span><span id="index-0"></span><h2>activity_max<a class="headerlink" href="#activity-max" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-activity-max"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">activity_max</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Select variable with largest activity count</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="activity-min">
+<span id="mzn-gecode-annotations-activity-min"></span><span id="index-1"></span><h2>activity_min<a class="headerlink" href="#activity-min" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-activity-min"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">activity_min</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Select variable with smallest activity count</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="activity-size-max">
+<span id="mzn-gecode-annotations-activity-size-max"></span><span id="index-2"></span><h2>activity_size_max<a class="headerlink" href="#activity-size-max" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-activity-size-max"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">activity_size_max</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Select variable with largest activity count divided by domain size</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="activity-size-min">
+<span id="mzn-gecode-annotations-activity-size-min"></span><span id="index-3"></span><h2>activity_size_min<a class="headerlink" href="#activity-size-min" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-activity-size-min"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">activity_size_min</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Select variable with smallest activity count divided by domain size</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="afc-max">
+<span id="mzn-gecode-annotations-afc-max"></span><span id="index-4"></span><h2>afc_max<a class="headerlink" href="#afc-max" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-afc-max"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">afc_max</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Select variable with largest accumulated failure count</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="afc-min">
+<span id="mzn-gecode-annotations-afc-min"></span><span id="index-5"></span><h2>afc_min<a class="headerlink" href="#afc-min" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-afc-min"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">afc_min</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Select variable with smallest accumulated failure count</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="afc-size-max">
+<span id="mzn-gecode-annotations-afc-size-max"></span><span id="index-6"></span><h2>afc_size_max<a class="headerlink" href="#afc-size-max" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-afc-size-max"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">afc_size_max</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Select variable with largest accumulated failure count divided by domain size</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="afc-size-min">
+<span id="mzn-gecode-annotations-afc-size-min"></span><span id="index-7"></span><h2>afc_size_min<a class="headerlink" href="#afc-size-min" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-afc-size-min"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">afc_size_min</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Select variable with smallest accumulated failure count divided by domain size</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="bool-default-search">
+<span id="mzn-gecode-annotations-bool-default-search"></span><span id="index-8"></span><h2>bool_default_search<a class="headerlink" href="#bool-default-search" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-bool-default-search"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">bool_default_search</span><span class="p">(</span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">varsel</span><span class="p">,</span><span class="s"> </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">valsel</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Specify default search strategy for Boolean variables to use variable selection
+strategy <tt class="docutils literal">varsel</tt>, and value choice strategy <tt class="docutils literal">valsel</tt>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="float-default-search">
+<span id="mzn-gecode-annotations-float-default-search"></span><span id="index-9"></span><h2>float_default_search<a class="headerlink" href="#float-default-search" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-float-default-search"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">float_default_search</span><span class="p">(</span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">varsel</span><span class="p">,</span><span class="s"> </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">valsel</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Specify default search strategy for float variables to use variable selection
+strategy <tt class="docutils literal">varsel</tt>, and value choice strategy <tt class="docutils literal">valsel</tt>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="int-default-search">
+<span id="mzn-gecode-annotations-int-default-search"></span><span id="index-10"></span><h2>int_default_search<a class="headerlink" href="#int-default-search" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-int-default-search"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">int_default_search</span><span class="p">(</span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">varsel</span><span class="p">,</span><span class="s"> </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">valsel</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Specify default search strategy for integer variables to use variable selection
+strategy <tt class="docutils literal">varsel</tt>, and value choice strategy <tt class="docutils literal">valsel</tt>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="random">
+<span id="mzn-gecode-annotations-random"></span><span id="index-11"></span><h2>random<a class="headerlink" href="#random" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-random"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">random</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Select random variable</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="relax-and-reconstruct">
+<span id="mzn-gecode-annotations-relax-and-reconstruct"></span><span id="index-12"></span><h2>relax_and_reconstruct<a class="headerlink" href="#relax-and-reconstruct" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-relax-and-reconstruct"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">relax_and_reconstruct</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                     </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">percentage</span><span class="p">)</span><span class="s"></span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">relax_and_reconstruct</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                     </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">percentage</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                     </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="first last arabic">
+<li><div class="mzncodedoc first docutils container">
+<p>Simple large neighbourhood search strategy: upon restart, for each variable in <tt class="docutils literal">x</tt>,
+the probability of it being fixed to the previous solution is <tt class="docutils literal">percentage</tt> (out of 100).</p>
+</div>
+</li>
+<li><div class="mzncodedoc first docutils container">
+<p>Simple large neighbourhood search strategy: upon restart, for each variable in <tt class="docutils literal">x</tt>,
+the probability of it being fixed to the previous solution is <tt class="docutils literal">percentage</tt> (out of 100).
+Start from an initial solution <tt class="docutils literal">y</tt>.</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="set-default-search">
+<span id="mzn-gecode-annotations-set-default-search"></span><span id="index-13"></span><h2>set_default_search<a class="headerlink" href="#set-default-search" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-gecode-annotations-set-default-search"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">set_default_search</span><span class="p">(</span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">varsel</span><span class="p">,</span><span class="s"> </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">valsel</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Specify default search strategy for set variables to use variable selection
+strategy <tt class="docutils literal">varsel</tt>, and value choice strategy <tt class="docutils literal">valsel</tt>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lib-gecode-constraints.html" class="btn btn-neutral float-right" title="4.2.4.2. Additional Gecode constraints" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lib-gecode.html" class="btn btn-neutral" title="4.2.4. Additional declarations for Gecode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.6.3',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
