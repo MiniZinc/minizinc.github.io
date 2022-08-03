@@ -1,0 +1,11 @@
+employees = 100; 
+requirements = 
+[|      Day: Evening: Night: 
+ | Mon:  27,      18,    20
+ | Tue:  23,      20,    18
+ | Wed:  21,      22,    18
+ | Thu:  29,      25,    14
+ | Fri:  35,      23,    15
+ | Sat:  20,      13,     8
+ | Sun:  12,      24,    12
+ |]; 

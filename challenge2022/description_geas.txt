@@ -1,0 +1,2 @@
+Geas (bitbucket.org/gkgange/geas) is a lazy-clause generation solver. Designed as an experimental testbed, it supports core-guided optimisation among other engine features.
+Author: Graeme Gange

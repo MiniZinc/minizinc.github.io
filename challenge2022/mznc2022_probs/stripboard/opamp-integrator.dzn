@@ -1,0 +1,79 @@
+max_w = 20;
+max_h = 10;
+max_links = 6;
+COMPONENT = {IC1, J1, R1, R2, R3, C1, C2, C3, C4, C5};
+allowed_orientation = [
+  IC1: {Upright},
+  J1: {Upright, UpsideDown},
+  R1: ORIENTATION,
+  R2: ORIENTATION,
+  R3: ORIENTATION,
+  C1: ORIENTATION,
+  C2: ORIENTATION,
+  C3: ORIENTATION,
+  C4: ORIENTATION,
+  C5: ORIENTATION
+];
+PIN = {
+  IC1_1, IC1_2, IC1_3, IC1_4, IC1_5, IC1_6, IC1_7, IC1_8,
+  J1_1, J1_2, J1_3, J1_4, J1_5,
+  R1_1, R1_2,
+  R2_1, R2_2,
+  R3_1, R3_2,
+  C1_1, C1_2,
+  C2_1, C2_2,
+  C3_1, C3_2,
+  C4_1, C4_2,
+  C5_1, C5_2
+};
+NET = {'V+', 'V-', GND, N1, N2, N3, N4, NC1, NC2, NC3};
+footprint_w = [IC1: 4, J1: 1, R1: 1, R2: 1, R3: 1, C1: 1, C2: 1, C3: 1, C4: 3, C5: 3];
+footprint_h = [IC1: 4, J1: 5, R1: 5, R2: 5, R3: 5, C1: 3, C2: 3, C3: 3, C4: 3, C5: 3];
+pin_dx = [
+  IC1_1: 1, IC1_2: 1, IC1_3: 1, IC1_4: 1, IC1_5: 4, IC1_6: 4, IC1_7: 4, IC1_8: 4,
+  J1_1: 1, J1_2: 1, J1_3: 1, J1_4: 1, J1_5: 1,
+  R1_1: 1, R1_2: 1,
+  R2_1: 1, R2_2: 1,
+  R3_1: 1, R3_2: 1,
+  C1_1: 1, C1_2: 1,
+  C2_1: 1, C2_2: 1,
+  C3_1: 1, C3_2: 1,
+  C4_1: 2, C4_2: 2,
+  C5_1: 2, C5_2: 2
+];
+pin_dy = [
+  IC1_1: 1, IC1_2: 2, IC1_3: 3, IC1_4: 4, IC1_5: 4, IC1_6: 3, IC1_7: 2, IC1_8: 1,
+  J1_1: 1, J1_2: 2, J1_3: 3, J1_4: 4, J1_5: 5,
+  R1_1: 1, R1_2: 3,
+  R2_1: 1, R2_2: 3,
+  R3_1: 1, R3_2: 3,
+  C1_1: 1, C1_2: 3,
+  C2_1: 1, C2_2: 3,
+  C3_1: 1, C3_2: 3,
+  C4_1: 1, C4_2: 3,
+  C5_1: 1, C5_2: 3
+];
+pin_net = [
+  IC1_1: NC1, IC1_2: N1, IC1_3: N2, IC1_4: 'V-', IC1_5: NC2, IC1_6: N3, IC1_7: 'V+', IC1_8: NC3,
+  J1_1: 'V+', J1_2: GND, J1_3: 'V-', J1_4: N4, J1_5: N3,
+  R1_1: N4, R1_2: N1,
+  R2_1: GND, R2_2: N2,
+  R3_1: N1, R3_2: N3,
+  C1_1: N1, C1_2: N3,
+  C2_1: GND, C2_2: 'V+',
+  C3_1: GND, C3_2: 'V-',
+  C4_1: GND, C4_2: 'V+',
+  C5_1: GND, C5_2: 'V-'
+];
+pins = [
+  IC1: IC1_1..IC1_8,
+  J1: J1_1..J1_5,
+  R1: R1_1..R1_2,
+  R2: R2_1..R1_2,
+  R3: R3_1..R1_2,
+  C1: C1_1..C1_2,
+  C2: C2_1..C2_2,
+  C3: C3_1..C3_2,
+  C4: C4_1..C4_2,
+  C5: C5_1..C5_2
+];
