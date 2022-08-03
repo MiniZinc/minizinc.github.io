@@ -1,0 +1,55 @@
+max_w = 20;
+max_h = 10;
+max_links = 6;
+COMPONENT = {Q1, J1, R1, R2, D1, D2};
+allowed_orientation = [
+  Q1: {Upright, UpsideDown},
+  J1: {Upright, UpsideDown},
+  R1: ORIENTATION,
+  R2: ORIENTATION,
+  D1: ORIENTATION,
+  D2: ORIENTATION
+];
+PIN = {
+  Q1_C, Q1_B, Q1_E,
+  J1_VCC, J1_X, J1_Y, J1_Z, J1_GND, 
+  R1_1, R1_2,
+  R2_1, R2_2,
+  D1_1, D1_2,
+  D2_1, D2_2
+};
+NET = {VCC, GND, N1, N2, N3, N4};
+footprint_w = [Q1: 1, J1: 1, R1: 1, R2: 1, D1: 1, D2: 1];
+footprint_h = [Q1: 3, J1: 5, R1: 5, R2: 5, D1: 5, D2: 5];
+pin_dx = [
+  Q1_C: 1, Q1_B: 1, Q1_E: 1,
+  J1_VCC: 1, J1_X: 1, J1_Y: 1, J1_Z: 1, J1_GND: 1,
+  R1_1: 1, R1_2: 1,
+  R2_1: 1, R2_2: 1,
+  D1_1: 1, D1_2: 1,
+  D2_1: 1, D2_2: 1
+];
+pin_dy = [
+  Q1_C: 1, Q1_B: 2, Q1_E: 3,
+  J1_VCC: 1, J1_X: 2, J1_Y: 3, J1_Z: 4, J1_GND: 5,
+  R1_1: 1, R1_2: 3,
+  R2_1: 1, R2_2: 3,
+  D1_1: 1, D1_2: 3,
+  D2_1: 1, D2_2: 3
+];
+pin_net = [
+  Q1_C: N3, Q1_B: N4, Q1_E: GND,
+  J1_VCC: VCC, J1_X: N1, J1_Y: N2, J1_Z: N3, J1_GND: GND,
+  R1_1: N4, R1_2: VCC,
+  R2_1: N3, R2_2: VCC,
+  D1_1: N1, D1_2: N4,
+  D2_1: N2, D2_2: N4
+];
+pins = [
+  Q1: Q1_C..Q1_E,
+  J1: J1_VCC..J1_GND,
+  R1: R1_1..R1_2,
+  R2: R2_1..R2_2,
+  D1: D1_1..D1_2,
+  D2: D2_1..D2_2
+];

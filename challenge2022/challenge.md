@@ -21,6 +21,7 @@ solutions (for optimization problems).
 
 ### Announcements
 
+*   **2022-08-04** Announcements of the results are [here](results2022.html).
 *   **2022-05-09** Call for solver registrations for the MiniZinc Challenge.
 *   **2022-05-09** Docker base image for the MiniZinc Challenge now available.
 *   **2022-03-10** Official [Call for Problems](call_for_problems.html) for the MiniZinc Challenge.

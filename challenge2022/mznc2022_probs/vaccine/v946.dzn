@@ -1,0 +1,17 @@
+VACCINE = Vaccine(1..5);
+
+m = 18;
+age = [YOUTH, BABY, BABY, ADULT, YOUTH, AGED, ADULT, AGED, ADULT, AGED, ADULT, CHILD, ANCIENT, SENIOR, ADULT, ANCIENT, BABY, BABY];
+gender = [FEMALE, FEMALE, OTHER, FEMALE, OTHER, MALE, MALE, MALE, MALE, MALE, MALE, MALE, MALE, FEMALE, OTHER, MALE, OTHER, OTHER];
+health = [COMPROMISED, COMPROMISED, GOOD, POOR, POOR, GOOD, GOOD, GOOD, GOOD, COMPROMISED, POOR, COMPROMISED, COMPROMISED, GOOD, GOOD, COMPROMISED, POOR, GOOD];
+exposure = [LOW, AVERAGE, LOW, LOW, LOW, EXTREME, LOW, HIGH, AVERAGE, AVERAGE, EXTREME, EXTREME, LOW, HIGH, EXTREME, LOW, HIGH, LOW];
+size = [152, 118, 70, 44, 150, 73, 129, 153, 190, 131, 72, 97, 17, 147, 3, 179, 105, 97];
+
+minsize = 2;
+age_group_min = [2, 0, 1, 3, 0, 1, 1];
+age_group_max = [10, 9, 3, 7, 8, 6, 10];
+max_people_diff = 196;
+max_share_vaccines = 3;
+
+health_information = [1, 4, 5];
+exposure_information = [1, 3, 5, 6];
