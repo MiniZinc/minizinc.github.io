@@ -29,7 +29,7 @@ solutions (for optimization problems).
 *   Problem submission deadline: **Fri, 2 June 2023**.
 *   Solver submission begins: **Mon, 12 June 2023**.
 *   Solver submission deadline: **Fri, 28 July 2023**.
-*   Announcement of results at [<abbr>CP2023</abbr>](https://cp2023.a4cp.org): *27 - 31 August 2023**
+*   Announcement of results at [<abbr>CP2023</abbr>](https://cp2023.a4cp.org): **27 - 31 August 2023**
     (Toronto, Canada).
 
 ### Registration
@@ -55,7 +55,7 @@ requirements, together with instances for these models. All models will be consi
 MiniZinc Challenge, however we may need to make some modifications to them in order to ensure they
 are suitable for the challenge.
 
-The sooner they are submitted the better, the deadline is **Fri, 6 May 2023**. The call for problem
+The sooner they are submitted the better, the deadline is **Fri, 2 June 2023**. The call for problem
 submission is available [here](call_for_problems.html). Please feel free to distribute it. 
 
 ### Rules
