@@ -177,7 +177,7 @@ RUN \
 # Setup of the base image
 
 # Get base image from the latest Ubuntu LTS
-FROM minizinc/minizinc:2.6.4
+FROM minizinc/minizinc:2.7.0
 
 # Copy unpacked MiniZinc installation from the build image
 COPY --from=builder /minizinc /minizinc
