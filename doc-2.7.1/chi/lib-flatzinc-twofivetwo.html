@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2.3.11. FlatZinc builtins added in MiniZinc 2.5.2. &mdash; The MiniZinc Handbook 2.7.1</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-flatzinc-twofivetwo.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.3.12. Deprecated FlatZinc builtins" href="lib-flatzinc-deprecated.html" />
+    <link rel="prev" title="4.2.3.10. FlatZinc builtins added in MiniZinc 2.3.3." href="lib-flatzinc-twothreethree.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.7.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lib-stdlib.html">4.2.1. Standard Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.2. Global constraints</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-int.html">4.2.3.1. Integer FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-bool.html">4.2.3.2. Bool FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-set.html">4.2.3.3. Set FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-float.html">4.2.3.4. Float FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-two.html">4.2.3.5. FlatZinc builtins added in MiniZinc 2.0.0.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twootwo.html">4.2.3.6. FlatZinc builtins added in MiniZinc 2.0.2.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twoone.html">4.2.3.7. FlatZinc builtins added in MiniZinc 2.1.0.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twooneone.html">4.2.3.8. FlatZinc builtins added in MiniZinc 2.1.1.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twotwoone.html">4.2.3.9. FlatZinc builtins added in MiniZinc 2.2.1.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twothreethree.html">4.2.3.10. FlatZinc builtins added in MiniZinc 2.3.3.</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.3.11. FlatZinc builtins added in MiniZinc 2.5.2.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-deprecated.html">4.2.3.12. Deprecated FlatZinc builtins</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-ide.html">4.2.6. MiniZincIDE tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_4_reference.html">4. Reference Manual</a> &raquo;</li>
+        
+          <li><a href="lib.html">4.2. The MiniZinc library</a> &raquo;</li>
+        
+          <li><a href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a> &raquo;</li>
+        
+      <li>4.2.3.11. FlatZinc builtins added in MiniZinc 2.5.2.</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="flatzinc-builtins-added-in-minizinc-2-5-2">
+<span id="ch-lib-flatzinc-twofivetwo"></span><h1>4.2.3.11. FlatZinc builtins added in MiniZinc 2.5.2.<a class="headerlink" href="#flatzinc-builtins-added-in-minizinc-2-5-2" title="Permalink to this headline">¶</a></h1>
+<p>These functions and predicates define built-in operations of the MiniZinc language
+that have been added in MiniZinc 2.5.2. Solvers that support these natively need
+to include a file called redefinitions-2.5.2.mzn in their solver library that
+redefines these predicates as builtins.</p>
+<p>In this section: <a class="reference internal" href="#mzn-flatzinc-twofivetwo-array-var-bool-element2d-nonshifted"><span class="std std-ref">array_var_bool_element2d_nonshifted</span></a>, <a class="reference internal" href="#mzn-flatzinc-twofivetwo-array-var-float-element2d-nonshifted"><span class="std std-ref">array_var_float_element2d_nonshifted</span></a>, <a class="reference internal" href="#mzn-flatzinc-twofivetwo-array-var-int-element2d-nonshifted"><span class="std std-ref">array_var_int_element2d_nonshifted</span></a>, <a class="reference internal" href="#mzn-flatzinc-twofivetwo-array-var-set-element2d-nonshifted"><span class="std std-ref">array_var_set_element2d_nonshifted</span></a>.</p>
+<div class="mzn-docitem section" id="array-var-bool-element2d-nonshifted">
+<span id="mzn-flatzinc-twofivetwo-array-var-bool-element2d-nonshifted"></span><span id="index-0"></span><h2>array_var_bool_element2d_nonshifted<a class="headerlink" href="#array-var-bool-element2d-nonshifted" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-twofivetwo-array-var-bool-element2d-nonshifted"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_bool_element2d_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                              </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                              </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Element constraint on 2d array with MiniZinc index set, constrains <tt class="docutils literal">x</tt>[<tt class="docutils literal">idx1</tt>,<tt class="docutils literal">idx2</tt>] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="array-var-float-element2d-nonshifted">
+<span id="mzn-flatzinc-twofivetwo-array-var-float-element2d-nonshifted"></span><span id="index-1"></span><h2>array_var_float_element2d_nonshifted<a class="headerlink" href="#array-var-float-element2d-nonshifted" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-twofivetwo-array-var-float-element2d-nonshifted"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_float_element2d_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                               </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                               </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Element constraint on 2d array with MiniZinc index set, constrains <tt class="docutils literal">x</tt>[<tt class="docutils literal">idx1</tt>,<tt class="docutils literal">idx2</tt>] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="array-var-int-element2d-nonshifted">
+<span id="mzn-flatzinc-twofivetwo-array-var-int-element2d-nonshifted"></span><span id="index-2"></span><h2>array_var_int_element2d_nonshifted<a class="headerlink" href="#array-var-int-element2d-nonshifted" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-twofivetwo-array-var-int-element2d-nonshifted"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_int_element2d_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Element constraint on 2d array with MiniZinc index set, constrains <tt class="docutils literal">x</tt>[<tt class="docutils literal">idx1</tt>,<tt class="docutils literal">idx2</tt>] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mzn-docitem section" id="array-var-set-element2d-nonshifted">
+<span id="mzn-flatzinc-twofivetwo-array-var-set-element2d-nonshifted"></span><span id="index-3"></span><h2>array_var_set_element2d_nonshifted<a class="headerlink" href="#array-var-set-element2d-nonshifted" title="Permalink to this headline">¶</a></h2>
+<div class="mzndoctable docutils container">
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last highlight-minizinc notranslate" id="mzn-ref-flatzinc-twofivetwo-array-var-set-element2d-nonshifted"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_set_element2d_nonshifted</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx1</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx2</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"></span>
+<span class="s">                                             </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Element constraint on 2d array with MiniZinc index set, constrains <tt class="docutils literal">x</tt>[<tt class="docutils literal">idx1</tt>,<tt class="docutils literal">idx2</tt>] = <tt class="docutils literal">c</tt>
+This can be overridden in a solver that can perform the index calculation more efficiently than using
+a MiniZinc decomposition.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lib-flatzinc-deprecated.html" class="btn btn-neutral float-right" title="4.2.3.12. Deprecated FlatZinc builtins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lib-flatzinc-twothreethree.html" class="btn btn-neutral" title="4.2.3.10. FlatZinc builtins added in MiniZinc 2.3.3." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.7.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
