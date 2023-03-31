@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2.4. Additional declarations for Gecode &mdash; The MiniZinc Handbook 2.7.1</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-gecode.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.4.1. Additional Gecode search annotations" href="lib-gecode-annotations.html" />
+    <link rel="prev" title="4.2.3.12. Deprecated FlatZinc builtins" href="lib-flatzinc-deprecated.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.7.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lib-stdlib.html">4.2.1. Standard Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.2. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">4.2.4. Additional declarations for Gecode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lib-gecode-annotations.html">4.2.4.1. Additional Gecode search annotations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-gecode-constraints.html">4.2.4.2. Additional Gecode constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-ide.html">4.2.6. MiniZincIDE tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_4_reference.html">4. Reference Manual</a> &raquo;</li>
+        
+          <li><a href="lib.html">4.2. The MiniZinc library</a> &raquo;</li>
+        
+      <li>4.2.4. Additional declarations for Gecode</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="additional-declarations-for-gecode">
+<span id="ch-lib-gecode"></span><h1>4.2.4. Additional declarations for Gecode<a class="headerlink" href="#additional-declarations-for-gecode" title="Permalink to this headline">¶</a></h1>
+<p>These annotations and predicates are available for the Gecode
+solver. In order to use them in a model, include the file “gecode.mzn”.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lib-gecode-annotations.html">4.2.4.1. Additional Gecode search annotations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#activity-max">activity_max</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#activity-min">activity_min</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#activity-size-max">activity_size_max</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#activity-size-min">activity_size_min</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#afc-max">afc_max</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#afc-min">afc_min</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#afc-size-max">afc_size_max</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#afc-size-min">afc_size_min</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#bool-default-search">bool_default_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#float-default-search">float_default_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#int-default-search">int_default_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#random">random</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#relax-and-reconstruct">relax_and_reconstruct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-annotations.html#set-default-search">set_default_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lib-gecode-constraints.html">4.2.4.2. Additional Gecode constraints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-constraints.html#among-seq">among_seq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-constraints.html#circuit-cost">circuit_cost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-constraints.html#circuit-cost-array">circuit_cost_array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-constraints.html#gecode-array-set-element-intersect">gecode_array_set_element_intersect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-constraints.html#gecode-array-set-element-intersect-in">gecode_array_set_element_intersect_in</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib-gecode-constraints.html#gecode-array-set-element-partition">gecode_array_set_element_partition</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lib-gecode-annotations.html" class="btn btn-neutral float-right" title="4.2.4.1. Additional Gecode search annotations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lib-flatzinc-deprecated.html" class="btn btn-neutral" title="4.2.3.12. Deprecated FlatZinc builtins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.7.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
