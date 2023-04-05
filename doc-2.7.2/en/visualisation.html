@@ -1,0 +1,621 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.3. Visualising solutions in the MiniZinc IDE &mdash; The MiniZinc Handbook 2.7.2</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/visualisation.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3.4. CP-Profiler" href="cpprofiler.html" />
+    <link rel="prev" title="3.2. The MiniZinc IDE" href="minizinc_ide.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.7.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. Visualising solutions in the MiniZinc IDE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#visualisation-library">3.3.1. Visualisation library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pre-defined-visualisations">3.3.2. Pre-defined visualisations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-visualisations">3.3.3. Custom visualisations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-visualisation">3.3.3.1. Example visualisation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#minizincide-javascript-api">3.3.3.2. MiniZincIDE JavaScript API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpprofiler.html">3.4. CP-Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solvers.html">3.5. Solving Technologies and Solver Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="checkers.html">3.6. Automatic Solution Checking, Model Validation, and Benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html">3.7. Globalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html">3.8. FindMUS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.9. Using MiniZinc in Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">3.10. Python Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">3.11. JavaScript Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_detailed.html">3.12. Installation from Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_3_user_manual.html">3. User Manual</a> &raquo;</li>
+        
+      <li>3.3. Visualising solutions in the MiniZinc IDE</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="visualising-solutions-in-the-minizinc-ide">
+<span id="ch-visualisation"></span><h1>3.3. Visualising solutions in the MiniZinc IDE<a class="headerlink" href="#visualising-solutions-in-the-minizinc-ide" title="Permalink to this headline">¶</a></h1>
+<p>The MiniZinc IDE provides a web-browser based system for visualising solutions generated by MiniZinc.</p>
+<p>This feature is currently experimental.</p>
+<div class="section" id="visualisation-library">
+<h2>3.3.1. Visualisation library<a class="headerlink" href="#visualisation-library" title="Permalink to this headline">¶</a></h2>
+<p>In order to use these features, the library file <tt class="docutils literal">ide/vis.mzn</tt> must be included:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;ide/vis.mzn&quot;</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Running a model with a visualisation will automatically launch a web browser page containing the visualisation.
+If this page is closed, it can be reopened by clicking the hyperlink on the right side of the run’s output.</p>
+</div>
+<div class="section" id="pre-defined-visualisations">
+<h2>3.3.2. Pre-defined visualisations<a class="headerlink" href="#pre-defined-visualisations" title="Permalink to this headline">¶</a></h2>
+<p>There are a number of pre-defined visualisations to suit common use cases, such as line graphs, scatter plots, bar charts, graph visualisation, and 2D packing visualisation.
+Multiple visualisations can be shown concurrently.</p>
+<p>Documentation for these is available in <a class="reference internal" href="lib-ide-visualisation.html#ch-lib-ide-visualisation"><span class="std std-ref">MiniZincIDE solution visualisation tools</span></a>.</p>
+<p>An example model with a visualisation for a graph along with a time series line graph of the objective value is shown in <a class="reference internal" href="#ex-vis-mst"><span class="std std-numref">Listing 3.3.1</span></a>.</p>
+<div class="literal-block-wrapper docutils container" id="ex-vis-mst">
+<div class="code-block-caption"><span class="caption-number">Listing 3.3.1 </span><span class="caption-text">Minimum spanning tree data visualisation (<a class="reference download internal" href="downloads/vis_mst.mzn" download=""><tt class="xref download docutils literal">vis_mst.mzn</tt></a>).</span><a class="headerlink" href="#ex-vis-mst" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;globals.mzn&quot;</span><span class="p">;</span><span class="s"></span>
+<span class="k">include</span><span class="s"> &quot;ide/vis.mzn&quot;</span><span class="p">;</span><span class="s"></span>
+
+<span class="c">% Graph definition</span><span class="s"></span>
+<span class="kt">enum</span><span class="s"> </span><span class="nv">NODE</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="nv">A</span><span class="p">,</span><span class="s"> </span><span class="nv">B</span><span class="p">,</span><span class="s"> </span><span class="nv">C</span><span class="p">,</span><span class="s"> </span><span class="nv">D</span><span class="p">,</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span><span class="s"> </span><span class="nv">F</span><span class="p">,</span><span class="s"> </span><span class="nv">G</span><span class="p">,</span><span class="s"> </span><span class="nv">H</span><span class="p">,</span><span class="s"> </span><span class="nv">I</span><span class="p">,</span><span class="s"> </span><span class="nv">J</span><span class="p">};</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">NODE</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="nv">A</span><span class="p">,</span><span class="s"> </span><span class="nv">A</span><span class="p">,</span><span class="s"> </span><span class="nv">A</span><span class="p">,</span><span class="s"> </span><span class="nv">B</span><span class="p">,</span><span class="s"> </span><span class="nv">B</span><span class="p">,</span><span class="s"> </span><span class="nv">B</span><span class="p">,</span><span class="s"> </span><span class="nv">B</span><span class="p">,</span><span class="s"> </span><span class="nv">C</span><span class="p">,</span><span class="s"> </span><span class="nv">C</span><span class="p">,</span><span class="s"> </span><span class="nv">D</span><span class="p">,</span><span class="s"> </span><span class="nv">D</span><span class="p">,</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span><span class="s">  </span><span class="nv">E</span><span class="p">,</span><span class="s"> </span><span class="nv">F</span><span class="p">,</span><span class="s"> </span><span class="nv">F</span><span class="p">,</span><span class="s"> </span><span class="nv">F</span><span class="p">,</span><span class="s"> </span><span class="nv">G</span><span class="p">,</span><span class="s">  </span><span class="nv">G</span><span class="p">,</span><span class="s"> </span><span class="nv">H</span><span class="p">,</span><span class="s"> </span><span class="nv">H</span><span class="p">,</span><span class="s"> </span><span class="nv">I</span><span class="p">];</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">NODE</span><span class="p">:</span><span class="s">   </span><span class="nv">to</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="nv">B</span><span class="p">,</span><span class="s"> </span><span class="nv">C</span><span class="p">,</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span><span class="s"> </span><span class="nv">C</span><span class="p">,</span><span class="s"> </span><span class="nv">D</span><span class="p">,</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span><span class="s"> </span><span class="nv">G</span><span class="p">,</span><span class="s"> </span><span class="nv">D</span><span class="p">,</span><span class="s"> </span><span class="nv">F</span><span class="p">,</span><span class="s"> </span><span class="nv">F</span><span class="p">,</span><span class="s"> </span><span class="nv">G</span><span class="p">,</span><span class="s"> </span><span class="nv">G</span><span class="p">,</span><span class="s">  </span><span class="nv">J</span><span class="p">,</span><span class="s"> </span><span class="nv">G</span><span class="p">,</span><span class="s"> </span><span class="nv">H</span><span class="p">,</span><span class="s"> </span><span class="nv">I</span><span class="p">,</span><span class="s"> </span><span class="nv">I</span><span class="p">,</span><span class="s">  </span><span class="nv">J</span><span class="p">,</span><span class="s"> </span><span class="nv">I</span><span class="p">,</span><span class="s"> </span><span class="nv">J</span><span class="p">,</span><span class="s"> </span><span class="nv">J</span><span class="p">];</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s">     </span><span class="nv">w</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="m">3</span><span class="p">,</span><span class="s"> </span><span class="m">6</span><span class="p">,</span><span class="s"> </span><span class="m">9</span><span class="p">,</span><span class="s"> </span><span class="m">4</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">9</span><span class="p">,</span><span class="s"> </span><span class="m">9</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">9</span><span class="p">,</span><span class="s"> </span><span class="m">9</span><span class="p">,</span><span class="s"> </span><span class="m">8</span><span class="p">,</span><span class="s"> </span><span class="m">8</span><span class="p">,</span><span class="s"> </span><span class="m">18</span><span class="p">,</span><span class="s"> </span><span class="m">7</span><span class="p">,</span><span class="s"> </span><span class="m">4</span><span class="p">,</span><span class="s"> </span><span class="m">5</span><span class="p">,</span><span class="s"> </span><span class="m">9</span><span class="p">,</span><span class="s"> </span><span class="m">10</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">4</span><span class="p">,</span><span class="s"> </span><span class="m">3</span><span class="p">];</span><span class="s"></span>
+
+<span class="c">% Find the minimum spanning tree of the graph</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nb">sum</span><span class="p">(</span><span class="nv">w</span><span class="p">):</span><span class="s"> </span><span class="nv">total_weight</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nb">index_set</span><span class="p">(</span><span class="nv">from</span><span class="p">)]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">weighted_spanning_tree</span><span class="p">(</span><span class="s"></span>
+<span class="s">  </span><span class="nb">card</span><span class="p">(</span><span class="nv">NODE</span><span class="p">),</span><span class="s">   </span><span class="c">% Number of nodes</span><span class="s"></span>
+<span class="s">  </span><span class="nb">length</span><span class="p">(</span><span class="nv">from</span><span class="p">),</span><span class="s"> </span><span class="c">% Number of edges</span><span class="s"></span>
+<span class="s">  </span><span class="nv">from</span><span class="p">,</span><span class="s">         </span><span class="c">% Edge from node</span><span class="s"></span>
+<span class="s">  </span><span class="nv">to</span><span class="p">,</span><span class="s">           </span><span class="c">% Edge to node</span><span class="s"></span>
+<span class="s">  </span><span class="nv">w</span><span class="p">,</span><span class="s">            </span><span class="c">% Weight of edge</span><span class="s"></span>
+<span class="s">  </span><span class="nv">es</span><span class="p">,</span><span class="s">           </span><span class="c">% Whether edge is in spanningtree</span><span class="s"></span>
+<span class="s">  </span><span class="nv">total_weight</span><span class="s">  </span><span class="c">% Total weight of spanning tree</span><span class="s"></span>
+<span class="p">);</span><span class="s"></span>
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="nv">total_weight</span><span class="p">;</span><span class="s"></span>
+
+<span class="c">% Graph visualisation</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">edge_labels</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="nv">i</span><span class="p">:</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">w</span><span class="p">[</span><span class="nv">i</span><span class="p">])</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">w</span><span class="p">)];</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nf">vis_graph_highlight</span><span class="p">(</span><span class="s"></span>
+<span class="s">  </span><span class="nv">from</span><span class="p">,</span><span class="s">                  </span><span class="c">% Edge from node</span><span class="s"></span>
+<span class="s">  </span><span class="nv">to</span><span class="p">,</span><span class="s">                    </span><span class="c">% Edge to node</span><span class="s"></span>
+<span class="s">  </span><span class="nv">edge_labels</span><span class="p">,</span><span class="s">           </span><span class="c">% Edges are labelled with their weights</span><span class="s"></span>
+<span class="s">  </span><span class="p">[</span><span class="nv">i</span><span class="p">:</span><span class="s"> </span><span class="l">true</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NODE</span><span class="p">],</span><span class="s"> </span><span class="c">% All nodes are present in a spanning tree</span><span class="s"></span>
+<span class="s">  </span><span class="nv">es</span><span class="s">                     </span><span class="c">% Whether edge is in spanningtree</span><span class="s"></span>
+<span class="p">);</span><span class="s"></span>
+
+<span class="c">% Objective visualisation</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nf">vis_line</span><span class="p">(</span><span class="nv">total_weight</span><span class="p">,</span><span class="s"> &quot;Spanning tree weight&quot;</span><span class="p">);</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<div class="figure" id="id1">
+<img alt="images/mst.png" src="images/mst.png" />
+<p class="caption"><span class="caption-number">Fig. 3.3.1 </span><span class="caption-text">Minimum spanning tree visualisation result</span></p>
+</div>
+</div>
+<div class="section" id="custom-visualisations">
+<h2>3.3.3. Custom visualisations<a class="headerlink" href="#custom-visualisations" title="Permalink to this headline">¶</a></h2>
+<p>A user-defined visualisation can be created by making use of the visualisation JavaScript API from an HTML page.</p>
+<p>A MiniZinc model first defines the HTML file to load using the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">ide_launch_server</span><span class="s"></span></code> predicate.
+It can then send solution data to the Visualisation system by outputting JSON data to an output section called <tt class="docutils literal">vis_json</tt>.</p>
+<p>This can be done multiple times to start multiple concurrent visualisations.
+A exactly one <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">output</span><span class="s"></span></code> statement must be used for each call to <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">ide_launch_server</span><span class="s"></span></code>.</p>
+<p>The HTML page is loaded in an embedded web server and has access to the MiniZincIDE JavaScript API, served at <tt class="docutils literal">/minizinc-ide.js</tt>.
+The HTML page can use this API to subscribe to events from the IDE and update its visualisation accordingly.</p>
+<div class="section" id="example-visualisation">
+<h3>3.3.3.1. Example visualisation<a class="headerlink" href="#example-visualisation" title="Permalink to this headline">¶</a></h3>
+<p>In this example, we will create a visualisation for a version of the colouring problem introduced in <a class="reference internal" href="modelling.html#sec-modelling"><span class="std std-ref">Basic Modelling in MiniZinc</span></a>.</p>
+<div class="figure" id="id2">
+<img alt="images/aust1.svg" src="images/aust1.svg" /><p class="caption"><span class="caption-number">Fig. 3.3.2 </span><span class="caption-text">Australia colouring visualisation result</span></p>
+</div>
+<p>All files should be placed in the same directory so that they are properly served by the IDE’s embedded web server.</p>
+<div class="literal-block-wrapper docutils container" id="ex-vis-aust-mzn">
+<div class="code-block-caption"><span class="caption-number">Listing 3.3.2 </span><span class="caption-text">Australia colouring data visualisation model (<a class="reference download internal" href="downloads/vis_aust.mzn" download=""><tt class="xref download docutils literal">vis_aust.mzn</tt></a>).</span><a class="headerlink" href="#ex-vis-aust-mzn" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;ide/vis.mzn&quot;</span><span class="p">;</span><span class="s"></span>
+
+<span class="kt">enum</span><span class="s"> </span><span class="nv">REGION</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">WA</span><span class="p">,</span><span class="s"> </span><span class="nv">NT</span><span class="p">,</span><span class="s"> </span><span class="nv">SA</span><span class="p">,</span><span class="s"> </span><span class="nv">Q</span><span class="p">,</span><span class="s"> </span><span class="nv">NSW</span><span class="p">,</span><span class="s"> </span><span class="nv">V</span><span class="p">,</span><span class="s"> </span><span class="nv">T</span><span class="s"> </span><span class="p">};</span><span class="s"></span>
+<span class="kt">enum</span><span class="s"> </span><span class="nv">COLOR</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nf">Color</span><span class="p">(</span><span class="m">1</span><span class="o">..</span><span class="nb">card</span><span class="p">(</span><span class="nv">REGION</span><span class="p">));</span><span class="s"></span>
+
+<span class="c">% Neighboring regions</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">REGION</span><span class="p">:</span><span class="s"> </span><span class="nv">neighbors</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[|</span><span class="s"> </span><span class="nv">WA</span><span class="p">,</span><span class="s">  </span><span class="nv">NT</span><span class="s"></span>
+<span class="s">                                         </span><span class="p">|</span><span class="s"> </span><span class="nv">WA</span><span class="p">,</span><span class="s">  </span><span class="nv">SA</span><span class="s"></span>
+<span class="s">                                         </span><span class="p">|</span><span class="s"> </span><span class="nv">NT</span><span class="p">,</span><span class="s">  </span><span class="nv">SA</span><span class="s"></span>
+<span class="s">                                         </span><span class="p">|</span><span class="s"> </span><span class="nv">NT</span><span class="p">,</span><span class="s">  </span><span class="nv">Q</span><span class="s"></span>
+<span class="s">                                         </span><span class="p">|</span><span class="s"> </span><span class="nv">SA</span><span class="p">,</span><span class="s">  </span><span class="nv">Q</span><span class="s"></span>
+<span class="s">                                         </span><span class="p">|</span><span class="s"> </span><span class="nv">SA</span><span class="p">,</span><span class="s">  </span><span class="nv">NSW</span><span class="s"></span>
+<span class="s">                                         </span><span class="p">|</span><span class="s"> </span><span class="nv">SA</span><span class="p">,</span><span class="s">  </span><span class="nv">V</span><span class="s"></span>
+<span class="s">                                         </span><span class="p">|</span><span class="s"> </span><span class="nv">Q</span><span class="p">,</span><span class="s">   </span><span class="nv">NSW</span><span class="s"></span>
+<span class="s">                                         </span><span class="p">|</span><span class="s"> </span><span class="nv">NSW</span><span class="p">,</span><span class="s"> </span><span class="nv">V</span><span class="p">|];</span><span class="s"></span>
+
+<span class="c">% Color of each Region</span><span class="s"></span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">REGION</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">COLOR</span><span class="p">:</span><span class="s"> </span><span class="nv">color</span><span class="p">;</span><span class="s"></span>
+<span class="c">% Number of colors used</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nb">card</span><span class="p">(</span><span class="nv">COLOR</span><span class="p">):</span><span class="s"> </span><span class="nv">n_colors</span><span class="s"> </span><span class="p">::</span><span class="s"> </span><span class="k">output</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">card</span><span class="p">({</span><span class="s"> </span><span class="nv">c</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">c</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">color</span><span class="s"> </span><span class="p">});</span><span class="s"></span>
+
+<span class="c">% Neighboring regions have different colours</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="s"> </span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set_1of2</span><span class="p">(</span><span class="nv">neighbors</span><span class="p">))</span><span class="s"></span>
+<span class="s">                  </span><span class="p">(</span><span class="nv">color</span><span class="p">[</span><span class="nv">neighbors</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">]]</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">color</span><span class="p">[</span><span class="nv">neighbors</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">]]);</span><span class="s"></span>
+
+<span class="c">% Use as few colors as possible</span><span class="s"></span>
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="nv">n_colors</span><span class="p">;</span><span class="s"></span>
+
+<span class="c">% Launch the visualisation page and pass the along the regions and colors as strings</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nf">ide_launch_server</span><span class="p">(</span><span class="s">&quot;vis_aust.html&quot;</span><span class="p">,</span><span class="s"> </span><span class="nf">json_object</span><span class="p">([|</span><span class="s"></span>
+<span class="s">  &quot;regions&quot;</span><span class="p">,</span><span class="s"> </span><span class="nf">showJSON</span><span class="p">([</span><span class="nb">show</span><span class="p">(</span><span class="nv">r</span><span class="p">)</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">r</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">REGION</span><span class="p">])</span><span class="s"> </span><span class="p">|</span><span class="s"></span>
+<span class="s">  &quot;colors&quot;</span><span class="p">,</span><span class="s"> </span><span class="nf">showJSON</span><span class="p">([</span><span class="nb">show</span><span class="p">(</span><span class="nv">c</span><span class="p">)</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">c</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">COLOR</span><span class="p">])</span><span class="s"> </span><span class="p">|</span><span class="s"></span>
+<span class="p">|]));</span><span class="s"></span>
+
+<span class="c">% Pass solution colors as an array of color strings to the visualisation page</span><span class="s"></span>
+<span class="k">output</span><span class="s"> </span><span class="p">::</span><span class="s"> &quot;vis_json&quot; </span><span class="p">[</span><span class="nf">showJSON</span><span class="p">([</span><span class="nb">show</span><span class="p">(</span><span class="nv">c</span><span class="p">)</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">c</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">color</span><span class="p">])];</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<p>The MiniZinc model contains a call to <a class="reference internal" href="lib-ide-visualisation.html#mzn-ide-visualisation-ide-launch-server"><span class="std std-ref">ide_launch_server</span></a>.
+This initialises the visualisation, telling the IDE what page to load, and the user data to pass to it.
+In this case, we are passing string representations of the possible <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">enum</span><span class="s"></span></code> values.
+The <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">json_object</span><span class="s"></span></code> function is used to construct a JSON object from a 2D array of keys and strings of valid JSON values.</p>
+<div class="admonition-passing-json-data-to-the-visualisation admonition" id="defblock-0">
+<p class="first admonition-title">Passing JSON data to the visualisation</p>
+<p>It should be noted that <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nf">showJSON</span><span class="p">()</span><span class="s"></span></code> allows us to output all MiniZinc values in a JSON representation.
+While this includes sets and enums, the format used may need special handling in the visualisation script.</p>
+<p class="last">In many cases, it may be easier to convert sets into arrays and enums into strings to make them easier to deal with.
+For more information about the JSON format generated, see <a class="reference internal" href="spec.html#spec-json"><span class="std std-ref">JSON support</span></a>.</p>
+</div>
+<p>The <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">output</span><span class="s"></span></code> statement contains an annotation specifying that it should be output to the <tt class="docutils literal">vis_json</tt> section, which the IDE detects to handle appropriately.
+Note that all output here must be valid JSON.
+The <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">showJSON</span><span class="s"></span></code> function is used here to ensure this.</p>
+<div class="literal-block-wrapper docutils container" id="ex-vis-aust-html">
+<div class="code-block-caption"><span class="caption-number">Listing 3.3.3 </span><span class="caption-text">Australia colouring data visualisation HTML page (<a class="reference download internal" href="downloads/vis_aust.html" download=""><tt class="xref download docutils literal">vis_aust.html</tt></a>).</span><a class="headerlink" href="#ex-vis-aust-html" title="Permalink to this code">¶</a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Australia Visualisation<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/minizinc-ide.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+      <span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
+        <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">overflow</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="o">*</span> <span class="p">{</span>
+        <span class="k">box-sizing</span><span class="p">:</span> <span class="kc">border-box</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nt">main</span> <span class="p">{</span>
+        <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">vw</span><span class="p">;</span>
+        <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
+        <span class="k">padding</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nt">svg</span> <span class="p">{</span>
+        <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+        <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="p">.</span><span class="nc">shapes</span> <span class="p">{</span>
+        <span class="n">fill</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+        <span class="n">stroke</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
+        <span class="n">stroke-linejoin</span><span class="p">:</span> <span class="kc">round</span><span class="p">;</span>
+        <span class="n">stroke-linecap</span><span class="p">:</span> <span class="kc">round</span><span class="p">;</span>
+        <span class="n">stroke-width</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="p">.</span><span class="nc">labels</span> <span class="p">{</span>
+        <span class="k">font-family</span><span class="p">:</span> <span class="kc">sans-serif</span><span class="p">;</span>
+        <span class="k">font-size</span><span class="p">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+        <span class="n">text-anchor</span><span class="p">:</span> <span class="kc">middle</span><span class="p">;</span>
+        <span class="n">fill</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">svg</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 412 357.33&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">g</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;shapes&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">path</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;wa&quot;</span> <span class="na">d</span><span class="o">=</span><span class="s">&quot;m152 67.333v-6l-18-18-24 6-24 30-78 36-6 12v18l12 24 12 60-12 18 24 12h24l30-18h30l29.68-8.72z&quot;</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">path</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;nt&quot;</span> <span class="na">d</span><span class="o">=</span><span class="s">&quot;m152 67.333 6-12 18-24h66l-6 24 12 30 6 2.72v81.28h-102v-102&quot;</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">path</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;q&quot;</span> <span class="na">d</span><span class="o">=</span><span class="s">&quot;m254 88.053 24 9.28h12l6-48 12-48 36 78 42 42 18 24 6 42-3.6 10.8h-1.2l-3.6-1.2-3.6-2.4-3.6 1.2-8.4-2.4h-108v-24h-24v-81.28&quot;</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">path</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;nsw&quot;</span> <span class="na">d</span><span class="o">=</span><span class="s">&quot;m406.4 198.13-8.4 31.2-12 6-18 48-20.4-4.8-9.6-8.4-6 2.4-14.4-3.6-8.4-6-14.4-3.6-16.8-8.4v-57.6h108l8.4 2.4 3.6-1.2 3.6 2.4 3.6 1.2z&quot;</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">path</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="na">d</span><span class="o">=</span><span class="s">&quot;m368 283.33-20.4-4.8-9.6-8.4-6 2.4-14.4-3.6-8.4-6-14.4-3.6-16.8-8.4v40.8l24 9.6 12-6 18 6 18-12z&quot;</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">path</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;sa&quot;</span> <span class="na">d</span><span class="o">=</span><span class="s">&quot;m278 169.33h-126l-0.32 63.28 12.32-3.28h36l24 30 18-24v13.2l-6 22.8h24l12 18 6 2.4v-122.4&quot;</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">path</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;t&quot;</span> <span class="na">d</span><span class="o">=</span><span class="s">&quot;m320 319.33 12 6h6l9.6-6.32 8.4 6-2.08 18.64-15.92 11.68-18-12-6-12 6-12&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">g</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">g</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;labels&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">text</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;83.533119&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;170.0192&quot;</span><span class="p">&gt;</span>WA<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">text</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;201.66409&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;123.36276&quot;</span><span class="p">&gt;</span>NT<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">text</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;328.74969&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;147.87715&quot;</span><span class="p">&gt;</span>Q<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">text</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;334.34839&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;237.23608&quot;</span><span class="p">&gt;</span>NSW<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">text</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;314.19815&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;289.03265&quot;</span><span class="p">&gt;</span>V<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">text</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;336.71103&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;344.3877&quot;</span><span class="p">&gt;</span>T<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">text</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;213.65285&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;209.55853&quot;</span><span class="p">&gt;</span>SA<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">g</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;vis_aust.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>The visualisation page includes the script <tt class="docutils literal">/minizinc-ide.js</tt>, which is provided by the embedded web server.
+This allows access ot the MiniZinc IDE JavaScript API using the <tt class="docutils literal">MiniZincIDE</tt> object.
+The page contains an SVG element containing the basic parts of the visualisation, ready to be coloured when a solution is produced.
+Another script, <tt class="docutils literal">vis_aust.js</tt> is loaded with the visualisation logic.</p>
+<div class="literal-block-wrapper docutils container" id="ex-vis-aust-js">
+<div class="code-block-caption"><span class="caption-number">Listing 3.3.4 </span><span class="caption-text">Australia colouring data visualisation script (<a class="reference download internal" href="downloads/vis_aust.js" download=""><tt class="xref download docutils literal">vis_aust.js</tt></a>).</span><a class="headerlink" href="#ex-vis-aust-js" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">HTML_COLORS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">];</span>
+
+<span class="p">(</span><span class="nx">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// getUserData can be used to retrieve the JSON data passed to ide_launch_server()</span>
+  <span class="kr">const</span> <span class="nx">userData</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getUserData</span><span class="p">();</span>
+  <span class="c1">// Get element for each REGION</span>
+  <span class="kr">const</span> <span class="nx">regions</span> <span class="o">=</span> <span class="nx">userData</span><span class="p">.</span><span class="nx">regions</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">r</span> <span class="p">=&gt;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()));</span>
+  <span class="c1">// Create a mapping between COLOR enum name and HTML color</span>
+  <span class="kr">const</span> <span class="nx">colors</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="nx">userData</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">c</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">colors</span><span class="p">[</span><span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="nx">HTML_COLORS</span><span class="p">[</span><span class="nx">i</span> <span class="o">%</span> <span class="nx">HTML_COLORS</span><span class="p">.</span><span class="nx">length</span><span class="p">]</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Handler to set the colors for the solution</span>
+  <span class="kd">function</span> <span class="nx">setSolution</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">c</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">regions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;fill&#39;</span><span class="p">,</span> <span class="nx">colors</span><span class="p">[</span><span class="nx">c</span><span class="p">]);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Visualise last solution on startup</span>
+  <span class="kr">const</span> <span class="nx">numSols</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getNumSolutions</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">numSols</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">solution</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getSolution</span><span class="p">(</span><span class="nx">numSols</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nx">setSolution</span><span class="p">(</span><span class="nx">solution</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Show new solutions if we&#39;re following the latest solution</span>
+  <span class="kd">let</span> <span class="nx">followLatest</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;solution&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">solution</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">followLatest</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setSolution</span><span class="p">(</span><span class="nx">solution</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;goToSolution&#39;</span><span class="p">,</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Requesting index -1 turns on following latest solution</span>
+    <span class="c1">// Otherwise, we stop showing the latest solution and show the requested one</span>
+    <span class="nx">followLatest</span> <span class="o">=</span> <span class="nx">index</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="nx">solution</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getSolution</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+    <span class="nx">setSolution</span><span class="p">(</span><span class="nx">solution</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">})</span>
+<span class="p">})();</span>
+</pre></div>
+</div>
+</div>
+<p>The script uses an asynchronous immediately invoked function expression, allowing us to easily use the asynchronous functions in the MiniZincIDE JavaScript API.
+<tt class="docutils literal">MiniZincIDE.getUserData()</tt> allows us to retrieve the data we passed to <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">ide_launch_server</span><span class="s"></span></code>.
+The function <tt class="docutils literal">setSolution(data)</tt> is defined to handle the solution data and update the visualisation.
+We load the latest solution using <tt class="docutils literal">MiniZincIDE.getSolution(idx)</tt> if one exists on startup, in case the visualisation page is refreshed or open after solving has begun.
+The <tt class="docutils literal">solution</tt> and <tt class="docutils literal">goToSolution</tt> events are subscribed to, so we know when to update the visualisation.</p>
+</div>
+<div class="section" id="minizincide-javascript-api">
+<h3>3.3.3.2. MiniZincIDE JavaScript API<a class="headerlink" href="#minizincide-javascript-api" title="Permalink to this headline">¶</a></h3>
+<p>The MiniZincIDE JavaScript API provides an asynchronous interface between the IDE and visualisations.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Subscribes to the event <tt class="docutils literal">event</tt> and call <tt class="docutils literal">callback</tt> whenever it occurs.
+The valid events are:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal">solution</tt>: triggered when a new solution is produced.
+The callback function is passed an object containing the <tt class="docutils literal">time</tt> of the solution in milliseconds and the <tt class="docutils literal">data</tt> from the associated <tt class="docutils literal">vis_json</tt> output statement.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;solution&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">solution</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">solution</span><span class="p">.</span><span class="nx">time</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">solution</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal">goToSolution</tt>: triggered when the user has selected a particular solution to visualise.
+The callback function is passed the solution index to display, or <tt class="docutils literal">-1</tt> if the user has enabled following the latest solution.
+Visualisations which support showing a particular solution should subscribe to this event.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;goToSolution&#39;</span><span class="p">,</span> <span class="nx">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">solution</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getSolution</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+  <span class="nx">visualiseSolution</span><span class="p">(</span><span class="nx">solution</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal">status</tt>: triggered when a final status line is received (such as <tt class="docutils literal">==========</tt>).
+The callback function is passed an object containing the <tt class="docutils literal">status</tt> and <tt class="docutils literal">time</tt> in milliseconds if there is a final status, or otherwise <tt class="docutils literal">null</tt>.
+The <tt class="docutils literal">status</tt> value can be one of</p>
+<ul class="simple">
+<li><tt class="docutils literal">ALL_SOLUTIONS</tt></li>
+<li><tt class="docutils literal">OPTIMAL_SOLUTION</tt></li>
+<li><tt class="docutils literal">UNSATISFIABLE</tt></li>
+<li><tt class="docutils literal">UNSAT_OR_UNBOUNDED</tt></li>
+<li><tt class="docutils literal">UNBOUNDED</tt></li>
+<li><tt class="docutils literal">UNKNOWN</tt></li>
+<li><tt class="docutils literal">ERROR</tt></li>
+</ul>
+</li>
+<li><p class="first"><tt class="docutils literal">finish</tt>: triggered when solving finishes (or is stopped).
+The callback function is passed the time when solving finished in milliseconds.</p>
+</li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Unsubscribes from an event given the <tt class="docutils literal">event</tt> name and <tt class="docutils literal">callback</tt> function.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getUserData</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns a <tt class="docutils literal">Promise</tt> which resolves to the user data passed to <tt class="docutils literal">ide_launch_server()</tt>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">goToSolution</span><span class="p">(</span><span class="nx">idx</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Requests that the solution with the given index <tt class="docutils literal">idx</tt> is shown.
+This causes the <tt class="docutils literal">goToSolution</tt> event to be triggered for all visualisations being shown.
+Visualisations which allow multiple solutions to displayed simultaneously can call this function when the user interacts on a particular solution.
+This allows other visualisations to then also show the solution of interest.</p>
+<p>The index <tt class="docutils literal">-1</tt> is used to request that the latest solution be tracked by the visualisations.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">solve</span><span class="p">(</span><span class="nx">modelFile</span><span class="p">,</span> <span class="nx">dataFiles</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Requests that the IDE stop solving the current instance and start solving with the given <tt class="docutils literal">modelFile</tt>, <tt class="docutils literal">dataFiles</tt>, and parameter configuration <tt class="docutils literal">options</tt>
+<tt class="docutils literal">modelFile</tt> and <tt class="docutils literal">dataFiles</tt> may be set to <tt class="docutils literal">null</tt> to re-solve using the current model and data files.
+Otherwise, <tt class="docutils literal">modelFile</tt> is the path to the <tt class="docutils literal">.mzn</tt> file to solve and <tt class="docutils literal">dataFiles</tt> is an array of paths to the <tt class="docutils literal">.dzn</tt> or <tt class="docutils literal">.json</tt> files.
+These must be in the same directory or a child directory of the current model.
+<tt class="docutils literal">options</tt> is an optional object in the parameter configuration file format (see <a class="reference internal" href="command_line.html#ch-param-files"><span class="std std-ref">Command-line Parameter Files</span></a>) to be passed to MiniZinc (in addition to the current solver configuration).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getNumSolutions</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns a <tt class="docutils literal">Promise</tt> which resolves to the number of solutions which have been found.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getSolution</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a <tt class="docutils literal">Promise</tt> which resolves to the solution object (containing <tt class="docutils literal">time</tt> and <tt class="docutils literal">data</tt>) for the given index.
+Negative indexes refer to indexes from the end (e.g. <tt class="docutils literal">-1</tt> refers to the latest solution).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getAllSolutions</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns a <tt class="docutils literal">Promise</tt> which resolves to an array of all solution objects (each containing <tt class="docutils literal">time</tt> and <tt class="docutils literal">data</tt>).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns a <tt class="docutils literal">Promise</tt> which resolves to an object containing the <tt class="docutils literal">time</tt> and final <tt class="docutils literal">status</tt>, or <tt class="docutils literal">null</tt> if there is no final status.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">MiniZincIDE</span><span class="p">.</span><span class="nx">getFinishTime</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns a <tt class="docutils literal">Promise</tt> which resolves to the finishing time, or <tt class="docutils literal">null</tt> if it has not finished.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cpprofiler.html" class="btn btn-neutral float-right" title="3.4. CP-Profiler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="minizinc_ide.html" class="btn btn-neutral" title="3.2. The MiniZinc IDE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.7.2',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

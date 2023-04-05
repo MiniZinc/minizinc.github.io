@@ -93,7 +93,7 @@ would like to join then sign up for the [MiniZinc forums](../forum).
 
 The [MiniZinc](../index.html) page includes a list of resources related to MiniZinc and FlatZinc.
 
-The [MiniZinc 2.7.1 Distribution](../doc-2.7.1/en/index.html) includes a MiniZinc-to-FlatZinc
+The [MiniZinc 2.7.2 Distribution](../doc-2.7.2/en/index.html) includes a MiniZinc-to-FlatZinc
 converter and a large suite of MiniZinc examples and benchmarks.
 
 The [MiniZinc Challenges 2008-2022](../challenge.html) webpage, includes the results from each
