@@ -1,0 +1,973 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.1. Basic Modelling in MiniZinc &mdash; The MiniZinc Handbook 2.7.3</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/modelling.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2.2. More Complex Models" href="modelling2.html" />
+    <link rel="prev" title="2. A MiniZinc Tutorial" href="part_2_tutorial.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.7.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. Basic Modelling in MiniZinc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#our-first-example">2.1.1. Our First Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#an-arithmetic-optimisation-example">2.1.2. An Arithmetic Optimisation Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datafiles-and-assertions">2.1.3. Datafiles and Assertions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#real-number-solving">2.1.4. Real Number Solving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-structure-of-a-model">2.1.5. Basic structure of a model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html">2.2. More Complex Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html">2.3. Predicates and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optiontypes.html">2.4. Option Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuple_and_record_types.html">2.5. Tuple and record types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html">2.6. Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">2.7. Effective Modelling Practices in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html">2.8. Boolean Satisfiability Modelling in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html">2.9. FlatZinc and Flattening</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_2_tutorial.html">2. A MiniZinc Tutorial</a> &raquo;</li>
+        
+      <li>2.1. Basic Modelling in MiniZinc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="basic-modelling-in-minizinc">
+<span id="sec-modelling"></span><h1>2.1. Basic Modelling in MiniZinc<a class="headerlink" href="#basic-modelling-in-minizinc" title="Permalink to this headline">¶</a></h1>
+<p>In this section we introduce the basic structure of a MiniZinc model using two simple examples.</p>
+<div class="section" id="our-first-example">
+<h2>2.1.1. Our First Example<a class="headerlink" href="#our-first-example" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id1">
+<span id="fig-aust"></span><img alt="images/aust.svg" src="images/aust.svg" /><p class="caption"><span class="caption-number">Fig. 2.1.1 </span><span class="caption-text">Australian states</span></p>
+</div>
+<p>As our first example, imagine that we wish to colour a map
+of Australia as shown in <a class="reference internal" href="#fig-aust"><span class="std std-numref">Fig. 2.1.1</span></a>.
+It is made up of seven different states and territories
+each of which must be given a  colour so that adjacent regions
+have different colours.</p>
+<div class="literal-block-wrapper docutils container" id="ex-aust">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1.1 </span><span class="caption-text">A MiniZinc model <a class="reference download internal" href="downloads/aust.mzn" download=""><tt class="xref download docutils literal">aust.mzn</tt></a> for colouring the states and territories in Australia</span><a class="headerlink" href="#ex-aust" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Colouring Australia using nc colours</span><span class="s"></span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">nc</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span><span class="s"></span>
+
+<span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">wa</span><span class="p">;</span><span class="s">   </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">nt</span><span class="p">;</span><span class="s">  </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">sa</span><span class="p">;</span><span class="s">   </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">q</span><span class="p">;</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">nsw</span><span class="p">;</span><span class="s">  </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">;</span><span class="s">   </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">;</span><span class="s"></span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="nv">wa</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">nt</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">wa</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">sa</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">nt</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">sa</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">nt</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">q</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">sa</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">q</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">sa</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">nsw</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">sa</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">v</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">q</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">nsw</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">nsw</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">v</span><span class="p">;</span><span class="s"></span>
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span><span class="s"></span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;wa=</span><span class="p">\(</span><span class="nv">wa</span><span class="p">)</span><span class="se">\t</span><span class="s"> nt=</span><span class="p">\(</span><span class="nv">nt</span><span class="p">)</span><span class="se">\t</span><span class="s"> sa=</span><span class="p">\(</span><span class="nv">sa</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="s"></span>
+<span class="s">        &quot;q=</span><span class="p">\(</span><span class="nv">q</span><span class="p">)</span><span class="se">\t</span><span class="s"> nsw=</span><span class="p">\(</span><span class="nv">nsw</span><span class="p">)</span><span class="se">\t</span><span class="s"> v=</span><span class="p">\(</span><span class="nv">v</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="s"></span>
+<span class="s">         &quot;t=&quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">t</span><span class="p">),</span><span class="s">  &quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<p>We can model this problem very easily in MiniZinc. The model is shown in <a class="reference internal" href="#ex-aust"><span class="std std-numref">Listing 2.1.1</span></a>.
+The first line in the model is a comment. A comment starts with a  <tt class="docutils literal">%</tt> which indicates that the rest of the line is a comment.
+MiniZinc also has C-style block comments,
+which start with <tt class="docutils literal">/*</tt> and end with <tt class="docutils literal">*/</tt>.</p>
+<p>The next part of the model declares the variables in the model.
+The line</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">nc</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>specifies a <span class="target" id="index-0"></span>parameter in the problem which is the
+number of colours to be used.
+Parameters are similar to (constant) variables in most programming languages.
+They must be
+declared and given a <span class="target" id="index-1"></span>type. In this case the type is <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span><span class="s"></span></code>.
+They are given a value by an <span class="target" id="index-2"></span>assignment.
+MiniZinc allows the assignment to be included as part of the declaration
+(as in the line above) or to be a separate assignment statement.
+Thus the following is equivalent to the single line above</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">nc</span><span class="p">;</span><span class="s"></span>
+<span class="nv">nc</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Unlike variables in many programming languages a parameter can only be given a
+<em>single</em> value, in that sense they are named constants.
+It is an error for a parameter to occur in more than one assignment.</p>
+<p>The basic <span class="target" id="index-3"></span>parameter types
+are <span class="target" id="index-4"></span>integers (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span><span class="s"></span></code>),
+floating point numbers  (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span><span class="s"></span></code>),
+<span class="target" id="index-5"></span>Booleans (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">bool</span><span class="s"></span></code>) and
+<span class="target" id="index-6"></span>strings (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">string</span><span class="s"></span></code>).
+Arrays and sets are also supported.</p>
+<p id="index-7">MiniZinc models can also contain another kind of variable called a
+<em>decision variable</em>.
+<span class="target" id="index-8"></span>Decision variables are variables in the sense of mathematical or logical
+variables.
+Unlike parameters and variables in a standard programming language, the
+modeller does not need to give them a value.
+Rather the value of a decision variable is unknown and it is only when the
+MiniZinc model is executed that the solving system determines if the
+decision variable can be assigned a value that satisfies the constraints in the
+model and if so what this is.</p>
+<p>In our example model  we associate a <em>decision variable</em> with each region,
+<tt class="docutils literal">wa</tt>, <tt class="docutils literal">nt</tt>, <tt class="docutils literal">sa</tt>, <tt class="docutils literal">q</tt>, <tt class="docutils literal">nsw</tt>, <tt class="docutils literal">v</tt> and <tt class="docutils literal">t</tt>,
+which stands for the (unknown) colour to be used to fill the region.</p>
+<p id="index-9">For each decision variable we need to give the set of possible values the
+variable can take. This is called the variable’s
+<em>domain</em>.
+This can be given as part of the <span class="target" id="index-10"></span>variable declaration and the
+<span class="target" id="index-11"></span>type of the decision variable is inferred from the type of the values in the domain.</p>
+<p>In MiniZinc decision variables
+can be Booleans, integers, floating point numbers,
+or sets.
+Also supported are arrays whose elements are
+decision variables.
+In our MiniZinc model we use integers to model the different colours. Thus each of our
+decision variables is declared to have the domain <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="s"></span></code>
+which is an integer range expression
+indicating the set <span class="math notranslate nohighlight">\(\{ 1, 2, \dots, nc \}\)</span>
+using the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"></span></code> declaration.
+The type of the values is integer so all of the variables in the model are integer decision variables.</p>
+<div class="admonition-identifiers admonition" id="defblock-0">
+<p class="first admonition-title">Identifiers</p>
+<p class="last">Identifiers, which are used to name parameters and variables,
+are sequences of lower and uppercase
+alphabetic characters, digits and the underscore <tt class="docutils literal">_</tt> character. They must
+start with an alphabetic character. Thus <tt class="docutils literal">myName_2</tt> is a valid
+identifier.  MiniZinc
+<em>keywords</em> are not allowed to be
+used as identifier names, they are listed in <a class="reference internal" href="spec.html#spec-identifiers"><span class="std std-ref">Identifiers</span></a>.
+Neither are MiniZinc <em>operators</em>
+allowed to be used as identifier names;
+they are listed in <a class="reference internal" href="spec.html#spec-operators"><span class="std std-ref">Operators</span></a>.</p>
+</div>
+<p>MiniZinc carefully
+distinguishes between the two kinds of model variables:
+parameters and decision variables. The kinds of expressions that can be
+constructed using decision variables are more restricted than those that can
+be built from parameters. However, in any place that a decision variable can be
+used, so can a parameter of the same type.</p>
+<div class="admonition-integer-variable-declarations admonition" id="defblock-1">
+<p class="first admonition-title">Integer Variable Declarations</p>
+<p>An <span class="target" id="index-12"></span>integer parameter variable is declared as either:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;var-name&gt;</span><span class="s"></span>
+<span class="cs">&lt;l&gt;</span><span class="s"> .. </span><span class="cs">&lt;u&gt;</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;var-name&gt;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>where <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;l&gt;</span><span class="s"></span></code> and <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;u&gt;</span><span class="s"></span></code> are fixed integer expressions.</p>
+<p>An integer decision variable is declared
+as either:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;var-name&gt;</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="cs">&lt;l&gt;</span><span class="s">..</span><span class="cs">&lt;u&gt;</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;var-name&gt;</span><span class="s"></span>
+</pre></div>
+</div>
+<p class="last">where <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;l&gt;</span><span class="s"></span></code> and <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;u&gt;</span><span class="s"></span></code> are fixed integer expressions.</p>
+</div>
+<p>Formally the distinction between parameters and decision variables is called
+the <em>instantiation</em> of the variable.
+The combination of variable instantiation and type is called a
+<span class="target" id="index-13"></span>type-inst.
+As you start to use MiniZinc you will undoubtedly see examples of
+<em>type-inst</em> errors.</p>
+<p id="index-14">The next component of the model are the <em>constraints</em>.
+These specify the Boolean expressions that the decision variables must satisfy
+to be a valid solution to the model.
+In this case we have a number of not equal constraints between the decision
+variables enforcing that if two states are adjacent then they must have
+different colours.</p>
+<div class="admonition-relational-operators admonition" id="defblock-2">
+<p class="first admonition-title">Relational Operators</p>
+<p>MiniZinc provides the <span class="target" id="index-15"></span>relational operators:</p>
+<p class="last" id="index-16">equal (<tt class="docutils literal">=</tt> or <tt class="docutils literal">==</tt>), not equal
+(<tt class="docutils literal">!=</tt>),
+strictly less than (<tt class="docutils literal"><</tt>),
+strictly greater than (<tt class="docutils literal">></tt>),
+less than or equal to (<tt class="docutils literal"><=</tt>), and
+greater than or equal to (<tt class="docutils literal">>=</tt>).</p>
+</div>
+<p>The next line in the model:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>indicates the kind of problem it is.
+In this case it is a <span class="target" id="index-17"></span>satisfaction problem:
+we wish to find a value for the
+decision variables that satisfies the constraints but we do not care which one.</p>
+<p id="index-18">The final part of the model is the <em>output</em> statement. This tells MiniZinc what to
+print when the model has been run and a <span class="target" id="index-19"></span>solution is found.</p>
+<div class="admonition-output-and-strings admonition" id="defblock-3">
+<p class="first admonition-title">Output and Strings</p>
+<p id="index-20">An output statement is followed by a <em>list</em> of strings. These are
+typically either <span class="target" id="index-21"></span>string literals
+which are written between double quotes and
+use a C like notation for special characters,
+or an expression of the form <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">show</span><span class="p">(</span><span class="nv">e</span><span class="p">)</span><span class="s"></span></code>
+where <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e</span><span class="s"></span></code> is a MiniZinc expression.
+In the example <tt class="docutils literal">\n</tt>
+represents the newline character and <tt class="docutils literal">\t</tt> a
+tab.</p>
+<p>There are also formatted varieties of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">show</span><span class="s"></span></code> for numbers:
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">show_int</span><span class="p">(</span><span class="nv">n</span><span class="p">,</span><span class="nv">X</span><span class="p">)</span><span class="s"></span></code>
+outputs the value of integer
+<tt class="docutils literal">X</tt> in at least <span class="math notranslate nohighlight">\(|n|\)</span> characters, right justified
+if <span class="math notranslate nohighlight">\(n &gt; 0\)</span> and left justified otherwise;
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">show_float</span><span class="p">(</span><span class="nv">n</span><span class="p">,</span><span class="nv">d</span><span class="p">,</span><span class="nv">X</span><span class="p">)</span><span class="s"></span></code>
+outputs the value of float <tt class="docutils literal">X</tt> in at least <span class="math notranslate nohighlight">\(|n|\)</span> characters, right justified
+if <span class="math notranslate nohighlight">\(n &gt; 0\)</span> and left justified otherwise, with <span class="math notranslate nohighlight">\(d\)</span> characters after the
+decimal point.</p>
+<p><span class="target" id="index-22"></span>String literals must fit on a single line. Longer string literals can be
+split across multiple lines using the string concatenation operator
+<tt class="docutils literal">++</tt>.
+For example, the string literal</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Invalid datafile: Amount of flour is non-negative&quot;</span>
+</pre></div>
+</div>
+<p>is equivalent to the string literal expression</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span><span class="s"></span>
+<span class="s">&quot;Amount of flour is non-negative&quot;</span>
+</pre></div>
+</div>
+<p>MiniZinc supports
+<span class="target" id="index-23"></span>interpolated strings.
+Expressions can be embedded directly in string literals,
+where a sub string of the form <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">&quot;</span><span class="p">\(</span><span class="nv">e</span><span class="p">)</span><span class="s">&quot;</span></code>
+is replaced by the result of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">show</span><span class="p">(</span><span class="nv">e</span><span class="p">)</span><span class="s"></span></code>.
+For example <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">&quot;t=</span><span class="p">\(</span><span class="nv">t</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span></code> produces the same string as
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">&quot;t=&quot; </span><span class="o">++</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span><span class="s"> </span><span class="o">++</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot;</span></code>.</p>
+<p class="last">A model can contain multiple output statements. In that case, all outputs
+are concatenated in the order they appear in the model.</p>
+</div>
+<p>We can evaluate our model by clicking the <em>Run</em> button in the MiniZinc IDE, or by typing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver gecode aust.mzn
+</pre></div>
+</div>
+<p>where <a class="reference download internal" href="downloads/aust.mzn" download=""><tt class="xref download docutils literal">aust.mzn</tt></a>
+is the name of the file containing our MiniZinc model.
+We must use the file extension <tt class="docutils literal">.mzn</tt> to indicate a MiniZinc model.
+The command <tt class="docutils literal">minizinc</tt> with the option <tt class="docutils literal">--solver gecode</tt>
+uses the Gecode finite domain solver to evaluate
+our model. If you use the MiniZinc binary distribution,
+this solver is in fact the default, so you can just run <tt class="docutils literal">minizinc aust.mzn</tt> instead.</p>
+<p>When we run this we obtain the result:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wa=3   nt=2    sa=1
+q=3   nsw=2    v=3
+t=1
+----------
+</pre></div>
+</div>
+<p id="index-24">The line of 10 dashes <tt class="docutils literal">----------</tt> is automatically added
+by the MiniZinc output to indicate a solution has been found.</p>
+</div>
+<div class="section" id="an-arithmetic-optimisation-example">
+<h2>2.1.2. An Arithmetic Optimisation Example<a class="headerlink" href="#an-arithmetic-optimisation-example" title="Permalink to this headline">¶</a></h2>
+<p>Our second example is motivated by the need to bake some cakes for a fete at
+our local school.
+We know how to make two sorts of cakes (WARNING: please don’t use
+these recipes at home).
+A banana cake which takes 250g of self-raising flour, 2 mashed bananas, 75g
+sugar and 100g of butter, and a chocolate cake which takes 200g of self-raising
+flour, 75g of cocoa, 150g sugar and 150g of butter.
+We can sell a chocolate cake for $4.50 and a banana cake for $4.00.  And we
+have 4kg self-raising flour, 6 bananas, 2kg of sugar, 500g of butter and 500g
+of cocoa.
+The question is how many of each sort of cake should we bake for the fete to
+maximise the profit.
+A possible
+MiniZinc model is shown in <a class="reference internal" href="#ex-cakes"><span class="std std-numref">Listing 2.1.2</span></a>.</p>
+<div class="literal-block-wrapper docutils container" id="ex-cakes">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1.2 </span><span class="caption-text">Model for determining how many banana and chocolate cakes to bake for the school fete (<a class="reference download internal" href="downloads/cakes.mzn" download=""><tt class="xref download docutils literal">cakes.mzn</tt></a>)</span><a class="headerlink" href="#ex-cakes" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Baking cakes for the school fete</span><span class="s"></span>
+
+<span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">100</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">;</span><span class="s"> </span><span class="c">% no. of banana cakes</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">100</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">;</span><span class="s"> </span><span class="c">% no. of chocolate cakes</span><span class="s"></span>
+
+<span class="c">% flour</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="m">250</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">200</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">4000</span><span class="p">;</span><span class="s"></span>
+<span class="c">% bananas</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="m">2</span><span class="o">*</span><span class="nv">b</span><span class="s">  </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">6</span><span class="p">;</span><span class="s"></span>
+<span class="c">% sugar</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="m">75</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">150</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">2000</span><span class="p">;</span><span class="s"></span>
+<span class="c">% butter</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="m">100</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">150</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">500</span><span class="p">;</span><span class="s"></span>
+<span class="c">% cocoa</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="m">75</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">500</span><span class="p">;</span><span class="s"></span>
+
+<span class="c">% maximize our profit</span><span class="s"></span>
+<span class="k">solve</span><span class="s"> </span><span class="k">maximize</span><span class="s"> </span><span class="m">400</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">450</span><span class="o">*</span><span class="nv">c</span><span class="p">;</span><span class="s"></span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;no. of banana cakes = </span><span class="p">\(</span><span class="nv">b</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="s"></span>
+<span class="s">         &quot;no. of chocolate cakes = </span><span class="p">\(</span><span class="nv">c</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<p id="index-25">The first new feature is the use of <em>arithmetic expressions</em>.</p>
+<div class="admonition-integer-arithmetic-operators admonition" id="defblock-4">
+<p class="first admonition-title">Integer Arithmetic Operators</p>
+<p id="index-26">MiniZinc provides the standard integer arithmetic operators.
+Addition (<tt class="docutils literal">+</tt>),
+subtraction (<tt class="docutils literal">-</tt>),
+multiplication (<tt class="docutils literal">*</tt>),
+integer division (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">div</span><span class="s"></span></code>)
+and
+integer modulus (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">mod</span><span class="s"></span></code>).
+It also provides <tt class="docutils literal">+</tt> and <tt class="docutils literal">-</tt>
+as unary operators.</p>
+<p>Integer modulus is defined to give a result <span class="math notranslate nohighlight">\(a\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">mod</span><span class="s"></span></code> <span class="math notranslate nohighlight">\(b\)</span>
+that has the same sign as the
+dividend <span class="math notranslate nohighlight">\(a\)</span>. Integer division is defined so that
+<span class="math notranslate nohighlight">\(a = b \)</span> <span class="math notranslate nohighlight">\((a\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">div</span><span class="s"></span></code> <span class="math notranslate nohighlight">\(b) + (a\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">mod</span><span class="s"></span></code> <span class="math notranslate nohighlight">\(b)\)</span>.</p>
+<p>MiniZinc provides standard integer functions for
+absolute value (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">abs</span><span class="s"></span></code>) and power function (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">pow</span><span class="s"></span></code>).
+For example <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="m">4</span><span class="p">)</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">pow</span><span class="p">(</span><span class="m">2,5</span><span class="p">)</span><span class="s"></span></code> evaluate to
+<tt class="docutils literal">4</tt> and <tt class="docutils literal">32</tt> respectively.</p>
+<p class="last">The syntax for arithmetic literals is reasonably standard. Integer literals
+can be decimal, hexadecimal or octal. For instance <tt class="docutils literal">0</tt>, <tt class="docutils literal">5</tt>,
+<tt class="docutils literal">123</tt>, <tt class="docutils literal">0x1b7</tt>, <tt class="docutils literal">0o777</tt>.</p>
+</div>
+<p id="index-27">The second new feature shown in the example is optimisation. The line</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">solve</span><span class="s"> </span><span class="k">maximize</span><span class="s"> </span><span class="m">400</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">450</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nv">c</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>specifies that we want to find a solution that maximises the expression in
+the solve statement called the
+<em>objective</em>.
+The objective can be any
+kind of arithmetic expression.  One can replace the keyword
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">maximize</span><span class="s"></span></code>
+by <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">minimize</span><span class="s"></span></code> to specify a minimisation problem.</p>
+<p>When we run this we obtain the result:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>no. of banana cakes = 2
+no. of chocolate cakes = 2
+----------
+==========
+</pre></div>
+</div>
+<p id="index-28">The line <tt class="docutils literal">==========</tt>
+is output automatically for optimisation problems when the system has proved
+that a solution is optimal.</p>
+</div>
+<div class="section" id="datafiles-and-assertions">
+<span id="index-29"></span><h2>2.1.3. Datafiles and Assertions<a class="headerlink" href="#datafiles-and-assertions" title="Permalink to this headline">¶</a></h2>
+<p>A drawback of this model is that if we wish to solve a similar problem the
+next time we need to bake cakes for the school (which is often) we need to
+modify the constraints in the model to reflect the ingredients that we have
+in the pantry. If we want to reuse the model then we would be better off to
+make the amount of each ingredient a parameter of the model and then set
+their values at the top of the model.</p>
+<p>Even better would be to set the value of these parameters in a separate
+<em>data file</em>.
+MiniZinc (like most other modelling languages) allows the
+use of data files to set the value of parameters declared in the original
+model. This allows the same model to be easily used with different data by
+running it with different data files.</p>
+<p>Data files must have the file extension <tt class="docutils literal">.dzn</tt> to indicate a MiniZinc data file
+and a model can be run with any number of data files (though a variable/parameter can only be assigned a value in one file).</p>
+<div class="literal-block-wrapper docutils container" id="ex-cakes2">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1.3 </span><span class="caption-text">Data-independent model for determining how many banana and chocolate cakes to bake for the school fete (<a class="reference download internal" href="downloads/cakes2.mzn" download=""><tt class="xref download docutils literal">cakes2.mzn</tt></a>)</span><a class="headerlink" href="#ex-cakes2" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Baking cakes for the school fete (with data file)</span><span class="s"></span>
+
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">flour</span><span class="p">;</span><span class="s">  </span><span class="c">%no. grams of flour available</span><span class="s"></span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">banana</span><span class="p">;</span><span class="s"> </span><span class="c">%no. of bananas available</span><span class="s"></span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">sugar</span><span class="p">;</span><span class="s">  </span><span class="c">%no. grams of sugar available</span><span class="s"></span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">butter</span><span class="p">;</span><span class="s"> </span><span class="c">%no. grams of butter available</span><span class="s"></span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">cocoa</span><span class="p">;</span><span class="s">  </span><span class="c">%no. grams of cocoa available</span><span class="s"></span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">flour</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span><span class="s"></span>
+<span class="s">                  &quot;Amount of flour should be non-negative&quot;</span><span class="p">);</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">banana</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span><span class="s"></span>
+<span class="s">                  &quot;Amount of banana should be non-negative&quot;</span><span class="p">);</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">sugar</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span><span class="s"></span>
+<span class="s">                  &quot;Amount of sugar should be non-negative&quot;</span><span class="p">);</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">butter</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span><span class="s"></span>
+<span class="s">                  &quot;Amount of butter should be non-negative&quot;</span><span class="p">);</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">cocoa</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span><span class="s"></span>
+<span class="s">                  &quot;Amount of cocoa should be non-negative&quot;</span><span class="p">);</span><span class="s"></span>
+
+<span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">100</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">;</span><span class="s"> </span><span class="c">% no. of banana cakes</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">100</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">;</span><span class="s"> </span><span class="c">% no. of chocolate cakes</span><span class="s"></span>
+
+<span class="c">% flour</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="m">250</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">200</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">flour</span><span class="p">;</span><span class="s"></span>
+<span class="c">% bananas</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="m">2</span><span class="o">*</span><span class="nv">b</span><span class="s">  </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">banana</span><span class="p">;</span><span class="s"></span>
+<span class="c">% sugar</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="m">75</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">150</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">sugar</span><span class="p">;</span><span class="s"></span>
+<span class="c">% butter</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="m">100</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">150</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">butter</span><span class="p">;</span><span class="s"></span>
+<span class="c">% cocoa</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="m">75</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">cocoa</span><span class="p">;</span><span class="s"></span>
+
+<span class="c">% maximize our profit</span><span class="s"></span>
+<span class="k">solve</span><span class="s"> </span><span class="k">maximize</span><span class="s"> </span><span class="m">400</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">450</span><span class="o">*</span><span class="nv">c</span><span class="p">;</span><span class="s"></span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;no. of banana cakes = </span><span class="p">\(</span><span class="nv">b</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="s"></span>
+<span class="s">        &quot;no. of chocolate cakes = </span><span class="p">\(</span><span class="nv">c</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<p>Our new model is shown in <a class="reference internal" href="#ex-cakes2"><span class="std std-numref">Listing 2.1.3</span></a>.
+We can run it using the command</p>
+<p>where the data file <a class="reference download internal" href="downloads/pantry.dzn" download=""><tt class="xref download docutils literal">pantry.dzn</tt></a> is defined in
+<a class="reference internal" href="#fig-pantry1"><span class="std std-numref">Listing 2.1.4</span></a>. This gives the same result as <a class="reference download internal" href="downloads/cakes.mzn" download=""><tt class="xref download docutils literal">cakes.mzn</tt></a>.
+The output from running the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc cakes2.mzn pantry2.dzn
+</pre></div>
+</div>
+<p>with an alternate data set defined in
+<a class="reference internal" href="#fig-pantry2"><span class="std std-numref">Listing 2.1.5</span></a> is</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>no. of banana cakes = 3
+no. of chocolate cakes = 8
+----------
+==========
+</pre></div>
+</div>
+<p>If we remove the output statement from <a class="reference download internal" href="downloads/cakes.mzn" download=""><tt class="xref download docutils literal">cakes.mzn</tt></a> then
+MiniZinc will use a default output. In this case the resulting
+output  will be</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>b = 3;
+c = 8;
+----------
+==========
+</pre></div>
+</div>
+<div class="admonition-default-output admonition" id="defblock-5">
+<p class="first admonition-title">Default Output</p>
+<p class="last">A MiniZinc model with no output will output a line for each
+decision variable with its value, unless it is assigned an expression
+on its declaration. Note how the output is in the form of a correct datafile.</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="fig-pantry1">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1.4 </span><span class="caption-text">Example data file for <a class="reference download internal" href="downloads/cakes2.mzn" download=""><tt class="xref download docutils literal">cakes2.mzn</tt></a> (<a class="reference download internal" href="downloads/pantry.dzn" download=""><tt class="xref download docutils literal">pantry.dzn</tt></a>)</span><a class="headerlink" href="#fig-pantry1" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">flour</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">4000</span><span class="p">;</span><span class="s"> </span>
+<span class="nv">banana</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">6</span><span class="p">;</span><span class="s"> </span>
+<span class="nv">sugar</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">2000</span><span class="p">;</span><span class="s"> </span>
+<span class="nv">butter</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">500</span><span class="p">;</span><span class="s"> </span>
+<span class="nv">cocoa</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">500</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="fig-pantry2">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1.5 </span><span class="caption-text">Example data file for <a class="reference download internal" href="downloads/cakes2.mzn" download=""><tt class="xref download docutils literal">cakes2.mzn</tt></a> (<a class="reference download internal" href="downloads/pantry2.dzn" download=""><tt class="xref download docutils literal">pantry2.dzn</tt></a>)</span><a class="headerlink" href="#fig-pantry2" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">flour</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">8000</span><span class="p">;</span><span class="s"> </span>
+<span class="nv">banana</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">11</span><span class="p">;</span><span class="s"> </span>
+<span class="nv">sugar</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3000</span><span class="p">;</span><span class="s"> </span>
+<span class="nv">butter</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1500</span><span class="p">;</span><span class="s"> </span>
+<span class="nv">cocoa</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">800</span><span class="p">;</span><span class="s"> </span>
+</pre></div>
+</div>
+</div>
+<p>Small data files can be entered
+without directly creating a <tt class="docutils literal">.dzn</tt>
+file, using the <span class="target" id="index-30"></span>command line flag
+<tt class="docutils literal">-D</tt> <em>string</em>,
+where <em>string</em> is the contents of the data
+file. For example the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc cakes2.mzn -D <span class="se">\</span>
+     <span class="s2">&quot;flour=4000;banana=6;sugar=2000;butter=500;cocoa=500;&quot;</span>
+</pre></div>
+</div>
+<p>will give identical results to</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc cakes2.mzn pantry.dzn
+</pre></div>
+</div>
+<p>Data files can only contain assignment statements for
+decision variables and parameters in the model(s) for which they are intended.</p>
+<p id="index-31">Defensive programming suggests that we should check that the values in the
+data file are reasonable.  For our example it is sensible to check that the
+quantity of all ingredients is non-negative and generate a run-time error if
+this is not true. MiniZinc provides a built-in Boolean operator for checking
+parameter values. The form is <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span><span class="p">(</span><span class="nv">B</span><span class="p">,</span><span class="nv">S</span><span class="p">)</span><span class="s"></span></code>. The Boolean expression
+<tt class="docutils literal">B</tt> is evaluated and if it is false execution aborts and the string
+expression <tt class="docutils literal">S</tt> is evaluated and printed as an error message. To check and
+generate an appropriate error message if the amount of flour is negative we
+can simply add the line</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">flour</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Amount of flour is non-negative&quot;</span><span class="p">);</span><span class="s"></span>
+</pre></div>
+</div>
+<p>to our model. Notice that the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span><span class="s"></span></code> expression is a Boolean
+expression and so is regarded as a type of constraint. We can add similar
+lines to check that the quantity of the other ingredients is non-negative.</p>
+</div>
+<div class="section" id="real-number-solving">
+<h2>2.1.4. Real Number Solving<a class="headerlink" href="#real-number-solving" title="Permalink to this headline">¶</a></h2>
+<p>MiniZinc also supports “real number” constraint solving using
+floating point variables and constraints.  Consider a problem of taking out a short loan
+for one year to be repaid in 4 quarterly instalments.
+A model for this is shown in <a class="reference internal" href="#ex-loan"><span class="std std-numref">Listing 2.1.6</span></a>. It uses a simple interest
+calculation to calculate the balance after each quarter.</p>
+<div class="literal-block-wrapper docutils container" id="ex-loan">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1.6 </span><span class="caption-text">Model for determining relationships between a 1 year loan repaying every quarter (<a class="reference download internal" href="downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a>)</span><a class="headerlink" href="#ex-loan" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% variables</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span><span class="s">        </span><span class="c">% quarterly repayment</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">P</span><span class="p">;</span><span class="s">        </span><span class="c">% principal initially borrowed</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="m">0.0</span><span class="s"> .. </span><span class="m">10.0</span><span class="p">:</span><span class="s"> </span><span class="nv">I</span><span class="p">;</span><span class="s">  </span><span class="c">% interest rate (per quarter)</span><span class="s"></span>
+
+<span class="c">% intermediate variables</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">B1</span><span class="p">;</span><span class="s"> </span><span class="c">% balance after one quarter</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">B2</span><span class="p">;</span><span class="s"> </span><span class="c">% balance after two quarters</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">B3</span><span class="p">;</span><span class="s"> </span><span class="c">% balance after three quarters</span><span class="s"></span>
+<span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">B4</span><span class="p">;</span><span class="s"> </span><span class="c">% balance owing at end</span><span class="s"></span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="nv">B1</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">P</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="p">(</span><span class="m">1.0</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">I</span><span class="p">)</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">B2</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">B1</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="p">(</span><span class="m">1.0</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">I</span><span class="p">)</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">B3</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">B2</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="p">(</span><span class="m">1.0</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">I</span><span class="p">)</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span><span class="s"> </span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">B4</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">B3</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="p">(</span><span class="m">1.0</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">I</span><span class="p">)</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span><span class="s"></span>
+
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span><span class="s"></span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s"></span>
+<span class="s"> &quot;Borrowing &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show_float</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="nv">P</span><span class="p">),</span><span class="s"> &quot; at &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">I</span><span class="o">*</span><span class="m">100.0</span><span class="p">),</span><span class="s"> </span>
+<span class="s"> &quot;% interest, and repaying &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show_float</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="nv">R</span><span class="p">),</span><span class="s"> </span>
+<span class="s">  &quot;</span><span class="se">\n</span><span class="s">per quarter for 1 year leaves &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show_float</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="nv">B4</span><span class="p">),</span><span class="s"> &quot; owing</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="p">];</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<p>Note that we declare a float variable <tt class="docutils literal">f</tt>
+similar to an integer variable using the keyword <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span><span class="s"></span></code> instead of
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span><span class="s"></span></code>.</p>
+<p>We can use the same model to answer a number of different questions.
+The first question is: if I borrow $1000 at 4% quarterly interest and repay $260 per
+quarter, how much do I end up owing? This question is encoded by
+the data file <a class="reference download internal" href="downloads/loan1.dzn" download=""><tt class="xref download docutils literal">loan1.dzn</tt></a>.</p>
+<p>Since we wish to use real number variables and constraint we need to use a solver
+that supports this type of problem. While Gecode (the default solver in the MiniZinc bundled binary distribution) does support floating point variables, a mixed integer linear programming (MIP) solver may be better suited to this particular type of problem.
+The MiniZinc distribution contains such a solver. We can invoke it by selecting <tt class="docutils literal">COIN-BC</tt> from the solver configuration menu in the IDE, or on the command line using the command <tt class="docutils literal">minizinc --solver cbc</tt>. Note: When solving this problem with the MiniZinc IDE, you will have to open the tab with the data file <cite>loan1.dzn</cite> and then click the Run button. If you just click Run in the original model file, the IDE won’t know that any data is missing (since all inputs were declared <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"></span></code>), and not pop up the dialog for selecting a data file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver cbc loan.mzn loan1.dzn
+</pre></div>
+</div>
+<p>The output is</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Borrowing 1000.00 at 4.0% interest, and repaying 260.00
+per quarter for 1 year leaves 65.78 owing
+----------
+</pre></div>
+</div>
+<p>The second question is if I want to borrow $1000 at 4% and owe nothing at
+the end, how much do I need to repay?
+This question is encoded by
+the data file <a class="reference download internal" href="downloads/loan2.dzn" download=""><tt class="xref download docutils literal">loan2.dzn</tt></a>.
+The output from running the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver cbc loan.mzn loan2.dzn
+</pre></div>
+</div>
+<p>is</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Borrowing 1000.00 at 4.0% interest, and repaying 275.49
+per quarter for 1 year leaves 0.00 owing
+----------
+</pre></div>
+</div>
+<p>The third question is if I can repay $250 a quarter, how much can I borrow
+at 4% to end up owing nothing?
+This question is encoded by the data file <a class="reference download internal" href="downloads/loan3.dzn" download=""><tt class="xref download docutils literal">loan3.dzn</tt></a>.
+The output from running the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ minizinc --solver cbc loan.mzn loan3.dzn
+</pre></div>
+</div>
+<p>is</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Borrowing 907.47 at 4.0% interest, and repaying 250.00
+per quarter for 1 year leaves 0.00 owing
+----------
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1.7 </span><span class="caption-text">Example data file for <a class="reference download internal" href="downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a> (<a class="reference download internal" href="downloads/loan1.dzn" download=""><tt class="xref download docutils literal">loan1.dzn</tt></a>)</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">I</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.04</span><span class="p">;</span><span class="s"></span>
+<span class="nv">P</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1000.0</span><span class="p">;</span><span class="s"></span>
+<span class="nv">R</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">260.0</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1.8 </span><span class="caption-text">Example data file for <a class="reference download internal" href="downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a> (<a class="reference download internal" href="downloads/loan2.dzn" download=""><tt class="xref download docutils literal">loan2.dzn</tt></a>)</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">I</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.04</span><span class="p">;</span><span class="s"></span>
+<span class="nv">P</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1000.0</span><span class="p">;</span><span class="s"></span>
+<span class="nv">B4</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.0</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1.9 </span><span class="caption-text">Example data file for <a class="reference download internal" href="downloads/loan.mzn" download=""><tt class="xref download docutils literal">loan.mzn</tt></a> (<a class="reference download internal" href="downloads/loan3.dzn" download=""><tt class="xref download docutils literal">loan3.dzn</tt></a>)</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">I</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.04</span><span class="p">;</span><span class="s"></span>
+<span class="nv">R</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">250.0</span><span class="p">;</span><span class="s"></span>
+<span class="nv">B4</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.0</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-float-arithmetic-operators admonition" id="defblock-6">
+<p class="first admonition-title">Float Arithmetic Operators</p>
+<p>MiniZinc provides the standard floating point arithmetic operators:
+addition (<tt class="docutils literal">+</tt>),
+subtraction (<tt class="docutils literal">-</tt>),
+multiplication (<tt class="docutils literal">*</tt>)
+and floating point division (<tt class="docutils literal">/</tt>).
+It also provides <tt class="docutils literal">+</tt> and <tt class="docutils literal">-</tt> as unary operators.</p>
+<p>MiniZinc can automatically coerce integers to
+floating point numbers. But to make the coercion explicit, the built-in function
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">int2float</span><span class="s"></span></code>
+can be used. Note that one consequence of the automatic coercion is that
+an expression <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">a</span><span class="s"> </span><span class="o">/</span><span class="s"> </span><span class="nv">b</span><span class="s"></span></code> is always considered a floating point division. If
+you need an integer division, make sure to use the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">div</span><span class="s"></span></code> operator!</p>
+<p>MiniZinc provides in addition the following floating point functions:
+absolute value (<tt class="docutils literal">abs</tt>),
+square root (<tt class="docutils literal">sqrt</tt>),
+natural logarithm (<tt class="docutils literal">ln</tt>),
+logarithm base 2 (<tt class="docutils literal">log2</tt>),
+logarithm base 10 (<tt class="docutils literal">log10</tt>),
+exponentiation of $e$ (<tt class="docutils literal">exp</tt>),
+sine (<tt class="docutils literal">sin</tt>),
+cosine (<tt class="docutils literal">cos</tt>),
+tangent (<tt class="docutils literal">tan</tt>),
+arcsine (<tt class="docutils literal">asin</tt>),
+arc-cosine (<tt class="docutils literal">acos</tt>),
+arctangent (<tt class="docutils literal">atan</tt>),
+hyperbolic sine (<tt class="docutils literal">sinh</tt>),
+hyperbolic cosine (<tt class="docutils literal">cosh</tt>),
+hyperbolic tangent (<tt class="docutils literal">tanh</tt>),
+hyperbolic arcsine (<tt class="docutils literal">asinh</tt>),
+hyperbolic arccosine (<tt class="docutils literal">acosh</tt>),
+hyperbolic arctangent (<tt class="docutils literal">atanh</tt>),
+and power (<tt class="docutils literal">pow</tt>) which is the only binary function, the rest are
+unary.</p>
+<p class="last">The syntax for arithmetic literals is reasonably standard. Example float
+literals are <tt class="docutils literal">1.05</tt>, <tt class="docutils literal">1.3e-5</tt> and <tt class="docutils literal">1.3E+5</tt>.</p>
+</div>
+</div>
+<div class="section" id="basic-structure-of-a-model">
+<h2>2.1.5. Basic structure of a model<a class="headerlink" href="#basic-structure-of-a-model" title="Permalink to this headline">¶</a></h2>
+<p>We are now in a position to summarise the basic structure of a MiniZinc model.
+It consists of multiple <em>items</em> each of which has a
+semicolon <tt class="docutils literal">;</tt> at its end.
+Items can occur in any order.
+For example, identifiers need not be declared before they are
+used.</p>
+<p>There are 8 kinds of <span class="target" id="index-32"></span>items.</p>
+<ul>
+<li><p class="first"><span class="target" id="index-33"></span>Include items allow the contents of another file to be inserted into the model.
+They have the form:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> </span><span class="cs">&lt;filename&gt;</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>where <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;filename&gt;</span><span class="s"></span></code> is a string literal.
+They allow large models to be split into smaller sub-models and also the
+inclusion of constraints defined in library files.
+We shall see an example in <a class="reference internal" href="modelling2.html#ex-smm"><span class="std std-numref">Listing 2.2.4</span></a>.</p>
+</li>
+<li><p class="first"><span class="target" id="index-34"></span>Variable declarations declare new variables.
+Such variables are global variables and can be referred to from anywhere in the
+model.
+Variables come in two kinds.
+Parameters which are assigned a fixed value in the model or in a data file and
+decision variables whose value is found only when the model is solved.
+We say that parameters are <span class="target" id="index-35"></span>fixed and decision variables are
+<span class="target" id="index-36"></span>unfixed.
+The variable can be optionally assigned a value as part of the declaration.
+The form is:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;type inst expr&gt;</span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;variable&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="cs">&lt;expression&gt;</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>The <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;type-inst expr&gt;</span><span class="s"></span></code>
+gives the instantiation and type of the
+variable. These are one of the more complex aspects of MiniZinc.
+Instantiations are declared using <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">par</span><span class="s"></span></code>
+for parameters and
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"></span></code> for decision variables. If there is no explicit instantiation
+declaration then the variable is a parameter.
+The type can be a base type,
+an <span class="target" id="index-37"></span>integer or float range
+or an array or a set.
+The base types are <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span><span class="s"></span></code>,
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span><span class="s"></span></code>,
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">string</span><span class="s"></span></code>,
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">bool</span><span class="s"></span></code>,
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code>
+of which only
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span><span class="s"></span></code>, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">bool</span><span class="s"></span></code> can be used for decision
+variables.
+The base type <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span><span class="s"></span></code> is an <span class="target" id="index-38"></span>annotation –
+we shall discuss
+annotations in <a class="reference internal" href="mzn_search.html#sec-search"><span class="std std-ref">Search</span></a>.
+<span class="target" id="index-39"></span>Integer range expressions can be used
+instead of the type <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span><span class="s"></span></code>.
+Similarly <span class="target" id="index-40"></span>float range expressions
+can be used instead of type <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span><span class="s"></span></code>.
+These are typically used to give the
+domain of a decision variable but can also be used to restrict the
+range of a parameter. Another use of variable declarations is to
+define <span class="target" id="index-41"></span>enumerated types, which we discuss in <a class="reference internal" href="modelling2.html#sec-enum"><span class="std std-ref">Enumerated Types</span></a>.</p>
+</li>
+<li><p class="first"><span class="target" id="index-42"></span>Assignment items assign a value to a variable. They have the form:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;variable&gt;</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="cs">&lt;expression&gt;</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Values can be assigned to decision variables in which case the assignment is
+equivalent to writing <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="k">constraint</span><span class="s"> </span><span class="cs">&lt;variable&gt;</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="cs">&lt;expression&gt;</span><span class="s"></span></code>.</p>
+</li>
+<li><p class="first"><span class="target" id="index-43"></span>Constraint items form the heart of the model. They have the form:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="cs">&lt;Boolean expression&gt;</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>We have already seen examples of simple constraints using arithmetic
+comparison and the built-in <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span><span class="s"></span></code> operator. In the next section we
+shall see examples of more complex constraints.</p>
+</li>
+<li><p class="first"><span class="target" id="index-44"></span>Solve items specify exactly what kind of solution is being looked for.
+As we have seen they have one of three forms:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span><span class="s"></span>
+<span class="k">solve</span><span class="s"> </span><span class="k">maximize</span><span class="s"> </span><span class="cs">&lt;arithmetic expression&gt;</span><span class="p">;</span><span class="s"></span>
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="cs">&lt;arithmetic expression&gt;</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>A model is required to have at most one solve item. If it’s omitted, it is
+treated as <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="s"></span></code>.</p>
+</li>
+<li><p class="first"><span class="target" id="index-45"></span>Output items are for nicely presenting the results of the model execution.
+They have the form:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;string expression&gt;</span><span class="p">,</span><span class="s"> ...</span><span class="p">,</span><span class="s"> </span><span class="cs">&lt;string expression&gt;</span><span class="s"> </span><span class="p">];</span><span class="s"></span>
+</pre></div>
+</div>
+<p>If there is no output item, MiniZinc will by default print out the values of
+all the decision variables which are not optionally assigned a value in the
+format of assignment items. The <tt class="docutils literal">output</tt> and <tt class="docutils literal">no_output</tt> annotations can
+be used to control this on a per-variable basis.</p>
+</li>
+<li><p class="first"><span class="target" id="index-46"></span>Enumerated type declarations.
+We discuss these in <a class="reference internal" href="modelling2.html#sec-arrayset"><span class="std std-ref">Arrays and Sets</span></a> and <a class="reference internal" href="modelling2.html#sec-enum"><span class="std std-ref">Enumerated Types</span></a>.</p>
+</li>
+<li><p class="first"><span class="target" id="index-47"></span>Predicate, function and test items are for defining new constraints,
+functions and Boolean tests.
+We discuss these in <a class="reference internal" href="predicates.html#sec-predicates"><span class="std std-ref">Predicates and Functions</span></a>.</p>
+</li>
+<li><p class="first">The <span class="target" id="index-48"></span>annotation item is used to define a new annotation. We
+discuss these in <a class="reference internal" href="mzn_search.html#sec-search"><span class="std std-ref">Search</span></a>.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modelling2.html" class="btn btn-neutral float-right" title="2.2. More Complex Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="part_2_tutorial.html" class="btn btn-neutral" title="2. A MiniZinc Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.7.3',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
