@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.5. Tuple and record types &mdash; The MiniZinc Handbook 2.7.4</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/tuple_and_record_types.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2.6. Search" href="mzn_search.html" />
+    <link rel="prev" title="2.4. Option Types" href="optiontypes.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+            <a href="http://www.minizinc.org">
+          
+            
+            <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+              <div class="version">
+                2.7.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="modelling.html">2.1. Basic Modelling in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html">2.2. More Complex Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html">2.3. Predicates and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optiontypes.html">2.4. Option Types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.5. Tuple and record types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#declaring-and-using-tuples-and-records">2.5.1. Declaring and using tuples and records</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-type-inst-synonyms">2.5.2. Using type-inst synonyms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types-with-both-var-and-par-members">2.5.3. Types with both var and par members</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-rectangle-packing-using-records">2.5.4. Example: rectangle packing using records</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html">2.6. Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">2.7. Effective Modelling Practices in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html">2.8. Boolean Satisfiability Modelling in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html">2.9. FlatZinc and Flattening</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="part_2_tutorial.html">2. A MiniZinc Tutorial</a> &raquo;</li>
+        
+      <li>2.5. Tuple and record types</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tuple-and-record-types">
+<span id="sec-tuple-and-record-types"></span><h1>2.5. Tuple and record types<a class="headerlink" href="#tuple-and-record-types" title="Permalink to this headline">¶</a></h1>
+<p>In MiniZinc models we often deal with multiple points of data and multiple
+decisions that all concern the same thing, an “object”. There are multiple ways
+to modelling this. It is common practice in MiniZinc to have different arrays
+for different types of data points or decisions. These arrays will then share a
+common index mapping to which object each data point belongs.</p>
+<p>In this section we present an alternative, “object-oriented”, approach in
+MiniZinc in the form of tuple and record types. Using these types, different
+types of data points and decisions can be combined into collections for the
+modeller’s convenience.</p>
+<div class="section" id="declaring-and-using-tuples-and-records">
+<h2>2.5.1. Declaring and using tuples and records<a class="headerlink" href="#declaring-and-using-tuples-and-records" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-tuple-types-and-literals admonition" id="defblock-0">
+<p class="first admonition-title">Tuple types and literals</p>
+<p>A tuple type variable is declared as:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;var-par&gt;</span><span class="s"> </span><span class="kt">tuple</span><span class="p">(</span><span class="cs">&lt;ti-expr&gt;</span><span class="p">,</span><span class="s"> ...</span><span class="p">):</span><span class="s"> </span><span class="cs">&lt;var-name&gt;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>where one or more type instantiations, <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;ti-expr&gt;</span><span class="s"></span></code>, are placed between
+the parentheses to declare the types contained in the tuple variable.</p>
+<p>For convenience the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"></span></code> keyword can be used to varify all the member
+types of the tuple (i.e., <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">tuple</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="s"> </span><span class="kt">bool</span><span class="p">)</span><span class="s"></span></code> is the same type as
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">tuple</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">)</span><span class="s"></span></code>).</p>
+<p>A tuple literal is created using the following syntax:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="cs">&lt;expr&gt;</span><span class="p">,</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="p">,</span><span class="s"> ... </span><span class="p">])</span><span class="s"></span>
+</pre></div>
+</div>
+<p class="last">For example, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="l">true</span><span class="p">)</span><span class="s"></span></code> is a tuple literal of type <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">tuple</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="s"></span>
+<span class="kt">bool</span><span class="p">)</span><span class="s"></span></code>. Note that when a tuple contains multiple members, then adding a
+trailing comma is optional, but when it contains a single member it is
+<strong>required</strong> to distinguish the literal from a normal parenthesized expression.</p>
+</div>
+<p>Tuples provide a very simple way to create a collection that contains values of
+different types. In a tuple variable, the values contained in the tuple can be
+accessed using a number representing the place in the tuple. For example, in the
+tuple <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">any</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="l">true</span><span class="p">,</span><span class="s"> </span><span class="m">2.0</span><span class="p">)</span><span class="s"></span></code> the first member, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="s"></span></code>, can be
+retrieved using <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s">.</span><span class="m">1</span><span class="s"></span></code>, and the final member, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">2.0</span><span class="s"></span></code>, can be retrieved
+using <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s">.</span><span class="m">3</span><span class="s"></span></code>. Note that the MiniZinc compiler will raise a <strong>Type Error</strong>,
+when an integer is used that is lower than one or higher than the number of
+members in the tuple.</p>
+<p>Although tuple types can be useful, it can often be confusing which member
+represents what. Record types improve on this by associating a name with each
+member of the type.</p>
+<div class="admonition-record-types-and-literals admonition" id="defblock-1">
+<p class="first admonition-title">Record types and literals</p>
+<p>A record type variable is declared as:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;var-par&gt;</span><span class="s"> </span><span class="kt">record</span><span class="p">(</span><span class="cs">&lt;ti-expr-and-id&gt;</span><span class="p">,</span><span class="s"> ...</span><span class="p">):</span><span class="s"> </span><span class="cs">&lt;var-name&gt;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>where one or more type instantiations with a corresponding identifier,
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;ti-expr-and-id&gt;</span><span class="s"></span></code>, are placed between the parentheses to declare the
+types contained in the record variable.</p>
+<p>For convenience the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"></span></code> keyword can be used to varify all the member
+types of the record (i.e., <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">record</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span></code> is the same type
+as <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">record</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span></code>).</p>
+<p>A record literal is created using the following syntax:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="cs">&lt;ident&gt;</span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="sr">[, ... ]</span><span class="p">)</span><span class="s"></span>
+</pre></div>
+</div>
+<p class="last">For example, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="p">(</span><span class="nv">i</span><span class="p">:</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="nv">b</span><span class="p">:</span><span class="s"> </span><span class="l">true</span><span class="p">)</span><span class="s"></span></code> is a record literal of type
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">record</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"></span></code>. Different from tuples, record literals with
+only a single member do not require a trailing comma.</p>
+</div>
+<p>The syntax for accessing a member of a record is very similar to accessing a
+member of a tuple. The difference is that instead of a number, we use the name
+given to the member. For example, given the record <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">any</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">(</span><span class="nv">i</span><span class="p">:</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="nv">b</span><span class="p">:</span><span class="s"> </span><span class="l">true</span><span class="p">)</span><span class="s"></span></code>,
+the integer value <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="s"></span></code> that is named by identifier <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">i</span><span class="s"></span></code> is retrieved
+using <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s">.</span><span class="nv">i</span><span class="s"></span></code>. Using identifiers that do not name a member (or any number)
+will once more result in a <strong>Type Error</strong>.</p>
+</div>
+<div class="section" id="using-type-inst-synonyms">
+<h2>2.5.2. Using type-inst synonyms<a class="headerlink" href="#using-type-inst-synonyms" title="Permalink to this headline">¶</a></h2>
+<p>When using records and tuples, writing the types in many places can quickly
+become tedious and confusing. Additionally, it might often make sense to give a
+name to such a type-inst to describe its meaning. For this purpose, you can use
+type-inst synonyms in MiniZinc.</p>
+<div class="admonition-type-inst-synonyms admonition" id="defblock-2">
+<p class="first admonition-title">Type-inst synonyms</p>
+<p>A type-inst synonym is declared as:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">type</span><span class="s"> </span><span class="cs">&lt;ident&gt;</span><span class="s"> </span><span class="cs">&lt;annotations&gt;</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="cs">&lt;ti-expr&gt;</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p class="last">where the identifier <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;ident&gt;</span><span class="s"></span></code> can be used instead of the type-inst
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;ti-expr&gt;</span><span class="s"></span></code> where required.</p>
+</div>
+<p>For example, in the following MiniZinc fragment we declare two synonyms,
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">Coord</span><span class="s"></span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">Number</span><span class="s"></span></code></p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">type</span><span class="s"> </span><span class="nv">Coord</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">record</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">z</span><span class="p">);</span><span class="s"></span>
+<span class="k">type</span><span class="s"> </span><span class="nv">Number</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="kt">int</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>In a model that contains these definitions, we can now declare a variable
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="m">10</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Coord</span><span class="p">:</span><span class="s"> </span><span class="nv">placement</span><span class="p">;</span><span class="s"></span></code> or a function <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">function</span><span class="s"> </span><span class="nv">Number</span><span class="p">:</span><span class="s"></span>
+<span class="nf">add</span><span class="p">(</span><span class="nv">Number</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="nv">Number</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span><span class="s"></span></code></p>
+<p>Similar to record and tuple types, the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"></span></code> keyword can be used before the
+identifier of a type-inst synonym to varify the type-inst. For instance, given
+the synonym <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">type</span><span class="s"> </span><span class="nv">OnOff</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="kt">bool</span><span class="p">;</span><span class="s"></span></code> and the variable declaration
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="nv">OnOff</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">;</span><span class="s"></span></code>, the type-inst of <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nv">choice</span><span class="s"></span></code> would be <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"></span>
+<span class="kt">bool</span><span class="s"></span></code>. Different from records and tuple, the reverse is also possible using the
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">par</span><span class="s"></span></code> keyword. For instance, the given the synonym <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">type</span><span class="s"> </span><span class="nv">Choice</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="kt">var</span><span class="s"></span>
+<span class="kt">bool</span><span class="p">;</span><span class="s"></span></code> and the variable declaration <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">par</span><span class="s"> </span><span class="nv">Choice</span><span class="p">:</span><span class="s"> </span><span class="nv">check</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">fix</span><span class="p">(</span><span class="nv">choice</span><span class="p">);</span><span class="s"></span></code> the
+type-inst of <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nv">check</span><span class="s"></span></code> would be <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">bool</span><span class="s"></span></code>.</p>
+</div>
+<div class="section" id="types-with-both-var-and-par-members">
+<h2>2.5.3. Types with both var and par members<a class="headerlink" href="#types-with-both-var-and-par-members" title="Permalink to this headline">¶</a></h2>
+<p>Tuples and records can be used to collect both data and decisions about an
+object, and it can be natural to mix data and decisions that concern the same
+object. However, when data and decisions are contained within the same tuple or
+record type, initialization of these types can be complex. To avoid the usage of
+anonymous variables or let-expressions and allow the assignment from data files,
+it is recommended to split data and decisions into separate types.</p>
+<p>For example, in a rostering problem it would be natural to combine information
+about the employees, both data and decisions. It might thus be natural to define
+the following synonyms and variable declarations.</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">enum</span><span class="s"> </span><span class="nv">EmpId</span><span class="p">;</span><span class="s"></span>
+<span class="k">type</span><span class="s"> </span><span class="nv">Employee</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="kt">record</span><span class="p">(</span><span class="s"></span>
+<span class="s">  </span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">name</span><span class="p">,</span><span class="s"></span>
+<span class="s">  </span><span class="kt">array</span><span class="p">[</span><span class="nv">Timespan</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">available</span><span class="p">,</span><span class="s"></span>
+<span class="s">  </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Capability</span><span class="p">:</span><span class="s"> </span><span class="nv">capacities</span><span class="p">,</span><span class="s"></span>
+<span class="s">  </span><span class="kt">array</span><span class="p">[</span><span class="nv">Timespan</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">Shift</span><span class="p">:</span><span class="s"> </span><span class="nv">shifts</span><span class="p">,</span><span class="s"></span>
+<span class="s">  </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">infinity</span><span class="p">:</span><span class="s"> </span><span class="nv">hours</span><span class="p">,</span><span class="s"></span>
+<span class="p">);</span><span class="s"></span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">EmpId</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Employee</span><span class="p">:</span><span class="s"> </span><span class="nv">employee</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>However, it is not possible to assign <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">employees</span><span class="s"></span></code> from a data file.
+Instead, the data and the data could be split as follows.</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">enum</span><span class="s"> </span><span class="nv">EmpId</span><span class="p">;</span><span class="s"></span>
+<span class="k">type</span><span class="s"> </span><span class="nv">EmployeeData</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="kt">record</span><span class="p">(</span><span class="s"></span>
+<span class="s">  </span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">name</span><span class="p">,</span><span class="s"></span>
+<span class="s">  </span><span class="kt">array</span><span class="p">[</span><span class="nv">Timespan</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">available</span><span class="p">,</span><span class="s"></span>
+<span class="s">  </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Capability</span><span class="p">:</span><span class="s"> </span><span class="nv">capacities</span><span class="p">,</span><span class="s"></span>
+<span class="p">);</span><span class="s"></span>
+<span class="k">type</span><span class="s"> </span><span class="nv">EmployeeVar</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="kt">record</span><span class="p">(</span><span class="s"></span>
+<span class="s">  </span><span class="kt">array</span><span class="p">[</span><span class="nv">Timespan</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">Shift</span><span class="p">:</span><span class="s"> </span><span class="nv">shifts</span><span class="p">,</span><span class="s"></span>
+<span class="s">  </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">infinity</span><span class="p">:</span><span class="s"> </span><span class="nv">hours</span><span class="p">,</span><span class="s"></span>
+<span class="p">);</span><span class="s"></span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">EmpId</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">EmployeeData</span><span class="p">:</span><span class="s"> </span><span class="nv">employee_data</span><span class="p">;</span><span class="s"></span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">EmpId</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">EmployeeVar</span><span class="p">:</span><span class="s"> </span><span class="nv">employee_var</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Now it is possible to initialize <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">employee_data</span><span class="s"></span></code> from a data file.
+Depending on the model, it might be easiest to use these synonyms and variable
+declarations separately, but it might be useful to combine them again. For
+instance, when your model contains functions that should operate on the complete
+record. The <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">++</span><span class="s"></span></code> operator can be used to easily combine these synonyms and
+values, as shown in the following fragment.</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">type</span><span class="s"> </span><span class="nv">Employee</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">EmployeeData</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="nv">EmployeeVar</span><span class="p">;</span><span class="s"></span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">EmpId</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Employee</span><span class="p">:</span><span class="s"> </span><span class="nv">employee</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="nv">employee_data</span><span class="p">[</span><span class="nv">id</span><span class="p">]</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="nv">employee_var</span><span class="p">[</span><span class="nv">id</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">id</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">EmpId</span><span class="p">];</span><span class="s"></span>
+</pre></div>
+</div>
+<div class="admonition-operator-for-tuples-and-records admonition" id="defblock-3">
+<p class="first admonition-title">++ operator for tuples and records</p>
+<p>The <cite>++</cite> operator can be used to combine expressions and type-inst expressions
+that both have tuple types or both have record types.</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="cs">&lt;expr&gt;</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="cs">&lt;expr&gt;</span><span class="s"></span>
+<span class="cs">&lt;ti-expr&gt;</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="cs">&lt;ti-expr&gt;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>When both (type-inst) expressions have a tuple type, this operation is very
+similar to array concatenation. The result of evaluating the expression will
+be a new tuple that contains all members of left-hand side followed by all the
+members of the right-hand side.</p>
+<p class="last">When both (type-inst) expressions have a record type, then the result of
+evaluating the expression is a record that merges the fields in both records.
+Note that if both records contain a field with the same name, then the
+compiler will reject this as a Type Error.</p>
+</div>
+</div>
+<div class="section" id="example-rectangle-packing-using-records">
+<h2>2.5.4. Example: rectangle packing using records<a class="headerlink" href="#example-rectangle-packing-using-records" title="Permalink to this headline">¶</a></h2>
+<p>Consider a packing problem where a collection of rectangular objects have to be
+packed into a rectangular space. Importantly, none of the rectangles being
+packed can overlap. To keep the model simple, we don’t allow the rectangles to
+be turned. When we create a model to decide whether the packing is possible, we
+can use records to help us make the model easier to read.</p>
+<p>The data for the model comes in two parts: the total area of the space and the
+sizes of the rectangles being packed. We can represent both using a “dimensions”
+record that includes the width and the height of a rectangle. We therefore
+define the following type-inst synonym.</p>
+<div class="highlight-minizinc notranslate" id="ex-rect-pack-dim"><div class="highlight"><pre><span></span><span class="k">type</span><span class="s"> </span><span class="nv">Dimensions</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="kt">record</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">width</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">height</span><span class="p">);</span><span class="s"></span>
+</pre></div>
+</div>
+<p>To decide whether the problem is satisfiable or not, we will have to find a
+placement for the rectangles being packed. We can thus use the coordinates of
+their left bottom corner as our decision variables, for which a type-inst
+synonym can be defined as follows.</p>
+<div class="highlight-minizinc notranslate" id="ex-rect-pack-coord"><div class="highlight"><pre><span></span><span class="k">type</span><span class="s"> </span><span class="nv">Coordinates</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="kt">record</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">infinity</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">infinity</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">);</span><span class="s"></span>
+</pre></div>
+</div>
+<p>To enforce that no rectangles overlap, it can be easy to start by writing a
+predicate that ensures that two rectangles do not overlap. This predicate will
+require both the information about the dimensions of the rectangle and the
+coordinate decision variable. As such, it can be valuable to first combine these
+records into a new record type. The following fragment shows the additional
+type-inst synonym, and a definition for the described predicate.</p>
+<div class="highlight-minizinc notranslate" id="ex-rect-pack-pred"><div class="highlight"><pre><span></span><span class="k">type</span><span class="s"> </span><span class="nv">Rectangle</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">Dimensions</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="nv">Coordinates</span><span class="p">;</span><span class="s"></span>
+
+<span class="c">% No overlap predicate</span><span class="s"></span>
+<span class="k">predicate</span><span class="s"> </span><span class="nf">no_overlap</span><span class="p">(</span><span class="nv">Rectangle</span><span class="p">:</span><span class="s"> </span><span class="nv">rectA</span><span class="p">,</span><span class="s"> </span><span class="nv">Rectangle</span><span class="p">:</span><span class="s"> </span><span class="nv">rectB</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span>
+<span class="s">  </span><span class="nv">rectA</span><span class="s">.</span><span class="nv">x</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">rectA</span><span class="s">.</span><span class="nv">width</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">rectB</span><span class="s">.</span><span class="nv">x</span><span class="s"></span>
+<span class="s">  </span><span class="o">\/</span><span class="s"> </span><span class="nv">rectB</span><span class="s">.</span><span class="nv">x</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">rectB</span><span class="s">.</span><span class="nv">width</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">rectA</span><span class="s">.</span><span class="nv">x</span><span class="s"></span>
+<span class="s">  </span><span class="o">\/</span><span class="s"> </span><span class="nv">rectA</span><span class="s">.</span><span class="nv">y</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">rectA</span><span class="s">.</span><span class="nv">height</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">rectB</span><span class="s">.</span><span class="nv">y</span><span class="s"></span>
+<span class="s">  </span><span class="o">\/</span><span class="s"> </span><span class="nv">rectB</span><span class="s">.</span><span class="nv">y</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">rectB</span><span class="s">.</span><span class="nv">height</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">rectA</span><span class="s">.</span><span class="nv">y</span><span class="p">;</span><span class="s"></span>
+</pre></div>
+</div>
+<p>Using these definitions the remainder of the model is now easy to define as
+shown below.</p>
+<div class="literal-block-wrapper docutils container" id="ex-rect-pack-rem">
+<div class="code-block-caption"><span class="caption-number">Listing 2.5.1 </span><span class="caption-text">Partial rectangle packing model using record types (full model: <a class="reference download internal" href="downloads/rect_packing.mzn" download=""><tt class="xref download docutils literal">rect_packing.mzn</tt></a> example data: <a class="reference download internal" href="downloads/rect_packing.json" download=""><tt class="xref download docutils literal">rect_packing.json</tt></a>).</span><a class="headerlink" href="#ex-rect-pack-rem" title="Permalink to this code">¶</a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Instance data</span><span class="s"></span>
+<span class="kt">array</span><span class="p">[</span><span class="s">_</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Dimensions</span><span class="p">:</span><span class="s"> </span><span class="nv">rectDim</span><span class="p">;</span><span class="s"></span>
+<span class="nv">Dimensions</span><span class="p">:</span><span class="s"> </span><span class="nv">area</span><span class="p">;</span><span class="s"></span>
+
+<span class="c">% Decision variables</span><span class="s"></span>
+<span class="kt">array</span><span class="p">[</span><span class="nb">index_set</span><span class="p">(</span><span class="nv">rectDim</span><span class="p">)]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Coordinates</span><span class="p">:</span><span class="s"> </span><span class="nv">rectCoord</span><span class="s"> </span><span class="p">::</span><span class="nv">no_output</span><span class="p">;</span><span class="s"></span>
+
+<span class="kt">array</span><span class="p">[</span><span class="s">_</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Rectangle</span><span class="p">:</span><span class="s"> </span><span class="nv">rectangles</span><span class="s"> </span><span class="p">::</span><span class="k">output</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="nv">rectDim</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="nv">rectCoord</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">rectDim</span><span class="p">)];</span><span class="s"></span>
+
+<span class="c">% Constraint: rectangles must be placed within the area</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">rect</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">rectangles</span><span class="p">)</span><span class="s"> </span><span class="p">(</span><span class="s"></span>
+<span class="s">  </span><span class="nv">rect</span><span class="s">.</span><span class="nv">x</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">rect</span><span class="s">.</span><span class="nv">width</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">area</span><span class="s">.</span><span class="nv">width</span><span class="s"></span>
+<span class="s">  </span><span class="o">/\</span><span class="s"> </span><span class="nv">rect</span><span class="s">.</span><span class="nv">y</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">rect</span><span class="s">.</span><span class="nv">height</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">area</span><span class="s">.</span><span class="nv">height</span><span class="s"></span>
+<span class="p">);</span><span class="s"></span>
+
+<span class="c">% Constraint: no rectangles can overlap</span><span class="s"></span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">rectangles</span><span class="p">)</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">j</span><span class="p">)</span><span class="s"> </span><span class="p">(</span><span class="s"></span>
+<span class="s">  </span><span class="nf">no_overlap</span><span class="p">(</span><span class="nv">rectangles</span><span class="p">[</span><span class="nv">i</span><span class="p">],</span><span class="s"> </span><span class="nv">rectangles</span><span class="p">[</span><span class="nv">j</span><span class="p">])</span><span class="s"></span>
+<span class="p">);</span><span class="s"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mzn_search.html" class="btn btn-neutral float-right" title="2.6. Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="optiontypes.html" class="btn btn-neutral" title="2.4. Option Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.
+
+    </p>
+  </div>
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.7.4',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/js/doc-links.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
