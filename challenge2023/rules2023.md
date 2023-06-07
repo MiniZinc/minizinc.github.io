@@ -6,11 +6,11 @@ title: MiniZinc Challenge 2023 - Rules
 ## MiniZinc Challenge 2023 - Rules
 
 These are the official rules for the MiniZinc Challenge 2023. Version 1.3.  
-These rules were last updated on 11 May 2023.
+These rules were last updated on 7 June 2023.
 
 ### Solver Submission
 
-The MiniZinc Challenge 2023 will test solvers on problems written in MiniZinc 2.7.4.
+The MiniZinc Challenge 2023 will test solvers on problems written in MiniZinc 2.7.5.
 
 A _participant_ is a person or entity (usually a solver developer) who has notified the challenge
 organisers of their intent to enter one or more solvers in the challenge. This must be done prior to
