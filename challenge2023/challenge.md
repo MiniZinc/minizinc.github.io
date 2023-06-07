@@ -21,12 +21,13 @@ solutions (for optimization problems).
 
 ### Announcements
 
+*   **2023-06-07** Problem submission deadline extended.
 *   **2023-02-13** Official [Call for Problems](call_for_problems.html) for the MiniZinc Challenge.
 
 ### Dates
 
 *   Registration opens: **Now**.
-*   Problem submission deadline: **Fri, 2 June 2023**.
+*   Problem submission deadline: ~~Fri, 2 June 2023~~ **Fri, 30 June 2023**.
 *   Solver submission begins: **Mon, 12 June 2023**.
 *   Solver submission deadline: **Fri, 28 July 2023**.
 *   Announcement of results at [<abbr>CP2023</abbr>](https://cp2023.a4cp.org): **27 - 31 August 2023**
