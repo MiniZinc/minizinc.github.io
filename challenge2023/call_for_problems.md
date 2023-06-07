@@ -14,7 +14,7 @@ whether they are an entrant in the challenge.
 ### Important dates and deadlines:
 
 *   Problem submission open: **now**
-*   Problem submission deadline: **Fri, 2 June 2023**
+*   Problem submission deadline: ~~Fri, 2 June 2023~~ **Fri, 30 June 2023**
 
 ### Problem submission
 
