@@ -46,6 +46,6 @@ COPY --from=builder /install /chuffed
 
 # Add Chuffed to the MiniZinc search path and set it as the default solver.
 #
-# See https://www.minizinc.org/doc-2.7.5/en/command_line.html#user-configuration-files
+# See https://www.minizinc.org/doc-2.7.6/en/command_line.html#user-configuration-files
 RUN echo '{"mzn_solver_path": ["/chuffed/share/minizinc/solvers"],' > $HOME/.minizinc/Preferences.json && \
     echo '"tagDefaults": [["", "org.chuffed.chuffed"]]}'           >> $HOME/.minizinc/Preferences.json
