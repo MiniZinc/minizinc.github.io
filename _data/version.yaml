@@ -4,3 +4,8 @@ ideversion: 2.7.6
 idedate: "20 June 2023"
 minisearchversion: 0.1.0b1
 minisearchdate: "28 August 2015"
+
+os_version:
+  windows: "10"
+  osx: "11.0"
+  linux: "20.04"

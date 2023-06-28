@@ -5,6 +5,7 @@ title: MiniZinc
 
 {% assign ideversion = site.data.version["ideversion"] %}
 {% assign idedate = site.data.version["idedate"] %}
+{% assign os_version = site.data.version.os_version %}
 
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel" style="height:130px">
@@ -120,15 +121,15 @@ title: MiniZinc
                     <h4>Latest release</h4>
                     <p>MiniZinc {{ ideversion }}<br>{{ idedate }}<br><a href="doc-{{ ideversion }}/en/changelog.html">Change log</a>, <a href="license.html">license information</a></p>
                     <p class="osWin"><a class="btn btn-lg btn-success" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled-setup-win64.exe"><i class="fa fa-download"></i> <span>Windows 64bit</span></a></p>
-                    <p class="osWin">(Windows 10 or later)</p>
+                    <p class="osWin">(Windows {{ os_version.windows }} or later)</p>
                     <p class="osMac"><a class="btn btn-lg btn-success" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled.dmg"><i class="fa fa-download"></i> <span>macOS</span></a></p>
-                    <p class="osMac">(macOS 10.12 or later)</p>
+                    <p class="osMac">(macOS {{ os_version.osx }} or later)</p>
                     <p class="osLinux"><a class="btn btn-lg btn-success" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-x86_64.AppImage"><i class="fa fa-download"></i> <span>Linux AppImage</span></a></p>
                     <p class="osLinux"><a href="https://snapcraft.io/minizinc">
 <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-white.svg" />
 </a></p>
                     <p class="osLinux"><a class="btn btn-lg btn-success" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundle-linux-x86_64.tgz"><i class="fa fa-download"></i> <span>Linux 64 bit</span></a></p>
-                    <p class="osLinux">(built for Ubuntu 20.04)</p>
+                    <p class="osLinux">(built for Ubuntu {{ os_version.linux }})</p>
                     <h4>Source code</h4>
                     <a class="btn btn-lg btn-success" href="https://github.com/MiniZinc">GitHub</a>
                     
