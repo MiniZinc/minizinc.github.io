@@ -5,6 +5,7 @@ title: MiniZinc - Software
 
 {% assign ideversion = site.data.version["ideversion"] %}
 {% assign mznversion = site.data.version["mznversion"] %}
+{% assign os_version = site.data.version.os_version %}
 
 <div class="container">
 
@@ -48,10 +49,10 @@ title: MiniZinc - Software
             <p><strong>This is the recommended way of installing MiniZinc for most users.</strong></p>
 
             <ul>
-                <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled-setup-win64.exe">64 bit Windows installer</a></li>
-                <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled.dmg">Mac OS X installer (10.12 or later)</a></li>
-                <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundle-linux-x86_64.tgz">64 bit Linux binary archive (Ubuntu 20.04 or later)</a></li>
-                <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-x86_64.AppImage">64 bit Linux AppImage (Ubuntu 20.04 or later)</a></li>
+                <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled-setup-win64.exe">64 bit Windows ({{ os_version.windows }} or later) installer</a></li>
+                <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundled.dmg">Mac OS X installer ({{ os_version.osx }} or later)</a></li>
+                <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-bundle-linux-x86_64.tgz">64 bit Linux binary archive (Ubuntu {{ os_version.linux }} or later)</a></li>
+                <li><a class="download" href="https://github.com/MiniZinc/MiniZincIDE/releases/download/{{ ideversion }}/MiniZincIDE-{{ ideversion }}-x86_64.AppImage">64 bit Linux AppImage (Ubuntu {{ os_version.linux }} or later)</a></li>
                 <li><a class="download" href="https://snapcraft.io/minizinc">64 bit Linux Snap package</a></li>                
             </ul>
             
