@@ -1,0 +1,37 @@
+{
+  "name": "N Queens",
+  "project": {
+    "files": [
+      {
+        "name": "nqueens.mzn",
+        "contents": "include \"all_different.mzn\";\n\nint: n;\narray [1..n] of var 1..n: q; % queen in column i is in row q[i]\n\nconstraint all_different(q);                      % distinct rows\nconstraint all_different([q[i] + i | i in 1..n]); % distinct diagonals\nconstraint all_different([q[i] - i | i in 1..n]); % upwards+downwards\n\n% search\nsolve :: int_search(q, first_fail, indomain_min) satisfy;\noutput [if fix(q[j]) == i then \"Q\" else \".\" endif ++\n        if j == n then \"\\n\" else \"\" endif | i , j in 1..n];\n\ninclude \"visualise.mzn\";\n"
+      },
+      {
+        "name": "visualise.mzn",
+        "contents": "include \"ide/vis.mzn\";\nconstraint ide_launch_server(\"nqueens.html\", showJSON(n));\noutput :: \"vis_json\" [showJSON(q)];\n",
+        "hidden": true,
+        "readOnly": true
+      },
+      {
+        "name": "nqueens.html",
+        "contents": "<!DOCTYPE html>\n<html>\n\n<head>\n    <meta charset=\"utf-8\">\n    <script src=\"/minizinc-ide.js\"></script>\n    <style>\n        #board {\n            border: solid 1px #29221d;\n            width: min-content;\n        }\n\n        .row {\n            display: flex;\n        }\n\n        .cell {\n            width: 40px;\n            height: 40px;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            font-size: 40px;\n            background-color: #ede2cc;\n            color: #29221d;\n        }\n\n        .dark {\n            background-color: #8c7556;\n        }\n    </style>\n</head>\n\n<body>\n    <div id=\"board\"></div>\n    <script>\n        (async function () {\n            const n = await MiniZincIDE.getUserData();\n            const board = document.getElementById('board');\n            const cells = [];\n            let dark = false;\n            for (let i = 0; i < n; i++) {\n                const row = document.createElement('div');\n                row.classList.add('row');\n                const rowCells = [];\n                for (let j = 0; j < n; j++) {\n                    const cell = document.createElement('div');\n                    cell.classList.add('cell');\n                    if (dark) {\n                        cell.classList.add('dark');\n                    }\n                    dark = !dark;\n                    rowCells.push(cell);\n                    row.appendChild(cell);\n                }\n                board.appendChild(row);\n                cells.push(rowCells);\n                if (n % 2 === 0) {\n                    dark = !dark;\n                }\n            }\n            function setSolution(data) {\n                for (let i = 0; i < n; i++) {\n                    for (let j = 0; j < n; j++) {\n                        cells[i][j].innerText = data[j] === i + 1 ? '♛' : '';\n                    }\n                }\n            }\n            // Visualise last solution on startup\n            const numSols = await MiniZincIDE.getNumSolutions();\n            if (numSols > 0) {\n                const solution = await MiniZincIDE.getSolution(numSols - 1);\n                setSolution(solution.data);\n            }\n\n            // Show new solutions if we're following the latest solution\n            let followLatest = true;\n            MiniZincIDE.on('solution', (solution) => {\n                if (followLatest) {\n                    setSolution(solution.data);\n                }\n            });\n\n            MiniZincIDE.on('goToSolution', async (index) => {\n                // Requesting index -1 turns on following latest solution\n                // Otherwise, we stop showing the latest solution and show the requested one\n                followLatest = index === -1;\n                const solution = await MiniZincIDE.getSolution(index);\n                setSolution(solution.data);\n            });\n        })();\n    </script>\n</body>\n\n</html>",
+        "hidden": true,
+        "readOnly": true
+      }
+    ],
+    "tab": 0,
+    "solverId": "org.minizinc.gecode_presolver",
+    "solverConfig": {
+      "enableTimeLimit": false,
+      "timeLimit": 1,
+      "allSolutions": true,
+      "verboseCompilation": false,
+      "verboseSolving": false,
+      "compilerStatistics": false,
+      "solvingStatistics": false,
+      "outputTime": false,
+      "freeSearch": false
+    },
+    "minizincVersion": "latest"
+  }
+}
