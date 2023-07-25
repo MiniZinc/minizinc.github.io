@@ -130,12 +130,14 @@ RUN \
     echo '    ["--output-fzn-to-stdout", "", "bool", "false"],' >> /.minizinc/solvers/challenge.msc && \
     echo '    ["--output-ozn-to-stdout", "", "bool", "false"],' >> /.minizinc/solvers/challenge.msc && \
     echo '    ["-o", "", "string", ""],'                        >> /.minizinc/solvers/challenge.msc && \
+    echo '    ["--free-search", "", "bool", "false"],'          >> /.minizinc/solvers/challenge.msc && \
     echo '    ["--fzn", "", "string", ""],'                     >> /.minizinc/solvers/challenge.msc && \
     echo '    ["--output-to-file", "", "string", ""],'          >> /.minizinc/solvers/challenge.msc && \
     echo '    ["--output-fzn-to-file", "", "string", ""],'      >> /.minizinc/solvers/challenge.msc && \
     echo '    ["--ozn", "", "string", ""],'                     >> /.minizinc/solvers/challenge.msc && \
     echo '    ["--output-ozn-to-file", "", "string", ""],'      >> /.minizinc/solvers/challenge.msc && \
-    echo '    ["--output-objective", "", "bool", "false"]'      >> /.minizinc/solvers/challenge.msc && \
+    echo '    ["--output-objective", "", "bool", "false"],'     >> /.minizinc/solvers/challenge.msc && \
+    echo '    ["--parallel", "", "string", ""]'                 >> /.minizinc/solvers/challenge.msc && \
     echo '  ],'                                                 >> /.minizinc/solvers/challenge.msc && \
     echo '  "supportsMzn": true,'                               >> /.minizinc/solvers/challenge.msc && \
     echo '  "version": "1.0.0"'                                 >> /.minizinc/solvers/challenge.msc && \
