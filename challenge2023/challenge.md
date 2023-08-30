@@ -21,6 +21,8 @@ solutions (for optimization problems).
 
 ### Announcements
 
+*   **2023-08-30** Announcements of the results are [here](results2023.html).
+*   **2023-06-12** Call for solver registrations for the MiniZinc Challenge.
 *   **2023-06-07** Problem submission deadline extended.
 *   **2023-02-13** Official [Call for Problems](call_for_problems.html) for the MiniZinc Challenge.
 

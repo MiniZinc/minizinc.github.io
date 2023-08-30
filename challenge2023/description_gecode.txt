@@ -1,0 +1,22 @@
+     The Gecode entry to the MiniZinc challenge 2023
+
+This solver is based on the Gecode C++ constraint solving library
+(upcoming version 6.0.0 + some modifications), and the Gecode/FlatZinc
+interface. Both Gecode and Gecode/FlatZinc are available under the MIT
+license from the web site http://www.gecode.org.
+
+The par version of this entry uses a mix of search strategies:
+ - the strategy specified in the model
+ - a dynamic strategy (based on AFC, aka dom_w_deg) with restarts
+ - an LNS strategy to generate solutions quickly (only for optimisation problems)
+
+Main authors:
+	Christian Schulte,
+	  ICT, KTH - Royal Institute of Technology, Sweden
+	Mikael Lagerkvist,
+	  ICT, KTH - Royal Institute of Technology, Sweden
+	Guido Tack,
+	  Department of Computer Science at K.U. Leuven, Belgium
+
+A full list of authors as well as licensing information is available from
+http://www.gecode.org/gecode-doc-latest/PageLic.html.
