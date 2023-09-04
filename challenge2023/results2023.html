@@ -392,134 +392,136 @@ redundant or/and symmetry breaking constraints.
 </p>
 <table frame="box" rules="all">
   <thead>
-      <tr>
-          <th>Model</th>
-          <th>RC</th>
-          <th>SBC</th>
-          <th>Global constraints used</th>
-      </tr>
+    <tr>
+      <th>Model</th>
+      <th>RC</th>
+      <th>SBC</th>
+      <th>Global constraints used</th>
+    </tr>
   </thead>
   <tbody>
-      <tr>
-          <td>accap</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td>diffn</td>
-      </tr>
-      <tr>
-          <td>arithmetic-target</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center">X</td>
-          <td>all_different_except_0, count</td>
-      </tr>
-      <tr>
-          <td>blocks-world</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center">X</td>
-          <td>global_cardinality_close, increasing</td>
-      </tr>
-      <tr>
-          <td>diameterc-mst</td>
-          <td style="text-align:center">X</td>
-          <td style="text-align:center">X</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>generalized-peacable-queens</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center">X</td>
-          <td>all_equal, global_cardinality, lex_lesseq, regular, value_precede_chain</td>
-      </tr>
-      <tr>
-          <td>gfd-schedule</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center">X</td>
-          <td>nvalue, at_most</td>
-      </tr>
-      <tr>
-          <td>ma-path-finding</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>nfc</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td>network_flow_cost</td>
-      </tr>
-      <tr>
-          <td>roster-sickness</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>rotating-workforce-scheduling</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td>global_cardinality_low_up, regular, sliding_sum</td>
-      </tr>
-      <tr>
-          <td>spot5</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td>table</td>
-      </tr>
-      <tr>
-          <td>stripboard</td>
-          <td style="text-align:center">X</td>
-          <td style="text-align:center">X</td>
-          <td>all_different, diffn, disjunctive, strictly_decreasing</td>
-      </tr>
-      <tr>
-          <td>sudoku_opt</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td>all_different</td>
-      </tr>
-      <tr>
-          <td>team-assignment</td>
-          <td style="text-align:center">X</td>
-          <td style="text-align:center">X</td>
-          <td>all_different, bin_packing, bin_packing_load</td>
-      </tr>
-      <tr>
-          <td>tower</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td>arg_max</td>
-      </tr>
-      <tr>
-          <td>traveling-tppv</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td>all_different, regular</td>
-      </tr>
-      <tr>
-          <td>triangular</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>vaccine</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center">X</td>
-          <td>global_cardinality_low_up, lex_lesseq</td>
-      </tr>
-      <tr>
-          <td>wordpress</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>yumi-static</td>
-          <td style="text-align:center"></td>
-          <td style="text-align:center"></td>
-          <td>all_equal, all_different, circuit, cumulative, diffn, increasing, table, value_precede, value_precede_chain</td>
-      </tr>
+    <tr>
+      <td>chessboard</td>
+      <td style="text-align:center">X</td>
+      <td style="text-align:center">X</td>
+      <td>global_cardinality, lex_lesseq</td>
+    </tr>
+    <tr>
+      <td>code-generator</td>
+      <td style="text-align:center">X</td>
+      <td style="text-align:center">X</td>
+      <td>all_different, cumulative, decreasing, diffn, diffn_nonstrict, maximum, member, minimum, table,
+        value_precede_chain</td>
+    </tr>
+    <tr>
+      <td>elitserien</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td>all_different, global_cardinality_closed, inverse, member, regular</td>
+    </tr>
+    <tr>
+      <td>evm-super-compilation</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td>global_cardinality_low_up</td>
+    </tr>
+    <tr>
+      <td>gametes</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">X</td>
+      <td>all_different_except_0, count, count_geq, increasing</td>
+    </tr>
+    <tr>
+      <td>kidney-exchange</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">X</td>
+      <td>all_different, bin_packing, seq_precede_chain</td>
+    </tr>
+    <tr>
+      <td>mrcpsp</td>
+      <td style="text-align:center">X</td>
+      <td style="text-align:center"></td>
+      <td>cumulative</td>
+    </tr>
+    <tr>
+      <td>multi-agent-graph-coverage</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td>all_different</td>
+    </tr>
+    <tr>
+      <td>pennies-opt</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">X</td>
+      <td>all_different, decreasing</td>
+    </tr>
+    <tr>
+      <td>roster</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td>at_least, at_most, exactly</td>
+    </tr>
+    <tr>
+      <td>roster-shifts-bool</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">X</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>speck-optimisation</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td>all_equal</td>
+    </tr>
+    <tr>
+      <td>sudoku_fixed</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td>all_different</td>
+    </tr>
+    <tr>
+      <td>table-layout</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>test-scheduling</td>
+      <td style="text-align:center">X</td>
+      <td style="text-align:center">X</td>
+      <td>cumulative, disjunctive, value_precede_chain</td>
+    </tr>
+    <tr>
+      <td>travelling-thief</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td>all_different, inverse</td>
+    </tr>
+    <tr>
+      <td>unit-commitment</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>valve-network</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>vrplc</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">X</td>
+      <td>circuit, cumulative</td>
+    </tr>
+    <tr>
+      <td>yumi-static</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td>all_equal, all_different, circuit, cumulative, diffn, increasing, table, value_precede,
+        value_precede_chain</td>
+    </tr>
   </tbody>
 </table>
 
