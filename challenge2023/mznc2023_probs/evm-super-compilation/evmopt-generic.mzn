@@ -305,20 +305,20 @@ constraint forall(r in STOROP where S(r) in realop)
 
 %%%%% NULL EXTENSIONS
 % null extends to the right, above and below
-constraint forall(i in STEP0, j in 1..n-1)(stack[i,j] = null -> stack[i,j+1] = null);
-constraint forall(i in 0..s-1, j in 1..n-1)(stack[i,j] = null -> stack[i+1,j+1] = null);
+constraint redundant_constraint(forall(i in STEP0, j in 1..n-1)(stack[i,j] = null -> stack[i,j+1] = null));
+constraint redundant_constraint(forall(i in 0..s-1, j in 1..n-1)(stack[i,j] = null -> stack[i+1,j+1] = null));
 % the instruction after can have at most 2 less nulls (2 because STOROPs)
-constraint 
+constraint redundant_constraint(
            if realop intersect S(STOROP) = {} then 
               forall(i in STEP, j in 1..n-1)(stack[i,j] = null -> stack[i-1,j+1] = null)
            else
               forall(i in STEP, j in 1..n-2)(stack[i,j] = null -> stack[i-1,j+2] = null)
-           endif;
+           endif);
 
 %%%%% NOP EXTENSIONS
 % NOP extends downwards
 % Corresponds to old redundant constraint (e) in CAV paper
-constraint forall(i in 1..s-1)(op[i] = NOP -> op[i+1] = NOP);
+constraint redundant_constraint(forall(i in 1..s-1)(op[i] = NOP -> op[i+1] = NOP));
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%% REDUNDANT BOUNDS CONSTRAINTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -330,7 +330,7 @@ include "globals.mzn";
 % Lower bound of length (i.e., number of opcode occurrences) is the number of ops that occur at least 
 % once, plus the number of unused non-null terms (as they must be popped) 
 opt bool: length_bound;
-constraint if absent(length_bound) then length >= card(atleast_once_op) + card(unused) endif;
+constraint redundant_constraint(if absent(length_bound) then length >= card(atleast_once_op) + card(unused) endif);
 
 %%%%% LOWER/UPPER BOUND ON THE NUMBER OF OCURRENCES OF EACH OPCODE
 % maps each opcode to the lower bound on its number of ocurrences
@@ -369,16 +369,16 @@ constraint trace("ucount: "++show(ucount) ++ "\n",true);
 
 %% the actual constraint ensuring the number of times each operator occurs is between lcount[o] and ucount[o]
 opt bool: gcc_bounds;
-constraint if absent(gcc_bounds) then global_cardinality_low_up(op, OPCODE, lcount, ucount) endif;
+constraint redundant_constraint(if absent(gcc_bounds) then global_cardinality_low_up(op, OPCODE, lcount, ucount) endif);
 
 %%%%% LOWER/UPPER BOUND ON THE NUMBER OF OCURRENCES OF THE SUM OF SOME OPCODES
 % the sum of all DUP occurrences (not just individual ones) cannot be greater than maxdups
-constraint sum(i in STEP)(op[i] in DUP(1..dl)) <= maxdups;
+constraint redundant_constraint(sum(i in STEP)(op[i] in DUP(1..dl)) <= maxdups);
 %constraint sum(i in STEP)(op[i] in DUP(1..dl) union SWAP(1..sl)) <= s - card(atleast_once_op);
 
 % every reuse of a value created by an exactly once op has to be duplicated
 STEP0: mindups = sum(t in TERM where creator[t] in exactly_once_op)(uses[t] - 1);
-constraint sum(i in STEP)(op[i] in DUP(1..dl)) >= mindups;
+constraint redundant_constraint(sum(i in STEP)(op[i] in DUP(1..dl)) >= mindups);
 
 % every reuse of a value created by an at least once op has to be duplicated, repushed, rezerooped
 STEP0: minduppzs = sum(t in TERM where creator[t] in creator_op)(uses[t] - 1);
@@ -386,9 +386,9 @@ STEP0: minduppzs = sum(t in TERM where creator[t] in creator_op)(uses[t] - 1);
 %set of OPCODE: duplicators = Z(ZEROARYOP) union { P(p) | p in PUSHOP where pushsz[p] <= 2 } union DUP(1..dl);
 %constraint sum(i in STEP)(op[i] in duplicators) >= minduppzs;
 % just to remove a warning, use the following form
-constraint sum(i in STEP)(op[i] in Z(ZEROARYOP) \/
+constraint redundant_constraint(sum(i in STEP)(op[i] in Z(ZEROARYOP) \/
                           op[i] in { P(p) | p in PUSHOP where pushsz[p] <= 2 } \/
-                          op[i] in DUP(1..dl)) >= minduppzs;
+                          op[i] in DUP(1..dl)) >= minduppzs);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% REDUNDANT PRECEDENCE CONSTRAINTS %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -399,11 +399,11 @@ constraint sum(i in STEP)(op[i] in Z(ZEROARYOP) \/
 
 % ensure the first occurence of a real UNARY/BINARY/STOR op is after that of the creator
 % of its arguments (recall that creator is NOP unless it is in ZEROARY/UNARY/BINARY/PUSH)
-constraint forall(u in UNARYOP where U(u) in realop)
+constraint redundant_constraint(forall(u in UNARYOP where U(u) in realop)
                  (if unin[u] in opout then 
                      first[U(u)] > first[creator[unin[u]]]
-                  endif);
-constraint forall(b in BINARYOP where B(b) in realop)
+                  endif));
+constraint redundant_constraint(forall(b in BINARYOP where B(b) in realop)
                  (if binin1[b] in opout then 
                      first[B(b)] > first[creator[binin1[b]]]
                   endif 
@@ -411,8 +411,8 @@ constraint forall(b in BINARYOP where B(b) in realop)
                   if binin2[b] in opout then 
                      first[B(b)] > first[creator[binin2[b]]]
                   endif 
-                  );
-constraint forall(r in STOROP where S(r) in realop)
+                  ));
+constraint redundant_constraint(forall(r in STOROP where S(r) in realop)
                  (if storin1[r] in opout then 
                      first[S(r)] > first[creator[storin1[r]]]
                   endif 
@@ -420,7 +420,7 @@ constraint forall(r in STOROP where S(r) in realop)
                   if storin2[r] in opout then 
                      first[S(r)] > first[creator[storin2[r]]]
                   endif 
-                  );
+                  ));
                   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%% DOMINANCE SHRINKING CONSTRAINTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -551,21 +551,21 @@ constraint if absent(pop_unused) then forall(i in STEP)(if stack[i-1,1] in unuse
 %
 int: delta = 1 + (S(STOROP) intersect realop != {});
 opt bool: stack_propagation_unused = true;
-constraint if absent(stack_propagation_unused) then 
+constraint redundant_constraint(if absent(stack_propagation_unused) then 
               forall(i in STEP, j in 2..n)
 %                    (stack[i,j] in { stack[i-1,1], stack[i-1,j-1], stack[i-1,j], 
 %                                     stack[i-1,min(n,j+1)], stack[i-1, min(n,j+delta)], null })
                     (stack[i,j] in [ stack[i-1,1], stack[i-1,j-1], stack[i-1,j], 
                                      stack[i-1,min(n,j+1)], stack[i-1, min(n,j+delta)], null ])
-           endif;
+           endif);
            
-constraint if absent(stack_propagation_unused) then 
+constraint redundant_constraint(if absent(stack_propagation_unused) then 
               forall(i in 0..s-1, j in 3..n)
 %                    (stack[i,j] in { stack[i+1,1], stack[i+1,j-delta], 
 %                     stack[i+1,j-1], stack[i+1,j], stack[i+1,min(n,j+1)], null })
                     (stack[i,j] in [ stack[i+1,1], stack[i+1,j-delta], 
                      stack[i+1,j-1], stack[i+1,j], stack[i+1,min(n,j+1)], null ])
-           endif;
+           endif);
            
                   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

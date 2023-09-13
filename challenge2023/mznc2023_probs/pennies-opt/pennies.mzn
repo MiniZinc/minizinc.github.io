@@ -78,7 +78,7 @@ constraint symmetry_breaking_constraint(forall (i, j in N where i+1=j) (
        xy[j] != <>
     endif
 ));
-constraint decreasing(is_present);
+constraint symmetry_breaking_constraint(decreasing(is_present));
 
 % Count the number of pennies
 constraint pennies = sum(is_present);

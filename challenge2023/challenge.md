@@ -21,6 +21,7 @@ solutions (for optimization problems).
 
 ### Announcements
 
+*   **2023-09-14** Results have been amended to add the missing results for SCIP, and some models have been updated to correctly mark their symmetry breaking and redundant constraints.
 *   **2023-08-30** Announcements of the results are [here](results2023.html).
 *   **2023-06-12** Call for solver registrations for the MiniZinc Challenge.
 *   **2023-06-07** Problem submission deadline extended.
