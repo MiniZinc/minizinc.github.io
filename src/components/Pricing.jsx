@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { Logomark } from '@/components/Logo'
+import { Logo } from '@/components/Logo'
 
 const plans = [
   {
@@ -110,7 +110,7 @@ function Plan({
           featured ? 'text-white' : 'text-gray-900'
         )}
       >
-        <Logomark className={clsx('h-6 w-6 flex-none', logomarkClassName)} />
+        <Logo className={clsx('h-6 w-6 flex-none', logomarkClassName)} />
         <span className="ml-4">{name}</span>
       </h3>
       <p
@@ -128,7 +128,7 @@ function Plan({
               className={clsx(
                 'transition duration-300',
                 activePeriod === 'Annually' &&
-                  'pointer-events-none translate-x-6 select-none opacity-0'
+                'pointer-events-none translate-x-6 select-none opacity-0'
               )}
             >
               {price.Monthly}
@@ -138,7 +138,7 @@ function Plan({
               className={clsx(
                 'absolute left-0 top-0 transition duration-300',
                 activePeriod === 'Monthly' &&
-                  'pointer-events-none -translate-x-6 select-none opacity-0'
+                'pointer-events-none -translate-x-6 select-none opacity-0'
               )}
             >
               {price.Annually}
