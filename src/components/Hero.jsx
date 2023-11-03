@@ -214,8 +214,8 @@ function Chart({
         onUpdate={({ pathLength }) => {
           pathWidth.set(
             pathRef.current.getPointAtLength(
-              pathLength * pathRef.current.getTotalLength()
-            ).x
+              pathLength * pathRef.current.getTotalLength(),
+            ).x,
           )
         }}
         onAnimationComplete={() => setInteractionEnabled(true)}
@@ -283,7 +283,7 @@ function AppDemo() {
                 <div
                   className={clsx(
                     'ml-auto text-sm tabular-nums tracking-tight',
-                    percentageChange >= 0 ? 'text-cyan-500' : 'text-gray-500'
+                    percentageChange >= 0 ? 'text-cyan-500' : 'text-gray-500',
                   )}
                 >
                   {`${

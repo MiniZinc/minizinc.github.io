@@ -83,7 +83,7 @@ AppScreen.Subtitle = forwardRef(function AppScreenSubtitle({ children }, ref) {
 
 AppScreen.Body = forwardRef(function AppScreenBody(
   { children, className },
-  ref
+  ref,
 ) {
   return (
     <div

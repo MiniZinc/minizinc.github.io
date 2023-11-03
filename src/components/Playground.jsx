@@ -5,7 +5,8 @@ import AustraliaProject from '@/data/australia.json'
 import NQueensProject from '@/data/nqueens.json'
 
 const examples = [AustraliaProject, NQueensProject]
-const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const alphabet =
+  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 
 export class Playground extends Component {
   constructor(props) {

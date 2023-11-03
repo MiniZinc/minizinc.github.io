@@ -101,13 +101,13 @@ function Plan({
     <section
       className={clsx(
         'flex flex-col overflow-hidden rounded-3xl p-6 shadow-lg shadow-gray-900/5',
-        featured ? 'order-first bg-gray-900 lg:order-none' : 'bg-white'
+        featured ? 'order-first bg-gray-900 lg:order-none' : 'bg-white',
       )}
     >
       <h3
         className={clsx(
           'flex items-center text-sm font-semibold',
-          featured ? 'text-white' : 'text-gray-900'
+          featured ? 'text-white' : 'text-gray-900',
         )}
       >
         <Logo className={clsx('h-6 w-6 flex-none', logomarkClassName)} />
@@ -116,7 +116,7 @@ function Plan({
       <p
         className={clsx(
           'relative mt-5 flex text-3xl tracking-tight',
-          featured ? 'text-white' : 'text-gray-900'
+          featured ? 'text-white' : 'text-gray-900',
         )}
       >
         {price.Monthly === price.Annually ? (
@@ -128,7 +128,7 @@ function Plan({
               className={clsx(
                 'transition duration-300',
                 activePeriod === 'Annually' &&
-                'pointer-events-none translate-x-6 select-none opacity-0'
+                  'pointer-events-none translate-x-6 select-none opacity-0',
               )}
             >
               {price.Monthly}
@@ -138,7 +138,7 @@ function Plan({
               className={clsx(
                 'absolute left-0 top-0 transition duration-300',
                 activePeriod === 'Monthly' &&
-                'pointer-events-none -translate-x-6 select-none opacity-0'
+                  'pointer-events-none -translate-x-6 select-none opacity-0',
               )}
             >
               {price.Annually}
@@ -149,7 +149,7 @@ function Plan({
       <p
         className={clsx(
           'mt-3 text-sm',
-          featured ? 'text-gray-300' : 'text-gray-700'
+          featured ? 'text-gray-300' : 'text-gray-700',
         )}
       >
         {description}
@@ -161,7 +161,7 @@ function Plan({
             '-my-2 divide-y text-sm',
             featured
               ? 'divide-gray-800 text-gray-300'
-              : 'divide-gray-200 text-gray-700'
+              : 'divide-gray-200 text-gray-700',
           )}
         >
           {features.map((feature) => (
@@ -169,7 +169,7 @@ function Plan({
               <CheckIcon
                 className={clsx(
                   'h-6 w-6 flex-none',
-                  featured ? 'text-white' : 'text-cyan-500'
+                  featured ? 'text-white' : 'text-cyan-500',
                 )}
               />
               <span className="ml-4">{feature}</span>
@@ -227,7 +227,7 @@ export function Pricing() {
                     'cursor-pointer border border-gray-300 px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-sm text-gray-700 outline-2 outline-offset-2 transition-colors hover:border-gray-400',
                     period === 'Monthly'
                       ? 'rounded-l-lg'
-                      : '-ml-px rounded-r-lg'
+                      : '-ml-px rounded-r-lg',
                   )}
                 >
                   {period}
@@ -240,7 +240,7 @@ export function Pricing() {
                 'pointer-events-none absolute inset-0 z-10 grid grid-cols-2 overflow-hidden rounded-lg bg-cyan-500 transition-all duration-300',
                 activePeriod === 'Monthly'
                   ? '[clip-path:inset(0_50%_0_0)]'
-                  : '[clip-path:inset(0_0_0_calc(50%-1px))]'
+                  : '[clip-path:inset(0_0_0_calc(50%-1px))]',
               )}
             >
               {['Monthly', 'Annually'].map((period) => (
@@ -248,7 +248,7 @@ export function Pricing() {
                   key={period}
                   className={clsx(
                     'py-2 text-center text-sm font-semibold text-white [&:not(:focus-visible)]:focus:outline-none',
-                    period === 'Annually' && '-ml-px'
+                    period === 'Annually' && '-ml-px',
                   )}
                 >
                   {period}

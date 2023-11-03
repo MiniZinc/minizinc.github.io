@@ -23,12 +23,12 @@ const variantStyles = {
 
 export const Button = forwardRef(function Button(
   { variant = 'solid', color = 'gray', className, href, ...props },
-  ref
+  ref,
 ) {
   className = clsx(
     baseStyles[variant],
     variantStyles[variant][color],
-    className
+    className,
   )
 
   return href ? (
