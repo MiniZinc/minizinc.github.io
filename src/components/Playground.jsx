@@ -33,11 +33,12 @@ export class Playground extends Component {
 
   initPlayground(SveltePlayground) {
     if (!this.svelteComponent) {
+      const mediaQuery = matchMedia('(max-width: 768px)')
       this.svelteComponent = new SveltePlayground({
         target: this.target,
         props: {
           project: examples[0].project,
-          splitterDirection: 'horizontal',
+          splitterDirection: mediaQuery.matches ? 'vertical' : 'horizontal',
           splitterSize: 50,
           showShareButton: false,
           showDownloadButton: false,
@@ -54,9 +55,28 @@ export class Playground extends Component {
           theme: 'light',
         },
       })
+
+      const mediaQueryChange = (e) => {
+        if (this.svelteComponent) {
+          this.svelteComponent.$set({
+            splitterDirection: e.matches ? 'vertical' : 'horizontal',
+          })
+        }
+      }
+      mediaQuery.addEventListener('change', mediaQueryChange)
+      this.destroyMediaQuery = () =>
+        mediaQuery.removeEventListener('change', mediaQuery)
     }
     this.script.remove()
     this.script = null
+  }
+
+  mediaChange(e) {
+    if (this.svelteComponent) {
+      this.svelteComponent.$set({
+        splitterDirection: e.matches ? 'vertical' : 'horizontal',
+      })
+    }
   }
 
   setProject(project) {
@@ -71,6 +91,7 @@ export class Playground extends Component {
 
   componentWillUnmount() {
     if (this.svelteComponent) {
+      this.destroyMediaQuery()
       this.svelteComponent.$destroy()
       this.svelteComponent = null
     }
