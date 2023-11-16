@@ -42,8 +42,7 @@ title: MiniZinc - Software
             <h3>Bundled binary packages (recommended)</h3>
 
             <p>You can download a completely self-contained package including MiniZinc {{ mznversion }},
-                the MiniZinc IDE {{ ideversion }}, and the Gecode, Chuffed, and CBC solvers, the Gurobi solver
-                interface and the legacy G12 solvers.
+                the MiniZinc IDE {{ ideversion }}, the Gecode, Chuffed, Google or-tools, COIN-BC and HiGHS solvers, and the Gurobi, CPLEX, FICO Xpress and SCIP solver interfaces.
             </p>
             
             <p><strong>This is the recommended way of installing MiniZinc for most users.</strong></p>
@@ -86,7 +85,7 @@ title: MiniZinc - Software
                 <li><a href="https://github.com/MiniZinc/minizinc.github.io/issues">MiniZinc web site issues</a></li>
             </ul>
             
-            <h2 id="flatzinc">FlatZinc implementations</h2>
+            <h2 id="flatzinc">Solvers</h2>
             
             <p>The MiniZinc system contains direct interfaces to <a href="https://projects.coin-or.org/Cbc">COIN-OR CBC</a>,
                 <a href="https://www.gurobi.com/">Gurobi</a> and
@@ -157,24 +156,6 @@ title: MiniZinc - Software
                 <li><a href="https://github.com/informarte/yuck">Yuck</a>.
                     A local search solver with an interface to FlatZinc.
             </ul>
-
-            <h2>MiniSearch</h2>
-            
-            <p>
-                MiniSearch is a meta-search language that extends MiniZinc with
-                support for (heuristic) meta-searches, such as Large
-                Neighbourhood Search (LNS), using any FlatZinc solver. You can
-                find more information on our <a href="minisearch/index.html">MiniSearch pages</a>.
-            </p>
-
-            <h2>G12 MiniZinc Distribution 1.6</h2>
-            <p>The previous version of MiniZinc, version 1.6, is still available from the
-                <a href="g12distrib.html">G12 MiniZinc Distribution</a>.
-                The G12 MiniZinc Distribution contains executables for the G12
-                MiniZinc-to-FlatZinc converter and the G12 FlatZinc interpreter.
-                It also contains the source code for the MiniZinc-to-FlatZinc converter,
-                a yacc-based parser for FlatZinc and lots of example models and documentation.
-            </p>
 
         </div>
         <div class="col-md-4">
