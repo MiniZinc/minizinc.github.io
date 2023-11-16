@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.2. Installation &mdash; The MiniZinc Handbook 2.8.0</title>
+      <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/installation.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=83311a72"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1.3. First steps with MiniZinc" href="basic_steps.html" />
+    <link rel="prev" title="1.1. Introduction" href="intro.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.0
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="part_1_overview.html">1. Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1.1. Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.2. Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#microsoft-windows">1.2.1. Microsoft Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux">1.2.2. Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#snap">1.2.2.1. Snap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appimage">1.2.2.2. AppImage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#archive">1.2.2.3. Archive</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#apple-macos">1.2.3. Apple macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-third-party-solvers">1.2.4. Adding Third-party Solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic_steps.html">1.3. First steps with MiniZinc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_1_overview.html"><span class="section-number">1. </span>Overview</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1.2. </span>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<span id="ch-installation"></span><h1><span class="section-number">1.2. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<p>A complete installation of the MiniZinc system comprises the MiniZinc <em>compiler tool chain</em>, one or more <em>solvers</em>, and (optionally) the <em>MiniZinc IDE</em>.</p>
+<p>The easiest way to get a full, working MiniZinc system is to use the <strong>bundled binary packages</strong>, available from <a class="reference external" href="http://www.minizinc.org/software.html">http://www.minizinc.org/software.html</a>.</p>
+<p>The bundled binary packages contain the compiler and IDE, as well as the following solvers: Gecode, Chuffed, COIN-OR CBC, HiGHS, and OR-Tools CP-SAT.
+Interfaces to Gurobi, CPLEX, SCIP and XPress are also included and can be used if the corresponding solvers are installed.</p>
+<p>Alternatively, it is possible to compile all components from source code, as described in <a class="reference internal" href="installation_detailed.html#ch-installation-detailed"><span class="std std-ref">Installation from Source Code</span></a>.</p>
+<section id="microsoft-windows">
+<h2><span class="section-number">1.2.1. </span>Microsoft Windows<a class="headerlink" href="#microsoft-windows" title="Link to this heading"></a></h2>
+<p>To install the bundled binary packages, simply download the installer, double-click to execute it, and follow the prompts. <strong>Note:</strong> 32 bit Windows installations are no longer supported in the bundled binary packages.</p>
+<p>After installation is complete, you can find the MiniZinc IDE installed as a Windows application. The file extensions <tt class="docutils literal">.mzn</tt>, <tt class="docutils literal">.dzn</tt> and <tt class="docutils literal">.fzn</tt> are linked to the IDE, so double-clicking any MiniZinc file should open it in the IDE.</p>
+<p>If you want to use MiniZinc from a command prompt, you need to add the installation directory to the PATH environment variable. In a Windows command prompt you could use the following command:</p>
+<pre class="literal-block">C:\&gt;setx PATH &quot;%PATH%;C:\Program Files\MiniZinc 2.8.0 (bundled)\&quot;</pre>
+</section>
+<section id="linux">
+<h2><span class="section-number">1.2.2. </span>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h2>
+<p>The MiniZinc bundled binary distribution for Linux is provided using three different distribution methods: <em>Snap</em>, <em>AppImage</em>, and an <em>archive</em> containing all necessary files. The capabilities of each package is the same, but it depends on your linux distribution which method is the easiest to use.
+<strong>Note:</strong> linux bundles are compiled to be compatible with many linux distributions using a <em>x86_64</em> architecture, but some dependencies on low level libraries cannot be avoided. Make use of the MiniZinc issue trackers if you encounter any problems.</p>
+<section id="snap">
+<h3><span class="section-number">1.2.2.1. </span>Snap<a class="headerlink" href="#snap" title="Link to this heading"></a></h3>
+<p>The MiniZinc Snap is the easiest way to install the MiniZinc bundle if Snap (<a class="reference external" href="https://snapcraft.io/">https://snapcraft.io/</a>) is available on you system. The installation will provide the <tt class="docutils literal">minizinc</tt> command within terminal environments and will add an application entry for the MiniZincIDE. The IDE can be started from the command line using <tt class="docutils literal">minizinc.ide</tt>. The following command will commence the installation the MiniZinc snap:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>minizinc<span class="w"> </span>--classic
+</pre></div>
+</div>
+<p><strong>Note:</strong> the MiniZinc snap requires the <em>classic</em> permission model to access solvers that are installed somewhere else on your system.</p>
+<p>An advantage of using the MiniZinc snap is that it will be automatically updated whenever a new version of the snap is available. Using snap channels it is also possible to automatically follow the developmental versions of MiniZinc. More information about the MiniZinc snap can be found in the Snap Store.</p>
+<a class="reference external image-reference" href="https://snapcraft.io/minizinc"><img alt="MiniZinc in the snap store" class="align-center" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" /></a>
+</section>
+<section id="appimage">
+<h3><span class="section-number">1.2.2.2. </span>AppImage<a class="headerlink" href="#appimage" title="Link to this heading"></a></h3>
+<p>The MiniZinc AppImage provides a way of installing the MiniZinc bundles without any added requirements. AppImages (<a class="reference external" href="https://appimage.org/">https://appimage.org/</a>) provide self-contained versions of applications with all their required dependencies. To use the MiniZinc AppImage you simply download the AppImage, make it executable, and run:</p>
+<pre class="literal-block">$ chmod +x MiniZincIDE-2.8.0-x86_64.AppImage
+$ ./MiniZincIDE-2.8.0-x86_64.AppImage</pre>
+<p>AppImages have no standard integration with the desktop environment. A script has been added to the MiniZinc AppImage to integrate the application into both the terminal and the desktop environment. The one requirement for this script is that the AppImage <em>CANNOT be moved</em> after the install script has been run. A suggestion would be to store the AppImages in <tt class="docutils literal">~/Applications/</tt> or <tt class="docutils literal">/opt/Applications/</tt>. The following commands move the AppImage to the second location and install <tt class="docutils literal">minizinc</tt> and <tt class="docutils literal">MiniZincIDE</tt> to <tt class="docutils literal">/usr/local/bin</tt> and will add a desktop entry and its corresponding icon to <tt class="docutils literal">$HOME/.local/share/{applications,icons}</tt>:</p>
+<pre class="literal-block">$ mv ./MiniZincIDE-2.8.0-x86_64.AppImage /opt/Applications/
+$ /opt/Applications/MiniZincIDE-2.8.0-x86_64.AppImage install</pre>
+<p><strong>Note:</strong> to change the installation locations can be changed using the environmental variables <tt class="docutils literal">$BIN_LOCATION</tt> and <tt class="docutils literal">$DESKTOP_LOCATION</tt>. The default behaviour can be achieved using the following command:</p>
+<pre class="literal-block">$ BIN_LOCATION=/usr/local/bin DESKTOP_LOCATION=$HOME/.local/share ./MiniZincIDE-2.8.0-x86_64.AppImage install</pre>
+</section>
+<section id="archive">
+<h3><span class="section-number">1.2.2.3. </span>Archive<a class="headerlink" href="#archive" title="Link to this heading"></a></h3>
+<p>The MiniZinc archive bundle is straightforward, but doesn’t offer any automatic integrations with the desktop environment. After downloading, uncompress the archive, for example in your home directory or any other location where you want to install it:</p>
+<pre class="literal-block">$ tar xf MiniZincIDE-2.8.0-bundle-linux-x86_64.tgz</pre>
+<p>This will unpack MiniZinc into a directory that is called the same as the archive file (without the <tt class="docutils literal">.tgz</tt>). You can start the MiniZinc IDE using the <tt class="docutils literal">MiniZincIDE.sh</tt> shell script, which sets up a number of paths and environment variables.</p>
+<p>In order to use the command line tools, after unpacking, make the following changes to some environment variables (assuming a bash-like shell):</p>
+<pre class="literal-block">$ export PATH=MiniZincIDE-2.8.0-bundle-linux-x86_64/bin:$PATH
+$ export LD_LIBRARY_PATH=MiniZincIDE-2.8.0-bundle-linux-x86_64/lib:$LD_LIBRARY_PATH
+$ export QT_PLUGIN_PATH=MiniZincIDE-2.8.0-bundle-linux-x86_64/plugins:$QT_PLUGIN_PATH</pre>
+</section>
+</section>
+<section id="apple-macos">
+<h2><span class="section-number">1.2.3. </span>Apple macOS<a class="headerlink" href="#apple-macos" title="Link to this heading"></a></h2>
+<p>The macOS bundled binary distribution works with any version of OS X starting from 10.9. After downloading the disk image (<tt class="docutils literal">.dmg</tt>) file, double click it if it doesn’t open automatically. You will see an icon for the MiniZinc IDE that you can drag into your Applications folder (or anywhere else you want to install MiniZinc).</p>
+<p>In order to use the MiniZinc tools from a terminal, you need to add the path to the MiniZinc installation to the PATH environment variable. If you installed the MiniZinc IDE in the standard Applications folder, the following command will add the correct path:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/Applications/MiniZincIDE.app/Contents/Resources:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-third-party-solvers">
+<h2><span class="section-number">1.2.4. </span>Adding Third-party Solvers<a class="headerlink" href="#adding-third-party-solvers" title="Link to this heading"></a></h2>
+<p>Third party solvers for MiniZinc typically consist of two parts: a solver <em>executable</em>, and a solver-specific MiniZinc <em>library</em>. MiniZinc must be aware of the location of both the executable and the library in order to compile and run a model with that solver. Each solver therefore needs to provide a <em>configuration file</em> in a location where the MiniZinc toolchain can find it.</p>
+<p>The easiest way to add a solver to the MiniZinc system is via the MiniZinc IDE. This is explained in <a class="reference internal" href="minizinc_ide.html#sec-ide-add-solvers"><span class="std std-numref">Section 3.2.5.2</span></a>. You can also add configuration files manually, as explained in <a class="reference internal" href="fzn-spec.html#sec-cmdline-conffiles"><span class="std std-numref">Section 4.3.6</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intro.html" class="btn btn-neutral float-left" title="1.1. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="basic_steps.html" class="btn btn-neutral float-right" title="1.3. First steps with MiniZinc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
