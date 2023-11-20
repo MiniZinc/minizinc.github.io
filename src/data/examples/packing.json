@@ -1,0 +1,37 @@
+{
+  "name": "Rectangle packing",
+  "project": {
+    "files": [
+      {
+        "name": "rectangle_packing.mzn",
+        "contents": "include \"globals.mzn\";\n\n% Pack n squares of side length 1..n into as small an area as possible\nint: n = 6;\n\n% Side length of each square\nset of int: POSITION = 1..sum(size);\n\n% Position of each square\narray [int] of int: size = [i | i in 1..n];\narray [1..n] of var POSITION: x;\narray [1..n] of var POSITION: y;\n\n% Squares must not overlap\nconstraint diffn(x, y, size, size);\n\n% Compute total width and height\nvar int: total_width :: output = max (i in 1..n) (x[i] + size[i]);\nvar int: total_height :: output = max (i in 1..n) (y[i] + size[i]);\n\n% Minimize total area\nsolve minimize total_width * total_height;\n\ninclude \"visualise.mzn\";\n"
+      },
+      {
+        "name": "visualise.mzn",
+        "contents": "include \"ide/vis.mzn\";\noutput :: vis_server(\"rectangle_packing.html\", n) (\n    width: total_width,\n    height: total_height,\n    squares: [(x: x[i], y: y[i], size: i) | i in 1..n]\n);\n",
+        "hidden": true,
+        "readOnly": true
+      },
+      {
+        "name": "rectangle_packing.html",
+        "contents": "<!DOCTYPE html>\n<html>\n\n<head>\n  <meta charset=\"utf-8\">\n  <script src=\"/minizinc-ide.js\"></script>\n  <style>\n    html,\n    body {\n      font-family: 'Helvetica', sans-serif;\n    }\n    h3 {\n      margin: 0;\n      margin-bottom: 1rem;\n    }\n    main {\n      padding: 1rem;\n    }\n    #board {\n      margin-top: 1rem;\n    }\n  </style>\n</head>\n\n<body>\n  <main>\n    <h3>Packing squares of side lengths 1..<span id=\"count\">n</span></h3>\n    <div id=\"label\"></div>\n    <svg id=\"board\">\n    </svg>\n  </main>\n  <script>\n    (async function () {\n      const basis = 32;\n      const spacing = 2;\n\n      const n = await MiniZincIDE.getUserData();\n      document.getElementById('count').textContent = n;\n      const getColor = (x) => `hsl(${(x - 1) * (360 / n)},100%,75%)`;\n\n      const board = document.getElementById('board');\n      const label = document.getElementById('label');\n\n      // Update visualisation\n      function setSolution(data) {\n        label.textContent = `Width: ${data.width}, height: ${data.height}, area: ${data.width * data.height}`;\n        while (board.firstChild) {\n          board.removeChild(board.lastChild);\n        }\n        board.setAttribute('width', data.width * basis);\n        board.setAttribute('height', data.height * basis);\n        for (const square of data.squares) {\n          const color = getColor(square.size);\n          const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\n          rect.setAttribute('fill', color);\n          rect.setAttribute('stroke', 'black');\n          rect.setAttribute('stroke-width', 1);\n          rect.setAttribute('x', (square.x - 1) * basis + spacing / 2);\n          rect.setAttribute('y', (square.y - 1) * basis + spacing / 2);\n          rect.setAttribute('width', square.size * basis - spacing);\n          rect.setAttribute('height', square.size * basis - spacing);\n          rect.setAttribute('rx', 3);\n          rect.setAttribute('ry', 3);\n          board.appendChild(rect);\n        }\n      }\n\n      // Visualise last solution on startup\n      const numSols = await MiniZincIDE.getNumSolutions();\n      if (numSols > 0) {\n        const solution = await MiniZincIDE.getSolution(numSols - 1);\n        setSolution(solution.data);\n      }\n\n      // Show new solutions if we're following the latest solution\n      let followLatest = true;\n      MiniZincIDE.on('solution', (solution) => {\n        if (followLatest) {\n          setSolution(solution.data);\n        }\n      });\n\n      MiniZincIDE.on('goToSolution', async (index) => {\n        // Requesting index -1 turns on following latest solution\n        // Otherwise, we stop showing the latest solution and show the requested one\n        followLatest = index === -1;\n        const solution = await MiniZincIDE.getSolution(index);\n        setSolution(solution.data);\n      });\n    })();\n  </script>\n</body>\n\n</html>",
+        "hidden": true,
+        "readOnly": true
+      }
+    ],
+    "tab": 0,
+    "solverId": "org.minizinc.gecode_presolver",
+    "solverConfig": {
+      "enableTimeLimit": false,
+      "timeLimit": 1,
+      "allSolutions": false,
+      "verboseCompilation": false,
+      "verboseSolving": false,
+      "compilerStatistics": false,
+      "solvingStatistics": false,
+      "outputTime": false,
+      "freeSearch": false
+    },
+    "minizincVersion": "latest"
+  }
+}
