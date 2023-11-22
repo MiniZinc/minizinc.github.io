@@ -11,6 +11,7 @@ const nextConfig = {
   trailingSlash: true,
   publicRuntimeConfig: {
     copyrightYear: new Date().getFullYear(),
+    basePath: process.env.BASE_PATH || '',
   },
 }
 module.exports = nextConfig

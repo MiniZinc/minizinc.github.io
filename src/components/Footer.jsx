@@ -33,7 +33,7 @@ export function Footer() {
                   className="hover:text-gray-800"
                   title="Follow @MiniZinc on X"
                 >
-                  <FontAwesomeIcon icon={faXTwitter} />
+                  <FontAwesomeIcon icon={faXTwitter} height="1em" />
                 </Link>
                 <Link
                   href="https://www.facebook.com/minizinclanguage"
@@ -41,7 +41,7 @@ export function Footer() {
                   className="hover:text-gray-800"
                   title="Connect with MiniZinc on Facebook"
                 >
-                  <FontAwesomeIcon icon={faFacebook} />
+                  <FontAwesomeIcon icon={faFacebook} height="1em" />
                 </Link>
                 <Link
                   href="https://groups.google.com/forum/#!forum/minizinc"
@@ -49,7 +49,7 @@ export function Footer() {
                   className="hover:text-gray-800"
                   title="MiniZinc Google Group"
                 >
-                  <FontAwesomeIcon icon={faGoogle} />
+                  <FontAwesomeIcon icon={faGoogle} height="1em" />
                 </Link>
                 <Link
                   href="https://stackoverflow.com/questions/tagged/minizinc"
@@ -57,7 +57,7 @@ export function Footer() {
                   className="hover:text-gray-800"
                   title="MiniZinc on StackOverflow"
                 >
-                  <FontAwesomeIcon icon={faStackOverflow} />
+                  <FontAwesomeIcon icon={faStackOverflow} height="1em" />
                 </Link>
                 <Link
                   href="https://github.com/minizinc"
@@ -65,7 +65,7 @@ export function Footer() {
                   className="hover:text-gray-800"
                   title="MiniZinc on GitHub"
                 >
-                  <FontAwesomeIcon icon={faGithub} />
+                  <FontAwesomeIcon icon={faGithub} height="1em" />
                 </Link>
               </div>
             </div>

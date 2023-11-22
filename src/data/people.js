@@ -1,5 +1,7 @@
 import { Link } from '@/components/Link'
+import getConfig from 'next/config'
 
+const { publicRuntimeConfig } = getConfig()
 export const people = [
   {
     name: 'Guido Tack',
@@ -171,7 +173,7 @@ export const people = [
 ]
   .map((p) => ({
     ...p,
-    img: `${process.env.BASE_PATH || ''}/images/people/${p.img}`,
+    img: `${publicRuntimeConfig.basePath}/images/people/${p.img}`,
     slug: p.name.toLowerCase().replace(/[^A-Za-z0-9-]+/g, '_'),
   }))
   .sort((x, y) => x.name.localeCompare(y.name))
