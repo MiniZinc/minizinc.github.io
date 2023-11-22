@@ -16,10 +16,6 @@ export default function PersonPage({ slug, publications }) {
     <>
       <Head>
         <title>{`MiniZinc - ${person.name}`}</title>
-        <meta
-          name="description"
-          content="MiniZinc is a free and open-source constraint modeling language."
-        />
       </Head>
       <Header />
       <main>

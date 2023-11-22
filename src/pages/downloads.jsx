@@ -12,10 +12,6 @@ export default function DownloadsPage() {
     <>
       <Head>
         <title>MiniZinc - Downloads</title>
-        <meta
-          name="description"
-          content="MiniZinc is a free and open-source constraint modeling language."
-        />
       </Head>
       <Header />
       <main>

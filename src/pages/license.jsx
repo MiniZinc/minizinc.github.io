@@ -9,10 +9,6 @@ export default function LicensePage() {
     <>
       <Head>
         <title>MiniZinc - License information</title>
-        <meta
-          name="description"
-          content="MiniZinc is a free and open-source constraint modeling language."
-        />
       </Head>
       <Header />
       <main>

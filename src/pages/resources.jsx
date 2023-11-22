@@ -13,10 +13,6 @@ export default function ResourcesPage() {
     <>
       <Head>
         <title>MiniZinc - Resources</title>
-        <meta
-          name="description"
-          content="MiniZinc is a free and open-source constraint modeling language."
-        />
       </Head>
       <Header />
       <main>

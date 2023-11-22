@@ -10,10 +10,6 @@ export default function PublicationsPage({ publications }) {
     <>
       <Head>
         <title>MiniZinc - Publications</title>
-        <meta
-          name="description"
-          content="MiniZinc is a free and open-source constraint modeling language."
-        />
       </Head>
       <Header />
       <main>
