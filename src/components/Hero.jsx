@@ -102,18 +102,14 @@ export function Hero() {
               <Button color="primary" href="/resources">
                 <span className="inline-flex items-center gap-x-2 px-2 py-1">
                   <span>Get started</span>
-                  <FontAwesomeIcon icon={faPlay} />
+                  <FontAwesomeIcon icon={faPlay} height="1em" />
                 </span>
               </Button>
               <DirectDownload variant="outline" />
             </div>
             <p className="mt-3 text-sm text-gray-600">
               Latest release: {latest.version} (
-              <Link
-                href={changelog()}
-                className="underline"
-                color="gray"
-              >
+              <Link href={changelog()} className="underline" color="gray">
                 changelog
               </Link>
               )
@@ -125,7 +121,7 @@ export function Hero() {
                   color="gray"
                   href="/downloads"
                 >
-                  <FontAwesomeIcon icon={faDownload} />
+                  <FontAwesomeIcon icon={faDownload} height="1em" />
                   <span className="underline">Packages</span>
                 </Link>
               </span>
@@ -135,7 +131,7 @@ export function Hero() {
                   color="gray"
                   href="https://github.com/MiniZinc"
                 >
-                  <FontAwesomeIcon icon={faGithub} />
+                  <FontAwesomeIcon icon={faGithub} height="1em" />
                   <span className="underline">Source code</span>
                 </Link>
               </span>
@@ -145,7 +141,7 @@ export function Hero() {
                   color="gray"
                   href="/license"
                 >
-                  <FontAwesomeIcon icon={faScaleBalanced} />
+                  <FontAwesomeIcon icon={faScaleBalanced} height="1em" />
                   <span className="underline">License information</span>
                 </Link>
               </span>

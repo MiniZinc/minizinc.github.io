@@ -30,7 +30,7 @@ export function DirectDownload(props) {
       {...props}
     >
       <span className="inline-flex items-center gap-x-2 px-2 py-1">
-        <FontAwesomeIcon icon={faDownload} />
+        <FontAwesomeIcon icon={faDownload} height="1em" />
         <span>{platformDownload ? platformDownload.label : 'Download'}</span>
       </span>
     </Button>
