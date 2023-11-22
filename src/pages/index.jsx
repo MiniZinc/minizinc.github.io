@@ -21,8 +21,8 @@ export default function Home() {
       <main>
         <Hero />
         <Playground />
-        <Features/>
-        <LatestRelease/>
+        <Features />
+        <LatestRelease />
       </main>
       <Footer />
     </>
