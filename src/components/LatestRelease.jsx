@@ -3,7 +3,7 @@ import { Button } from '@/components/Button'
 import { latest } from '@/data/version'
 import { Link } from '@/components/Link'
 import { changelog } from '@/utils/links'
-import { ReleaseSummary } from './ReleaseSummary'
+import { ReleaseInfo } from '@/data/release'
 
 export function LatestRelease() {
   return (
@@ -28,12 +28,14 @@ export function LatestRelease() {
             </Link>
           </h2>
           <p className="my-2">Released {latest.date}</p>
-          <ReleaseSummary />
+          <ul className="list-inside list-disc leading-relaxed">
+            <ReleaseInfo />
+          </ul>
           <p className="mt-2">
             <Link
               color="plain"
               className="underline hover:text-gray-600 active:text-gray-500"
-              href={changelog(latest.version)}
+              href={changelog()}
             >
               See the full changelog
             </Link>

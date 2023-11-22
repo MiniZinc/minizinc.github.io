@@ -1,5 +1,4 @@
 import { documentation } from '@/utils/links'
-import { latest } from './version'
 
 const routes = [
   ['Resources', '/resources'],
@@ -23,12 +22,9 @@ export const siteMap = [
     label: 'Learn',
     children: [
       ['Resources', '/resources'],
-      ['Tutorial', documentation(latest.version, 'part_2_tutorial.html')],
-      ['User manual', documentation(latest.version, 'part_3_user_manual.html')],
-      [
-        'Reference manual',
-        documentation(latest.version, 'part_4_reference.html'),
-      ],
+      ['Tutorial', documentation('part_2_tutorial.html')],
+      ['User manual', documentation('part_3_user_manual.html')],
+      ['Reference manual', documentation('part_4_reference.html')],
     ],
   },
   {

@@ -1,8 +1,8 @@
 import { Container } from '@/components/Container'
 import { latest, releases } from '@/data/version'
-import { ReleaseSummary } from '@/components/ReleaseSummary'
 import { Link } from '@/components/Link'
 import { changelog, githubRelease } from '@/utils/links'
+import { ReleaseInfo } from '@/data/release'
 
 export function Releases() {
   return (
@@ -18,9 +18,11 @@ export function Releases() {
           The latest release of MiniZinc is version {latest.version}, released{' '}
           {latest.date}.
         </p>
-        <ReleaseSummary className="mx-2" />
+        <ul className="mx-2 list-inside list-disc leading-relaxed">
+          <ReleaseInfo />
+        </ul>
         <p className="mt-2">
-          <Link href={changelog(latest.version)}>See the full changelog</Link>.
+          <Link href={changelog()}>See the full changelog</Link>.
         </p>
         <h3 className="mt-6 text-2xl font-medium tracking-tight text-gray-900">
           Previous releases

@@ -13,7 +13,7 @@ const bundles = [
     url: downloadLinks.windows,
   },
   {
-    name: 'mac OS',
+    name: 'macOS',
     description: `${requirement.macOS} or later, universal binary.`,
     url: downloadLinks.macOS,
   },

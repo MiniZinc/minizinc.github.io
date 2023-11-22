@@ -12,7 +12,7 @@ export function DirectDownload(props) {
     if (/\bWin64\b/i.test(navigator.userAgent)) {
       setPlatformDownload({
         label: 'Windows 10 or later',
-        href: bundles(latest.version).windows,
+        href: bundles().windows,
       })
     } else if (
       /\bMacintosh\b/i.test(navigator.userAgent) ||
@@ -20,7 +20,7 @@ export function DirectDownload(props) {
     ) {
       setPlatformDownload({
         label: 'macOS 11 or later',
-        href: bundles(latest.version).macOS,
+        href: bundles().macOS,
       })
     }
   }, [])

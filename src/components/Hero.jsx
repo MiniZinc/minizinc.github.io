@@ -110,7 +110,7 @@ export function Hero() {
             <p className="mt-3 text-sm text-gray-600">
               Latest release: {latest.version} (
               <Link
-                href={changelog(latest.version)}
+                href={changelog()}
                 className="underline"
                 color="gray"
               >

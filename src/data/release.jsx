@@ -1,11 +1,7 @@
-import clsx from 'clsx'
-
-export function ReleaseSummary({ className, ...props }) {
+export function ReleaseInfo() {
   return (
-    <ul
-      className={clsx('list-inside list-disc leading-relaxed', className)}
-      {...props}
-    >
+    <>
+      {' '}
       <li>Include Google OR-Tools in bundled packages.</li>
       <li>Enable output of intermediate solutions for HiGHS.</li>
       <li>
@@ -23,6 +19,6 @@ export function ReleaseSummary({ className, ...props }) {
         Add optional versions of <code>count_*</code> global constraints.
       </li>
       <li>Stabilise the MiniZinc IDE solution visualisation library.</li>
-    </ul>
+    </>
   )
 }
