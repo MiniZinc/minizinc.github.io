@@ -1,0 +1,16 @@
+TY  - CONF
+AU  - Chu, Geoffrey
+AU  - Stuckey, Peter J.
+ED  - Schulte, Christian
+PY  - 2013
+DA  - 2013//
+TI  - Dominance Driven Search
+BT  - Principles and Practice of Constraint Programming
+SP  - 217
+EP  - 229
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Recently, a generic method for identifying and exploiting dominance relations using dominance breaking constraints was proposed. In this method, sufficient conditions for a solution to be dominated are identified and these conditions are used to generate dominance breaking constraints which prune off the dominated solutions. We propose to use these dominance relations in a different way in order to boost the search for good/optimal solutions. In the new method, which we call dominance jumping, when search reaches a point where all solutions in the current domain are dominated, rather than simply backtrack as in the original dominance breaking method, we jump to the subtree which dominates the current subtree. This new strategy allows the solver to move from a bad subtree to a good one, significantly increasing the speed with which good solutions can be found. Experiments across a range of problems show that the method can be very effective when the original search strategy was not very good at finding good solutions.
+SN  - 978-3-642-40627-0
+ID  - 10.1007/978-3-642-40627-0_19
+ER  - 

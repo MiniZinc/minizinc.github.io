@@ -1,0 +1,19 @@
+TY  - JOUR
+AU  - Puchinger, Jakob
+AU  - Stuckey, Peter J.
+AU  - Wallace, Mark G.
+AU  - Brand, Sebastian
+PY  - 2011
+DA  - 2011/01/01
+TI  - Dantzig-Wolfe decomposition and branch-and-price solving in G12
+JO  - Constraints
+SP  - 77
+EP  - 99
+VL  - 16
+IS  - 1
+AB  - The G12 project is developing a software environment for stating and solving combinatorial problems by mapping a high-level model of the problem to an efficient combination of solving methods. Model annotations are used to control this process. In this paper we explain the mapping to branch-and-price solving. Dantzig-Wolfe decomposition is automatically performed using the additional information given by the model annotations. The models obtained can then be solved using column generation and branch-and-price. G12 supports the selection of specialised subproblem solvers, the aggregation of identical subproblems to reduce symmetries, automatic disaggregation when required by branch-and-bound, the use of specialised subproblem constraint-branching rules, and different master problem solvers including a hybrid solver based on the volume algorithm. We demonstrate the benefits of the G12 framework on three examples: a trucking problem, cutting stock, and two-dimensional bin packing.
+SN  - 1572-9354
+UR  - https://doi.org/10.1007/s10601-009-9085-0
+DO  - 10.1007/s10601-009-9085-0
+ID  - Puchinger2011
+ER  - 

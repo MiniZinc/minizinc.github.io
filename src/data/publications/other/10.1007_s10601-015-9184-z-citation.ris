@@ -1,0 +1,19 @@
+TY  - JOUR
+AU  - Björdal, Gustav
+AU  - Monette, Jean-Noël
+AU  - Flener, Pierre
+AU  - Pearson, Justin
+PY  - 2015
+DA  - 2015/07/01
+TI  - A constraint-based local search backend for MiniZinc
+JO  - Constraints
+SP  - 325
+EP  - 345
+VL  - 20
+IS  - 3
+AB  - MiniZinc is a modelling language for combinatorial problems, which can then be solved by a solver provided in a backend. There are many backends, based on technologies such as constraint programming, integer programming, or Boolean satisfiability solving. However, to the best of our knowledge, there is currently no constraint-based local search (CBLS) backend. We discuss the challenges to develop such a backend and give an overview of the design of a CBLS backend for MiniZinc. Experimental results show that for some MiniZinc models, our CBLS backend, based on the OscaR/CBLS solver, is able to give good-quality results in competitive time.
+SN  - 1572-9354
+UR  - https://doi.org/10.1007/s10601-015-9184-z
+DO  - 10.1007/s10601-015-9184-z
+ID  - Björdal2015
+ER  - 

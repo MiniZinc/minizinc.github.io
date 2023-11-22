@@ -1,0 +1,20 @@
+TY  - CPAPER
+AU  - Huang, Jinbo
+TI  - Search Strategy Simulation in Constraint Booleanization
+T2  - Proceedings of the Thirteenth International Conference on Principles of
+      Knowledge Representation and Reasoning
+J2  - KR'12
+SP  - 628–632
+PY  - 2012
+DA  - 2012
+PB  - AAAI Press
+AB  - Within the recently proposed Universal Booleanization framework, we
+      consider the CUMULATIVE constraint, for which the original Boolean
+      encoding proves ineffective, and present a new Boolean encoding that
+      causes the SAT solver to simulate, largely, the search strategy used by
+      some of the best-performing native methods. Apart from providing
+      motivation for future research in a similar direction, we obtain a
+      significantly enhanced version of Universal Booleanization for problems
+      containing CUMULATIVE constraints.
+C1  - Rome, Italy
+ID  - 10.5555/3031843.3031924

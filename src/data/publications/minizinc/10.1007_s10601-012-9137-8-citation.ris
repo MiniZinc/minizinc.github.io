@@ -1,0 +1,20 @@
+TY  - JOUR
+AU  - Schrijvers, Tom
+AU  - Tack, Guido
+AU  - Wuille, Pieter
+AU  - Samulowitz, Horst
+AU  - Stuckey, Peter J.
+PY  - 2013
+DA  - 2013/04/01
+TI  - Search combinators
+JO  - Constraints
+SP  - 269
+EP  - 305
+VL  - 18
+IS  - 2
+AB  - The ability to model search in a constraint solver can be an essential asset for solving combinatorial problems. However, existing infrastructure for defining search heuristics is often inadequate. Either modeling capabilities are extremely limited or users are faced with a general-purpose programming language whose features are not tailored towards writing search heuristics. As a result, major improvements in performance may remain unexplored. This article introduces search combinators, a lightweight and solver-independent method that bridges the gap between a conceptually simple modeling language for search (high-level, functional and naturally compositional) and an efficient implementation (low-level, imperative and highly non-modular). By allowing the user to define application-tailored search strategies from a small set of primitives, search combinators effectively provide a rich domain-specific language (DSL) for modeling search to the user. Remarkably, this DSL comes at a low implementation cost to the developer of a constraint solver. The article discusses two modular implementation approaches and shows, by empirical evaluation, that search combinators can be implemented without overhead compared to a native, direct implementation in a constraint solver.
+SN  - 1572-9354
+UR  - https://doi.org/10.1007/s10601-012-9137-8
+DO  - 10.1007/s10601-012-9137-8
+ID  - Schrijvers2013
+ER  - 

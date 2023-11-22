@@ -1,0 +1,19 @@
+TY  - CONF
+AU  - Chu, Geoffrey
+AU  - de la Banda, Maria Garcia
+AU  - Stuckey, Peter J.
+ED  - Lodi, Andrea
+ED  - Milano, Michela
+ED  - Toth, Paolo
+PY  - 2010
+DA  - 2010//
+TI  - Automatically Exploiting Subproblem Equivalence in Constraint Programming
+BT  - Integration of AI and OR Techniques in Constraint Programming for Combinatorial Optimization Problems
+SP  - 71
+EP  - 86
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Many search problems contain large amounts of redundancy in the search. In this paper we examine how to automatically exploit remaining subproblem equivalence, which arises when two different search paths lead to identical remaining subproblems, that is the problem left on the remaining unfixed variables. Subproblem equivalence is exploited by caching descriptions, or keys, that define the subproblems visited, and failing the search when the key for the current subproblem already exists in the cache. In this paper we show how to automatically and efficiently define keys for arbitrary constraint problems. We show how a constraint programming solver with this capability can solve search problems where subproblem equivalence arises orders of magnitude faster. The system is fully automatic, i.e., the subproblem equivalences are detected and exploited without any effort from the problem modeller.
+SN  - 978-3-642-13520-0
+ID  - 10.1007/978-3-642-13520-0_10
+ER  - 

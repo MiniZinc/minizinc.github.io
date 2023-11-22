@@ -1,0 +1,21 @@
+TY  - JOUR
+AU  - Marriott, Kim
+AU  - Nethercote, Nicholas
+AU  - Rafeh, Reza
+AU  - Stuckey, Peter J.
+AU  - Garcia de la Banda, Maria
+AU  - Wallace, Mark
+PY  - 2008
+DA  - 2008/09/01
+TI  - The Design of the Zinc Modelling Language
+JO  - Constraints
+SP  - 229
+EP  - 267
+VL  - 13
+IS  - 3
+AB  - Zinc is a new modelling language developed as part of the G12 project. It has four important characteristics. First, Zinc allows specification of models using a natural mathematical-like notation. To do so it supports overloaded functions and predicates and automatic coercion and provides arithmetic, finite domain and set constraints. Second, while Zinc is a relatively simple and small language, it can be readily extended to different application areas by means of powerful language constructs such as user-defined predicates and functions and constrained types. Third, Zinc provides sophisticated type and instantiation checking which allows early detection of errors in models. Finally, perhaps the main novelty in Zinc is that it is designed to support a modelling methodology in which the same conceptual model can be automatically mapped into different design models, thus allowing modellers to easily “plug and play” with different solving techniques and so choose the most appropriate for that problem. We describe in detail the various language features of Zinc and the many trade-offs we faced in its design.
+SN  - 1572-9354
+UR  - https://doi.org/10.1007/s10601-008-9041-4
+DO  - 10.1007/s10601-008-9041-4
+ID  - Marriott2008
+ER  - 

@@ -1,0 +1,21 @@
+TY  - JOUR
+AU  - Amadini, Roberto
+AU  - Gabbrielli, Maurizio
+AU  - Mauro, Jacopo
+PY  - 2013/08/01
+SP  - 
+N2  - Recent research has shown that a single arbitrarily efficient solver can be
+significantly outperformed by a portfolio of possibly slower on-average
+solvers. The solver selection is usually done by means of (un)supervised
+learning techniques which exploit features extracted from the problem
+specification. In this paper we present an useful and flexible framework that
+is able to extract an extensive set of features from a Constraint
+(Satisfaction/Optimization) Problem defined in possibly different modeling
+languages: MiniZinc, FlatZinc or XCSP. We also report some empirical results
+showing that the performances that can be obtained using these features are
+effective and competitive with state of the art CSP portfolio techniques.
+T1  - An Enhanced Features Extractor for a Portfolio of Constraint Solvers
+VL  - 
+DO  - 10.1145/2554850.2555114
+JO  - Proceedings of the ACM Symposium on Applied Computing
+ER  - 

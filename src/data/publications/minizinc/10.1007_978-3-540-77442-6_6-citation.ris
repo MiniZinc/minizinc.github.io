@@ -1,0 +1,19 @@
+TY  - CONF
+AU  - Brand, Sebastian
+AU  - Duck, Gregory J.
+AU  - Puchinger, Jakob
+AU  - Stuckey, Peter J.
+ED  - Hudak, Paul
+ED  - Warren, David S.
+PY  - 2008
+DA  - 2008//
+TI  - Flexible, Rule-Based Constraint Model Linearisation
+BT  - Practical Aspects of Declarative Languages
+SP  - 68
+EP  - 83
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Nonlinear constraint satisfaction or optimisation models need to be reduced to equivalent linear forms before they can be solved by (Integer) Linear Programming solvers. A choice of linearisation methods exist. There are generic linearisations and constraint-specific, user-defined linearisations. Hence a model reformulation system needs to be flexible and open to allow complex and novel linearisations to be specified. In this paper we show how the declarative model reformulation system Cadmium can be used to effectively transform constraint problems to different linearisations, allowing easy exploration of linearisation possibilities.
+SN  - 978-3-540-77442-6
+ID  - 10.1007/978-3-540-77442-6_6
+ER  - 

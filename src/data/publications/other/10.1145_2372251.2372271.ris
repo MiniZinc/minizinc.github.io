@@ -1,0 +1,21 @@
+TY  - CONF
+TI  - A hybrid release planning method and its empirical justification
+T2  - Proceedings of the 2012 ACM-IEEE International Symposium on Empirical Software Engineering and Measurement
+SP  - 115
+EP  - 118
+AU  - Przepiora, Mark
+AU  - Karimpour, Reza
+AU  - Ruhe, Guenther
+PY  - 2012
+DO  - 10.1145/2372251.2372271
+JO  - Proceedings of the 2012 ACM-IEEE International Symposium on Empirical Software Engineering and Measurement
+IS  - 
+SN  - 1949-3789
+VO  - 
+VL  - 
+JA  - Proceedings of the 2012 ACM-IEEE International Symposium on Empirical Software Engineering and Measurement
+Y1  - 20-21 Sept. 2012
+AB  - Background: The use of Constraint Programming (CP) has been proposed by Regnell and Kuchcinski to model and solve the Release Planning Problem. However, they did not empirically demonstrate the advantages and disadvantages of CP over existing release planning methods. Aims: The aims of this paper are (1) to perform a comparative analysis between CP and ReleasePlanner (RP), an existing release planning tool, and (2) to suggest a hybrid approach combining the strengths of each individual method. Method: (1) An empirical evaluation was performed, evaluating the efficiency and effectiveness of the individual methods to justify their hybrid usage. (2) A proof of concept for a hybrid release planning method is introduced, and a real-world dataset including more than 600 features was solved using the hybrid method to provide evidence of its effectiveness. Results: (1) Use of RP was found to be more efficient and effective than CP. However, CP is preferred when advanced planning objectives and constraints exist. (2) The hybrid method (RP&CP) greatly outperformed the individual approach (CP), increasing computational solution quality by 87%. Conclusion: We were able to increase the expressiveness and thus applicability of an existing, efficient and effective release planning method. We presented evidence for its computational effectiveness, but more work is needed to make this result significant.
+ER  - 
+
+

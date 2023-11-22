@@ -1,0 +1,16 @@
+TY  - CONF
+AU  - Feydy, Thibaut
+AU  - Stuckey, Peter J.
+ED  - Gent, Ian P.
+PY  - 2009
+DA  - 2009//
+TI  - Lazy Clause Generation Reengineered
+BT  - Principles and Practice of Constraint Programming - CP 2009
+SP  - 352
+EP  - 366
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Lazy clause generation is a powerful hybrid approach to combinatorial optimization that combines features from SAT solving and finite domain (FD) propagation. In lazy clause generation finite domain propagators are considered as clause generators that create a SAT description of their behaviour for a SAT solver. The ability of the SAT solver to explain and record failure and perform conflict directed backjumping are then applicable to FD problems. The original implementation of lazy clause generation was constructed as a cut down finite domain propagation engine inside a SAT solver. In this paper we show how to engineer a lazy clause generation solver by embedding a SAT solver inside an FD solver. The resulting solver is flexible, efficient and easy to use. We give experiments illustrating the effect of different design choices in engineering the solver.
+SN  - 978-3-642-04244-7
+ID  - 10.1007/978-3-642-04244-7_29
+ER  - 

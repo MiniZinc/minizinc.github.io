@@ -1,0 +1,17 @@
+TY  - CONF
+AU  - Leo, Kevin
+AU  - Tack, Guido
+ED  - Salvagnin, Domenico
+ED  - Lombardi, Michele
+PY  - 2017
+DA  - 2017//
+TI  - Debugging Unsatisfiable Constraint Models
+BT  - Integration of AI and OR Techniques in Constraint Programming
+SP  - 77
+EP  - 93
+PB  - Springer International Publishing
+CY  - Cham
+AB  - The first constraint model that you write for a new problem is often unsatisfiable, and constraint modelling tools offer little support for debugging. Existing algorithms for computing Minimal Unsatisfiable Subsets (MUSes) can help explain to a user which sets of constraints are causing unsatisfiability. However, these algorithms are usually not aimed at high-level, structured constraint models, and tend to not scale well for them. Furthermore, when used naively, they enumerate sets of solver-level variables and constraints, which may have been introduced by modelling language compilers and are therefore often far removed from the user model.
+SN  - 978-3-319-59776-8
+ID  - 10.1007/978-3-319-59776-8_7
+ER  - 

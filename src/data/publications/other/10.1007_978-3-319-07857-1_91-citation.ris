@@ -1,0 +1,19 @@
+TY  - CONF
+AU  - Crawford, Broderick
+AU  - Soto, Ricardo
+AU  - Zec, Carolina
+AU  - Monfroy, Eric
+AU  - Paredes, Fernando
+ED  - Stephanidis, Constantine
+PY  - 2014
+DA  - 2014//
+TI  - Easy Modeling of Open Pit Mining Problems via Constraint Programming
+BT  - HCI International 2014 - Posters’ Extended Abstracts
+SP  - 519
+EP  - 522
+PB  - Springer International Publishing
+CY  - Cham
+AB  - The open pit mining problem aims at correctly identifying the set of blocks of a given mine to be extracted in order to maximize the net present value of the production. During the last years, different techniques have been proposed to solve mining problems, which range from the classic mathematical programming to more recent ones such as the metaheuristics. In this paper we illustrate how this problem can easily be solved by a relatively modern and declarative programming paradigm called constraint programming.
+SN  - 978-3-319-07857-1
+ID  - 10.1007/978-3-319-07857-1_91
+ER  - 

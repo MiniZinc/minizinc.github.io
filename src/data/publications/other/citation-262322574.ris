@@ -1,0 +1,14 @@
+TY  - BOOK
+AU  - Guns, Tias
+AU  - Dries, Anton
+AU  - Tack, Guido
+AU  - Nijssen, Siegfried
+AU  - De Raedt, Luc
+PY  - 2013/08/03
+SP  - 1365
+EP  - 1372
+N2  - We introduce MiningZinc, a general framework for constraint-based pattern mining, one of the most popular tasks in data mining. MiningZinc consists of two key components: a language component and a toolchain component. The language allows for high-level and natural modeling of mining problems, such that MiningZinc models closely resemble definitions found in the data mining literature. It is inspired by the Zinc family of languages and systems and supports user-defined constraints and optimization criteria. The toolchain allows for finding solutions to the models. It ensures the solver independence of the language and supports both standard constraint solvers and specialized data mining systems. Automatic model transformations enable the efficient use of different solvers and systems. The combination of both components allows one to rapidly model constraint-based mining problems and execute these with a wide variety of methods. We demonstrate this experimentally for a number of well-known solvers and data mining tasks.
+T1  - MiningZinc: A modeling language for constraint-based mining
+VL  - 
+JO  - IJCAI International Joint Conference on Artificial Intelligence
+ER  - 

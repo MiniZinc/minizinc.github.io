@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Hemmi, David
+AU  - Tack, Guido
+AU  - Wallace, Mark
+ED  - Salvagnin, Domenico
+ED  - Lombardi, Michele
+PY  - 2017
+DA  - 2017//
+TI  - Scenario-Based Learning for Stochastic Combinatorial Optimisation
+BT  - Integration of AI and OR Techniques in Constraint Programming
+SP  - 277
+EP  - 292
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Combinatorial optimisation problems often contain uncertainty that has to be taken into account to produce realistic solutions. This uncertainty is usually captured in scenarios, which describe different potential sets of problem parameters based on random distributions or historical data. While efficient algorithmic techniques exist for specific problem classes such as linear programs, there are very few approaches that can handle general Constraint Programming formulations with uncertainty. This paper presents a generic method for solving stochastic combinatorial optimisation problems by combining a scenario-based decomposition approach with Lazy Clause Generation and strong scenario-independent nogoods over the first stage variables. The algorithm can be implemented based on existing solving technology, is easy to parallelise, and is shown experimentally to scale well with the number of scenarios.
+SN  - 978-3-319-59776-8
+ID  - 10.1007/978-3-319-59776-8_23
+ER  - 

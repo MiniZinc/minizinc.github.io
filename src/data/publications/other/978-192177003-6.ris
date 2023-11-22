@@ -1,0 +1,28 @@
+﻿TY  - CONF
+AU  - Downing, Nicholas
+AU  - Feydy, Thibaut
+AU  - Stuckey, Peter J.
+TI  - Explaining alldifferent
+PY  - 2012
+T2  - Conferences in Research and Practice in Information Technology Series
+VL  - 122
+SP  - 115
+EP  - 124
+UR  - https://www.scopus.com/inward/record.uri?eid=2-s2.0-84868694147&partnerID=40&md5=6e26e3c28b2f944b281d0d7da45d7f53
+AD  - National ICT Australia, University of Melbourne, VIC, Australia
+AB  - Lazy clause generation is a powerful approach to reducing search in constraint programming. For use in a lazy clause generation solver, global constraints must be extended to explain themselves. Alternatively they can be decomposed into simpler constraints which already have explanation capability. In this paper we examine different propagation mechanisms for the alldifferent constraint, and show how they can be extended to explain themselves. We compare the different explaining implementations of alldifferent on a variety of problems to determine how explanation changes the trade-offs for propagaton. The combination of global alldifferent propagators with explnation leads to a state-of-the-art constraint programming solution to problems involving alldifferent. Copyright © 2012, Australian Computer Society, Inc.
+KW  - Computer programming
+KW  - AllDifferent
+KW  - Constraint programming
+KW  - Global constraints
+KW  - Propagation mechanism
+KW  - Propagaton
+KW  - Constraint theory
+SN  - 14451336 (ISSN); 978-192177003-6 (ISBN)
+LA  - English
+J2  - Conf. Res. Pract. Inf. Technol. Ser.
+M3  - Conference paper
+DB  - Scopus
+N1  - Export Date: 21 November 2023; Cited By: 6; Correspondence Address: N. Downing; National ICT Australia, University of Melbourne, VIC, Australia; email: ndowning@studentsunimelb.edu.au
+ER  -
+

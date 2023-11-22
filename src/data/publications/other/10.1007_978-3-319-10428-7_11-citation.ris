@@ -1,0 +1,16 @@
+TY  - CONF
+AU  - Amadini, Roberto
+AU  - Stuckey, Peter J.
+ED  - O’Sullivan, Barry
+PY  - 2014
+DA  - 2014//
+TI  - Sequential Time Splitting and Bounds Communication for a Portfolio of Optimization Solvers
+BT  - Principles and Practice of Constraint Programming
+SP  - 108
+EP  - 124
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Scheduling a subset of solvers belonging to a given portfolio has proven to be a good strategy when solving Constraint Satisfaction Problems (CSPs). In this paper, we show that this approach can also be effective for Constraint Optimization Problems (COPs). Unlike CSPs, sequential execution of optimization solvers can communicate information in the form of bounds to improve the performance of the following solvers. We provide a hybrid and flexible portfolio approach that combines static and dynamic time splitting for solving a given COP. Empirical evaluations show the approach is promising and sometimes even able to outperform the best solver of the porfolio.
+SN  - 978-3-319-10428-7
+ID  - 10.1007/978-3-319-10428-7_11
+ER  - 

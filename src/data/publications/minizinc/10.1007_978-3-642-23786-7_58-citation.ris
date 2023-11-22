@@ -1,0 +1,19 @@
+TY  - CONF
+AU  - Schrijvers, Tom
+AU  - Tack, Guido
+AU  - Wuille, Pieter
+AU  - Samulowitz, Horst
+AU  - Stuckey, Peter J.
+ED  - Lee, Jimmy
+PY  - 2011
+DA  - 2011//
+TI  - Search Combinators
+BT  - Principles and Practice of Constraint Programming – CP 2011
+SP  - 774
+EP  - 788
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - The ability to model search in a constraint solver can be an essential asset for solving combinatorial problems. However, existing infrastructure for defining search heuristics is often inadequate. Either modeling capabilities are extremely limited or users are faced with a low-level programming language and modeling search becomes unwieldy. As a result, major improvements in performance may remain unexplored.
+SN  - 978-3-642-23786-7
+ID  - 10.1007/978-3-642-23786-7_58
+ER  - 

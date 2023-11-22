@@ -1,0 +1,20 @@
+TY  - CONF
+TI  - MiniMASC+MiniZinc: An Autonomic Business-Driven Decision Making Middleware for Adaptation of Web Service Compositions
+T2  - 2010 7th International Conference on Ubiquitous Intelligence & Computing and 7th International Conference on Autonomic & Trusted Computing
+SP  - 474
+EP  - 477
+AU  - Lu, Qinghua
+AU  - Tosic, Vlidimir
+PY  - 2010
+DO  - 10.1109/UIC-ATC.2010.67
+JO  - 2010 7th International Conference on Ubiquitous Intelligence & Computing and 7th International Conference on Autonomic & Trusted Computing
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2010 7th International Conference on Ubiquitous Intelligence & Computing and 7th International Conference on Autonomic & Trusted Computing
+Y1  - 26-29 Oct. 2010
+AB  - Run-time adaptation to changes to Web service compositions usually can be done in more than one way. MiniMASC+MiniZinc is a middleware that makes instance-specific adaptation decisions that maximize business value. Multiple instance adaptation decision problems are modeled in the constraint programming specification language MiniZinc, while information about alternative adaptations is specified as policies in WS-Policy4MASC. MiniMASC+MiniZinc uses these descriptions to find the optimal solution. We illustrate how these adaptations decisions are made for an example loan brokering Web service composition.
+ER  - 
+
+

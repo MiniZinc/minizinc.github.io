@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Mears, Christopher
+AU  - Niven, Todd
+AU  - Jackson, Marcel
+AU  - Wallace, Mark
+ED  - Lee, Jimmy
+PY  - 2011
+DA  - 2011//
+TI  - Proving Symmetries by Model Transformation
+BT  - Principles and Practice of Constraint Programming – CP 2011
+SP  - 591
+EP  - 605
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - The presence of symmetries in a constraint satisfaction problem gives an opportunity for more efficient search. Within the class of matrix models, we show that the problem of deciding whether some well known permutations are model symmetries (solution symmetries on every instance) is undecidable. We then provide a new approach to proving the model symmetries by way of model transformations. Given a model M and a candidate symmetry σ, the approach first syntactically applies σ to M and then shows that the resulting model σ(M) is semantically equivalent to M. We demonstrate this approach with an implementation that reduces equivalence to a sentence in Presburger arithmetic, using the modelling language MiniZinc and the term re-writing language Cadmium, and show that it is capable of proving common symmetries in models.
+SN  - 978-3-642-23786-7
+ID  - 10.1007/978-3-642-23786-7_45
+ER  - 

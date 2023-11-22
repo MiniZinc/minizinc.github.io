@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Bofill, Miquel
+AU  - Suy, Josep
+AU  - Villaret, Mateu
+ED  - Strichman, Ofer
+ED  - Szeider, Stefan
+PY  - 2010
+DA  - 2010//
+TI  - A System for Solving Constraint Satisfaction Problems with SMT
+BT  - Theory and Applications of Satisfiability Testing – SAT 2010
+SP  - 300
+EP  - 305
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - SAT Modulo Theories (SMT) consists of deciding the satisfiability of a formula with respect to a decidable background theory, such as linear integer arithmetic, bit-vectors, etc, in first-order logic with equality. SMT has its roots in the field of verification. It is known that the SAT technology offers an interesting, efficient and scalable method for constraint solving, as many experimentations have shown. Although there already exist some results pointing out the adequacy of SMT techniques for constraint solving, there are no available tools to extensively explore such adequacy. In this paper we introduce a tool for translating FlatZinc (MiniZinc intermediate code) instances of constraint satisfaction problems to the standard SMT-LIB language. It can be used for deciding satisfiability as well as for optimization. The tool determines the required logic for solving each instance. The obtained results suggest that SMT can be effectively used to solve CSPs.
+SN  - 978-3-642-14186-7
+ID  - 10.1007/978-3-642-14186-7_25
+ER  - 

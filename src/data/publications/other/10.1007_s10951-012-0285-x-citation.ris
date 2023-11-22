@@ -1,0 +1,19 @@
+TY  - JOUR
+AU  - Schutt, Andreas
+AU  - Feydy, Thibaut
+AU  - Stuckey, Peter J.
+AU  - Wallace, Mark G.
+PY  - 2013
+DA  - 2013/06/01
+TI  - Solving RCPSP/max by lazy clause generation
+JO  - Journal of Scheduling
+SP  - 273
+EP  - 289
+VL  - 16
+IS  - 3
+AB  - We present a generic exact method for minimizing the project duration of the resource-constrained project scheduling problem with generalized precedence relations (Rcpsp/max). This is a very general scheduling model with applications areas such as project management and production planning. Our method uses lazy clause generation, i.e., a hybrid of finite domain and Boolean satisfiability solving, in order to apply no-good learning and conflict-driven search to the solution generation. Our experiments show the benefit of lazy clause generation for finding an optimal solution and proving its optimality in comparison to other state-of-the-art exact and non-exact methods. In comparison to other methods, our method is able to find better solutions faster on the Rcpsp/max benchmarks. Indeed, our method closes 573 open problem instances and generates better solutions in most of the remaining instances. Surprisingly, although ours is an exact method, it outperforms the published non-exact methods on these benchmarks in terms of the quality of solutions.
+SN  - 1099-1425
+UR  - https://doi.org/10.1007/s10951-012-0285-x
+DO  - 10.1007/s10951-012-0285-x
+ID  - Schutt2013
+ER  - 

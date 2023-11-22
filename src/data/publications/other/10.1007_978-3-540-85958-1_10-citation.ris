@@ -1,0 +1,15 @@
+TY  - CONF
+AU  - Huang, Jinbo
+ED  - Stuckey, Peter J.
+PY  - 2008
+DA  - 2008//
+TI  - Universal Booleanization of Constraint Models
+BT  - Principles and Practice of Constraint Programming
+SP  - 144
+EP  - 158
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - While the efficiency and scalability of modern SAT technology offers an intriguing alternative approach to constraint solving via translation to SAT, previous work has mostly focused on the translation of specific types of constraints, such as pseudo Boolean constraints, finite integer linear constraints, and constraints given as explicit listings of allowed tuples. By contrast, we present a translation of constraint models to SAT at language level, using the recently proposed constraint modeling language MiniZinc, such that any satisfaction or optimization problem written in the language (not involving floats) can be automatically Booleanized and solved by one or more calls to a SAT solver. We discuss the strengths and weaknesses of such a universal constraint solver, and report on a large-scale empirical evaluation of it against two existing solvers for MiniZinc: the finite domain solver distributed with MiniZinc and one based on the Gecode constraint programming platform. Our results indicate that Booleanization indeed offers a competitive alternative, exhibiting superior performance on some classes of problems involving large numbers of constraints and complex integer arithmetic, in addition to, naturally, problems that are already largely Boolean.
+SN  - 978-3-540-85958-1
+ID  - 10.1007/978-3-540-85958-1_10
+ER  - 

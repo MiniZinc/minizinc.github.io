@@ -1,0 +1,17 @@
+TY  - CONF
+AU  - Schutt, Andreas
+AU  - Feydy, Thibaut
+AU  - Stuckey, Peter J.
+ED  - Schulte, Christian
+PY  - 2013
+DA  - 2013//
+TI  - Scheduling Optional Tasks with Explanation
+BT  - Principles and Practice of Constraint Programming
+SP  - 628
+EP  - 644
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Many scheduling problems involve reasoning about tasks which may or may not actually occur, so called optional tasks. The state-of-the-art approach to modelling and solving such problems makes use of interval variables which allow a start time of $\bot$indicating the task does not run. In this paper we show we can model interval variables in a lazy clause generation solver, and create explaining propagators for scheduling constraints using these interval variables. Given the success of lazy clause generation on many scheduling problems, this combination appears to give a powerful new solving approach to scheduling problems with optional tasks. We demonstrate the new solving technology on well-studied flexible job-shop scheduling problems where we are able to close 36 open problems.
+SN  - 978-3-642-40627-0
+ID  - 10.1007/978-3-642-40627-0_47
+ER  - 

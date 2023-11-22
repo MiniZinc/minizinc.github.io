@@ -1,0 +1,18 @@
+TY  - JOUR
+AU  - Chu, Geoffrey
+AU  - de la Banda, Maria Garcia
+AU  - Stuckey, Peter J.
+PY  - 2012
+DA  - 2012/01/01
+TI  - Exploiting subproblem dominance in constraint programming
+JO  - Constraints
+SP  - 1
+EP  - 38
+VL  - 17
+IS  - 1
+AB  - Many search problems contain large amounts of redundancy in the search. In this paper we examine how to automatically exploit subproblem dominance, which arises when different partial assignments lead to subproblems that dominate (or are dominated by) other subproblems. Subproblem dominance is exploited by caching subproblems that have already been explored by the search, using keys that characterise the subproblems, and failing the search when the current subproblem is dominated by a subproblem already in the cache. In this paper we show how we can automatically and efficiently define keys for arbitrary constraint problems using constraint projection. We show how, for search problems where subproblem dominance arises, a constraint programming solver with this capability can solve these problems orders of magnitude faster than solvers without caching. The system is fully automatic, i.e., subproblem dominance is detected and exploited without any effort from the problem modeller.
+SN  - 1572-9354
+UR  - https://doi.org/10.1007/s10601-011-9112-9
+DO  - 10.1007/s10601-011-9112-9
+ID  - Chu2012
+ER  - 

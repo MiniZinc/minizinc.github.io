@@ -1,0 +1,17 @@
+TY  - JOUR
+AU  - Francis, Kathryn Glenn
+AU  - Stuckey, Peter J.
+PY  - 2014
+DA  - 2014/01/01
+TI  - Explaining circuit propagation
+JO  - Constraints
+SP  - 1
+EP  - 29
+VL  - 19
+IS  - 1
+AB  - The circuit constraint is used to constrain a graph represented by a successor for each node, such that the resulting edges form a circuit. Circuit and its variants are important for various kinds of tour-finding, path-finding and graph problems. In this paper we examine how to integrate the circuit constraint, and its variants, into a lazy clause generation solver. To do so we must extend the constraint to explain its propagation. We consider various propagation algorithms for circuit and examine how best to explain each of them. We compare the effectiveness of each propagation algorithm once we use explanation, since adding explanation changes the trade-off between propagation complexity and power. Simpler propagators, although less powerful, may produce more reusable explanations. Even though the most powerful propagator considered for circuit and variants creates huge explanations, we find that explanation is highly advantageous for solving problems involving this kind of constraint.
+SN  - 1572-9354
+UR  - https://doi.org/10.1007/s10601-013-9148-0
+DO  - 10.1007/s10601-013-9148-0
+ID  - Francis2014
+ER  - 

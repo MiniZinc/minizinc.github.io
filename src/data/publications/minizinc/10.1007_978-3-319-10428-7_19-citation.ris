@@ -1,0 +1,16 @@
+TY  - CONF
+AU  - Chu, Geoffrey
+AU  - Stuckey, Peter J.
+ED  - O’Sullivan, Barry
+PY  - 2014
+DA  - 2014//
+TI  - Nested Constraint Programs
+BT  - Principles and Practice of Constraint Programming
+SP  - 240
+EP  - 255
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Many real world discrete optimization problems are expressible as nested problems where we solve one optimization or satisfaction problem as a subproblem of a larger meta problem. Nested problems include many important problem classes such as: stochastic constraint satisfaction/ optimization, quantified constraint satisfaction/optimization and minimax problems. In this paper we define a new class of problems called nested constraint programs (NCP) which include the previously mentioned problem classes as special cases, and describe a search-based CP solver for solving NCP’s.We briefly discuss how nogood learning can be used to significantly speedup such an NCP solver. We show that the new solver can be significantly faster than existing solvers for the special cases of stochastic/ quantified CSP/COP’s, and that it can solve new types of problems which cannot be solved with existing solvers.
+SN  - 978-3-319-10428-7
+ID  - 10.1007/978-3-319-10428-7_19
+ER  - 

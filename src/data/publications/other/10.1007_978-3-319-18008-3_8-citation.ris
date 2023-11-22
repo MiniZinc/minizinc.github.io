@@ -1,0 +1,16 @@
+TY  - CONF
+AU  - Chu, Geoffrey
+AU  - Stuckey, Peter J.
+ED  - Michel, Laurent
+PY  - 2015
+DA  - 2015//
+TI  - Learning Value Heuristics for Constraint Programming
+BT  - Integration of AI and OR Techniques in Constraint Programming
+SP  - 108
+EP  - 123
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Search heuristics are of paramount importance for finding good solutions to optimization problems quickly. Manually designing problem specific search heuristics is a time consuming process and requires expert knowledge from the user. Thus there is great interest in developing autonomous search heuristics which work well for a wide variety of problems. Various autonomous search heuristics already exist, such as first fail, domwdeg and impact based search. However, such heuristics are often more focused on the variable selection, i.e., picking important variables to branch on to make the search tree smaller, rather than the value selection, i.e., ordering the subtrees so that the good subtrees are explored first. In this paper, we define a framework for learning value heuristics, by combining a scoring function, feature selection, and machine learning algorithm. We demonstrate that we can learn value heuristics that perform better than random value heuristics, and for some problem classes, the learned heuristics are comparable in performance to manually designed value heuristics. We also show that value heuristics using features beyond a simple score can be valuable.
+SN  - 978-3-319-18008-3
+ID  - 10.1007/978-3-319-18008-3_8
+ER  - 

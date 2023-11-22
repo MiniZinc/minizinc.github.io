@@ -1,0 +1,37 @@
+TY  - CPAPER
+AU  - Aziz, Rehan Abdul
+AU  - Stuckey, Peter J
+AU  - Somogyi, Zoltan
+TI  - Inductive Definitions in Constraint Programming
+T2  - Proceedings of the Thirty-Sixth Australasian Computer Science Conference -
+      Volume 135
+J2  - ACSC '13
+SP  - 41–50
+PY  - 2013
+DA  - 2013
+PB  - Australian Computer Society, Inc.
+AB  - Constraint programming (CP) and answer set programming (ASP) are two
+      declarative paradigms used to solve combinatorial problems. Many modern
+      solvers for both these paradigms rely on partial or complete Boolean
+      representations of the problem to exploit the extremely efficient
+      techniques that have been developed for solving propositional
+      satisfiability problems. This convergence on a common representation makes
+      it possible to incorporate useful features of CP into ASP and vice versa.
+      There has been significant effort in recent years to integrate CP into
+      ASP, primarily to overcome the grounding bottleneck in traditional ASP
+      solvers that exists due to their inability to handle integer variables
+      efficiently. On the other hand, ASP solvers are more efficient than CP
+      systems on problems that involve inductive definitions, such as
+      reachability in a graph. Besides efficiency, ASP syntax is more natural
+      and closer to the mathematical definitions of such concepts. In this
+      paper, we describe an approach that adds support for answer set rules to a
+      CP system, namely the lazy clause generation solver chuffed. This
+      integration also naturally avoids the grounding bottleneck of ASP since
+      constraint solvers natively support finite domain variables. We
+      demonstrate the usefulness of our approach by comparing our new system
+      against two competitors: the state-of-the-art ASP solver clasp, and
+      clingcon, a system that extends clasp with CP capabilities.
+C1  - AUS
+KW  - inductive definitions, answer set programming, stable model semantics, constraint programming
+ER  - 
+ID  - 10.5555/2525401.2525406

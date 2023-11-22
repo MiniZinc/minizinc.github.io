@@ -1,0 +1,17 @@
+TY  - CONF
+AU  - Stuckey, Peter J.
+AU  - Tack, Guido
+ED  - Schiex, Thomas
+ED  - de Givry, Simon
+PY  - 2019
+DA  - 2019//
+TI  - Compiling Conditional Constraints
+BT  - Principles and Practice of Constraint Programming
+SP  - 384
+EP  - 400
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Conditionals are a core concept in all programming languages. They are also a natural and powerful mechanism for expressing complex constraints in constraint modelling languages. The behaviour of conditionals is complicated by undefinedness. In this paper we show how to most effectively translate conditional constraints for underlying solvers. We show that the simple translation into implications can be improved, at least in terms of reasoning strength, for both constraint programming and mixed integer programming solvers. Unit testing shows that the new translations are more efficient, but the benefits are not so clear on full models where the interaction with other features such as learning is more complicated.
+SN  - 978-3-030-30048-7
+ID  - 10.1007/978-3-030-30048-7_23
+ER  - 

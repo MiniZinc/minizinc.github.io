@@ -1,0 +1,18 @@
+TY  - JOUR
+AU  - Stuckey, Peter J.
+AU  - Becket, Ralph
+AU  - Fischer, Julien
+PY  - 2010
+DA  - 2010/07/01
+TI  - Philosophy of the MiniZinc challenge
+JO  - Constraints
+SP  - 307
+EP  - 316
+VL  - 15
+IS  - 3
+AB  - MiniZinc arose as a response to the extended discussion at CP2006 of the need for a standard modelling language for CP. This is a challenging problem, and we believe MiniZinc makes a good attempt to handle the most obvious obstacle: there are hundreds of potential global constraints, most handled by few or no systems. A standard input language for solvers gives us the capability to compare different solvers. Hence, every year since 2008 we have run the MiniZinc Challenge comparing different solvers that support MiniZinc. In this report we discuss the philosophy behind the challenge, why we do it, how we do it, and why we do it that way.
+SN  - 1572-9354
+UR  - https://doi.org/10.1007/s10601-010-9093-0
+DO  - 10.1007/s10601-010-9093-0
+ID  - Stuckey2010
+ER  - 

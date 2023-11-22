@@ -1,0 +1,17 @@
+TY  - CONF
+AU  - Rendl, Andrea
+AU  - Tack, Guido
+AU  - Stuckey, Peter J.
+ED  - O’Sullivan, Barry
+PY  - 2014
+DA  - 2014//
+TI  - Stochastic MiniZinc
+BT  - Principles and Practice of Constraint Programming
+SP  - 636
+EP  - 645
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Combinatorial optimisation problems often contain uncertainty that has to be taken into account to produce realistic solutions. However, existing modelling systems either do not support uncertainty, or do not support combinatorial features, such as integer variables and non-linear constraints. This paper presents an extension of the MiniZinc modelling language that supports uncertainty. Stochastic MiniZinc enables modellers to express combinatorial stochastic problems at a high level of abstraction, independent of the stochastic solving approach. These models are translated automatically into different solver-level representations. Stochastic MiniZinc provides the first solving technology agnostic approach to stochastic modelling we are aware of.
+SN  - 978-3-319-10428-7
+ID  - 10.1007/978-3-319-10428-7_46
+ER  - 

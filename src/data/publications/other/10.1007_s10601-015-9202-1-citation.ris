@@ -1,0 +1,19 @@
+TY  - JOUR
+AU  - Shishmarev, Maxim
+AU  - Mears, Christopher
+AU  - Tack, Guido
+AU  - Garcia de la Banda, Maria
+PY  - 2016
+DA  - 2016/01/01
+TI  - Visual search tree profiling
+JO  - Constraints
+SP  - 77
+EP  - 94
+VL  - 21
+IS  - 1
+AB  - Understanding how the search space is explored for a given constraint problem – and how it changes for different models, solvers or search strategies – is crucial for efficient solving. Yet programmers often have to rely on the crude aggregate measures of the search that are provided by solvers, or on visualisation tools that can show the search tree, but do not offer sophisticated ways to navigate and analyse it, particularly for large trees. We present an architecture for profiling a constraint programming search that is based on a lightweight instrumentation of the solver. The architecture combines a visualisation of the search tree with various tools for convenient navigation and analysis of the search. These include identifying repeated subtrees, high-level abstraction and navigation of the tree, and the comparison of two search trees. The resulting system is akin to a traditional program profiler, which helps the user to focus on the parts of the execution where an improvement to their program would have the greatest effect.
+SN  - 1572-9354
+UR  - https://doi.org/10.1007/s10601-015-9202-1
+DO  - 10.1007/s10601-015-9202-1
+ID  - Shishmarev2016
+ER  - 

@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Belov, Gleb
+AU  - Stuckey, Peter J.
+AU  - Tack, Guido
+AU  - Wallace, Mark
+ED  - Rueher, Michel
+PY  - 2016
+DA  - 2016//
+TI  - Improved Linearization of Constraint Programming Models
+BT  - Principles and Practice of Constraint Programming
+SP  - 49
+EP  - 65
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Constraint Programming (CP) standardizes many specialized “global constraints” allowing high-level modelling of combinatorial optimization and feasibility problems. Current Mixed-Integer Linear Programming (MIP) technology lacks both a modelling language and a solving mechanism based on high-level constraints.
+SN  - 978-3-319-44953-1
+ID  - 10.1007/978-3-319-44953-1_4
+ER  - 

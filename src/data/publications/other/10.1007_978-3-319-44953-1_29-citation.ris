@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Shishmarev, Maxim
+AU  - Mears, Christopher
+AU  - Tack, Guido
+AU  - Garcia de la Banda, Maria
+ED  - Rueher, Michel
+PY  - 2016
+DA  - 2016//
+TI  - Learning from Learning Solvers
+BT  - Principles and Practice of Constraint Programming
+SP  - 455
+EP  - 472
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Modern constraint programming solvers incorporate SAT-style clause learning, where sets of domain restrictions that lead to failure are recorded as new clausal propagators. While this can yield dramatic reductions in search, there are also cases where clause learning does not improve or even hinders performance. Unfortunately, the reasons for these differences in behaviour are not well understood in practice. We aim to cast some light on the practical behaviour of learning solvers by profiling their execution. In particular, we instrument the learning solver Chuffed to produce a detailed record of its execution and extend a graphical profiling tool to appropriately display this information. Further, this profiler enables users to measure the impact of the learnt clauses by comparing Chuffed’s execution with that of a non-learning solver, and examining the points at which their behaviours diverge. We show that analysing a solver’s execution in this way can be useful not only to better understand its behaviour — opening what is typically a black box — but also to infer modifications to the original constraint model that can improve the performance of both learning and non-learning solvers.
+SN  - 978-3-319-44953-1
+ID  - 10.1007/978-3-319-44953-1_29
+ER  - 

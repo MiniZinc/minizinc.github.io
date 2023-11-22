@@ -1,11 +1,11 @@
 import { useEffect, useId, useState } from 'react'
 import { Container } from '@/components/Container'
-import { SelectField } from './Fields'
+import { SelectField } from '@/components/Fields'
 import AustraliaProject from '@/data/examples/australia.json'
 import NQueensProject from '@/data/examples/nqueens.json'
 import PackingProject from '@/data/examples/packing.json'
 import SudokuProject from '@/data/examples/sudoku.json'
-import Link from 'next/link'
+import { Link } from '@/components/Link'
 
 const examples = [
   AustraliaProject,
@@ -108,7 +108,7 @@ export function Playground() {
           <p className="text-center">
             Try one of the examples, or{' '}
             <Link
-              className="text-primary hover:text-primary-dark -active:text-primary-light underline"
+              color="primary"
               href="https://play.minizinc.dev"
               target="_blank"
             >
@@ -122,9 +122,10 @@ export function Playground() {
             id="playground-example"
             className="col-span-full"
             onChange={(e) => setProject(examples[e.target.value].project)}
+            defaultValue={project}
           >
             {examples.map((x, i) => (
-              <option key={i} value={i} selected={x.project === project}>
+              <option key={i} value={i}>
                 {x.name}
               </option>
             ))}

@@ -9,6 +9,8 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  publicRuntimeConfig: {
+    copyrightYear: new Date().getFullYear(),
+  },
 }
-
 module.exports = nextConfig

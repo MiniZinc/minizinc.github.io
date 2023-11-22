@@ -1,36 +1,28 @@
 import Head from 'next/head'
 
-import { CallToAction } from '@/components/CallToAction'
-import { Faqs } from '@/components/Faqs'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
-import { Pricing } from '@/components/Pricing'
-import { PrimaryFeatures } from '@/components/PrimaryFeatures'
-import { Reviews } from '@/components/Reviews'
-import { SecondaryFeatures } from '@/components/SecondaryFeatures'
+import { Features } from '@/components/Features'
 import { Playground } from '@/components/Playground'
+import { LatestRelease } from '@/components/LatestRelease'
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Pocket - Invest at the perfect time.</title>
+        <title>MiniZinc</title>
         <meta
           name="description"
-          content="By leveraging insights from our network of industry insiders, you’ll know exactly when to buy to maximize profit, and exactly when to sell to avoid painful losses."
+          content="MiniZinc is a free and open-source constraint modeling language."
         />
       </Head>
       <Header />
       <main>
         <Hero />
         <Playground />
-        <PrimaryFeatures />
-        <SecondaryFeatures />
-        <CallToAction />
-        <Reviews />
-        <Pricing />
-        <Faqs />
+        <Features/>
+        <LatestRelease/>
       </main>
       <Footer />
     </>

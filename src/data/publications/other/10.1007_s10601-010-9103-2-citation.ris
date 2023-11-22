@@ -1,0 +1,19 @@
+TY  - JOUR
+AU  - Schutt, Andreas
+AU  - Feydy, Thibaut
+AU  - Stuckey, Peter J.
+AU  - Wallace, Mark G.
+PY  - 2011
+DA  - 2011/07/01
+TI  - Explaining the cumulative propagator
+JO  - Constraints
+SP  - 250
+EP  - 282
+VL  - 16
+IS  - 3
+AB  - The global cumulative constraint was proposed for modelling cumulative resources in scheduling problems for finite domain (FD) propagation. Since that time a great deal of research has investigated new stronger and faster filtering techniques for cumulative, but still most of these techniques only pay off in limited cases or are not scalable. Recently, the “lazy clause generation” hybrid solving approach has been devised which allows a finite domain propagation engine possible to take advantage of advanced SAT technology, by “lazily” creating a SAT model of an FD problem as computation progresses. This allows the solver to make use of SAT explanation and autonomous search capabilities. In this article we show how, once we use lazy clause generation, modelling the cumulative constraint by decomposition creates a highly competitive version of cumulative. Using decomposition into component parts automatically makes the propagator incremental and able to explain itself. We then show how, using the insights from the behaviour of the decomposition, we can create global cumulative constraints that explain their propagation. We compare these approaches to explaining the cumulative constraint on resource constrained project scheduling problems. All our methods are able to close a substantial number of open problems from the well-established PSPlib benchmark library of resource-constrained project scheduling problems.
+SN  - 1572-9354
+UR  - https://doi.org/10.1007/s10601-010-9103-2
+DO  - 10.1007/s10601-010-9103-2
+ID  - Schutt2011
+ER  - 

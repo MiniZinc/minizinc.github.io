@@ -1,0 +1,20 @@
+TY  - CONF
+AU  - de la Barra, Claudio León
+AU  - Soto, Ricardo
+AU  - Crawford, Broderick
+AU  - Allendes, Camila
+AU  - Berendsen, Hans
+AU  - Monfroy, Eric
+ED  - Stephanidis, Constantine
+PY  - 2013
+DA  - 2013//
+TI  - Modeling the Portfolio Selection Problem with Constraint Programming
+BT  - HCI International 2013 - Posters’ Extended Abstracts
+SP  - 645
+EP  - 649
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Portfolio selection is a relevant problem in finance and economics. It consists in selecting a portfolio of assets considering a given expected return such that the risk of the portfolio is minimized. Several approaches have been proposed to tackle this problem, which are mainly based on mathematical programming techniques and metaheuristics. In this paper we illustrate how this problem can easily be modeled and solved by a relatively modern and declarative programming paradigm called constraint programming.
+SN  - 978-3-642-39473-7
+ID  - 10.1007/978-3-642-39473-7_128
+ER  - 

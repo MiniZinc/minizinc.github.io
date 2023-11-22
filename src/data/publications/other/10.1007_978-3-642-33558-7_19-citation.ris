@@ -1,0 +1,16 @@
+TY  - CONF
+AU  - Chu, Geoffrey
+AU  - Stuckey, Peter J.
+ED  - Milano, Michela
+PY  - 2012
+DA  - 2012//
+TI  - Inter-instance Nogood Learning in Constraint Programming
+BT  - Principles and Practice of Constraint Programming
+SP  - 238
+EP  - 247
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Lazy Clause Generation is a powerful approach to reducing search in Constraint Programming. This is achieved by recording sets of domain restrictions that previously led to failure as new clausal propagators called nogoods. This dramatically reduces the search and provides orders of magnitude speedups on a wide range of problems. Current implementations of Lazy Clause Generation only allows solvers to learn and utilize nogoods within an individual problem. This means that everything the solver learns will be forgotten as soon as the current problem is finished. In this paper, we show how Lazy Clause Generation can be extended so that nogoods learned from one problem can be retained and used to significantly speed up the solution of other, similar problems.
+SN  - 978-3-642-33558-7
+ID  - 10.1007/978-3-642-33558-7_19
+ER  - 

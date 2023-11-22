@@ -1,0 +1,20 @@
+TY  - CONF
+AU  - Mears, Christopher
+AU  - Schutt, Andreas
+AU  - Stuckey, Peter J.
+AU  - Tack, Guido
+AU  - Marriott, Kim
+AU  - Wallace, Mark
+ED  - Simonis, Helmut
+PY  - 2014
+DA  - 2014//
+TI  - Modelling with Option Types in MiniZinc
+BT  - Integration of AI and OR Techniques in Constraint Programming
+SP  - 88
+EP  - 103
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Option types are a powerful abstraction that allows the concise modelling of combinatorial problems where some decisions are relevant only if other decisions are made. They have a wide variety of uses: for example in modelling optional tasks in scheduling, or exceptions to a usual rule. Option types represent objects which may or may not exist in the constraint problem being modelled, and can take an ordinary value or a special value ⊤ indicating they are absent. The key property of variables of option types is that if they take the value ⊤ then the constraints they appear in should act as if the variable was not in the original definition. In this paper, we explore the different ways that basic constraints can be extended to handle option types, and we show that extensions of global constraints to option types cover existing and common variants of these global constraints. We demonstrate how we have added option types to the constraint modelling language MiniZinc. Constraints over variables of option types can either be handled by transformation into regular variables without extending the requirements on underlying solvers, or they can be passed directly to solvers that support them natively.
+SN  - 978-3-319-07046-9
+ID  - 10.1007/978-3-319-07046-9_7
+ER  - 

@@ -1,0 +1,22 @@
+TY  - CONF
+TI  - User- and application-centric multihomed flow management
+T2  - 2011 IEEE 36th Conference on Local Computer Networks
+SP  - 26
+EP  - 34
+AU  - Mehani, Olivier
+AU  - Boreli, Roksana
+AU  - Malier, Michael
+AU  - Ernst Thierry
+PY  - 2011
+DO  - 10.1109/LCN.2011.6115206
+JO  - 2011 IEEE 36th Conference on Local Computer Networks
+IS  - 
+SN  - 0742-1303
+VO  - 
+VL  - 
+JA  - 2011 IEEE 36th Conference on Local Computer Networks
+Y1  - 4-7 Oct. 2011
+AB  - We consider the problem of network selection and flow distribution for a multihomed mobile device. We argue the benefits of a holistic approach which considers user- and application-centric metrics such as quality, energy consumption and monetary cost, rather than the commonly used network-centric metrics. We thus introduce the multihomed flow management problem which combines network selection, flow distribution and application flow awareness. We formulate it as a constrained optimisation problem and compare it to commonly used techniques: single network selection and load balancing. For selected interactive applications, we use empirical network measurements to evaluate the optimal solutions obtained by the three approaches. We show that, by exploiting the flexibility of application parameters, it is possible to achieve the potentially conflicting goals of maintaining high application quality while reducing both the power consumption and cost of network use.
+ER  - 
+
+

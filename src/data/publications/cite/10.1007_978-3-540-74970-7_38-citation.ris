@@ -1,0 +1,20 @@
+TY  - CONF
+AU  - Nethercote, Nicholas
+AU  - Stuckey, Peter J.
+AU  - Becket, Ralph
+AU  - Brand, Sebastian
+AU  - Duck, Gregory J.
+AU  - Tack, Guido
+ED  - Bessière, Christian
+PY  - 2007
+DA  - 2007//
+TI  - MiniZinc: Towards a Standard CP Modelling Language
+BT  - Principles and Practice of Constraint Programming – CP 2007
+SP  - 529
+EP  - 543
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - There is no standard modelling language for constraint programming (CP) problems. Most solvers have their own modelling language. This makes it difficult for modellers to experiment with different solvers for a problem.
+SN  - 978-3-540-74970-7
+ID  - 10.1007/978-3-540-74970-7_38
+ER  - 

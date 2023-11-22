@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Leo, Kevin
+AU  - Mears, Christopher
+AU  - Tack, Guido
+AU  - Garcia de la Banda, Maria
+ED  - Schulte, Christian
+PY  - 2013
+DA  - 2013//
+TI  - Globalizing Constraint Models
+BT  - Principles and Practice of Constraint Programming
+SP  - 432
+EP  - 447
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - We present a method that, given a constraint model, suggests global constraints to replace parts of it. This helps non-expert users to write higher-level models that are easier to reason about and may result in better solving performance. Our method exploits the structure of the model by considering combinations of the constraints, collections of variables, parameters and loops already present in the model, as well as parameter data from several data files. We assign a score to a candidate global constraint by comparing a sample of its solution space with that of the part of the model it is intended to replace. The top-scoring global constraints are presented to the user through an interactive display, which shows how they could be incorporated into the model. The MiniZinc Globalizer, our implementation of the method for the MiniZinc modelling language, is available on the web.
+SN  - 978-3-642-40627-0
+ID  - 10.1007/978-3-642-40627-0_34
+ER  - 

@@ -1,0 +1,23 @@
+﻿TY  - CONF
+AU  - Aziz, Rehan Abdul
+AU  - Chu, Geoffrey
+AU  - Stuckey, Peter J.
+TI  - Stable model semantics for founded bounds
+PY  - 2013
+T2  - Theory and Practice of Logic Programming
+VL  - 13
+IS  - 4-5
+SP  - 517
+EP  - 532
+DO  - 10.1017/S147106841300032X
+UR  - https://www.scopus.com/inward/record.uri?eid=2-s2.0-84884742378&doi=10.1017%2fS147106841300032X&partnerID=40&md5=37ce2ea0cba15655efc3f52f795ec1db
+AD  - Victoria Laboratory, Department of Computing and Information Systems, University of Melbourne, Australia
+AB  - Answer Set Programming (ASP) is a powerful form of declarative programming used in areas such as planning or reasoning. ASP solvers enforce stable model semantics, which rule out solutions representing certain kinds of circular reasoning. Unfortunately, current ASP solvers are incapable of solving problems involving cyclic dependencies between multiple integer or continuous quantities effectively. In this paper, we generalize the notion of stable models to bound founded variables with arbitrary domains, where bounds on such variables need to be justified by some rule in the program in order for the model to be stable. We show how to handle significantly more general rule forms where bound founded variables can act as head or body variables, and where head and body variables can be related via complex constraints subject to certain monotonicity requirements. We describe a new unfounded set detection algorithm which allows us to enforce this generalization of the stable model semantics. We also show how these unfounded sets can be explained in order to allow effective conflict-directed clause learning. The new solver merges the best features of CP, SAT and ASP solvers and allows new types of problems to be solved very efficiently. Copyright © 2013 [REHAN ABDUL AZIZ, GEOFFREY CHU and PETER J. STUCKEY].
+SN  - 14753081 (ISSN)
+LA  - English
+J2  - Theory Pract. Logic Programm.
+M3  - Conference paper
+DB  - Scopus
+N1  - Export Date: 21 November 2023; Cited By: 11
+ER  -
+

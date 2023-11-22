@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Belov, Gleb
+AU  - Boland, Natashia
+AU  - Savelsbergh, Martin W. P.
+AU  - Stuckey, Peter J.
+ED  - Simonis, Helmut
+PY  - 2014
+DA  - 2014//
+TI  - Local Search for a Cargo Assembly Planning Problem
+BT  - Integration of AI and OR Techniques in Constraint Programming
+SP  - 159
+EP  - 175
+PB  - Springer International Publishing
+CY  - Cham
+AB  - We consider a real-world cargo assembly planning problem arising in a coal supply chain. The cargoes are built on the stockyard at a port terminal from coal delivered by trains. Then the cargoes are loaded onto vessels. Only a limited number of arriving vessels is known in advance. The goal is to minimize the average delay time of the vessels over a long planning period. We model the problem in the MiniZinc constraint programming language and design a large neighbourhood search scheme. We compare against (an extended version of) a greedy heuristic for the same problem.
+SN  - 978-3-319-07046-9
+ID  - 10.1007/978-3-319-07046-9_12
+ER  - 

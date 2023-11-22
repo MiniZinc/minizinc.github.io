@@ -1,0 +1,17 @@
+TY  - CONF
+AU  - Francis, Kathryn
+AU  - Brand, Sebastian
+AU  - Stuckey, Peter J.
+ED  - Milano, Michela
+PY  - 2012
+DA  - 2012//
+TI  - Optimisation Modelling for Software Developers
+BT  - Principles and Practice of Constraint Programming
+SP  - 274
+EP  - 289
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Software developers are an ideal channel for the distribution of Constraint Programming (CP) technology. Unfortunately, including even basic optimisation functionality in an application currently requires the use of an entirely separate paradigm with which most software developers are not familiar.
+SN  - 978-3-642-33558-7
+ID  - 10.1007/978-3-642-33558-7_22
+ER  - 

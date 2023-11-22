@@ -1,0 +1,16 @@
+TY  - CONF
+AU  - Frisch, Alan M.
+AU  - Stuckey, Peter J.
+ED  - Gent, Ian P.
+PY  - 2009
+DA  - 2009//
+TI  - The Proper Treatment of Undefinedness in Constraint Languages
+BT  - Principles and Practice of Constraint Programming - CP 2009
+SP  - 367
+EP  - 382
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Any sufficiently complex finite-domain constraint modelling language has the ability to express undefined values, for example division by zero, or array index out of bounds. This paper gives the first systematic treatment of undefinedness for finite-domain constraint languages. We present three alternative semantics for undefinedness, and for each of the semantics show how to map models that contain undefined expressions into equivalent models that do not. The resulting models can be implemented using existing constraint solving technology.
+SN  - 978-3-642-04244-7
+ID  - 10.1007/978-3-642-04244-7_30
+ER  - 

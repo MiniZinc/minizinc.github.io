@@ -1,0 +1,19 @@
+TY  - JOUR
+T1  - A complete solution to the Maximum Density Still Life Problem
+AU  - Chu, Geoffrey
+AU  - Stuckey, Peter J.
+JO  - Artificial Intelligence
+VL  - 184-185
+SP  - 1
+EP  - 16
+PY  - 2012
+DA  - 2012/06/01/
+SN  - 0004-3702
+DO  - https://doi.org/10.1016/j.artint.2012.02.001
+UR  - https://www.sciencedirect.com/science/article/pii/S0004370212000124
+KW  - Combinatorial optimization
+KW  - Search
+KW  - Constraint programming
+KW  - Dynamic programming
+AB  - The Maximum Density Still Life Problem (CSPLib prob032) is to find the maximum number of live cells that can fit in an n×n region of an infinite board, so that the board is stable under the rules of Conwayʼs Game of Life. It is considered a very difficult problem and has a raw search space of O(2n2). Previous state of the art methods could only solve up to n=20. We give a powerful reformulation of the problem into one of minimizing “wastage” instead of maximizing the number of live cells. This reformulation allows us to compute very strong upper bounds on the number of live cells, which dramatically reduces the search space. It also gives us significant insights into the nature of the problem. By combining these insights with several powerful techniques: remodeling, lazy clause generation, bounded dynamic programming, relaxations, and custom search, we are able to solve the Maximum Density Still Life Problem for all n. This is possible because the Maximum Density Still Life Problem is in fact well behaved mathematically for sufficiently large n (around n>200) and if such very large instances can be solved, then there exist ways to construct provably optimal solutions for all n from a finite set of base solutions. Thus we show that the Maximum Density Still Life Problem has a closed form solution and does not require exponential time to solve.
+ER  - 

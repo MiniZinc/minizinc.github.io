@@ -1,0 +1,17 @@
+TY  - CONF
+AU  - Stuckey, Peter J.
+AU  - Tack, Guido
+ED  - Gomes, Carla
+ED  - Sellmann, Meinolf
+PY  - 2013
+DA  - 2013//
+TI  - MiniZinc with Functions
+BT  - Integration of AI and OR Techniques in Constraint Programming for Combinatorial Optimization Problems
+SP  - 268
+EP  - 283
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Functional relations are ubiquitous in combinatorial problems – the Global Constraint Catalog lists 120 functional constraints. This paper argues that the ability to express functional constraints with functional syntax leads to more elegant and readable models, and that it enables a better translation of the models to different underlying solving technologies such as CP, MIP, or SAT.
+SN  - 978-3-642-38171-3
+ID  - 10.1007/978-3-642-38171-3_18
+ER  - 

@@ -1,0 +1,30 @@
+TY  - CPAPER
+AU  - Saxena, Tripti
+AU  - Karsai, Gabor
+TI  - The GDSE Framework: A Meta-Tool for Automated Design Space Exploration
+T2  - Proceedings of the 10th Workshop on Domain-Specific Modeling
+J2  - DSM '10
+PY  - 2010
+DA  - 2010
+PB  - Association for Computing Machinery
+AB  - Existing Design Space Exploration (DSE) frameworks are tailored
+      specifically to a particular problem domain and cannot be easily re-used
+      between domains. Typically these frameworks translate the DSE problem to a
+      single formulation of the problem (e.g. ILP or CSP) and then solve it to
+      retrieve satisfying alternatives. In order to compare the efficiency of
+      different formulations/techniques on a given problem, the domain-expert
+      has to manually reformulate the problem in another constraint language,
+      which is time-consuming. In order to overcome this lack of reusability and
+      flexibility in the current frameworks, we present here the Generic Design
+      Space Exploration (GDSE) framework that allows the designer to solve DSE
+      problems from different domains. Rather than using one strict formulation
+      of the design problem, the framework supports a higher level formulation
+      that can be mapped to different low level encodings. The main
+      contributions of this framework are: 1) a generic representation which can
+      be used to express any DSE problem, and 2) a flexible exploration
+      technique which supports several exploration techniques.
+DO  - 10.1145/2060329.2060362
+C1  - New York, NY, USA
+UR  - https://doi.org/10.1145/2060329.2060362
+UR  - http://dx.doi.org/10.1145/2060329.2060362
+DO  - 10.11452060329.2060362

@@ -1,0 +1,26 @@
+TY  - CPAPER
+AU  - Hewson, John A
+AU  - Anderson, Paul
+AU  - Gordon, Andrew D
+TI  - A Declarative Approach to Automated Configuration
+T2  - Proceedings of the 26th International Conference on Large Installation
+      System Administration: Strategies, Tools, and Techniques
+J2  - lisa'12
+SP  - 51–66
+PY  - 2012
+DA  - 2012
+PB  - USENIX Association
+AB  - System administrators increasingly use declarative, object-oriented
+      languages to configure their systems. Extending such systems with
+      automated analysis and decision making is an area of active research. We
+      introduce ConfSolve, an object-oriented declarative configuration
+      language, in which logical constraints over a system can be specified.
+      Verification, impact analysis or even the generation of valid
+      configurations can then be performed, by translation to a Constraint
+      Satisfaction Problem (CSP), which is solved with an off-the-shelf solver.
+      We present a full definition of our language and its compilation process,
+      and show that our implementation outperforms previous work utilising an
+      SMT solver, while adding new features such as optimisation.
+C1  - USA
+KW  - configuration management, constraints, automation
+ID  - 10.5555/2432523.2432528

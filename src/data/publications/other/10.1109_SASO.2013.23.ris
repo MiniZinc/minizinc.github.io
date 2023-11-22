@@ -1,0 +1,21 @@
+TY  - CONF
+TI  - Constraint-Based Autonomic Reconfiguration
+T2  - 2013 IEEE 7th International Conference on Self-Adaptive and Self-Organizing Systems
+SP  - 101
+EP  - 110
+AU  - Hewson, John A.
+AU  - Anderson, Paul
+AU  - Gordon, Andrew D.
+PY  - 2013
+DO  - 10.1109/SASO.2013.23
+JO  - 2013 IEEE 7th International Conference on Self-Adaptive and Self-Organizing Systems
+IS  - 
+SN  - 1949-3681
+VO  - 
+VL  - 
+JA  - 2013 IEEE 7th International Conference on Self-Adaptive and Self-Organizing Systems
+Y1  - 9-13 Sept. 2013
+AB  - Declarative, object-oriented configuration management systems are widely used by system administrators. Recently, logical constraints have been added to such systems to facilitate the automatic generation of configurations. However, there is no facility for reasoning about subsequent reconfigurations, such as those needed in an autonomic configuration system. In this paper we develop a number of language primitives, which facilitate not only one-off configuration tasks, but also subsequent reconfigurations in which the previous state of the system is taken into account. We show how it can be directly integrated into a declarative language, and assess its impact on performance.
+ER  - 
+
+

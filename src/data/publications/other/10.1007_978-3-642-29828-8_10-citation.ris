@@ -1,0 +1,19 @@
+TY  - CONF
+AU  - Downing, Nicholas
+AU  - Feydy, Thibaut
+AU  - Stuckey, Peter J.
+ED  - Beldiceanu, Nicolas
+ED  - Jussien, Narendra
+ED  - Pinson, Éric
+PY  - 2012
+DA  - 2012//
+TI  - Explaining Flow-Based Propagation
+BT  - Integration of AI and OR Techniques in Contraint Programming for Combinatorial Optimzation Problems
+SP  - 146
+EP  - 162
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Lazy clause generation is a powerful approach to reducing search in constraint programming. For use in a lazy clause generation solver, global constraints must be extended to explain themselves. In this paper we present two new generic flow-based propagators (for hard and soft flow-based constraints) with several novel features, and most importantly, the addition of explanation capability. We discuss how explanations change the tradeoffs for propagation compared with the previous generic flow-based propagator, and show that the generic propagators can efficiently replace specialized versions, in particular for gcc and sequence constraints. Using real-world scheduling and rostering problems as examples, we compare against a number of standard Constraint Programming implementations of these contraints (and in the case of soft constraints, Mixed-Integer Programming models) to show that the new global propagators are extremely beneficial on these benchmarks.
+SN  - 978-3-642-29828-8
+ID  - 10.1007/978-3-642-29828-8_10
+ER  - 

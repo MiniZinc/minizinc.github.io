@@ -1,0 +1,17 @@
+TY  - CONF
+AU  - Feydy, Thibaut
+AU  - Somogyi, Zoltan
+AU  - Stuckey, Peter J.
+ED  - Lee, Jimmy
+PY  - 2011
+DA  - 2011//
+TI  - Half Reification and Flattening
+BT  - Principles and Practice of Constraint Programming – CP 2011
+SP  - 286
+EP  - 301
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Usually propagation-based constraint solvers construct a constraint network as a conjunction of constraints. They provide propagators for each form of constraint c. In order to increase expressiveness, systems also usually provide propagators for reified forms of constraints. A reified constraint b ↔ c associates a truth value b with a constraint c. With reified propagators, systems can express complex combinations of constraints using disjunction, implication and negation by flattening. In this paper we argue that reified constraints should be replaced by half-reified constraints of the form b → c. Half-reified constraints do not impose any extra burden on the implementers of propagators compared to unreified constraints, they can implement reified propagators without loss of propagation strength (assuming c is negatable), they extend automatically to global constraints, they simplify the handling of partial functions, and can allow flattening to give better propagation behavior.
+SN  - 978-3-642-23786-7
+ID  - 10.1007/978-3-642-23786-7_23
+ER  - 

@@ -1,0 +1,24 @@
+TY  - JOUR
+T1  - MiningZinc: A declarative framework for constraint-based mining
+AU  - Guns, Tias
+AU  - Dries, Anton
+AU  - Nijssen, Siegfried
+AU  - Tack, Guido
+AU  - De Raedt, Luc
+JO  - Artificial Intelligence
+VL  - 244
+SP  - 6
+EP  - 29
+PY  - 2017
+DA  - 2017/03/01/
+T2  - Combining Constraint Solving with Mining and Learning
+SN  - 0004-3702
+DO  - https://doi.org/10.1016/j.artint.2015.09.007
+UR  - https://www.sciencedirect.com/science/article/pii/S0004370215001435
+KW  - Constraint-based mining
+KW  - Itemset mining
+KW  - Constraint programming
+KW  - Declarative modeling
+KW  - Pattern mining
+AB  - We introduce MiningZinc, a declarative framework for constraint-based data mining. MiningZinc consists of two key components: a language component and an execution mechanism. First, the MiningZinc language allows for high-level and natural modeling of mining problems, so that MiningZinc models are similar to the mathematical definitions used in the literature. It is inspired by the Zinc family of languages and systems and supports user-defined constraints and functions. Secondly, the MiningZinc execution mechanism specifies how to compute solutions for the models. It is solver independent and supports both standard constraint solvers and specialized data mining systems. The high-level problem specification is first translated into a normalized constraint language (FlatZinc). Rewrite rules are then used to add redundant constraints or solve subproblems using specialized data mining algorithms or generic constraint programming solvers. Given a model, different execution strategies are automatically extracted that correspond to different sequences of algorithms to run. Optimized data mining algorithms, specialized processing routines and generic solvers can all be automatically combined. Thus, the MiningZinc language allows one to model constraint-based itemset mining problems in a solver independent way, and its execution mechanism can automatically chain different algorithms and solvers. This leads to a unique combination of declarative modeling with high-performance solving.
+ER  - 

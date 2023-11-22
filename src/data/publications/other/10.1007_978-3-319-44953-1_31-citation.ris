@@ -1,0 +1,16 @@
+TY  - CONF
+AU  - Szeredi, Ria
+AU  - Schutt, Andreas
+ED  - Rueher, Michel
+PY  - 2016
+DA  - 2016//
+TI  - Modelling and Solving Multi-mode Resource-Constrained Project Scheduling
+BT  - Principles and Practice of Constraint Programming
+SP  - 483
+EP  - 492
+PB  - Springer International Publishing
+CY  - Cham
+AB  - The resource-constrained project scheduling problem is a fundamental scheduling problem which comprises activities, scarce resources required by activities for their execution, and precedence relations between activities. The goal is to find an optimal schedule satisfying the resource and precedence constraints. These scheduling problems have many applications, ranging from production planning to project management. One of them concerns multi-modes of activities, in which each mode represents a different time-resource or resource-resource trade-off option. In recent years, constraint programming technologies with nogood learning have pushed the boundaries for exact solution methods on various resource-constrained scheduling problems, but, surprisingly, have not been applied on multi-mode resource-constrained project scheduling. In this paper, we investigate different constraint programming models and searches and show the superiority of such technologies in comparison to the current state of the art. Our best approach solved all remaining open instances from a well-established benchmark library.
+SN  - 978-3-319-44953-1
+ID  - 10.1007/978-3-319-44953-1_31
+ER  - 

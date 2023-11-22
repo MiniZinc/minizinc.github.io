@@ -1,0 +1,29 @@
+TY  - CPAPER
+AU  - Caballero, Rafael
+AU  - Stuckey, Peter J
+AU  - Tenorio-Fornés, Antonio
+TI  - Finite Type Extensions in Constraint Programming
+T2  - Proceedings of the 15th Symposium on Principles and Practice of
+      Declarative Programming
+J2  - PPDP '13
+SP  - 217–227
+PY  - 2013
+DA  - 2013
+PB  - Association for Computing Machinery
+AB  - Many problems are naturally modelled by extending an existing type with
+      additional values. For example for modelling database problems with nulls
+      natural models use booleans and integers with an additional null value.
+      Similarly models involving integers may naturally be extended to handle -∞
+      and +∞. We extend the constraint modelling language MiniZinc to MiniZinc+
+      to allow modelling with extended types. The user can specify both the
+      extension of a predefined type with new values, and the behavior of the
+      operations with relation to the new types. The resulting MiniZinc+ model
+      is transformed to a MiniZinc model which is equivalent to the original
+      model. We illustrate the usage of MiniZinc+ to model SQL like problems
+      with integer variables extended with NULL values.
+DO  - 10.1145/2505879.2505905
+C1  - New York, NY, USA
+UR  - https://doi.org/10.1145/2505879.2505905
+UR  - http://dx.doi.org/10.1145/2505879.2505905
+KW  - modelling language, MiniZinc, type extension
+ER  - 

@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Burt, Christina N.
+AU  - Lipovetzky, Nir
+AU  - Pearce, Adrian R.
+AU  - Stuckey, Peter J.
+ED  - Michel, Laurent
+PY  - 2015
+DA  - 2015//
+TI  - Scheduling with Fixed Maintenance, Shared Resources and Nonlinear Feedrate Constraints: A Mine Planning Case Study
+BT  - Integration of AI and OR Techniques in Constraint Programming
+SP  - 91
+EP  - 107
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Given a short term mining plan, the task for an operational mine planner is to determine how the equipment in the mine should be used each day. That is, how crushers, loaders and trucks should be used to realise the short term plan. It is important to achieve both grade targets (by blending) and maximise the utilisation (i.e., throughput) of the mine. The resulting problem is a non-linear scheduling problem with maintenance constraints, blending and shared resources. In this paper, we decompose this problem into two parts: the blending, and the utilisation problems. We then focus our attention on the utilisation problem. We examine how to model and solve it using alternative approaches: specifically, constraint programming, MIQP and MINLP. We provide a repair heuristic based on an outer-approximation, and empirically demonstrate its effectiveness for solving the real-world instances of operational mine planning obtained from our industry partner.
+SN  - 978-3-319-18008-3
+ID  - 10.1007/978-3-319-18008-3_7
+ER  - 

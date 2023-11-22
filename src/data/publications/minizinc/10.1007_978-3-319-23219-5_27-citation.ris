@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Rendl, Andrea
+AU  - Guns, Tias
+AU  - Stuckey, Peter J.
+AU  - Tack, Guido
+ED  - Pesant, Gilles
+PY  - 2015
+DA  - 2015//
+TI  - MiniSearch: A Solver-Independent Meta-Search Language for MiniZinc
+BT  - Principles and Practice of Constraint Programming
+SP  - 376
+EP  - 392
+PB  - Springer International Publishing
+CY  - Cham
+AB  - Much of the power of CP comes from the ability to create complex hybrid search algorithms specific to an application. Unfortunately there is no widely accepted standard for specifying search, and each solver typically requires detailed knowledge in order to build complex searches. This makes the barrier to entry for exploring different search methods quite high. Furthermore, search is a core part of the solver and usually highly optimised. Any imposition on the solver writer to change this part of their system is significant.
+SN  - 978-3-319-23219-5
+ID  - 10.1007/978-3-319-23219-5_27
+ER  - 

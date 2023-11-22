@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Schutt, Andreas
+AU  - Feydy, Thibaut
+AU  - Stuckey, Peter J.
+AU  - Wallace, Mark G.
+ED  - Gent, Ian P.
+PY  - 2009
+DA  - 2009//
+TI  - Why Cumulative Decomposition Is Not as Bad as It Sounds
+BT  - Principles and Practice of Constraint Programming - CP 2009
+SP  - 746
+EP  - 761
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - The global cumulative constraint was proposed for modelling cumulative resources in scheduling problems for finite domain (FD) propagation. Since that time a great deal of research has investigated new stronger and faster filtering techniques for cumulative, but still most of these techniques only pay off in limited cases or are not scalable. Recently, the “lazy clause generation” hybrid solving approach has been devised which allows a finite domain propagation engine possible to take advantage of advanced SAT technology, by “lazily” creating a SAT model of an FD problem as computation progresses. This allows the solver to make use of SAT nogood learning and autonomous search capabilities. In this paper we show that using lazy clause generation where we model cumulative constraint by decomposition gives a very competitive implementation of cumulative resource problems. We are able to close a number of open problems from the well-established PSPlib benchmark library of resource-constrained project scheduling problems.
+SN  - 978-3-642-04244-7
+ID  - 10.1007/978-3-642-04244-7_58
+ER  - 

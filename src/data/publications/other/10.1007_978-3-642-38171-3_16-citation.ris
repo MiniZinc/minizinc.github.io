@@ -1,0 +1,18 @@
+TY  - CONF
+AU  - Schutt, Andreas
+AU  - Feydy, Thibaut
+AU  - Stuckey, Peter J.
+ED  - Gomes, Carla
+ED  - Sellmann, Meinolf
+PY  - 2013
+DA  - 2013//
+TI  - Explaining Time-Table-Edge-Finding Propagation for the Cumulative Resource Constraint
+BT  - Integration of AI and OR Techniques in Constraint Programming for Combinatorial Optimization Problems
+SP  - 234
+EP  - 250
+PB  - Springer Berlin Heidelberg
+CY  - Berlin, Heidelberg
+AB  - Cumulative resource constraints can model scarce resources in scheduling problems or a dimension in packing and cutting problems.In order to efficiently solve such problems with a constraint programming solver, it is important to have strong and fast propagators for cumulative resource constraints. Time-table-edge-finding propagators are a recent development in cumulative propagators, that combine the current resource profile (time-table) during the edge-finding propagation. The current state of the art for solving scheduling and cutting problems involving cumulative constraints are lazy clause generation solvers, i.e., constraint programming solvers incorporating nogood learning, have proved to be excellent at solving scheduling and cutting problems. For such solvers, concise and accurate explanations of the reasons for propagation are essential for strong nogood learning. In this paper, we develop a time-table-edge-finding propagator for cumulative that explains its propagations. We give results using this propagator in a lazy clause generation system on resource-constrained project scheduling problems from various standard benchmark suites. On the standard benchmark suite PSPLib, we are able to improve the lower bound of about 60% of the remaining open instances, and close 6 open instances.
+SN  - 978-3-642-38171-3
+ID  - 10.1007/978-3-642-38171-3_16
+ER  - 

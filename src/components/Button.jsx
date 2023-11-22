@@ -15,6 +15,10 @@ const variantStyles = {
     white:
       'bg-white text-cyan-900 hover:bg-white/90 active:bg-white/90 active:text-cyan-900/70',
     gray: 'bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 active:text-white/80',
+    light:
+      'bg-gray-200 text-gray-700 hover:bg-gray-300 active:bg-gray-300 active:text-gray-900',
+    primary:
+      'bg-primary text-white hover:bg-primary-dark active:bg-primary-light',
   },
   outline: {
     gray: 'border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80',

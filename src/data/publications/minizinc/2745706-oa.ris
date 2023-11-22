@@ -1,0 +1,20 @@
+TY  - GEN
+T1  - Multi-pass high-level presolving
+AU  - Leo, Kevin
+AU  - Tack, Guido
+N1  - Conference code: 24th
+PY  - 2015
+Y1  - 2015
+N2  - Presolving is a preprocessing step performed by optimisation solvers to improve performance. However, these solvers cannot easily exploit high-level model structure as available in modelling languages such as MiniZinc or Essence. We present an integrated approach that performs presolving as a separate pass during the compilation from high-level optimisation models to solverlevel programs. The compiler produces a representation of the model that is suitable for presolving by retaining some of the high-level structure. It then uses information learned during presolving to generate the final solver-level representation. Our approach introduces the novel concept of variable paths that identify variables which are common across multiple compilation passes, increasing the amount of shared information. We show that this approach can lead to both faster compilation and more efficient solver-level programs.
+AB  - Presolving is a preprocessing step performed by optimisation solvers to improve performance. However, these solvers cannot easily exploit high-level model structure as available in modelling languages such as MiniZinc or Essence. We present an integrated approach that performs presolving as a separate pass during the compilation from high-level optimisation models to solverlevel programs. The compiler produces a representation of the model that is suitable for presolving by retaining some of the high-level structure. It then uses information learned during presolving to generate the final solver-level representation. Our approach introduces the novel concept of variable paths that identify variables which are common across multiple compilation passes, increasing the amount of shared information. We show that this approach can lead to both faster compilation and more efficient solver-level programs.
+M3  - Conference Paper
+SP  - 346
+EP  - 352
+BT  - Proceedings of the Twenty-Fourth International Joint Conference on Artificial Intelligence
+A2  - Yang, Qiang
+A2  - Wooldridge, Michael 
+PB  - Association for the Advancement of Artificial Intelligence (AAAI)
+CY  - Palo Alto CA USA
+T2  - International Joint Conference on Artificial Intelligence 2015
+Y2  - 25 July 2015 through 1 August 2015
+ER  - 
