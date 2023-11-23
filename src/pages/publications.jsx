@@ -21,9 +21,10 @@ export default function PublicationsPage({ publications }) {
 }
 
 export async function getStaticProps() {
+  const { publications } = await loadPublications()
   return {
     props: {
-      publications: await loadPublications(),
+      publications,
     },
   }
 }

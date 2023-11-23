@@ -1,22 +1,41 @@
 import clsx from 'clsx'
 import { Link } from '@/components/Link'
+import { Abstract } from '@/components/publications/Abstract'
+import { useState } from 'react'
 
-function titleAndAbstract(pub) {
-  if (pub.abstract) {
+function TitleAndAbstract({ publication }) {
+  const [active, setActive] = useState(null)
+  if (publication.abstract) {
     return (
-      <details>
-        <summary className="hover:cursor-pointer hover:underline">
-          <span className="font-bold">{pub.title}</span>.
-        </summary>
-        <blockquote className="max-w-prose p-4 pt-1 text-justify">
-          {pub.abstract}
-        </blockquote>
-      </details>
+      <>
+        <div className="flex items-center gap-2">
+          <div
+            className="hover:cursor-pointer hover:underline"
+            onClick={() => setActive(!active)}
+          >
+            <span className="font-bold">{publication.title}</span>.
+          </div>
+          <div
+            className="rounded-md bg-primary px-1.5 py-0.5 text-xs text-white no-underline hover:cursor-pointer hover:bg-primary-light"
+            onClick={() => setActive(!active)}
+          >
+            {active ? 'Hide' : 'Abstract'}
+          </div>
+        </div>
+        {active === null ? (
+          ''
+        ) : (
+          <Abstract
+            className={active ? '' : 'hidden'}
+            index={publication.index}
+          />
+        )}
+      </>
     )
   }
   return (
     <div>
-      <span className="font-bold">{pub.title}</span>.
+      <span className="font-bold">{publication.title}</span>.
     </div>
   )
 }
@@ -26,7 +45,9 @@ function doiLink(pub) {
     const href = `https://doi.org/${pub.id}`
     return (
       <div className="text-sm">
-        <Link href={href}>{href}</Link>
+        <Link href={href} target="_blank">
+          {href}
+        </Link>
       </div>
     )
   }
@@ -71,7 +92,7 @@ export function PublicationList({ publications }) {
               .join(', ')}
             . {pub.year ? `${pub.year}.` : ''}
           </div>
-          {titleAndAbstract(pub)}
+          <TitleAndAbstract publication={pub} />
           <div className="text-sm">
             <span className="italic">{venue(pub)}</span>
             {[

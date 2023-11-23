@@ -34,10 +34,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const { publications } = await loadPublications()
   return {
     props: {
       slug: params.person,
-      publications: (await loadPublications()).all.filter((p) =>
+      publications: publications.all.filter((p) =>
         authorsMatches(p.authors, params.person),
       ),
     },

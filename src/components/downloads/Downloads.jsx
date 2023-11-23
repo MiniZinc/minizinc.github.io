@@ -24,7 +24,7 @@ const bundles = [
   },
   {
     name: 'Linux Snap package',
-    description: 'Snap package for 64-bit Linux',
+    description: 'Snap package for 64-bit Linux.',
     label: 'View on the Snap store',
     url: downloadLinks.snap,
   },

@@ -21,11 +21,11 @@ export async function loadPublications() {
     AB: 'abstract',
     N2: 'abstract',
   }
-  const all = []
+  const publications = []
   for (const key of ['cite', 'minizinc', 'other']) {
     const root = path.join(process.cwd(), 'src/data/publications', key)
     const filenames = await fs.readdir(root)
-    all.push(
+    publications.push(
       ...(await Promise.all(
         filenames
           .filter((filename) => filename.endsWith('.ris'))
@@ -34,24 +34,39 @@ export async function loadPublications() {
             const fileContents = await fs.readFile(filePath, 'utf8')
             const items = fileContents
               .split('\n')
-              .map((line) => line.trim())
+              .map((line) => line.trimEnd())
               .filter((line) => line.length > 0)
               .map((line) => [line.substring(0, 2), line.substring(6)])
+            items.push(['ER', ''])
             const result = {
               category: key,
               authors: [],
               editors: [],
             }
+            let currentTag = null
+            let buffer = ''
             for (const [tag, value] of items) {
-              if (tag === 'AU') {
-                result.authors.push(value.split(', ').reverse().join(' '))
-              } else if (tag === 'ED') {
-                result.editors.push(value.split(', ').reverse().join(' '))
-              } else if (tag === 'EP') {
-                result.pages = result.pages ? `${result.pages}—${value}` : value
-              } else if (tag in map) {
-                result[map[tag]] = value
+              if (tag !== '  ') {
+                if (currentTag) {
+                  if (currentTag === 'AU') {
+                    result.authors.push(buffer.split(', ').reverse().join(' '))
+                  } else if (currentTag === 'ED') {
+                    result.editors.push(buffer.split(', ').reverse().join(' '))
+                  } else if (currentTag === 'EP') {
+                    result.pages = result.pages
+                      ? `${result.pages}—${buffer}`
+                      : value
+                  } else if (currentTag in map) {
+                    result[map[currentTag]] = buffer
+                  }
+                  buffer = ''
+                }
+                currentTag = tag
               }
+              if (buffer.length > 0 && !buffer.endsWith(' ')) {
+                buffer += ' '
+              }
+              buffer += value
             }
             if (result.year && result.year.length > 4) {
               for (const part of result.year.split(/[^0-9]+/)) {
@@ -66,11 +81,22 @@ export async function loadPublications() {
       )),
     )
   }
-  all.sort((x, y) => y.year.localeCompare(x.year))
+  publications.sort((x, y) => y.year.localeCompare(x.year))
+  publications.forEach((pub, i) => {
+    pub.index = i
+  })
+  const all = publications.map((pub) => ({
+    ...pub,
+    abstract: !!pub.abstract,
+  }))
+  const abstracts = publications.map((pub) => pub.abstract)
   return {
-    all,
-    cite: all.filter((pub) => pub.category === 'cite').reverse(),
-    minizinc: all.filter((pub) => pub.category === 'minizinc'),
-    other: all.filter((pub) => pub.category === 'other'),
+    abstracts,
+    publications: {
+      all,
+      cite: all.filter((pub) => pub.category === 'cite').reverse(),
+      minizinc: all.filter((pub) => pub.category === 'minizinc'),
+      other: all.filter((pub) => pub.category === 'other'),
+    },
   }
 }

@@ -21,7 +21,7 @@ export default function TeamPage({ authors }) {
 }
 
 export async function getStaticProps() {
-  const publications = await loadPublications()
+  const { publications } = await loadPublications()
   const authors = new Set(publications.all.flatMap((pub) => pub.authors))
   return {
     props: {
