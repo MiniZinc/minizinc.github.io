@@ -14,7 +14,7 @@ export function Resources({ resources }) {
           className="flex flex-col rounded-2xl border border-gray-200 p-8"
         >
           <div className="text-xl text-primary-dark">
-            <FontAwesomeIcon icon={resource.icon} />
+            <FontAwesomeIcon icon={resource.icon} height="1em" />
           </div>
           <h3 className="mt-6 font-semibold text-gray-900">
             <Link color="plain" className="hover:underline" href={resource.url}>
