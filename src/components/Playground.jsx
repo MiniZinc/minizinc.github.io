@@ -19,11 +19,10 @@ export function Playground() {
   const [playground, setPlayground] = useState(null)
   const [target, setTarget] = useState(null)
   const [svelteComponent, setSvelteComponent] = useState(null)
-  const [project, setProject] = useState(examples[0].project)
+  const [projectIndex, setProjectIndex] = useState(0)
 
   useEffect(() => {
-    const index = Math.floor(examples.length * Math.random())
-    setProject(examples[index].project)
+    setProjectIndex(Math.floor(examples.length * Math.random()))
     window[`playground-${id}`] = (p) => setPlayground({ playground: p })
     const script = document.createElement('script')
     script.id = `playground-script-${id}`
@@ -48,7 +47,8 @@ export function Playground() {
     const component = new playground.playground({
       target,
       props: {
-        project: examples[0].project,
+        project: { files: [] },
+        autoFocus: false,
         splitterDirection: mediaQuery.matches ? 'vertical' : 'horizontal',
         splitterSize: 60,
         showShareButton: false,
@@ -81,10 +81,12 @@ export function Playground() {
   }, [playground, target])
 
   useEffect(() => {
-    if (svelteComponent && project) {
-      svelteComponent.component.$set({ project })
+    if (svelteComponent) {
+      svelteComponent.component.$set({
+        project: examples[projectIndex].project,
+      })
     }
-  }, [svelteComponent, project])
+  }, [svelteComponent, projectIndex])
 
   return (
     <section
@@ -121,8 +123,8 @@ export function Playground() {
           <SelectField
             id="playground-example"
             className="col-span-full"
-            onChange={(e) => setProject(examples[e.target.value].project)}
-            defaultValue={project}
+            onChange={(e) => setProjectIndex(e.target.value)}
+            value={projectIndex}
           >
             {examples.map((x, i) => (
               <option key={i} value={i}>
