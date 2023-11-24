@@ -86,9 +86,6 @@ export function MiniZincDistribution() {
                 <Link href="https://github.com/radsz/jacop">JaCoP</Link>
               </li>
               <li>
-                <Link href="https://www.scipopt.org">SCIP</Link>
-              </li>
-              <li>
                 <Link href="https://github.com/ehebrard/Mistral-2.0">
                   Mistral-2.0
                 </Link>
