@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.2.2.11. Graph constraints &mdash; The MiniZinc Handbook 2.8.1</title>
+      <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-globals-graph.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=7e412534"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.2.12. Extensional constraints (table, regular etc.)" href="lib-globals-extensional.html" />
+    <link rel="prev" title="4.2.2.10. Scheduling constraints" href="lib-globals-scheduling.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.1
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lib-stdlib.html">4.2.1. Standard Library</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="lib-globals.html">4.2.2. Global constraints</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-alldifferent.html">4.2.2.1. All-Different and related constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-lexicographic.html">4.2.2.2. Lexicographic constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-sort.html">4.2.2.3. Sorting constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-channeling.html">4.2.2.4. Channeling constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-counting.html">4.2.2.5. Counting constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-array.html">4.2.2.6. Array-related constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-set.html">4.2.2.7. Set-related constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-math.html">4.2.2.8. Mathematical constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-packing.html">4.2.2.9. Packing constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-scheduling.html">4.2.2.10. Scheduling constraints</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.2.11. Graph constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-extensional.html">4.2.2.12. Extensional constraints (table, regular etc.)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-learning.html">4.2.2.13. Machine learning constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-deprecated.html">4.2.2.14. Deprecated constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-ide.html">4.2.6. MiniZincIDE tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-experimental.html">4.2.7. Experimental Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json-stream.html">4.4. Machine-readable JSON output format</a></li>
+</ul>
+</li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_4_reference.html"><span class="section-number">4. </span>Reference Manual</a></li>
+          <li class="breadcrumb-item"><a href="lib.html"><span class="section-number">4.2. </span>The MiniZinc library</a></li>
+          <li class="breadcrumb-item"><a href="lib-globals.html"><span class="section-number">4.2.2. </span>Global constraints</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2.2.11. </span>Graph constraints</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graph-constraints">
+<span id="ch-lib-globals-graph"></span><h1><span class="section-number">4.2.2.11. </span>Graph constraints<a class="headerlink" href="#graph-constraints" title="Link to this heading"></a></h1>
+<p>Many of these constraints operate on graphs that are represented as lists of edges.
+The constraints take a given (fixed) graph as arguments, which is represented
+using two arrays, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">from</span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">to</span></code>, representing the graph with edges
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="p">(</span><span class="nv">from</span><span class="p">[</span><span class="nv">i</span><span class="p">],</span><span class="nv">to</span><span class="p">[</span><span class="nv">i</span><span class="p">])</span></code>, where <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">from</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">to</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span></code> are nodes of the graph.</p>
+<p>In this section: <a class="reference internal" href="#mzn-globals-graph-bounded-dpath"><span class="std std-ref">bounded_dpath</span></a>, <a class="reference internal" href="#mzn-globals-graph-bounded-path"><span class="std std-ref">bounded_path</span></a>, <a class="reference internal" href="#mzn-globals-graph-circuit"><span class="std std-ref">circuit</span></a>, <a class="reference internal" href="#mzn-globals-graph-connected"><span class="std std-ref">connected</span></a>, <a class="reference internal" href="#mzn-globals-graph-d-weighted-spanning-tree"><span class="std std-ref">d_weighted_spanning_tree</span></a>, <a class="reference internal" href="#mzn-globals-graph-dag"><span class="std std-ref">dag</span></a>, <a class="reference internal" href="#mzn-globals-graph-dconnected"><span class="std std-ref">dconnected</span></a>, <a class="reference internal" href="#mzn-globals-graph-dpath"><span class="std std-ref">dpath</span></a>, <a class="reference internal" href="#mzn-globals-graph-dreachable"><span class="std std-ref">dreachable</span></a>, <a class="reference internal" href="#mzn-globals-graph-dsteiner"><span class="std std-ref">dsteiner</span></a>, <a class="reference internal" href="#mzn-globals-graph-dtree"><span class="std std-ref">dtree</span></a>, <a class="reference internal" href="#mzn-globals-graph-network-flow"><span class="std std-ref">network_flow</span></a>, <a class="reference internal" href="#mzn-globals-graph-network-flow-cost"><span class="std std-ref">network_flow_cost</span></a>, <a class="reference internal" href="#mzn-globals-graph-path"><span class="std std-ref">path</span></a>, <a class="reference internal" href="#mzn-globals-graph-reachable"><span class="std std-ref">reachable</span></a>, <a class="reference internal" href="#mzn-globals-graph-steiner"><span class="std std-ref">steiner</span></a>, <a class="reference internal" href="#mzn-globals-graph-subcircuit"><span class="std std-ref">subcircuit</span></a>, <a class="reference internal" href="#mzn-globals-graph-subgraph"><span class="std std-ref">subgraph</span></a>, <a class="reference internal" href="#mzn-globals-graph-tree"><span class="std std-ref">tree</span></a>, <a class="reference internal" href="#mzn-globals-graph-weighted-spanning-tree"><span class="std std-ref">weighted_spanning_tree</span></a>.</p>
+<section class="mzn-docitem" id="bounded-dpath">
+<span id="mzn-globals-graph-bounded-dpath"></span><span id="index-0"></span><h2>bounded_dpath<a class="headerlink" href="#bounded-dpath" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-bounded-dpath"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">bounded_dpath</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">K</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">bounded_dpath</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">K</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be a path from <tt class="docutils literal">s</tt> to <tt class="docutils literal">t</tt> of weight <tt class="docutils literal">K</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">w</tt>:  the weight of each edge</p></li>
+<li><p><tt class="docutils literal">s</tt>:  the source node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">t</tt>:  the dest node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">K</tt>:  the cost of the path</p></li>
+</ul>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be a path from <tt class="docutils literal">s</tt> to <tt class="docutils literal">t</tt> of weight <tt class="docutils literal">K</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">w</tt>:  the weight of each edge</p></li>
+<li><p><tt class="docutils literal">s</tt>:  the source node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">t</tt>:  the dest node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">K</tt>:  the cost of the path</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="bounded-path">
+<span id="mzn-globals-graph-bounded-path"></span><span id="index-1"></span><h2>bounded_path<a class="headerlink" href="#bounded-path" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-bounded-path"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">bounded_path</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">K</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">bounded_path</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">K</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given undirected graph to be a path from <tt class="docutils literal">s</tt> to <tt class="docutils literal">t</tt> of weight <tt class="docutils literal">K</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">w</tt>:  the weight of each edge</p></li>
+<li><p><tt class="docutils literal">s</tt>:  the source node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">t</tt>:  the dest node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">K</tt>:  the cost of the path</p></li>
+</ul>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given undirected graph to be a path from <tt class="docutils literal">s</tt> to <tt class="docutils literal">t</tt> of weight <tt class="docutils literal">K</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">w</tt>:  the weight of each edge</p></li>
+<li><p><tt class="docutils literal">s</tt>:  the source node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">t</tt>:  the dest node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">K</tt>:  the cost of the path</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="circuit">
+<span id="mzn-globals-graph-circuit"></span><span id="index-2"></span><h2>circuit<a class="headerlink" href="#circuit" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-circuit"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">circuit</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">circuit</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the elements of <tt class="docutils literal">x</tt> to define a circuit where <tt class="docutils literal">x</tt>[<tt class="docutils literal">i</tt>] = <tt class="docutils literal">j</tt> means
+that <tt class="docutils literal">j</tt> is the successor of <tt class="docutils literal">i</tt>.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the elements of <tt class="docutils literal">x</tt> to define a circuit where <tt class="docutils literal">x</tt>[<tt class="docutils literal">i</tt>] = <tt class="docutils literal">j</tt> means
+that <tt class="docutils literal">j</tt> is the successor of <tt class="docutils literal">i</tt>. Absent elements do not take part in the circuit.</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="connected">
+<span id="mzn-globals-graph-connected"></span><span id="index-3"></span><h2>connected<a class="headerlink" href="#connected" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-connected"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">connected</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given undirected graph to be connected.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  is the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  is the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  is a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  is a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="d-weighted-spanning-tree">
+<span id="mzn-globals-graph-d-weighted-spanning-tree"></span><span id="index-4"></span><h2>d_weighted_spanning_tree<a class="headerlink" href="#d-weighted-spanning-tree" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-d-weighted-spanning-tree"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">d_weighted_spanning_tree</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">K</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains the set of edges <tt class="docutils literal">es</tt> of a given directed graph to be a weighted spanning tree rooted at <tt class="docutils literal">r</tt> of weight <tt class="docutils literal">W</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">w</tt>:  the weight of each edge</p></li>
+<li><p><tt class="docutils literal">r</tt>:  the root node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">K</tt>:  the weight of the tree</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="dag">
+<span id="mzn-globals-graph-dag"></span><span id="index-5"></span><h2>dag<a class="headerlink" href="#dag" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-dag"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">dag</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be a DAG.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="dconnected">
+<span id="mzn-globals-graph-dconnected"></span><span id="index-6"></span><h2>dconnected<a class="headerlink" href="#dconnected" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-dconnected"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">dconnected</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be connected.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="dpath">
+<span id="mzn-globals-graph-dpath"></span><span id="index-7"></span><h2>dpath<a class="headerlink" href="#dpath" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-dpath"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">dpath</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">dpath</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be a path from <tt class="docutils literal">s</tt> to <tt class="docutils literal">t</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">s</tt>:  the source node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">t</tt>:  the dest node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be a path from <tt class="docutils literal">s</tt> to <tt class="docutils literal">t</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">s</tt>:  the source node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">t</tt>:  the dest node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="dreachable">
+<span id="mzn-globals-graph-dreachable"></span><span id="index-8"></span><h2>dreachable<a class="headerlink" href="#dreachable" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-dreachable"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">dreachable</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">dreachable</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be reachable from <tt class="docutils literal">r</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">r</tt>:  the root node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be reachable from <tt class="docutils literal">r</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">r</tt>:  the root node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="dsteiner">
+<span id="mzn-globals-graph-dsteiner"></span><span id="index-9"></span><h2>dsteiner<a class="headerlink" href="#dsteiner" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-dsteiner"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">dsteiner</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">K</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be a weighted spanning tree rooted at <tt class="docutils literal">r</tt> of weight <tt class="docutils literal">W</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">w</tt>:  the weight of each edge</p></li>
+<li><p><tt class="docutils literal">r</tt>:  the root node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">K</tt>:  the weight of the tree</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="dtree">
+<span id="mzn-globals-graph-dtree"></span><span id="index-10"></span><h2>dtree<a class="headerlink" href="#dtree" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-dtree"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">dtree</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">dtree</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be a tree rooted at <tt class="docutils literal">r</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">r</tt>:  the root node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given directed graph to be at tree rooted at <tt class="docutils literal">r</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">r</tt>:  the root node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="network-flow">
+<span id="mzn-globals-graph-network-flow"></span><span id="index-11"></span><h2>network_flow<a class="headerlink" href="#network-flow" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-network-flow"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">network_flow</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="m">1</span><span class="o">..</span><span class="m">2</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">arc</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">balance</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">flow</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Defines a network flow constraint.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">arc</tt>:  a directed arc of the flow network. Arc <tt class="docutils literal">i</tt> connects node <tt class="docutils literal">arc</tt>[<tt class="docutils literal">i</tt>,1] to node <tt class="docutils literal">arc</tt>[<tt class="docutils literal">i</tt>,2].</p></li>
+<li><p><tt class="docutils literal">balance</tt>:  the difference between input and output flow for each node.</p></li>
+<li><p><tt class="docutils literal">flow</tt>:  the flow going through each arc.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="network-flow-cost">
+<span id="mzn-globals-graph-network-flow-cost"></span><span id="index-12"></span><h2>network_flow_cost<a class="headerlink" href="#network-flow-cost" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-network-flow-cost"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">network_flow_cost</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="m">1</span><span class="o">..</span><span class="m">2</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">arc</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">balance</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">weight</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">flow</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">cost</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Defines a network flow constraint with cost.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">arc</tt>:  a directed arc of the flow network. Arc <tt class="docutils literal">i</tt> connects node <tt class="docutils literal">arc</tt>[<tt class="docutils literal">i</tt>,1] to node <tt class="docutils literal">arc</tt>[<tt class="docutils literal">i</tt>,2].</p></li>
+<li><p><tt class="docutils literal">balance</tt>:  the difference between input and output flow for each node.</p></li>
+<li><p><tt class="docutils literal">weight</tt>:  the unit cost of the flow through the arc.</p></li>
+<li><p><tt class="docutils literal">flow</tt>:  the flow going through each arc.</p></li>
+<li><p><tt class="docutils literal">cost</tt>:  the overall cost of the flow.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="path">
+<span id="mzn-globals-graph-path"></span><span id="index-13"></span><h2>path<a class="headerlink" href="#path" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-path"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">path</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">path</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given undirected graph to be a path from <tt class="docutils literal">s</tt> to <tt class="docutils literal">t</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">s</tt>:  the source node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">t</tt>:  the dest node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given undirected graph to be a path from <tt class="docutils literal">s</tt> to <tt class="docutils literal">t</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">s</tt>:  the source node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">t</tt>:  the dest node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="reachable">
+<span id="mzn-globals-graph-reachable"></span><span id="index-14"></span><h2>reachable<a class="headerlink" href="#reachable" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-reachable"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">reachable</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">reachable</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given undirected graph to be reachable from <tt class="docutils literal">r</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">r</tt>:  the root node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given undirected graph to be reachable from <tt class="docutils literal">r</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">r</tt>:  the root node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="steiner">
+<span id="mzn-globals-graph-steiner"></span><span id="index-15"></span><h2>steiner<a class="headerlink" href="#steiner" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-steiner"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">steiner</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">K</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains the set of edges <tt class="docutils literal">es</tt> of a given undirected graph to be a weighted spanning tree of weight <tt class="docutils literal">W</tt>.</p>
+<ul class="simple">
+<li></li>
+</ul>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">w</tt>:  the weight of each edge</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">K</tt>:  the weight of the tree</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="subcircuit">
+<span id="mzn-globals-graph-subcircuit"></span><span id="index-16"></span><h2>subcircuit<a class="headerlink" href="#subcircuit" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-subcircuit"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">subcircuit</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains the elements of <tt class="docutils literal">x</tt> to define a subcircuit where <tt class="docutils literal">x</tt>[<tt class="docutils literal">i</tt>] = <tt class="docutils literal">j</tt>
+means that <tt class="docutils literal">j</tt> is the successor of <tt class="docutils literal">i</tt> and <tt class="docutils literal">x</tt>[<tt class="docutils literal">i</tt>] = <tt class="docutils literal">i</tt> means that <tt class="docutils literal">i</tt>
+is not in the circuit.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="subgraph">
+<span id="mzn-globals-graph-subgraph"></span><span id="index-17"></span><h2>subgraph<a class="headerlink" href="#subgraph" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-subgraph"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">subgraph</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">subgraph</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains that <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> is a subgraph of a given directed graph.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains that <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> is a subgraph of a given directed graph.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="tree">
+<span id="mzn-globals-graph-tree"></span><span id="index-18"></span><h2>tree<a class="headerlink" href="#tree" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-tree"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">tree</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">tree</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">N</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">N</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">ns</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given undirected graph to be a tree rooted at <tt class="docutils literal">r</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">r</tt>:  the root node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains the subgraph <tt class="docutils literal">ns</tt> and <tt class="docutils literal">es</tt> of a given undirected graph to be at tree rooted at <tt class="docutils literal">r</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">from</tt>:  the leaving node for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node for each edge</p></li>
+<li><p><tt class="docutils literal">r</tt>:  the root node (which may be variable)</p></li>
+<li><p><tt class="docutils literal">ns</tt>:  a Boolean for each node whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="weighted-spanning-tree">
+<span id="mzn-globals-graph-weighted-spanning-tree"></span><span id="index-19"></span><h2>weighted_spanning_tree<a class="headerlink" href="#weighted-spanning-tree" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-graph-weighted-spanning-tree"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">weighted_spanning_tree</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">N</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">from</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">to</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">es</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">K</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains the set of edges <tt class="docutils literal">es</tt> of a given undirected graph to be a weighted spanning tree of weight <tt class="docutils literal">W</tt>.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">N</tt>:  the number of nodes in the given graph</p></li>
+<li><p><tt class="docutils literal">E</tt>:  the number of edges in the given graph</p></li>
+<li><p><tt class="docutils literal">from</tt>:  the leaving node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">to</tt>:  the entering node 1..<tt class="docutils literal">N</tt> for each edge</p></li>
+<li><p><tt class="docutils literal">w</tt>:  the weight of each edge</p></li>
+<li><p><tt class="docutils literal">es</tt>:  a Boolean for each edge whether it is in the subgraph</p></li>
+<li><p><tt class="docutils literal">K</tt>:  the weight of the tree</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lib-globals-scheduling.html" class="btn btn-neutral float-left" title="4.2.2.10. Scheduling constraints" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lib-globals-extensional.html" class="btn btn-neutral float-right" title="4.2.2.12. Extensional constraints (table, regular etc.)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

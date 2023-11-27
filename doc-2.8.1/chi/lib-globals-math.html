@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.2.2.8. Mathematical constraints &mdash; The MiniZinc Handbook 2.8.1</title>
+      <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-globals-math.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=7e412534"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.2.9. Packing constraints" href="lib-globals-packing.html" />
+    <link rel="prev" title="4.2.2.7. Set-related constraints" href="lib-globals-set.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.1
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lib-stdlib.html">4.2.1. Standard Library</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="lib-globals.html">4.2.2. Global constraints</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-alldifferent.html">4.2.2.1. All-Different and related constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-lexicographic.html">4.2.2.2. Lexicographic constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-sort.html">4.2.2.3. Sorting constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-channeling.html">4.2.2.4. Channeling constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-counting.html">4.2.2.5. Counting constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-array.html">4.2.2.6. Array-related constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-set.html">4.2.2.7. Set-related constraints</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.2.8. Mathematical constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-packing.html">4.2.2.9. Packing constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-scheduling.html">4.2.2.10. Scheduling constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-graph.html">4.2.2.11. Graph constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-extensional.html">4.2.2.12. Extensional constraints (table, regular etc.)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-learning.html">4.2.2.13. Machine learning constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-deprecated.html">4.2.2.14. Deprecated constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-ide.html">4.2.6. MiniZincIDE tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-experimental.html">4.2.7. Experimental Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json-stream.html">4.4. Machine-readable JSON output format</a></li>
+</ul>
+</li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_4_reference.html"><span class="section-number">4. </span>Reference Manual</a></li>
+          <li class="breadcrumb-item"><a href="lib.html"><span class="section-number">4.2. </span>The MiniZinc library</a></li>
+          <li class="breadcrumb-item"><a href="lib-globals.html"><span class="section-number">4.2.2. </span>Global constraints</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2.2.8. </span>Mathematical constraints</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mathematical-constraints">
+<span id="ch-lib-globals-math"></span><h1><span class="section-number">4.2.2.8. </span>Mathematical constraints<a class="headerlink" href="#mathematical-constraints" title="Link to this heading"></a></h1>
+<p>In this section: <a class="reference internal" href="#mzn-globals-math-arg-max"><span class="std std-ref">arg_max</span></a>, <a class="reference internal" href="#mzn-globals-math-arg-max-weak"><span class="std std-ref">arg_max_weak</span></a>, <a class="reference internal" href="#mzn-globals-math-arg-min"><span class="std std-ref">arg_min</span></a>, <a class="reference internal" href="#mzn-globals-math-arg-min-weak"><span class="std std-ref">arg_min_weak</span></a>, <a class="reference internal" href="#mzn-globals-math-arg-val"><span class="std std-ref">arg_val</span></a>, <a class="reference internal" href="#mzn-globals-math-arg-val-weak"><span class="std std-ref">arg_val_weak</span></a>, <a class="reference internal" href="#mzn-globals-math-maximum"><span class="std std-ref">maximum</span></a>, <a class="reference internal" href="#mzn-globals-math-maximum-arg"><span class="std std-ref">maximum_arg</span></a>, <a class="reference internal" href="#mzn-globals-math-minimum"><span class="std std-ref">minimum</span></a>, <a class="reference internal" href="#mzn-globals-math-minimum-arg"><span class="std std-ref">minimum_arg</span></a>, <a class="reference internal" href="#mzn-globals-math-piecewise-linear"><span class="std std-ref">piecewise_linear</span></a>, <a class="reference internal" href="#mzn-globals-math-range"><span class="std std-ref">range</span></a>, <a class="reference internal" href="#mzn-globals-math-sliding-sum"><span class="std std-ref">sliding_sum</span></a>, <a class="reference internal" href="#mzn-globals-math-sum-pred"><span class="std std-ref">sum_pred</span></a>, <a class="reference internal" href="#mzn-globals-math-sum-set"><span class="std std-ref">sum_set</span></a>.</p>
+<section class="mzn-docitem" id="arg-max">
+<span id="mzn-globals-math-arg-max"></span><span id="index-0"></span><h2>arg_max<a class="headerlink" href="#arg-max" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-arg-max"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_max</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_max</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_max</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_max</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">5</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_max</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">6</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_max</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><dl>
+<dt>1-3.</dt><dd><div class="mzncodedoc docutils container">
+<p>Returns the index of the maximum value in the array <tt class="docutils literal">x</tt>.
+When breaking ties the least index is returned.</p>
+</div>
+</dd>
+<dt>4-6.</dt><dd><div class="mzncodedoc docutils container">
+<p>Returns the index of the maximum non-absent value in the array <tt class="docutils literal">x</tt>.
+When breaking ties the least index is returned.</p>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="arg-max-weak">
+<span id="mzn-globals-math-arg-max-weak"></span><span id="index-1"></span><h2>arg_max_weak<a class="headerlink" href="#arg-max-weak" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-arg-max-weak"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_max_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_max_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_max_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Returns the index of the maximum non-absent value in the array <tt class="docutils literal">x</tt>.
+When breaking ties the least index is returned.
+Returns absent when all elements are absent.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="arg-min">
+<span id="mzn-globals-math-arg-min"></span><span id="index-2"></span><h2>arg_min<a class="headerlink" href="#arg-min" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-arg-min"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_min</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_min</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_min</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_min</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">5</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_min</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+
+<span class="m">6</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="bp">arg_min</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><dl>
+<dt>1-3.</dt><dd><div class="mzncodedoc docutils container">
+<p>Returns the index of the minimum value in the array <tt class="docutils literal">x</tt>.
+When breaking ties the least index is returned.</p>
+</div>
+</dd>
+<dt>4-6.</dt><dd><div class="mzncodedoc docutils container">
+<p>Returns the index of the minimum non-absent value in the array <tt class="docutils literal">x</tt>.
+When breaking ties the least index is returned.</p>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="arg-min-weak">
+<span id="mzn-globals-math-arg-min-weak"></span><span id="index-3"></span><h2>arg_min_weak<a class="headerlink" href="#arg-min-weak" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-arg-min-weak"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_min_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_min_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_min_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Returns the index of the minimum non-absent value in the array <tt class="docutils literal">x</tt>.
+When breaking ties the least index is returned.
+Returns absent when all elements are absent.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="arg-val">
+<span id="mzn-globals-math-arg-val"></span><span id="index-4"></span><h2>arg_val<a class="headerlink" href="#arg-val" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-arg-val"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">V</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">V</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">V</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">V</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Returns the index of the value <tt class="docutils literal">v</tt> in the array <tt class="docutils literal">x</tt>.
+When breaking ties the least index is returned.
+Note that this function forces the value <tt class="docutils literal">v</tt> to occur in <tt class="docutils literal">x</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="arg-val-weak">
+<span id="mzn-globals-math-arg-val-weak"></span><span id="index-5"></span><h2>arg_val_weak<a class="headerlink" href="#arg-val-weak" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-arg-val-weak"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">V</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">V</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nf">arg_val_weak</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">V</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">V</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Returns the index of the value <tt class="docutils literal">v</tt> in the array <tt class="docutils literal">x</tt> when <tt class="docutils literal">v</tt>.
+When breaking ties the least index is returned.
+Returns absent when <tt class="docutils literal">v</tt> does not occur in <tt class="docutils literal">x</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="maximum">
+<span id="mzn-globals-math-maximum"></span><span id="index-6"></span><h2>maximum<a class="headerlink" href="#maximum" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-maximum"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">maximum</span><span class="p">(</span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">maximum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">m</tt> to be the maximum of the values in <tt class="docutils literal">x</tt>.</p>
+<p>Assumptions: |<tt class="docutils literal">x</tt>| &gt; 0.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="maximum-arg">
+<span id="mzn-globals-math-maximum-arg"></span><span id="index-7"></span><h2>maximum_arg<a class="headerlink" href="#maximum-arg" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-maximum-arg"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">maximum_arg</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">maximum_arg</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">maximum_arg</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">E</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><dl>
+<dt>1, 2.</dt><dd><div class="mzncodedoc docutils container">
+<p>Constrain <tt class="docutils literal">i</tt> to be the index of the maximum value in the array <tt class="docutils literal">x</tt>.
+When breaking ties the least index is returned.</p>
+<p>Assumption: |<tt class="docutils literal">x</tt>| &gt; 0</p>
+</div>
+</dd>
+</dl>
+<ol class="arabic" start="3">
+<li><div class="mzncodedoc docutils container">
+<p>Constrain <tt class="docutils literal">i</tt> to be the index of the maximum value in the array <tt class="docutils literal">x</tt>.
+When breaking ties the least index is returned.</p>
+<p>Assumption: |<tt class="docutils literal">x</tt>| &gt; 0</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="minimum">
+<span id="mzn-globals-math-minimum"></span><span id="index-8"></span><h2>minimum<a class="headerlink" href="#minimum" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-minimum"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">minimum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">minimum</span><span class="p">(</span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">m</tt> to be the minimum of the values in <tt class="docutils literal">x</tt>.</p>
+<p>Assumptions: |<tt class="docutils literal">x</tt>| &gt; 0.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="minimum-arg">
+<span id="mzn-globals-math-minimum-arg"></span><span id="index-9"></span><h2>minimum_arg<a class="headerlink" href="#minimum-arg" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-minimum-arg"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">minimum_arg</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">minimum_arg</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">minimum_arg</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrain <tt class="docutils literal">i</tt> to be the index of the minimum value in the array <tt class="docutils literal">x</tt>.
+When breaking ties the least index is returned.</p>
+<p>Assumption: |<tt class="docutils literal">x</tt>| &gt; 0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="piecewise-linear">
+<span id="mzn-globals-math-piecewise-linear"></span><span id="index-10"></span><h2>piecewise_linear<a class="headerlink" href="#piecewise-linear" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-piecewise-linear"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="bp">piecewise_linear</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">xi</span><span class="p">,</span>
+<span class="s">                                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">vi</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">piecewise_linear</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                               </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">xi</span><span class="p">,</span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">vi</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="bp">piecewise_linear</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x_start</span><span class="p">,</span>
+<span class="s">                                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x_end</span><span class="p">,</span>
+<span class="s">                                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v_start</span><span class="p">,</span>
+<span class="s">                                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v_end</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">piecewise_linear</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                               </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x_start</span><span class="p">,</span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x_end</span><span class="p">,</span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v_start</span><span class="p">,</span>
+<span class="s">                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v_end</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Return the piecewise-linear function of <tt class="docutils literal">x</tt>
+on the given point-value sequence.
+The array <tt class="docutils literal">xi</tt> defines the points, and <tt class="docutils literal">vi</tt> the corresponding values.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains <tt class="docutils literal">y</tt>(<tt class="docutils literal">x</tt>) to be the piecewise-linear function
+on the provided point-value sequence.
+The array <tt class="docutils literal">xi</tt> defines the points, and <tt class="docutils literal">vi</tt> the corresponding values.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Return the piecewise-linear function of <tt class="docutils literal">x</tt>
+on the given (possibly disconnected) intervals.
+Each interval <tt class="docutils literal">i</tt> connects
+(<tt class="docutils literal">x_start</tt>[<tt class="docutils literal">i</tt>], <tt class="docutils literal">v_start</tt>[<tt class="docutils literal">i</tt>]) to (<tt class="docutils literal">x_end</tt>[<tt class="docutils literal">i</tt>], <tt class="docutils literal">v_end</tt>[<tt class="docutils literal">i</tt>]).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains <tt class="docutils literal">y</tt>(<tt class="docutils literal">x</tt>) to be the piecewise-linear function
+on the given (possibly disconnected) intervals.
+Each interval <tt class="docutils literal">i</tt> connects
+(<tt class="docutils literal">x_start</tt>[<tt class="docutils literal">i</tt>], <tt class="docutils literal">v_start</tt>[<tt class="docutils literal">i</tt>]) to (<tt class="docutils literal">x_end</tt>[<tt class="docutils literal">i</tt>], <tt class="docutils literal">v_end</tt>[<tt class="docutils literal">i</tt>]).</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="range">
+<span id="mzn-globals-math-range"></span><span id="index-11"></span><h2>range<a class="headerlink" href="#range" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-range"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">range</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">Y</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">X</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">Y</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">range</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Requires that the image of function <tt class="docutils literal">x</tt> (represented as an array) on set
+of values <tt class="docutils literal">s</tt> is <tt class="docutils literal">t</tt>.  ub(<tt class="docutils literal">s</tt>) must be a subset of index_set(<tt class="docutils literal">x</tt>) otherwise an
+assertion failure will occur.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Returns the image of function <tt class="docutils literal">x</tt> (represented as an array) on set
+of values <tt class="docutils literal">s</tt>.  ub(<tt class="docutils literal">s</tt>) must be a subset of index_set(<tt class="docutils literal">x</tt>) otherwise an
+assertion failure will occur.</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="sliding-sum">
+<span id="mzn-globals-math-sliding-sum"></span><span id="index-12"></span><h2>sliding_sum<a class="headerlink" href="#sliding-sum" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-sliding-sum"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">sliding_sum</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">low</span><span class="p">,</span>
+<span class="s">                      </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">up</span><span class="p">,</span>
+<span class="s">                      </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">seq</span><span class="p">,</span>
+<span class="s">                      </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">vs</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Requires that in each subsequence <tt class="docutils literal">vs</tt>[<tt class="docutils literal">i</tt>], …, <tt class="docutils literal">vs</tt>[<tt class="docutils literal">i</tt> + <tt class="docutils literal">seq</tt> - 1] the sum of the
+values belongs to the interval [<tt class="docutils literal">low</tt>, <tt class="docutils literal">up</tt>].</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="sum-pred">
+<span id="mzn-globals-math-sum-pred"></span><span id="index-13"></span><h2>sum_pred<a class="headerlink" href="#sum-pred" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-sum-pred"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">sum_pred</span><span class="p">(</span><span class="kt">var</span><span class="s"> $$</span><span class="nv">X</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">Y</span><span class="p">:</span><span class="s"> </span><span class="nv">sets</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">cs</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Requires that the sum of <tt class="docutils literal">cs</tt>[<tt class="docutils literal">i1</tt>]..<tt class="docutils literal">cs</tt>[<tt class="docutils literal">iN</tt>] equals <tt class="docutils literal">s</tt>,
+where <tt class="docutils literal">i1</tt>..<tt class="docutils literal">iN</tt> are the elements of the <tt class="docutils literal">i</tt> th set in <tt class="docutils literal">sets</tt>.</p>
+<p>Nb: not called ‘sum’ as in the constraints catalog because ‘sum’ is a
+MiniZinc built-in function.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="sum-set">
+<span id="mzn-globals-math-sum-set"></span><span id="index-14"></span><h2>sum_set<a class="headerlink" href="#sum-set" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-math-sum-set"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">sum_set</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">Y</span><span class="p">:</span><span class="s"> </span><span class="nv">vs</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">ws</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">Y</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Requires that the sum of the weights <tt class="docutils literal">ws</tt>[<tt class="docutils literal">i1</tt>]..<tt class="docutils literal">ws</tt>[<tt class="docutils literal">iN</tt>] equals <tt class="docutils literal">s</tt>,
+where <tt class="docutils literal">vs</tt>[<tt class="docutils literal">i1</tt>]..<tt class="docutils literal">vs</tt>[<tt class="docutils literal">iN</tt>] are the elements appearing in set <tt class="docutils literal">x</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lib-globals-set.html" class="btn btn-neutral float-left" title="4.2.2.7. Set-related constraints" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lib-globals-packing.html" class="btn btn-neutral float-right" title="4.2.2.9. Packing constraints" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

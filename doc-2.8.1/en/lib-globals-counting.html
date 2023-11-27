@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.2.2.5. Counting constraints &mdash; The MiniZinc Handbook 2.8.1</title>
+      <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-globals-counting.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=2966be4c"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.2.6. Array-related constraints" href="lib-globals-array.html" />
+    <link rel="prev" title="4.2.2.4. Channeling constraints" href="lib-globals-channeling.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.1
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lib-stdlib.html">4.2.1. Standard Library</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="lib-globals.html">4.2.2. Global constraints</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-alldifferent.html">4.2.2.1. All-Different and related constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-lexicographic.html">4.2.2.2. Lexicographic constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-sort.html">4.2.2.3. Sorting constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-channeling.html">4.2.2.4. Channeling constraints</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.2.5. Counting constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-array.html">4.2.2.6. Array-related constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-set.html">4.2.2.7. Set-related constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-math.html">4.2.2.8. Mathematical constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-packing.html">4.2.2.9. Packing constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-scheduling.html">4.2.2.10. Scheduling constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-graph.html">4.2.2.11. Graph constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-extensional.html">4.2.2.12. Extensional constraints (table, regular etc.)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-learning.html">4.2.2.13. Machine learning constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-globals-deprecated.html">4.2.2.14. Deprecated constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-ide.html">4.2.6. MiniZincIDE tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-experimental.html">4.2.7. Experimental Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json-stream.html">4.4. Machine-readable JSON output format</a></li>
+</ul>
+</li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_4_reference.html"><span class="section-number">4. </span>Reference Manual</a></li>
+          <li class="breadcrumb-item"><a href="lib.html"><span class="section-number">4.2. </span>The MiniZinc library</a></li>
+          <li class="breadcrumb-item"><a href="lib-globals.html"><span class="section-number">4.2.2. </span>Global constraints</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2.2.5. </span>Counting constraints</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="counting-constraints">
+<span id="ch-lib-globals-counting"></span><h1><span class="section-number">4.2.2.5. </span>Counting constraints<a class="headerlink" href="#counting-constraints" title="Link to this heading"></a></h1>
+<p>These constraints count and restrict how many times certain values occur
+in an array of variables. MiniZinc will automatically generate the basic counting
+constraints below from expressions such as <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">count</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="p">)(</span><span class="nv">i</span><span class="o">=</span><span class="nv">c</span><span class="p">)</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">d</span></code>, so you
+can write models in this much more readable style instead of using these
+predicates. However, if your model
+contains multiple counting constraints over the same array, constraints
+like <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">distribute</span></code> or <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">global_cardinality</span></code> below may be useful.</p>
+<p>In this section: <a class="reference internal" href="#mzn-globals-counting-among"><span class="std std-ref">among</span></a>, <a class="reference internal" href="#mzn-globals-counting-at-least"><span class="std std-ref">at_least</span></a>, <a class="reference internal" href="#mzn-globals-counting-at-most"><span class="std std-ref">at_most</span></a>, <a class="reference internal" href="#mzn-globals-counting-at-most1"><span class="std std-ref">at_most1</span></a>, <a class="reference internal" href="#mzn-globals-counting-count"><span class="std std-ref">count</span></a>, <a class="reference internal" href="#mzn-globals-counting-count-eq"><span class="std std-ref">count_eq</span></a>, <a class="reference internal" href="#mzn-globals-counting-count-geq"><span class="std std-ref">count_geq</span></a>, <a class="reference internal" href="#mzn-globals-counting-count-gt"><span class="std std-ref">count_gt</span></a>, <a class="reference internal" href="#mzn-globals-counting-count-leq"><span class="std std-ref">count_leq</span></a>, <a class="reference internal" href="#mzn-globals-counting-count-lt"><span class="std std-ref">count_lt</span></a>, <a class="reference internal" href="#mzn-globals-counting-count-neq"><span class="std std-ref">count_neq</span></a>, <a class="reference internal" href="#mzn-globals-counting-distribute"><span class="std std-ref">distribute</span></a>, <a class="reference internal" href="#mzn-globals-counting-exactly"><span class="std std-ref">exactly</span></a>, <a class="reference internal" href="#mzn-globals-counting-global-cardinality"><span class="std std-ref">global_cardinality</span></a>, <a class="reference internal" href="#mzn-globals-counting-global-cardinality-closed"><span class="std std-ref">global_cardinality_closed</span></a>.</p>
+<section class="mzn-docitem" id="among">
+<span id="mzn-globals-counting-among"></span><span id="index-0"></span><h2>among<a class="headerlink" href="#among" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-among"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">among</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">among</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Requires exactly <tt class="docutils literal">n</tt> variables in <tt class="docutils literal">x</tt> to take one of the values in <tt class="docutils literal">v</tt>.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Returns the number of variables in <tt class="docutils literal">x</tt> that take one of the values in <tt class="docutils literal">v</tt>.</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="at-least">
+<span id="mzn-globals-counting-at-least"></span><span id="index-1"></span><h2>at_least<a class="headerlink" href="#at-least" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-at-least"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">at_least</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Requires at least <tt class="docutils literal">n</tt> variables in <tt class="docutils literal">x</tt> to take the value <tt class="docutils literal">v</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="at-most">
+<span id="mzn-globals-counting-at-most"></span><span id="index-2"></span><h2>at_most<a class="headerlink" href="#at-most" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-at-most"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">at_most</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Requires at most <tt class="docutils literal">n</tt> variables in <tt class="docutils literal">x</tt> to take the value <tt class="docutils literal">v</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="at-most1">
+<span id="mzn-globals-counting-at-most1"></span><span id="index-3"></span><h2>at_most1<a class="headerlink" href="#at-most1" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-at-most1"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">at_most1</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Requires that each pair of sets in <tt class="docutils literal">s</tt> overlap in at most one element.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="count">
+<span id="mzn-globals-counting-count"></span><span id="index-4"></span><h2>count<a class="headerlink" href="#count" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-count"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">count</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">count</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Returns the number of occurrences of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains <tt class="docutils literal">c</tt> to be the number of occurrences of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="count-eq">
+<span id="mzn-globals-counting-count-eq"></span><span id="index-5"></span><h2>count_eq<a class="headerlink" href="#count-eq" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-count-eq"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">count_eq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">count_eq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span>
+<span class="s">                       </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">count_eq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">count_eq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><dl>
+<dt>1-3.</dt><dd><div class="mzncodedoc docutils container">
+<p>Constrains <tt class="docutils literal">c</tt> to be the number of occurrences of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p>
+</div>
+</dd>
+</dl>
+<ol class="arabic" start="4">
+<li><div class="mzncodedoc docutils container">
+<p>Returns the number of occurrences of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="count-geq">
+<span id="mzn-globals-counting-count-geq"></span><span id="index-6"></span><h2>count_geq<a class="headerlink" href="#count-geq" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-count-geq"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">count_geq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">count_geq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span>
+<span class="s">                        </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">count_geq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Constrains <tt class="docutils literal">c</tt> to be greater than or equal to the number of occurrences
+of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains <tt class="docutils literal">c</tt> to be strictly greater than the number of occurrences
+of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Constrains <tt class="docutils literal">c</tt> to be greater than or equal to the number of occurrences
+of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="count-gt">
+<span id="mzn-globals-counting-count-gt"></span><span id="index-7"></span><h2>count_gt<a class="headerlink" href="#count-gt" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-count-gt"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">count_gt</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">count_gt</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">count_gt</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">c</tt> to be strictly greater than the number of occurrences
+of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="count-leq">
+<span id="mzn-globals-counting-count-leq"></span><span id="index-8"></span><h2>count_leq<a class="headerlink" href="#count-leq" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-count-leq"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">count_leq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">count_leq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">count_leq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">c</tt> to be less than or equal to the number of occurrences
+of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="count-lt">
+<span id="mzn-globals-counting-count-lt"></span><span id="index-9"></span><h2>count_lt<a class="headerlink" href="#count-lt" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-count-lt"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">count_lt</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">count_lt</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span>
+<span class="s">                   </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">count_lt</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">c</tt> to be strictly less than the number of occurrences
+of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="count-neq">
+<span id="mzn-globals-counting-count-neq"></span><span id="index-10"></span><h2>count_neq<a class="headerlink" href="#count-neq" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-count-neq"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">count_neq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">count_neq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span>
+<span class="s">                    </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">count_neq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">c</tt> to be not equal to the number of occurrences
+of <tt class="docutils literal">y</tt> in <tt class="docutils literal">x</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="distribute">
+<span id="mzn-globals-counting-distribute"></span><span id="index-11"></span><h2>distribute<a class="headerlink" href="#distribute" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-distribute"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">distribute</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nb">card</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">value</span><span class="p">,</span>
+<span class="s">                         </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">base</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">distribute</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">value</span><span class="p">,</span>
+<span class="s">                                               </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">base</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Requires that <tt class="docutils literal">card</tt>[<tt class="docutils literal">i</tt>] is the number of occurrences of <tt class="docutils literal">value</tt>[<tt class="docutils literal">i</tt>] in
+<tt class="docutils literal">base</tt>. The values in <tt class="docutils literal">value</tt> need not be distinct.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Returns an array of the number of occurrences of <tt class="docutils literal">value</tt>[<tt class="docutils literal">i</tt>] in
+<tt class="docutils literal">base</tt>. The values in <tt class="docutils literal">value</tt> need not be distinct.</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="exactly">
+<span id="mzn-globals-counting-exactly"></span><span id="index-12"></span><h2>exactly<a class="headerlink" href="#exactly" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-exactly"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">exactly</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                  </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Requires exactly <tt class="docutils literal">n</tt> variables in <tt class="docutils literal">x</tt> to take the value <tt class="docutils literal">v</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="global-cardinality">
+<span id="mzn-globals-counting-global-cardinality"></span><span id="index-13"></span><h2>global_cardinality<a class="headerlink" href="#global-cardinality" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-global-cardinality"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">counts</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">counts</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">lbound</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">ubound</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">lbound</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">ubound</span><span class="p">)</span>
+
+<span class="m">5</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">counts</span><span class="p">)</span>
+
+<span class="m">6</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">lbound</span><span class="p">,</span>
+<span class="s">                                 </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">ubound</span><span class="p">)</span>
+
+<span class="m">7</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">global_cardinality</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">)</span>
+
+<span class="m">8</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">global_cardinality</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                                       </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><dl>
+<dt>1, 2.</dt><dd><div class="mzncodedoc docutils container">
+<p>Requires that the number of occurrences of <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] in <tt class="docutils literal">x</tt> is <tt class="docutils literal">counts</tt>[<tt class="docutils literal">i</tt>].</p>
+</div>
+</dd>
+<dt>3, 4.</dt><dd><div class="mzncodedoc docutils container">
+<p>Requires that for all <tt class="docutils literal">i</tt>, the value <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] appears at least <tt class="docutils literal">lbound</tt>[<tt class="docutils literal">i</tt>]
+and at most <tt class="docutils literal">ubound</tt>[<tt class="docutils literal">i</tt>] times in the array <tt class="docutils literal">x</tt>.</p>
+</div>
+</dd>
+</dl>
+<ol class="arabic" start="5">
+<li><div class="mzncodedoc docutils container">
+<p>Requires that the number of occurrences of <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] in <tt class="docutils literal">x</tt> is <tt class="docutils literal">counts</tt>[<tt class="docutils literal">i</tt>].</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Requires that for all <tt class="docutils literal">i</tt>, the value <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] appears at least <tt class="docutils literal">lbound</tt>[<tt class="docutils literal">i</tt>]
+and at most <tt class="docutils literal">ubound</tt>[<tt class="docutils literal">i</tt>] times in the array <tt class="docutils literal">x</tt>.</p>
+</div>
+</li>
+</ol>
+<dl>
+<dt>7, 8.</dt><dd><div class="mzncodedoc docutils container">
+<p>Returns the number of occurrences of <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] in <tt class="docutils literal">x</tt>.</p>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="global-cardinality-closed">
+<span id="mzn-globals-counting-global-cardinality-closed"></span><span id="index-14"></span><h2>global_cardinality_closed<a class="headerlink" href="#global-cardinality-closed" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-globals-counting-global-cardinality-closed"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality_closed</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">counts</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality_closed</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">counts</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality_closed</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">lbound</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">ubound</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality_closed</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">lbound</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">ubound</span><span class="p">)</span>
+
+<span class="m">5</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality_closed</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">counts</span><span class="p">)</span>
+
+<span class="m">6</span><span class="s">.  </span><span class="k">predicate</span><span class="s"> </span><span class="bp">global_cardinality_closed</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">lbound</span><span class="p">,</span>
+<span class="s">                                        </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">ubound</span><span class="p">)</span>
+
+<span class="m">7</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">global_cardinality_closed</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">)</span>
+
+<span class="m">8</span><span class="s">.  </span><span class="k">function</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="bp">global_cardinality_closed</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                                                              </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">Y</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> $$</span><span class="nv">E</span><span class="p">:</span><span class="s"> </span><span class="nv">cover</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Requires that the number of occurrences of <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] in <tt class="docutils literal">x</tt> is <tt class="docutils literal">counts</tt>[<tt class="docutils literal">i</tt>].</p>
+<p>The elements of <tt class="docutils literal">x</tt> must take their values from <tt class="docutils literal">cover</tt>.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Requires that the number of occurrences of <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] in <tt class="docutils literal">x</tt> is <tt class="docutils literal">counts</tt>[<tt class="docutils literal">i</tt>].</p>
+<p>The elements of <tt class="docutils literal">x</tt> must take their values from <tt class="docutils literal">cover</tt> or be absent.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Requires that for all <tt class="docutils literal">i</tt>, the value <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] appears at least <tt class="docutils literal">lbound</tt>[<tt class="docutils literal">i</tt>]
+and at most <tt class="docutils literal">ubound</tt>[<tt class="docutils literal">i</tt>] times in the array <tt class="docutils literal">x</tt>.</p>
+<p>The elements of <tt class="docutils literal">x</tt> must take their values from <tt class="docutils literal">cover</tt>.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Requires that for all <tt class="docutils literal">i</tt>, the value <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] appears at least <tt class="docutils literal">lbound</tt>[<tt class="docutils literal">i</tt>]
+and at most <tt class="docutils literal">ubound</tt>[<tt class="docutils literal">i</tt>] times in the array <tt class="docutils literal">x</tt>.</p>
+<p>The elements of <tt class="docutils literal">x</tt> must take their values from <tt class="docutils literal">cover</tt> or be absent.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Requires that the number of occurrences of <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] in <tt class="docutils literal">x</tt> is <tt class="docutils literal">counts</tt>[<tt class="docutils literal">i</tt>].</p>
+<p>The elements of <tt class="docutils literal">x</tt> must take their values from <tt class="docutils literal">cover</tt> or be absent.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Requires that for all <tt class="docutils literal">i</tt>, the value <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] appears at least <tt class="docutils literal">lbound</tt>[<tt class="docutils literal">i</tt>]
+and at most <tt class="docutils literal">ubound</tt>[<tt class="docutils literal">i</tt>] times in the array <tt class="docutils literal">x</tt>.</p>
+<p>The elements of <tt class="docutils literal">x</tt> must take their values from <tt class="docutils literal">cover</tt> or be absent.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Returns an array with number of occurrences of <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] in <tt class="docutils literal">x</tt>.</p>
+<p>The elements of <tt class="docutils literal">x</tt> must take their values from <tt class="docutils literal">cover</tt>.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Returns an array with number of occurrences of <tt class="docutils literal">cover</tt>[<tt class="docutils literal">i</tt>] in <tt class="docutils literal">x</tt>.</p>
+<p>The elements of <tt class="docutils literal">x</tt> must take their values from <tt class="docutils literal">cover</tt> or be absent.</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lib-globals-channeling.html" class="btn btn-neutral float-left" title="4.2.2.4. Channeling constraints" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lib-globals-array.html" class="btn btn-neutral float-right" title="4.2.2.6. Array-related constraints" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
