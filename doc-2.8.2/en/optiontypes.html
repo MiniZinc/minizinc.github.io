@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4. Option Types &mdash; The MiniZinc Handbook 2.8.2</title>
+      <link rel="stylesheet" type="text/css" href="static/pygments.css?v=77553476" />
+      <link rel="stylesheet" type="text/css" href="static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="static/style.css?v=572cde19" />
+
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/optiontypes.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=8436ce80"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2.5. Tuple and record types" href="tuple_and_record_types.html" />
+    <link rel="prev" title="2.3. Predicates and Functions" href="predicates.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.2
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="modelling.html">2.1. Basic Modelling in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html">2.2. More Complex Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html">2.3. Predicates and Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. Option Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#declaring-and-using-option-types">2.4.1. Declaring and Using Option Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-types-in-scheduling-problems">2.4.2. Option Types in Scheduling Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hidden-option-types">2.4.3. Hidden Option Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-type-parameters">2.4.4. Option Type Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tuple_and_record_types.html">2.5. Tuple and record types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html">2.6. Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">2.7. Effective Modelling Practices in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html">2.8. Boolean Satisfiability Modelling in MiniZinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html">2.9. FlatZinc and Flattening</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_2_tutorial.html"><span class="section-number">2. </span>A MiniZinc Tutorial</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.4. </span>Option Types</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="option-types">
+<span id="sec-optiontypes"></span><h1><span class="section-number">2.4. </span>Option Types<a class="headerlink" href="#option-types" title="Link to this heading"></a></h1>
+<p id="index-0">Option types are a powerful abstraction that allows for concise modelling. An
+option type decision variable represents a decision that has another
+possibility <span class="math notranslate nohighlight">\(\top\)</span>, represented in MiniZinc as <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code>
+indicating the variable is <em>absent</em>.
+Option type decisions are useful for modelling problems where a decision is
+not meaningful unless other decisions are made first.</p>
+<section id="declaring-and-using-option-types">
+<h2><span class="section-number">2.4.1. </span>Declaring and Using Option Types<a class="headerlink" href="#declaring-and-using-option-types" title="Link to this heading"></a></h2>
+<div class="admonition-option-type-variables admonition" id="defblock-0">
+<p class="admonition-title">Option type Variables</p>
+<p id="index-1">An option type variable is declared as:</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="cs">&lt;type&gt;</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="cs">&lt;var-name&gt;</span>
+</pre></div>
+</div>
+<p>where <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;type&gt;</span></code> is one of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span></code>, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span></code> or <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">bool</span></code> or
+a fixed range expression.
+Option type variables can be parameters.</p>
+<p>An option type variable can take the additional value
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code>
+indicating <em>absent</em>.</p>
+</div>
+<p>An option type variable behaves like a normal, non-optional variable, as long as it is not absent, i.e., as long as it is not equal to <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code>.
+An absent option type variable should behave as if the object it represents does not exist. This means different things for different functions and relations.</p>
+<p>For example, when adding <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> to another variable <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code>, the result is just <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code>. Similarly, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">all_different</span><span class="p">([</span><span class="nv">x</span><span class="p">,</span><span class="nv">y</span><span class="p">,</span><span class="nv">z</span><span class="p">])</span></code> should behave exactly like
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">all_different</span><span class="p">([</span><span class="nv">x</span><span class="p">,</span><span class="nv">y</span><span class="p">])</span></code> in case <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">z</span><span class="o">=&lt;&gt;</span></code>, i.e., <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">z</span></code> is absent.</p>
+<p>Option type variables can be used like their non-optional versions with most operators on Booleans, integers and floats. Many functions and predicates in the MiniZinc library are also defined for option type variables. Here are a few examples of how different functions and operators treat option types:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Expression:               Equivalent to:          Simplified:</span>
+<span class="o">&lt;&gt;</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">a</span><span class="s">                  </span><span class="o">=</span><span class="s">   </span><span class="m">0</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">a</span><span class="s">                </span><span class="o">=</span><span class="s">  </span><span class="nv">a</span>
+<span class="nv">a</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="s">                  </span><span class="o">=</span><span class="s">   </span><span class="nv">a</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="m">1</span><span class="s">                </span><span class="o">=</span><span class="s">  </span><span class="nv">a</span>
+<span class="nb">sum</span><span class="p">([</span><span class="nv">x1</span><span class="p">,</span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="nv">x2</span><span class="p">])</span><span class="s">         </span><span class="o">=</span><span class="s">   </span><span class="nb">sum</span><span class="p">([</span><span class="nv">x1</span><span class="p">,</span><span class="nv">x2</span><span class="p">])</span>
+<span class="nb">sum</span><span class="p">([</span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="o">&lt;&gt;</span><span class="p">])</span><span class="s">            </span><span class="o">=</span><span class="s">   </span><span class="nb">sum</span><span class="p">([])</span><span class="s">              </span><span class="o">=</span><span class="s"> </span><span class="m">0</span>
+<span class="nb">product</span><span class="p">([</span><span class="nv">x1</span><span class="p">,</span><span class="nv">x2</span><span class="p">,</span><span class="o">&lt;&gt;</span><span class="p">])</span><span class="s">     </span><span class="o">=</span><span class="s">   </span><span class="nb">product</span><span class="p">([</span><span class="nv">x1</span><span class="p">,</span><span class="nv">x2</span><span class="p">])</span>
+<span class="nb">product</span><span class="p">([</span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="o">&lt;&gt;</span><span class="p">])</span><span class="s">     </span><span class="o">=</span><span class="s">   </span><span class="nb">product</span><span class="p">([])</span><span class="s">          </span><span class="o">=</span><span class="s"> </span><span class="m">1</span>
+<span class="k">exists</span><span class="p">([</span><span class="nv">b1</span><span class="p">,</span><span class="o">&lt;&gt;</span><span class="p">])</span><span class="s">         </span><span class="o">=</span><span class="s">   </span><span class="k">exists</span><span class="p">([</span><span class="nv">b1</span><span class="p">])</span><span class="s">         </span><span class="o">=</span><span class="s"> </span><span class="nv">b1</span>
+<span class="k">exists</span><span class="p">([</span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="o">&lt;&gt;</span><span class="p">])</span><span class="s">         </span><span class="o">=</span><span class="s">   </span><span class="k">exists</span><span class="p">([])</span><span class="s">           </span><span class="o">=</span><span class="s"> </span><span class="l">false</span>
+<span class="k">forall</span><span class="p">([</span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="nv">b1</span><span class="p">,</span><span class="nv">b2</span><span class="p">])</span><span class="s">      </span><span class="o">=</span><span class="s">   </span><span class="k">forall</span><span class="p">([</span><span class="nv">b1</span><span class="p">,</span><span class="nv">b2</span><span class="p">])</span>
+<span class="k">forall</span><span class="p">([</span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="o">&lt;&gt;</span><span class="p">])</span><span class="s">         </span><span class="o">=</span><span class="s">   </span><span class="k">forall</span><span class="p">([])</span><span class="s">           </span><span class="o">=</span><span class="s"> </span><span class="l">true</span>
+<span class="bp">all_different</span><span class="p">([</span><span class="nv">x</span><span class="p">,</span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="nv">y</span><span class="p">])</span><span class="s"> </span><span class="o">=</span><span class="s">   </span><span class="bp">all_different</span><span class="p">([</span><span class="nv">x</span><span class="p">,</span><span class="nv">y</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Comparison operators return <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code> if any of their arguments is absent. For instance, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">3</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="o">&lt;&gt;</span></code> is <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code>, as is <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">3</span></code>.
+However, note that equality between option type expressions is only <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code> if both expressions have the same optionality: <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">&lt;&gt;</span></code> is <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code>,
+but <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">3</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">&lt;&gt;</span></code> is <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">false</span></code>. If you need the “weaker” version of equality, MiniZinc provides the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">~</span><span class="o">=</span></code> operator: <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">3</span><span class="s"> ~</span><span class="o">=</span><span class="s"> </span><span class="o">&lt;&gt;</span></code> is <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code>. The <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">~</span><span class="o">!=</span></code> operator is the weak version of disequality, it is true is either side is absent or they are not equal. Note that <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">a</span><span class="s"> ~</span><span class="o">!=</span><span class="s"> </span><span class="nv">b</span></code> is different from <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">not</span><span class="s"> </span><span class="p">(</span><span class="nv">a</span><span class="s"> ~</span><span class="o">=</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span></code>, because <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span><span class="s"> ~</span><span class="o">!=</span><span class="s"> </span><span class="o">&lt;&gt;</span></code> is true, while <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">not</span><span class="s"> </span><span class="p">(</span><span class="o">&lt;&gt;</span><span class="s"> ~</span><span class="o">=</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="p">)</span></code> is false.</p>
+<p>Similarly, it can sometimes be useful to have “weak” versions of the arithmetic operators that return <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> if any of their arguments is absent. MiniZinc provides the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">~</span><span class="o">+</span></code>, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">~</span><span class="o">-</span></code>, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">~</span><span class="o">*</span></code>, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">~</span><span class="o">/</span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">~</span><span class="o">div</span></code> operators for this purpose (e.g., <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">3</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="s"> </span><span class="o">=</span><span class="m">3</span></code>, but <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">3</span><span class="s"> ~</span><span class="o">+</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">&lt;&gt;</span></code>).</p>
+<div class="admonition-operations-on-option-type-variables admonition" id="defblock-1">
+<p class="admonition-title">Operations on option type variables</p>
+<p>Two builtin functions and a binary operator are provided for option type variables:
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nf">absent</span><span class="p">(</span><span class="nv">v</span><span class="p">)</span></code> returns <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code> iff option type variable <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">v</span></code> takes the value
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code>,
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nf">occurs</span><span class="p">(</span><span class="nv">v</span><span class="p">)</span></code> returns <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code> iff option type variable <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">v</span></code> does <em>not</em> take the value
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code>,
+and
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"> </span><span class="nv">default</span><span class="s"> </span><span class="nv">y</span></code> returns <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> if <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> occurs, and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span></code> otherwise.</p>
+<p>In addition, the function
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nf">deopt</span><span class="p">(</span><span class="nv">v</span><span class="p">)</span></code> returns the normal value of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">v</span></code> or returns undefined if it takes the
+value <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code>. This function should not be used in normal models, but is required
+to implement predicates over option type variables.</p>
+</div>
+</section>
+<section id="option-types-in-scheduling-problems">
+<h2><span class="section-number">2.4.2. </span>Option Types in Scheduling Problems<a class="headerlink" href="#option-types-in-scheduling-problems" title="Link to this heading"></a></h2>
+<p>A common use of option types is for optional tasks in scheduling.
+In the flexible job shop scheduling problem we have <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span></code> tasks to perform
+on <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">k</span></code> machines, and the time to complete each task on each machine
+may be different. The aim is to minimize the completion time of all tasks.
+A model using option types to encode the problem is given in
+<a class="reference internal" href="#ex-flexible-js"><span class="std std-numref">Listing 2.4.1</span></a>. We model the problem using <span class="math notranslate nohighlight">\(n \times k\)</span> optional
+tasks representing the possibility of each task run on each machine.
+We require that start time of the task and its duration spans the optional
+tasks that make it up, and require only one actually runs using the
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alternative</span></code> global constraint.
+We require that at most one task runs on any machine using the
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span></code> global constraint extended to optional tasks.
+Finally we constrain that at most <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">k</span></code> tasks run at any time, a redundant
+constraint that holds on the actual (not optional) tasks.</p>
+<div class="literal-block-wrapper docutils container" id="ex-flexible-js">
+<div class="code-block-caption"><span class="caption-number">Listing 2.4.1 </span><span class="caption-text">Model for flexible job shop scheduling using option types (<a class="reference download internal" download="" href="downloads/7e05f30fd28ccf756bf189bfe2ae42eb/flexible-js.mzn"><tt class="xref download docutils literal">flexible-js.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-flexible-js.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-flexible-js" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;globals.mzn&quot;</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">horizon</span><span class="p">;</span><span class="s">                  </span><span class="c">% time horizon</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Time</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">horizon</span><span class="p">;</span>
+<span class="kt">enum</span><span class="s"> </span><span class="nv">Task</span><span class="p">;</span>
+<span class="kt">enum</span><span class="s"> </span><span class="nv">Machine</span><span class="p">;</span><span class="s"> </span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">Task</span><span class="p">,</span><span class="nv">Machine</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d</span><span class="p">;</span><span class="s"> </span><span class="c">% duration on each machine</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">maxd</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">max</span><span class="p">([</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">,</span><span class="s"> </span><span class="nv">m</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Machine</span><span class="s"> </span><span class="p">]);</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">mind</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">min</span><span class="p">([</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">,</span><span class="s"> </span><span class="nv">m</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Machine</span><span class="s"> </span><span class="p">]);</span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">Task</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">Time</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">;</span><span class="s">             </span><span class="c">% start time</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Task</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">mind</span><span class="o">..</span><span class="nv">maxd</span><span class="p">:</span><span class="s"> </span><span class="nv">D</span><span class="p">;</span><span class="s">       </span><span class="c">% duration</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Task</span><span class="p">,</span><span class="nv">Machine</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="nv">Time</span><span class="p">:</span><span class="s"> </span><span class="nv">O</span><span class="p">;</span><span class="s"> </span><span class="c">% optional task start</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">)(</span><span class="bp">alternative</span><span class="p">(</span><span class="nv">S</span><span class="p">[</span><span class="nv">t</span><span class="p">],</span><span class="nv">D</span><span class="p">[</span><span class="nv">t</span><span class="p">],</span>
+<span class="s">                 </span><span class="p">[</span><span class="nv">O</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]|</span><span class="nv">m</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Machine</span><span class="p">],[</span><span class="nv">d</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]|</span><span class="nv">m</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Machine</span><span class="p">]));</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">m</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Machine</span><span class="p">)</span>
+<span class="s">                 </span><span class="p">(</span><span class="bp">disjunctive</span><span class="p">([</span><span class="nv">O</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]|</span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">],[</span><span class="nv">d</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]|</span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">]));</span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">cumulative</span><span class="p">(</span><span class="nv">S</span><span class="p">,</span><span class="nv">D</span><span class="p">,[</span><span class="m">1</span><span class="p">|</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">],</span><span class="nb">card</span><span class="p">(</span><span class="nv">Machine</span><span class="p">));</span>
+
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="nb">max</span><span class="p">(</span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">)(</span><span class="nv">S</span><span class="p">[</span><span class="nv">t</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">D</span><span class="p">[</span><span class="nv">t</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="hidden-option-types">
+<h2><span class="section-number">2.4.3. </span>Hidden Option Types<a class="headerlink" href="#hidden-option-types" title="Link to this heading"></a></h2>
+<p>Option type variable arise implicitly when list comprehensions are
+constructed with iteration over variable sets, or where the expressions in
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">where</span></code> clauses are not fixed.</p>
+<p>For example the model fragment</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="p">)(</span><span class="nv">i</span><span class="p">)</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>is syntactic sugar for</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)(</span><span class="k">if</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">else</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="s"> </span><span class="k">endif</span><span class="p">)</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">sum</span></code> builtin function actually operates on a list of
+type-inst <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">int</span></code>. Since the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> acts as the identity
+0 for + this gives the expected results.</p>
+<p>Similarly the model fragment</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">)(</span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>is syntactic sugar for</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)(</span><span class="k">if</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="s"> </span><span class="k">else</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="s"> </span><span class="k">endif</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Again the <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">forall</span></code> function actually operates on a list
+of type-inst <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span></code>. Since <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> acts
+as identity <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code> for <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">/\</span><span class="s"> </span></code> this gives the expected results.</p>
+<p>The hidden uses can lead to unexpected behaviour though so care is
+warranted. Consider</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">9</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">card</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">4</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">length</span><span class="p">([</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="p">])</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="m">5</span><span class="p">;</span>
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>which would appear to be unsatisfiable.  It returns <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="m">1,2</span><span class="p">,</span><span class="m">3,4</span><span class="p">}</span></code> as
+example answer. This is correct since the second constraint is equivalent to</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="nb">length</span><span class="p">([</span><span class="s"> </span><span class="k">if</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">else</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="s"> </span><span class="k">endif</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">9</span><span class="s"> </span><span class="p">])</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="m">5</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>and the length of the list of optional integers is always 9 so the
+constraint always holds!</p>
+<p>One can avoid hidden option types by not constructing iteration over
+variables sets or using unfixed <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">where</span></code> clauses.
+For example the above two examples could be rewritten without option types as</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)(</span><span class="nb">bool2int</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="o">*</span><span class="nv">i</span><span class="p">)</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)(</span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="s"> </span><span class="o">-&gt;</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="option-type-parameters">
+<h2><span class="section-number">2.4.4. </span>Option Type Parameters<a class="headerlink" href="#option-type-parameters" title="Link to this heading"></a></h2>
+<p>Option type variables of fixed parameter type can be used to define optional
+model parameters. For example, a variable defined like this:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">enable_feature</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>could be used to enable or disable a certain optional feature of a model.
+In contrast to other parameter variables, these optional parameters do not
+have to be assigned a value (e.g., the data file may omit an assignment to
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">enable_feature</span></code>). In that case, the variable is automatically assigned
+the value <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code>. In the model, such an optional parameter could be used
+like this:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">enable_feature_enabled</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">enable_feature</span><span class="s"> </span><span class="nv">default</span><span class="s"> </span><span class="l">false</span><span class="p">;</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="k">if</span><span class="s"> </span><span class="nv">enable_feature_enabled</span><span class="s"> </span><span class="k">then</span><span class="s"> ... </span><span class="k">endif</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="predicates.html" class="btn btn-neutral float-left" title="2.3. Predicates and Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tuple_and_record_types.html" class="btn btn-neutral float-right" title="2.5. Tuple and record types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

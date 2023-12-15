@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.2.3.1. Integer FlatZinc builtins &mdash; The MiniZinc Handbook 2.8.2</title>
+      <link rel="stylesheet" type="text/css" href="static/pygments.css?v=77553476" />
+      <link rel="stylesheet" type="text/css" href="static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="static/style.css?v=572cde19" />
+
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-flatzinc-int.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=8436ce80"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.3.2. Bool FlatZinc builtins" href="lib-flatzinc-bool.html" />
+    <link rel="prev" title="4.2.3. FlatZinc builtins" href="lib-flatzinc.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.2
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lib-stdlib.html">4.2.1. Standard Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.2. Global constraints</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.3.1. Integer FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-bool.html">4.2.3.2. Bool FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-set.html">4.2.3.3. Set FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-float.html">4.2.3.4. Float FlatZinc builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-two.html">4.2.3.5. FlatZinc builtins added in MiniZinc 2.0.0.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twootwo.html">4.2.3.6. FlatZinc builtins added in MiniZinc 2.0.2.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twoone.html">4.2.3.7. FlatZinc builtins added in MiniZinc 2.1.0.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twooneone.html">4.2.3.8. FlatZinc builtins added in MiniZinc 2.1.1.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twotwoone.html">4.2.3.9. FlatZinc builtins added in MiniZinc 2.2.1.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twothreethree.html">4.2.3.10. FlatZinc builtins added in MiniZinc 2.3.3.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-twofivetwo.html">4.2.3.11. FlatZinc builtins added in MiniZinc 2.5.2.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-flatzinc-deprecated.html">4.2.3.12. Deprecated FlatZinc builtins</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-ide.html">4.2.6. MiniZincIDE tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-experimental.html">4.2.7. Experimental Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json-stream.html">4.4. Machine-readable JSON output format</a></li>
+</ul>
+</li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_4_reference.html"><span class="section-number">4. </span>Reference Manual</a></li>
+          <li class="breadcrumb-item"><a href="lib.html"><span class="section-number">4.2. </span>The MiniZinc library</a></li>
+          <li class="breadcrumb-item"><a href="lib-flatzinc.html"><span class="section-number">4.2.3. </span>FlatZinc builtins</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2.3.1. </span>Integer FlatZinc builtins</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="integer-flatzinc-builtins">
+<span id="ch-lib-flatzinc-int"></span><h1><span class="section-number">4.2.3.1. </span>Integer FlatZinc builtins<a class="headerlink" href="#integer-flatzinc-builtins" title="Link to this heading"></a></h1>
+<p>In this section: <a class="reference internal" href="#mzn-flatzinc-int-array-int-element"><span class="std std-ref">array_int_element</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-array-int-maximum"><span class="std std-ref">array_int_maximum</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-array-int-minimum"><span class="std std-ref">array_int_minimum</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-array-var-int-element"><span class="std std-ref">array_var_int_element</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-abs"><span class="std std-ref">int_abs</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-div"><span class="std std-ref">int_div</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-eq"><span class="std std-ref">int_eq</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-eq-reif"><span class="std std-ref">int_eq_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-le"><span class="std std-ref">int_le</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-le-reif"><span class="std std-ref">int_le_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-lin-eq"><span class="std std-ref">int_lin_eq</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-lin-eq-reif"><span class="std std-ref">int_lin_eq_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-lin-le"><span class="std std-ref">int_lin_le</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-lin-le-reif"><span class="std std-ref">int_lin_le_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-lin-ne"><span class="std std-ref">int_lin_ne</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-lin-ne-reif"><span class="std std-ref">int_lin_ne_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-lt"><span class="std std-ref">int_lt</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-lt-reif"><span class="std std-ref">int_lt_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-max"><span class="std std-ref">int_max</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-min"><span class="std std-ref">int_min</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-mod"><span class="std std-ref">int_mod</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-ne"><span class="std std-ref">int_ne</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-ne-reif"><span class="std std-ref">int_ne_reif</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-plus"><span class="std std-ref">int_plus</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-pow"><span class="std std-ref">int_pow</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-int-times"><span class="std std-ref">int_times</span></a>, <a class="reference internal" href="#mzn-flatzinc-int-set-in"><span class="std std-ref">set_in</span></a>.</p>
+<section class="mzn-docitem" id="array-int-element">
+<span id="mzn-flatzinc-int-array-int-element"></span><span id="index-0"></span><h2>array_int_element<a class="headerlink" href="#array-int-element" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-array-int-element"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_int_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">as</tt>[<tt class="docutils literal">b</tt>] = <tt class="docutils literal">c</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="array-int-maximum">
+<span id="mzn-flatzinc-int-array-int-maximum"></span><span id="index-1"></span><h2>array_int_maximum<a class="headerlink" href="#array-int-maximum" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-array-int-maximum"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_int_maximum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">m</tt> to be the maximum value of the (non-empty)
+array <tt class="docutils literal">x</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="array-int-minimum">
+<span id="mzn-flatzinc-int-array-int-minimum"></span><span id="index-2"></span><h2>array_int_minimum<a class="headerlink" href="#array-int-minimum" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-array-int-minimum"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_int_minimum</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">m</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">m</tt> to be the minimum value of the (non-empty)
+array <tt class="docutils literal">x</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="array-var-int-element">
+<span id="mzn-flatzinc-int-array-var-int-element"></span><span id="index-3"></span><h2>array_var_int_element<a class="headerlink" href="#array-var-int-element" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-array-var-int-element"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">array_var_int_element</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span>
+<span class="s">                                </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span>
+<span class="s">                                </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">as</tt>[<tt class="docutils literal">b</tt>] = <tt class="docutils literal">c</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-abs">
+<span id="mzn-flatzinc-int-int-abs"></span><span id="index-4"></span><h2>int_abs<a class="headerlink" href="#int-abs" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-abs"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_abs</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">b</tt> to be the absolute value of <tt class="docutils literal">a</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-div">
+<span id="mzn-flatzinc-int-int-div"></span><span id="index-5"></span><h2>int_div<a class="headerlink" href="#int-div" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-div"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_div</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">a</tt> / <tt class="docutils literal">b</tt> = <tt class="docutils literal">c</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-eq">
+<span id="mzn-flatzinc-int-int-eq"></span><span id="index-6"></span><h2>int_eq<a class="headerlink" href="#int-eq" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-eq"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_eq</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">a</tt> to be equal to <tt class="docutils literal">b</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-eq-reif">
+<span id="mzn-flatzinc-int-int-eq-reif"></span><span id="index-7"></span><h2>int_eq_reif<a class="headerlink" href="#int-eq-reif" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-eq-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_eq_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains (<tt class="docutils literal">a</tt>=<tt class="docutils literal">b</tt>) <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> <tt class="docutils literal">r</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-le">
+<span id="mzn-flatzinc-int-int-le"></span><span id="index-8"></span><h2>int_le<a class="headerlink" href="#int-le" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-le"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_le</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">a</tt> to be less than or equal to <tt class="docutils literal">b</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-le-reif">
+<span id="mzn-flatzinc-int-int-le-reif"></span><span id="index-9"></span><h2>int_le_reif<a class="headerlink" href="#int-le-reif" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-le-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_le_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains (<tt class="docutils literal">a</tt> ≤ <tt class="docutils literal">b</tt>) <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> <tt class="docutils literal">r</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-lin-eq">
+<span id="mzn-flatzinc-int-int-lin-eq"></span><span id="index-10"></span><h2>int_lin_eq<a class="headerlink" href="#int-lin-eq" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-lin-eq"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_eq</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <span class="math notranslate nohighlight">\({\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i]\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-lin-eq-reif">
+<span id="mzn-flatzinc-int-int-lin-eq-reif"></span><span id="index-11"></span><h2>int_lin_eq_reif<a class="headerlink" href="#int-lin-eq-reif" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-lin-eq-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_eq_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf c} = \sum_i {\bf as}[i]*{\bf bs}[i])\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-lin-le">
+<span id="mzn-flatzinc-int-int-lin-le"></span><span id="index-12"></span><h2>int_lin_le<a class="headerlink" href="#int-lin-le" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-lin-le"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_le</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <span class="math notranslate nohighlight">\(\sum\)</span> <tt class="docutils literal">as</tt>[<tt class="docutils literal">i</tt>]*<tt class="docutils literal">bs</tt>[<tt class="docutils literal">i</tt>] ≤ <tt class="docutils literal">c</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-lin-le-reif">
+<span id="mzn-flatzinc-int-int-lin-le-reif"></span><span id="index-13"></span><h2>int_lin_le_reif<a class="headerlink" href="#int-lin-le-reif" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-lin-le-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_le_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">r</tt> <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> (<span class="math notranslate nohighlight">\(\sum\)</span> <tt class="docutils literal">as</tt>[<tt class="docutils literal">i</tt>]*<tt class="docutils literal">bs</tt>[<tt class="docutils literal">i</tt>] ≤ <tt class="docutils literal">c</tt>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-lin-ne">
+<span id="mzn-flatzinc-int-int-lin-ne"></span><span id="index-14"></span><h2>int_lin_ne<a class="headerlink" href="#int-lin-ne" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-lin-ne"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_ne</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <span class="math notranslate nohighlight">\({\bf c} \neq \sum_i {\bf as}[i]*{\bf bs}[i]\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-lin-ne-reif">
+<span id="mzn-flatzinc-int-int-lin-ne-reif"></span><span id="index-15"></span><h2>int_lin_ne_reif<a class="headerlink" href="#int-lin-ne-reif" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-lin-ne-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lin_ne_reif</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">as</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">bs</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <span class="math notranslate nohighlight">\({\bf r} \leftrightarrow ({\bf c} \neq \sum_i {\bf as}[i]*{\bf bs}[i])\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-lt">
+<span id="mzn-flatzinc-int-int-lt"></span><span id="index-16"></span><h2>int_lt<a class="headerlink" href="#int-lt" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-lt"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lt</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">a</tt> &lt; <tt class="docutils literal">b</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-lt-reif">
+<span id="mzn-flatzinc-int-int-lt-reif"></span><span id="index-17"></span><h2>int_lt_reif<a class="headerlink" href="#int-lt-reif" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-lt-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_lt_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">r</tt> <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> (<tt class="docutils literal">a</tt> &lt; <tt class="docutils literal">b</tt>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-max">
+<span id="mzn-flatzinc-int-int-max"></span><span id="index-18"></span><h2>int_max<a class="headerlink" href="#int-max" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-max"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_max</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains max(<tt class="docutils literal">a</tt>, <tt class="docutils literal">b</tt>) = <tt class="docutils literal">c</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-min">
+<span id="mzn-flatzinc-int-int-min"></span><span id="index-19"></span><h2>int_min<a class="headerlink" href="#int-min" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-min"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_min</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains min(<tt class="docutils literal">a</tt>, <tt class="docutils literal">b</tt>) = <tt class="docutils literal">c</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-mod">
+<span id="mzn-flatzinc-int-int-mod"></span><span id="index-20"></span><h2>int_mod<a class="headerlink" href="#int-mod" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-mod"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_mod</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">a</tt> % <tt class="docutils literal">b</tt> = <tt class="docutils literal">c</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-ne">
+<span id="mzn-flatzinc-int-int-ne"></span><span id="index-21"></span><h2>int_ne<a class="headerlink" href="#int-ne" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-ne"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_ne</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">a</tt> ≠ <tt class="docutils literal">b</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-ne-reif">
+<span id="mzn-flatzinc-int-int-ne-reif"></span><span id="index-22"></span><h2>int_ne_reif<a class="headerlink" href="#int-ne-reif" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-ne-reif"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_ne_reif</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><tt class="docutils literal">r</tt> <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> (<tt class="docutils literal">a</tt> ≠ <tt class="docutils literal">b</tt>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-plus">
+<span id="mzn-flatzinc-int-int-plus"></span><span id="index-23"></span><h2>int_plus<a class="headerlink" href="#int-plus" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-plus"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_plus</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">a</tt> + <tt class="docutils literal">b</tt> = <tt class="docutils literal">c</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-pow">
+<span id="mzn-flatzinc-int-int-pow"></span><span id="index-24"></span><h2>int_pow<a class="headerlink" href="#int-pow" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-pow"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_pow</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">z</tt> = <span class="math notranslate nohighlight">\({\bf x} ^ {{\bf y}}\)</span>, {bf z} is constrained to <tt class="docutils literal">1 div pow(x, abs(y))</tt> when <span class="math notranslate nohighlight">\({\bf y} &lt; 0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-times">
+<span id="mzn-flatzinc-int-int-times"></span><span id="index-25"></span><h2>int_times<a class="headerlink" href="#int-times" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-int-times"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">int_times</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">a</tt> * <tt class="docutils literal">b</tt> = <tt class="docutils literal">c</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="set-in">
+<span id="mzn-flatzinc-int-set-in"></span><span id="index-26"></span><h2>set_in<a class="headerlink" href="#set-in" title="Link to this heading"></a></h2>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-flatzinc-int-set-in"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">set_in</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Constrains <tt class="docutils literal">x</tt> <span class="math notranslate nohighlight">\(\in\)</span> <tt class="docutils literal">S</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lib-flatzinc.html" class="btn btn-neutral float-left" title="4.2.3. FlatZinc builtins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lib-flatzinc-bool.html" class="btn btn-neutral float-right" title="4.2.3.2. Bool FlatZinc builtins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

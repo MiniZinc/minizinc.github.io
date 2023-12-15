@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4. 选项类型 &mdash; The MiniZinc Handbook 2.8.2</title>
+      <link rel="stylesheet" type="text/css" href="static/pygments.css?v=77553476" />
+      <link rel="stylesheet" type="text/css" href="static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="static/style.css?v=572cde19" />
+
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/optiontypes.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=a2a062bf"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2.5. Tuple and record types" href="tuple_and_record_types.html" />
+    <link rel="prev" title="2.3. 谓词和函数" href="predicates.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.2
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="modelling.html">2.1. MiniZinc基本模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html">2.2. 更多复杂模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html">2.3. 谓词和函数</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. 选项类型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.4.1. 声明和使用选项类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.4.2. 隐藏选项类型</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tuple_and_record_types.html">2.5. Tuple and record types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html">2.6. 搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">2.7. MiniZinc中的有效建模实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html">2.8. 在MiniZinc中对布尔可满足性问题建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html">2.9. FlatZinc和展平</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_2_tutorial.html"><span class="section-number">2. </span>Minizinc 指南</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.4. </span>选项类型</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sec-optiontypes">
+<span id="id1"></span><h1><span class="section-number">2.4. </span>选项类型<a class="headerlink" href="#sec-optiontypes" title="Link to this heading"></a></h1>
+<p id="index-0">选项类型是一个强大的抽象，使得简洁建模成为可能。一个选项类型决策变量代表了一个有其他可能 <span class="math notranslate nohighlight">\(\top\)</span> 的变量，在MiniZinc中表达为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> ，代表了这个变量是 <em>缺失的</em> 。选项类型变量在建模一个包含在其他变量没做决定之前不会有意义的变量的问题时是很有用的。</p>
+<section id="id2">
+<h2><span class="section-number">2.4.1. </span>声明和使用选项类型<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<div class="admonition- admonition" id="defblock-0">
+<p class="admonition-title">选项类型变量</p>
+<p id="index-1">一个选项类型变量被声明为：</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="o">&lt;</span><span class="s">类型</span><span class="o">&gt;</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="o">&lt;</span><span class="s">变量名</span><span class="o">&gt;</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>其中 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">类型</span><span class="o">&gt;</span></code> 是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span></code> ， <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span></code> 或 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">bool</span></code> 中的一个，或者是一个固定范围的表达式。选项类型变量可以是参数，但是这个不常用。</p>
+<p>一个选项类型变量可以有附加值 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> 表明它是 <em>缺失的</em> 。</p>
+<p>三个内建函数被提供给选项类型变量： <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nf">absent</span><span class="p">(</span><span class="nv">v</span><span class="p">)</span></code> 只有在选项类型变量 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">v</span></code> 取值 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> 时返回 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code> ， <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nf">occurs</span><span class="p">(</span><span class="nv">v</span><span class="p">)</span></code> 只有在选项类型变量 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">v</span></code> <em>不</em> 取值 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> 时返回 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code> ， 以及 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> 返回 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">v</span></code> 的正常值或者当它取值 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> 时返回失败。</p>
+</div>
+<p>选项类型最常被用到的地方是调度中的可选择任务。在灵活的车间作业调度问题中，我们有 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">n</span></code> 个在 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">k</span></code> 个机器上执行的任务，其中完成每个机器上每个任务的时间可能是不一样的。我们的目标是最小化所有任务的总完成时间。一个使用选项类型来描述问题的模型在 <a class="reference internal" href="#ex-flexible-js"><span class="std std-numref">Listing 2.4.1</span></a> 中给出。在建模这个问题的时候，我们使用 <span class="math notranslate nohighlight">\(n \times k\)</span> 个可选择的任务来代表每个机器上每个任务的可能性。
+我们使用 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">alternative</span></code> 全局约束来要求任务的起始时间和它的持续时间跨越了组成它的可选择任务的时间，同时要求只有一个会实际运行。
+我们使用 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span></code> 全局变量在每个机器上最多有一个任务在运行，这里我们延伸到可选择的任务。最后我们约束任何时候最多有$k$个任务在运行，利用一个在实际（不是可选择的）任务上作用的冗余约束。</p>
+<div class="literal-block-wrapper docutils container" id="ex-flexible-js">
+<div class="code-block-caption"><span class="caption-number">Listing 2.4.1 </span><span class="caption-text">使用选项类型的灵活车间作业调度模型 (<a class="reference download internal" download="" href="downloads/7df6c09841396a9bd9658194fe60131a/flexible-js.mzn"><tt class="xref download docutils literal">flexible-js.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-flexible-js.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-flexible-js" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;globals.mzn&quot;</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">horizon</span><span class="p">;</span><span class="s">                  </span><span class="c">% 时间范围</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Time</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">horizon</span><span class="p">;</span>
+<span class="kt">enum</span><span class="s"> </span><span class="nv">Task</span><span class="p">;</span>
+<span class="kt">enum</span><span class="s"> </span><span class="nv">Machine</span><span class="p">;</span><span class="s"> </span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">Task</span><span class="p">,</span><span class="nv">Machine</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d</span><span class="p">;</span><span class="s"> </span><span class="c">% 每个机器上的持续时间</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">maxd</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">max</span><span class="p">([</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">,</span><span class="s"> </span><span class="nv">m</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Machine</span><span class="s"> </span><span class="p">]);</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">mind</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">min</span><span class="p">([</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">,</span><span class="s"> </span><span class="nv">m</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Machine</span><span class="s"> </span><span class="p">]);</span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">Task</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">Time</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">;</span><span class="s">             </span><span class="c">% 起始时间</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Task</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">mind</span><span class="o">..</span><span class="nv">maxd</span><span class="p">:</span><span class="s"> </span><span class="nv">D</span><span class="p">;</span><span class="s">       </span><span class="c">% 持续时间</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Task</span><span class="p">,</span><span class="nv">Machine</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="nv">Time</span><span class="p">:</span><span class="s"> </span><span class="nv">O</span><span class="p">;</span><span class="s"> </span><span class="c">% 可选择的任务起始</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">)(</span><span class="bp">alternative</span><span class="p">(</span><span class="nv">S</span><span class="p">[</span><span class="nv">t</span><span class="p">],</span><span class="nv">D</span><span class="p">[</span><span class="nv">t</span><span class="p">],</span>
+<span class="s">                 </span><span class="p">[</span><span class="nv">O</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]|</span><span class="nv">m</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Machine</span><span class="p">],[</span><span class="nv">d</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]|</span><span class="nv">m</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Machine</span><span class="p">]));</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">m</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Machine</span><span class="p">)</span>
+<span class="s">                 </span><span class="p">(</span><span class="bp">disjunctive</span><span class="p">([</span><span class="nv">O</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]|</span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">],[</span><span class="nv">d</span><span class="p">[</span><span class="nv">t</span><span class="p">,</span><span class="nv">m</span><span class="p">]|</span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">]));</span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">cumulative</span><span class="p">(</span><span class="nv">S</span><span class="p">,</span><span class="nv">D</span><span class="p">,[</span><span class="m">1</span><span class="p">|</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">],</span><span class="nb">card</span><span class="p">(</span><span class="nv">Machine</span><span class="p">));</span>
+
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="nb">max</span><span class="p">(</span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Task</span><span class="p">)(</span><span class="nv">S</span><span class="p">[</span><span class="nv">t</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">D</span><span class="p">[</span><span class="nv">t</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.4.2. </span>隐藏选项类型<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>当列表推导式是从在变量集合迭代上创建而来，或者 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">where</span></code> 从句中的表达式还没有固定时，选项类型变量会隐式地出现。</p>
+<p>例如，模型片段</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="p">)(</span><span class="nv">i</span><span class="p">)</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>是以下的语法糖</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)(</span><span class="k">if</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">else</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="s"> </span><span class="k">endif</span><span class="p">)</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>内建函数 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">sum</span></code> 实际上在一列类型-实例化 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">int</span></code> 上操作。由于 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> 在+中表现为标识0，我们会得到期望的结果。</p>
+<p>类似地，模型片段</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">)(</span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>是以下的语法糖</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)(</span><span class="k">if</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="s"> </span><span class="k">else</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="s"> </span><span class="k">endif</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>同样地，函数 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">forall</span></code> 实际上在一列类型-实例化 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span></code> 上操作。由于 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;&gt;</span></code> 在 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">/\</span><span class="s"> </span></code> 上表现为标识 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="l">true</span></code> ，我们可以得到期望的结果。</p>
+<p>尽管我们已经很小心了，隐式的使用可能会导致意外的行为。观察</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">9</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">card</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">4</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">length</span><span class="p">([</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="p">])</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="m">5</span><span class="p">;</span>
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>它本应该是一个不可满足的问题。它返回 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="m">1,2</span><span class="p">,</span><span class="m">3,4</span><span class="p">}</span></code> 作为一个解例子。这个是正确的因为第二个约束等于</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="nb">length</span><span class="p">([</span><span class="s"> </span><span class="k">if</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">else</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="s"> </span><span class="k">endif</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">9</span><span class="s"> </span><span class="p">])</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="m">5</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>而可选择整数列表的长度总会是9，所以这个约束总是会满足。</p>
+<p>我们可以通过不在变量集合上创建迭代或者使用不固定的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">where</span></code> 从句来避免隐式的选项类型。
+例如，上面的两个例子可以不使用选项类型重写为</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)(</span><span class="nb">bool2int</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span><span class="o">*</span><span class="nv">i</span><span class="p">)</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>和</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)(</span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="s"> </span><span class="o">-&gt;</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">limit</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="predicates.html" class="btn btn-neutral float-left" title="2.3. 谓词和函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tuple_and_record_types.html" class="btn btn-neutral float-right" title="2.5. Tuple and record types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
