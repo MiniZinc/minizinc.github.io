@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.4. CP-Profiler &mdash; The MiniZinc Handbook 2.8.3</title>
+      <link rel="stylesheet" type="text/css" href="static/pygments.css?v=77553476" />
+      <link rel="stylesheet" type="text/css" href="static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="static/style.css?v=572cde19" />
+
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/cpprofiler.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=e0f91ec4"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3.5. Solving Technologies and Solver Backends" href="solvers.html" />
+    <link rel="prev" title="3.3. Visualising solutions in the MiniZinc IDE" href="visualisation.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.3
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualisation.html">3.3. Visualising solutions in the MiniZinc IDE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.4. CP-Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-profiler">3.4.1. Using the profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#traditional-tree-visualisation">3.4.2. Traditional Tree Visualisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-search-tree-visualisations">3.4.3. Alternative Search Tree Visualisations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#similar-subtree-analysis">3.4.4. Similar Subtree Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#execution-comparison-by-merging">3.4.5. Execution Comparison by Merging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#replaying-search">3.4.6. Replaying Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nogood-analysis">3.4.7. Nogood Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-protocol-high-level">3.4.8. The protocol (high level)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-protocol-low-level">3.4.9. The protocol (low level)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="solvers.html">3.5. Solving Technologies and Solver Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="checkers.html">3.6. Automatic Solution Checking, Model Validation, and Benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html">3.7. Globalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html">3.8. FindMUS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn-analyse.html">3.9. Mzn-Analyse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.10. Using MiniZinc in Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">3.11. Python Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">3.12. JavaScript Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_detailed.html">3.13. Installation from Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_3_user_manual.html"><span class="section-number">3. </span>User Manual</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.4. </span>CP-Profiler</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cp-profiler">
+<span id="ch-cp-profiler"></span><h1><span class="section-number">3.4. </span>CP-Profiler<a class="headerlink" href="#cp-profiler" title="Link to this heading"></a></h1>
+<p>CP-Profiler provides search tree visualisations for executions of constraint programming solvers from within the MiniZinc IDE.</p>
+<p>This integration is currently experimental.</p>
+<section id="using-the-profiler">
+<h2><span class="section-number">3.4.1. </span>Using the profiler<a class="headerlink" href="#using-the-profiler" title="Link to this heading"></a></h2>
+<p>The profiler can be activated by selecting <em>Show search profiler</em> from the <em>View</em> menu, or by starting a solver with profiling enabled through the <em>Profile search option in the *Run</em> dropdown button menu. This starts a local TCP server listening on one of the available ports (6565 by default) which can be seen in at the bottom of the profiler window.</p>
+<p>The solver must implement the profiling protocol (see below). Integration libraries are available if you wish to extend your solver to work with CP-Profiler.</p>
+<p>When a new execution is connected to the profiler it will be added to the list of executions displayed at the top of the profiler window. For example, in the image below execution <em>golomb6a.fzn</em> is shown to be added to the profiler.
+To display the execution (traditional visualisation), select its name from the list and click the <em>Show Tree</em> button. Note that the solver can still be running the execution, in which case the profiler will draw the search tree in real time.</p>
+<img alt="Profiler Conductor" src="images/doc_conductor.png" />
+</section>
+<section id="traditional-tree-visualisation">
+<h2><span class="section-number">3.4.2. </span>Traditional Tree Visualisation<a class="headerlink" href="#traditional-tree-visualisation" title="Link to this heading"></a></h2>
+<p>The image below shows an example of a traditional (node-link) visualisation of the search tree. Different types of nodes are shown differently: branch (internal) nodes are shown as blue circles; nodes representing failures are shown as red squares; solution nodes are shown as green diamonds.</p>
+<p>Note that the root of the tree is shown in gold colour indicating the currently selected node. Arrow keys on the keyboard allow the user to navigate the tree by changing which node is selected. <tt class="docutils literal">Down</tt> navigates to the first child of the current node, <tt class="docutils literal">Shift+Down</tt> – to its last child, <tt class="docutils literal">Up</tt> – to its the parent, <tt class="docutils literal">Left</tt> – to its next sibling on the left, <tt class="docutils literal">Right</tt> – to its next sibling on the right.
+Additionally, pressing <tt class="docutils literal">R</tt> will navigate to the root of the tree.
+The same actions are available under the <strong>Navigation</strong> menu.</p>
+<img alt="Traditional Visualisation Interface" src="images/doc_traditional.png" />
+<p>If a subtree contains no solutions, it can be collapsed into a special single node displayed as a large red triangle. By default, the tree will be collapse failed subtrees automatically during its construction as a way to deal with large trees. The image below shows the same search tree as above, but with all failed subtrees collapsed.</p>
+<img alt="Collapsed Failed Subtrees" src="images/doc_collapsed.png" />
+<p>This view of the tree allows the user to show additional information for every node — its label, which usually represents the branching decision made by the solver to move from the parent node to its child. Pressing <tt class="docutils literal">L</tt> on the keyboard will display labels for all descendants of the current node. <tt class="docutils literal">Shift+L</tt> will display labels on the path to the current node.
+For example, the visualisation above shows branching decisions on the path from the first solution (shown as the new current node) to the root of the tree.</p>
+<p>Status bar at the bottom of the window displays node statistics: the depth of the tree and the counts of different types of nodes.
+The scroll bar on the right lets the user to zoom in/out on the visualisation.</p>
+<p><strong>Adding Bookmarks</strong></p>
+<p>The user can <em>bookmark</em> any node on the tree associating it with an arbitrary text.
+This can be done by selecting the node of interest and clicking on <strong>Add/remove bookmark</strong> from the <strong>Node</strong> menu (shortcut: <tt class="docutils literal">Shift+B</tt>).
+This will create a dialog as shown in the image below where the user can enter the bookmark text.</p>
+<img alt="Adding new bookmark" src="images/doc_bookmark1.png" />
+<p>All bookmarked nodes are marked with a black circle on the traditional visualisation:</p>
+<img alt="Added bookmark" src="images/doc_bookmark_added.png" />
+<p>This message/node pair is also added to the bookmark list which can be retrieved from the <strong>Data</strong> menu under <strong>Show bookmarks</strong> action as shown below:</p>
+<img alt="Bookmark list" src="images/doc_bookmark_list.png" />
+<p>Note that each node is represented by a number – the node’s unique identifier in CP-Profiler (it is likely to be different from the identifier sent by the solver).
+Clicking on a row will navigate the visualisation to the corresponding bookmarked node.</p>
+</section>
+<section id="alternative-search-tree-visualisations">
+<h2><span class="section-number">3.4.3. </span>Alternative Search Tree Visualisations<a class="headerlink" href="#alternative-search-tree-visualisations" title="Link to this heading"></a></h2>
+<p><strong>Lantern Tree</strong></p>
+<p>One disadvantage of the traditional visualisation described above is the fact that when the nodes are collapsed (necessary for large trees) they become indistinguishable from one another.
+<em>Lantern Tree</em> visualisation addresses this limitation: it draws collapsed nodes in a way that indicate the size of the underlying subtrees.</p>
+<p>Consider, for example, the traditional visualisation of a restart-based execution below:</p>
+<img alt="Restart execution" src="images/doc_restarts.png" />
+<p>Each “restart” is represented by one of the subtrees attached to the “super” root node as a child.
+One can quickly determine that all but restarts terminated on finding a solution.
+The exception is the last restart in which no solution have been found (it corresponds to the proof of optimality).
+However, not much can be concluded about the size of individual restarts, or the amount of search that they represent (at least not at a glance).</p>
+<p>The following image shows the same restart tree using this alternative visualisation.
+All collapsed subtrees in this case are represented by “lantern” nodes, which cna be seen as a triangle extended with a rectangular section at the bottom.</p>
+<p>The lantern tree visualisation is parameterised by <em>N</em>, which is the maximum number of nodes a lantern node can represent before splitting into several smaller lanterns.
+Note that is rarely possible to collapse subtrees such that each subtree contains exactly <em>N</em> nodes.
+For this reason, lantern nodes (their rectangular sections) are dynamic in size and grow linearly with the actual number of nodes <em>n</em> in the subtree (1 &lt; <em>n</em> &lt;= <em>N</em>).</p>
+<img alt="Lantern tree visualisation of a restart execution" src="images/doc_restarts_lantern.png" />
+<p>In this example, the use of the lantern tree reveal additional insight: all but a few last restarts required very little search, and by far the greatest amount of work was done during the “proof of optimality” stage.</p>
+<p>The lantern tree visualisation is available by enabling the <strong>Lantern Tree View</strong> option under the <strong>View</strong> menu (shortcut: <tt class="docutils literal">Ctrl+L</tt>).
+Clicking on the same option again switches back to the traditional visualisation.</p>
+<p><strong>Pixel Tree</strong></p>
+<p>The pixel tree <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and the icicle tree <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> visualisations are a quite different from the traditional visualisation in that they show links between nodes only implicitly, i.e. without drawing edges.</p>
+<p>In the pixel tree view nodes are represented by squares (pixels), and edges only implicitly by the indentation between the squares. Parent nodes are placed immediately to the left of their subtree and the leaves of each subtree are grouped to the rightmost position.</p>
+<p>The image below shows a correspondence between nodes in a traditional view and those in the pixel tree view. Note that a green vertical line indicates a solution found at the corresponding node.</p>
+<img alt="Basic pixel tree" src="images/doc_basic_pt.png" />
+<p>One of the main advantages of the pixel tree view is the ability to compress it while preserving large scale patterns and thus providing a good overview of the search. The compression is done by simply allowing multiple nodes on the same horizontal position.</p>
+<p>In CP-Profiler the pixel tree can be shown alongside the traditional visualisation by enabling the <strong>Pixel Tree View</strong> option under the <strong>View</strong> menu (shortcut: <tt class="docutils literal">Shift+P</tt>).</p>
+<p>The following image shows the pixel tree view for the restart execution discussed earlier.</p>
+<img alt="Pixel tree with compression" src="images/doc_pt_large2.png" />
+<p>The pixel tree is compressed in this case to fit the entire tree in the window without any need for scrolling.
+Vertical green lines indicate that there is a solution node in the corresponding part of the tree.
+A vertical slices of the tree can be selected by clicking and dragging with the left mouse key.
+Note that in this example a slice just before the final solution is selected (it is shown in red).
+Selecting a part of the tree in this way will update the traditional view to reveal the nodes that belong to that part, hiding the rest.</p>
+<p><strong>Icicle Tree</strong></p>
+<p>In the icicle tree parent nodes are positioned strictly above their children, i.e. they span horizontally over the same space as their children nodes. This property allows the user to quickly find a node’s ancestry and determine the size of any subtree at a glance.</p>
+<p>Icicle trees are compressed by cutting off leaf nodes, so that the corresponding parent nodes become the new leaf nodes.
+Doing so in a binary tree, for example, reduces the display area required for the visualisation by a factor of two.
+This action is repeated until the visualisation is of the desired size.</p>
+<p>In CP-Profiler the icicle tree can be shown alongside the traditional visualisation by enabling the <strong>Icicle Tree View</strong> option under the <strong>View</strong> menu (shortcut: <tt class="docutils literal">Shift+I</tt>).</p>
+<p>The following image shows the icicle tree view for the restart execution from before.</p>
+<img alt="images/doc_icicle_tree_restarts.png" src="images/doc_icicle_tree_restarts.png" />
+<p>Again, the entire tree have been compressed to fit in the window.
+The following colour scheme is used: each icicle element that represents a subtree containing a solution is shown in green colour.
+All other nodes are shown in red as they represent entirely failed subtrees.
+Additionally elements of the icicle tree can be selected (shown in yellow colour) to show the corresponding subtree (node) in the traditional visualisation.
+Note that this relationship is two-way bound: selecting a different node in the traditional visualisation will update the icicle tree view correspondingly.</p>
+</section>
+<section id="similar-subtree-analysis">
+<h2><span class="section-number">3.4.4. </span>Similar Subtree Analysis<a class="headerlink" href="#similar-subtree-analysis" title="Link to this heading"></a></h2>
+<p>This analysis allows users to find similarities within a single search tree.</p>
+<p>The analysis can be initiated by selecting <strong>`Similar Subtrees`</strong> from the menu <strong>`Analyses`</strong> (shortcut: <tt class="docutils literal">Shift+S</tt>).
+The image below shows the result of running the analysis on the search tree above.
+Horizontal bars on the left lists all similarities (patterns) found in the tree.
+Here, the lengths of the bars are configured to indicate how many subtrees belong to a particular pattern (<em>count</em>).
+Additionally the bars are sorted so that the  patterns with subtrees of larger <em>size</em> appear at the top.
+Another property of a pattern is its <em>height</em>, which indicates the height/depth of subtrees that the pattern represent.</p>
+<p>Note that in this example the second (from the top) pattern is currently selected (shown with orange outline).
+The view on the right shows a “preview” (traditional visualisation) of one of the subtrees representing the selected pattern.
+The two rows below the show the result of computing the difference in labels on the path from the root to two of the subtrees representing the pattern (in this case it is the first two subtrees encountered when the tree is traversed in the depth-first-search order).</p>
+<img alt="Similar Subtree Analysis Summary" src="images/doc_ss_analysis_hist.png" />
+<p>TODO: discuss the two criteria</p>
+<p>Changing the configuration menu at the bottom of the window, the user can filter the list of patterns based on their <em>count</em> and <em>height</em> values.
+They way the length of horizontal bars is determined and the sorting criteria can also be specified there.</p>
+<p>Whenever a pattern on the left hand side is selected, the corresponding subtrees will be highlighted on the traditional visualisation by drawing their outlines in grey.
+Additionally, if the option <em>Hide not selected</em> is enabled (top of the window), everything but the subtrees of the current pattern will be collapsed as shown in this example.</p>
+<img alt="Similar Subtrees Highlighted" src="images/doc_ss_analysis.png" />
+<p><strong>Elimination of Subsumed Patterns</strong></p>
+<p>A pattern <cite>P</cite> is said to be subsumed by one or more other patterns if subtrees of those patterns
+contain all of the subtrees of <cite>P</cite> as descendants.
+By default, the analysis is configured to eliminate all subsumed patterns.
+Enabling the <em>Keep subsumed</em> option (top of the window) will display the subsumed patterns along with non-subsumed patterns.</p>
+</section>
+<section id="execution-comparison-by-merging">
+<h2><span class="section-number">3.4.5. </span>Execution Comparison by Merging<a class="headerlink" href="#execution-comparison-by-merging" title="Link to this heading"></a></h2>
+<p>CP-Profiler allows users to compare two executions by merging the corresponding search trees.
+This is accomplished traversing both trees in lockstep in a depth-first-search manner, starting at the root nodes and comparing corresponding node at each step.
+A node is created on the resulting merged tree for every pair of nodes that are deemed identical.
+Once a difference is found, a special <em>pentagon</em> node is created, whose two children are the roots of the corresponding different subtrees.</p>
+<p>This comparison of two execution can be done in CP-Profiler by selecting the two executions of interest from the list of executions and clicking the <em>Merge Trees</em> button.</p>
+<img alt="Two executions selected" src="images/doc_two_execs.png" />
+<p>The image below shows an example of the resulting merged tree.
+As indicated in the status bar, this tree contains 17 (orange) pentagons.
+The panel on the left lists all pentagons displaying the number of nodes on corresponding left/right subtrees.
+By default, the list is sorted by the absolute difference between the number of nodes.
+Note that in this case the top pentagon from the list (19 – 1) is selected, which automatically selects the corresponding node in the visualisation (second last pentagon node, highlighted in yellow).</p>
+<img alt="images/doc_merged_tree.png" src="images/doc_merged_tree.png" />
+</section>
+<section id="replaying-search">
+<h2><span class="section-number">3.4.6. </span>Replaying Search<a class="headerlink" href="#replaying-search" title="Link to this heading"></a></h2>
+<p>The two main factors that affect a solver execution are propagation and search.
+It can be useful to consider propagation and search in isolation (e.g. to aid merging), which can be done using the technique called <em>search replaying</em>.
+The idea is to force the same search decisions by first performing one execution normally and recording the tree structure and branching decisions (labels) to form a <em>search log</em>.
+Then the <em>search log</em> log is used to drive the search in another execution.</p>
+<p><strong>The protocol for replaying</strong></p>
+<p>The following information (<em>entry</em>) is recorded in a <em>search log</em> per node: node’s unique identifier, the number of children, and the search decisions associated with each child node.
+Each entry, in turn, is divided into <em>tokens</em> separated by a whitespace character.
+The first two tokens are the node’s identifier and the number of children (0 for a leaf node).
+Entries of branch nodes are extended by a pair of tokens per child, containing the child’s identifier and its branching decision.</p>
+<p><strong>Example</strong></p>
+<p>Consider the following basic search tree:</p>
+<a class="reference internal image-reference" href="images/doc_replaying_small_example.png"><img alt="Replaying example: small tree" src="images/doc_replaying_small_example.png" style="width: 108.0px; height: 84.5px;" /></a>
+<p>The corresponding <em>search log</em> is as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>0 2 1 X&gt;=0 2 X&lt;0
+1 2 3 Y&gt;=0 4 Y&lt;0
+3 0
+4 0
+2 0
+</pre></div>
+</div>
+</section>
+<section id="nogood-analysis">
+<h2><span class="section-number">3.4.7. </span>Nogood Analysis<a class="headerlink" href="#nogood-analysis" title="Link to this heading"></a></h2>
+<p>This analysis is based on the idea of comparing (<em>merging</em>) two execution of the same model (instance) using the same search (via <em>search replaying</em>), one with nogood learning and the other one – without (resulting in <em>learning</em> and <em>non-learning</em> executions).
+Since the only difference between the two executions will be in the higher propagation strength in the learning execution due to no-goods, the resulting merged tree will only have pentagons of the form <em>1/n</em> (one failure node corresponding to a subtree of <em>n</em> nodes in non-learning execution).
+<em>n</em> in this case is called <em>search reduction</em> and it is attributed to all previously generated no-goods that contributed to this early failure.
+The analysis aggregates this information throughout the execution, which results in a <em>nogood ranking</em> based on how much search reduction each nogood contributed to.</p>
+<p>The following steps can be performed to execute the nogood analysis:</p>
+<ol class="arabic simple">
+<li><p>An instance is executed with a learning solver with profiling on.</p></li>
+</ol>
+<p>For example: <tt class="docutils literal">chuffed pizza.fzn --cpprofiler</tt>.</p>
+<ol class="arabic simple" start="2">
+<li><p>The resulting search is saved to a file using CP-Profiler.</p></li>
+<li><p>The same instance is executed without learning (preferably by the same solver, but a solver with similar propagation will produce similar result).</p></li>
+</ol>
+<p>For example: <tt class="docutils literal">gecode --cpprofiler_replay pizza.search pizza.fzn</tt></p>
+<ol class="arabic simple" start="4">
+<li><p>The two resulting trees are merged using CP-Profiler.</p></li>
+<li><p><strong>Nogood analysis</strong> option is selected from the <strong>Analyses</strong> menu in CP-Profiler.</p></li>
+</ol>
+<p>The image below shows a possible result window, in which the ranking is displayed in a tabular form with one row per nogood:</p>
+<a class="reference internal image-reference" href="images/doc_ng_analysis_result.png"><img alt="images/doc_ng_analysis_result.png" src="images/doc_ng_analysis_result.png" style="width: 800.0px; height: 502.40000000000003px;" /></a>
+<p>The first column identifies the (failed) node at which the nogood has been generated.
+The next column shows search reduction (in the number of nodes) attributed to this nogood.
+This is followed by the column that shows the number of times the nogood contributed to search reduction, that is, the number of <em>1/n</em> pentagons that were partially or solely responsible for the early failure.
+Finally, the last column shows the nogood itself in a form of a clause (disjunction of literals) where its literals are separated by a whitespace character.</p>
+<p>Note that dy default the entries are sorted based on search reduction.
+The sorting criteria can be changed by clicking on corresponding column headers.</p>
+<p>This result can be saved to a file (by clicking the <strong>Save Nogoods</strong> button) for further examination.
+Each row in the resulting file will correspond to one nogood, and the tab character (<tt class="docutils literal">\t</tt>)  will separate different columns.</p>
+</section>
+<section id="the-protocol-high-level">
+<h2><span class="section-number">3.4.8. </span>The protocol (high level)<a class="headerlink" href="#the-protocol-high-level" title="Link to this heading"></a></h2>
+<p>The following describes the protocol that a solver must implement to communicate with the profiler.</p>
+<p>The protocol distinguishes between the following types of messages: <strong>Start</strong>, <strong>Restart</strong>, <strong>Done</strong>, and <strong>Node</strong>.</p>
+<p>The <strong>Start</strong> message is sent at the beginning of the execution.
+The message has two optional parameters:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">Name</tt>: execution’s descriptor to be presented to the user (e.g. the model’s name)</p></li>
+<li><p><tt class="docutils literal">Execution ID</tt>: globally unique identifier used to distinguish between different executions.</p></li>
+</ul>
+<p>The <strong>Restart</strong> message is sent whenever a solver performs a restart in case of a restart-based search.</p>
+<p>The <strong>Done</strong> message is sent to the profiler at the end of the execution to indicate that no further nodes should be expected.</p>
+<p>The <strong>Node</strong> message is sent whenever a new node is explored by the solver and contains information necessary for reconstructing the search tree. The required parameters are:</p>
+<ul class="simple">
+<li><p><tt class="docutils literal">Node ID</tt>: unique node identifier in the execution.</p></li>
+<li><p><tt class="docutils literal">Parent ID</tt>: the identifier (<tt class="docutils literal">Node ID</tt>) of the parent node. A root node can have an identifier of <cite>-1</cite>.</p></li>
+<li><p><tt class="docutils literal">Alternative</tt>: the node’s position relative to its siblings; for the left-most child it is <tt class="docutils literal">0</tt>, for the second left-most it is <tt class="docutils literal">1</tt> etc.</p></li>
+<li><p><tt class="docutils literal">Number of Children</tt>: the number of children nodes. If not known, can be set to <tt class="docutils literal">0</tt> and the node will be extended with extra children later on if necessary.It is, however, advisable to specify the number of children the profiler should expect (for example, the yet to arrive nodes can be visualised to give a better idea about the search).</p></li>
+<li><dl class="simple">
+<dt><tt class="docutils literal">Status</tt>: allows to distinguish between different types of nodes. Supported values are:</dt><dd><ul>
+<li><p><em>BRANCH</em>: internal node in the tree;</p></li>
+<li><p><em>SOLUTION</em>: leaf node representing a solution;</p></li>
+<li><p><em>FAILURE</em>: leaf node representing a failure;</p></li>
+<li><p><em>SKIPPED</em>: leaf node representing unexplored search space due to backjumping.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Example</strong>. The following sequence of nodes (excluding the <cite>Start</cite> and <cite>Done</cite> messages) produces the simple tree with three nodes:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><tt class="docutils literal">Label</tt></p></th>
+<th class="head"><p><tt class="docutils literal">Node ID</tt></p></th>
+<th class="head"><p><tt class="docutils literal">Parent ID</tt></p></th>
+<th class="head"><p><tt class="docutils literal">Alternative</tt></p></th>
+<th class="head"><p><tt class="docutils literal">Number of Children</tt></p></th>
+<th class="head"><p><tt class="docutils literal">Status</tt></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Root</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>2</p></td>
+<td><p>BRANCH</p></td>
+</tr>
+<tr class="row-odd"><td><p>Failure</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>FAILED</p></td>
+</tr>
+<tr class="row-even"><td><p>Solution</p></td>
+<td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>SOLVED</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-protocol-low-level">
+<h2><span class="section-number">3.4.9. </span>The protocol (low level)<a class="headerlink" href="#the-protocol-low-level" title="Link to this heading"></a></h2>
+<p>Each message starts with a four-byte integer encoding the size of the remainder of the message in bytes. This is followed by a single byte encoding the type of the message. The corresponding values are: <tt class="docutils literal">Node</tt>: <tt class="docutils literal">0</tt>, <tt class="docutils literal">Done</tt>: <tt class="docutils literal">1</tt>, <tt class="docutils literal">Start</tt>: <tt class="docutils literal">2</tt>, <tt class="docutils literal">Restart</tt>: <tt class="docutils literal">3</tt>.</p>
+<p><strong>Node message</strong></p>
+<p>In case the message is of the type <tt class="docutils literal">Node</tt>, the following fields are added in order: <tt class="docutils literal">id</tt>, <tt class="docutils literal">pid</tt>, <tt class="docutils literal">alt</tt>, <tt class="docutils literal">children</tt> and <tt class="docutils literal">status</tt>.</p>
+<p>Node identifiers <tt class="docutils literal">id</tt> and <tt class="docutils literal">pid</tt> are represented using three four-byte integers: first identifies the identifier of the node within a thread, the second — the identifier of the restart (in a restart-based search), and the third — the identifier of the thread.
+The <tt class="docutils literal">alt</tt> and <tt class="docutils literal">children</tt> fields are represented by a single four byte integer each.
+The <tt class="docutils literal">status</tt> field is represented by a single byte; its possible values are: <em>SOLVED</em>: 0, <em>FAILED</em>: 1, <em>BRANCH</em>: 2, <em>SKIPPED</em>: 3.
+All multi-byte integer values are encoded using the <em>two’s compliment</em> notation in the <em>big-endian order</em>.</p>
+<dl class="simple">
+<dt>Additionally, each node message can contain the following optional fields:</dt><dd><ul class="simple">
+<li><p><tt class="docutils literal">label</tt>: branching decision (or any arbitrary string to be drawn together with the node);</p></li>
+<li><p><tt class="docutils literal">nogood</tt>: string representation of a newly generated nogood in a learning solver;</p></li>
+<li><p><tt class="docutils literal">info</tt>: arbitrary information about the node.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Field identifiers and their sizes in bytes:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>field name</p></th>
+<th class="head"><p>field id</p></th>
+<th class="head"><p>size (bytes)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><tt class="docutils literal">id</tt></p></td>
+<td><p>n/a</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-odd"><td><p><tt class="docutils literal">pid</tt></p></td>
+<td><p>n/a</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p><tt class="docutils literal">alt</tt></p></td>
+<td><p>n/a</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p><tt class="docutils literal">children</tt></p></td>
+<td><p>n/a</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p><tt class="docutils literal">status</tt></p></td>
+<td><p>n/a</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p><tt class="docutils literal">label</tt></p></td>
+<td><p>0</p></td>
+<td><p>any</p></td>
+</tr>
+<tr class="row-even"><td><p><tt class="docutils literal">nogood</tt></p></td>
+<td><p>1</p></td>
+<td><p>any</p></td>
+</tr>
+<tr class="row-odd"><td><p><tt class="docutils literal">info</tt></p></td>
+<td><p>2</p></td>
+<td><p>any</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Example</strong>. The following is a possible correspondence between a solver and the profiler that generates a trivial tree. The order in which different fields arrive is shown from top to bottom (rows are numbered for convenience).</p>
+<p><em>Message 1:</em></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Row</p></th>
+<th class="head"><p>Bytes</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><tt class="docutils literal">00 00 00 21</tt></p></td>
+<td><p>message size (33)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><tt class="docutils literal">02</tt></p></td>
+<td><p>message type (<em>START</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><tt class="docutils literal">02</tt></p></td>
+<td><p>field (<em>info</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><tt class="docutils literal">00 00 00 1B</tt></p></td>
+<td><p>string size (27)</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><tt class="docutils literal">7b 22 6e 61 6d 65 22 3a 20 22 6d 69 6e 69 6d 61 6c 20 65 78 61 6d 70 6c 65 22 7d</tt></p></td>
+<td><p>‘{“name”: “minimal example”}’</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Message 2:</em></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Row</p></th>
+<th class="head"><p>Bytes</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6</p></td>
+<td><p><tt class="docutils literal">00 00 00 2B</tt></p></td>
+<td><p>message size (43)</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p><tt class="docutils literal">00</tt></p></td>
+<td><p>message type (<strong>NODE</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p><tt class="docutils literal">00 00 00 00</tt></p></td>
+<td><p>node id (0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p><tt class="docutils literal">FF FF FF FF</tt></p></td>
+<td><p>node restart id (-1)</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p><tt class="docutils literal">FF FF FF FF</tt></p></td>
+<td><p>node thread id (-1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p><tt class="docutils literal">FF FF FF FF</tt></p></td>
+<td><p>parent id (-1)</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p><tt class="docutils literal">FF FF FF FF</tt></p></td>
+<td><p>parent restart id (-1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p><tt class="docutils literal">FF FF FF FF</tt></p></td>
+<td><p>parent thread id (-1)</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p><tt class="docutils literal">FF FF FF FF</tt></p></td>
+<td><p>alternative (-1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p><tt class="docutils literal">00 00 00 02</tt></p></td>
+<td><p>children (2)</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p><tt class="docutils literal">02</tt></p></td>
+<td><p>status (<em>BRANCH</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p><tt class="docutils literal">00</tt></p></td>
+<td><p>field (label)</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p><tt class="docutils literal">00 00 00 04</tt></p></td>
+<td><p>string size (4)</p></td>
+</tr>
+<tr class="row-odd"><td><p>19</p></td>
+<td><p><tt class="docutils literal">52 6f 6f 74</tt></p></td>
+<td><p>‘Root’</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Message 3:</em></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Row</p></th>
+<th class="head"><p>Bytes</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>20</p></td>
+<td><p><tt class="docutils literal">00 00 00 01</tt></p></td>
+<td><p>message size (1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>21</p></td>
+<td><p><tt class="docutils literal">01</tt></p></td>
+<td><p>message type (<strong>DONE</strong>)</p></td>
+</tr>
+</tbody>
+</table>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Burch, M. et al., “Indented Pixel Tree Plots”, 2010.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Kruskal, J. B. et al., “Icicle Plots: Better Displays for Hierarchical Clustering”, 1983.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="visualisation.html" class="btn btn-neutral float-left" title="3.3. Visualising solutions in the MiniZinc IDE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="solvers.html" class="btn btn-neutral float-right" title="3.5. Solving Technologies and Solver Backends" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

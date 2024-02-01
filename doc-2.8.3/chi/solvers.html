@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.5. Solving Technologies and Solver Backends &mdash; The MiniZinc Handbook 2.8.3</title>
+      <link rel="stylesheet" type="text/css" href="static/pygments.css?v=77553476" />
+      <link rel="stylesheet" type="text/css" href="static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="static/style.css?v=572cde19" />
+
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/solvers.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=5fd05df9"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3.6. Automatic Solution Checking, Model Validation, and Benchmarking" href="checkers.html" />
+    <link rel="prev" title="3.4. CP-Profiler" href="cpprofiler.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.3
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">3.1. The MiniZinc Command Line Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc_ide.html">3.2. The MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualisation.html">3.3. Visualising solutions in the MiniZinc IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpprofiler.html">3.4. CP-Profiler</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.5. Solving Technologies and Solver Backends</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#constraint-programming-solvers">3.5.1. Constraint Programming Solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gecode">3.5.1.1. Gecode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chuffed">3.5.1.2. Chuffed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#or-tools">3.5.1.3. OR-Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mixed-integer-programming-solvers">3.5.2. Mixed-Integer Programming Solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mip-aware-modeling-but-mostly-useful-for-all-backends">3.5.2.1. MIP-Aware Modeling (But Mostly Useful for All Backends)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#useful-flattening-parameters">3.5.2.2. Useful Flattening Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#some-solver-options-and-changed-default-values">3.5.2.3. Some Solver Options and Changed Default Values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subtour-elimination-constraints">3.5.2.4. Subtour Elimination Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unified-domains-mipdomains">3.5.2.5. Unified Domains (MIPdomains)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#indicator-constraints">3.5.2.6. Indicator Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quadratic-constraints-and-objectives-miqcp">3.5.2.7. Quadratic Constraints and Objectives (MIQCP)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pools-of-user-cuts-and-lazy-constraints">3.5.2.8. Pools of User Cuts and Lazy Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#warm-starts">3.5.2.9. Warm Starts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#non-linear-solvers-via-nl-file-format">3.5.3. Non-Linear Solvers via NL File Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="checkers.html">3.6. Automatic Solution Checking, Model Validation, and Benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalizer.html">3.7. Globalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_mus.html">3.8. FindMUS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn-analyse.html">3.9. Mzn-Analyse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">3.10. Using MiniZinc in Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">3.11. Python Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">3.12. JavaScript Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_detailed.html">3.13. Installation from Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_3_user_manual.html"><span class="section-number">3. </span>User Manual</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.5. </span>Solving Technologies and Solver Backends</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="solving-technologies-and-solver-backends">
+<span id="ch-solvers"></span><h1><span class="section-number">3.5. </span>Solving Technologies and Solver Backends<a class="headerlink" href="#solving-technologies-and-solver-backends" title="Link to this heading"></a></h1>
+<p>The <tt class="docutils literal">minizinc</tt> tool can use various solver backends for a given model.
+Some solvers are separate executables that are called by <tt class="docutils literal">minizinc</tt>;
+other solvers are part of the <tt class="docutils literal">minizinc</tt> binary (either hard-coded or loaded as a dynamic library or “plugin”).
+In the former case, a temporary FlatZinc file is created and passed to the solver binary;
+in the latter one, the flattened model is passed to the backend directly in memory.
+Some solvers are part of the binary MiniZinc distribution, others have to be installed separately.
+You can find instructions for installing these solvers from source code and integrating into the <tt class="docutils literal">minizinc</tt> tool
+in <a class="reference internal" href="installation_detailed.html#ch-installation-detailed"><span class="std std-ref">Installation from Source Code</span></a>.
+This chapter summarises usage options available for various target solvers.</p>
+<p>The help text of <tt class="docutils literal">minizinc</tt> shows a list of configured solver backends and their tags. You can see solver-specific command-line options by running</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>minizinc<span class="w"> </span>--help<span class="w"> </span>&lt;solver-id<span class="w"> </span>or<span class="w"> </span>tag&gt;
+</pre></div>
+</div>
+<section id="constraint-programming-solvers">
+<h2><span class="section-number">3.5.1. </span>Constraint Programming Solvers<a class="headerlink" href="#constraint-programming-solvers" title="Link to this heading"></a></h2>
+<p>Constraint Programming is the ‘native’ paradigm of MiniZinc. Below we discuss most common CP solvers.
+For their performance, consult MiniZinc Challenges (<a class="reference external" href="https://www.minizinc.org/challenge.html">https://www.minizinc.org/challenge.html</a>).</p>
+<section id="gecode">
+<h3><span class="section-number">3.5.1.1. </span>Gecode<a class="headerlink" href="#gecode" title="Link to this heading"></a></h3>
+<p>Gecode is an open-source constraint programming system (see <a class="reference external" href="https://www.gecode.org">https://www.gecode.org</a>).
+It supports many of MiniZinc’s global constraints natively, and has support for integer, set and float variables.</p>
+<p>Gecode supports a number of constraints and search annotations that are not part of the MiniZinc standard library.
+You can get access to these by adding <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">include</span><span class="s"> &quot;gecode.mzn&quot;</span><span class="p">;</span></code> to your model. The additional declarations are documented in <a class="reference internal" href="lib-gecode.html#ch-lib-gecode"><span class="std std-numref">Section 4.2.4</span></a>.</p>
+</section>
+<section id="chuffed">
+<h3><span class="section-number">3.5.1.2. </span>Chuffed<a class="headerlink" href="#chuffed" title="Link to this heading"></a></h3>
+<p>Chuffed is a constraint solver based on <em>lazy clause generation</em> (see <a class="reference external" href="https://github.com/chuffed/chuffed">https://github.com/chuffed/chuffed</a>).
+This type of solver adapts techniques from SAT solving, such as conflict clause learning,
+watched literal propagation and activity-based search heuristics, and can often be much faster than traditional CP solvers.</p>
+<p>In order to take full advantage of Chuffed’s performance,
+it is often useful to add a search annotation to the model (see <a class="reference internal" href="mzn_search.html#sec-search"><span class="std std-ref">搜索</span></a>),
+but allow Chuffed to switch between this defined search and its activity-based search.
+In order to enable this behaviour, use the <tt class="docutils literal">-f</tt> (free search) command line option or
+select <em>Free search</em> in the solver configuration pane of the MiniZinc IDE.</p>
+<p>Chuffed supports a number of additional search annotations that are not part of the MiniZinc standard library.
+The additional declarations are documented in <a class="reference internal" href="lib-chuffed.html#ch-lib-chuffed"><span class="std std-numref">Section 4.2.5</span></a>.</p>
+</section>
+<section id="or-tools">
+<h3><span class="section-number">3.5.1.3. </span>OR-Tools<a class="headerlink" href="#or-tools" title="Link to this heading"></a></h3>
+<p>OR-Tools is a powerful open-source CP/SAT/LP solver (see <a class="reference external" href="https://developers.google.com/optimization/">https://developers.google.com/optimization/</a>).
+It supports many of MiniZinc’s global constraints natively. It often performs better multi-threaded (option <tt class="docutils literal">-p</tt>)
+so it can employ various solving technologies. A search annotation (see <a class="reference internal" href="mzn_search.html#sec-search"><span class="std std-ref">搜索</span></a>) can be useful,
+however allowing OR-Tools to mix the prescribed strategy with its own (option <tt class="docutils literal">-f</tt>) usually is best,
+analogously to Chuffed.</p>
+</section>
+</section>
+<section id="mixed-integer-programming-solvers">
+<h2><span class="section-number">3.5.2. </span>Mixed-Integer Programming Solvers<a class="headerlink" href="#mixed-integer-programming-solvers" title="Link to this heading"></a></h2>
+<p>MiniZinc has built-in support for Mixed Integer Programing solvers.
+If you have any MIP solver installed (and MiniZinc was compiled with its support),
+you can run a model using MIP like this on the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>minizinc<span class="w"> </span>--solver<span class="w"> </span>mip<span class="w"> </span>-v<span class="w"> </span>-s<span class="w"> </span>-a<span class="w"> </span>model.mzn<span class="w"> </span>data.dzn
+</pre></div>
+</div>
+<p>Of course, you can also select a particular solver, e.g. Gurobi (in case it is available):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>minizinc<span class="w"> </span>--solver<span class="w"> </span>gurobi<span class="w"> </span>-v<span class="w"> </span>-s<span class="w"> </span>-a<span class="w"> </span>model.mzn<span class="w"> </span>data.dzn
+</pre></div>
+</div>
+<section id="mip-aware-modeling-but-mostly-useful-for-all-backends">
+<h3><span class="section-number">3.5.2.1. </span>MIP-Aware Modeling (But Mostly Useful for All Backends)<a class="headerlink" href="#mip-aware-modeling-but-mostly-useful-for-all-backends" title="Link to this heading"></a></h3>
+<p>Avoid mixing positive and negative coefficients in the objective. Use ‘complementing’ variables to revert sense.</p>
+<p>Avoid nested expressions which are hard to linearize (decompose for MIP). For example, instead of</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">s</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">TASKS</span><span class="p">)(</span><span class="k">exists</span><span class="p">([</span><span class="nv">whentask</span><span class="p">[</span><span class="nv">s</span><span class="p">]</span><span class="o">=</span><span class="m">0</span><span class="p">]</span><span class="s"> </span><span class="o">++</span>
+<span class="s">  </span><span class="p">[</span><span class="nv">whentask</span><span class="p">[</span><span class="nv">s</span><span class="p">]</span><span class="o">&gt;=</span><span class="s"> </span><span class="nv">start</span><span class="p">[</span><span class="nv">s</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="nv">t</span><span class="o">*</span><span class="nv">numslots</span><span class="p">)</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">whentask</span><span class="p">[</span><span class="nv">s</span><span class="p">]</span><span class="o">&lt;=</span><span class="nv">stop</span><span class="p">[</span><span class="nv">s</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="nv">t</span><span class="o">*</span><span class="nv">numslots</span><span class="p">)</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">nummachines</span><span class="o">-</span><span class="m">1</span><span class="p">]));</span>
+</pre></div>
+</div>
+<p>prefer the tight domain constraint</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">s</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">TASKS</span><span class="p">)(</span><span class="nv">whentask</span><span class="p">[</span><span class="nv">s</span><span class="p">]</span><span class="s"> </span><span class="k">in</span>
+<span class="s">  </span><span class="p">{</span><span class="m">0</span><span class="p">}</span><span class="s"> </span><span class="o">union</span><span class="s"> </span><span class="nb">array_union</span><span class="p">([</span><span class="s"> </span><span class="nv">start</span><span class="p">[</span><span class="nv">s</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="nv">t</span><span class="o">*</span><span class="nv">numslots</span><span class="p">)</span><span class="s"> .. </span><span class="nv">stop</span><span class="p">[</span><span class="nv">s</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="nv">t</span><span class="o">*</span><span class="nv">numslots</span><span class="p">)</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">nummachines</span><span class="o">-</span><span class="m">1</span><span class="p">]));</span>
+</pre></div>
+</div>
+<p>To avoid <strong>numerical issues</strong>, make variable domains as tight as possible (compiler can deduce bounds in certain cases but explicit bounding can be stronger).
+Try to keep magnitude difference in each constraint below 1e4.
+Especially for variables involved in logical constraints, if you cannot reduce the domains to be in +/-1e4,
+consider indicator constraints (available for some solvers, see below), or use the following trick:
+instead of saying <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">b</span><span class="o">=</span><span class="m">1</span><span class="s"> </span><span class="o">-&gt;</span><span class="s"> </span><span class="nv">x</span><span class="o">&lt;=</span><span class="m">0</span></code> where x can become very big, use e.g. <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">b</span><span class="o">=</span><span class="m">1</span><span class="s"> </span><span class="o">-&gt;</span><span class="s"> </span><span class="m">0.001</span><span class="o">*</span><span class="nv">x</span><span class="o">&lt;=</span><span class="m">0.0</span></code>.
+Especially for integer variables, the domain size of 1e4 should be an upper bound if possible – what is the value of integrality otherwise?
+Avoid large coefficients too, as well as large values in the objective function.
+See more on tolerances in the Solver Options section.</p>
+<p>Example 1: <em>basic big-M constraint vs implication</em>. Instead of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">1000000</span><span class="o">*</span><span class="nv">y</span></code> given <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">1</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span></code>
+and where you use the ‘big-M’ value of 1000000 because you don’t know a good upper bound on <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span></code>, prefer <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="o">=</span><span class="m">0</span><span class="s"> </span><span class="o">-&gt;</span><span class="s"> </span><span class="o">&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">0</span></code>
+so that MiniZinc computes a possibly tighter bound, and consider the above trick: <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span><span class="o">=</span><span class="m">0</span><span class="s"> </span><span class="o">-&gt;</span><span class="s"> </span><span class="m">0.0001</span><span class="o">*&lt;</span><span class="nv">expr</span><span class="o">&gt;</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">0.0</span></code> to reduce magnitudes.</p>
+<p>Example 2: <em>cost-based choice</em>. Assume you want the model to make a certain decision, e.g., constructing a road, but then its cost should be minimal among some others, otherwise not considered. This can be modeled as follows:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">1</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">;</span><span class="s">                                             </span><span class="c">%% Whether we construct the road</span>
+<span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">cost_road</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">286</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">1000000</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="nv">c</span><span class="p">);</span>
+<span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">cost_final</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">min</span><span class="p">(</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="nv">cost_road</span><span class="p">,</span><span class="s"> </span><span class="nv">cost1</span><span class="p">,</span><span class="s"> </span><span class="nv">cost2</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Note the big coefficient in the definition of <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">cost_road</span></code>. It can lead to numerical issues and a wrong answer: when the solver’s integrality tolerance is 1e-6, it can assume <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">c</span><span class="o">=</span><span class="m">0.999999</span></code> as equivalent to <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">c</span><span class="o">=</span><span class="m">1</span></code> leading to <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">cost_road</span><span class="o">=</span><span class="m">287</span></code> after rounding.</p>
+<p>A better solution, given reasonable bounds on <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">cost1</span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">cost2</span></code>, is to replace the definition as follows:</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">cost_others_ub</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1+2</span><span class="o">*</span><span class="nb">ub_array</span><span class="p">(</span><span class="s"> </span><span class="p">[</span><span class="nv">cost1</span><span class="p">,</span><span class="s"> </span><span class="nv">cost2</span><span class="p">]</span><span class="s"> </span><span class="p">);</span><span class="s">    </span><span class="c">%% Multiply by 2 for a stronger LP relaxation</span>
+<span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">cost_road</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">286</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">cost_others_ub</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="nv">c</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="useful-flattening-parameters">
+<h3><span class="section-number">3.5.2.2. </span>Useful Flattening Parameters<a class="headerlink" href="#useful-flattening-parameters" title="Link to this heading"></a></h3>
+<p>The following parameters can be given on the command line or modified in <tt class="docutils literal">share/minizinc/linear/options.mzn</tt>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">D</span> <span class="n">nSECcuts</span><span class="o">=</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>                            <span class="o">%%</span> <span class="n">Subtour</span> <span class="n">Elimination</span> <span class="n">Constraints</span><span class="p">,</span> <span class="n">see</span> <span class="n">below</span>
+<span class="o">-</span><span class="n">D</span> <span class="n">fMIPdomains</span><span class="o">=</span><span class="n">true</span><span class="o">/</span><span class="n">false</span>                    <span class="o">%%</span> <span class="n">The</span> <span class="n">unified</span> <span class="n">domains</span> <span class="n">feature</span><span class="p">,</span> <span class="n">see</span> <span class="n">below</span>
+<span class="o">-</span><span class="n">D</span> <span class="n">float_EPS</span><span class="o">=</span><span class="mf">1e-6</span>                            <span class="o">%%</span> <span class="n">Epsilon</span> <span class="k">for</span> <span class="n">floats</span><span class="s1">&#39; strict comparison,</span>
+                                             <span class="o">%%</span> <span class="n">used</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="k">for</span> <span class="n">the</span> <span class="n">following</span> <span class="n">cases</span><span class="p">:</span>
+                                             <span class="o">%%</span> <span class="n">x</span><span class="o">!=</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">&lt;</span><span class="n">y</span><span class="p">,</span> <span class="n">b</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">&lt;</span><span class="n">y</span><span class="p">,</span> <span class="n">b</span> <span class="o">&lt;-&gt;</span> <span class="n">x</span><span class="o">&lt;=</span><span class="n">y</span>
+<span class="o">-</span><span class="n">DfIndConstr</span><span class="o">=</span><span class="n">true</span> <span class="o">-</span><span class="n">DfMIPdomains</span><span class="o">=</span><span class="n">false</span>        <span class="o">%%</span> <span class="n">Use</span> <span class="n">solver</span><span class="s1">&#39;s indicator constraints, see below</span>
+<span class="o">-</span><span class="n">DMinMaxGeneral</span><span class="o">=</span><span class="n">true</span>                         <span class="o">%%</span> <span class="n">Send</span> <span class="nb">min</span><span class="o">/</span><span class="nb">max</span> <span class="n">constraints</span> <span class="n">to</span> <span class="n">the</span> <span class="n">solver</span> <span class="p">(</span><span class="n">Gurobi</span> <span class="n">only</span><span class="p">)</span>
+<span class="o">-</span><span class="n">DQuadrFloat</span><span class="o">=</span><span class="n">false</span> <span class="o">-</span><span class="n">DQuadrInt</span><span class="o">=</span><span class="n">false</span>          <span class="o">%%</span> <span class="n">Not</span> <span class="n">forward</span> <span class="nb">float</span><span class="o">/</span><span class="n">integer</span> <span class="n">multiplications</span> <span class="k">for</span> <span class="n">MIQCP</span> <span class="n">backends</span><span class="p">,</span> <span class="n">see</span> <span class="n">below</span>
+<span class="o">-</span><span class="n">DUseCumulative</span><span class="o">=</span><span class="n">false</span>                        <span class="o">%%</span> <span class="n">Not</span> <span class="n">forward</span> <span class="n">cumulative</span> <span class="k">with</span> <span class="n">fixed</span> <span class="n">durations</span><span class="o">/</span><span class="n">resources</span> <span class="p">(</span><span class="n">SCIP</span> <span class="n">only</span><span class="p">)</span>
+<span class="o">-</span><span class="n">DUseOrbisack</span><span class="o">=</span><span class="n">false</span>                          <span class="o">%%</span> <span class="n">Not</span> <span class="n">forward</span> <span class="n">lex_lesseq</span> <span class="k">for</span> <span class="n">binary</span><span class="o">/</span><span class="nb">bool</span> <span class="n">vectors</span> <span class="p">(</span><span class="n">SCIP</span> <span class="n">only</span><span class="p">)</span>
+<span class="o">-</span><span class="n">DOrbisackAlwaysModelConstraint</span><span class="o">=</span><span class="n">true</span>         <span class="o">%%</span> <span class="n">lex_lesseq</span> <span class="n">ignores</span> <span class="n">being</span> <span class="ow">in</span> <span class="n">symmetry_breaking_constraint</span><span class="p">()</span> <span class="p">(</span><span class="n">SCIP</span> <span class="n">only</span><span class="p">)</span>
+                                             <span class="o">%%</span> <span class="n">Required</span> <span class="k">for</span> <span class="n">SCIP</span> <span class="mf">7.0.2</span><span class="p">,</span> <span class="ow">or</span> <span class="n">use</span> <span class="n">patch</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">listserv</span><span class="o">.</span><span class="n">zib</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">pipermail</span><span class="o">/</span><span class="n">scip</span><span class="o">/</span><span class="mi">2021</span><span class="o">-</span><span class="n">February</span><span class="o">/</span><span class="mf">004213.</span><span class="n">html</span>
+<span class="o">-</span><span class="n">DUseOrbitope</span><span class="o">=</span><span class="n">false</span>                          <span class="o">%%</span> <span class="n">Not</span> <span class="n">forward</span> <span class="n">lex_chain_lesseq</span> <span class="k">for</span> <span class="n">binary</span><span class="o">/</span><span class="nb">bool</span> <span class="n">matrices</span> <span class="p">(</span><span class="n">SCIP</span> <span class="n">only</span><span class="p">)</span>
+<span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">half</span><span class="o">-</span><span class="n">reifications</span>                       <span class="o">%%</span> <span class="n">Turn</span> <span class="n">off</span> <span class="n">halfreification</span> <span class="p">(</span><span class="n">full</span> <span class="n">reification</span> <span class="n">was</span> <span class="n">until</span> <span class="n">v2</span><span class="mf">.2.3</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="some-solver-options-and-changed-default-values">
+<h3><span class="section-number">3.5.2.3. </span>Some Solver Options and Changed Default Values<a class="headerlink" href="#some-solver-options-and-changed-default-values" title="Link to this heading"></a></h3>
+<p>The following command-line options affect the backend or invoke extra functionality. Note that some of them have default values which may be different from the backend’s ones.
+For example, tolerances have been tightened to enable more precise solving with integer variables and objective. This slightly deteriorates performance on average, so when your model has moderate constant and bound magnitudes, you may want to pass negative values to use solver’s defaults.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">h</span> <span class="o">&lt;</span><span class="n">solver</span><span class="o">-</span><span class="n">tag</span><span class="o">&gt;</span>    <span class="n">full</span> <span class="n">description</span> <span class="n">of</span> <span class="n">the</span> <span class="n">backend</span> <span class="n">options</span>
+<span class="o">--</span><span class="n">relGap</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span>       <span class="n">relative</span> <span class="n">gap</span> <span class="o">|</span><span class="n">primal</span><span class="o">-</span><span class="n">dual</span><span class="o">|/&lt;</span><span class="n">solver</span><span class="o">-</span><span class="n">dep</span><span class="o">&gt;</span> <span class="n">to</span> <span class="n">stop</span><span class="o">.</span> <span class="n">Default</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="nb">set</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="n">to</span> <span class="n">use</span> <span class="n">backend</span><span class="s1">&#39;s default</span>
+<span class="o">--</span><span class="n">feasTol</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span>      <span class="n">primal</span> <span class="n">feasibility</span> <span class="n">tolerance</span> <span class="p">(</span><span class="n">Gurobi</span><span class="p">)</span><span class="o">.</span> <span class="n">Default</span> <span class="mf">1e-8</span>
+<span class="o">--</span><span class="n">intTol</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span>       <span class="n">integrality</span> <span class="n">tolerance</span> <span class="k">for</span> <span class="n">a</span> <span class="n">variable</span><span class="o">.</span> <span class="n">Default</span> <span class="mf">1e-8</span>
+<span class="o">--</span><span class="n">solver</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">limit</span><span class="o">-</span><span class="n">feas</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">--</span><span class="n">solver</span><span class="o">-</span><span class="n">tlf</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span>
+                   <span class="n">stop</span> <span class="n">after</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span> <span class="n">milliseconds</span> <span class="n">after</span> <span class="n">the</span> <span class="n">first</span> <span class="n">feasible</span> <span class="n">solution</span> <span class="p">(</span><span class="n">some</span> <span class="n">backends</span><span class="p">)</span>
+<span class="o">--</span><span class="n">writeModel</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
+                   <span class="n">write</span> <span class="n">model</span> <span class="n">to</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">.</span><span class="n">lp</span><span class="p">,</span> <span class="o">.</span><span class="n">mps</span><span class="p">,</span> <span class="o">.</span><span class="n">sav</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span><span class="o">.</span> <span class="n">All</span> <span class="n">solvers</span> <span class="n">support</span> <span class="n">the</span> <span class="n">MPS</span> <span class="nb">format</span>
+                   <span class="n">which</span> <span class="ow">is</span> <span class="n">industry</span> <span class="n">standard</span><span class="o">.</span> <span class="n">Most</span> <span class="n">support</span> <span class="n">the</span> <span class="n">LP</span> <span class="nb">format</span><span class="o">.</span> <span class="n">Some</span> <span class="n">solvers</span> <span class="n">have</span> <span class="n">own</span> <span class="n">formats</span><span class="p">,</span>
+                   <span class="k">for</span> <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">CIP</span> <span class="nb">format</span> <span class="n">of</span> <span class="n">SCIP</span> <span class="p">(</span><span class="s2">&quot;constraint integer programming&quot;</span><span class="p">)</span><span class="o">.</span>
+<span class="o">--</span><span class="n">readParam</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
+                   <span class="n">read</span> <span class="n">backend</span><span class="o">-</span><span class="n">specific</span> <span class="n">parameters</span> <span class="kn">from</span> <span class="nn">file</span> <span class="p">(</span><span class="n">some</span> <span class="n">backends</span><span class="p">)</span>
+<span class="o">--</span><span class="n">writeParam</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
+                   <span class="n">write</span> <span class="n">backend</span><span class="o">-</span><span class="n">specific</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">file</span> <span class="p">(</span><span class="n">some</span> <span class="n">backends</span><span class="p">)</span>
+<span class="o">--</span><span class="n">readConcurrentParam</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
+                   <span class="n">each</span> <span class="n">of</span> <span class="n">these</span> <span class="n">commands</span> <span class="n">specifies</span> <span class="n">a</span> <span class="n">parameter</span> <span class="n">file</span> <span class="n">of</span> <span class="n">one</span> <span class="n">concurrent</span> <span class="n">solve</span> <span class="p">(</span><span class="n">Gurobi</span> <span class="n">only</span><span class="p">)</span>
+<span class="o">--</span><span class="n">keep</span><span class="o">-</span><span class="n">paths</span>       <span class="n">this</span> <span class="n">standard</span> <span class="n">flattening</span> <span class="n">option</span> <span class="n">annotates</span> <span class="n">every</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">FlatZinc</span> <span class="n">by</span> <span class="n">its</span> <span class="s2">&quot;flattening history&quot;</span><span class="o">.</span>
+                   <span class="n">For</span> <span class="n">MIP</span> <span class="n">solvers</span><span class="p">,</span> <span class="n">it</span> <span class="n">additionally</span> <span class="n">assigns</span> <span class="n">each</span> <span class="n">constraint</span><span class="s1">&#39;s name as the first 255 symbols of that.</span>
+<span class="o">--</span><span class="n">cbcArgs</span> <span class="s1">&#39;-guess -cuts off -preprocess off -passc 1&#39;</span>
+                   <span class="n">parameters</span> <span class="k">for</span> <span class="n">the</span> <span class="n">COIN</span><span class="o">-</span><span class="n">OR</span> <span class="n">CBC</span> <span class="n">backend</span>
+</pre></div>
+</div>
+<p>All MIP solvers directly support multi-threading (option <tt class="docutils literal">-p</tt>). For COIN-BC to use it, it needs to be
+configured with <tt class="docutils literal">--enable-cbc-parallel</tt>.</p>
+</section>
+<section id="subtour-elimination-constraints">
+<h3><span class="section-number">3.5.2.4. </span>Subtour Elimination Constraints<a class="headerlink" href="#subtour-elimination-constraints" title="Link to this heading"></a></h3>
+<p>Optionally use the SEC cuts for the circuit global constraint.
+Currently only Gurobi, IBM ILOG CPLEX, and COIN-OR CBC (trunk as of Nov 2019).
+If compiling from source, this needs boost and cmake flag <tt class="docutils literal">-DCOMPILE_BOOST_MINCUT=ON</tt>
+(or <tt class="docutils literal">#define</tt> it in <tt class="docutils literal">lib/algorithms/min_cut.cpp</tt>).
+Compile your model with the flag <tt class="docutils literal">-DnSECcuts=<n></tt> with the following possible <tt class="docutils literal"><n></tt>:
+0,1: use MTZ formulation; 1,2: pass on circuit constraints
+to the SEC cut generator, so 1 would use both.</p>
+</section>
+<section id="unified-domains-mipdomains">
+<h3><span class="section-number">3.5.2.5. </span>Unified Domains (MIPdomains)<a class="headerlink" href="#unified-domains-mipdomains" title="Link to this heading"></a></h3>
+<p>The ‘MIPdomains’ feature of the Flattener aims at reducing the number of binary flags
+encoding linearized domain constraints, see the paper
+<em>Belov, Stuckey, Tack, Wallace. Improved Linearization of Constraint Programming Models. CP 2016.</em></p>
+<p>By default it is on.
+To turn it off which might be good for some models, add option <tt class="docutils literal">-D fMIPdomains=false</tt> during flattening.
+Some parameters of the unification are available, run with <tt class="docutils literal">--help</tt>.</p>
+</section>
+<section id="indicator-constraints">
+<h3><span class="section-number">3.5.2.6. </span>Indicator Constraints<a class="headerlink" href="#indicator-constraints" title="Link to this heading"></a></h3>
+<p>Some solvers (IBM ILOG CPLEX, Gurobi, SCIP) have indicator constrains with greater numerical stability than big-M decomposition.
+Moreover, they can be applied to decompose logical constraints on <em>unbounded variables</em>. However, for reified comparisons with
+reasonable big-M bounds they perform worse because solvers don’t include them in the LP relaxation.
+Add command-line parameters <tt class="docutils literal">-D fIndConstr=true -D fMIPdomains=false</tt> when flattening
+to use them.</p>
+</section>
+<section id="quadratic-constraints-and-objectives-miqcp">
+<h3><span class="section-number">3.5.2.7. </span>Quadratic Constraints and Objectives (MIQCP)<a class="headerlink" href="#quadratic-constraints-and-objectives-miqcp" title="Link to this heading"></a></h3>
+<p>Gurobi 9.0 and SCIP support MIQCP (invoking non-convex global optimizer because MiniZinc translates multiplication to
+equality with an intermediate variable: whenever the model uses an expression x*y it is converted to z with z==x*y which is non-convex).
+While this is mostly advantageous for integer multiplication (which is linearly decomposed for other solvers), for float variables
+this is the only way to go. To switch off forwarding float/integer multiplications to the backend, run compiler with either or both of
+<tt class="docutils literal">-DQuadrFloat=false -DQuadrInt=false</tt>.</p>
+</section>
+<section id="pools-of-user-cuts-and-lazy-constraints">
+<h3><span class="section-number">3.5.2.8. </span>Pools of User Cuts and Lazy Constraints<a class="headerlink" href="#pools-of-user-cuts-and-lazy-constraints" title="Link to this heading"></a></h3>
+<p>Some constraints in the model can be declared as user and/or lazy cuts and they will be added to the corresponding pools
+for the solvers supporting them. For that, apply annotations <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="p">::</span><span class="nv">MIP_cut</span></code> and/or <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="p">::</span><span class="nv">MIP_lazy</span></code> after a constraint.
+For Gurobi and IBM ILOG CPLEX, see <tt class="docutils literal">share/minizinc/linear/options.mzn</tt> for their exact meaning.</p>
+</section>
+<section id="warm-starts">
+<h3><span class="section-number">3.5.2.9. </span>Warm Starts<a class="headerlink" href="#warm-starts" title="Link to this heading"></a></h3>
+<p>For general information of warm start annotations, see <span class="xref std std-ref">sec_warm_starts</span>.
+Warm starts are currently implemented for Gurobi, IBM ILOG CPLEX, XPRESS, and COIN-OR CBC.</p>
+</section>
+</section>
+<section id="non-linear-solvers-via-nl-file-format">
+<span id="ch-solvers-nonlinear"></span><h2><span class="section-number">3.5.3. </span>Non-Linear Solvers via NL File Format<a class="headerlink" href="#non-linear-solvers-via-nl-file-format" title="Link to this heading"></a></h2>
+<p>MiniZinc has experimental support for non-linear solvers that conform to the AMPL NL standard. There are a number of open-source solvers, such as Ipopt, Bonmin and Couenne, that can be interfaced to MiniZinc in this way.</p>
+<p>You can download binaries of these solvers from AMPL (<a class="reference external" href="https://ampl.com/products/solvers/open-source/">https://ampl.com/products/solvers/open-source/</a>). In order to use them with MiniZinc, you need to create a solver configuration file. Future version of MiniZinc will make this easier, but for now you can follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Download the solver binary. For this example, we assume you chose the Couenne solver, which supports non-linear, non-convex, mixed discrete and continuous problems.</p></li>
+<li><p>Create a solver configuration file called <tt class="docutils literal">couenne.msc</tt> in the <tt class="docutils literal">share/minizinc/solvers</tt> directory of your MiniZinc installation, with the following contents:</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.coin-or.couenne&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Couenne&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;executable&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/Users/tack/Downloads/couenne-osx/couenne&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.5.6&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;supportsFzn&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;supportsNL&quot;</span><span class="p">:</span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can adapt the <tt class="docutils literal">version</tt> field if you downloaded a different version (it’s only used for displaying).</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Run <tt class="docutils literal">minizinc --solvers</tt>. The Couenne solver should appear in the list of solvers now.</p></li>
+<li><p>Run <tt class="docutils literal">minizinc --solver couenne model.mzn</tt> on some MiniZinc model, or use Couenne from the MiniZinc IDE.</p></li>
+</ol>
+<p>The AMPL NL support is currently experimental, and your MiniZinc model is translated to NL without regard
+for the capabilities of the target solver. For example, Ipopt only supports continuous variables, so translating
+a model with integer variables will result in a solver-level error message. There is currently no support for
+translating Boolean variables and constraints into 0/1 integer variables (as required by e.g. Couenne).
+You can experiment with the standard linearisation library, using the <tt class="docutils literal">-Glinear [-DQuadrFloat=true -DQuadrInt=true]</tt>
+flag. However, this will either
+linearise all integer constraints, even the ones that solvers like Couenne may support natively, or use non-convex
+representation. We will ship dedicated solver libraries for some NL solvers with future versions of MiniZinc.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpprofiler.html" class="btn btn-neutral float-left" title="3.4. CP-Profiler" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="checkers.html" class="btn btn-neutral float-right" title="3.6. Automatic Solution Checking, Model Validation, and Benchmarking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
