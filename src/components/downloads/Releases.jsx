@@ -14,14 +14,14 @@ export function Releases() {
         >
           Releases
         </h2>
-        <p className="my-2">
+        <p className="my-2 leading-7">
           The latest release of MiniZinc is version {latest.version}, released{' '}
           {latest.date}.
         </p>
         <ul className="mx-2 list-inside list-disc leading-relaxed">
           <ReleaseInfo />
         </ul>
-        <p className="mt-2">
+        <p className="mt-2 leading-7">
           <Link href={changelog()}>See the full changelog</Link>.
         </p>
         <h3 className="mt-6 text-2xl font-medium tracking-tight text-gray-900">
@@ -40,7 +40,7 @@ export function Releases() {
               </li>
             ))}
         </ul>
-        <p className="mt-2">
+        <p className="mt-2 leading-7">
           <Link href="https://github.com/MiniZinc/MiniZincIDE/releases">
             View older releases
           </Link>

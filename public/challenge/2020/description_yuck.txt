@@ -1,0 +1,16 @@
+Yuck is a constraint solver that combines local search with
+restarting, global constraints, and lexicographic cost functions.
+
+Yuck can be used as a library or as a FlatZinc interpreter that
+integrates with the MiniZinc IDE.
+
+Yuck is written in Scala and runs on any system with a Java 8 (or
+higher) runtime environment.
+
+Yuck is open source and provided under the terms of the Mozilla Public
+License 2.0.
+
+For source code, binary packages, and documentation, please see
+https://github.com/informarte/yuck.
+
+

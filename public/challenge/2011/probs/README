@@ -1,0 +1,54 @@
+## MiniZinc Challenge 2011 -- Candidate Problems
+
+# New problems for 2011
+
+carpet-cutting
+cyclic-rcpsp
+fast-food
+pattern-set-mining - 2 models: k1 and k2
+prize-collecting
+ship-schedule - 2 models: cp and mip
+table-layout
+
+# Problems from 2010
+
+bacp
+costas-array
+depot-placement
+filters
+ghoulomb
+grid-colouring
+rcpsp-max
+solbat
+sugiyama
+wwtpp-random
+wwtpp-real
+
+# Problems from 2009
+
+black-hole
+fillomino
+nonogram
+open-stacks
+p1f
+rectangle-packing - 2 models: 1 satisfication and 1 optimization
+roster
+still-life - 4 models: normal, free, full_border, no_border
+vrp
+
+# Problems from 2008
+
+debruijn-binary
+nmseq
+pentominoes
+quasigroup7
+radiation
+rcpsp
+shortest-path
+trucking
+
+# Problems from previous years the were not used
+
+evilshop
+jobshop2
+market-split

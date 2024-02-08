@@ -1,0 +1,60 @@
+============================================================
+  fz_izplus
+     -- iZ based solver for MiniZinc Challenge 2012 --
+
+  Copyright (C) 2012 NTT DATA SEKISUI SYSTEMS CORPORATION.
+============================================================
+
+* What is fz_izplus
+
+  fz_izplus is a FlatZinc solver using iZ-C constraint programming
+library which is developed by NTT DATA SEKISUI SYSTEMS CORPORATION.
+
+iZ-C provides :
+  * many built-in constraints
+  * constraint propagation mechanism
+  * simple search strategy
+
+And in fz_izplus, following algorithms are 'plus'ed.
+
+  * Randomized restarting in search
+    For fast random number generation, Xorshift128 algorithm is used.
+       http://www.jstatsoft.org/v08/i14/paper
+
+  * Local search for optimization
+      In real world problem, sometimes finding 'good' solution using
+    short time is more important than finding 'best' solution using
+    long time. And it is known empirically that 'good' solutions are
+    similar to each other, then local search can be a good strategy.
+    
+      For optimization problem, fz_izplus tries to find first solution
+    using constraint propagation. After one solution was found, it
+    searches similar solutions better than first one.
+      To avoid local minimum/maximum problem, multiple solutions are
+    preserved for next search start point.
+
+
+* Author
+
+  Toshimitsu FUJIWARA <fujiwarat@ndis.jp>
+    developer at NTT DATA SEKISUI SYSTEMS CORPORATION
+
+
+* Acknowledgement
+
+  FlatZinc parser in fz_izplus is based on 'FlatZinc parser skeleton'
+written by Guido Tack. 
+
+    http://www.gecode.org/flatzinc.html/
+
+  Please refer to header files in flatzinc_skeleton-1.3.zip
+About its copyright and license. (It's contained in this archive.)
+  Special thanks to Guido Tack and Gecode team.
+
+
+  iZ-C is a constraint programming library developed by
+NTT DATA SEKISUI SYSTEMS CORPORATION.
+
+   http://products.ndis.jp/iz/download.html
+
+(Sorry, above web page is NOT written in English.)

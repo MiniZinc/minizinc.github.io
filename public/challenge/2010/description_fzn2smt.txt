@@ -1,0 +1,56 @@
+        ///////////////////////////////////////////////
+        //                  fzn2smt                  //
+        ///////////////////////////////////////////////
+
+
+          Miquel Bofill, Josep Suy, and Mateu Villaret
+               {mbofill,suy,villaret}@ima.udg.edu
+
+        Departament d'Informàtica i Matemàtica Aplicada
+                    Universitat de Girona
+                    E-17003 Girona, Spain
+
+
+fzn2smt is a compiler from the FlatZinc language version 1.1 to the
+standard SMT-LIB language version 1.2
+(http://goedel.cs.uiowa.edu/smtlib/).  SMT stands for Satisfiability
+Modulo Theories: the problem of deciding the satisfiability of a
+formula with respect to background theories --such as linear
+arithmetic, arrays, etc-- for which specialized decision procedures do
+exist.
+
+fzn2smt was designed with the idea in mind of help testing the
+adequacy of SMT technology outside the field of verification, where it
+has its roots.  It aims at solving CSP instances with state-of-the art
+SMT solvers, by taking profit of recent advances in this tools and
+other already well-established and powerful implementation features of
+SAT technology such as non-chronological backtracking, learning and
+restarts, which seem to be rarely exploited in the context of
+Constraint Programming.
+
+fzn2smt supports all standard data types and constraints of FlatZinc.
+The logic required for solving each instance is determined
+automatically during the translation, and the translation is done in a
+straightforward way at the current stage of development. Search
+annotations are ignored, as they do not make sense in the context of
+SMT.  Only the alldifferent and cumulative MiniZinc global constraints
+are supported (encoding them into SMT).
+
+The fzn2smt compiler is written in Java, and uses the ANTLR runtime
+(http://www.antlr.org/) for parsing. Working in cooperation with an
+SMT solver, fzn2smt is able to solve decision problems as well as
+optimization problems. However, since most SMT solvers do no support
+optimization, we have currently implemented it by means of iterative
+calls performing a binary search on the domain of the variable to
+optimize.
+
+This distribution of fzn2smt works in conjunction with Yices 2
+(http://yices.csl.sri.com/), with the authorization of their authors,
+and is intended to be used only in the MiniZinc Challenge
+2010. Nevertheless, the output of fzn2smt could be fed into any SMT
+solver supporting the standard SMT-LIB language. In order to
+participate in the MiniZinc Challenge, we have implemented a
+translator for converting the Yices output to the required format.
+
+A standalone free version of fzn2smt can be downloaded from
+http://ima.udg.edu/Recerca/GrupESLIP.html

@@ -1,0 +1,12 @@
+Like many other CLP(FD) systems, B-Prolog's finite-domain constraint solver was heavily influenced by the CHIP
+system. The first fully-fledged solver was released with B-Prolog version 2.1 in March 1997. That solver was imple-
+mented with Delay Clauses. During the past decade, Delay Clauses has evolved into Action Rules as the implemen-
+tation language for constraint propagators and the language has been successfully used to implement many global
+constraints and problem-specific propagators. B-Prolog is developed and maintained mainly by Neng-Fa Zhou of the
+City University of New York. A detailed description of the system can be found in the article titled "The Language
+Features and Architecture of B-Prolog" published in Theory and Practice of Logic Programming, 2012.
+
+The FlatZinc interpreter for B-Prolog is based on the one originally developed for ECLiPSe by Joachim Schimpf. The
+source is available at:
+
+http://probp.com/flatzinc/flatzinc.pl

@@ -1,0 +1,70 @@
+%% ****  Testsuite  ****
+% Number of tests                  : 50
+% Number of machines               : 10
+% Number of resources              : 5
+% Number of families               : 1
+% Prob that a test use a resource  : 30%
+% Minimum test duration            : 1
+% Maximim test duration            : 800
+% MPri                             : 40%
+
+Machines = {m1, m2, m3, m4, m5, m6, m7, m8, m9, m10};
+Resources = {r1, r2, r3, r4, r5};
+
+capacity = [1, 1, 1, 1, 1];
+
+nTests = 50;
+duration = [535, 15, 602, 607, 8, 797, 195, 374, 787, 798, 329, 460, 325, 116, 126, 269, 397, 20, 789, 717, 588, 52, 25, 302, 279, 422, 63, 469, 510, 30, 642, 424, 30, 612, 208, 442, 61, 679, 190, 63, 277, 754, 631, 574, 736, 133, 160, 292, 404, 502]; 
+
+possibleMachines = [{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m5, m2, m3},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m5, m2, m6, m8},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m2, m7, m5},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m3},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m7, m3},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m5, m4, m6},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m3, m1, m2},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m5, m2, m8},
+	{m8},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10}];
+
+usedResources = [{r5, r4, r2, r3, r1}, {}, {}, {r2}, {}, {}, {r2, r1, r3, r4}, {r5, r1, r3, r2}, {}, {r3, r4, r5, r1}, {}, {}, {}, {r5, r1, r4, r2, r3}, {r5, r1}, {r2, r1, r4, r3}, {}, {}, {}, {}, {r3}, {}, {}, {r1}, {}, {r5, r1, r2}, {r3, r5, r2}, {}, {}, {r1, r2, r3, r5}, {}, {r1, r5, r3, r4}, {}, {}, {}, {}, {}, {}, {r1, r4, r2, r5}, {}, {}, {}, {r4}, {}, {}, {r2, r4}, {}, {}, {}, {}];

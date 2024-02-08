@@ -11,9 +11,12 @@ const styles = {
 }
 
 export const Link = forwardRef(function Link(
-  { color = 'sky', className, ...props },
+  { color = 'sky', raw = false, className, ...props },
   ref,
 ) {
+  if (raw) {
+    return <a ref={ref} className={clsx(styles[color], className)} {...props} />
+  }
   return (
     <NextLink ref={ref} className={clsx(styles[color], className)} {...props} />
   )

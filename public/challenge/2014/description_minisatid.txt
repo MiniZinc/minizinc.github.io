@@ -1,0 +1,14 @@
+MinisatID is an implementation of a search algorithm combining techniques
+from the fields of SAT, SAT Module Theories, Constraint Programming and Answer Set Programming.
+
+The algorithm consists of a core SAT-solver based on the solver MinisatID, extended with propagators (in the DPLL(T) architecture) for 
++ Unfounded set computation
++ Pseudo boolean aggregates (sum, min, max, card, product)
++ QBF solving
++ Basic finite-domain constraints such as comparison, sum and product. They are handled in a lazy-clause-generation fashion, and the encoding of variables over a large domain is generated lazily.
++ Optimization: finite domain variable minimization and subset minimization
+
+The architecture supports adding any variable or constraint on the fly, used e.g. in incremental computation.
+
+MinisatID is developed by Broes De Cat, Bart Bogaerts and Jo Devriendt and is an integral part of the IDP knowledge-base system.
+More information can be found on dtai.cs.kuleuven.be/krr/software/minisatid and on github.com/broesdecat/Minisatid.

@@ -1,0 +1,5 @@
+MODEL=full.mzn
+DATA=MEDIUM_200_50.dzn
+METHOD=max
+TAGS=challenge2019,nside
+TIMELIMIT=1200

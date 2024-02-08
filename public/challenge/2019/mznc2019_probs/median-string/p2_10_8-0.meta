@@ -1,0 +1,5 @@
+MODEL=median_string_dp.mzn
+DATA=p2_10_8-0.dzn
+METHOD=min
+TAGS=challenge2019,median-string
+TIMELIMIT=1200

@@ -1,0 +1,5 @@
+MODEL=seat-moving.mzn
+DATA=sm-10-12-00.dzn
+METHOD=min
+TAGS=challenge2018,seat-moving
+TIMELIMIT=1200

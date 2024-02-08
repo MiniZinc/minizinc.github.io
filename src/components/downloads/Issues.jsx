@@ -11,18 +11,18 @@ export function Issues() {
         >
           Reporting issues
         </h2>
-        <p className="my-2 max-w-prose">
+        <p className="my-2 max-w-prose leading-7">
           We are grateful for feedback on MiniZinc, including bug reports,
           feature requests and ideas for improvements.
         </p>
-        <p className="my-2 max-w-prose">
+        <p className="my-2 max-w-prose leading-7">
           For general discussions about MiniZinc, please use the{' '}
           <Link href="https://groups.google.com/forum/#!forum/minizinc">
             discussion forum
           </Link>
           .
         </p>
-        <p className="my-2 max-w-prose">
+        <p className="my-2 max-w-prose leading-7">
           To report an issue, please use the following issue trackers:
         </p>
         <ul className="mx-2 mt-2 list-inside list-disc leading-relaxed">

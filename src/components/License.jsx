@@ -15,7 +15,7 @@ export function License() {
         >
           MiniZinc is Free and Open Source Software
         </h2>
-        <p className="mt-4">
+        <p className="mt-4 leading-7">
           The core tools of MiniZinc, i.e., the MiniZinc compiler and the
           MiniZinc IDE, are distributed under the{' '}
           <Link href="/">Mozilla Public License version 2.0</Link>. This license
@@ -29,7 +29,7 @@ export function License() {
           </Link>
           .
         </p>
-        <p className="mt-4">
+        <p className="mt-4 leading-7">
           The Mozilla project maintains a{' '}
           <Link href="https://www.mozilla.org/en-US/MPL/2.0/FAQ/">
             useful FAQ about the Mozilla license
@@ -53,7 +53,7 @@ export function License() {
           Third-party software
         </h2>
 
-        <p className="mt-4">
+        <p className="mt-4 leading-7">
           The official MiniZinc binary packages contain several pieces of
           software in addition to the MiniZinc compiler and IDE. These are
           distributed under the following licenses:
@@ -65,7 +65,7 @@ export function License() {
                 Qt Framework
               </Link>
             </span>
-            <p>
+            <p className="leading-7">
               The MiniZinc IDE is developed using the Qt toolkit, which is
               available under{' '}
               <Link href="https://www.qt.io/licensing/open-source-lgpl-obligations">
@@ -84,7 +84,7 @@ export function License() {
             <span className="font-bold">
               <Link href="https://www.gecode.org">Gecode</Link>
             </span>
-            <p>
+            <p className="leading-7">
               The source code for the Gecode solver is available from{' '}
               <Link href="https://github.com/gecode/gecode">GitHub</Link> under
               the{' '}
@@ -104,7 +104,7 @@ export function License() {
             <span className="font-bold">
               <Link href="https://github.com/chuffed/chuffed">Chuffed</Link>
             </span>
-            <p>
+            <p className="leading-7">
               The source code for the Chuffed solver is available from{' '}
               <Link href="https://github.com/chuffed/chuffed">GitHub</Link>{' '}
               under the MIT license. In the MiniZinc binary distribution,
@@ -118,7 +118,7 @@ export function License() {
                 OR-Tools CP-SAT
               </Link>
             </span>
-            <p>
+            <p className="leading-7">
               The source code for the OR-Tools CP-SAT solver is available from{' '}
               <Link href="https://github.com/google/or-tools">GitHub</Link>{' '}
               under the Apache 2.0 license. In the MiniZinc binary distribution,
@@ -130,7 +130,7 @@ export function License() {
             <span className="font-bold">
               <Link href="https://github.com/coin-or/Cbc">COIN-OR CBC</Link>
             </span>
-            <p>
+            <p className="leading-7">
               The source code for the COIN-OR branch and cut solver is available
               from <Link href="https://github.com/coin-or/Cbc">GitHub</Link>{' '}
               under the Eclipse Public License 1.0. In the MiniZinc binary
@@ -142,7 +142,7 @@ export function License() {
             <span className="font-bold">
               <Link href="https://highs.dev">HiGHS</Link>
             </span>
-            <p>
+            <p className="leading-7">
               The source code for the HiGHS solver is available from{' '}
               <Link href="https://github.com/ERGO-Code/HiGHS">GitHub</Link>{' '}
               under the MIT License. In the MiniZinc binary distribution, the
@@ -151,7 +151,7 @@ export function License() {
             </p>
           </li>
         </ul>
-        <p className="mt-2">
+        <p className="mt-2 leading-7">
           All open-source licenses above permit linking to and distributing
           binary versions of the software.
         </p>
@@ -167,7 +167,7 @@ export function License() {
         >
           MiniZinc Documentation
         </h2>
-        <p className="mt-4">
+        <p className="mt-4 leading-7">
           The source code for the MiniZinc documentation is available from{' '}
           <Link href="https://github.com/MiniZinc/libminizinc/tree/master/docs">
             GitHub

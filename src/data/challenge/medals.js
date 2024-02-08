@@ -1,0 +1,96 @@
+export const medals = {
+  2008: {
+    fd: ['Gecode', 'Eclipse Prolog'],
+  },
+  2009: {
+    fd: ['Gecode', 'SICStus Prolog'],
+    free: ['Gecode', 'SICStus Prolog'],
+  },
+  2010: {
+    fd: ['Gecode', 'JaCoP'],
+    free: ['Gecode', 'fzn2smt', 'JaCoP'],
+    par: ['Gecode + fzn2smt', 'JaCoP'],
+  },
+  2011: {
+    fd: ['Gecode', 'JaCoP', 'B-Prolog'],
+    free: ['Gecode', 'fzn2smt', 'JaCoP'],
+    par: ['Gecode', 'fzn2smt', 'JaCoP'],
+  },
+  2012: {
+    fd: ['Gecode', 'JaCoP', 'OR-Tools'],
+    free: ['Gecode', 'Fzn2smt', 'izplus'],
+    par: ['Gecode', 'Fzn2smt', 'izplus'],
+  },
+  2013: {
+    fd: ['Opturion/CPX', 'OR-Tools', 'Gecode'],
+    free: ['Opturion/CPX', 'OR-Tools', 'izplus'],
+    par: ['OR-Tools', 'Choco', 'Opturion/CPX'],
+    open: ['OR-Tools', 'Choco', 'Opturion/CPX'],
+  },
+  2014: {
+    fd: ['OR-Tools', 'Opturion CPX', 'SICStus Prolog'],
+    free: ['iZplus', 'Opturion CPX', 'Choco'],
+    par: ['OR-Tools', 'Opturion CPX', 'Choco'],
+    open: ['OR-Tools', 'Opturion CPX', 'Choco'],
+  },
+  2015: {
+    fd: ['Opturion CPX', 'OR-Tools', 'JaCoP'],
+    free: ['Opturion CPX', 'iZplus', 'OR-Tools'],
+    par: ['OR-Tools', 'Opturion CPX', 'Choco'],
+    open: ['sunny-cp——', 'OR-Tools', 'Opturion CPX'],
+  },
+  2016: {
+    fd: ['OR-Tools', 'JaCoP', 'Choco'],
+    free: ['HaifaCSP', 'Picat SAT', 'iZplus'],
+    par: ['HaifaCSP', 'Picat SAT', 'iZplus'],
+    open: ['sunny-cp——', 'HaifaCSP', 'Picat SAT'],
+    local: ['OscaR/CBLS'],
+  },
+  2017: {
+    fd: ['OR-Tools LCG', 'JaCoP', 'Choco 4'],
+    free: ['iZplus', 'OR-Tools LCG', 'Picat SAT'],
+    par: ['Choco 4', 'iZplus', 'OR-Tools LCG'],
+    open: ['sunny-cp—', 'Choco 4', 'OR-Tools LCG'],
+    local: ['iZplus', 'Yuck', 'OscaR/CBLS'],
+  },
+  2018: {
+    fd: ['OR-Tools', 'JaCoP', 'Choco 4'],
+    free: ['OR-Tools', 'Picat SAT', 'Choco 4 + HaifaCSP'],
+    par: ['OR-Tools', 'Choco 4', 'Picat SAT'],
+    open: ['OR-Tools', 'sunny-cp—', 'Choco 4'],
+    local: ['iZplus', 'Yuck', 'OscaR/CBLS'],
+  },
+  2019: {
+    fd: ['OR-Tools', 'JaCoP', 'SICStus Prolog'],
+    free: ['OR-Tools', 'iZplus', 'Picat SAT'],
+    par: ['OR-Tools', 'iZplus', 'Choco 4'],
+    open: ['OR-Tools', 'sunny-cp—', 'iZplus'],
+    local: ['iZplus', 'Yuck', 'OscaR/CBLS'],
+  },
+  2020: {
+    fd: ['SICStus Prolog', 'JaCoP', 'Choco 4'],
+    free: ['OR-Tools', 'PicatSAT', 'Mistral 2.0'],
+    par: ['OR-Tools', 'PicatSAT', 'Mistral 2.0'],
+    open: ['OR-Tools', 'sunny-cp—', 'PicatSAT'],
+    local: ['Yuck', 'OscaR/CBLS'],
+  },
+  2021: {
+    fd: ['OR-Tools', 'JaCoP', 'SICStus Prolog'],
+    free: ['OR-Tools', 'PicatSAT', 'iZplus'],
+    par: ['OR-Tools', 'PicatSAT', 'iZplus + Choco 4'],
+    open: ['OR-Tools', 'PicatSAT', 'iZplus + Choco 4'],
+    local: ['Yuck', 'OscaR/CBLS'],
+  },
+  2022: {
+    fd: ['OR-Tools', 'SICStus Prolog', 'JaCoP'],
+    free: ['OR-Tools', 'PicatSAT', 'Choco 4'],
+    par: ['OR-Tools', 'PicatSAT', 'Geas'],
+    local: ['Yuck'],
+  },
+  2023: {
+    fd: ['OR-Tools', 'SICStus Prolog', 'Choco 4'],
+    free: ['OR-Tools', 'PicatSAT', 'iZplus'],
+    par: ['OR-Tools', 'PicatSAT', 'Choco 4'],
+    local: ['Yuck'],
+  },
+}

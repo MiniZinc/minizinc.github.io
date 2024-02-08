@@ -19,12 +19,12 @@ export function MiniZincDistribution() {
             >
               The MiniZinc compiler and IDE
             </h2>
-            <p className="my-2 max-w-prose">
+            <p className="my-2 max-w-prose leading-7">
               The compiler is the heart of the MiniZinc tool chain. It
               translates constraint models into FlatZinc, a language that is
               understood by a wide range of solvers.
             </p>
-            <p className="my-2 max-w-prose">
+            <p className="my-2 max-w-prose leading-7">
               MiniZinc comes with a simple Integrated Development Environment,
               the MiniZinc IDE, which makes it easy to develop and run
               constraint models.
@@ -52,7 +52,7 @@ export function MiniZincDistribution() {
                 <Link href="https://github.com/coin-or/Cbc">COIN-OR CBC</Link>
               </li>
             </ul>
-            <p className="mt-2">
+            <p className="mt-2 leading-7">
               MiniZinc can also interface with the following solvers if
               installed:
             </p>
@@ -74,7 +74,7 @@ export function MiniZincDistribution() {
                 </Link>
               </li>
             </ul>
-            <p className="mt-2">
+            <p className="mt-2 leading-7">
               Additionally, many other compatible solvers can be installed,
               including:
             </p>

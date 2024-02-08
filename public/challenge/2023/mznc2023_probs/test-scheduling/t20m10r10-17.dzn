@@ -1,0 +1,40 @@
+%% ****  Testsuite  ****
+% Number of tests                  : 20
+% Number of machines               : 10
+% Number of resources              : 10
+% Number of families               : 1
+% Prob that a test use a resource  : 30%
+% Minimum test duration            : 1
+% Maximim test duration            : 800
+% MPri                             : 40%
+
+Machines = {m1, m2, m3, m4, m5, m6, m7, m8, m9, m10};
+Resources = {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10};
+
+capacity = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+nTests = 20;
+duration = [328, 339, 794, 194, 327, 651, 14, 572, 793, 569, 126, 9, 133, 13, 701, 368, 49, 47, 502, 506]; 
+
+possibleMachines = [{m5, m4},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m9},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10},
+	{m1, m2, m3, m4, m5, m6, m7, m8, m9, m10}];
+
+usedResources = [{}, {}, {}, {}, {r6, r9, r2, r8}, {}, {r2, r7, r4, r10}, {}, {}, {}, {r9, r6, r10, r7, r4, r1, r5}, {}, {}, {}, {}, {}, {r6, r9, r8, r4, r1, r2, r3, r5, r7}, {r4, r10, r6, r9, r3, r2, r8, r1, r5}, {}, {r6, r2, r1}];

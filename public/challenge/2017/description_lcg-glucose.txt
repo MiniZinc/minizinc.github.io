@@ -1,0 +1,118 @@
+MiniZinc 2017 Competition Solver Description
+
+Solver: LCG-glucose-4.1 (the version tracks the Glucose version)
+Author: Nick Downing, The University of Melbourne, Data61 CSIRO
+
+Efficient Lazy Clause Generation solver based on a modified glucose-syrup-4.1
+backend, the backend is modified quite heavily, although in principle most of
+the modifications are inserting hooks to interleave Lazy Clause Generation
+code (finite domain propagation, Boolean models of integer variables, and the
+lazy explanation system) into the SAT solving algorithm at appropriate points.
+As stated last year, key points are propagation speed and minimal propagators.
+
+The starting point for the solver is a refactored version of the MiniZinc 2016
+Competition entry, although the refactored version would execute more-or-less
+the same as in 2016. The most significant tidy-ups and refactorings include:
+
+- Implementing callbacks between layers. There are several layers between the
+MiniZinc layer and the Glucose layer, each presents an interface representing
+the current problem (variable and constraint database, variable values etc) to
+the layer above. Each layer can receive callbacks during solving, during which
+it can interrogate the problem via the interface provided by the layer below,
+create new variables, post new constraints etc, and/or reflect the callback to
+the layer above with some transformation. We imagine CPLEX probably uses a
+similar scheme internally, to hide the effects of presolving from the CPLEX
+callable library client. Our callbacks interface is somewhat similar to CPLEX.
+
+- Removing the ability to generate CNF/WCNF/OPB/LP versions of the MiniZinc-
+format input. The solver can still generate and solve the decomposed versions
+internally. In future, this ability will be provided in a more elegant way,
+by moving the CNF/WCNF/OPB/LP decompositions from the LCG-glucose backend into
+the problem transformation layer, and then providing alternative backends that
+can output CNF/WCNF/OPB/LP, solve via an external solver that can provide
+competition-format solutions, and then output the solutions in MiniZinc style.
+
+- Reinstating the "shim" which allows to link with Chuffed propagators, since
+we have a reasonably large library of explanation-capable propagators in
+Chuffed. For the time being, only the Chuffed regular propagator (via MDDs, by
+Gange et al.) and the Chuffed cumulative propagator (by Schutt et al.) are in,
+since the problem transformation layer also needs to know the signatures of
+the propagators, which is a bit time-consuming to implement (in future these
+signatures can be generated automatically from MiniZinc predicate definitons).
+
+- The FlatZinc solver (fzn-lcg_glucose; formerly fzn-glucose) links against a
+systemwide (or home directory) installation of libminizinc 2.1.5 for parsing
+the FlatZinc input, rather than having an older (and modified) version baked
+in. Also, share/minizinc/lcg_glucose/builtins.mzn is generated automatically
+by the build system by patching share/minizinc/std/builtins.mzn, not manually.
+In future we plan to make e.g. Debian packages, using *.so libraries for both
+libminizinc and liblcg_glucose, for the command-line solvers to link against.
+For the competition however, we use statically linked executables for safety.
+
+- Linking in Glucose's (actually MiniSAT's) built-in simplifying preprocessor,
+i.e. the subsumption checks and Boolean variable elimination. We do not think
+this will yield much useful benefit, except if the problem is a SAT instance
+encoded into MiniZinc, so this feature is off by default. Enable with "-pre".
+
+After the refactorings, we then made the following functional improvements:
+
+- Implementing a MiniZinc solver (mzn-lcg_glucose; accepts the same command
+syntax as libminizinc-provided MiniZinc solvers like mzn-gecode or mzn-cplex),
+this is supposed to save some fractions of seconds spent transferring the
+FlatZinc model to the solver by disk and the solutions back to MiniZinc by
+pipe. We use libminizinc's in-memory format exclusively (for both model and
+solutions). It is also more convenient, as mzn2fzn/solns2out are not needed.
+
+- Changing the Glucose backend from glucose-3.0 (erroneously I had said 3.01
+in the previous document) to glucose-syrup-4.1, i.e. Glucose parallel version.
+
+- Implementing a multi-threaded version of the problem transformation layer.
+This is quite basic at present, it can post new constraints during solving in
+any thread during a callback from that thread (but only clausal and linear
+constraints, which is a restriction of the underlying solver), but it can only
+create new variables during solving in thread 0. Also, only one thread can be
+executing in the problem transformation layer at a time (because it uses, for
+example, std::vector to maintain a list of variables, which is not thread
+safe). Hence, there will be some slight synchronization overhead if multiple
+threads issue callbacks (for example, they all find solutions) simultaneously.
+
+- Implementing a multi-threaded version of the Chuffed propagators "shim", and
+memory checks. Chuffed uses global variables, which we now define as __thread.
+
+- Adding the ability to post clauses and linear constraints during solving,
+without having to backtrack to the start (partially reusing the framework we
+had for defining the integer variable model during solving), and making "all
+solutions" (satisfaction) and branch-and-bound (optimization) modes use this
+feature. We implemented this as a way to allow sharing of solution information
+between threads as solutions are discovered, without needlessly disrupting the
+other threads. However, it is also a big win for the single-threaded solver.
+NOTE: For now, "all solutions" mode correctly posts the blocking clause in the
+particular thread without restarting, but does not yet post to other threads,
+therefore repeated solutions are possible (this mode not used in competition).
+
+- Implementing semantic literal sharing in glucose-syrup, so that if different
+threads created different lazy literals for the integer variable model, then
+these literals will be translated across threads. We also made glucose-syrup's
+clause-sharing scheme share clauses more frequently, it used to wait until the
+next restart happened to occur, which could be a long time, given Glucose uses
+adaptive restarts. It now shares them instantly, without having to backtrack.
+
+- Adding "int_pow(var int: x, var int: y, var_int: z) === x ^ y = z", noting
+that it won't post unless x >= 0, y >= 1, z >= 0. It is implemented in almost
+the same way as the "int_times" propagator, that is, it becomes "x ^ y >= z"
+and "x ^ y <= z", with only the necessary halves being emitted, depending on
+how z appears elsewhere in the model. Requiring y >= 1 makes each variable
+monotonic with respect to the other two, similarly to how we require all >= 0
+in the "times" propagator. The long term goal is to provide a higher level
+decomposition in the problem transformation layer, so that it will handle the
+zero/negative cases with a separate propagator (or clausal decomposition etc).
+
+- Implementing a "portfolio lite" scheme and better memory management for the
+parallel solver. If memory runs low during parsing/problem construction, it
+will reduce the number of threads to use. Then, if the problem is optimization
+then the first available thread runs the OLL unsatisfiable-core algorithm. If
+there is a MiniZinc search specification and there are at least two threads
+remaining, the next available thread runs the MiniZinc search specification.
+All threads except the unsatisfiable-core thread, if any, run branch-and-bound
+for optimization problems. All threads except the MiniZinc search thread, if
+any, run Glucose's activity-based search (VSIDS) and adaptive restarts scheme.

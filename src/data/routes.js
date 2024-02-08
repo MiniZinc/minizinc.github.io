@@ -4,7 +4,7 @@ const routes = [
   ['Resources', '/resources'],
   ['Team', '/team'],
   ['Playground', 'https://play.minizinc.dev'],
-  ['Challenge', 'challenge'],
+  ['Challenge', '/challenge'],
   ['Discussions', 'https://groups.google.com/forum/#!forum/minizinc'],
 ]
 
@@ -14,7 +14,7 @@ export const siteMap = [
     children: [
       ['Downloads', '/downloads'],
       ['Playground', 'https://play.minizinc.dev'],
-      ['Challenge', 'challenge'],
+      ['Challenge', '/challenge'],
       ['Releases', '/downloads#releases'],
     ],
   },

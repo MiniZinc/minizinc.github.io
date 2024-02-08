@@ -1,0 +1,5 @@
+MODEL=unison.mzn
+DATA=mips_gcc.cfgrtl.update_br_prob_note.dzn
+METHOD=min
+TAGS=challenge2019,code-generator
+TIMELIMIT=1200

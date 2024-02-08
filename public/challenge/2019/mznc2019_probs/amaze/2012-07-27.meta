@@ -1,0 +1,5 @@
+MODEL=amaze3.mzn
+DATA=2012-07-27.dzn
+METHOD=sat
+TAGS=challenge2019,amaze
+TIMELIMIT=1200

@@ -1,0 +1,5 @@
+MODEL=vrplc_service.mzn
+DATA=vrplc11_5_15_s3.dzn
+METHOD=min
+TAGS=challenge2018,vrplc
+TIMELIMIT=1200

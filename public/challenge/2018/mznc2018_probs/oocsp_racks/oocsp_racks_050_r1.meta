@@ -1,0 +1,5 @@
+MODEL=oocsp_racks.mzn
+DATA=oocsp_racks_050_r1.dzn
+METHOD=sat
+TAGS=challenge2018,oocsp_racks
+TIMELIMIT=1200

@@ -1,0 +1,23 @@
+Yuck is a constraint solver that combines local search with
+restarting, global constraints, and hierarchical cost functions.
+
+Yuck currently implements simulated annealing.
+
+Yuck currently supports boolean, integer, and integer set variables.
+
+Yuck can be used as a library or via its FlatZinc frontend.
+
+Yuck currently features the following global constraints:
+alldifferent, alldifferent_except_0, atmost, atleast, bin_packing*,
+count_*, cumulative, disjunctive, element, exactly, inverse, maximum,
+minimum, nvalue, regular, sum, table
+
+Yuck is written in Scala and exploits the Scala library's immutable
+collection classes in its implementation of global constraints for local
+search.
+
+Yuck is a project by Michael Marte (see
+https://de.linkedin.com/pub/michael-marte/6/353/b21).
+
+Yuck will become available as open source on Github later this year
+(see https://github.com/informarte/yuck).

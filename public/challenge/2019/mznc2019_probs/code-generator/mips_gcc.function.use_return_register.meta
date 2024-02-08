@@ -1,0 +1,5 @@
+MODEL=unison.mzn
+DATA=mips_gcc.function.use_return_register.dzn
+METHOD=min
+TAGS=challenge2019,code-generator
+TIMELIMIT=1200

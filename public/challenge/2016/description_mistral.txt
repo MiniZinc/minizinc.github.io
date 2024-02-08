@@ -1,0 +1,21 @@
+Mistral-2.0 is a C++ library under the GNU General Public License and is hosted on github: git@github.com:ehebrard/Mistral-2.0.git.
+It implements most arithmetic and logic primitive constraints as well as some global constraints (AllDifferent, Linear Equalities, Element, etc...). Standard search strategies and heuristics are also implemented (Restarts, Weighted Degree, Activity Based Search). 
+
+More information can be found at http://homepages.laas.fr/ehebrard/mistral.html. 
+
+Main authors:
+
+- Core of the solver
+Emmanuel Hebrard 
+LAAS-CNRS - Toulouse, France
+
+- MiniZinc Challenge's entry
+Mohamed Siala
+Insight, Centre for Data Analytics, University College Cork, Ireland.
+
+Code of the bound consistency propagators for AllDifferent and Global Cardinality
+Claude-Guy Quimper
+Université Laval,Québec, Canada
+
+
+The FlatZinc parser was adapted from the Flatzinc parser featured in Gecode.

@@ -1,0 +1,5 @@
+MODEL=rotating-workforce.mzn
+DATA=Example1479.dzn
+METHOD=sat
+TAGS=challenge2018,rotating-workforce
+TIMELIMIT=1200

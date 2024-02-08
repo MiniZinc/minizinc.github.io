@@ -1,0 +1,5 @@
+MODEL=foxgeesecorn.mzn
+DATA=foxgeesecorn_60.dzn
+METHOD=max
+TAGS=challenge2019,fox-geese-corn
+TIMELIMIT=1200
