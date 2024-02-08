@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react'
 import { Button } from '@/components/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
-import { latest } from '@/data/version'
 import { bundles } from '@/utils/links'
 
-export function DirectDownload(props) {
+export function DirectDownload({ children, ...props }) {
   const [platformDownload, setPlatformDownload] = useState(null)
   useEffect(() => {
     // Show specific download button for Windows/macOS
@@ -25,14 +24,17 @@ export function DirectDownload(props) {
     }
   }, [])
   return (
-    <Button
-      href={platformDownload ? platformDownload.href : '/downloads'}
-      {...props}
-    >
-      <span className="inline-flex items-center gap-x-2 px-2 py-1">
-        <FontAwesomeIcon icon={faDownload} height="1em" />
-        <span>{platformDownload ? platformDownload.label : 'Download'}</span>
-      </span>
-    </Button>
+    <>
+      <Button
+        href={platformDownload ? platformDownload.href : '/downloads'}
+        {...props}
+      >
+        <span className="inline-flex items-center gap-x-2 px-2 py-1">
+          <FontAwesomeIcon icon={faDownload} height="1em" />
+          <span>{platformDownload ? platformDownload.label : 'Download'}</span>
+        </span>
+      </Button>
+      {platformDownload ? children : <></>}
+    </>
   )
 }

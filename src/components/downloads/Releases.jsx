@@ -2,7 +2,7 @@ import { Container } from '@/components/Container'
 import { latest, releases } from '@/data/version'
 import { Link } from '@/components/Link'
 import { changelog, githubRelease } from '@/utils/links'
-import { ReleaseInfo } from '@/data/release'
+import ReleaseInfo from '@/data/release.mdx'
 
 export function Releases() {
   return (
@@ -18,9 +18,7 @@ export function Releases() {
           The latest release of MiniZinc is version {latest.version}, released{' '}
           {latest.date}.
         </p>
-        <ul className="mx-2 list-inside list-disc leading-relaxed">
-          <ReleaseInfo />
-        </ul>
+        <ReleaseInfo />
         <p className="mt-2 leading-7">
           <Link href={changelog()}>See the full changelog</Link>.
         </p>

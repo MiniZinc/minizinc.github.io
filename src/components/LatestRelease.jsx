@@ -3,7 +3,7 @@ import { Button } from '@/components/Button'
 import { latest } from '@/data/version'
 import { Link } from '@/components/Link'
 import { changelog } from '@/utils/links'
-import { ReleaseInfo } from '@/data/release'
+import ReleaseInfo from '@/data/release.mdx'
 
 export function LatestRelease() {
   return (
@@ -28,9 +28,7 @@ export function LatestRelease() {
             </Link>
           </h2>
           <p className="my-2">Released {latest.date}</p>
-          <ul className="list-inside list-disc leading-relaxed">
-            <ReleaseInfo />
-          </ul>
+          <ReleaseInfo />
           <p className="mt-2">
             <Link
               color="plain"

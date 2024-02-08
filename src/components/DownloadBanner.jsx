@@ -1,7 +1,10 @@
 import { Container } from '@/components/Container'
+import { Button } from '@/components/Button'
 import { latest } from '@/data/version'
 import { Link } from '@/components/Link'
 import { DirectDownload } from '@/components/DirectDownload'
+import { faDownload } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export function DownloadBanner() {
   return (
@@ -30,7 +33,14 @@ export function DownloadBanner() {
             </Link>
             .
           </p>
-          <DirectDownload className="mt-6" color="primary" />
+          <DirectDownload className="mt-6" color="primary">
+            <Button className="ml-4" variant="outline" href="/downloads">
+              <span className="inline-flex items-center gap-x-2 px-2 py-1">
+                <FontAwesomeIcon icon={faDownload} height="1em" />
+                <span>All downloads</span>
+              </span>
+            </Button>
+          </DirectDownload>
         </div>
       </Container>
     </section>
