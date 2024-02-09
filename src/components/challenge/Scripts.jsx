@@ -1,6 +1,8 @@
+import getConfig from 'next/config'
 import Script from 'next/script'
 import { useEffect, useRef } from 'react'
 
+const { publicRuntimeConfig } = getConfig()
 export function Scripts({ scripts, onReady }) {
   const counter = useRef(0)
   useEffect(() => {
@@ -11,7 +13,9 @@ export function Scripts({ scripts, onReady }) {
       {scripts.map((src) => (
         <Script
           key={src}
-          src={src}
+          src={
+            src.startsWith('/') ? `${publicRuntimeConfig.basePath}${src}` : src
+          }
           onReady={() => {
             counter.current++
             if (counter.current == scripts.length) {
