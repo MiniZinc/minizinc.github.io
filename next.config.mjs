@@ -18,6 +18,7 @@ const nextConfig = {
     basePath: process.env.BASE_PATH || '',
   },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  basePath: process.env.BASE_PATH || '',
 }
 
 const withMDX = createMDX({
