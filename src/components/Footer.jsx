@@ -27,7 +27,7 @@ export function Footer() {
             </div>
             <div>
               <div className="flex gap-4 text-gray-600">
-                <Link
+                {/* <Link
                   href="https://twitter.com/MiniZinc"
                   color="plain"
                   className="hover:text-gray-800"
@@ -42,7 +42,7 @@ export function Footer() {
                   title="Connect with MiniZinc on Facebook"
                 >
                   <FontAwesomeIcon icon={faFacebook} height="1em" />
-                </Link>
+                </Link> */}
                 <Link
                   href="https://groups.google.com/forum/#!forum/minizinc"
                   color="plain"
