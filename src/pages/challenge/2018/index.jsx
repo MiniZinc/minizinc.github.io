@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { Link } from '@/components/link'
+import { Link } from '@/components/Link'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import Head from 'next/head'
 
