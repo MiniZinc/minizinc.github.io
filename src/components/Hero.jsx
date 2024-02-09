@@ -94,7 +94,7 @@ export function Hero() {
               MiniZinc
             </h1>
             <p className="mt-6 text-lg text-gray-600">
-              MiniZinc is a A high-level constraint modelling language that
+              MiniZinc is a high-level constraint modelling language that
               allows you to easily express and solve discrete optimisation
               problems.
             </p>
