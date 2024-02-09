@@ -228,9 +228,9 @@ export default function Page() {
                 <code>y :: 8..10</code> and this time <code>y</code> will be
                 selected as the next variable to label. A full specification of
                 the available choices is given in the{' '}
-                <Link href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
+                <a href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
                   FlatZinc 0.8 specification
-                </Link>
+                </a>
                 .{' '}
               </li>
               <li>

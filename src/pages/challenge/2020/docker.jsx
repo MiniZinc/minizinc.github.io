@@ -302,7 +302,7 @@ export default function Page() {
               that you can create the image from a dockerfile next time and save
               a lot of time.
             </p>
-            <ol style="list-style-type: decimal">
+            <ol style={{ listStyleType: 'decimal' }}>
               <li>
                 <p>
                   Create and run a container from the MiniZinc Challenge image
@@ -437,7 +437,7 @@ export default function Page() {
               <Link href="https://hub.docker.com">Docker Hub</Link>. Following
               steps need to be performed.
             </p>
-            <ol style="list-style-type: decimal">
+            <ol style={{ listStyleType: 'decimal' }}>
               <li>
                 <p>
                   You may have to rename your image to match your username at

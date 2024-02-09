@@ -178,9 +178,9 @@ export default function Page() {
             </p>
             <p>
               The{' '}
-              <Link href="http://web.archive.org/web/20220308033715/https://www.minizinc.org/g12distrib.html">
+              <a href="https://web.archive.org/web/20220308033715/https://www.minizinc.org/g12distrib.html">
                 G12 MiniZinc Distribution
-              </Link>{' '}
+              </a>{' '}
               includes a MiniZinc-to-FlatZinc converter and a large suite of
               MiniZinc examples and benchmarks.
             </p>

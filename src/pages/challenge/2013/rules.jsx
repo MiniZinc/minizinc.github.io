@@ -85,7 +85,7 @@ export default function Page() {
                   <br /> This executable will be invoked from the command line
                   as follows:
                 </p>
-                <p style={{ 'margin-left': '2%', 'margin-top': '1em' }}>
+                <p style={{ marginLeft: '2%', marginTop: '1em' }}>
                   <b>
                     fzn_<i>name</i>
                   </b>{' '}
@@ -209,9 +209,9 @@ export default function Page() {
             <h3>Problem Format</h3>
             <p>
               The problem format will be{' '}
-              <Link href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
+              <a href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
                 MiniZinc 1.6
-              </Link>
+              </a>
               .<br /> There will be some restrictions on the problems tested in
               MiniZinc challenge.
             </p>
@@ -316,18 +316,18 @@ export default function Page() {
                 <code>y :: 8..10</code> and this time <code>y</code> will be
                 selected as the next variable to label. A full specification of
                 the available choices is given in the{' '}
-                <Link href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
+                <a href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
                   FlatZinc 1.6 specification
-                </Link>
+                </a>
                 .{' '}
               </li>
             </ol>
             <h3>Output Requirements</h3>
             <p>
               Output from entries must conform to the{' '}
-              <Link href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
+              <a href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
                 FlatZinc 1.6 specification
-              </Link>
+              </a>
               . For optimization problems, if the time limit is exceeded before
               the final solution is printed then the last complete approximate
               solution printed will be considered to be the solution for that

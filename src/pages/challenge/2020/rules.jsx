@@ -167,7 +167,7 @@ export default function Page() {
                       /entry_data that invokes a FlatZinc solver handling
                       FlatZinc version 2.4.3. <br /> This executable will be
                       invoked from the command line/scripts as follows:{' '}
-                      <p style={{ 'margin-left': '2%', 'margin-top': '1em' }}>
+                      <p style={{ marginLeft: '2%', marginTop: '1em' }}>
                         <b>fzn-exec</b> [&lt;options&gt;] file.fzn
                       </p>{' '}
                       The argument <i>file.fzn</i> is the name of a FlatZinc
@@ -180,7 +180,7 @@ export default function Page() {
                       MiniZinc version 2.4.3. This executable will be invoked
                       from the command line and/or scripts located at the image
                       folder /minizinc as follows:{' '}
-                      <p style={{ 'margin-left': '2%', 'margin-top': '1em' }}>
+                      <p style={{ marginLeft: '2%', marginTop: '1em' }}>
                         <b>exec</b> [&lt;options&gt;] -G &lt;mznlibdir&gt;
                         file.mzn [&lt;data.dzn&gt;]
                       </p>{' '}

@@ -28,10 +28,7 @@ export function DownloadBanner() {
           </p>
           <p className="text-sm">
             For detailed instructions, see the{' '}
-            <Link href="https://www.minizinc.org/doc-latest/en/installation.html">
-              documentation
-            </Link>
-            .
+            <Link href="/doc-latest/en/installation.html">documentation</Link>.
           </p>
           <DirectDownload className="mt-6" color="primary">
             <Button className="ml-4" variant="outline" href="/downloads">

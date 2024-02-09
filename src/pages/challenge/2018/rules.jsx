@@ -167,7 +167,7 @@ export default function Page() {
                       please contact the organizers.
                       <br /> This executable will be invoked from the command
                       line/scripts as follows:{' '}
-                      <p style={{ 'margin-left': '2%', 'margin-top': '1em' }}>
+                      <p style={{ marginLeft: '2%', marginTop: '1em' }}>
                         <b>fzn-exec</b> [&lt;options&gt;] file.fzn
                       </p>{' '}
                       The argument <i>file.fzn</i> is the name of a FlatZinc
@@ -180,7 +180,7 @@ export default function Page() {
                       MiniZinc version 2.1.7. This executable will be invoked
                       from the command line and/or scripts located at the image
                       folder /minizinc as follows:{' '}
-                      <p style={{ 'margin-left': '2%', 'margin-top': '1em' }}>
+                      <p style={{ marginLeft: '2%', marginTop: '1em' }}>
                         <b>exec</b> [&lt;options&gt;] -G &lt;mznlibdir&gt;
                         file.mzn [&lt;data.dzn&gt;]
                       </p>{' '}
@@ -376,9 +376,9 @@ export default function Page() {
                 <code>objective</code> will be selected as the next variable to
                 label. A full specification of the available choices is given in
                 the{' '}
-                <Link href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
+                <a href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
                   FlatZinc 1.6 specification
-                </Link>
+                </a>
                 .{' '}
               </li>
               <li>
@@ -390,9 +390,9 @@ export default function Page() {
             <h3>Output Requirements</h3>
             <p>
               Output from entries must conform to the{' '}
-              <Link href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
+              <a href="https://web.archive.org/web/20240113123535/https://www.minizinc.org/specifications.html">
                 FlatZinc 1.6 specification
-              </Link>
+              </a>
               . For optimization problems, if the time limit is exceeded before
               the final solution is printed then the last complete approximate
               solution printed will be considered to be the solution for that

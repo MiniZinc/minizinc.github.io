@@ -1363,9 +1363,9 @@ export default function Page() {
               The files on this page are for MiniZinc version 0.8. Versions of
               these files for the current version of MiniZinc are available as
               part of the{' '}
-              <Link href="http://web.archive.org/web/20220308033715/https://www.minizinc.org/g12distrib.html">
+              <a href="https://web.archive.org/web/20220308033715/https://www.minizinc.org/g12distrib.html">
                 G12 MiniZinc distribution
-              </Link>
+              </a>
               .
             </p>
           </article>
