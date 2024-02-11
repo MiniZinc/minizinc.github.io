@@ -21,7 +21,7 @@ solutions (for optimization problems).
 
 ### Announcements
 
-*   **2024-02-13** Official [Call for Problems](call_for_problems.html) for the MiniZinc Challenge.
+*   **2024-02-12** Official [Call for Problems](call_for_problems.html) for the MiniZinc Challenge.
 
 ### Dates
 
