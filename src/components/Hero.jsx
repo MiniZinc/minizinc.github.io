@@ -14,6 +14,10 @@ import {
 import { latest } from '@/data/version'
 import { Link } from '@/components/Link'
 import { changelog } from '@/utils/links'
+import { Carousel } from '@/components/Carousel'
+import { Seating } from '@/components/showreel/Seating'
+import { Rostering } from '@/components/showreel/Rostering'
+import { VehicleRouting } from '@/components/showreel/VehicleRouting'
 
 function BackgroundIllustration(props) {
   let id = useId()
@@ -88,15 +92,14 @@ export function Hero() {
   return (
     <div aria-label="MiniZinc" className="overflow-hidden py-20 sm:py-32">
       <Container>
-        <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
-          <div className="relative z-10 mx-auto lg:col-span-8 xl:col-span-6 xl:pt-6">
+        <div className="xl:grid xl:grid-cols-12 xl:gap-x-8 xl:gap-y-20">
+          <div className="relative z-10 mx-auto xl:col-span-6 xl:pt-6">
             <h1 className="text-5xl font-medium tracking-tight text-gray-900">
               MiniZinc
             </h1>
             <p className="mt-6 text-lg text-gray-600">
-              MiniZinc is a high-level constraint modelling language that
-              allows you to easily express and solve discrete optimisation
-              problems.
+              MiniZinc is a high-level constraint modelling language that allows
+              you to easily express and solve discrete optimisation problems.
             </p>
             <div className="mt-8 flex flex-col gap-x-6 gap-y-4 sm:flex-row">
               <Button color="primary" href="/resources">
@@ -168,8 +171,20 @@ export function Hero() {
               </p>
             </div>
           </div>
-          <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
-            <BackgroundIllustration className="pointer-events-none absolute left-1/2 top-4 h-[1026px] w-[1026px] -translate-x-1/3 stroke-gray-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
+          <div className="relative mt-10 sm:mt-20 xl:col-span-6 xl:row-span-2 xl:mt-0">
+            <BackgroundIllustration className="pointer-events-none absolute left-1/2 top-4 h-[1026px] w-[1026px] -translate-x-1/3 stroke-gray-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-translate-x-1/2 xl:-top-14 xl:ml-0" />
+            <div className="-mx-4 flex h-[448px] items-center justify-center px-9 sm:mx-0 xl:absolute xl:-inset-x-10 xl:-bottom-32 xl:-top-32 xl:h-auto xl:px-0">
+              <Carousel
+                className="w-full"
+                style={{ maxWidth: '500px' }}
+                autoAdvance={10000}
+                slides={[
+                  <Seating key="seating" />,
+                  <Rostering key="rostering" />,
+                  <VehicleRouting key="vrp" />,
+                ]}
+              />
+            </div>
           </div>
         </div>
       </Container>
