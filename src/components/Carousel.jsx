@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 
 export function Carousel({ slides, autoAdvance, ...props }) {
@@ -78,7 +79,12 @@ export function Carousel({ slides, autoAdvance, ...props }) {
       <div className="flex justify-center gap-1 text-xs">
         {slides.map((s, i) => (
           <button key={i} type="button" onClick={() => setActive(i)}>
-            {current === i ? '●' : '○'}
+            <div
+              className={clsx(
+                'h-3 w-3 rounded-full border border-gray-600 transition-colors',
+                current === i ? 'bg-slate-700' : '',
+              )}
+            />
           </button>
         ))}
       </div>
