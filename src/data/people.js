@@ -62,6 +62,13 @@ export const people = [
     description: `Multi-pass compilation for MiniZinc, constraint solver interfaces, semi-automatic model improvement and debugging.`,
   },
   {
+    name: 'Hendrik ‘Henk’ Bierlee',
+    affiliation: 'Monash University',
+    email: 'kevin.leo@monash.edu',
+    img: 'hendrik_bierlee.jpg',
+    description: `The MiniZinc-SAT compiler, integer and single constant multiplication encodings for SAT.`,
+  },
+  {
     name: 'Ignasi Abio',
     affiliation: 'NICTA',
     img: 'ignasi_abio.jpg',
