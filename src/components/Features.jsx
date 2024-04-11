@@ -8,6 +8,7 @@ import {
   faShuffle,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import clsx from 'clsx'
 
 const features = [
   {
@@ -48,12 +49,13 @@ const features = [
   },
 ]
 
-export function Features() {
+export function Features({ className, ...props }) {
   return (
     <section
       id="features"
       aria-labelledby="features-title"
-      className="py-20 sm:py-32"
+      className={clsx(className, 'py-20 sm:py-32')}
+      {...props}
     >
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
@@ -71,7 +73,7 @@ export function Features() {
           {features.map((feature) => (
             <li
               key={feature.name}
-              className="rounded-2xl border border-gray-200 p-8"
+              className="rounded-2xl border border-gray-200 p-8 bg-gray-50"
             >
               <div className="text-xl text-primary-dark">
                 <FontAwesomeIcon icon={feature.icon} />

@@ -6,6 +6,7 @@ import { Hero } from '@/components/Hero'
 import { Features } from '@/components/Features'
 import { Playground } from '@/components/Playground'
 import { LatestRelease } from '@/components/LatestRelease'
+import { Video } from '@/components/Video'
 
 export default function Home() {
   return (
@@ -16,8 +17,9 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Playground />
-        <Features />
+        <Playground className="border-t border-gray-200 bg-gray-100" />
+        <Video />
+        <Features className="bg-gray-100" />
         <LatestRelease />
       </main>
       <Footer />

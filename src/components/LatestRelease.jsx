@@ -4,13 +4,15 @@ import { latest } from '@/data/version'
 import { Link } from '@/components/Link'
 import { changelog } from '@/utils/links'
 import ReleaseInfo from '@/data/release.mdx'
+import clsx from 'clsx'
 
-export function LatestRelease() {
+export function LatestRelease({ className, ...props }) {
   return (
     <section
       id="latest-release"
       aria-labelledby="latest-release-title"
-      className="bg-gray-100 py-20 sm:py-32"
+      className={clsx(className, 'py-20 sm:py-32')}
+      {...props}
     >
       <Container>
         <div className="mx-auto max-w-2xl text-center">

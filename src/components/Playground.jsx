@@ -6,6 +6,7 @@ import NQueensProject from '@/data/examples/nqueens.json'
 import PackingProject from '@/data/examples/packing.json'
 import SudokuProject from '@/data/examples/sudoku.json'
 import { Link } from '@/components/Link'
+import clsx from 'clsx'
 
 const examples = [
   AustraliaProject,
@@ -14,7 +15,7 @@ const examples = [
   SudokuProject,
 ]
 
-export function Playground() {
+export function Playground({ className, ...props }) {
   const id = useId()
   const [playground, setPlayground] = useState(null)
   const [target, setTarget] = useState(null)
@@ -92,7 +93,8 @@ export function Playground() {
     <section
       id="playground"
       aria-labelledby="playground-title"
-      className="border-t border-gray-200 bg-gray-100 py-20 sm:py-32"
+      className={clsx(className, 'py-20 sm:py-32')}
+      {...props}
     >
       <style jsx>{`
         @import url('https://cdn.jsdelivr.net/gh/minizinc/minizinc-playground@library/dist/style.css');
