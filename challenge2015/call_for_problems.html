@@ -1,66 +1,14 @@
-<!DOCTYPE html
-	PUBLIC "-//W3C//DTD HTML 4.01//EN"
-	"http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-<title>MiniZinc Challenge 2015 - Call for Problem Submission</title>
-</head>
-
-<body>
-<h1>Call for Problem Submission for the MiniZinc Challenge 2015</h1>
-
-<p>
-The MiniZinc Challenge is an annual solver competition in the 
-Constraint Programming (CP) community held before the International 
-Conference on Principles and Practice of Constraint Programming. 
-The MiniZinc Challenge 2015 is seeking interesting problem sets on 
-which various constraint solving technologies should be compared on 
-this year. Everyone is allowed to submit problems regardless of 
-whether they are an entrant in the challenge.
-<p>
-
-<h2>Important dates and deadlines:</h2>
-<ul>
-<li>Problem submission open: now
-<li>Problem submission deadline:  <strong>Fri, 5 June 2015</strong>
-</ul>
-
-<h2>Problem submission</h2>
-<ul>
-<li>Send an email with the subject line “[MZNC15] benchmark” to mzn-challenge 'at' minizinc.org
-</ul>
-
-<p>
-There are no restrictions on the kind of problems, but ideally they 
-should be of interesting nature such as practice-related problems and 
-puzzles etc. Problem submissions with real-world instances are welcome 
-warmly. Models for the 2015 challenge can only use integer and Boolean 
-variables.
-
-<p>
-Because we anticipate local search entrants in this years challenge, ideally a MiniZinc model should wrap symmetry breaking constraints in a predicate "symmetry" defined as
-<pre>
-predicate symmetry(var bool: c) = c;
-</pre>
-and wrap redundant constraints in a predicate "redundant" defined similarly as
-<pre>
-predicate redundant(var bool: c) = c;
-</pre>
-The aim of this wrapping is that local search solvers can "turn off" symmetry breaking and redundant constraints, in order to improve solving.
-
-
-<p>
-The problem submitter provides a MiniZinc model of the problem and 
-at least 20 instances ranging from easy-to-solve to hard-to-solve for an 
-“ordinary” CP system. It is strongly encouraged to make use of the 
-global constraint definitions provided in the MiniZinc 2.0 distribution. 
-Please, follow the links below for submission instructions and requirements.
-<p>
-
-<a href="http://www.minizinc.org/challenge2015/challenge.html">www.minizinc.org/challenge2015/challenge.html</a><br>
-<a href="http://www.minizinc.org/challenge2015/rules2015.html">www.minizinc.org/challenge2015/rules2015.html</a><br>
-<p>
-
-</body>
+<!DOCTYPE html>
+<html lang="en-US">
+  <meta charset="utf-8">
+  <title>Redirecting&hellip;</title>
+  <link rel="canonical" href="/challenge/2015/call_for_problems/">
+  <script>
+    const url = "/challenge/2015/call_for_problems/";
+    location = `${url}${location.search}${location.hash}`;
+  </script>
+  <meta http-equiv="refresh" content="0; url=/challenge/2015/call_for_problems/">
+  <meta name="robots" content="noindex">
+  <h1>Redirecting&hellip;</h1>
+  <a href="/challenge/2015/call_for_problems/">Click here if you are not redirected.</a>
 </html>

@@ -1,3 +1,0 @@
-output ["cards = array1d(1..12, ",show(cards),");\n"];
-set of int: Cards = 1..12;
-array [Cards] of set of int: cards;

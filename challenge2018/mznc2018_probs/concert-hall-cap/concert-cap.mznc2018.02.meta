@@ -1,5 +1,0 @@
-MODEL=concert-hall-cap.mzn
-DATA=concert-cap.mznc2018.02.dzn
-METHOD=max
-TAGS=challenge2018,concert-hall-cap
-TIMELIMIT=1200

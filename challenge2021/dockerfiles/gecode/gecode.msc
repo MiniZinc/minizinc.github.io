@@ -1,8 +1,0 @@
-{
-  "name" : "Gecode",
-  "version": "6.3.0",
-  "id": "org.gecode.gecode",
-  "mznlib": "share/gecode/mznlib",
-  "executable": "bin/fzn-gecode",
-  "stdFlags": ["-a", "-f", "-p"]
-}

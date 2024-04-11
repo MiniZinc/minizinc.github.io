@@ -1,4 +1,0 @@
-MiniZinc 2.0 MILP interface for CBC 2.9.8 rev2288
-MZN develop branch
-https://github.com/MiniZinc/libminizinc/tree/develop
-

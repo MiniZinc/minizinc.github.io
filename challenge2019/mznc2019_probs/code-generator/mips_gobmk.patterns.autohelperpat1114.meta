@@ -1,5 +1,0 @@
-MODEL=unison.mzn
-DATA=mips_gobmk.patterns.autohelperpat1114.dzn
-METHOD=min
-TAGS=challenge2019,code-generator
-TIMELIMIT=1200

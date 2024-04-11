@@ -1,3 +1,0 @@
----
----
-{{ site.data.version["ideversion"] }}

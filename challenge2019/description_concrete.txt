@@ -1,7 +1,0 @@
-Concrete is a CSP constraint solver written in Scala 2.13. We always try to use up-to-date dependencies. Concrete is a pretty standard CP solver, which solves CSP instances using depth-first search and AC or weaker variants for propagation. The two main specific aspects of Concrete are:
-
-* the use of persistent data structures for managing domain states and some constraint states. We use bit vectors copied on-the fly, hash tries, trees with a high branching factor, and red-black trees. For the state of many constraints, semi-persistent data structures (mainly sparse sets) or backtrack-stable data (watched literals or residues) are preferred.
-
-* the use of the companion project CSPOM, a solver-independent modeling assistant able to perform automatic reformulation such as constraint aggregation. CSPOM is able to parse problems written in FlatZinc, XCSP3, or its own Java and Scala DSL (yet to be documented).
-
-Concrete is a free software, available at https://github.com/concrete-cp/concrete.

@@ -1,4 +1,0 @@
-MiniZinc 2.0 MILP interface for IBM ILOG CPLEX 12.6.3
-MZN develop branch
-https://github.com/MiniZinc/libminizinc/tree/develop
-

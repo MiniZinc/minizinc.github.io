@@ -1,5 +1,0 @@
-MODEL=median_string_dp.mzn
-DATA=p1_15_20-1.dzn
-METHOD=min
-TAGS=challenge2019,median-string
-TIMELIMIT=1200

@@ -1,3 +1,0 @@
-CpoFzn is a CP Optimizer solver interface for MiniZinc.
-
-See https://github.com/IBMDecisionOptimization/cpofzn for more information.

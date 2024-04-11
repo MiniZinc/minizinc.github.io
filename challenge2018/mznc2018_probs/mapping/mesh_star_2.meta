@@ -1,5 +1,0 @@
-MODEL=mapping.mzn
-DATA=mesh_star_2.dzn
-METHOD=min
-TAGS=challenge2018,mapping
-TIMELIMIT=1200

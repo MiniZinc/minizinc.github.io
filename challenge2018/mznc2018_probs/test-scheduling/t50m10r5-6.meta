@@ -1,5 +1,0 @@
-MODEL=test-scheduling.mzn
-DATA=t50m10r5-6.dzn
-METHOD=min
-TAGS=challenge2018,test-scheduling
-TIMELIMIT=1200

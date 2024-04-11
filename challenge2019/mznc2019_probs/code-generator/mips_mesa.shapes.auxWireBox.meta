@@ -1,5 +1,0 @@
-MODEL=unison.mzn
-DATA=mips_mesa.shapes.auxWireBox.dzn
-METHOD=min
-TAGS=challenge2019,code-generator
-TIMELIMIT=1200

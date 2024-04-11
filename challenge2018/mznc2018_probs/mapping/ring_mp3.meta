@@ -1,5 +1,0 @@
-MODEL=mapping.mzn
-DATA=ring_mp3.dzn
-METHOD=min
-TAGS=challenge2018,mapping
-TIMELIMIT=1200

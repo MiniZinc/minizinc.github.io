@@ -1,5 +1,0 @@
-MODEL=handball.mzn
-DATA=handball6.dzn
-METHOD=min
-TAGS=challenge2018,elitserien
-TIMELIMIT=1200

@@ -1,5 +1,0 @@
-MODEL=neighbours-rect.mzn
-DATA=neighbours1.dzn
-METHOD=max
-TAGS=challenge2018,neighbours
-TIMELIMIT=1200

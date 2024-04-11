@@ -1,5 +1,0 @@
-MODEL=triangular.mzn
-DATA=n23.dzn
-METHOD=max
-TAGS=challenge2019,triangular
-TIMELIMIT=1200

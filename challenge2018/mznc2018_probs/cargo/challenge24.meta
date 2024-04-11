@@ -1,5 +1,0 @@
-MODEL=cargo_coarsePiles.mzn
-DATA=challenge24.dzn
-METHOD=min
-TAGS=challenge2018,cargo
-TIMELIMIT=1200

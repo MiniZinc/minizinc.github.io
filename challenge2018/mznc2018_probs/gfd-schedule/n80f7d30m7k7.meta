@@ -1,5 +1,0 @@
-MODEL=gfd-schedule2.mzn
-DATA=n80f7d30m7k7.dzn
-METHOD=min
-TAGS=challenge2018,gfd-schedule
-TIMELIMIT=1200

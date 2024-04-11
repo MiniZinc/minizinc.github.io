@@ -1,5 +1,0 @@
-MODEL=rcpsp-wet-diverse.mzn
-DATA=j60_19_6-wet-diverse-3.dzn
-METHOD=max
-TAGS=challenge2019,rcpsp-wet-diverse
-TIMELIMIT=1200

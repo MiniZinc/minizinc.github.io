@@ -1,5 +1,0 @@
-MODEL=pax_model.mzn
-DATA=pax_period_20_5a.dzn
-METHOD=min
-TAGS=challenge2019,ptv
-TIMELIMIT=1200

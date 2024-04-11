@@ -1,5 +1,0 @@
-MODEL=lot_sizing_cp.mzn
-DATA=pigment20c.psp.dzn
-METHOD=min
-TAGS=challenge2019,lot-sizing
-TIMELIMIT=1200

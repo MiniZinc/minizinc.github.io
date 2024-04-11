@@ -1,5 +1,0 @@
-MODEL=mapping.mzn
-DATA=mesh3x3_mpeg.dzn
-METHOD=min
-TAGS=challenge2018,mapping
-TIMELIMIT=1200

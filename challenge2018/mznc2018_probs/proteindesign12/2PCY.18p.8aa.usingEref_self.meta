@@ -1,5 +1,0 @@
-MODEL=wcsp.mzn
-DATA=2PCY.18p.8aa.usingEref_self.dzn
-METHOD=min
-TAGS=challenge2018,proteindesign12
-TIMELIMIT=1200

@@ -1,5 +1,0 @@
-MODEL=ccmcp.mzn
-DATA=3_25_0.20_3.dzn
-METHOD=max
-TAGS=challenge2019,kidney-exchange
-TIMELIMIT=1200

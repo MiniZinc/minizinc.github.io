@@ -1,5 +1,0 @@
-MODEL=train.mzn
-DATA=instance.10.dzn
-METHOD=min
-TAGS=challenge2018,train
-TIMELIMIT=1200

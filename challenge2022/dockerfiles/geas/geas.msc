@@ -1,8 +1,0 @@
-{
-  "name" : "Geas",
-  "version": "1.0.0",
-  "id": "org.geas.geas",
-  "mznlib": "mznlib",
-  "executable": "fzn_geas",
-  "stdFlags": ["-a", "-f"]
-}

@@ -1,5 +1,0 @@
-MODEL=stack-cutstock-cumu.mzn
-DATA=d8.dzn
-METHOD=min
-TAGS=challenge2019,stack-cuttingstock
-TIMELIMIT=1200

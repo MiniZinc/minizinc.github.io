@@ -1,5 +1,0 @@
-MODEL=accap.mzn
-DATA=accap_instance9.dzn
-METHOD=min
-TAGS=challenge2019,accap
-TIMELIMIT=1200

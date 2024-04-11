@@ -1,5 +1,0 @@
-MODEL=full.mzn
-DATA=HARD_2000_500.dzn
-METHOD=max
-TAGS=challenge2019,nside
-TIMELIMIT=1200

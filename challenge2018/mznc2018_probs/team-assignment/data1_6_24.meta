@@ -1,5 +1,0 @@
-MODEL=model.mzn
-DATA=data1_6_24.dzn
-METHOD=max
-TAGS=challenge2018,team-assignment
-TIMELIMIT=1200
