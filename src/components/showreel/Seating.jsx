@@ -1,7 +1,11 @@
+import { Button } from '@/components/Button'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 export function Seating() {
   return (
     <div className="flex flex-col">
-      <svg viewBox="0 0 132.29 132.29">
+      <svg viewBox="0 5 132.29 122.29">
         <g>
           <g transform="rotate(-15 164.96 65.95)">
             <circle
@@ -859,6 +863,12 @@ export function Seating() {
           </g>
         </g>
       </svg>
+      <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+        <span>Table seating allocation</span>
+        {/* <Button href="/" variant="outline" title="Try it">
+          <FontAwesomeIcon icon={faPlay} height="1em" />
+        </Button> */}
+      </div>
     </div>
   )
 }

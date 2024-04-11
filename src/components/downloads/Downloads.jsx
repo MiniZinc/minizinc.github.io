@@ -1,6 +1,6 @@
 import { Container } from '@/components/Container'
 import { Bundles } from '@/components/downloads/Bundles'
-import { bundles as bundleLinks } from '@/utils/links'
+import { bundles as bundleLinks, documentation } from '@/utils/links'
 import { latest, requirement } from '@/data/version'
 import { Link } from '@/components/Link'
 
@@ -59,10 +59,7 @@ export function Downloads() {
           {latest.version}, as well as several state of the art solvers.
           <br />
           For detailed installation instructions, see the{' '}
-          <Link href="https://www.minizinc.org/doc-latest/en/installation.html">
-            documentation
-          </Link>
-          .
+          <Link href={documentation('installation.html')}>documentation</Link>.
         </p>
         <div className="my-4">
           <Bundles bundles={bundles} />

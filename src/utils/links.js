@@ -5,9 +5,9 @@ export function changelog(version) {
   return `https://www.minizinc.org/doc-${latest.version}/en/changelog.html#v-${versionDash}`
 }
 
-export function documentation(page = '') {
+export function documentation(page = '', version) {
   const suffix = page ? page.replace(/^\/+/, '') : ''
-  return `https://www.minizinc.org/doc-${latest.version}/en/${suffix}`
+  return `https://www.minizinc.org/doc-${version ? version : latest.version}/en/${suffix}`
 }
 
 export function bundles(version) {

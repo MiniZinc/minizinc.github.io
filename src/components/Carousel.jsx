@@ -76,7 +76,7 @@ export function Carousel({ slides, autoAdvance, ...props }) {
           </div>
         ))}
       </div>
-      <div className="flex justify-center gap-1 text-xs">
+      <div className="flex justify-center gap-1 text-xs mt-2">
         {slides.map((s, i) => (
           <button key={i} type="button" onClick={() => setActive(i)}>
             <div

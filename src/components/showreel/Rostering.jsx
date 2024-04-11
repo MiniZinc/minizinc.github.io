@@ -1,3 +1,6 @@
+import { Button } from '@/components/Button'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
@@ -130,6 +133,12 @@ export function Rostering() {
           ))}
         </tbody>
       </table>
+      <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+        <span>Rostering</span>
+        {/* <Button href="/" variant="outline" title="Try it">
+          <FontAwesomeIcon icon={faPlay} height="1em" />
+        </Button> */}
+      </div>
     </div>
   )
 }

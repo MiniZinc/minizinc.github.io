@@ -4,6 +4,7 @@ import { Footer } from '@/components/Footer'
 import { Link } from '@/components/Link'
 import { Header } from '@/components/Header'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { documentation } from '@/utils/links'
 import Head from 'next/head'
 export const year = 2024
 export const challenge = info[year]
@@ -100,7 +101,7 @@ would like to join then sign up for the [MiniZinc forums](https://groups.google.
 
 The [MiniZinc](/) page includes a list of resources related to MiniZinc and FlatZinc.
 
-The <Link href={`/doc-${challenge.minizinc}/en/index.html`}>MiniZinc {info[year].minizinc} Distribution</Link> includes a MiniZinc-to-FlatZinc
+The <Link href={documentation("index.html", challenge.minizinc)}>MiniZinc {info[year].minizinc} Distribution</Link> includes a MiniZinc-to-FlatZinc
 converter and a large suite of MiniZinc examples and benchmarks.
 
 The [MiniZinc Challenge](/challenge) webpage includes the results from each MiniZinc Challenge.

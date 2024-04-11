@@ -4,6 +4,7 @@ import { Footer } from '@/components/Footer'
 import { Link } from '@/components/Link'
 import { Header } from '@/components/Header'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { documentation } from '@/utils/links'
 import Head from 'next/head'
 export const year = 2024
 export const challenge = info[year]
@@ -106,8 +107,8 @@ solver for the image with options depending on the entry CLASS.
 - FREE: `minizinc -i --output-mode dzn --output-objective -f <model.dzn> [data.dzn]`
 - PAR: `minizinc -i --output-mode dzn --output-objective -p 4 <model.dzn> [data.dzn]`
 
-FlatZinc solvers must accept the following <Link href={`/doc-${challenge.minizinc}/en/fzn-spec.html#command-line-interface-and-standard-options`}>standard options</Link>, and they must be included in the supported
-`stdFlags` of the <Link href={`/doc-${challenge.minizinc}/en/fzn-spec.html#sec-cmdline-conffiles`}>solver configuration</Link>:
+FlatZinc solvers must accept the following <Link href={documentation("fzn-spec.html#command-line-interface-and-standard-options", challenge.minizinc)}>standard options</Link>, and they must be included in the supported
+`stdFlags` of the <Link href={documentation("fzn-spec.html#sec-cmdline-conffiles", challenge.minizinc)}>solver configuration</Link>:
 
 - One or more of:
 
@@ -128,7 +129,7 @@ FlatZinc solvers must accept the following <Link href={`/doc-${challenge.minizin
 - `-p <n>` (use the specified number `n` of threads and/or cores).  
   Entries competing in the `PAR` and `OPEN` classes must accept the `-p` flag.
 
-MiniZinc solvers must support the following <Link href={`/doc-${challenge.minizinc}/en/command_line.html#options`}>options</Link>
+MiniZinc solvers must support the following <Link href={documentation("command_line.html#options", challenge.minizinc)}>options</Link>
 (by placing them in the solver configuration `stdFlags` or in `extraFlags` for long-form options):
 
 - `--output-mode dzn`  
@@ -151,7 +152,7 @@ More details about Docker images and how to create a Docker image with your solv
 
 #### Output requirements
 
-Output from FlatZinc solver entries must conform to the <Link href={`/doc-${challenge.minizinc}/en/fzn-spec.html#output`}>FlatZinc specification for MiniZinc {challenge.minizinc}</Link>.
+Output from FlatZinc solver entries must conform to the <Link href={documentation("fzn-spec.html#output", challenge.minizinc)}>FlatZinc specification for MiniZinc {challenge.minizinc}</Link>.
 
 MiniZinc solver entries must correctly implement the `--output-mode dzn` and `--output-objective`
 options (that is, output must exactly match the format that MiniZinc itself would output given
@@ -182,7 +183,7 @@ will be present during testing and when running the Challenge).
 
 ### Benchmark Problem Specification
 
-Solver entries will be run with models that are compatible with <Link href={`/doc-${challenge.minizinc}/en/`}>MiniZinc {challenge.minizinc}</Link>.
+Solver entries will be run with models that are compatible with <Link href={documentation("", challenge.minizinc)}>MiniZinc {challenge.minizinc}</Link>.
 These models will adhere to the following restrictions:
 
 1.  Models may only use following types of variables:
@@ -287,7 +288,7 @@ These models will adhere to the following restrictions:
     will first label `x = 1` and find maximum value `objective = 2` eventually on backtracking to
     the choice `x = 1`, then setting `x >= 2` in most FD solvers will have domains for `x :: 2..5`
     and `objective :: 8..10` and this time `objective` will be selected as the next variable to
-    label. A full specification of the available choices is given in the <Link href={`/doc-${challenge.minizinc}/en/fzn-spec.html#search-annotations`}>FlatZinc specification for MiniZinc {challenge.minizinc}</Link>.
+    label. A full specification of the available choices is given in the <Link href={documentation("fzn-spec.html#search-annotations", challenge.minizinc)}>FlatZinc specification for MiniZinc {challenge.minizinc}</Link>.
 
 5.  All variables appearing in the search strategy (that is, variables where if all fixed, would
     allow a propagation solver to check a solution) must be annotated with `output` (or must not

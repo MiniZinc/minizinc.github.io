@@ -3,6 +3,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Link } from '@/components/Link'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { documentation } from '@/utils/links'
 import Head from 'next/head'
 
 export default function Page() {
@@ -186,7 +187,7 @@ export default function Page() {
             </p>
             <p>
               The{' '}
-              <Link href="/doc-2.4.3/en/index.html">
+              <Link href={documentation('index.html', '2.4.3')}>
                 MiniZinc 2.4.3 Distribution
               </Link>{' '}
               includes a MiniZinc-to-FlatZinc converter and a large suite of

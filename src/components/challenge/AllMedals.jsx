@@ -18,14 +18,9 @@ export function AllMedals() {
           .map((year) => (
             <div className="mt-6" key={year}>
               <h4 className="text-xl tracking-tight">
-                <Link href={`/challenge/${year}`}>
-                  MiniZinc Challenge {year}
-                </Link>{' '}
-                (
                 <Link href={`/challenge/${year}/results`}>
-                  detailed results
+                  MiniZinc Challenge {year}
                 </Link>
-                )
               </h4>
               <Medals className="mt-4" medals={medals[year]} />
             </div>

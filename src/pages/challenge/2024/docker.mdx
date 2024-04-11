@@ -4,6 +4,7 @@ import { Footer } from '@/components/Footer'
 import { Link } from '@/components/Link'
 import { Header } from '@/components/Header'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { documentation } from '@/utils/links'
 import Head from 'next/head'
 export const year = 2024
 export const challenge = info[year]
@@ -28,7 +29,7 @@ must comply wih the following requirements:
 - Running `minizinc` with the default solver (i.e. without the `--solver` option) must run your
   solver. This can be achieved through one of the following:
 
-  - If you have a <Link href={`/doc-${challenge.minizinc}/en/fzn-spec.html#solver-configuration-files`}>solver configuration file</Link>
+  - If you have a <Link href={documentation("fzn-spec.html#solver-configuration-files", challenge.minizinc)}>solver configuration file</Link>
     (`.msc`) for your solver (recommended), you must add it to the user configuration file as the
     default solver.
 
@@ -93,8 +94,8 @@ announce that we have made changes to the base image).
 </pre>
 
 The image contains a minimal installation of Ubuntu 20.04 and MiniZinc {challenge.minizinc}, which is installed in the `/usr/local/bin` directory.
-It is recommended that you create a <Link href={`/doc-${challenge.minizinc}/en/fzn-spec.html#solver-configuration-files`}>solver configuration file</Link> for your solver,
-and set it as the default solver using a <Link href={`/doc-${challenge.minizinc}/en/command_line.html#user-configuration-files`}>user configuration file</Link> (the details of how to do this are in the following section),
+It is recommended that you create a <Link href={documentation("fzn-spec.html#solver-configuration-files", challenge.minizinc)}>solver configuration file</Link> for your solver,
+and set it as the default solver using a <Link href={documentation("command_line.html#user-configuration-files", challenge.minizinc)}>user configuration file</Link> (the details of how to do this are in the following section),
 however the method of setting up scripts as in previous years is still available.
 
 If you want to inspect the image via a bash shell, use the following command:
@@ -245,7 +246,7 @@ A solver configuration file (`.msc`) is a JSON configuration file specifying how
 It is the recommended way to add your solver to your image, and it is also the easiest way to
 allow your solver to be installed by others for use with MiniZinc.
 
-See the documentation <Link href={`/doc-${challenge.minizinc}/en/fzn-spec.html#sec-cmdline-conffiles`}>here</Link> for more information.
+See the documentation <Link href={documentation("fzn-spec.html#sec-cmdline-conffiles", challenge.minizinc)}>here</Link> for more information.
 
 A FlatZinc solver called My Solver which is a binary file `./fzn-mysolver` and a library at
 `./mysolver-mznlib` may have the following solver configuration file:

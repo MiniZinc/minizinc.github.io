@@ -3,10 +3,12 @@ import { Button } from '@/components/Button'
 import { latest } from '@/data/version'
 import { Link } from '@/components/Link'
 import { DirectDownload } from '@/components/DirectDownload'
+import { documentation } from '@/utils/links'
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export function DownloadBanner() {
+  documentation
   return (
     <section
       id="latest-release"
@@ -28,7 +30,8 @@ export function DownloadBanner() {
           </p>
           <p className="text-sm">
             For detailed instructions, see the{' '}
-            <Link href="/doc-latest/en/installation.html">documentation</Link>.
+            <Link href={documentation('installation.html')}>documentation</Link>
+            .
           </p>
           <DirectDownload className="mt-6" color="primary">
             <Button className="ml-4" variant="outline" href="/downloads">

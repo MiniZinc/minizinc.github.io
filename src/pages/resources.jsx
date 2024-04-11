@@ -6,7 +6,7 @@ import { DownloadBanner } from '@/components/DownloadBanner'
 import { Handbook } from '@/components/resources/Handbook'
 import { Courses } from '@/components/resources/Courses'
 import { Publications } from '@/components/resources/Publications'
-import { Others } from '@/components/resources/Other'
+// import { Others } from '@/components/resources/Other'
 
 export default function ResourcesPage() {
   return (
@@ -20,7 +20,7 @@ export default function ResourcesPage() {
         <Handbook />
         <Courses />
         <Publications />
-        <Others />
+        {/* <Others /> */}
       </main>
       <Footer />
     </>

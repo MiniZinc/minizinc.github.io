@@ -4,6 +4,7 @@ import { Header } from '@/components/Header'
 import { Link } from '@/components/Link'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import Head from 'next/head'
+import { documentation } from '@/utils/links'
 
 export default function Page() {
   return (
@@ -246,7 +247,7 @@ export default function Page() {
             <h3>Problem Format</h3>
             <p>
               The problem format will be{' '}
-              <Link href="/doc-2.3.1/en/MiniZinc Handbook.pdf">
+              <Link href={documentation('MiniZinc Handbook.pdf', '2.3.1')}>
                 MiniZinc 2.3.1
               </Link>
               .<br /> There will be some restrictions on the problems tested in
@@ -380,7 +381,12 @@ export default function Page() {
                 <code>objective</code> will be selected as the next variable to
                 label. A full specification of the available choices is given in
                 the{' '}
-                <Link href="/doc-2.3.1/en/fzn-spec.html#search-annotations">
+                <Link
+                  href={documentation(
+                    'fzn-spec.html#search-annotations',
+                    '2.3.1',
+                  )}
+                >
                   FlatZinc 1.6 specification
                 </Link>
                 .{' '}
@@ -394,7 +400,7 @@ export default function Page() {
             <h3>Output Requirements</h3>
             <p>
               Output from entries must conform to the{' '}
-              <Link href="/doc-2.3.1/en/fzn-spec.html#output">
+              <Link href={documentation('fzn-spec.html#output', '2.3.1')}>
                 FlatZinc 1.6 specification
               </Link>
               . For optimization problems, if the time limit is exceeded before
