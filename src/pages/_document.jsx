@@ -1,5 +1,6 @@
 import getConfig from 'next/config'
 import { Head, Html, Main, NextScript } from 'next/document'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const { publicRuntimeConfig } = getConfig()
 export default function Document() {
@@ -17,6 +18,8 @@ export default function Document() {
         <Main />
         <NextScript />
       </body>
+      
+      <GoogleAnalytics gaId="UA-63390311-1" />
     </Html>
   )
 }
