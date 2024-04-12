@@ -36,7 +36,11 @@ const resources = [
 
 export function Courses() {
   return (
-    <section id="courses" aria-labelledby="courses-title" className="my-6">
+    <section
+      id="courses"
+      aria-labelledby="courses-title"
+      className="mb-12 mt-6"
+    >
       <Container>
         <h2
           id="courses-title"

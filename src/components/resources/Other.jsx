@@ -29,7 +29,7 @@ const resources = [
 
 export function Others() {
   return (
-    <section id="others" aria-labelledby="others-title" className="my-6">
+    <section id="others" aria-labelledby="others-title" className="mb-12 mt-6">
       <Container>
         <h2
           id="others-title"

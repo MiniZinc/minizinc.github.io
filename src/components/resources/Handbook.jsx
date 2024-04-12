@@ -37,7 +37,11 @@ const resources = [
 
 export function Handbook() {
   return (
-    <section id="handbook" aria-labelledby="handbook-title" className="my-6">
+    <section
+      id="handbook"
+      aria-labelledby="handbook-title"
+      className="mb-12 mt-6"
+    >
       <Container>
         <h2
           id="handbook-title"
@@ -48,8 +52,29 @@ export function Handbook() {
         <p className="my-6">
           The <Link href={documentation()}>MiniZinc Handbook</Link> contains all
           the documentation for the MiniZinc language and system.
+          <br />
+          Also available as a{' '}
+          <Link href={documentation('MiniZinc Handbook.pdf')}>
+            printable PDF
+          </Link>
+          .
         </p>
         <Resources resources={resources} />
+        <p className="mt-4">
+          The tutorial is also available in{' '}
+          <Link href={documentation('index.html', 'latest', 'chi')}>
+            Chinese
+          </Link>
+          ! MiniZinc手册
+          <Link href={documentation('index.html', 'latest', 'chi')}>
+            中文版
+          </Link>
+          已经提供 (
+          <Link href={documentation('MiniZinc Handbook.pdf', 'latest', 'chi')}>
+            PDF version
+          </Link>
+          )
+        </p>
       </Container>
     </section>
   )

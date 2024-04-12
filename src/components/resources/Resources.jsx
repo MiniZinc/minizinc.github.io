@@ -6,7 +6,7 @@ export function Resources({ resources }) {
   return (
     <ul
       role="list"
-      className="mx-auto mb-12 grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
+      className="mx-auto grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
     >
       {resources.map((resource) => (
         <li

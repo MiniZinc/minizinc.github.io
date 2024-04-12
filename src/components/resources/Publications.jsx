@@ -31,7 +31,7 @@ export function Publications() {
     <section
       id="publications"
       aria-labelledby="publications-title"
-      className="my-6"
+      className="mb-12 mt-6"
     >
       <Container>
         <h2
