@@ -10,7 +10,7 @@ export function Video({ className }) {
             className="absolute left-0 top-0 h-full w-full"
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/Zp32x3mUJRU?si=l0we9PpQbooZiLwa"
+            src="https://www.youtube.com/embed/K1tH2otAtMw?si=3Tjn8oz46p1miB2J"
             title="YouTube video player"
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
