@@ -20,7 +20,7 @@ export function Footer() {
   return (
     <footer className="border-t border-gray-200">
       <Container>
-        <div className="flex flex-col gap-y-6 py-6 sm:gap-y-12 sm:py-12">
+        <div className="flex flex-col gap-y-4 py-6 sm:gap-y-4 sm:py-12">
           <div className="flex flex-col items-stretch justify-between gap-y-6 sm:flex-row sm:gap-y-12 lg:items-start">
             <div className="grow">
               <SiteMap />
@@ -78,6 +78,12 @@ export function Footer() {
               <Image src={OptimaLogo} alt="OPTIMA" height={80} />
             </Link>
           </div>
+          <p className="mx-auto w-9/12 text-center text-xs text-gray-800">
+            MiniZinc is partially funded by the Australian Government through
+            the Australian Research Council Industrial Transformation Training
+            Centre in Optimisation Technologies, Integrated Methodologies, and
+            Applications (OPTIMA), Project ID IC200100009.
+          </p>
           <div>
             <p className="text-sm text-gray-800">
               © {publicRuntimeConfig.copyrightYear} MiniZinc Team
