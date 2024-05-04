@@ -4,6 +4,7 @@ import { Header } from '@/components/Header'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { Button } from '@/components/Button'
 import { Globals } from '@/components/challenge/Globals'
+import { Link } from '@/components/Link'
 import { Medals } from '@/components/challenge/Medals'
 import { Scripts } from '@/components/challenge/Scripts'
 import { medals } from '@/data/challenge'
@@ -48,42 +49,46 @@ export default function ResultsPage() {
 
             <ul>
               <li>
-                <a href="http://choco-solver.org">Choco 4</a> (
-                <a href="description_choco-solver.txt">description</a>). A Java
+                <Link href="http://choco-solver.org">Choco 4</Link> (
+                <Link href="description_choco-solver.txt">description</Link>). A
+                Java FD solver.
+              </li>
+              <li>
+                <Link href="http://www.constraint.org/en/izc_download/">
+                  iZplus
+                </Link>{' '}
+                (<Link href="description_izplus.txt">description</Link>).
+              </li>
+              <li>
+                <Link href="https://github.com/radsz/jacop">JaCoP</Link> (
+                <Link href="description_jacop.txt">description</Link>). A Java
                 FD solver.
               </li>
               <li>
-                <a href="http://www.constraint.org/en/izc_download/">iZplus</a>{' '}
-                (<a href="description_izplus.txt">description</a>).
+                <Link href="http://optimathsat.disi.unitn.it">OptiMathSAT</Link>{' '}
+                (<Link href="description_optimathsat.txt">description</Link>).
               </li>
               <li>
-                <a href="https://github.com/radsz/jacop">JaCoP</a> (
-                <a href="description_jacop.txt">description</a>). A Java FD
-                solver.
-              </li>
-              <li>
-                <a href="http://optimathsat.disi.unitn.it">OptiMathSAT</a> (
-                <a href="description_optimathsat.txt">description</a>).
-              </li>
-              <li>
-                <a href="https://developers.google.com/optimization/">
+                <Link href="https://developers.google.com/optimization/">
                   OR-Tools
-                </a>{' '}
-                (<a href="description_or-tools_cp-sat.txt">description</a>).
+                </Link>{' '}
+                (<Link href="description_or-tools_cp-sat.txt">description</Link>
+                ).
               </li>
               <li>
-                <a href="http://picat-lang.org">PicatSAT</a> (
-                <a href="description_picatsat.txt">description</a>).
+                <Link href="http://picat-lang.org">PicatSAT</Link> (
+                <Link href="description_picatsat.txt">description</Link>).
               </li>
               <li>
-                <a href="https://sicstus.sics.se">SICStus Prolog</a> (
-                <a href="description_sicstus.txt">description</a>). A Prolog
-                development environment with a FD constraint programming module.
+                <Link href="https://sicstus.sics.se">SICStus Prolog</Link> (
+                <Link href="description_sicstus.txt">description</Link>). A
+                Prolog development environment with a FD constraint programming
+                module.
               </li>
               <li>
-                <a href="https://github.com/informarte/yuck">Yuck</a> (
-                <a href="description_yuck.txt">description</a>). A local search
-                solver written in Scala.
+                <Link href="https://github.com/informarte/yuck">Yuck</Link> (
+                <Link href="description_yuck.txt">description</Link>). A local
+                search solver written in Scala.
               </li>
             </ul>
             <p>
@@ -93,56 +98,62 @@ export default function ResultsPage() {
 
             <ul>
               <li>
-                <a href="https://github.com/chuffed/chuffed">Chuffed</a> (
-                <a href="description_chuffed.txt">description</a>). A C++ FD
-                solver using lazy clause generation.
+                <Link href="https://github.com/chuffed/chuffed">Chuffed</Link> (
+                <Link href="description_chuffed.txt">description</Link>). A C++
+                FD solver using lazy clause generation.
               </li>
               <li>
-                <a href="https://www.gecode.org">Gecode</a> (
-                <a href="description_gecode.txt">description</a>). A C++ FD
-                solver.
+                <Link href="https://www.gecode.org">Gecode</Link> (
+                <Link href="description_gecode.txt">description</Link>). A C++
+                FD solver.
               </li>
               <li>
-                CpoFzn (<a href="description_cpofzn.txt">description</a>). Uses{' '}
-                <a href="https://github.com/IBMDecisionOptimization/cpofzn">
+                CpoFzn (<Link href="description_cpofzn.txt">description</Link>).
+                Uses{' '}
+                <Link href="https://github.com/IBMDecisionOptimization/cpofzn">
                   IBM ILOG CP Optimizer
-                </a>{' '}
+                </Link>{' '}
                 version 22.11.
               </li>
               <li>
-                MZN/Cbc (<a href="description_mzn-cbc.txt">description</a>).
-                Translates to MILP, uses{' '}
-                <a href="https://projects.coin-or.org/Cbc">Cbc</a> version
+                MZN/Cbc (<Link href="description_mzn-cbc.txt">description</Link>
+                ). Translates to MILP, uses{' '}
+                <Link href="https://projects.coin-or.org/Cbc">Cbc</Link> version
                 2.10.10.
               </li>
               <li>
-                MZN/CPLEX (<a href="description_mzn-cplex.txt">description</a>
+                MZN/CPLEX (
+                <Link href="description_mzn-cplex.txt">description</Link>
                 ). Translates to MILP, uses{' '}
-                <a href="https://www.ibm.com/analytics/cplex-optimizer">
+                <Link href="https://www.ibm.com/analytics/cplex-optimizer">
                   IBM ILOG CPLEX Optimizer
-                </a>{' '}
+                </Link>{' '}
                 version 22.11.
               </li>
               <li>
-                MZN/Gurobi (<a href="description_mzn-gurobi.txt">description</a>
+                MZN/Gurobi (
+                <Link href="description_mzn-gurobi.txt">description</Link>
                 ). Translates to MILP, uses{' '}
-                <a href="https://www.gurobi.com/">Gurobi</a> version 10.0.2.
+                <Link href="https://www.gurobi.com/">Gurobi</Link> version
+                10.0.2.
               </li>
               <li>
-                MZN/HiGHS (<a href="description_mzn-highs.txt">description</a>
+                MZN/HiGHS (
+                <Link href="description_mzn-highs.txt">description</Link>
                 ). Translates to MILP, uses{' '}
-                <a href="https://highs.dev/">HiGHS</a> version 1.5.1.
+                <Link href="https://highs.dev/">HiGHS</Link> version 1.5.1.
               </li>
               <li>
-                MZN/SCIP (<a href="description_mzn-scip.txt">description</a>).
+                MZN/SCIP (
+                <Link href="description_mzn-scip.txt">description</Link>).
                 Translates to MILP, uses{' '}
-                <a href="https://www.scipopt.org/">SCIP</a> version 8.0.3.
+                <Link href="https://www.scipopt.org/">SCIP</Link> version 8.0.3.
               </li>
             </ul>
             <p>
-              As per the challenge <a href="/challenge/2023/rules">rules</a>,
-              these entries are not eligible for prizes, but do modify the
-              scoring results.
+              As per the challenge{' '}
+              <Link href="/challenge/2023/rules">rules</Link>, these entries are
+              not eligible for prizes, but do modify the scoring results.
             </p>
 
             <h3>Summary of Results</h3>
@@ -204,7 +215,7 @@ export default function ResultsPage() {
 
             <p>
               All problems are available in a zipped tar-ball{' '}
-              <a href="mznc2023_probs.tar.gz">here</a>.
+              <Link href="mznc2023_probs.tar.gz">here</Link>.
             </p>
 
             <h3>Selection:</h3>

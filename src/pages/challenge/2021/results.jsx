@@ -4,6 +4,7 @@ import { Header } from '@/components/Header'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { Button } from '@/components/Button'
 import { Globals } from '@/components/challenge/Globals'
+import { Link } from '@/components/Link'
 import { Medals } from '@/components/challenge/Medals'
 import { Scripts } from '@/components/challenge/Scripts'
 import { medals } from '@/data/challenge'
@@ -47,54 +48,60 @@ export default function ResultsPage() {
             </p>
             <ul>
               <li>
-                <a href="http://choco-solver.org">Choco 4</a> (
-                <a href="description_choco4.txt">description</a>). A Java FD
-                solver.
+                <Link href="http://choco-solver.org">Choco 4</Link> (
+                <Link href="description_choco4.txt">description</Link>). A Java
+                FD solver.
               </li>
               <li>
-                <a href="https://github.com/potassco/flatzingo">flatzingo</a> (
-                <a href="description_flatzingo.txt">description</a>).
+                <Link href="https://github.com/potassco/flatzingo">
+                  flatzingo
+                </Link>{' '}
+                (<Link href="description_flatzingo.txt">description</Link>).
               </li>
               <li>
-                <a href="http://www.constraint.org/en/izc_download/">iZplus</a>{' '}
-                (<a href="description_izplus.txt">description</a>).
+                <Link href="http://www.constraint.org/en/izc_download/">
+                  iZplus
+                </Link>{' '}
+                (<Link href="description_izplus.txt">description</Link>).
               </li>
               <li>
-                <a href="https://github.com/radsz/jacop">JaCoP</a> (
-                <a href="description_jacop.txt">description</a>). A Java FD
-                solver.
+                <Link href="https://github.com/radsz/jacop">JaCoP</Link> (
+                <Link href="description_jacop.txt">description</Link>). A Java
+                FD solver.
               </li>
               <li>
-                <a href="https://github.com/ehebrard/Mistral-2.0">
+                <Link href="https://github.com/ehebrard/Mistral-2.0">
                   Mistral-2.0
-                </a>{' '}
-                (<a href="description_mistral2.txt">description</a>).
+                </Link>{' '}
+                (<Link href="description_mistral2.txt">description</Link>).
               </li>
               <li>
-                <a href="https://developers.google.com/optimization/">
+                <Link href="https://developers.google.com/optimization/">
                   OR-Tools
-                </a>{' '}
-                (<a href="description_or_tools.txt">description</a>).
+                </Link>{' '}
+                (<Link href="description_or_tools.txt">description</Link>).
               </li>
               <li>
-                <a href="https://bitbucket.org/oscarlib/oscar">OscaR/CBLS</a> (
-                <a href="description_oscar_cbls.txt">description</a>). A
+                <Link href="https://bitbucket.org/oscarlib/oscar">
+                  OscaR/CBLS
+                </Link>{' '}
+                (<Link href="description_oscar_cbls.txt">description</Link>). A
                 constraint-based local search solver written in Scala.
               </li>
               <li>
-                <a href="http://picat-lang.org">PicatSAT</a> (
-                <a href="description_picat_sat.txt">description</a>).
+                <Link href="http://picat-lang.org">PicatSAT</Link> (
+                <Link href="description_picat_sat.txt">description</Link>).
               </li>
               <li>
-                <a href="https://sicstus.sics.se">SICStus Prolog</a> (
-                <a href="description_sicstus_prolog.txt">description</a>). A
-                Prolog development environment with a FD constraint programming
-                module.
+                <Link href="https://sicstus.sics.se">SICStus Prolog</Link> (
+                <Link href="description_sicstus_prolog.txt">description</Link>).
+                A Prolog development environment with a FD constraint
+                programming module.
               </li>
               <li>
-                <a href="https://github.com/informarte/yuck">Yuck</a> (
-                <a href="description_yuck.txt">description</a>). A local search
-                solver written in Scala.
+                <Link href="https://github.com/informarte/yuck">Yuck</Link> (
+                <Link href="description_yuck.txt">description</Link>). A local
+                search solver written in Scala.
               </li>
             </ul>
 
@@ -104,56 +111,62 @@ export default function ResultsPage() {
             </p>
             <ul>
               <li>
-                <a href="https://github.com/chuffed/chuffed">Chuffed</a> (
-                <a href="description_chuffed.txt">description</a>). A C++ FD
-                solver using lazy clause generation.
+                <Link href="https://github.com/chuffed/chuffed">Chuffed</Link> (
+                <Link href="description_chuffed.txt">description</Link>). A C++
+                FD solver using lazy clause generation.
               </li>
               <li>
-                <a href="https://bitbucket.org/gkgange/geas">Geas</a> (
-                <a href="description_geas.txt">description</a>). A C++ lazy
-                clause generation solver with an OCaml FlatZinc frontend.
+                <Link href="https://bitbucket.org/gkgange/geas">Geas</Link> (
+                <Link href="description_geas.txt">description</Link>). A C++
+                lazy clause generation solver with an OCaml FlatZinc frontend.
               </li>
               <li>
-                <a href="https://www.gecode.org">Gecode</a> (
-                <a href="description_gecode.txt">description</a>). A C++ FD
-                solver.
+                <Link href="https://www.gecode.org">Gecode</Link> (
+                <Link href="description_gecode.txt">description</Link>). A C++
+                FD solver.
               </li>
               <li>
-                MZN/Cbc (<a href="description_mzn-cbc.txt">description</a>).
-                Translates to MILP, uses{' '}
-                <a href="https://projects.coin-or.org/Cbc">Cbc</a> version
+                MZN/Cbc (<Link href="description_mzn-cbc.txt">description</Link>
+                ). Translates to MILP, uses{' '}
+                <Link href="https://projects.coin-or.org/Cbc">Cbc</Link> version
                 2.10.5.
               </li>
               <li>
-                MZN/CPLEX (<a href="description_mzn-cplex.txt">description</a>).
+                MZN/CPLEX (
+                <Link href="description_mzn-cplex.txt">description</Link>).
                 Translates to MILP, uses{' '}
-                <a href="https://www.ibm.com/analytics/cplex-optimizer">
+                <Link href="https://www.ibm.com/analytics/cplex-optimizer">
                   IBM ILOG CPLEX Optimizer
-                </a>{' '}
+                </Link>{' '}
                 version 20.10.
               </li>
               <li>
                 MZN/Gurobi. Translates to MILP, uses{' '}
-                <a href="https://www.gurobi.com/">Gurobi</a> version 9.1.2.
+                <Link href="https://www.gurobi.com/">Gurobi</Link> version
+                9.1.2.
               </li>
               <li>
-                <a href="https://github.com/CP-Unibo/sunny-cp">sunny-cp</a>
+                <Link href="https://github.com/CP-Unibo/sunny-cp">
+                  sunny-cp
+                </Link>
                 <sup>&#151;</sup> (
-                <a href="description_sunny_cp.txt">description</a>). A variant
-                of sunny-cp only using the 2020 portfolio CPLEX, Gecode, JaCoP,
-                iZplus, OR-Tools, Picat, SICStus Prolog, Yuck.
+                <Link href="description_sunny_cp.txt">description</Link>). A
+                variant of sunny-cp only using the 2020 portfolio CPLEX, Gecode,
+                JaCoP, iZplus, OR-Tools, Picat, SICStus Prolog, Yuck.
               </li>
               <li>
-                <a href="https://github.com/CP-Unibo/sunny-cp">sunny-cp</a> (
-                <a href="description_sunny_cp.txt">description</a>). A
+                <Link href="https://github.com/CP-Unibo/sunny-cp">
+                  sunny-cp
+                </Link>{' '}
+                (<Link href="description_sunny_cp.txt">description</Link>). A
                 multi-threaded CP portfolio solver using a 2020 portfolio of CP
                 and MIP solvers incl. Chuffed, Gecode.
               </li>
             </ul>
             <p>
-              As per the challenge <a href="/challenge/2021/rules">rules</a>,
-              these entries are not eligible for prizes, but do modify the
-              scoring results.
+              As per the challenge{' '}
+              <Link href="/challenge/2021/rules">rules</Link>, these entries are
+              not eligible for prizes, but do modify the scoring results.
             </p>
 
             <h3>Summary of Results</h3>
@@ -215,7 +228,7 @@ export default function ResultsPage() {
 
             <p>
               All problems are available in a zipped tar-ball{' '}
-              <a href="mznc2021_probs.tar.gz">here</a>.
+              <Link href="mznc2021_probs.tar.gz">here</Link>.
             </p>
 
             <h3>Selection:</h3>

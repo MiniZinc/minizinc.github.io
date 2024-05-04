@@ -279,7 +279,7 @@ function rankSolvers(selected_s, selected_p) {
 
 function createLinkCol(text, loc) {
   var link = document.createElement('a');
-  link.href=loc;
+  link.href=`../${loc}`;
   link.appendChild(document.createTextNode(text));
   var col = document.createElement('td');
   col.appendChild(link);

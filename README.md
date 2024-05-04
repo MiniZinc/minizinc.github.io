@@ -25,4 +25,3 @@ npm run build
 ```
 
 The `BASE_PATH` environment variable can be set to change the base path for URLs in case the website is being served from a subdirectory.
-

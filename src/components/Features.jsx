@@ -73,7 +73,7 @@ export function Features({ className, ...props }) {
           {features.map((feature) => (
             <li
               key={feature.name}
-              className="rounded-2xl border border-gray-200 p-8 bg-gray-50"
+              className="rounded-2xl border border-gray-200 bg-gray-50 p-8"
             >
               <div className="text-xl text-primary-dark">
                 <FontAwesomeIcon icon={feature.icon} />

@@ -35,8 +35,7 @@ jobs:
           ref: static_assets
           path: static_assets
       - name: Copy static assets to public directory
-        run:
-          cp -r static_assets/* public/
+        run: cp -r static_assets/* public/
       - name: Setup Node
         uses: actions/setup-node@v4
         with:

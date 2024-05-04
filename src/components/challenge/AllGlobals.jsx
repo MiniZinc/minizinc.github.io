@@ -55,7 +55,7 @@ export function AllGlobals() {
                   {problem.years.map((y, i) => (
                     <>
                       {i > 0 ? ', ' : ''}
-                      <Link key={y} href={`/challenge${y}`}>
+                      <Link key={y} href={`/challenge/${y}`}>
                         {y}
                       </Link>
                     </>
