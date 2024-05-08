@@ -23,6 +23,16 @@ export function Releases() {
           <Link href={changelog()}>See the full changelog</Link>.
         </p>
         <h3 className="mt-6 text-2xl font-medium tracking-tight text-gray-900">
+          Development builds
+        </h3>
+        <p className="mt-2 leading-7">
+          Unstable development builds with upcoming bugfixes and features are{' '}
+          <Link href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/edge">
+            available on GitHub
+          </Link>
+          .
+        </p>
+        <h3 className="mt-6 text-2xl font-medium tracking-tight text-gray-900">
           Previous releases
         </h3>
         <ul className="mx-2 mt-2 list-inside list-disc leading-relaxed">
