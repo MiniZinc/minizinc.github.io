@@ -7,6 +7,7 @@ import { Features } from '@/components/Features'
 import { Playground } from '@/components/Playground'
 import { LatestRelease } from '@/components/LatestRelease'
 import { Video } from '@/components/Video'
+import { Merchandise } from '@/components/Merchandise'
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <Video />
         <Features className="bg-gray-100" />
         <LatestRelease />
+        <Merchandise className="bg-sky-50 border-t border-gray-200" />
       </main>
       <Footer />
     </>
