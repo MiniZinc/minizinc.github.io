@@ -2,6 +2,7 @@ import { Link } from '@/components/Link'
 import { Popover } from '@headlessui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 
+import { ChallengeCall } from '@/components/ChallengeCall'
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import { NavLinks } from '@/components/NavLinks'
@@ -48,6 +49,7 @@ function MobileNavLink({ children, ...props }) {
 export function Header() {
   return (
     <header>
+      <ChallengeCall stage="problem" />
       <nav>
         <Container className="relative z-50 flex justify-between py-8">
           <div className="relative z-10 flex items-center gap-16">
