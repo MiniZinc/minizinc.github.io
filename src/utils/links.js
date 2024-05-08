@@ -2,7 +2,7 @@ import { latest } from '@/data/version'
 
 export function changelog(version) {
   const versionDash = (version || latest.version).replace(/\./g, '-')
-  return `https://www.minizinc.org/doc-${latest.version}/en/changelog.html#v-${versionDash}`
+  return `https://www.minizinc.org/doc-${latest.version}/en/changelog.html#v${versionDash}`
 }
 
 export function documentation(page = '', version = 'latest', lang = 'en') {
