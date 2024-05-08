@@ -16,7 +16,7 @@ export default function Page() {
         <Container>
           <article className="prose prose-minizinc max-w-none py-6">
             <h2 id="introduction">
-              <span class="header-section-number">1</span> Introduction
+              <span className="header-section-number">1</span> Introduction
             </h2>
             <Breadcrumbs
               className="not-prose"
@@ -60,7 +60,7 @@ export default function Page() {
               <li>Higher automatisation of the execution of solvers.</li>
             </ul>
             <h2 id="brief-overview-of-the-concept-of-docker">
-              <span class="header-section-number">2</span> Brief Overview of the
+              <span className="header-section-number">2</span> Brief Overview of the
               Concept of Docker
             </h2>
             <p>
@@ -83,7 +83,7 @@ export default function Page() {
               created from plus the changes made during its executing.
             </p>
             <h2 id="installation-of-docker">
-              <span class="header-section-number">3</span> Installation of
+              <span className="header-section-number">3</span> Installation of
               Docker
             </h2>
             <p>
@@ -109,7 +109,7 @@ export default function Page() {
               <code>docker run hello-world</code>
             </pre>
             <h2 id="registration-to-docker-hub">
-              <span class="header-section-number">4</span> Registration to
+              <span className="header-section-number">4</span> Registration to
               Docker Hub
             </h2>
             <p>
@@ -122,7 +122,7 @@ export default function Page() {
               is created via the web pages.
             </p>
             <h2 id="minizinc-challenge-2018-docker-image">
-              <span class="header-section-number">5</span> MiniZinc Challenge
+              <span className="header-section-number">5</span> MiniZinc Challenge
               2018 Docker Image
             </h2>
             <p>
@@ -162,7 +162,7 @@ export default function Page() {
               <code>docker run -it --rm minizinc/mznc2018:1.0 /bin/bash</code>
             </pre>
             <h2 id="preparation-of-the-solver-submission">
-              <span class="header-section-number">6</span> Preparation of the
+              <span className="header-section-number">6</span> Preparation of the
               Solver Submission
             </h2>
             <p>
@@ -176,7 +176,7 @@ export default function Page() {
               automatically via one docker command.
             </p>
             <h3 id="dockerfile">
-              <span class="header-section-number">6.1</span> Dockerfile
+              <span className="header-section-number">6.1</span> Dockerfile
             </h3>
             <p>
               There are two ways to build an image from a dockerfile. The first
@@ -195,7 +195,7 @@ export default function Page() {
               ).
             </p>
             <h4 id="creation-of-a-dockerfile">
-              <span class="header-section-number">6.1.1</span> Creation of a
+              <span className="header-section-number">6.1.1</span> Creation of a
               Dockerfile
             </h4>
             <p>
@@ -254,7 +254,7 @@ export default function Page() {
             </pre>
             <p>The statement sets up an environment variable in the build.</p>
             <h4 id="via-folder">
-              <span class="header-section-number">6.1.2</span> Via Folder
+              <span className="header-section-number">6.1.2</span> Via Folder
             </h4>
             <p>
               Build an image from a docker file with a context (folder must
@@ -269,7 +269,7 @@ export default function Page() {
               </code>
             </pre>
             <h4 id="via-standard-in">
-              <span class="header-section-number">6.1.3</span> Via Standard In
+              <span className="header-section-number">6.1.3</span> Via Standard In
             </h4>
             <p>
               Use this command in a terminal in Mac OS X or Linux distributions.
@@ -290,7 +290,7 @@ export default function Page() {
               </code>
             </pre>
             <h3 id="docker-container">
-              <span class="header-section-number">6.2</span> Docker Container
+              <span className="header-section-number">6.2</span> Docker Container
             </h3>
             <p>
               Creating the image via a docker container might be a more familiar
@@ -374,7 +374,7 @@ export default function Page() {
               <code>docker container stop solver</code>
             </pre>
             <h3 id="testing-your-submission">
-              <span class="header-section-number">6.3</span> Testing your
+              <span className="header-section-number">6.3</span> Testing your
               Submission
             </h3>
             <p>
@@ -386,13 +386,13 @@ export default function Page() {
             </p>
             <table>
               <thead>
-                <tr class="header">
+                <tr className="header">
                   <th align="left">Class</th>
                   <th align="left">Command</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">FD</td>
                   <td align="left">
                     <code>
@@ -401,7 +401,7 @@ export default function Page() {
                     </code>
                   </td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">FREE</td>
                   <td align="left">
                     <code>
@@ -410,7 +410,7 @@ export default function Page() {
                     </code>
                   </td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">PAR</td>
                   <td align="left">
                     <code>
@@ -428,7 +428,7 @@ export default function Page() {
               <code>x = 2; ----------</code>
             </pre>
             <h2 id="uploading-and-solver-submission">
-              <span class="header-section-number">7</span> Uploading and Solver
+              <span className="header-section-number">7</span> Uploading and Solver
               Submission
             </h2>
             <p>
@@ -512,7 +512,7 @@ export default function Page() {
               </li>
             </ol>
             <h2 id="docker-cheat-sheet">
-              <span class="header-section-number">8</span> Docker Cheat Sheet
+              <span className="header-section-number">8</span> Docker Cheat Sheet
             </h2>
             <p>
               Docker has an abundance of command-line commands, which are
@@ -534,13 +534,13 @@ export default function Page() {
             </p>
             <table>
               <thead>
-                <tr class="header">
+                <tr className="header">
                   <th align="left">Command</th>
                   <th align="left">Description</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>docker version</code>
                   </td>
@@ -548,43 +548,43 @@ export default function Page() {
                     Show version number of docker installation.
                   </td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>docker info</code>
                   </td>
                   <td align="left">Show system-wide information.</td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>docker login</code>
                   </td>
                   <td align="left">Login in docker hub.</td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>docker logout</code>
                   </td>
                   <td align="left">Logout from docker hub.</td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>docker images</code>
                   </td>
                   <td align="left">List all images on the local machine.</td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>docker pull &lt;repository&gt;:&lt;tag&gt;</code>
                   </td>
                   <td align="left">Pull a docker image from docker hub.</td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>docker push &lt;repository&gt;:&lt;tag&gt;</code>
                   </td>
                   <td align="left">Push a docker image to docker hub.</td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>
                       docker image history [--no-trunc] &lt;image id&gt;
@@ -594,7 +594,7 @@ export default function Page() {
                     List the build history of the docker image.
                   </td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>
                       docker build -t &lt;repository&gt;:&lt;tag&gt;
@@ -607,7 +607,7 @@ export default function Page() {
                     <code>&lt;Path&gt;</code>.
                   </td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>
                       docker build -t &lt;repository&gt;:&lt;tag&gt; - &lt;
@@ -619,7 +619,7 @@ export default function Page() {
                     distribution.
                   </td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>Get-Content &lt;dockerfile&gt;</code>
                     <code>|</code>
@@ -630,7 +630,7 @@ export default function Page() {
                     Windows OS.
                   </td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>
                       docker tag &lt;image id&gt; &lt;target
@@ -642,7 +642,7 @@ export default function Page() {
                     name of your repository.
                   </td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>
                       docker commit &lt;container id&gt;
@@ -653,13 +653,13 @@ export default function Page() {
                     Create image from the current state of a container.
                   </td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>docker image rm &lt;image id&gt;</code>
                   </td>
                   <td align="left">Remove docker image.</td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>docker run -it &lt;image id&gt; /bin/bash</code>
                   </td>
@@ -668,7 +668,7 @@ export default function Page() {
                     container in an interactive mode using a shell terminal.
                   </td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>
                       docker run -it --name &lt;name&gt; &lt;image id&gt;
@@ -679,7 +679,7 @@ export default function Page() {
                     Same as above, but giving the container a name.
                   </td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>
                       docker run --rm &lt;image id&gt; &lt;command&gt;
@@ -693,13 +693,13 @@ export default function Page() {
                     completion.
                   </td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>docker rm &lt;container id&gt;</code>
                   </td>
                   <td align="left">Delete a docker container.</td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>docker container ls</code>
                   </td>
@@ -707,13 +707,13 @@ export default function Page() {
                     List all docker containers that are running.
                   </td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>docker container ls --all</code>
                   </td>
                   <td align="left">List all docker containers.</td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>docker container ls -aq</code>
                   </td>
@@ -721,13 +721,13 @@ export default function Page() {
                     List all docker containers in quiet mode.
                   </td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>docker container start -i &lt;container id&gt;</code>
                   </td>
                   <td align="left">Start a docker container.</td>
                 </tr>
-                <tr class="odd">
+                <tr className="odd">
                   <td align="left">
                     <code>docker exec -it &lt;container id&gt; /bin/bash</code>
                   </td>
@@ -736,7 +736,7 @@ export default function Page() {
                     using a shell terminal.
                   </td>
                 </tr>
-                <tr class="even">
+                <tr className="even">
                   <td align="left">
                     <code>docker container stop &lt;container id&gt;</code>
                   </td>
