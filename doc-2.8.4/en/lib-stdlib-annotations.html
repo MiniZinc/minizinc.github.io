@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.2.1.2. Annotations &mdash; The MiniZinc Handbook 2.8.4</title>
+      <link rel="stylesheet" type="text/css" href="static/pygments.css?v=77553476" />
+      <link rel="stylesheet" type="text/css" href="static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="static/style.css?v=572cde19" />
+
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/lib-stdlib-annotations.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=05e72959"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2.1.3. Option type support" href="lib-stdlib-optiontypes.html" />
+    <link rel="prev" title="4.2.1.1. Built-in functions and operators" href="lib-stdlib-builtins.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.4
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_2_tutorial.html">2. A MiniZinc Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spec.html">4.1. Specification of MiniZinc</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lib.html">4.2. The MiniZinc library</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="lib-stdlib.html">4.2.1. Standard Library</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-builtins.html">4.2.1.1. Built-in functions and operators</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.1.2. Annotations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-optiontypes.html">4.2.1.3. Option type support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-sort.html">4.2.1.4. Array sorting operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-language.html">4.2.1.5. Language information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-options.html">4.2.1.6. Compiler options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-ifthenelse.html">4.2.1.7. Conditionals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-reflect.html">4.2.1.8. Reflection operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-debug.html">4.2.1.9. Assertions and debugging functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-random.html">4.2.1.10. Random Number Generator builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lib-stdlib-output.html">4.2.1.11. Stuctured Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lib-globals.html">4.2.2. Global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-flatzinc.html">4.2.3. FlatZinc builtins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-gecode.html">4.2.4. Additional declarations for Gecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-chuffed.html">4.2.5. Additional declarations for Chuffed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-ide.html">4.2.6. MiniZincIDE tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lib-experimental.html">4.2.7. Experimental Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fzn-spec.html">4.3. Interfacing Solvers to Flatzinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json-stream.html">4.4. Machine-readable JSON output format</a></li>
+</ul>
+</li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_4_reference.html"><span class="section-number">4. </span>Reference Manual</a></li>
+          <li class="breadcrumb-item"><a href="lib.html"><span class="section-number">4.2. </span>The MiniZinc library</a></li>
+          <li class="breadcrumb-item"><a href="lib-stdlib.html"><span class="section-number">4.2.1. </span>Standard Library</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2.1.2. </span>Annotations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="annotations">
+<span id="ch-lib-stdlib-annotations"></span><h1><span class="section-number">4.2.1.2. </span>Annotations<a class="headerlink" href="#annotations" title="Link to this heading"></a></h1>
+<p>These annotations control evaluation and solving behaviour.</p>
+<section id="general-annotations">
+<h2>General annotations<a class="headerlink" href="#general-annotations" title="Link to this heading"></a></h2>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-general-mzn-output-section"><span class="std std-ref">mzn_output_section</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-add-to-output"><span class="std std-ref">add_to_output</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-annotated-expression"><span class="std std-ref">annotated_expression</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-cache-result"><span class="std std-ref">cache_result</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-computed-domain"><span class="std std-ref">computed_domain</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-constraint-name"><span class="std std-ref">constraint_name</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-defines-var"><span class="std std-ref">defines_var</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-doc-comment"><span class="std std-ref">doc_comment</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-domain-change-constraint"><span class="std std-ref">domain_change_constraint</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-empty-annotation"><span class="std std-ref">empty_annotation</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-expression-name"><span class="std std-ref">expression_name</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-is-defined-var"><span class="std std-ref">is_defined_var</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-is-reverse-map"><span class="std std-ref">is_reverse_map</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-maybe-partial"><span class="std std-ref">maybe_partial</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-mzn-add-annotated-expression"><span class="std std-ref">mzn_add_annotated_expression</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-mzn-check-enum-var"><span class="std std-ref">mzn_check_enum_var</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-mzn-check-var"><span class="std std-ref">mzn_check_var</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-mzn-constraint-name"><span class="std std-ref">mzn_constraint_name</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-mzn-deprecated"><span class="std std-ref">mzn_deprecated</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-mzn-expression-name"><span class="std std-ref">mzn_expression_name</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-mzn-path"><span class="std std-ref">mzn_path</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-mzn-rhs-from-assignment"><span class="std std-ref">mzn_rhs_from_assignment</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-no-cse"><span class="std std-ref">no_cse</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-no-output"><span class="std std-ref">no_output</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-output"><span class="std std-ref">output</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-output-array"><span class="std std-ref">output_array</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-output-only"><span class="std std-ref">output_only</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-output-var"><span class="std std-ref">output_var</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-promise-commutative"><span class="std std-ref">promise_commutative</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-promise-total"><span class="std std-ref">promise_total</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-general-var-is-introduced"><span class="std std-ref">var_is_introduced</span></a>.</p>
+<section id="functions-and-predicates">
+<h3>Functions and Predicates<a class="headerlink" href="#functions-and-predicates" title="Link to this heading"></a></h3>
+<section class="mzn-docitem" id="mzn-output-section">
+<span id="mzn-stdlib-annotations-general-mzn-output-section"></span><span id="index-0"></span><h4>mzn_output_section<a class="headerlink" href="#mzn-output-section" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-mzn-output-section"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">mzn_output_section</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Used internally by the compiler to set the output section <tt class="docutils literal">s</tt> for an output item.
+An output item can be annotated directly with a string literal to set its output section as in
+<tt class="docutils literal">output :: "my_section" ["hello, world\n"]</tt> or using the syntax <tt class="docutils literal">output ["hello, world\n"] to "my_section</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="id1">
+<h3>Annotations<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<section class="mzn-docitem" id="add-to-output">
+<span id="mzn-stdlib-annotations-general-add-to-output"></span><span id="index-1"></span><h4>add_to_output<a class="headerlink" href="#add-to-output" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-add-to-output"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">add_to_output</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare that the annotated variable should be added to the output
+of the model. This annotation only has an effect when the model does not have an output item.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="annotated-expression">
+<span id="mzn-stdlib-annotations-general-annotated-expression"></span><span id="index-2"></span><h4>annotated_expression<a class="headerlink" href="#annotated-expression" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-annotated-expression"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">annotated_expression</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Mark annotation argument as annotated expression</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="cache-result">
+<span id="mzn-stdlib-annotations-general-cache-result"></span><span id="index-3"></span><h4>cache_result<a class="headerlink" href="#cache-result" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-cache-result"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">cache_result</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Enables caching of the result of the annotated function
+declaration such that further calls with the same arguments yield the cached initial result.</p>
+<p>Currently only supported for par functions with at least one parameter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="computed-domain">
+<span id="mzn-stdlib-annotations-general-computed-domain"></span><span id="index-4"></span><h4>computed_domain<a class="headerlink" href="#computed-domain" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-computed-domain"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">computed_domain</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare the annotated variable as having a
+domain computed for the convenience of the solver. The domain itself does
+not impose a constraint in the overall problem and can be ignored.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="constraint-name">
+<span id="mzn-stdlib-annotations-general-constraint-name"></span><span id="index-5"></span><h4>constraint_name<a class="headerlink" href="#constraint-name" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-constraint-name"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">constraint_name</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Used to attach a name <tt class="docutils literal">s</tt> to a constraint and its decomposition. String
+annotations on constraint keywords are re-written as constraint_name annotations</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="defines-var">
+<span id="mzn-stdlib-annotations-general-defines-var"></span><span id="index-6"></span><h4>defines_var<a class="headerlink" href="#defines-var" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-defines-var"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">defines_var</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">defines_var</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">U</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nv">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Declare variable: <tt class="docutils literal">c</tt> as being functionally defined
+by the annotated constraint. This annotation is introduced into FlatZinc code by the compiler.</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Declare an array of variables <tt class="docutils literal">arr</tt> as being
+functionally defined by the annotated constraint. This annotation is introduced into FlatZinc
+code by the compiler.</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="doc-comment">
+<span id="mzn-stdlib-annotations-general-doc-comment"></span><span id="index-7"></span><h4>doc_comment<a class="headerlink" href="#doc-comment" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-doc-comment"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">doc_comment</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Document the function or variable declaration item with
+the string <tt class="docutils literal">s</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="domain-change-constraint">
+<span id="mzn-stdlib-annotations-general-domain-change-constraint"></span><span id="index-8"></span><h4>domain_change_constraint<a class="headerlink" href="#domain-change-constraint" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-domain-change-constraint"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">domain_change_constraint</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Marks a constraint as a recorded domain changing constraint (when mzn2fzn
+called with -g flag</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="empty-annotation">
+<span id="mzn-stdlib-annotations-general-empty-annotation"></span><span id="index-9"></span><h4>empty_annotation<a class="headerlink" href="#empty-annotation" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-empty-annotation"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">empty_annotation</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Empty annotation, will be removed during compilation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="expression-name">
+<span id="mzn-stdlib-annotations-general-expression-name"></span><span id="index-10"></span><h4>expression_name<a class="headerlink" href="#expression-name" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-expression-name"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">expression_name</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Used to attach a name <tt class="docutils literal">s</tt> to an expression, this should also propagate to
+any sub-expressions or decomposition of the annotated expression. String annotations on expressions
+are re-written as expression_name annotations</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="is-defined-var">
+<span id="mzn-stdlib-annotations-general-is-defined-var"></span><span id="index-11"></span><h4>is_defined_var<a class="headerlink" href="#is-defined-var" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-is-defined-var"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">is_defined_var</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare the annotated variable as being functionally defined.
+This annotation is introduced into FlatZinc code by the compiler.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="is-reverse-map">
+<span id="mzn-stdlib-annotations-general-is-reverse-map"></span><span id="index-12"></span><h4>is_reverse_map<a class="headerlink" href="#is-reverse-map" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-is-reverse-map"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">is_reverse_map</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare that the annotated expression is used to map
+an expression back from FlatZinc to MiniZinc.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="maybe-partial">
+<span id="mzn-stdlib-annotations-general-maybe-partial"></span><span id="index-13"></span><h4>maybe_partial<a class="headerlink" href="#maybe-partial" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-maybe-partial"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">maybe_partial</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare that expression may have undefined result (to avoid warnings)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="mzn-add-annotated-expression">
+<span id="mzn-stdlib-annotations-general-mzn-add-annotated-expression"></span><span id="index-14"></span><h4>mzn_add_annotated_expression<a class="headerlink" href="#mzn-add-annotated-expression" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-mzn-add-annotated-expression"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">mzn_add_annotated_expression</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">idx</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Used internally by the compiler</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="mzn-check-enum-var">
+<span id="mzn-stdlib-annotations-general-mzn-check-enum-var"></span><span id="index-15"></span><h4>mzn_check_enum_var<a class="headerlink" href="#mzn-check-enum-var" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-mzn-check-enum-var"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">mzn_check_enum_var</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare that the annotated variable is required for checking solutions and has an enum type <tt class="docutils literal">x</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="mzn-check-var">
+<span id="mzn-stdlib-annotations-general-mzn-check-var"></span><span id="index-16"></span><h4>mzn_check_var<a class="headerlink" href="#mzn-check-var" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-mzn-check-var"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">mzn_check_var</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare that the annotated variable is required for checking solutions.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="mzn-constraint-name">
+<span id="mzn-stdlib-annotations-general-mzn-constraint-name"></span><span id="index-17"></span><h4>mzn_constraint_name<a class="headerlink" href="#mzn-constraint-name" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-mzn-constraint-name"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">mzn_constraint_name</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare a name <tt class="docutils literal">n</tt> for the annotated constraint.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="mzn-deprecated">
+<span id="mzn-stdlib-annotations-general-mzn-deprecated"></span><span id="index-18"></span><h4>mzn_deprecated<a class="headerlink" href="#mzn-deprecated" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-mzn-deprecated"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">mzn_deprecated</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">version</span><span class="p">,</span><span class="s"> </span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">explanation</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>State that a function is deprecated since MiniZinc version <tt class="docutils literal">version</tt> with humand readable <tt class="docutils literal">explanation</tt>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="mzn-expression-name">
+<span id="mzn-stdlib-annotations-general-mzn-expression-name"></span><span id="index-19"></span><h4>mzn_expression_name<a class="headerlink" href="#mzn-expression-name" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-mzn-expression-name"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">mzn_expression_name</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare a name <tt class="docutils literal">n</tt> for the annotated expression.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="mzn-path">
+<span id="mzn-stdlib-annotations-general-mzn-path"></span><span id="index-20"></span><h4>mzn_path<a class="headerlink" href="#mzn-path" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-mzn-path"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">mzn_path</span><span class="p">(</span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Representation of the call-stack when the annotated item
+was introduced, as a string <tt class="docutils literal">s</tt>. Can be used to uniquely identify variables and constraints across different
+compilations of a model that may have different names. This annotations is introduced into
+FlatZinc code by the compiler and is retained if –keep-paths argument is used.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="mzn-rhs-from-assignment">
+<span id="mzn-stdlib-annotations-general-mzn-rhs-from-assignment"></span><span id="index-21"></span><h4>mzn_rhs_from_assignment<a class="headerlink" href="#mzn-rhs-from-assignment" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-mzn-rhs-from-assignment"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">mzn_rhs_from_assignment</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Used internally by the compiler</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="no-cse">
+<span id="mzn-stdlib-annotations-general-no-cse"></span><span id="index-22"></span><h4>no_cse<a class="headerlink" href="#no-cse" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-no-cse"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">no_cse</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>This annotation will prevent calls to the function annotated to be added
+to the Common Subexpression Elimination map.</p>
+<p><strong>WARNING:</strong> using this annotation might result in duplicated constraints when used incorrectly.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="no-output">
+<span id="mzn-stdlib-annotations-general-no-output"></span><span id="index-23"></span><h4>no_output<a class="headerlink" href="#no-output" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-no-output"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">no_output</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare that the annotated variable should not be added to the output
+of the model. This annotation only has an effect when the model does not have an output item.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="output">
+<span id="mzn-stdlib-annotations-general-output"></span><span id="index-24"></span><h4>output<a class="headerlink" href="#output" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-output"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">&#39;output&#39;</span><span class="p">(</span><span class="kt">any</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+<span class="k">annotation</span><span class="s"> </span><span class="nf">&#39;output&#39;</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">U</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">any</span><span class="s"> $</span><span class="nv">T</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare that the annotated variable <tt class="docutils literal">x</tt> should be added to the output
+of the model. This annotation only has an effect when the model does not have an output item.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="output-array">
+<span id="mzn-stdlib-annotations-general-output-array"></span><span id="index-25"></span><h4>output_array<a class="headerlink" href="#output-array" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-output-array"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">output_array</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">U</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare that the annotated array should be printed by
+the solver with the given index sets <tt class="docutils literal">a</tt>. This annotation is introduced into FlatZinc code by
+the compiler.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="output-only">
+<span id="mzn-stdlib-annotations-general-output-only"></span><span id="index-26"></span><h4>output_only<a class="headerlink" href="#output-only" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-output-only"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">output_only</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare that the annotated variable should be only used for output.
+This annotation can be used to define variables that are required for solution checkers, or
+that are necessary for the output item. The annotated variable must be par.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="output-var">
+<span id="mzn-stdlib-annotations-general-output-var"></span><span id="index-27"></span><h4>output_var<a class="headerlink" href="#output-var" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-output-var"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">output_var</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare that the annotated variable should be printed by
+the solver. This annotation is introduced into FlatZinc code by
+the compiler.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="promise-commutative">
+<span id="mzn-stdlib-annotations-general-promise-commutative"></span><span id="index-28"></span><h4>promise_commutative<a class="headerlink" href="#promise-commutative" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-promise-commutative"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">promise_commutative</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare the function to be commutative,
+i.e., the function has the same result regardless of the order in which the
+function parameters are provided.</p>
+<p><strong>WARNING:</strong> a commutative function must have only arguments of a single type,
+or a single array as an argument.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="promise-total">
+<span id="mzn-stdlib-annotations-general-promise-total"></span><span id="index-29"></span><h4>promise_total<a class="headerlink" href="#promise-total" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-promise-total"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">promise_total</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare function as total, i.e. it does not put
+any constraints on its arguments.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="var-is-introduced">
+<span id="mzn-stdlib-annotations-general-var-is-introduced"></span><span id="index-30"></span><h4>var_is_introduced<a class="headerlink" href="#var-is-introduced" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-general-var-is-introduced"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">var_is_introduced</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Declare a variable as being introduced by the compiler.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+<section id="propagation-strength-annotations">
+<h2>Propagation strength annotations<a class="headerlink" href="#propagation-strength-annotations" title="Link to this heading"></a></h2>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-prop-bounds"><span class="std std-ref">bounds</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-prop-bounds-propagation"><span class="std std-ref">bounds_propagation</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-prop-domain"><span class="std std-ref">domain</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-prop-domain-propagation"><span class="std std-ref">domain_propagation</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-prop-value-propagation"><span class="std std-ref">value_propagation</span></a>.</p>
+<section class="mzn-docitem" id="bounds">
+<span id="mzn-stdlib-annotations-prop-bounds"></span><span id="index-31"></span><h3>bounds<a class="headerlink" href="#bounds" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-prop-bounds"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">bounds</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Annotate a constraint to use bounds propagation</p>
+<p>Note: This annotation will be deprecated. Use bounds_propagation instead.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="bounds-propagation">
+<span id="mzn-stdlib-annotations-prop-bounds-propagation"></span><span id="index-32"></span><h3>bounds_propagation<a class="headerlink" href="#bounds-propagation" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-prop-bounds-propagation"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">bounds_propagation</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Annotate a constraint to use bounds propagation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="domain">
+<span id="mzn-stdlib-annotations-prop-domain"></span><span id="index-33"></span><h3>domain<a class="headerlink" href="#domain" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-prop-domain"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">domain</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Annotate a constraint to use domain propagation</p>
+<p>Note: This annotation will be deprecated. Use domain_propagation instead.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="domain-propagation">
+<span id="mzn-stdlib-annotations-prop-domain-propagation"></span><span id="index-34"></span><h3>domain_propagation<a class="headerlink" href="#domain-propagation" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-prop-domain-propagation"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">domain_propagation</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Annotate a constraint to use domain propagation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="value-propagation">
+<span id="mzn-stdlib-annotations-prop-value-propagation"></span><span id="index-35"></span><h3>value_propagation<a class="headerlink" href="#value-propagation" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-prop-value-propagation"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">value_propagation</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Annotate a constraint to use value propagation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="search-annotations">
+<h2>Search annotations<a class="headerlink" href="#search-annotations" title="Link to this heading"></a></h2>
+<section id="variable-selection-annotations">
+<h3>Variable selection annotations<a class="headerlink" href="#variable-selection-annotations" title="Link to this heading"></a></h3>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-search-varsel-anti-first-fail"><span class="std std-ref">anti_first_fail</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-varsel-dom-w-deg"><span class="std std-ref">dom_w_deg</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-varsel-first-fail"><span class="std std-ref">first_fail</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-varsel-impact"><span class="std std-ref">impact</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-varsel-input-order"><span class="std std-ref">input_order</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-varsel-largest"><span class="std std-ref">largest</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-varsel-max-regret"><span class="std std-ref">max_regret</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-varsel-most-constrained"><span class="std std-ref">most_constrained</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-varsel-occurrence"><span class="std std-ref">occurrence</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-varsel-smallest"><span class="std std-ref">smallest</span></a>.</p>
+<section class="mzn-docitem" id="anti-first-fail">
+<span id="mzn-stdlib-annotations-search-varsel-anti-first-fail"></span><span id="index-36"></span><h4>anti_first_fail<a class="headerlink" href="#anti-first-fail" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-varsel-anti-first-fail"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">anti_first_fail</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Choose the variable with the largest domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="dom-w-deg">
+<span id="mzn-stdlib-annotations-search-varsel-dom-w-deg"></span><span id="index-37"></span><h4>dom_w_deg<a class="headerlink" href="#dom-w-deg" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-varsel-dom-w-deg"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">dom_w_deg</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Choose the variable with largest domain, divided
+by the number of attached constraints weighted by how often they have caused failure</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="first-fail">
+<span id="mzn-stdlib-annotations-search-varsel-first-fail"></span><span id="index-38"></span><h4>first_fail<a class="headerlink" href="#first-fail" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-varsel-first-fail"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">first_fail</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Choose the variable with the smallest domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="impact">
+<span id="mzn-stdlib-annotations-search-varsel-impact"></span><span id="index-39"></span><h4>impact<a class="headerlink" href="#impact" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-varsel-impact"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">impact</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Choose the variable with the highest impact so
+far during the search</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="input-order">
+<span id="mzn-stdlib-annotations-search-varsel-input-order"></span><span id="index-40"></span><h4>input_order<a class="headerlink" href="#input-order" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-varsel-input-order"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">input_order</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Search variables in the given order</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="largest">
+<span id="mzn-stdlib-annotations-search-varsel-largest"></span><span id="index-41"></span><h4>largest<a class="headerlink" href="#largest" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-varsel-largest"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">largest</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Choose the variable with the largest value in its domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="max-regret">
+<span id="mzn-stdlib-annotations-search-varsel-max-regret"></span><span id="index-42"></span><h4>max_regret<a class="headerlink" href="#max-regret" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-varsel-max-regret"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">max_regret</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Choose the variable with largest difference
+between the two smallest values in its domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="most-constrained">
+<span id="mzn-stdlib-annotations-search-varsel-most-constrained"></span><span id="index-43"></span><h4>most_constrained<a class="headerlink" href="#most-constrained" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-varsel-most-constrained"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">most_constrained</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Choose the variable with the smallest domain,
+breaking ties using the number of attached constraints</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="occurrence">
+<span id="mzn-stdlib-annotations-search-varsel-occurrence"></span><span id="index-44"></span><h4>occurrence<a class="headerlink" href="#occurrence" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-varsel-occurrence"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">occurrence</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Choose the variable with the largest number of attached constraints</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="smallest">
+<span id="mzn-stdlib-annotations-search-varsel-smallest"></span><span id="index-45"></span><h4>smallest<a class="headerlink" href="#smallest" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-varsel-smallest"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">smallest</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Choose the variable with the smallest value in its domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="value-choice-annotations">
+<h3>Value choice annotations<a class="headerlink" href="#value-choice-annotations" title="Link to this heading"></a></h3>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-indomain"><span class="std std-ref">indomain</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-indomain-interval"><span class="std std-ref">indomain_interval</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-indomain-max"><span class="std std-ref">indomain_max</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-indomain-median"><span class="std std-ref">indomain_median</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-indomain-middle"><span class="std std-ref">indomain_middle</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-indomain-min"><span class="std std-ref">indomain_min</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-indomain-random"><span class="std std-ref">indomain_random</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-indomain-reverse-split"><span class="std std-ref">indomain_reverse_split</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-indomain-split"><span class="std std-ref">indomain_split</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-indomain-split-random"><span class="std std-ref">indomain_split_random</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-outdomain-max"><span class="std std-ref">outdomain_max</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-outdomain-median"><span class="std std-ref">outdomain_median</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-outdomain-min"><span class="std std-ref">outdomain_min</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-choice-outdomain-random"><span class="std std-ref">outdomain_random</span></a>.</p>
+<section class="mzn-docitem" id="indomain">
+<span id="mzn-stdlib-annotations-search-choice-indomain"></span><span id="index-46"></span><h4>indomain<a class="headerlink" href="#indomain" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-indomain"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">indomain</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Assign values in ascending order</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="indomain-interval">
+<span id="mzn-stdlib-annotations-search-choice-indomain-interval"></span><span id="index-47"></span><h4>indomain_interval<a class="headerlink" href="#indomain-interval" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-indomain-interval"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">indomain_interval</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>If the domain consists of several contiguous intervals, reduce the
+domain to the first interval. Otherwise bisect the domain.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="indomain-max">
+<span id="mzn-stdlib-annotations-search-choice-indomain-max"></span><span id="index-48"></span><h4>indomain_max<a class="headerlink" href="#indomain-max" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-indomain-max"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">indomain_max</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Assign the largest value in the domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="indomain-median">
+<span id="mzn-stdlib-annotations-search-choice-indomain-median"></span><span id="index-49"></span><h4>indomain_median<a class="headerlink" href="#indomain-median" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-indomain-median"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">indomain_median</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Assign the middle value in the domain, or
+the smaller of the two middle values in case of an even number of elements in the domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="indomain-middle">
+<span id="mzn-stdlib-annotations-search-choice-indomain-middle"></span><span id="index-50"></span><h4>indomain_middle<a class="headerlink" href="#indomain-middle" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-indomain-middle"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">indomain_middle</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Assign the value in the domain closest to
+the mean of its current bounds</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="indomain-min">
+<span id="mzn-stdlib-annotations-search-choice-indomain-min"></span><span id="index-51"></span><h4>indomain_min<a class="headerlink" href="#indomain-min" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-indomain-min"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">indomain_min</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Assign the smallest value in the domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="indomain-random">
+<span id="mzn-stdlib-annotations-search-choice-indomain-random"></span><span id="index-52"></span><h4>indomain_random<a class="headerlink" href="#indomain-random" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-indomain-random"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">indomain_random</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Assign a random value from the domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="indomain-reverse-split">
+<span id="mzn-stdlib-annotations-search-choice-indomain-reverse-split"></span><span id="index-53"></span><h4>indomain_reverse_split<a class="headerlink" href="#indomain-reverse-split" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-indomain-reverse-split"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">indomain_reverse_split</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Bisect the domain, excluding the lower half first</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="indomain-split">
+<span id="mzn-stdlib-annotations-search-choice-indomain-split"></span><span id="index-54"></span><h4>indomain_split<a class="headerlink" href="#indomain-split" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-indomain-split"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">indomain_split</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Bisect the domain, excluding the upper half first</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="indomain-split-random">
+<span id="mzn-stdlib-annotations-search-choice-indomain-split-random"></span><span id="index-55"></span><h4>indomain_split_random<a class="headerlink" href="#indomain-split-random" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-indomain-split-random"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">indomain_split_random</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Bisect the domain, randomly selecting which half to exclude first</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="outdomain-max">
+<span id="mzn-stdlib-annotations-search-choice-outdomain-max"></span><span id="index-56"></span><h4>outdomain_max<a class="headerlink" href="#outdomain-max" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-outdomain-max"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">outdomain_max</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Exclude the largest value from the domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="outdomain-median">
+<span id="mzn-stdlib-annotations-search-choice-outdomain-median"></span><span id="index-57"></span><h4>outdomain_median<a class="headerlink" href="#outdomain-median" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-outdomain-median"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">outdomain_median</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Exclude the middle value from the domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="outdomain-min">
+<span id="mzn-stdlib-annotations-search-choice-outdomain-min"></span><span id="index-58"></span><h4>outdomain_min<a class="headerlink" href="#outdomain-min" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-outdomain-min"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">outdomain_min</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Exclude the smallest value from the domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="outdomain-random">
+<span id="mzn-stdlib-annotations-search-choice-outdomain-random"></span><span id="index-59"></span><h4>outdomain_random<a class="headerlink" href="#outdomain-random" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-choice-outdomain-random"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">outdomain_random</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Exclude a random value from the domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="exploration-strategy-annotations">
+<h3>Exploration strategy annotations<a class="headerlink" href="#exploration-strategy-annotations" title="Link to this heading"></a></h3>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-search-explore-complete"><span class="std std-ref">complete</span></a>.</p>
+<section class="mzn-docitem" id="complete">
+<span id="mzn-stdlib-annotations-search-explore-complete"></span><span id="index-60"></span><h4>complete<a class="headerlink" href="#complete" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-explore-complete"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">complete</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Perform a complete search</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="restart-annotations">
+<h3>Restart annotations<a class="headerlink" href="#restart-annotations" title="Link to this heading"></a></h3>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-search-restart-restart-constant"><span class="std std-ref">restart_constant</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-restart-restart-geometric"><span class="std std-ref">restart_geometric</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-restart-restart-linear"><span class="std std-ref">restart_linear</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-restart-restart-luby"><span class="std std-ref">restart_luby</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-restart-restart-none"><span class="std std-ref">restart_none</span></a>.</p>
+<section class="mzn-docitem" id="restart-constant">
+<span id="mzn-stdlib-annotations-search-restart-restart-constant"></span><span id="index-61"></span><h4>restart_constant<a class="headerlink" href="#restart-constant" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-restart-restart-constant"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">restart_constant</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Restart after constant number of nodes <tt class="docutils literal">scale</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="restart-geometric">
+<span id="mzn-stdlib-annotations-search-restart-restart-geometric"></span><span id="index-62"></span><h4>restart_geometric<a class="headerlink" href="#restart-geometric" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-restart-restart-geometric"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">restart_geometric</span><span class="p">(</span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">base</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Restart with geometric sequence with parameters <tt class="docutils literal">base</tt> and <tt class="docutils literal">scale</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="restart-linear">
+<span id="mzn-stdlib-annotations-search-restart-restart-linear"></span><span id="index-63"></span><h4>restart_linear<a class="headerlink" href="#restart-linear" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-restart-restart-linear"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">restart_linear</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Restart with linear sequence scaled by <tt class="docutils literal">scale</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="restart-luby">
+<span id="mzn-stdlib-annotations-search-restart-restart-luby"></span><span id="index-64"></span><h4>restart_luby<a class="headerlink" href="#restart-luby" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-restart-restart-luby"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">restart_luby</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Restart with Luby sequence scaled by <tt class="docutils literal">scale</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="restart-none">
+<span id="mzn-stdlib-annotations-search-restart-restart-none"></span><span id="index-65"></span><h4>restart_none<a class="headerlink" href="#restart-none" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-restart-restart-none"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">restart_none</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Do not restart</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="other-declarations">
+<h3>Other declarations<a class="headerlink" href="#other-declarations" title="Link to this heading"></a></h3>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-search-bool-search"><span class="std std-ref">bool_search</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-float-search"><span class="std std-ref">float_search</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-int-search"><span class="std std-ref">int_search</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-set-search"><span class="std std-ref">set_search</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-search-seq-search"><span class="std std-ref">seq_search</span></a>.</p>
+<section id="id2">
+<h4>Functions and Predicates<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<section class="mzn-docitem" id="bool-search">
+<span id="mzn-stdlib-annotations-search-bool-search"></span><span id="index-66"></span><h5>bool_search<a class="headerlink" href="#bool-search" title="Link to this heading"></a></h5>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-bool-search"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">bool_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">explore</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">bool_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">bool_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">explore</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">bool_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                           </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Specify search on variables <tt class="docutils literal">x</tt>, with variable selection
+strategy <tt class="docutils literal">select</tt>, value choice strategy <tt class="docutils literal">choice</tt>, and exploration strategy
+<tt class="docutils literal">explore</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Specify search on variables <tt class="docutils literal">x</tt>, with variable selection
+strategy <tt class="docutils literal">select</tt>, and value choice strategy <tt class="docutils literal">choice</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Search annotation for optional Boolean variables.
+Specify search on variables <tt class="docutils literal">x</tt>, with variable selection
+strategy <tt class="docutils literal">select</tt>, value choice strategy <tt class="docutils literal">choice</tt>, and exploration strategy
+<tt class="docutils literal">explore</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Search annotation for optional Boolean variables.
+Specify search on variables <tt class="docutils literal">x</tt>, with variable selection
+strategy <tt class="docutils literal">select</tt>, and value choice strategy <tt class="docutils literal">choice</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="float-search">
+<span id="mzn-stdlib-annotations-search-float-search"></span><span id="index-67"></span><h5>float_search<a class="headerlink" href="#float-search" title="Link to this heading"></a></h5>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-float-search"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">float_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">prec</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">explore</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">float_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">prec</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">float_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">prec</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">explore</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">float_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">prec</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Specify search on variables <tt class="docutils literal">x</tt>,
+with precision <tt class="docutils literal">prec</tt>, variable selection
+strategy <tt class="docutils literal">select</tt>, value choice strategy <tt class="docutils literal">choice</tt>, and exploration strategy
+<tt class="docutils literal">explore</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Specify search on variables <tt class="docutils literal">x</tt>,
+with precision <tt class="docutils literal">prec</tt>, variable selection
+strategy <tt class="docutils literal">select</tt>, and value choice strategy <tt class="docutils literal">choice</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Search annotation for optional float variables.
+Specify search on variables <tt class="docutils literal">x</tt>,
+with precision <tt class="docutils literal">prec</tt>, variable selection
+strategy <tt class="docutils literal">select</tt>, value choice strategy <tt class="docutils literal">choice</tt>, and exploration strategy
+<tt class="docutils literal">explore</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Search annotation for optional float variables.
+Specify search on variables <tt class="docutils literal">x</tt>,
+with precision <tt class="docutils literal">prec</tt>, variable selection
+strategy <tt class="docutils literal">select</tt>, and value choice strategy <tt class="docutils literal">choice</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="int-search">
+<span id="mzn-stdlib-annotations-search-int-search"></span><span id="index-68"></span><h5>int_search<a class="headerlink" href="#int-search" title="Link to this heading"></a></h5>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-int-search"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">explore</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">explore</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">int_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Specify search on variables <tt class="docutils literal">x</tt>, with variable selection
+strategy <tt class="docutils literal">select</tt>, value choice strategy <tt class="docutils literal">choice</tt>, and exploration strategy
+<tt class="docutils literal">explore</tt>. If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Specify search on variables <tt class="docutils literal">x</tt>, with variable selection
+strategy <tt class="docutils literal">select</tt>, and value choice strategy <tt class="docutils literal">choice</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Search annotation for optional integer variables.
+Specify search on variables <tt class="docutils literal">x</tt>, with variable selection
+strategy <tt class="docutils literal">select</tt>, value choice strategy <tt class="docutils literal">choice</tt>, and exploration strategy
+<tt class="docutils literal">explore</tt>. If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Search annotation for optional integer variables.
+Specify search on variables <tt class="docutils literal">x</tt>, with variable selection
+strategy <tt class="docutils literal">select</tt>, and value choice strategy <tt class="docutils literal">choice</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="set-search">
+<span id="mzn-stdlib-annotations-search-set-search"></span><span id="index-69"></span><h5>set_search<a class="headerlink" href="#set-search" title="Link to this heading"></a></h5>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-set-search"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">set_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">explore</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">set_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="s">$</span><span class="nv">X</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">select</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">choice</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Specify search on variables <tt class="docutils literal">x</tt>, with variable selection
+strategy <tt class="docutils literal">select</tt>, value choice strategy <tt class="docutils literal">choice</tt>, and exploration strategy
+<tt class="docutils literal">explore</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Specify search on variables <tt class="docutils literal">x</tt>, with variable selection
+strategy <tt class="docutils literal">select</tt>, and value choice strategy <tt class="docutils literal">choice</tt>.
+If <tt class="docutils literal">x</tt> is a multi-dimensional array, it is coerced to one-dimensional
+in row-major order (as with the array1d function).</p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="id3">
+<h4>Annotations<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<section class="mzn-docitem" id="seq-search">
+<span id="mzn-stdlib-annotations-search-seq-search"></span><span id="index-70"></span><h5>seq_search<a class="headerlink" href="#seq-search" title="Link to this heading"></a></h5>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-search-seq-search"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">seq_search</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Sequentially perform the searches specified in array <tt class="docutils literal">s</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="warm-start-annotations">
+<h2>Warm start annotations<a class="headerlink" href="#warm-start-annotations" title="Link to this heading"></a></h2>
+<p>To be put on the solve item, similar to search annotations.
+A variable can be mentioned several times and in different
+annotations but only one of the values is taken</p>
+<section id="warm-start-annotations-with-optional-values">
+<h3>Warm start annotations with optional values<a class="headerlink" href="#warm-start-annotations-with-optional-values" title="Link to this heading"></a></h3>
+<p>The value arrays can contain &lt;&gt; elements (absent values).
+The following decompositions eliminate those elements
+because FlatZinc 1.6 does not support optionals.</p>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-warmstart-optvals-warm-start"><span class="std std-ref">warm_start</span></a>.</p>
+<section class="mzn-docitem" id="warm-start">
+<span id="mzn-stdlib-annotations-warmstart-optvals-warm-start"></span><span id="index-71"></span><h4>warm_start<a class="headerlink" href="#warm-start" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-warmstart-optvals-warm-start"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Specify warm start values <tt class="docutils literal">v</tt> for an array of booleans <tt class="docutils literal">x</tt></p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Specify warm start values <tt class="docutils literal">v</tt> for an array of integers <tt class="docutils literal">x</tt></p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Specify warm start values <tt class="docutils literal">v</tt> for an array of floats <tt class="docutils literal">x</tt></p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Specify warm start values <tt class="docutils literal">v</tt> for an array of sets <tt class="docutils literal">x</tt></p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="id4">
+<h3>Other declarations<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-warmstart-warm-start"><span class="std std-ref">warm_start</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-warmstart-warm-start-array"><span class="std std-ref">warm_start_array</span></a>.</p>
+<section class="mzn-docitem" id="id5">
+<span id="mzn-stdlib-annotations-warmstart-warm-start"></span><span id="index-72"></span><h4>warm_start<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-warmstart-warm-start"><div class="highlight"><pre><span></span><span class="m">1</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+
+<span class="m">2</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+
+<span class="m">3</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+
+<span class="m">4</span><span class="s">.  </span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span>
+<span class="s">                          </span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic">
+<li><div class="mzncodedoc docutils container">
+<p>Specify warm start values <tt class="docutils literal">v</tt> for an array of booleans <tt class="docutils literal">x</tt></p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Specify warm start values <tt class="docutils literal">v</tt> for an array of integers <tt class="docutils literal">x</tt></p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Specify warm start values <tt class="docutils literal">v</tt> for an array of floats <tt class="docutils literal">x</tt></p>
+</div>
+</li>
+<li><div class="mzncodedoc docutils container">
+<p>Specify warm start values <tt class="docutils literal">v</tt> for an array of sets <tt class="docutils literal">x</tt></p>
+</div>
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="warm-start-array">
+<span id="mzn-stdlib-annotations-warmstart-warm-start-array"></span><span id="index-73"></span><h4>warm_start_array<a class="headerlink" href="#warm-start-array" title="Link to this heading"></a></h4>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-warmstart-warm-start-array"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">warm_start_array</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">ann</span><span class="p">:</span><span class="s"> </span><span class="nv">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Specify an array <tt class="docutils literal">w</tt> of warm_start annotations
+or other warm_start_array annotations. Can be useful to keep the annotation
+order in FlatZinc for manual updating.</p>
+<p>Note: if you have search annotations as well, put warm_starts into seq_search
+in order to have precedence between both, which may matter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+<section id="large-neighbourhood-search-annotations">
+<h2>Large Neighbourhood Search annotations<a class="headerlink" href="#large-neighbourhood-search-annotations" title="Link to this heading"></a></h2>
+<p>These annotations can be used on the solve item (similar to search annotations)
+to specify Large Neighbourhood Search meta-heuristics.</p>
+<p>These annotations specify how the search is restricted to a neighbourhood
+when a solver restarts. The annotations define which variables will be
+fixed to their values from a previous solution in that case. All
+other variables will be reset to their initial domains by the restart.</p>
+<p>The annotations can be used together with search annotations and restart annotations.</p>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-lns-relax-and-reconstruct"><span class="std std-ref">relax_and_reconstruct</span></a>.</p>
+<section class="mzn-docitem" id="relax-and-reconstruct">
+<span id="mzn-stdlib-annotations-lns-relax-and-reconstruct"></span><span id="index-74"></span><h3>relax_and_reconstruct<a class="headerlink" href="#relax-and-reconstruct" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-lns-relax-and-reconstruct"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nf">relax_and_reconstruct</span><span class="p">(</span><span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Random neighbourhood over variables <tt class="docutils literal">x</tt> with probability <tt class="docutils literal">p</tt> percent</p>
+<p>Upon restart, each variable in <tt class="docutils literal">x</tt> is fixed to the value of the incumbent solution with a
+probability of <tt class="docutils literal">p</tt> percent.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="context-annotations">
+<h2>Context annotations<a class="headerlink" href="#context-annotations" title="Link to this heading"></a></h2>
+<p>These are used internally by the compiler, and should not be used in models.</p>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-context-ctx-mix"><span class="std std-ref">ctx_mix</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-context-ctx-neg"><span class="std std-ref">ctx_neg</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-context-ctx-pos"><span class="std std-ref">ctx_pos</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-context-ctx-root"><span class="std std-ref">ctx_root</span></a>.</p>
+<section class="mzn-docitem" id="ctx-mix">
+<span id="mzn-stdlib-annotations-context-ctx-mix"></span><span id="index-75"></span><h3>ctx_mix<a class="headerlink" href="#ctx-mix" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-context-ctx-mix"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">ctx_mix</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Mixed context</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="ctx-neg">
+<span id="mzn-stdlib-annotations-context-ctx-neg"></span><span id="index-76"></span><h3>ctx_neg<a class="headerlink" href="#ctx-neg" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-context-ctx-neg"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">ctx_neg</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Negative context</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="ctx-pos">
+<span id="mzn-stdlib-annotations-context-ctx-pos"></span><span id="index-77"></span><h3>ctx_pos<a class="headerlink" href="#ctx-pos" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-context-ctx-pos"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">ctx_pos</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Positive context</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="ctx-root">
+<span id="mzn-stdlib-annotations-context-ctx-root"></span><span id="index-78"></span><h3>ctx_root<a class="headerlink" href="#ctx-root" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-context-ctx-root"><div class="highlight"><pre><span></span><span class="k">annotation</span><span class="s"> </span><span class="nv">ctx_root</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Root context</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="redundant-and-symmetry-breaking-constraints">
+<h2>Redundant and symmetry breaking constraints<a class="headerlink" href="#redundant-and-symmetry-breaking-constraints" title="Link to this heading"></a></h2>
+<p>These predicates allow users to mark constraints as e.g. symmetry breaking
+or redundant, so that solvers can choose to implement them differently.</p>
+<p>We cannot easily use annotations for this purpose, since annotations are
+propagated to all constraints in a decomposition, which may be incorrect
+for redundant or symmetry breaking constraints in the presence of
+common subexpression elimination (CSE).</p>
+<p>In this section: <a class="reference internal" href="#mzn-stdlib-annotations-symm-red-implied-constraint"><span class="std std-ref">implied_constraint</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-symm-red-redundant-constraint"><span class="std std-ref">redundant_constraint</span></a>, <a class="reference internal" href="#mzn-stdlib-annotations-symm-red-symmetry-breaking-constraint"><span class="std std-ref">symmetry_breaking_constraint</span></a>.</p>
+<section class="mzn-docitem" id="implied-constraint">
+<span id="mzn-stdlib-annotations-symm-red-implied-constraint"></span><span id="index-79"></span><h3>implied_constraint<a class="headerlink" href="#implied-constraint" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-symm-red-implied-constraint"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">implied_constraint</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Mark <tt class="docutils literal">b</tt> as an implied constraint (synonym for redundant_constraint)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="redundant-constraint">
+<span id="mzn-stdlib-annotations-symm-red-redundant-constraint"></span><span id="index-80"></span><h3>redundant_constraint<a class="headerlink" href="#redundant-constraint" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-symm-red-redundant-constraint"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">redundant_constraint</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Mark <tt class="docutils literal">b</tt> as a redundant constraint</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mzn-docitem" id="symmetry-breaking-constraint">
+<span id="mzn-stdlib-annotations-symm-red-symmetry-breaking-constraint"></span><span id="index-81"></span><h3>symmetry_breaking_constraint<a class="headerlink" href="#symmetry-breaking-constraint" title="Link to this heading"></a></h3>
+<div class="mzndoctable docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><div class="highlight-minizinc notranslate" id="mzn-ref-stdlib-annotations-symm-red-symmetry-breaking-constraint"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">symmetry_breaking_constraint</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Mark <tt class="docutils literal">b</tt> as a symmetry breaking constraint</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lib-stdlib-builtins.html" class="btn btn-neutral float-left" title="4.2.1.1. Built-in functions and operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lib-stdlib-optiontypes.html" class="btn btn-neutral float-right" title="4.2.1.3. Option type support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack.</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
