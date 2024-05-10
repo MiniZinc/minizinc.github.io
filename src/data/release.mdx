@@ -1,11 +1,18 @@
 import { BugRef, IDEBugRef } from '@/components/BugRef'
 
-- Remove documentation of strictly_increasing (and decreasing) for bool types, and change definition from a solver redefined global, to a simple library definition with user warning (<BugRef issue={784} />).
-- Add version of strictly_increasing (and decreasing) for float, opt float, and set of int types.
-- Automatically detect SCIP 8.1.0 and potential future versions on Windows.
-- Automatically detect Gurobi 11.0 and potential future versions.
-- Allow array literals with all `<>` members (<BugRef issue={747} />).
-- Increase maximum number of threads from default Qt limit (<IDEBugRef issue={196}/>).
+- Add `-w` and `--disable-warnings` flags that will suppress all warnings
+  emitted by the flattening process.
+- Add option for solver libraries to set `mzn_opt_annotate_computed_domains`
+  such that the compiler will signal domains that are enforced by separate
+  constraints using a `computed_domain` annotation.
+- Always output multidimensional arrays as nested arrays when using `showJSON`
+  for consistency.
+- Add missing implementation for `default` for sets expressions.
+- Add missing optional versions of unary mathematical functions/operators.
+- Improve special-case handling of boolean `<->` and `xor` operators.
+- Allow IDE MOOC submission window to be scrolled.
+- Increase IDE hard process termination timeout to 1s.
+- Plus more than 30 bugfixes.
 
 export default function Release({ children }) {
   return (
