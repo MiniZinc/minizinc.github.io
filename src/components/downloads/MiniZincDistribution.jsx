@@ -32,7 +32,7 @@ export function MiniZincDistribution() {
             <h3 className="my-3 text-2xl font-medium tracking-tight text-gray-900">
               Solvers
             </h3>
-            <p>A number of solvers are included out of the box:</p>
+            <p>A number of solvers are included in the official binary packages:</p>
             <ul className="mx-2 my-2 list-inside list-disc leading-relaxed">
               <li>
                 <Link href="https://www.gecode.org">Gecode</Link>
@@ -100,6 +100,9 @@ export function MiniZincDistribution() {
                 <Link href="https://github.com/informarte/yuck">Yuck</Link>
               </li>
             </ul>
+            <p className="my-2 leading-7">
+              Note that if you build MiniZinc from source, you will have to install any desired solvers yourself.
+            </p>
           </div>
           <div>
             <Image src={screenshot} alt="The MiniZinc IDE" />
