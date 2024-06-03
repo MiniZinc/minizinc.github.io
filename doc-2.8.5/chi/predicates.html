@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.3. 谓词和函数 &mdash; The MiniZinc Handbook 2.8.5</title>
+      <link rel="stylesheet" type="text/css" href="static/pygments.css?v=77553476" />
+      <link rel="stylesheet" type="text/css" href="static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="static/style.css?v=572cde19" />
+
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/predicates.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=3d63d4ae"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="static/translations.js?v=beaddf03"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="2.4. 选项类型" href="optiontypes.html" />
+    <link rel="prev" title="2.2. 更多复杂模型" href="modelling2.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.5
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="modelling.html">2.1. MiniZinc基本模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html">2.2. 更多复杂模型</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. 谓词和函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sec-globals">2.3.1. 全局约束</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#alldifferent">2.3.1.1. Alldifferent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cumulative">2.3.1.2. Cumulative</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#table">2.3.1.3. Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#regular">2.3.1.4. Regular</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.3.2. 定义谓词</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.3.3. 定义函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.3.4. 反射函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">2.3.5. 局部变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.3.6. 语境</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">2.3.7. 局部约束</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">2.3.8. 定义域反射函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">2.3.9. 作用域</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optiontypes.html">2.4. 选项类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuple_and_record_types.html">2.5. Tuple and record types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html">2.6. 搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">2.7. MiniZinc中的有效建模实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html">2.8. 在MiniZinc中对布尔可满足性问题建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html">2.9. FlatZinc和展平</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_2_tutorial.html"><span class="section-number">2. </span>Minizinc 指南</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.3. </span>谓词和函数</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sec-predicates">
+<span id="index-0"></span><span id="id1"></span><h1><span class="section-number">2.3. </span>谓词和函数<a class="headerlink" href="#sec-predicates" title="Link to this heading"></a></h1>
+<p>MiniZinc中的谓词允许我们用简洁的方法来表达模型中的复杂约束。
+MiniZinc中的谓词利用预先定义好的全局约束建模，同时也让建模者
+获取以及定义新的复杂约束。MiniZinc中的函数用来捕捉模型中的共同结构。
+实际上，一个谓词就是一个输出类型为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span></code> 的函数。</p>
+<section id="sec-globals">
+<span id="id2"></span><h2><span class="section-number">2.3.1. </span>全局约束<a class="headerlink" href="#sec-globals" title="Link to this heading"></a></h2>
+<p id="index-1">MiniZinc中定义了很多可以在建模中使用的全局约束。
+由于全局约束的列表一直在慢慢增加，最终确定的列表可以在发布的文档中找到。
+下面我们讨论一些最重要的全局约束。</p>
+<section id="alldifferent">
+<h3><span class="section-number">2.3.1.1. </span>Alldifferent<a class="headerlink" href="#alldifferent" title="Link to this heading"></a></h3>
+<dl class="simple" id="index-2">
+<dt>约束 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">alldifferent</span></code> 的输入为一个变量数组，它约束了这些变量取不同的值。</dt><dd><p><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">alldifferent</span></code> 的使用有以下格式</p>
+</dd>
+</dl>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nf">alldifferent</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>即，参数是一个整型变量数组。</p>
+<p><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">alldifferent</span></code> 是约束规划中被最多研究以及使用的全局约束之一。
+它被用来定义分配子问题，人们也给出了 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">alldifferent</span></code> 的高效全局传播器。 <a class="reference download internal" download="" href="downloads/cb8be76036c4efd998261b7e0cd3eff1/send-more-money.mzn"><tt class="xref download docutils literal">send-more-money.mzn</tt></a> (<a class="reference internal" href="modelling2.html#ex-smm"><span class="std std-numref">列表 2.2.4</span></a>) 和 <a class="reference download internal" download="" href="downloads/012bc5863e1f7c04544d4b6b6255054c/sudoku.mzn"><tt class="xref download docutils literal">sudoku.mzn</tt></a> (<a class="reference internal" href="modelling2.html#ex-sudoku"><span class="std std-numref">列表 2.2.5</span></a>) 是使用 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">alldifferent</span></code> 的模型例子。</p>
+</section>
+<section id="cumulative">
+<h3><span class="section-number">2.3.1.2. </span>Cumulative<a class="headerlink" href="#cumulative" title="Link to this heading"></a></h3>
+<p id="index-3">约束 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">cumulative</span></code> 被用来描述资源累积使用情况。</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="bp">cumulative</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d</span><span class="p">,</span>
+<span class="s">           </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>规定对于一个起始时间为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">s</span></code> ，持续时间为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">d</span></code> 以及资源需求量为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">r</span></code> 的任务集合，在任何时间对资源的需求量都不能超过一个全局资源量界限 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">b</span></code> 。</p>
+<div class="literal-block-wrapper docutils container" id="ex-moving">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.1 </span><span class="caption-text">使用 <tt class="docutils literal">cumulative</tt> 来建模搬运家具问题的模型 (<a class="reference download internal" download="" href="downloads/10c0f23b6e613c7aca333075c7f9c0eb/moving.mzn"><tt class="xref download docutils literal">moving.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-moving.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-moving" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;cumulative.mzn&quot;</span><span class="p">;</span>
+
+<span class="kt">enum</span><span class="s"> </span><span class="nv">OBJECTS</span><span class="p">;</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">OBJECTS</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">duration</span><span class="p">;</span><span class="s"> </span><span class="c">% duration to move</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">OBJECTS</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">handlers</span><span class="p">;</span><span class="s"> </span><span class="c">% number of handlers required</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">OBJECTS</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">trolleys</span><span class="p">;</span><span class="s"> </span><span class="c">% number of trolleys required</span>
+
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">available_handlers</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">available_trolleys</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">available_time</span><span class="p">;</span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">OBJECTS</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">available_time</span><span class="p">:</span><span class="s"> </span><span class="nv">start</span><span class="p">;</span>
+<span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">available_time</span><span class="p">:</span><span class="s"> </span><span class="nv">end</span><span class="p">;</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="bp">cumulative</span><span class="p">(</span><span class="nv">start</span><span class="p">,</span><span class="s"> </span><span class="nv">duration</span><span class="p">,</span><span class="s"> </span><span class="nv">handlers</span><span class="p">,</span><span class="s"> </span><span class="nv">available_handlers</span><span class="p">);</span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">cumulative</span><span class="p">(</span><span class="nv">start</span><span class="p">,</span><span class="s"> </span><span class="nv">duration</span><span class="p">,</span><span class="s"> </span><span class="nv">trolleys</span><span class="p">,</span><span class="s"> </span><span class="nv">available_trolleys</span><span class="p">);</span>
+<span class="s"> </span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">o</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">OBJECTS</span><span class="p">)(</span><span class="nv">start</span><span class="p">[</span><span class="nv">o</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="nv">duration</span><span class="p">[</span><span class="nv">o</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">end</span><span class="p">);</span>
+
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="nv">end</span><span class="p">;</span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s"> &quot;start = </span><span class="p">\(</span><span class="nv">start</span><span class="p">)</span><span class="se">\n</span><span class="s">end = </span><span class="p">\(</span><span class="nv">end</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="ex-movingd">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.2 </span><span class="caption-text">使用 <tt class="docutils literal">cumulative</tt> 来建模搬运家具问题的数据   (<a class="reference download internal" download="" href="downloads/a13a3f2001bfb862e7cbf5ea90cf5c83/moving.dzn"><tt class="xref download docutils literal">moving.dzn</tt></a>). <span class="mzn-playground-button"><a href="playground-moving.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-movingd" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">OBJECTS</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">piano</span><span class="p">,</span><span class="s"> </span><span class="nv">fridge</span><span class="p">,</span><span class="s"> </span><span class="nv">doublebed</span><span class="p">,</span><span class="s"> </span><span class="nv">singlebed</span><span class="p">,</span><span class="s"> </span>
+<span class="s">            </span><span class="nv">wardrobe</span><span class="p">,</span><span class="s"> </span><span class="nv">chair1</span><span class="p">,</span><span class="s"> </span><span class="nv">chair2</span><span class="p">,</span><span class="s"> </span><span class="bp">table</span><span class="s"> </span><span class="p">};</span>
+
+<span class="nv">duration</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="m">60</span><span class="p">,</span><span class="s"> </span><span class="m">45</span><span class="p">,</span><span class="s"> </span><span class="m">30</span><span class="p">,</span><span class="s"> </span><span class="m">30</span><span class="p">,</span><span class="s"> </span><span class="m">20</span><span class="p">,</span><span class="s"> </span><span class="m">15</span><span class="p">,</span><span class="s"> </span><span class="m">15</span><span class="p">,</span><span class="s"> </span><span class="m">15</span><span class="p">];</span>
+<span class="nv">handlers</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="m">3</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">];</span>
+<span class="nv">trolleys</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">];</span>
+
+<span class="nv">available_time</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">180</span><span class="p">;</span>
+<span class="nv">available_handlers</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">4</span><span class="p">;</span>
+<span class="nv">available_trolleys</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="#ex-moving"><span class="std std-numref">列表 2.3.1</span></a> 中的模型为搬运家具规划一个行程表使得每一份家具在搬运的过程中都有足够的搬用工和足够的手推车可以使用。允许的时间，可以使用的搬运工以及手推车被给出，每个物体的搬运持续时间，需要的搬运工和手推车的数量等数据也被给出。使用 <a class="reference internal" href="#ex-movingd"><span class="std std-numref">列表 2.3.2</span></a> 中的数据，命令</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>minizinc<span class="w"> </span>moving.mzn<span class="w"> </span>moving.dzn
+</pre></div>
+</div>
+<p>可能会得到如下输出</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>start = [0, 60, 60, 90, 120, 0, 15, 105]
+end = 140
+----------
+==========
+</pre></div>
+</div>
+<p><a class="reference internal" href="#fig-histogram-a"><span class="std std-numref">图 2.3.1</span></a> and <a class="reference internal" href="#fig-histogram-b"><span class="std std-numref">图 2.3.2</span></a>
+给出了这个解中搬运时每个时间点所需要的搬运工和手推车。</p>
+<figure class="align-default" id="id11">
+<span id="fig-histogram-a"></span><img alt="images/handlers.svg" src="images/handlers.svg" /><figcaption>
+<p><span class="caption-number">图 2.3.1 </span><span class="caption-text">搬运时搬运工使用量直方图</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id12">
+<span id="fig-histogram-b"></span><img alt="images/trolleys.svg" src="images/trolleys.svg" /><figcaption>
+<p><span class="caption-number">图 2.3.2 </span><span class="caption-text">搬运时手推车使用量直方图</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="table">
+<h3><span class="section-number">2.3.1.3. </span>Table<a class="headerlink" href="#table" title="Link to this heading"></a></h3>
+<p id="index-4">约束 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">table</span></code> 强制变量元组从一个元组集合中取值。由于MiniZinc中没有元组，我们用数组来描述它。
+根据元组是布尔型还是整型， <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">table</span></code> 的使用有以下两种格式</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="bp">table</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">)</span>
+<span class="bp">table</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s">  </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s">  </span><span class="nv">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>强制约束了 <span class="math notranslate nohighlight">\(x \in t\)</span> ，其中 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(t\)</span> 中的每一行是元组， <span class="math notranslate nohighlight">\(t\)</span> 是一个元组集合。</p>
+<div class="literal-block-wrapper docutils container" id="ex-meal">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.3 </span><span class="caption-text">使用 <tt class="docutils literal">table</tt> 约束来建模食物规划问题的模型 (<a class="reference download internal" download="" href="downloads/0c6bf095aa185af296b6e6e6c9908455/meal.mzn"><tt class="xref download docutils literal">meal.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-meal.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-meal" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% 规划均衡的膳食</span>
+<span class="k">include</span><span class="s"> &quot;table.mzn&quot;</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">min_energy</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">min_protein</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">max_salt</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">max_fat</span><span class="p">;</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">FOOD</span><span class="p">:</span><span class="s"> </span><span class="nv">desserts</span><span class="p">;</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">FOOD</span><span class="p">:</span><span class="s"> </span><span class="nv">mains</span><span class="p">;</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">FOOD</span><span class="p">:</span><span class="s"> </span><span class="nv">sides</span><span class="p">;</span>
+<span class="kt">enum</span><span class="s"> </span><span class="nv">FEATURE</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">name</span><span class="p">,</span><span class="s"> </span><span class="nv">energy</span><span class="p">,</span><span class="s"> </span><span class="nv">protein</span><span class="p">,</span><span class="s"> </span><span class="nv">salt</span><span class="p">,</span><span class="s"> </span><span class="nv">fat</span><span class="p">,</span><span class="s"> </span><span class="nv">cost</span><span class="p">};</span><span class="s"> </span>
+<span class="kt">enum</span><span class="s"> </span><span class="nv">FOOD</span><span class="p">;</span><span class="s"> </span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">FOOD</span><span class="p">,</span><span class="nv">FEATURE</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">dd</span><span class="p">;</span><span class="s"> </span><span class="c">% 食物数据库</span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">FEATURE</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">main</span><span class="p">;</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">FEATURE</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">side</span><span class="p">;</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">FEATURE</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">dessert</span><span class="p">;</span>
+<span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">budget</span><span class="p">;</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="nv">main</span><span class="p">[</span><span class="nv">name</span><span class="p">]</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">mains</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">side</span><span class="p">[</span><span class="nv">name</span><span class="p">]</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">sides</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">dessert</span><span class="p">[</span><span class="nv">name</span><span class="p">]</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">desserts</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">table</span><span class="p">(</span><span class="nv">main</span><span class="p">,</span><span class="s"> </span><span class="nv">dd</span><span class="p">);</span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">table</span><span class="p">(</span><span class="nv">side</span><span class="p">,</span><span class="s"> </span><span class="nv">dd</span><span class="p">);</span>
+<span class="k">constraint</span><span class="s"> </span><span class="bp">table</span><span class="p">(</span><span class="nv">dessert</span><span class="p">,</span><span class="s"> </span><span class="nv">dd</span><span class="p">);</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">main</span><span class="p">[</span><span class="nv">energy</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">side</span><span class="p">[</span><span class="nv">energy</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">dessert</span><span class="p">[</span><span class="nv">energy</span><span class="p">]</span><span class="s"> </span><span class="o">&gt;=</span><span class="nv">min_energy</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">main</span><span class="p">[</span><span class="nv">protein</span><span class="p">]</span><span class="o">+</span><span class="nv">side</span><span class="p">[</span><span class="nv">protein</span><span class="p">]</span><span class="o">+</span><span class="nv">dessert</span><span class="p">[</span><span class="nv">protein</span><span class="p">]</span><span class="s"> </span><span class="o">&gt;=</span><span class="nv">min_protein</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">main</span><span class="p">[</span><span class="nv">salt</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">side</span><span class="p">[</span><span class="nv">salt</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">dessert</span><span class="p">[</span><span class="nv">salt</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">max_salt</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">main</span><span class="p">[</span><span class="nv">fat</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">side</span><span class="p">[</span><span class="nv">fat</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">dessert</span><span class="p">[</span><span class="nv">fat</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">max_fat</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">budget</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">main</span><span class="p">[</span><span class="nv">cost</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">side</span><span class="p">[</span><span class="nv">cost</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">dessert</span><span class="p">[</span><span class="nv">cost</span><span class="p">];</span>
+
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="nv">budget</span><span class="p">;</span><span class="s"> </span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;main = &quot;</span><span class="p">,</span><span class="nb">show</span><span class="p">(</span><span class="nf">to_enum</span><span class="p">(</span><span class="nv">FOOD</span><span class="p">,</span><span class="nv">main</span><span class="p">[</span><span class="nv">name</span><span class="p">])),</span>
+<span class="s">        &quot;, side = &quot;</span><span class="p">,</span><span class="nb">show</span><span class="p">(</span><span class="nf">to_enum</span><span class="p">(</span><span class="nv">FOOD</span><span class="p">,</span><span class="nv">side</span><span class="p">[</span><span class="nv">name</span><span class="p">])),</span>
+<span class="s">        &quot;, dessert = &quot;</span><span class="p">,</span><span class="nb">show</span><span class="p">(</span><span class="nf">to_enum</span><span class="p">(</span><span class="nv">FOOD</span><span class="p">,</span><span class="nv">dessert</span><span class="p">[</span><span class="nv">name</span><span class="p">])),</span>
+<span class="s">        &quot;, cost = &quot;</span><span class="p">,</span><span class="nb">show</span><span class="p">(</span><span class="nv">budget</span><span class="p">),</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="ex-meald">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.4 </span><span class="caption-text">定义 <tt class="docutils literal">table</tt> 的食物规划的数据 (<a class="reference download internal" download="" href="downloads/ec195831c89d22f059a10f73f74777f5/meal.dzn"><tt class="xref download docutils literal">meal.dzn</tt></a>). <span class="mzn-playground-button"><a href="playground-meal.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-meald" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">FOOD</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">icecream</span><span class="p">,</span><span class="s"> </span><span class="nv">banana</span><span class="p">,</span><span class="s"> </span><span class="nv">chocolatecake</span><span class="p">,</span><span class="s"> </span><span class="nv">lasagna</span><span class="p">,</span><span class="s"> </span>
+<span class="s">          </span><span class="nv">steak</span><span class="p">,</span><span class="s"> </span><span class="nv">rice</span><span class="p">,</span><span class="s"> </span><span class="nv">chips</span><span class="p">,</span><span class="s"> </span><span class="nv">brocolli</span><span class="p">,</span><span class="s"> </span><span class="nv">beans</span><span class="p">}</span><span class="s"> </span><span class="p">;</span>
+
+<span class="nv">dd</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[|</span><span class="s"> </span><span class="nv">icecream</span><span class="p">,</span><span class="s">      </span><span class="m">1200</span><span class="p">,</span><span class="s">  </span><span class="m">50</span><span class="p">,</span><span class="s">  </span><span class="m">10</span><span class="p">,</span><span class="s"> </span><span class="m">120</span><span class="p">,</span><span class="s">  </span><span class="m">400</span><span class="s">     </span><span class="c">% 冰淇淋</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">banana</span><span class="p">,</span><span class="s">         </span><span class="m">800</span><span class="p">,</span><span class="s"> </span><span class="m">120</span><span class="p">,</span><span class="s">   </span><span class="m">5</span><span class="p">,</span><span class="s">  </span><span class="m">20</span><span class="p">,</span><span class="s">  </span><span class="m">120</span><span class="s">     </span><span class="c">% 香蕉</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">chocolatecake</span><span class="p">,</span><span class="s"> </span><span class="m">2500</span><span class="p">,</span><span class="s"> </span><span class="m">400</span><span class="p">,</span><span class="s">  </span><span class="m">20</span><span class="p">,</span><span class="s"> </span><span class="m">100</span><span class="p">,</span><span class="s">  </span><span class="m">600</span><span class="s">     </span><span class="c">% 巧克力蛋糕</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">lasagna</span><span class="p">,</span><span class="s">       </span><span class="m">3000</span><span class="p">,</span><span class="s"> </span><span class="m">200</span><span class="p">,</span><span class="s"> </span><span class="m">100</span><span class="p">,</span><span class="s"> </span><span class="m">250</span><span class="p">,</span><span class="s">  </span><span class="m">450</span><span class="s">     </span><span class="c">% 千层面</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">steak</span><span class="p">,</span><span class="s">         </span><span class="m">1800</span><span class="p">,</span><span class="s"> </span><span class="m">800</span><span class="p">,</span><span class="s">  </span><span class="m">50</span><span class="p">,</span><span class="s"> </span><span class="m">100</span><span class="p">,</span><span class="s"> </span><span class="m">1200</span><span class="s">     </span><span class="c">% 牛排</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">rice</span><span class="p">,</span><span class="s">          </span><span class="m">1200</span><span class="p">,</span><span class="s">  </span><span class="m">50</span><span class="p">,</span><span class="s">   </span><span class="m">5</span><span class="p">,</span><span class="s">  </span><span class="m">20</span><span class="p">,</span><span class="s">  </span><span class="m">100</span><span class="s">     </span><span class="c">% 米饭</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">chips</span><span class="p">,</span><span class="s">         </span><span class="m">2000</span><span class="p">,</span><span class="s">  </span><span class="m">50</span><span class="p">,</span><span class="s"> </span><span class="m">200</span><span class="p">,</span><span class="s"> </span><span class="m">200</span><span class="p">,</span><span class="s">  </span><span class="m">250</span><span class="s">     </span><span class="c">% 薯条</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">brocolli</span><span class="p">,</span><span class="s">       </span><span class="m">700</span><span class="p">,</span><span class="s"> </span><span class="m">100</span><span class="p">,</span><span class="s">  </span><span class="m">10</span><span class="p">,</span><span class="s">  </span><span class="m">10</span><span class="p">,</span><span class="s">  </span><span class="m">125</span><span class="s">     </span><span class="c">% 花椰菜</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">beans</span><span class="p">,</span><span class="s">         </span><span class="m">1900</span><span class="p">,</span><span class="s"> </span><span class="m">250</span><span class="p">,</span><span class="s">  </span><span class="m">60</span><span class="p">,</span><span class="s">  </span><span class="m">90</span><span class="p">,</span><span class="s">  </span><span class="m">150</span><span class="s"> </span><span class="p">|];</span><span class="s"> </span><span class="c">% 黄豆</span>
+
+<span class="nv">min_energy</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3300</span><span class="p">;</span>
+<span class="nv">min_protein</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">500</span><span class="p">;</span>
+<span class="nv">max_salt</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">180</span><span class="p">;</span>
+<span class="nv">max_fat</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">320</span><span class="p">;</span>
+<span class="nv">desserts</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">icecream</span><span class="p">,</span><span class="s"> </span><span class="nv">banana</span><span class="p">,</span><span class="s"> </span><span class="nv">chocolatecake</span><span class="s"> </span><span class="p">};</span>
+<span class="nv">mains</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">lasagna</span><span class="p">,</span><span class="s"> </span><span class="nv">steak</span><span class="p">,</span><span class="s"> </span><span class="nv">rice</span><span class="s"> </span><span class="p">};</span>
+<span class="nv">sides</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">chips</span><span class="p">,</span><span class="s"> </span><span class="nv">brocolli</span><span class="p">,</span><span class="s"> </span><span class="nv">beans</span><span class="s"> </span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="#ex-meal"><span class="std std-numref">列表 2.3.3</span></a> 中的模型寻找均衡的膳食。每一个食物项都有一个名字（用整数表示），卡路里数，蛋白质克数，盐毫克数，脂肪克数以及单位为分的价钱。这些个项之间的关系用一个 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">table</span></code> 约束来描述。
+模型寻找拥有最小花费，最少卡路里数 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">min_energy</span></code> ，最少蛋白质量 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">min_protein</span></code> ，最大盐分 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">max_salt</span></code> 以及脂肪 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">max_fat</span></code> 的膳食。</p>
+</section>
+<section id="regular">
+<h3><span class="section-number">2.3.1.4. </span>Regular<a class="headerlink" href="#regular" title="Link to this heading"></a></h3>
+<p id="index-5">约束 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">regular</span></code> 用来约束一系列的变量取有限自动机定义的值。 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">regular</span></code> 的使用有以下方式</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="bp">regular</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Q</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">,</span>
+<span class="s">        </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">q0</span><span class="p">,</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">F</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>它约束了 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> 中的一列值（它们必须是在范围 <span class="target" id="index-6"></span>range
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">S</span></code> 内）被一个有 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">Q</span></code> 个状态，输入为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">S</span></code> ，转换函数为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">d</span></code> （ <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;</span><span class="m">1</span><span class="o">..</span><span class="nv">Q</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">S</span><span class="o">&gt;</span></code> 映射到 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">0</span><span class="o">..</span><span class="nv">Q</span></code> ），初始状态为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q0</span></code> （必须在 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">Q</span></code> 中）和接受状态为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">F</span><span class="s">`（必须在 </span><span class="p">:</span><span class="nv">mzn</span><span class="p">:</span><span class="s">`</span><span class="m">1</span><span class="o">..</span><span class="nv">Q</span></code> 中）的 <span class="target" id="index-7"></span>DFA 接受。
+状态0被保留为总是会失败的状态。</p>
+<figure class="align-default" id="id13">
+<span id="fig-dfa"></span><img alt="images/dfa.svg" src="images/dfa.svg" /><figcaption>
+<p><span class="caption-number">图 2.3.3 </span><span class="caption-text">判定正确排班的DFA。</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>我们来看下护士排班问题。每一个护士每一天被安排为以下其中一种：(d)白班(n)夜班或者(o)休息。
+每四天，护士必须有至少一天的休息。每个护士都不可以被安排为连续三天夜班。这个问题可以使用
+<a class="reference internal" href="#fig-dfa"><span class="std std-numref">图 2.3.3</span></a> 中的不完全DFA来表示。我们可以把这个DFA表示为初始状态是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span></code> ，结束状态是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="m">6</span></code> ，转换函数为</p>
+<table class="table-nonfluid table-bordered docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>d</p></th>
+<th class="head"><p>n</p></th>
+<th class="head"><p>o</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>4</p></td>
+<td><p>4</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>5</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>6</p></td>
+<td><p>6</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>6</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>注意状态表中的状态0代表一个错误状态。 <a class="reference internal" href="#ex-nurse"><span class="std std-numref">列表 2.3.5</span></a> 中给出的模型为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">num_nurses</span></code> 个护士 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">num_days</span></code> 天寻找一个排班，其中我们要求白天有 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">req_day</span></code> 个护士值班，晚上有 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">req_night</span></code> 个护士值班，以及每个护士至少有 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">min_night</span></code> 个夜班。</p>
+<div class="literal-block-wrapper docutils container" id="ex-nurse">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.5 </span><span class="caption-text">使用 <tt class="docutils literal">regular</tt> 约束来建模的护士排班问题模型  (<a class="reference download internal" download="" href="downloads/e7772b11ea77b3679dc9af22b2a528c2/nurse.mzn"><tt class="xref download docutils literal">nurse.mzn</tt></a>) <span class="mzn-playground-button"><a href="playground-nurse.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-nurse" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">% Simple nurse rostering</span>
+<span class="k">include</span><span class="s"> &quot;regular.mzn&quot;</span><span class="p">;</span>
+<span class="kt">enum</span><span class="s"> </span><span class="nv">NURSE</span><span class="p">;</span>
+<span class="kt">enum</span><span class="s"> </span><span class="nv">DAY</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">req_day</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">req_night</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">min_night</span><span class="p">;</span>
+
+<span class="kt">enum</span><span class="s"> </span><span class="nv">SHIFT</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">d</span><span class="p">,</span><span class="s"> </span><span class="nv">n</span><span class="p">,</span><span class="s"> </span><span class="nv">o</span><span class="s"> </span><span class="p">};</span>
+
+<span class="kt">enum</span><span class="s"> </span><span class="nv">STATE</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">S1</span><span class="p">,</span><span class="s"> </span><span class="nv">S2</span><span class="p">,</span><span class="s"> </span><span class="nv">S3</span><span class="p">,</span><span class="s"> </span><span class="nv">S4</span><span class="p">,</span><span class="s"> </span><span class="nv">S5</span><span class="p">,</span><span class="s"> </span><span class="nv">S6</span><span class="s"> </span><span class="p">};</span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">STATE</span><span class="p">,</span><span class="nv">SHIFT</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">opt</span><span class="s"> </span><span class="nv">STATE</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="s"> </span><span class="o">=</span>
+<span class="s">     </span><span class="p">[|</span><span class="s">      </span><span class="nv">d</span><span class="p">:</span><span class="s">  </span><span class="nv">n</span><span class="p">:</span><span class="s">  </span><span class="nv">o</span><span class="p">:</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">S1</span><span class="p">:</span><span class="s">  </span><span class="nv">S2</span><span class="p">,</span><span class="s"> </span><span class="nv">S3</span><span class="p">,</span><span class="s"> </span><span class="nv">S1</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">S2</span><span class="p">:</span><span class="s">  </span><span class="nv">S4</span><span class="p">,</span><span class="s"> </span><span class="nv">S4</span><span class="p">,</span><span class="s"> </span><span class="nv">S1</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">S3</span><span class="p">:</span><span class="s">  </span><span class="nv">S4</span><span class="p">,</span><span class="s"> </span><span class="nv">S5</span><span class="p">,</span><span class="s"> </span><span class="nv">S1</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">S4</span><span class="p">:</span><span class="s">  </span><span class="nv">S6</span><span class="p">,</span><span class="s"> </span><span class="nv">S6</span><span class="p">,</span><span class="s"> </span><span class="nv">S1</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">S5</span><span class="p">:</span><span class="s">  </span><span class="nv">S6</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="s"> </span><span class="nv">S1</span>
+<span class="s">      </span><span class="p">|</span><span class="s"> </span><span class="nv">S6</span><span class="p">:</span><span class="s">  </span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;&gt;</span><span class="p">,</span><span class="s"> </span><span class="nv">S1</span><span class="p">|];</span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">NURSE</span><span class="p">,</span><span class="nv">DAY</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">SHIFT</span><span class="p">:</span><span class="s"> </span><span class="nv">roster</span><span class="p">;</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">DAY</span><span class="p">)(</span>
+<span class="s">             </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NURSE</span><span class="p">)(</span><span class="nv">roster</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">d</span><span class="p">)</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">req_day</span><span class="s"> </span><span class="o">/\</span>
+<span class="s">             </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NURSE</span><span class="p">)(</span><span class="nv">roster</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">n</span><span class="p">)</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">req_night</span>
+<span class="s">           </span><span class="p">);</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NURSE</span><span class="p">)(</span>
+<span class="s">             </span><span class="bp">regular</span><span class="p">([</span><span class="nv">roster</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">DAY</span><span class="p">],</span><span class="s"> </span><span class="nv">t</span><span class="p">,</span><span class="s"> </span><span class="nv">S1</span><span class="p">,</span><span class="s"> </span><span class="nv">STATE</span><span class="p">)</span><span class="s"> </span><span class="o">/\</span>
+<span class="s">             </span><span class="nb">sum</span><span class="p">(</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">DAY</span><span class="p">)(</span><span class="nv">roster</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">n</span><span class="p">)</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="nv">min_night</span>
+<span class="s">           </span><span class="p">);</span>
+
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>运行命令</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>minizinc<span class="w"> </span>nurse.mzn<span class="w"> </span>nurse.dzn
+</pre></div>
+</div>
+<p>找到一个给7个护士10天的排班，要求白天有3个人值班，夜晚有2个人值班，以及每个护士最少有2个夜班。
+一个可能的结果是</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>o d n n o n n d o o
+d o n d o d n n o n
+o d d o d o d n n o
+d d d o n n d o n n
+d o d n n o d o d d
+n n o d d d o d d d
+n n o d d d o d d d
+----------
+</pre></div>
+</div>
+<p>另外一种regular约束是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">regular_nfa</span></code> 。它使用NFA（没有 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">\</span><span class="nv">epsilon</span></code> 弧）来定义regular表达式。此约束有以下格式</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="bp">regular_nfa</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Q</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="p">,</span>
+<span class="s">        </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">q0</span><span class="p">,</span><span class="s"> </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">F</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>它约束了数组 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> 中的数值序列（必须在范围 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">S</span></code> 中）被含有 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">Q</span></code> 个状态，输入为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">S</span></code> ，转换函数为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">d</span></code> （映射 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">&lt;</span><span class="m">1</span><span class="o">..</span><span class="nv">Q</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">S</span><span class="o">&gt;</span></code> 到
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">Q</span></code> 的子集），初始状态为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">q0</span></code> （必须在范围 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">Q</span></code> 中）以及接受状态为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">F</span></code> （必须在范围 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">Q</span></code> 中）的 <span class="target" id="index-8"></span>NFA 接受。
+在这里，我们没必要再给出失败状态0，因为转换函数可以映射到一个状态的空集。</p>
+</section>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.3.2. </span>定义谓词<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p id="index-9">MiniZinc的其中一个最强大的建模特征是建模者可以定义他们自己的高级约束。这就使得他们可以对模型进行抽象化和模块化。也允许了在不同的模型之间重新利用约束以及促使了用来定义标准约束和类型的特殊库应用的发展。</p>
+<div class="literal-block-wrapper docutils container" id="ex-jobshop2">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.6 </span><span class="caption-text">使用谓词的车间作业调度问题模型 (<a class="reference download internal" download="" href="downloads/c14c2ce4ef76e5b628894fe84d7f1d3f/jobshop2.mzn"><tt class="xref download docutils literal">jobshop2.mzn</tt></a>) <span class="mzn-playground-button"><a href="playground-jobshop2.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-jobshop2" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">jobs</span><span class="p">;</span><span class="s">                                    </span><span class="c">% 作业的数量</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">JOB</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">jobs</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">tasks</span><span class="p">;</span><span class="s">                                   </span><span class="c">% 每个作业的任务数量</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">TASK</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">tasks</span><span class="p">;</span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">JOB</span><span class="p">,</span><span class="nv">TASK</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d</span><span class="p">;</span><span class="s">                   </span><span class="c">% 任务持续时间</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">total</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">JOB</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">TASK</span><span class="p">)(</span><span class="nv">d</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]);</span><span class="c">% 总持续时间</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">digs</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">ceil</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="m">10.0</span><span class="p">,</span><span class="nv">total</span><span class="p">));</span><span class="s">            </span><span class="c">% 输出的数值</span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">JOB</span><span class="p">,</span><span class="nv">TASK</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">total</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">;</span><span class="s">          </span><span class="c">% 起始时间</span>
+<span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">total</span><span class="p">:</span><span class="s"> </span><span class="nv">end</span><span class="p">;</span><span class="s">                            </span><span class="c">% 总结束时间</span>
+
+<span class="c">% nooverlap</span>
+<span class="k">predicate</span><span class="s"> </span><span class="nf">no_overlap</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s1</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">d1</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s2</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">d2</span><span class="p">)</span><span class="s"> </span><span class="o">=</span>
+<span class="s">    </span><span class="nv">s1</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">d1</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">s2</span><span class="s"> </span><span class="o">\/</span><span class="s"> </span><span class="nv">s2</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">d2</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">s1</span><span class="p">;</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="c">%% 保证任务按照顺序出现</span>
+<span class="s">    </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">JOB</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">        </span><span class="k">forall</span><span class="p">(</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">tasks</span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="s"> </span>
+<span class="s">            </span><span class="p">(</span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="o">+</span><span class="m">1</span><span class="p">])</span><span class="s"> </span><span class="o">/\</span>
+<span class="s">        </span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">tasks</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">tasks</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">end</span>
+<span class="s">    </span><span class="p">);</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="c">%% 保证任务之间没有重叠</span>
+<span class="s">    </span><span class="k">forall</span><span class="p">(</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">TASK</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">        </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="nv">k</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">JOB</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">k</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">            </span><span class="nf">no_overlap</span><span class="p">(</span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">],</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">],</span><span class="s"> </span><span class="nv">s</span><span class="p">[</span><span class="nv">k</span><span class="p">,</span><span class="nv">j</span><span class="p">],</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">k</span><span class="p">,</span><span class="nv">j</span><span class="p">])</span>
+<span class="s">        </span><span class="p">)</span>
+<span class="s">    </span><span class="p">);</span>
+
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="nv">end</span><span class="p">;</span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;end = </span><span class="p">\(</span><span class="nv">end</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">]</span><span class="s"> </span><span class="o">++</span>
+<span class="s">       </span><span class="p">[</span><span class="s"> </span><span class="nb">show_int</span><span class="p">(</span><span class="nv">digs</span><span class="p">,</span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">])</span><span class="s"> </span><span class="o">++</span><span class="s"> &quot; &quot; </span><span class="o">++</span><span class="s"> </span>
+<span class="s">         </span><span class="k">if</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">tasks</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot; </span><span class="k">else</span><span class="s"> &quot;&quot; </span><span class="k">endif</span><span class="s"> </span><span class="p">|</span>
+<span class="s">         </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">JOB</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">TASK</span><span class="s"> </span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<p>我们用一个简单的例子开始，回顾下前面章节中的车间作业调度问题。这个模型在 <a class="reference internal" href="#ex-jobshop2"><span class="std std-numref">列表 2.3.6</span></a> 中给出。我们感兴趣的项是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">谓词</span></code> 项：</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">no_overlap</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s1</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">d1</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s2</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">d2</span><span class="p">)</span><span class="s"> </span><span class="o">=</span>
+<span class="s">    </span><span class="nv">s1</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">d1</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">s2</span><span class="s"> </span><span class="o">\/</span><span class="s"> </span><span class="nv">s2</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">d2</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">s1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>它定义了一个新的约束用来约束起始时间为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">s1</span></code> ，持续时间为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">d1</span></code> 的任务不能和起始时间为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">s2</span></code> ，持续时间为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">d2</span></code> 的任务重叠。它可以在模型的任何（包含决策变量的） <span class="target" id="index-10"></span>布尔型表达式 可以出现的地方使用。</p>
+<p>和谓词一样，建模者也可以定义只涉及到参数的新的约束。和谓词不一样的是，它们可以被用在条件表达式的测试中。它们被关键字 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">test</span></code> 定义。例如</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="nf">even</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="nv">x</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">mod</span><span class="s"> </span><span class="m">2</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition- admonition" id="defblock-0">
+<p class="admonition-title">谓词定义</p>
+<p id="index-11">使用以下形式的语句，我们可以定义谓词</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="o">&lt;</span><span class="s">谓词名</span><span class="o">&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="s">参数定义</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> ...</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="s">参数定义</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">&lt;</span><span class="s">布尔表达式</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">谓词名</span><span class="o">&gt;</span></code> 必须是一个合法的MiniZinc标识符，每个 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">参数定义</span><span class="o">&gt;</span></code> 都是一个合法的MiniZinc类型 <span class="target" id="index-12"></span>type 声明。</p>
+<p><span class="target" id="index-13"></span>参数 定义的一个松弛是数组的索引类型可以是 <span class="target" id="index-14"></span>没有限制地 写为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span></code> 。</p>
+<p>类似的，使用以下形式的语句，我们定义测试</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">test</span><span class="s"> </span><span class="o">&lt;</span><span class="s">谓词名</span><span class="o">&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="s">参数定义</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> ...</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="s">参数定义</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">&lt;</span><span class="s">布尔表达式</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>其中的 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">布尔表达式</span><span class="o">&gt;</span></code> 必须是固定的。</p>
+<p>另外我们介绍一个谓词中使用到的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span></code> 命令的新形式。</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="nb">assert</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="s">布尔表达式</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="s">字符串表达式</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span></code> 表达式的类型和最后一个参数的类型一样。 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span></code> 表达式检测第一个参数是否为假，如果是则输出第二个参数字符串。如果第一个参数是真，则输出第三个参数。</p>
+</div>
+<p>注意 <span class="target" id="index-15"></span>assert表达式 中的第三个参数是延迟的，即如果第一个参数是假，它就不会被评估。所以它可以被用来检查</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">lookup</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">x</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"> </span><span class="o">=</span>
+<span class="s">    </span><span class="nb">assert</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">x</span><span class="p">),</span><span class="s"> &quot;index out of range in lookup&quot;</span>
+<span class="s">           </span><span class="nv">y</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span>
+<span class="s">    </span><span class="p">);</span>
+</pre></div>
+</div>
+<p>此代码在 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">i</span></code> 超出数组 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> 的范围时不会计算 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span></code> 。</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.3.3. </span>定义函数<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p id="index-16">MiniZinc中的函数和谓词一样定义，但是它有一个更一般的返回类型。</p>
+<p>下面的函数定义了一个数独矩阵中的第 <span class="math notranslate nohighlight">\(a^{th}\)</span> 个子方块的第 <span class="math notranslate nohighlight">\(a1^{th}\)</span> 行。</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">posn</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">a1</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">(</span><span class="nv">a</span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nv">S</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">a1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>有了这个定义之后，我们可以把 <a class="reference internal" href="modelling2.html#ex-sudoku"><span class="std std-numref">列表 2.2.5</span></a> 中的数独问题的最后一个约束替换为</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="s"> </span><span class="nv">o</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">SubSquareRange</span><span class="p">)(</span>
+<span class="s">                  </span><span class="nf">alldifferent</span><span class="p">([</span><span class="s"> </span><span class="nv">puzzle</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="nf">posn</span><span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="nv">a0</span><span class="p">),</span><span class="s"> </span><span class="nf">posn</span><span class="p">(</span><span class="nv">o</span><span class="p">,</span><span class="nv">o1</span><span class="p">)</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="p">|</span>
+<span class="s">                                         </span><span class="nv">a1</span><span class="p">,</span><span class="nv">o1</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">SubSquareRange</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<p>函数对于描述模型中经常用到的复杂表达式非常有用。
+例如，想象下在 <span class="math notranslate nohighlight">\(n \times n\)</span> 的方格的不同位置上放置数字1到 <span class="math notranslate nohighlight">\(n\)</span> 使得任何两个数字 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(j\)</span> 之间的曼哈顿距离比这两个数字其中最大的值减一还要大。我们的目的是最小化数组对之间的总的曼哈顿距离。曼哈顿距离函数可以表达为：</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">manhattan</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x1</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y1</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x2</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y2</span><span class="p">)</span><span class="s"> </span><span class="o">=</span>
+<span class="s">         </span><span class="nb">abs</span><span class="p">(</span><span class="nv">x1</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">x2</span><span class="p">)</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nb">abs</span><span class="p">(</span><span class="nv">y1</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">y2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>完整的模型在 <a class="reference internal" href="#ex-manhattan"><span class="std std-numref">列表 2.3.7</span></a> 中给出。</p>
+<div class="literal-block-wrapper docutils container" id="ex-manhattan">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.7 </span><span class="caption-text">阐释如何使用函数的数字放置问题模型 (<a class="reference download internal" download="" href="downloads/508b0b6849d0f994febc177b718b43d6/manhattan.mzn"><tt class="xref download docutils literal">manhattan.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-manhattan.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-manhattan" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="p">;</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">NUM</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">;</span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">NUM</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">NUM</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">NUM</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">NUM</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">NUM</span><span class="p">,</span><span class="nv">NUM</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">2</span><span class="o">*</span><span class="nv">n</span><span class="o">-</span><span class="m">2</span><span class="p">:</span><span class="s"> </span><span class="nv">dist</span><span class="s"> </span><span class="o">=</span><span class="s"> </span>
+<span class="s">     </span><span class="nb">array2d</span><span class="p">(</span><span class="nv">NUM</span><span class="p">,</span><span class="nv">NUM</span><span class="p">,[</span><span class="s"> </span>
+<span class="s">     </span><span class="k">if</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="nf">manhattan</span><span class="p">(</span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">],</span><span class="nv">y</span><span class="p">[</span><span class="nv">i</span><span class="p">],</span><span class="nv">x</span><span class="p">[</span><span class="nv">j</span><span class="p">],</span><span class="nv">y</span><span class="p">[</span><span class="nv">j</span><span class="p">])</span><span class="s"> </span><span class="k">else</span><span class="s"> </span><span class="m">0</span><span class="s"> </span><span class="k">endif</span>
+<span class="s">                     </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NUM</span><span class="s"> </span><span class="p">]);</span>
+
+<span class="c">% manf</span>
+<span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nf">manhattan</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x1</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y1</span><span class="p">,</span>
+<span class="s">                            </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x2</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y2</span><span class="p">)</span><span class="s"> </span><span class="o">=</span>
+<span class="s">         </span><span class="nb">abs</span><span class="p">(</span><span class="nv">x1</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">x2</span><span class="p">)</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nb">abs</span><span class="p">(</span><span class="nv">y1</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">y2</span><span class="p">);</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NUM</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">j</span><span class="p">)</span>
+<span class="s">                 </span><span class="p">(</span><span class="nv">dist</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="nb">max</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">)</span><span class="o">-</span><span class="m">1</span><span class="p">);</span>
+
+<span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">obj</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NUM</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">j</span><span class="p">)(</span><span class="nv">dist</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]);</span>
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="nv">obj</span><span class="p">;</span><span class="s"> </span>
+
+<span class="c">% simply to display result</span>
+<span class="k">include</span><span class="s"> &quot;alldifferent_except_0.mzn&quot;</span><span class="p">;</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">NUM</span><span class="p">,</span><span class="nv">NUM</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">n</span><span class="p">:</span><span class="s"> </span><span class="nv">grid</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NUM</span><span class="p">)(</span><span class="nv">grid</span><span class="p">[</span><span class="nv">x</span><span class="p">[</span><span class="nv">i</span><span class="p">],</span><span class="nv">y</span><span class="p">[</span><span class="nv">i</span><span class="p">]]</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">i</span><span class="p">);</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nf">alldifferent_except_0</span><span class="p">([</span><span class="nv">grid</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NUM</span><span class="p">]);</span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;obj = </span><span class="p">\(</span><span class="nv">obj</span><span class="p">)</span><span class="s">;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">]</span><span class="s"> </span><span class="o">++</span>
+<span class="s">       </span><span class="p">[</span><span class="s"> </span><span class="k">if</span><span class="s"> </span><span class="nb">fix</span><span class="p">(</span><span class="nv">grid</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">])</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="m">0</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">grid</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">])</span><span class="s"> </span><span class="k">else</span><span class="s"> &quot;.&quot; </span><span class="k">endif</span>
+<span class="s">         </span><span class="o">++</span><span class="s"> </span><span class="k">if</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">n</span><span class="s">  </span><span class="k">then</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot; </span><span class="k">else</span><span class="s"> &quot;&quot; </span><span class="k">endif</span><span class="s"> </span>
+<span class="s">       </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">NUM</span><span class="s"> </span><span class="p">];</span><span class="s"> </span>
+</pre></div>
+</div>
+</div>
+<div class="admonition- admonition" id="defblock-1">
+<p class="admonition-title">函数定义</p>
+<p id="index-17">函数用以下格式的语句定义</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="o">&lt;</span><span class="s">返回类型</span><span class="o">&gt;</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="o">&lt;</span><span class="s">函数名</span><span class="o">&gt;</span><span class="s"> </span><span class="p">(</span><span class="s"> </span><span class="o">&lt;</span><span class="s">参数定义</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> ...</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="s">参数定义</span><span class="o">&gt;</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">函数名</span><span class="o">&gt;</span></code> 必须是一个合法的MiniZinc标识符。每一个 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">参数定义</span><span class="o">&gt;</span></code> 是一个合法的MiniZinc类型声明。 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">返回类型</span><span class="o">&gt;</span></code> 是函数的返回类型，它必须是 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span></code> 的类型。参数和谓词定义中的参数有一样的限制。</p>
+</div>
+<p>MiniZinc中的函数可以有任何返回类型，而不只是固定的返回类型。
+在定义和记录多次出现在模型中的复杂表达式时，函数是非常有用的。</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">2.3.4. </span>反射函数<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>为了方便写出一般性的测试和谓词，各种反射函数会返回数组的下标集合，var集合的定义域以及决策变量范围的信息。关于下标集合的有以下反射函数
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">index_set</span><span class="p">(</span><span class="cs">&lt;1-D array&gt;</span><span class="p">)</span></code>,
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">index_set_1of2</span><span class="p">(</span><span class="cs">&lt;2-D array&gt;</span><span class="p">)</span></code>,
+<code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">index_set_2of2</span><span class="p">(</span><span class="cs">&lt;2-D array&gt;</span><span class="p">)</span></code>,
+以及关于更高维数组的反射函数。</p>
+<p>车间作业问题的一个更好的模型是把所有的对于同一个机器上的不重叠约束结合为一个单个的析取约束。
+这个方法的一个优点是虽然我们只是初始地把它建模成一个 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">non</span><span class="o">-</span><span class="nv">overlap</span></code> 约束的连接，但是如果下层的求解器对于解决析取约束有一个更好的方法，在对我们的模型最小改变的情况下，我们可以直接使用它。这个模型在 <a class="reference internal" href="#ex-jobshop3"><span class="std std-numref">列表 2.3.8</span></a> 中给出。</p>
+<div class="literal-block-wrapper docutils container" id="ex-jobshop3">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.8 </span><span class="caption-text">使用 <tt class="docutils literal">disjunctive</tt> 谓词的车间作业调度问题模型 (<a class="reference download internal" download="" href="downloads/25cbfdd3bbd8f991b626ede6c5572d3e/jobshop3.mzn"><tt class="xref download docutils literal">jobshop3.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-jobshop3.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-jobshop3" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;disjunctive.mzn&quot;</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">jobs</span><span class="p">;</span><span class="s">                                    </span><span class="c">% 作业的数量</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">JOB</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">jobs</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">tasks</span><span class="p">;</span><span class="s">                                   </span><span class="c">% 每个作业的任务数量</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">TASK</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">tasks</span><span class="p">;</span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">JOB</span><span class="p">,</span><span class="nv">TASK</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d</span><span class="p">;</span><span class="s">                   </span><span class="c">% 任务持续时间</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">total</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">JOB</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">TASK</span><span class="p">)(</span><span class="nv">d</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]);</span><span class="c">% 总持续时间</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">digs</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">ceil</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="m">10.0</span><span class="p">,</span><span class="nv">total</span><span class="p">));</span><span class="s">            </span><span class="c">% 输出的数值</span>
+<span class="kt">array</span><span class="s"> </span><span class="p">[</span><span class="nv">JOB</span><span class="p">,</span><span class="nv">TASK</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">total</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">;</span><span class="s">          </span><span class="c">% 起始时间</span>
+<span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="nv">total</span><span class="p">:</span><span class="s"> </span><span class="nv">end</span><span class="p">;</span><span class="s">                            </span><span class="c">% 总结束时间</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="c">%% 保证任务按照顺序出现</span>
+<span class="s">    </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">JOB</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">        </span><span class="k">forall</span><span class="p">(</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">tasks</span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="s"> </span>
+<span class="s">            </span><span class="p">(</span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="o">+</span><span class="m">1</span><span class="p">])</span><span class="s"> </span><span class="o">/\</span>
+<span class="s">        </span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">tasks</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">tasks</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">end</span>
+<span class="s">    </span><span class="p">);</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="c">%% 保证任务之间没有重叠</span>
+<span class="s">    </span><span class="k">forall</span><span class="p">(</span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">TASK</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">        </span><span class="bp">disjunctive</span><span class="p">([</span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">JOB</span><span class="p">],</span><span class="s"> </span><span class="p">[</span><span class="nv">d</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">]</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">JOB</span><span class="p">])</span>
+<span class="s">    </span><span class="p">);</span>
+
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="nv">end</span><span class="p">;</span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;end = </span><span class="p">\(</span><span class="nv">end</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">]</span><span class="s"> </span><span class="o">++</span>
+<span class="s">       </span><span class="p">[</span><span class="s"> </span><span class="nb">show_int</span><span class="p">(</span><span class="nv">digs</span><span class="p">,</span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">])</span><span class="s"> </span><span class="o">++</span><span class="s"> &quot; &quot; </span><span class="o">++</span><span class="s"> </span>
+<span class="s">         </span><span class="k">if</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">tasks</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot; </span><span class="k">else</span><span class="s"> &quot;&quot; </span><span class="k">endif</span><span class="s"> </span><span class="p">|</span>
+<span class="s">         </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">JOB</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">TASK</span><span class="s"> </span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<p id="index-18">约束 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span></code> 获取每个任务的开始时间数组以及它们的持续时间数组，确保每次只有一个任务是被激活的。
+我们定义析取约束为一个有以下特征的 <span class="target" id="index-19"></span>谓词</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="bp">disjunctive</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">d</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>在 <a class="reference internal" href="#ex-jobshop3"><span class="std std-numref">列表 2.3.8</span></a> 中，我们可以用这个析取约束定义任务之间不重叠。
+我们假设 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span></code> 谓词的定义已经在模型中引用的文件 <a class="reference download internal" download="" href="downloads/c5fedd4769f2c94eef1416f97f5588f2/disjunctive.mzn"><tt class="xref download docutils literal">disjunctive.mzn</tt></a> 中给出。</p>
+<p>如果下层的系统直接支持 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span></code> ，则会在它的全局目录下包含一个 <a class="reference download internal" download="" href="downloads/c5fedd4769f2c94eef1416f97f5588f2/disjunctive.mzn"><tt class="xref download docutils literal">disjunctive.mzn</tt></a> 文件（拥有上述特征定义内容）。
+如果我们使用的系统不直接支持析取，通过创建文件 <a class="reference download internal" download="" href="downloads/c5fedd4769f2c94eef1416f97f5588f2/disjunctive.mzn"><tt class="xref download docutils literal">disjunctive.mzn</tt></a> ，我们可以给出我们自己的定义。最简单的实现是单单使用上面定义的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">no_overlap</span></code> 谓词。
+一个更好的实现是利用全局约束 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">cumulative</span></code> ，假如下层求解器支持它的话。 <a class="reference internal" href="#ex-disj"><span class="std std-numref">列表 2.3.9</span></a> 给出了一个 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span></code> 的实现。
+注意我们使用 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">index_set</span></code> 反射函数来（a）检查 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">disjunctive</span></code> 的参数是有意义的，以及（b）构建 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">cumulative</span></code> 的合适大小的资源利用数组。另外注意这里我们使用了 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span></code> 的三元组版本。</p>
+<div class="literal-block-wrapper docutils container" id="ex-disj">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.9 </span><span class="caption-text">使用 <tt class="docutils literal">cumulative</tt> 来定义一个 <tt class="docutils literal">disjunctive</tt> 谓词  (<a class="reference download internal" download="" href="downloads/c5fedd4769f2c94eef1416f97f5588f2/disjunctive.mzn"><tt class="xref download docutils literal">disjunctive.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-jobshop3.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-disj" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;cumulative.mzn&quot;</span><span class="p">;</span>
+
+<span class="k">predicate</span><span class="s"> </span><span class="bp">disjunctive</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">s</span><span class="p">,</span><span class="s"> </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">d</span><span class="p">)</span><span class="s"> </span><span class="o">=</span>
+<span class="s">          </span><span class="nb">assert</span><span class="p">(</span><span class="nb">index_set</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">d</span><span class="p">),</span><span class="s"> &quot;disjunctive: &quot; </span><span class="o">++</span>
+<span class="s">          &quot;first and second arguments must have the same index set&quot;</span><span class="p">,</span>
+<span class="s">            </span><span class="bp">cumulative</span><span class="p">(</span><span class="nv">s</span><span class="p">,</span><span class="s"> </span><span class="nv">d</span><span class="p">,</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="m">1</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="p">],</span><span class="s"> </span><span class="m">1</span><span class="p">)</span>
+<span class="s">          </span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2><span class="section-number">2.3.5. </span>局部变量<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p id="index-20">在谓词，函数或者测试中，引进 <em>局部变量</em> 总是非常有用的。
+表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">let</span></code> 允许你去这样做。
+它可以被用来引进决策变量 <span class="target" id="index-21"></span>决策变量 和 <span class="target" id="index-22"></span>参数 ，但是参数必须被初始化。
+例如：</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="nv">s</span><span class="o">..</span><span class="nv">e</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">l</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">s</span><span class="s"> </span><span class="o">div</span><span class="s"> </span><span class="m">2</span><span class="p">;</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">u</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">e</span><span class="s"> </span><span class="o">div</span><span class="s"> </span><span class="m">2</span><span class="p">;</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">l</span><span class="s"> .. </span><span class="nv">u</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">;}</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">2</span><span class="o">*</span><span class="nv">y</span>
+</pre></div>
+</div>
+<p>引进了参数 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">l</span></code> 和 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">u</span></code> 以及变量 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span></code> 。
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">let</span></code> 表达式虽然在 <span class="target" id="index-23"></span>谓词 ， <span class="target" id="index-24"></span>函数 和测试定义中最有用，它也可以被用在其他的表达式中。例如，来消除共同的子表达式：</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">x1</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">x2</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">x3</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">x4</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span>
+<span class="s">           </span><span class="nv">l</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">s</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">s</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">u</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>局部变量可以被用在任何地方，在简化复杂表达式时也很有用。
+通过使用局部变量来定义目标 <span class="target" id="index-25"></span>objective 函数而不是显式地加入很多个变量， <a class="reference internal" href="#ex-wedding2"><span class="std std-numref">列表 2.3.10</span></a> 给出了稳定婚姻模型的一个改进版本。</p>
+<div class="literal-block-wrapper docutils container" id="ex-wedding2">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.10 </span><span class="caption-text">使用局部变量来定义一个复杂的目标函数 (<a class="reference download internal" download="" href="downloads/2294f04c29250a2f363739d77e2a2329/wedding2.mzn"><tt class="xref download docutils literal">wedding2.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-wedding2.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-wedding2" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">enum</span><span class="s"> </span><span class="nv">Guests</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="nv">bride</span><span class="p">,</span><span class="s"> </span><span class="nv">groom</span><span class="p">,</span><span class="s"> </span><span class="nv">bestman</span><span class="p">,</span><span class="s"> </span><span class="nv">bridesmaid</span><span class="p">,</span><span class="s"> </span><span class="nv">bob</span><span class="p">,</span><span class="s"> </span><span class="nv">carol</span><span class="p">,</span><span class="s"> </span>
+<span class="s">  </span><span class="nv">ted</span><span class="p">,</span><span class="s"> </span><span class="nv">alice</span><span class="p">,</span><span class="s"> </span><span class="nv">ron</span><span class="p">,</span><span class="s"> </span><span class="nv">rona</span><span class="p">,</span><span class="s"> </span><span class="nv">ed</span><span class="p">,</span><span class="s"> </span><span class="nv">clara</span><span class="p">};</span><span class="s"> </span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Seats</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">12</span><span class="p">;</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Hatreds</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">5</span><span class="p">;</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Hatreds</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Guests</span><span class="p">:</span><span class="s"> </span><span class="nv">h1</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="nv">groom</span><span class="p">,</span><span class="s"> </span><span class="nv">carol</span><span class="p">,</span><span class="s"> </span><span class="nv">ed</span><span class="p">,</span><span class="s"> </span><span class="nv">bride</span><span class="p">,</span><span class="s"> </span><span class="nv">ted</span><span class="p">];</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Hatreds</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Guests</span><span class="p">:</span><span class="s"> </span><span class="nv">h2</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="nv">clara</span><span class="p">,</span><span class="s"> </span><span class="nv">bestman</span><span class="p">,</span><span class="s"> </span><span class="nv">ted</span><span class="p">,</span><span class="s"> </span><span class="nv">alice</span><span class="p">,</span><span class="s"> </span><span class="nv">ron</span><span class="p">];</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Guests</span><span class="p">:</span><span class="s"> </span><span class="nv">Males</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="nv">groom</span><span class="p">,</span><span class="s"> </span><span class="nv">bestman</span><span class="p">,</span><span class="s"> </span><span class="nv">bob</span><span class="p">,</span><span class="s"> </span><span class="nv">ted</span><span class="p">,</span><span class="s"> </span><span class="nv">ron</span><span class="p">,</span><span class="nv">ed</span><span class="p">};</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="nv">Guests</span><span class="p">:</span><span class="s"> </span><span class="nv">Females</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">{</span><span class="nv">bride</span><span class="p">,</span><span class="nv">bridesmaid</span><span class="p">,</span><span class="nv">carol</span><span class="p">,</span><span class="nv">alice</span><span class="p">,</span><span class="nv">rona</span><span class="p">,</span><span class="nv">clara</span><span class="p">};</span><span class="s"> </span>
+
+<span class="kt">array</span><span class="p">[</span><span class="nv">Guests</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">Seats</span><span class="p">:</span><span class="s"> </span><span class="nv">pos</span><span class="p">;</span><span class="s"> </span><span class="c">% 客人的座位</span>
+
+<span class="k">include</span><span class="s"> &quot;alldifferent.mzn&quot;</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nf">alldifferent</span><span class="p">(</span><span class="nv">pos</span><span class="p">);</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">g</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Males</span><span class="p">)(</span><span class="s"> </span><span class="nv">pos</span><span class="p">[</span><span class="nv">g</span><span class="p">]</span><span class="s"> </span><span class="o">mod</span><span class="s"> </span><span class="m">2</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="m">1</span><span class="s"> </span><span class="p">);</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">g</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Females</span><span class="p">)(</span><span class="s"> </span><span class="nv">pos</span><span class="p">[</span><span class="nv">g</span><span class="p">]</span><span class="s"> </span><span class="o">mod</span><span class="s"> </span><span class="m">2</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="m">0</span><span class="s"> </span><span class="p">);</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="o">not</span><span class="s"> </span><span class="p">(</span><span class="nv">pos</span><span class="p">[</span><span class="nv">ed</span><span class="p">]</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="p">{</span><span class="m">1,6</span><span class="p">,</span><span class="m">7,12</span><span class="p">});</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nb">abs</span><span class="p">(</span><span class="nv">pos</span><span class="p">[</span><span class="nv">bride</span><span class="p">]</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">pos</span><span class="p">[</span><span class="nv">groom</span><span class="p">])</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">1</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span>
+<span class="s">           </span><span class="p">(</span><span class="nv">pos</span><span class="p">[</span><span class="nv">bride</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">6</span><span class="s"> </span><span class="o">&lt;-&gt;</span><span class="s"> </span><span class="nv">pos</span><span class="p">[</span><span class="nv">groom</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">6</span><span class="p">);</span>
+
+<span class="k">solve</span><span class="s"> </span><span class="k">maximize</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="nv">h</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Hatreds</span><span class="p">)(</span>
+<span class="s">          </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s">  </span><span class="kt">var</span><span class="s"> </span><span class="nv">Seats</span><span class="p">:</span><span class="s"> </span><span class="nv">p1</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">pos</span><span class="p">[</span><span class="nv">h1</span><span class="p">[</span><span class="nv">h</span><span class="p">]];</span>
+<span class="s">                 </span><span class="kt">var</span><span class="s"> </span><span class="nv">Seats</span><span class="p">:</span><span class="s"> </span><span class="nv">p2</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">pos</span><span class="p">[</span><span class="nv">h2</span><span class="p">[</span><span class="nv">h</span><span class="p">]];</span>
+<span class="s">                 </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">1</span><span class="p">:</span><span class="s"> </span><span class="nv">same</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">bool2int</span><span class="p">(</span><span class="nv">p1</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">6</span><span class="s"> </span><span class="o">&lt;-&gt;</span><span class="s"> </span><span class="nv">p2</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">6</span><span class="p">);</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s">   </span>
+<span class="s">          </span><span class="nv">same</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nb">abs</span><span class="p">(</span><span class="nv">p1</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">p2</span><span class="p">)</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="nv">same</span><span class="p">)</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="m">13</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">p1</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">p2</span><span class="p">)</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">1</span><span class="p">));</span>
+
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">g</span><span class="p">)</span><span class="o">++</span><span class="s">&quot; &quot; </span><span class="p">|</span><span class="s"> </span><span class="nv">s</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Seats</span><span class="p">,</span><span class="nv">g</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">Guests</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nb">fix</span><span class="p">(</span><span class="nv">pos</span><span class="p">[</span><span class="nv">g</span><span class="p">])</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nv">s</span><span class="p">]</span>
+<span class="s">       </span><span class="o">++</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span><span class="s"> </span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2><span class="section-number">2.3.6. </span>语境<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p id="index-26">有一个局限，即含有决策变量并且在声明时没有初始化的谓词和函数不可以被用在一个否定语境下。下面例子是非法的</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">even</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">x</span><span class="p">)</span><span class="s"> </span><span class="o">=</span>
+<span class="s">          </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">2</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="o">not</span><span class="s"> </span><span class="nf">even</span><span class="p">(</span><span class="nv">z</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>原因是求解器只解决存在约束的问题。如果我们在否定语境下引入了一个局部变量，则此变量是 <em>普遍地量化</em> 了，因此超出下层求解器的解决范围。例如， <span class="math notranslate nohighlight">\(\neg \mathit{even}(z)\)</span> 等价于 <span class="math notranslate nohighlight">\(\neg \exists y. z = 2y\)</span> ，然后等价于 <span class="math notranslate nohighlight">\(\forall y. z \neq 2y\)</span> 。</p>
+<p>如果局部变量被赋了值，则它们可以被用在否定语境中。下面的例子是合法的</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">predicate</span><span class="s"> </span><span class="nf">even</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">x</span><span class="p">)</span><span class="s"> </span><span class="o">=</span>
+<span class="s">          </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">div</span><span class="s"> </span><span class="m">2</span><span class="p">;</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">2</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span>
+
+<span class="k">constraint</span><span class="s"> </span><span class="o">not</span><span class="s"> </span><span class="nf">even</span><span class="p">(</span><span class="nv">z</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>注意，现在 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">even</span></code> 的意思是正确的，因为如果 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> 是偶数，则 <span class="math notranslate nohighlight">\(x = 2 * (x ~\mbox{div}~ 2)\)</span> 。
+由于 math:<cite>y</cite> 被 <span class="math notranslate nohighlight">\(z\)</span> 功能性定义了， <span class="math notranslate nohighlight">\(\neg \mathit{even}(z)\)</span> 等价于 <span class="math notranslate nohighlight">\(\neg \exists y. y = z ~\mbox{div}~ 2 \wedge z = 2y\)</span> ，同时等价于 <span class="math notranslate nohighlight">\(\exists y. y = z ~\mbox{div}~ 2 \wedge \neg z \neq 2y\)</span>。</p>
+<p>MiniZinc中的任意表达式都出现在以下四种 <em>语境</em> 中的一种中： <span class="target" id="index-27"></span>根 ， <span class="target" id="index-28"></span>肯定 ， <span class="target" id="index-29"></span>否定 ，或者 <span class="target" id="index-30"></span>混合 。
+非布尔型表达式的语境直接地为包含其最近的布尔型表达式的语境。唯一的例外是目标表达式出现在一个根语境下（由于它没有包含其的布尔型表达式）。</p>
+<p>为了方便定义语境，我们把蕴含表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">-&gt;</span><span class="s"> </span><span class="nv">e2</span></code> 等价地写为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">not</span><span class="s"> </span><span class="nv">e1</span><span class="s"> </span><span class="o">\/</span><span class="s"> </span><span class="nv">e2</span></code> ， <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">&lt;-</span><span class="s"> </span><span class="nv">e2</span></code> 等价地写为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">\/</span><span class="s"> </span><span class="o">not</span><span class="s"> </span><span class="nv">e2</span></code> 。</p>
+<p>一个布尔型表达式的语境可能有：</p>
+<dl>
+<dt>根</dt><dd><p>根语境是任何作为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">constraint</span></code> 的参数或者作为一个赋值项 <span class="target" id="index-31"></span>assignment 出现的表达式 <span class="math notranslate nohighlight">\(e\)</span> 的语境，或者作为一个出现在根语境中的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">e2</span></code> 的子表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span></code> 或 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e2</span></code> 的语境。</p>
+<p>根语境下的布尔型表达式必须在问题的任何模型中都满足。</p>
+</dd>
+<dt>肯定</dt><dd><p>肯定语境是任何作为一个出现在根语境或者肯定语境中的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">\/</span><span class="s"> </span><span class="nv">e2</span></code> 的子表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span></code> 或 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e2</span></code> 的语境，或者是作为一个出现在肯定语境中的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">e2</span></code> 的子表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span></code> 或 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e2</span><span class="s">`的语境，或者是作为一个出现在否定语境中的 </span><span class="p">:</span><span class="nv">mzn</span><span class="p">:</span><span class="s">`</span><span class="o">not</span><span class="s"> </span><span class="nv">e</span></code> 的子表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e</span></code> 的语境。</p>
+<p>肯定语境下的布尔型表达式不是必须要在模型中满足，但是满足它们会增加包含其的约束被满足的可能性。对于一个肯定语境下的表达式，从包含其的根语境到此表达式有偶数个否定。</p>
+</dd>
+<dt>否定</dt><dd><p>否定语境是任何作为一个出现在根语境或者否定语境中的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">\/</span><span class="s"> </span><span class="nv">e2</span></code> 或 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">e2</span></code> 的子表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span></code> 或 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e2</span></code> ，或者是作为一个出现在肯定语境中的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">not</span><span class="s"> </span><span class="nv">e</span></code> 的子表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e</span></code> 的语境。</p>
+<p>否定语境下的布尔型表达式不是必须要满足，但是让它们成假会增加包含其的约束被满足的可能性。对于一个否定语境下的表达式，从包含其的根语境到此表达式有奇数个否定。</p>
+</dd>
+<dt>混合</dt><dd><p>混合语境是任何作为一个出现在 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">&lt;-&gt;</span><span class="s"> </span><span class="nv">e2</span></code> , <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">e2</span></code>  或者 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">bool2int</span><span class="p">(</span><span class="nv">e</span><span class="p">)</span></code> 中的子表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span></code> 或 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e2</span></code> 的语境。</p>
+<p>混合语境下的表达式实际上既是肯定也是否定的。通过以下可以看出：<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e1</span><span class="s"> </span><span class="o">&lt;-&gt;</span><span class="s"> </span><span class="nv">e2</span></code> 等价于 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="p">(</span><span class="nv">e1</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">e2</span><span class="p">)</span><span class="s"> </span><span class="o">\/</span><span class="s"> </span><span class="p">(</span><span class="o">not</span><span class="s"> </span><span class="nv">e1</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="o">not</span><span class="s"> </span><span class="nv">e2</span><span class="p">)</span></code> 以及 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">bool2int</span><span class="p">(</span><span class="nv">e</span><span class="p">)</span></code> 等价于 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="p">(</span><span class="nv">e</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">x</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="s"> </span><span class="o">\/</span><span class="s"> </span><span class="p">(</span><span class="o">not</span><span class="s"> </span><span class="nv">e</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">x</span><span class="o">=</span><span class="m">0</span><span class="p">)</span></code> 。</p>
+</dd>
+</dl>
+<p>观察以下代码段</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="m">0</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">4</span><span class="s"> </span><span class="o">-&gt;</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nb">bool2int</span><span class="p">(</span><span class="nv">x</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="nv">i</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">5</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>其中 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="m">0</span></code> 在根语境中， <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">4</span><span class="gr">}</span></code> 在否定语境中，
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nb">bool2int</span><span class="p">(</span><span class="nv">x</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="nv">i</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">5</span></code> 在肯定语境中， <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"> </span><span class="o">&gt;</span><span class="s"> </span><span class="nv">i</span></code> 在混合语境中。</p>
+</section>
+<section id="id8">
+<h2><span class="section-number">2.3.7. </span>局部约束<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p id="index-32">Let表达式也可以被用来引入局部约束，通常用来约束局部变量的行为。
+例如，考虑只利用乘法来定义开根号函数：</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nf">mysqrt</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="nv">x</span><span class="p">)</span><span class="s"> </span><span class="o">=</span>
+<span class="s">         </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span>
+<span class="s">               </span><span class="k">constraint</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">;</span>
+<span class="s">               </span><span class="k">constraint</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>局部约束确保了 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span></code> 取正确的值；而此值则会被函数返回。</p>
+<p>局部约束可以在let表达式中使用，尽管最普遍的应用是在定义函数时。</p>
+<div class="admonition-let admonition" id="defblock-2">
+<p class="admonition-title">Let表达式</p>
+<p id="index-33"><span class="target" id="index-34"></span>局部变量 可以在任何以下格式的emph{let表达式}中引入：</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span><span class="o">&lt;</span><span class="s">声明</span><span class="o">&gt;</span><span class="p">;</span><span class="s"> ... </span><span class="o">&lt;</span><span class="s">声明</span><span class="o">&gt;</span><span class="s"> </span><span class="p">;</span><span class="s"> </span><span class="p">}</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>声明 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;dec&gt;</span></code> 可以是决策变量或者参数（此时必须被初始化）或者约束项的声明。
+任何声明都不能在一个新的声明变量还没有引进时使用它。</p>
+<p>注意局部变量和约束不可以出现在测试中。局部变量不可以出现在 <span class="target" id="index-35"></span>否定 或者 <span class="target" id="index-36"></span>混合 语境下的谓词和函数中，除非这个变量是用表达式定义的。</p>
+</div>
+</section>
+<section id="id9">
+<h2><span class="section-number">2.3.8. </span>定义域反射函数<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<p id="index-37">其他重要的反射函数有允许我们对变量定义域进行访问的函数。表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">lb</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span></code> 返回一个小于等于 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> 在一个问题的解中可能取的值的数值。
+通常它会是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> 声明的下 <span class="target" id="index-38"></span>限 。如果 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> 被声明为一个非有限类型，例如，
+只是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span></code> ，则它是错误的。
+类似地，表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">dom</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span></code> 返回一个$x$在问题的任何解中的可能值的（非严格）超集。
+再次，它通常是声明的值，如果它不是被声明为有限则会出现错误。</p>
+<div class="literal-block-wrapper docutils container" id="ex-reflect">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.11 </span><span class="caption-text">使用反射谓词 (<a class="reference download internal" download="" href="downloads/6cba63e8ae463e9d85734029c0153325/reflection.mzn"><tt class="xref download docutils literal">reflection.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-reflection.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-reflect" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="o">-</span><span class="m">10</span><span class="o">..</span><span class="m">10</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">4</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">lb</span><span class="p">(</span><span class="nv">x</span><span class="p">);</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">D</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nb">dom</span><span class="p">(</span><span class="nv">x</span><span class="p">);</span>
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+<span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;y = &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">y</span><span class="p">),</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">D = &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">D</span><span class="p">),</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<p>例如， <a class="reference internal" href="#ex-reflect"><span class="std std-numref">列表 2.3.11</span></a> 中的模型或者输出</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y = -10
+D = -10..10
+----------
+</pre></div>
+</div>
+<p>或</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y = 0
+D = {0, 1, 2, 3, 4}
+----------
+</pre></div>
+</div>
+<p>或任何满足
+<span class="math notranslate nohighlight">\(-10 \leq y \leq 0\)</span> 和
+<span class="math notranslate nohighlight">\(\{0, \ldots, 4\} \subseteq D \subseteq \{-10, \ldots, 10\}\)</span> 的答案。</p>
+<p>变量定义域反射表达式应该以在任何安全近似下都正确的的方式使用。但是注意这个是没有被检查的！例如加入额外的代码</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="o">-</span><span class="m">10</span><span class="o">..</span><span class="m">10</span><span class="p">:</span><span class="s"> </span><span class="nv">z</span><span class="p">;</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nv">z</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">y</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>不是一个定义域信息的正确应用。因为使用更紧密（正确的）近似会比使用更弱的初始近似产生更多的解。</p>
+<div class="admonition- admonition" id="defblock-3">
+<p class="admonition-title">定义域反射</p>
+<p id="index-39">我们有查询包含变量的表达式的可能值的反射函数：</p>
+<ul class="simple">
+<li><p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">dom</span><span class="p">(</span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span><span class="p">)</span></code>
+返回 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span></code> 所有可能值的安全近似。</p></li>
+<li><p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">lb</span><span class="p">(</span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span><span class="p">)</span></code>
+返回 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span></code> 下限值的安全近似。</p></li>
+<li><p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">ub</span><span class="p">(</span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span><span class="p">)</span></code>
+返回 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span></code> 上限值的安全近似。</p></li>
+</ul>
+<p><code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">lb</span></code> 和 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">ub</span></code> 的表达式必须是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span></code> ， <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">bool</span></code> ，
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span></code> 或者 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span></code> 类型。
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">dom</span></code> 中表达式的类型不能是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span></code> 。
+如果 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span></code> 中的一个变量有一个 <span class="target" id="index-40"></span>非有限声明类型 （例如， <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span></code> 或 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span></code> 类型），则会出现一个错误。</p>
+<p>我们也有直接作用于表达式数组的版本（有类似的限制）：</p>
+<ul class="simple">
+<li><p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">dom_array</span><span class="p">(</span><span class="o">&lt;</span><span class="s">数组表达式</span><span class="o">&gt;</span><span class="p">)</span></code>:
+返回数组中出现的表达式的所有可能值的并集的一个安全近似。</p></li>
+<li><p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">lb_array</span><span class="p">(</span><span class="o">&lt;</span><span class="s">数组表达式</span><span class="o">&gt;</span><span class="p">)</span></code>
+返回数组中出现的所有表达式的下限的安全近似。</p></li>
+<li><p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="nb">ub_array</span><span class="p">(</span><span class="o">&lt;</span><span class="s">数组表达式</span><span class="o">&gt;</span><span class="p">)</span></code>
+返回数组中出现的所有表达式的下限的安全近似。</p></li>
+</ul>
+</div>
+<p>谓词，局部变量和定义域反射的结合使得复杂全局约束通过分解定义变为可能。
+利用 <a class="reference internal" href="#ex-cumul"><span class="std std-numref">列表 2.3.12</span></a> 中的代码，我们可以定义 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="bp">cumulative</span></code> 约束的根据时间的分解。</p>
+<div class="literal-block-wrapper docutils container" id="ex-cumul">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.12 </span><span class="caption-text">利用分解来定义一个 <tt class="docutils literal">谓词</tt> (<a class="reference download internal" download="" href="downloads/4ec41156650ababaf433946b8e21be1a/cumulative.mzn"><tt class="xref download docutils literal">cumulative.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-cumulative.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-cumul" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="c">%--------------------------------------------------------------------%</span>
+<span class="c">% 需要给出一个任务集合，其中起始时间为&#39;s&#39;, </span>
+<span class="c">% 持续时间&#39;d&#39;以及资源需求量&#39;r&#39;，</span>
+<span class="c">% 任何时候需求量都不能超过</span>
+<span class="c">% 一个全局资源界限&#39;b&#39;。</span>
+<span class="c">% 假设：</span>
+<span class="c">% - forall i, d[i] &gt;= 0 and r[i] &gt;= 0</span>
+<span class="c">%--------------------------------------------------------------------%</span>
+<span class="k">predicate</span><span class="s"> </span><span class="bp">cumulative</span><span class="p">(</span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">s</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">d</span><span class="p">,</span>
+<span class="s">                     </span><span class="kt">array</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">r</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">)</span><span class="s"> </span><span class="o">=</span>
+<span class="s">   </span><span class="nb">assert</span><span class="p">(</span><span class="nb">index_set</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">d</span><span class="p">)</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span>
+<span class="s">          </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="o">==</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">r</span><span class="p">),</span>
+<span class="s">     &quot;cumulative: the array arguments must have identical index sets&quot;</span><span class="p">,</span>
+<span class="s">   </span><span class="nb">assert</span><span class="p">(</span><span class="nb">lb_array</span><span class="p">(</span><span class="nv">d</span><span class="p">)</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nb">lb_array</span><span class="p">(</span><span class="nv">r</span><span class="p">)</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span>
+<span class="s">     &quot;cumulative: durations and resource usages must be non-negative&quot;</span><span class="p">,</span>
+<span class="s">           </span><span class="k">let</span><span class="s"> </span><span class="p">{</span><span class="s"> </span>
+<span class="s">               </span><span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">times</span><span class="s"> </span><span class="o">=</span>
+<span class="s">                 </span><span class="nb">lb_array</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span><span class="s"> ..</span>
+<span class="s">                 </span><span class="nb">max</span><span class="p">([</span><span class="s"> </span><span class="nb">ub</span><span class="p">(</span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">])</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nb">ub</span><span class="p">(</span><span class="nv">d</span><span class="p">[</span><span class="nv">i</span><span class="p">])</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="p">])</span><span class="s"> </span>
+<span class="s">               </span><span class="p">}</span><span class="s"> </span>
+<span class="s">           </span><span class="k">in</span>
+<span class="s">              </span><span class="k">forall</span><span class="p">(</span><span class="s"> </span><span class="nv">t</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nv">times</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">                 </span><span class="nv">b</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="nb">sum</span><span class="p">(</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="nb">index_set</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">                    </span><span class="nb">bool2int</span><span class="p">(</span><span class="s"> </span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">t</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">t</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">s</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">d</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="p">)</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nv">r</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span>
+<span class="s">                 </span><span class="p">)</span>
+<span class="s">              </span><span class="p">)</span>
+<span class="s">       </span><span class="p">)</span>
+<span class="s">   </span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>这个分解利用 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">lb</span></code> 和 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">ub</span></code> 来决定任务可以执行的时间范围集合。
+接下来，它对 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">times</span></code> 中的每个时间 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">times</span></code> 都断言在此时间 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">t</span></code>  激活的所有任务所需要的资源量总和小于界限 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">b</span></code> 。</p>
+</section>
+<section id="id10">
+<h2><span class="section-number">2.3.9. </span>作用域<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<p id="index-41">MiniZinc中声明的作用域值得我们简单地介绍下。
+MiniZinc只有一个作用域，所以出现在声明中的所有变量都可以在模型中的每个表达式中可见。
+用以下几个方式，MiniZinc引进局部作用域变量：</p>
+<ul class="simple">
+<li><p><span class="target" id="index-42"></span>推导式表达式 中的 <span class="target" id="index-43"></span>迭代器</p></li>
+<li><p>使用 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">let</span></code> 表达式</p></li>
+<li><p>谓词和函数中的 <span class="target" id="index-44"></span>参数</p></li>
+</ul>
+<p>任何局部作用域变量都会覆盖同名称的外部作用域变量。</p>
+<div class="literal-block-wrapper docutils container" id="ex-scope">
+<div class="code-block-caption"><span class="caption-number">列表 2.3.13 </span><span class="caption-text">阐述变量作用域的模型 (<a class="reference download internal" download="" href="downloads/0f1fb5f7adc7b30cb3be9500e64750c8/scope.mzn"><tt class="xref download docutils literal">scope.mzn</tt></a>). <span class="mzn-playground-button"><a href="playground-scope.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-scope" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">4</span><span class="p">;</span>
+<span class="k">predicate</span><span class="s"> </span><span class="nf">smallx</span><span class="p">(</span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="nv">y</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">-</span><span class="nv">x</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">/\</span><span class="s"> </span><span class="nv">y</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="k">predicate</span><span class="s"> </span><span class="nf">p</span><span class="p">(</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">u</span><span class="p">,</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="kt">bool</span><span class="p">:</span><span class="s"> </span><span class="nv">y</span><span class="p">)</span><span class="s"> </span><span class="o">=</span><span class="s"> </span>
+<span class="s">      </span><span class="k">exists</span><span class="p">(</span><span class="nv">x</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">u</span><span class="p">)(</span><span class="nv">y</span><span class="s"> </span><span class="o">\/</span><span class="s"> </span><span class="nf">smallx</span><span class="p">(</span><span class="nv">x</span><span class="p">));</span>
+<span class="k">constraint</span><span class="s"> </span><span class="nf">p</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="l">false</span><span class="p">);</span>
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>例如，在 <a class="reference internal" href="#ex-scope"><span class="std std-numref">列表 2.3.13</span></a> 中给出的模型中， <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">-</span><span class="nv">x</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">y</span></code> 中的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> 是全局 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> ， <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nf">smallx</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span></code> 中的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span></code> 是迭代器 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">x</span><span class="s"> </span><span class="k">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">u</span></code> ，而析取中的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">y</span></code> 是谓词的第二个参数。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="modelling2.html" class="btn btn-neutral float-left" title="2.2. 更多复杂模型" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="optiontypes.html" class="btn btn-neutral float-right" title="2.4. 选项类型" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack。</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

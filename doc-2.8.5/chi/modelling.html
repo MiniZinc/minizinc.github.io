@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.1. MiniZinc基本模型 &mdash; The MiniZinc Handbook 2.8.5</title>
+      <link rel="stylesheet" type="text/css" href="static/pygments.css?v=77553476" />
+      <link rel="stylesheet" type="text/css" href="static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="static/style.css?v=572cde19" />
+
+  
+    <link rel="canonical" href="http://www.minizinc.org/doc-latest/en/modelling.html"/>
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="static/jquery.js?v=5d32c60e"></script>
+        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="static/documentation_options.js?v=3d63d4ae"></script>
+        <script src="static/doctools.js?v=888ff710"></script>
+        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="static/translations.js?v=beaddf03"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="static/js/doc-links.js?v=34cd1aa9"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="2.2. 更多复杂模型" href="modelling2.html" />
+    <link rel="prev" title="2. Minizinc 指南" href="part_2_tutorial.html" />
+    <link rel="apple-touch-icon" sizes="57x57" href="static/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="https://www.minizinc.org">
+    
+      <img src="static/MiniZn_logo_2.svg" class="logo" alt="Logo"/>
+  </a>
+      <div class="version">
+        2.8.5
+      </div>
+
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+  
+  
+    
+  
+  <a href="index.html" class="reference internal icon icon-home"> The MiniZinc Handbook </a>
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_1_overview.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_2_tutorial.html">2. Minizinc 指南</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. MiniZinc基本模型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.1.1. 第一个实例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.1.2. 算术优化实例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#index-29">2.1.3. 数据文件和谓词</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.1.4. 实数求解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.1.5. 模型的基本结构</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modelling2.html">2.2. 更多复杂模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates.html">2.3. 谓词和函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optiontypes.html">2.4. 选项类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuple_and_record_types.html">2.5. Tuple and record types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mzn_search.html">2.6. 搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efficient.html">2.7. MiniZinc中的有效建模实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sat.html">2.8. 在MiniZinc中对布尔可满足性问题建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flattening.html">2.9. FlatZinc和展平</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_3_user_manual.html">3. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part_4_reference.html">4. Reference Manual</a></li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The MiniZinc Handbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="part_2_tutorial.html"><span class="section-number">2. </span>Minizinc 指南</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.1. </span>MiniZinc基本模型</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="minizinc">
+<span id="sec-modelling"></span><h1><span class="section-number">2.1. </span>MiniZinc基本模型<a class="headerlink" href="#minizinc" title="Link to this heading"></a></h1>
+<p>在此节中，我们利用两个简单的例子来介绍一个MiniZinc模型的基本结构。</p>
+<section id="id1">
+<h2><span class="section-number">2.1.1. </span>第一个实例<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<figure class="align-default" id="id6">
+<span id="fig-aust"></span><img alt="images/aust.svg" src="images/aust.svg" /><figcaption>
+<p><span class="caption-number">图 2.1.1 </span><span class="caption-text">澳大利亚各州</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>作为我们的第一个例子，假设我们要去给 <a class="reference internal" href="#fig-aust"><span class="std std-numref">图 2.1.1</span></a> 中的澳大利亚地图涂色。
+它包含了七个不同的州和地区，而每一块都要被涂一个颜色来保证相邻的区域有不同的颜色。</p>
+<div class="literal-block-wrapper docutils container" id="ex-aust">
+<div class="code-block-caption"><span class="caption-number">列表 2.1.1 </span><span class="caption-text">一个用来给澳大利亚的州和地区涂色的MiniZinc模型 <a class="reference download internal" download="" href="downloads/a53a8f999cafff54c1b0b37d93f42011/aust.mzn"><tt class="xref download docutils literal">aust.mzn</tt></a>  <span class="mzn-playground-button"><a href="playground-aust.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-aust" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c">% 用nc个颜色来涂澳大利亚</span>
+<span class="linenos"> 2</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">nc</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">wa</span><span class="p">;</span><span class="s">   </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">nt</span><span class="p">;</span><span class="s">  </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">sa</span><span class="p">;</span><span class="s">   </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">q</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">nsw</span><span class="p">;</span><span class="s">  </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">v</span><span class="p">;</span><span class="s">   </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span><span class="p">:</span><span class="s"> </span><span class="nv">t</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">constraint</span><span class="s"> </span><span class="nv">wa</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">nt</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="k">constraint</span><span class="s"> </span><span class="nv">wa</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">sa</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="k">constraint</span><span class="s"> </span><span class="nv">nt</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">sa</span><span class="p">;</span>
+<span class="linenos">10</span><span class="k">constraint</span><span class="s"> </span><span class="nv">nt</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">q</span><span class="p">;</span>
+<span class="linenos">11</span><span class="k">constraint</span><span class="s"> </span><span class="nv">sa</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">q</span><span class="p">;</span>
+<span class="linenos">12</span><span class="k">constraint</span><span class="s"> </span><span class="nv">sa</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">nsw</span><span class="p">;</span>
+<span class="linenos">13</span><span class="k">constraint</span><span class="s"> </span><span class="nv">sa</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">v</span><span class="p">;</span>
+<span class="linenos">14</span><span class="k">constraint</span><span class="s"> </span><span class="nv">q</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">nsw</span><span class="p">;</span>
+<span class="linenos">15</span><span class="k">constraint</span><span class="s"> </span><span class="nv">nsw</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">v</span><span class="p">;</span>
+<span class="linenos">16</span><span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;wa=</span><span class="p">\(</span><span class="nv">wa</span><span class="p">)</span><span class="se">\t</span><span class="s"> nt=</span><span class="p">\(</span><span class="nv">nt</span><span class="p">)</span><span class="se">\t</span><span class="s"> sa=</span><span class="p">\(</span><span class="nv">sa</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="linenos">19</span><span class="s">        &quot;q=</span><span class="p">\(</span><span class="nv">q</span><span class="p">)</span><span class="se">\t</span><span class="s"> nsw=</span><span class="p">\(</span><span class="nv">nsw</span><span class="p">)</span><span class="se">\t</span><span class="s"> v=</span><span class="p">\(</span><span class="nv">v</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="linenos">20</span><span class="s">         &quot;t=&quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">t</span><span class="p">),</span><span class="s">  &quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<p>我们可以很容易的用MiniZinc给此问题建模。此模型在 <a class="reference internal" href="#ex-aust"><span class="std std-numref">列表 2.1.1</span></a> 中给出。</p>
+<p>模型中的第一行是注释。注释开始于 <tt class="docutils literal">%</tt>  来表明此行剩下的部分是注释。
+MiniZinc同时也含有C语言风格的由 <tt class="docutils literal">/*</tt> 开始和 <tt class="docutils literal">*/</tt> 结束的块注释。</p>
+<p>模型中的下一部分声明了模型中的变量。
+此行</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">nc</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>定义了一个问题的 <span class="target" id="index-0"></span>参数 来代表可用的颜色个数。
+在很多编程语言中，参数和变量是类似的。它们必须被声明并且指定一个类型 <span class="target" id="index-1"></span>type。
+在此例中，类型是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span></code>。
+通过 <span class="target" id="index-2"></span>赋值，它们被设了值。
+MiniZinc允许变量声明时被赋值（就像上面那一行）或者单独给出一个赋值语句。
+因此下面的表示跟上面的只一行表示是相等的</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">nc</span><span class="p">;</span>
+<span class="nv">nc</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>和很多编程语言中的变量不一样的是，这里的参数只可以被赋 <em>唯一</em> 的值。
+如果一个参数出现在了多于一个的赋值中，就会出现错误。</p>
+<p>基本的 <span class="target" id="index-3"></span>参数类型 包括 <span class="target" id="index-4"></span>整型 (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span></code>)，
+浮点型(<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span></code>)， <span class="target" id="index-5"></span>布尔型 (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">bool</span></code>) 以及 <span class="target" id="index-6"></span>字符串型 (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">string</span></code>)。
+同时也支持数组和集合。</p>
+<p id="index-7">MiniZinc模型同时也可能包含另一种类型的变量 <em>决策变量</em> 。 <span class="target" id="index-8"></span>决策变量 是数学的或者逻辑的变量。
+和一般的编程语言中的参数和变量不同，建模者不需要给决策变量一个值。
+而是在开始时，一个决策变量的值是不知道的。只有当MiniZinc模型被执行的时候，
+求解系统才来决定决策变量是否可以被赋值从而满足模型中的约束。若满足，则被赋值。</p>
+<p>在我们的模型例子中，我们给每一个区域一个 <em>决策变量</em> <tt class="docutils literal">wa</tt>, <tt class="docutils literal">nt</tt>, <tt class="docutils literal">sa</tt>, <tt class="docutils literal">q</tt>, <tt class="docutils literal">nsw</tt>, <tt class="docutils literal">v</tt> 和 <tt class="docutils literal">t</tt>。
+它们代表了会被用来填充区域的（未知）颜色。</p>
+<p id="index-9">对于每一个决策变量，我们需要给出变量可能的取值集合。这个被称为变量的 <em>定义域</em> 。
+定义域部分可以在 <span class="target" id="index-10"></span>变量声明 的时候同时给出，
+这时决策变量的 <span class="target" id="index-11"></span>类型 就会从定义域中的数值的类型推断出。</p>
+<p>MiniZinc中的决策变量的类型可以为布尔型，整型，浮点型或者集合。
+同时也可以是元素为决策变量的数组。
+在我们的MiniZinc模型例子中，我们使用整型去给不用的颜色建模。通过使用 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span></code> 声明，
+我们的每一个决策变量
+被声明为定义域为一个整数类型的范围表示 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="m">1</span><span class="o">..</span><span class="nv">nc</span></code> ，
+来表明集合 <span class="math notranslate nohighlight">\(\{ 1, 2, \dots, nc \}\)</span> 。
+所有数值的类型为整型，所以模型中的所有的变量是整型决策变量。</p>
+<div class="admonition- admonition" id="defblock-0">
+<p class="admonition-title">标识符</p>
+<p>用来命名参数和变量的标识符是一列由大小写字母，数字以及
+下划线 <tt class="docutils literal">_</tt> 字符组成的字符串。它们必须开始于一个字母字符。因此 <tt class="docutils literal">myName_2</tt> 是一个有效的标识符。
+MiniZinc（和Zinc）的 <em>关键字</em> 不允许被用为标识符名字。它们在 <a class="reference internal" href="spec.html#spec-identifiers"><span class="std std-ref">Identifiers</span></a> 中被列出。
+所有的MiniZinc <em>操作符</em> 都不能被用做标识符名字。它们在 <a class="reference internal" href="spec.html#spec-operators"><span class="std std-ref">Operators</span></a> 中被列出。</p>
+</div>
+<p>MiniZinc仔细地区别了以下两种模型变量：参数和决策变量。利用决策变量创建的表达式类型比利用参数可以创建的表达式类型更局限。
+但是，在任何可以用决策变量的地方，同类型的参数变量也可以被应用。</p>
+<div class="admonition- admonition" id="defblock-1">
+<p class="admonition-title">整型变量声明</p>
+<p>一个 <span class="target" id="index-12"></span>整型参数变量 可以被声明为以下两种方式：</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="o">&lt;</span><span class="s">变量名</span><span class="o">&gt;</span>
+<span class="cs">&lt;l&gt;</span><span class="s"> .. </span><span class="cs">&lt;u&gt;</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="o">&lt;</span><span class="s">变量名</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;l&gt;</span></code> 和 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;u&gt;</span></code> 是固定的整型表达式。</p>
+<p>一个整型决策变量被声明为以下两种方式：</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="s"> </span><span class="kt">int</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="o">&lt;</span><span class="s">变量名</span><span class="o">&gt;</span>
+<span class="kt">var</span><span class="s"> </span><span class="cs">&lt;l&gt;</span><span class="s">..</span><span class="cs">&lt;u&gt;</span><span class="s"> </span><span class="p">:</span><span class="s"> </span><span class="o">&lt;</span><span class="s">变量名</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;l&gt;</span></code> 和 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="cs">&lt;u&gt;</span></code> 是固定的整型表达式。</p>
+</div>
+<p>参数和决策变量形式上的区别在于对变量的 <em>实例化</em>。
+变量的实例化和类型的结合被叫为 <span class="target" id="index-13"></span>类型-实例化 。
+既然你已经开始使用MiniZinc，毫无疑问的你会看到很多 <em>类型-实例化</em> 的错误例子。</p>
+<p id="index-14">模型的下一部分是 <em>约束</em> 。
+它们详细说明了决策变量想要组成一个模型的有效解必须要满足的布尔型表达式。
+在这个例子中我们有一些决策变量之间的不等式。它们规定如果两个区域是相邻的，则它们必须有不同的颜色。</p>
+<div class="admonition- admonition" id="defblock-2">
+<p class="admonition-title">关系操作符</p>
+<p>MiniZinc提供了以下关系操作符 <span class="target" id="index-15"></span>关系操作符 ：</p>
+<p id="index-16">相等 (<tt class="docutils literal">=</tt> or <tt class="docutils literal">==</tt>), 不等
+(<tt class="docutils literal">!=</tt>),
+小于 (<tt class="docutils literal"><</tt>),
+大于 (<tt class="docutils literal">></tt>),
+小于等于 (<tt class="docutils literal"><=</tt>), and
+和大于等于 (<tt class="docutils literal">>=</tt>).</p>
+</div>
+<p>模型中的下一行：</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>表明了它是什么类型的问题。
+在这个例子中，它是一个 <span class="target" id="index-17"></span>满足  问题：
+我们希望给决策变量找到一个值使得约束被满足，但具体是哪一个值却没有所谓。</p>
+<p id="index-18">模型的最后一个部分是 <em>输出</em> 语句。它告诉MiniZinc当模型被运行并且找到一个解 <span class="target" id="index-19"></span>解 的时候，
+要输出什么。</p>
+<div class="admonition- admonition" id="defblock-3">
+<p class="admonition-title">输出和字符串</p>
+<p id="index-20">一个输出语句跟着一 <em>串</em> 字符。
+它们通常或者是写在双引号之间的字符串常量 <span class="target" id="index-21"></span>字符串常量 并且
+对特殊字符用类似C语言的标记法，或者是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">show</span><span class="p">(</span><span class="nv">e</span><span class="p">)</span></code> 格式的表达式，
+其中 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">e</span></code> 是MiniZinc表达式。例子中的 <tt class="docutils literal">\n</tt> 代表换行符， <tt class="docutils literal">\t</tt> 代表制表符。</p>
+<p>数字的 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">show</span></code> 有各种不同方式的表示：
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">show_int</span><span class="p">(</span><span class="nv">n</span><span class="p">,</span><span class="nv">X</span><span class="p">)</span></code>
+在至少$|n|$个字符里输出整型 <tt class="docutils literal">X</tt> 的值，若 <span class="math notranslate nohighlight">\(n &gt; 0\)</span> 则右对齐，否则则左对齐；
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">show_float</span><span class="p">(</span><span class="nv">n</span><span class="p">,</span><span class="nv">d</span><span class="p">,</span><span class="nv">X</span><span class="p">)</span></code> 在至少 <span class="math notranslate nohighlight">\(|n|\)</span> 个字符里输出
+浮点型 <tt class="docutils literal">X</tt> 的值，若 <span class="math notranslate nohighlight">\(n &gt; 0\)</span> 则右对齐，否则则左对齐，并且小数点后有 <span class="math notranslate nohighlight">\(d\)</span> 个字符。</p>
+<p><span class="target" id="index-22"></span>字符串常量 必须在同一行中。长的字符串常量可以利用字符串连接符 <tt class="docutils literal">++</tt>
+来分成几行。例如，字符串常量</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Invalid datafile: Amount of flour is non-negative&quot;</span>
+</pre></div>
+</div>
+<p>和字符串常量表达式</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span>
+<span class="s">&quot;Amount of flour is non-negative&quot;</span>
+</pre></div>
+</div>
+<p>是相等的。</p>
+<p>MiniZinc支持内插字符串 <span class="target" id="index-23"></span>内插字符串 。
+表达式可以直接插入字符串常量中。 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">&quot;</span><span class="p">\(</span><span class="nv">e</span><span class="p">)</span><span class="s">&quot;</span></code> 形式的子字符串
+会被替代为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">show</span><span class="p">(</span><span class="nv">e</span><span class="p">)</span></code> 。例如，<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">&quot;t=</span><span class="p">\(</span><span class="nv">t</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span></code> 产生
+和 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="s">&quot;t=&quot; </span><span class="o">++</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span><span class="s"> </span><span class="o">++</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot;</span></code> 一样的字符串。</p>
+<p>一个模型可以包含多个输出语句。在这种情况下,所有输出会根据它们在模型中出现的顺序连接。</p>
+</div>
+<p>我们可以通过点击MiniZinc IDE中的 <em>Run</em> 按钮,或者输入</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>minizinc<span class="w"> </span>--solver<span class="w"> </span>Gecode<span class="w"> </span>aust.mzn
+</pre></div>
+</div>
+<p>来评估我们的模型。
+其中 <a class="reference download internal" download="" href="downloads/a53a8f999cafff54c1b0b37d93f42011/aust.mzn"><tt class="xref download docutils literal">aust.mzn</tt></a> 是包含我们的MiniZinc模型的文件名字。
+我们必须使用文件扩展名 <tt class="docutils literal">.mzn</tt> 来表明一个MiniZinc模型。
+带有 <tt class="docutils literal">--solver Gecode</tt> 选项的命令 <tt class="docutils literal">minizinc</tt> 使用Gecode有限域求解器去评估我们的模型。如果你使用的是MiniZinc二进制发布,这个求解器实际上是预设的,所以你也可以运行 <tt class="docutils literal">minizinc aust.mzn</tt> 。</p>
+<p>当我们运行上面的命令后，我们得到如下的结果：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wa=2   nt=3  sa=1
+q=2  nsw=3   v=2
+t=1
+----------
+</pre></div>
+</div>
+<p id="index-24">10个破折号 <tt class="docutils literal">----------</tt> 这行是自动被MiniZinc输出的，用来表明一个解已经被找到。</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.1.2. </span>算术优化实例<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>我们的第二个例子来自于要为了本地的校园游乐会烤一些蛋糕的需求。
+我们知道如何制作两种蛋糕。 footnote{警告: 请不要在家里使用这些配方制作}
+一个香蕉蛋糕的制作需要250克自发酵的面粉，2个捣碎的香蕉，75克糖和100克黄油。
+一个巧克力蛋糕的制作需要200克自发酵的面粉，75克可可粉，150克糖和150克黄油。
+一个巧克力蛋糕可以卖$4.50，一个香蕉蛋糕可以卖$4.00。我们一共有4千克的自发酵面粉，
+6个香蕉，2千克的糖，500克的黄油和500克的可可粉。
+问题是对每一种类型的蛋糕，我们需要烤多少给游乐会来得到最大的利润。
+一个可能的MiniZinc模型在 <a class="reference internal" href="#ex-cakes"><span class="std std-numref">列表 2.1.2</span></a> 中给出。</p>
+<div class="literal-block-wrapper docutils container" id="ex-cakes">
+<div class="code-block-caption"><span class="caption-number">列表 2.1.2 </span><span class="caption-text">决定为了校园游乐会要烤多少香蕉和巧克力蛋糕的模型。  (<a class="reference download internal" download="" href="downloads/1011d5e79df40aa13b0423339f3ca014/cakes.mzn"><tt class="xref download docutils literal">cakes.mzn</tt></a>) <span class="mzn-playground-button"><a href="playground-cakes.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-cakes" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c">% 为校园游乐会做蛋糕</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">100</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">;</span><span class="s"> </span><span class="c">% 香蕉蛋糕的个数</span>
+<span class="linenos"> 4</span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">100</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">;</span><span class="s"> </span><span class="c">% 巧克力蛋糕的个数</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c">% 面粉</span>
+<span class="linenos"> 7</span><span class="k">constraint</span><span class="s"> </span><span class="m">250</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">200</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">4000</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="c">% 香蕉</span>
+<span class="linenos"> 9</span><span class="k">constraint</span><span class="s"> </span><span class="m">2</span><span class="o">*</span><span class="nv">b</span><span class="s">  </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">6</span><span class="p">;</span>
+<span class="linenos">10</span><span class="c">% 糖</span>
+<span class="linenos">11</span><span class="k">constraint</span><span class="s"> </span><span class="m">75</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">150</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">2000</span><span class="p">;</span>
+<span class="linenos">12</span><span class="c">% 黄油</span>
+<span class="linenos">13</span><span class="k">constraint</span><span class="s"> </span><span class="m">100</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">150</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">500</span><span class="p">;</span>
+<span class="linenos">14</span><span class="c">% 可可粉</span>
+<span class="linenos">15</span><span class="k">constraint</span><span class="s"> </span><span class="m">75</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">500</span><span class="p">;</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="c">% 最大化我们的利润</span>
+<span class="linenos">18</span><span class="k">solve</span><span class="s"> </span><span class="k">maximize</span><span class="s"> </span><span class="m">400</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">450</span><span class="o">*</span><span class="nv">c</span><span class="p">;</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;no. of banana cakes = </span><span class="p">\(</span><span class="nv">b</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="linenos">21</span><span class="s">         &quot;no. of chocolate cakes = </span><span class="p">\(</span><span class="nv">c</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<p id="index-25">第一个新特征是 <em>arithmetic expressions</em> 的使用。</p>
+<div class="admonition- admonition" id="defblock-4">
+<p class="admonition-title">整数算术操作符</p>
+<p id="index-26">MiniZinc提供了标准的整数算术操作符。
+加 (<tt class="docutils literal">+</tt>),
+减 (<tt class="docutils literal">-</tt>),
+乘 (<tt class="docutils literal">*</tt>),
+整数除 (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">div</span></code>)
+和
+整数模 (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">mod</span></code>).
+同时也提供了一元操作符 <tt class="docutils literal">+</tt> 和 <tt class="docutils literal">-</tt> 。</p>
+<p>整数模被定义为输出和被除数 <span class="math notranslate nohighlight">\(a\)</span> 一样正负的 <span class="math notranslate nohighlight">\(a\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">mod</span></code> <span class="math notranslate nohighlight">\(b\)</span> 值。整数除被定义为使得
+<span class="math notranslate nohighlight">\(a = b ` ``*`\)</span> <span class="math notranslate nohighlight">\((a\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">div</span></code> <span class="math notranslate nohighlight">\(b) + (a\)</span> <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">mod</span></code> <span class="math notranslate nohighlight">\(b)\)</span> 值。</p>
+<p>MiniZinc 提供了标准的整数函数用来取绝对值 (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">abs</span></code>) 和幂函数 (<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">pow</span></code>).
+例如 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="m">4</span><span class="p">)</span></code> 和 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">pow</span><span class="p">(</span><span class="m">2,5</span><span class="p">)</span></code> 分别求得数值
+<tt class="docutils literal">4</tt> 和 <tt class="docutils literal">32</tt> 。</p>
+<p>算术常量的语法是相当标准的。整数常量可以是十进制，十六进制或者八进制。例如 <tt class="docutils literal">0</tt>, <tt class="docutils literal">5</tt>,
+<tt class="docutils literal">123</tt>, <tt class="docutils literal">0x1b7</tt>, <tt class="docutils literal">0o777</tt> 。</p>
+</div>
+<p id="index-27">例子中的第二个新特征是优化。这行</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">solve</span><span class="s"> </span><span class="k">maximize</span><span class="s"> </span><span class="m">400</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">450</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="nv">c</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>指出我们想找一个可以使solve语句中的表达式（我们叫做 <em>目标</em> ）最大化的解。
+这个目标可以为任何类型的算术表达式。我们可以把关键字 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">maximize</span></code>
+换为 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="k">minimize</span></code> 来表明一个最小化问题。</p>
+<p>当我们运行上面这个模型时，我们得到以下的结果：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>no. of banana cakes = 2
+no. of chocolate cakes = 2
+----------
+==========
+</pre></div>
+</div>
+<p id="index-28">一旦系统证明了一个解是最优解，这一行 <tt class="docutils literal">==========</tt> 在最优化问题中会自动被输出。</p>
+</section>
+<section id="index-29">
+<span id="id3"></span><h2><span class="section-number">2.1.3. </span>数据文件和谓词<a class="headerlink" href="#index-29" title="Link to this heading"></a></h2>
+<p>此模型的一个缺点是如果下一次我们希望解决一个相似的问题，即我们需要为学校烤蛋糕（这是经常发生的），
+我们需要改变模型中的约束来表明食品间拥有的原料数量。如果我们想重新利用此模型，我们最好使得每个原料的数量作为
+模型的参数，然后在模型的最上层设置它们的值。</p>
+<p>更好的办法是在一个单独的 <em>数据文件</em> 中设置这些参数的值。
+MiniZinc（就像很多其他的建模语言一样）允许使用数据文件来设置在原始模型中声明的
+参数的值。
+通过运行不同的数据文件，使得同样的模型可以很容易地和不同的数据一起使用。</p>
+<p>数据文件的文件扩展名必须是 <tt class="docutils literal">.dzn</tt> ，来表明它是一个MiniZinc数据文件。
+一个模型可以被任何多个数据文件运行（但是每个变量/参数在每个文件中只能被赋一个值）</p>
+<div class="literal-block-wrapper docutils container" id="ex-cakes2">
+<div class="code-block-caption"><span class="caption-number">列表 2.1.3 </span><span class="caption-text">独立于数据的用来决定为了校园游乐会要烤多少香蕉和巧克力蛋糕的模型。(<a class="reference download internal" download="" href="downloads/0d19af78a30027b06a0c42104aae4ee4/cakes2.mzn"><tt class="xref download docutils literal">cakes2.mzn</tt></a>) <span class="mzn-playground-button"><a href="playground-cakes2.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-cakes2" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c">% 为校园游乐会做蛋糕（和数据文件一起）</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">flour</span><span class="p">;</span><span class="s">  </span><span class="c">%拥有的面粉克数</span>
+<span class="linenos"> 4</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">banana</span><span class="p">;</span><span class="s"> </span><span class="c">%拥有的香蕉个数</span>
+<span class="linenos"> 5</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">sugar</span><span class="p">;</span><span class="s">  </span><span class="c">%拥有的糖克数</span>
+<span class="linenos"> 6</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">butter</span><span class="p">;</span><span class="s"> </span><span class="c">%拥有的黄油克数</span>
+<span class="linenos"> 7</span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">cocoa</span><span class="p">;</span><span class="s">  </span><span class="c">%拥有的可可粉克数</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">flour</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span>
+<span class="linenos">10</span><span class="s">                  &quot;Amount of flour should be non-negative&quot;</span><span class="p">);</span>
+<span class="linenos">11</span><span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">banana</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span>
+<span class="linenos">12</span><span class="s">                  &quot;Amount of banana should be non-negative&quot;</span><span class="p">);</span>
+<span class="linenos">13</span><span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">sugar</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span>
+<span class="linenos">14</span><span class="s">                  &quot;Amount of sugar should be non-negative&quot;</span><span class="p">);</span>
+<span class="linenos">15</span><span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">butter</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span>
+<span class="linenos">16</span><span class="s">                  &quot;Amount of butter should be non-negative&quot;</span><span class="p">);</span>
+<span class="linenos">17</span><span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">cocoa</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Invalid datafile: &quot; </span><span class="o">++</span>
+<span class="linenos">18</span><span class="s">                  &quot;Amount of cocoa should be non-negative&quot;</span><span class="p">);</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">100</span><span class="p">:</span><span class="s"> </span><span class="nv">b</span><span class="p">;</span><span class="s"> </span><span class="c">% 香蕉蛋糕的个数</span>
+<span class="linenos">21</span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">100</span><span class="p">:</span><span class="s"> </span><span class="nv">c</span><span class="p">;</span><span class="s"> </span><span class="c">% 巧克力蛋糕的个数</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="c">% 面粉</span>
+<span class="linenos">24</span><span class="k">constraint</span><span class="s"> </span><span class="m">250</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">200</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">flour</span><span class="p">;</span>
+<span class="linenos">25</span><span class="c">% 香蕉</span>
+<span class="linenos">26</span><span class="k">constraint</span><span class="s"> </span><span class="m">2</span><span class="o">*</span><span class="nv">b</span><span class="s">  </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">banana</span><span class="p">;</span>
+<span class="linenos">27</span><span class="c">% 糖</span>
+<span class="linenos">28</span><span class="k">constraint</span><span class="s"> </span><span class="m">75</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">150</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">sugar</span><span class="p">;</span>
+<span class="linenos">29</span><span class="c">% 黄油</span>
+<span class="linenos">30</span><span class="k">constraint</span><span class="s"> </span><span class="m">100</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">150</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">butter</span><span class="p">;</span>
+<span class="linenos">31</span><span class="c">% 可可粉</span>
+<span class="linenos">32</span><span class="k">constraint</span><span class="s"> </span><span class="m">75</span><span class="o">*</span><span class="nv">c</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">cocoa</span><span class="p">;</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="c">% 最大化我们的利润</span>
+<span class="linenos">35</span><span class="k">solve</span><span class="s"> </span><span class="k">maximize</span><span class="s"> </span><span class="m">400</span><span class="o">*</span><span class="nv">b</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="m">450</span><span class="o">*</span><span class="nv">c</span><span class="p">;</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;no. of banana cakes = </span><span class="p">\(</span><span class="nv">b</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="linenos">38</span><span class="s">        &quot;no. of chocolate cakes = </span><span class="p">\(</span><span class="nv">c</span><span class="p">)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<p>我们的新模型在 <a class="reference internal" href="#ex-cakes2"><span class="std std-numref">列表 2.1.3</span></a> 中给出。
+我们可以用下面的命令来运行</p>
+<p>数据文件 <a class="reference download internal" download="" href="downloads/e7dcd044c89950447922fff07b85890f/pantry.dzn"><tt class="xref download docutils literal">pantry.dzn</tt></a> 在 <a class="reference internal" href="#fig-pantry1"><span class="std std-numref">列表 2.1.4</span></a> 中给出。我们得到和 <a class="reference download internal" download="" href="downloads/1011d5e79df40aa13b0423339f3ca014/cakes.mzn"><tt class="xref download docutils literal">cakes.mzn</tt></a> 同样的结果。
+运行下面的命令</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>minizinc<span class="w"> </span>cakes2.mzn<span class="w"> </span>pantry2.dzn
+</pre></div>
+</div>
+<p>利用另外一个 <a class="reference internal" href="#fig-pantry2"><span class="std std-numref">列表 2.1.5</span></a> 中定义的数据集，我们得到如下结果</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>no. of banana cakes = 3
+no. of chocolate cakes = 8
+----------
+==========
+</pre></div>
+</div>
+<p>如果我们从 <a class="reference download internal" download="" href="downloads/1011d5e79df40aa13b0423339f3ca014/cakes.mzn"><tt class="xref download docutils literal">cakes.mzn</tt></a> 中去掉输出语句，MiniZinc会使用默认的输出。
+这种情况下得到的输出是</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>b = 3;
+c = 8;
+----------
+==========
+</pre></div>
+</div>
+<div class="admonition- admonition" id="defblock-5">
+<p class="admonition-title">默认输出</p>
+<p>一个没有输出语句的MiniZinc模型会给每一个决策变量以及它的值一个输出行，除非决策变量已经在声明的时候被赋了一个表达式。
+注意观察此输出是如何呈现一个正确的数据文件格式的。</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="fig-pantry1">
+<div class="code-block-caption"><span class="caption-number">列表 2.1.4 </span><span class="caption-text"><a class="reference download internal" download="" href="downloads/d91f8d3accc3e5d8913e0eeca906ab3d/cakes2.mzn"><tt class="xref download docutils literal">cakes2.mzn</tt></a> 的数据文件例子 (<a class="reference download internal" download="" href="downloads/e7dcd044c89950447922fff07b85890f/pantry.dzn"><tt class="xref download docutils literal">pantry.dzn</tt></a>) <span class="mzn-playground-button"><a href="playground-cakes2.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#fig-pantry1" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">flour</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">4000</span><span class="p">;</span><span class="s"> </span>
+<span class="linenos">2</span><span class="nv">banana</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">6</span><span class="p">;</span><span class="s"> </span>
+<span class="linenos">3</span><span class="nv">sugar</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">2000</span><span class="p">;</span><span class="s"> </span>
+<span class="linenos">4</span><span class="nv">butter</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">500</span><span class="p">;</span><span class="s"> </span>
+<span class="linenos">5</span><span class="nv">cocoa</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">500</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="fig-pantry2">
+<div class="code-block-caption"><span class="caption-number">列表 2.1.5 </span><span class="caption-text"><a class="reference download internal" download="" href="downloads/d91f8d3accc3e5d8913e0eeca906ab3d/cakes2.mzn"><tt class="xref download docutils literal">cakes2.mzn</tt></a> 的数据文件例子 (<a class="reference download internal" download="" href="downloads/d30695de59f50eda7443e325cb258985/pantry2.dzn"><tt class="xref download docutils literal">pantry2.dzn</tt></a>) <span class="mzn-playground-button"><a href="playground-cakes2.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#fig-pantry2" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">flour</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">8000</span><span class="p">;</span><span class="s"> </span>
+<span class="linenos">2</span><span class="nv">banana</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">11</span><span class="p">;</span><span class="s"> </span>
+<span class="linenos">3</span><span class="nv">sugar</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3000</span><span class="p">;</span><span class="s"> </span>
+<span class="linenos">4</span><span class="nv">butter</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1500</span><span class="p">;</span><span class="s"> </span>
+<span class="linenos">5</span><span class="nv">cocoa</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">800</span><span class="p">;</span><span class="s"> </span>
+</pre></div>
+</div>
+</div>
+<p>通过使用 <span class="target" id="index-30"></span>命令行标示
+<tt class="docutils literal">-D</tt> <em>string</em> ，
+小的数据文件可以被直接输入而不是必须要创建一个 <tt class="docutils literal">.dzn</tt> 文件，
+其中 <em>string</em> 是数据文件里面的内容。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>minizinc<span class="w"> </span>cakes2.mzn<span class="w"> </span>-D<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span><span class="s2">&quot;flour=4000;banana=6;sugar=2000;butter=500;cocoa=500;&quot;</span>
+</pre></div>
+</div>
+<p>会给出和</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>minizinc<span class="w"> </span>cakes2.mzn<span class="w"> </span>pantry.dzn
+</pre></div>
+</div>
+<p>一模一样的结果。</p>
+<p>数据文件只能包含给模型中的决策变量和参数赋值的语句。</p>
+<p id="index-31">防御性编程建议我们应该检查数据文件中的数值是否合理。
+在我们的例子中，检查所有原料的份量是否是非负的并且若不正确则产生一个运行错误，这是明智的。
+MiniZinc提供了一个内置的布尔型操作符 <em>断言</em> 用来检查参数值。格式是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span><span class="p">(</span><span class="nv">B</span><span class="p">,</span><span class="nv">S</span><span class="p">)</span></code> 。
+布尔型表达式 <tt class="docutils literal">B</tt> 被检测。若它是假的，运行中断。此时字符串表达式 <tt class="docutils literal">S</tt> 作为错误信息被输出。
+如果我们想当面粉的份量是负值的时候去检测出并且产生合适的错误信息，我们可以直接加入下面的一行</p>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="nb">assert</span><span class="p">(</span><span class="nv">flour</span><span class="s"> </span><span class="o">&gt;=</span><span class="s"> </span><span class="m">0</span><span class="p">,</span><span class="s">&quot;Amount of flour is non-negative&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>到我们的模型中。注意 <em>断言</em> 表达式是一个布尔型表达式，所以它被看做是一种类型的约束。我们可以加入类似的行来检测其他原料的份量是否是非负值。</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.1.4. </span>实数求解<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>MiniZinc also supports “real number” constraint solving using
+floating point variables and constraints.  Consider a problem of taking out a short loan
+for one year to be repaid in 4 quarterly instalments.
+A model for this is shown in <a class="reference internal" href="#ex-loan"><span class="std std-numref">列表 2.1.6</span></a>. It uses a simple interest
+calculation to calculate the balance after each quarter.</p>
+<p>通过使用浮点数求解，MiniZinc也支持“实数”约束求解。考虑一个要在4季度分期偿还的一年短期贷款问题。
+此问题的一个模型在 <a class="reference internal" href="#ex-loan"><span class="std std-numref">列表 2.1.6</span></a> 中给出。它使用了一个简单的计算每季度结束后所欠款的利息计算方式。</p>
+<div class="literal-block-wrapper docutils container" id="ex-loan">
+<div class="code-block-caption"><span class="caption-number">列表 2.1.6 </span><span class="caption-text">确定一年借款每季度还款关系的模型(<a class="reference download internal" download="" href="downloads/d7b12a6e6d7f8411bd77aaf22ea0e9ec/loan.mzn"><tt class="xref download docutils literal">loan.mzn</tt></a>) <span class="mzn-playground-button"><a href="playground-loan.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#ex-loan" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c">% 变量</span>
+<span class="linenos"> 2</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span><span class="s">        </span><span class="c">% 季度还款</span>
+<span class="linenos"> 3</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">P</span><span class="p">;</span><span class="s">        </span><span class="c">% 初始借贷本金</span>
+<span class="linenos"> 4</span><span class="kt">var</span><span class="s"> </span><span class="m">0.0</span><span class="s"> .. </span><span class="m">10.0</span><span class="p">:</span><span class="s"> </span><span class="nv">I</span><span class="p">;</span><span class="s">  </span><span class="c">% 利率</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c">% 中间变量</span>
+<span class="linenos"> 7</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">B1</span><span class="p">;</span><span class="s"> </span><span class="c">% 一个季度后的欠款</span>
+<span class="linenos"> 8</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">B2</span><span class="p">;</span><span class="s"> </span><span class="c">% 两个季度后的欠款</span>
+<span class="linenos"> 9</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">B3</span><span class="p">;</span><span class="s"> </span><span class="c">% 三个季度后的欠款</span>
+<span class="linenos">10</span><span class="kt">var</span><span class="s"> </span><span class="kt">float</span><span class="p">:</span><span class="s"> </span><span class="nv">B4</span><span class="p">;</span><span class="s"> </span><span class="c">% 最后欠款</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="k">constraint</span><span class="s"> </span><span class="nv">B1</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">P</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="p">(</span><span class="m">1.0</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">I</span><span class="p">)</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span>
+<span class="linenos">13</span><span class="k">constraint</span><span class="s"> </span><span class="nv">B2</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">B1</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="p">(</span><span class="m">1.0</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">I</span><span class="p">)</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span>
+<span class="linenos">14</span><span class="k">constraint</span><span class="s"> </span><span class="nv">B3</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">B2</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="p">(</span><span class="m">1.0</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">I</span><span class="p">)</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span><span class="s"> </span>
+<span class="linenos">15</span><span class="k">constraint</span><span class="s"> </span><span class="nv">B4</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">B3</span><span class="s"> </span><span class="o">*</span><span class="s"> </span><span class="p">(</span><span class="m">1.0</span><span class="s"> </span><span class="o">+</span><span class="s"> </span><span class="nv">I</span><span class="p">)</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">R</span><span class="p">;</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="k">output</span><span class="s"> </span><span class="p">[</span>
+<span class="linenos">20</span><span class="s"> &quot;Borrowing &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show_float</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="nv">P</span><span class="p">),</span><span class="s"> &quot; at &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">I</span><span class="o">*</span><span class="m">100.0</span><span class="p">),</span><span class="s"> </span>
+<span class="linenos">21</span><span class="s"> &quot;% interest, and repaying &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show_float</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="nv">R</span><span class="p">),</span><span class="s"> </span>
+<span class="linenos">22</span><span class="s">  &quot;</span><span class="se">\n</span><span class="s">per quarter for 1 year leaves &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show_float</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="s"> </span><span class="m">2</span><span class="p">,</span><span class="s"> </span><span class="nv">B4</span><span class="p">),</span><span class="s"> &quot; owing</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="linenos">23</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<p>注意我们声明了一个浮点型变量 <tt class="docutils literal">f</tt> ，它和整型变量很类似。只是这里我们
+使用关键字 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span></code> 而不是 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span></code> 。</p>
+<p>我们可以用同样的模型来回答一系列不同的问题。第一个问题是：如果我以利息
+4%借款$1000并且每季度还款$260，我最终还欠款多少？这个问题在数据文件 <a class="reference download internal" download="" href="downloads/6d57794f539700b6bb393349d28cbb20/loan1.dzn"><tt class="xref download docutils literal">loan1.dzn</tt></a> 中被编码。</p>
+<p>由于我们希望用实数求解，我们需要使用一个可以支持这种问题类型的求解器。Gecode(Minizinc捆绑二进制发布预设的求解器)支持浮点型变量,一个混合整数线性求解器可能更加适合这种类型的问题。
+MiniZinc发布包含了这样的一个求解器。我们可以通过从求解器IDE菜单( <em>Run</em> 按钮下面的三角形)选择 <tt class="docutils literal">COIN-BC</tt>  来使用, 或者在命令行中运行命令 <tt class="docutils literal">minizinc --solver cbc</tt> :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>minizinc<span class="w"> </span>--solver<span class="w"> </span>cbc<span class="w"> </span>loan.mzn<span class="w"> </span>loan1.dzn
+</pre></div>
+</div>
+<p>输出是</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Borrowing 1000.00 at 4.0% interest, and repaying 260.00
+per quarter for 1 year leaves 65.78 owing
+----------
+</pre></div>
+</div>
+<p>第二个问题是如果我希望用4%的利息来借款$1000并且在最后的时候一点都不欠款，我需要在每季度还款多少？
+这个问题在数据文件 <a class="reference download internal" download="" href="downloads/103cb50be6ea1459c279af46460672b0/loan2.dzn"><tt class="xref download docutils literal">loan2.dzn</tt></a> 中被编码。
+运行命令</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>minizinc<span class="w"> </span>--solver<span class="w"> </span>cbc<span class="w"> </span>loan.mzn<span class="w"> </span>loan2.dzn
+</pre></div>
+</div>
+<p>后的输出是</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Borrowing 1000.00 at 4.0% interest, and repaying 275.49
+per quarter for 1 year leaves 0.00 owing
+----------
+</pre></div>
+</div>
+<p>第三个问题是如果我可以每个季度返还$250, 我可以用4%的利息来借款多少并且在最后的时候一点都不欠款？
+这个问题在数据文件 <a class="reference download internal" download="" href="downloads/d33ac7cfada151218e35503a9c1f4be9/loan3.dzn"><tt class="xref download docutils literal">loan3.dzn</tt></a> 中被编码。
+运行命令</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>minizinc<span class="w"> </span>--solver<span class="w"> </span>cbc<span class="w"> </span>loan.mzn<span class="w"> </span>loan3.dzn
+</pre></div>
+</div>
+<p>后的输出是</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Borrowing 907.47 at 4.0% interest, and repaying 250.00
+per quarter for 1 year leaves 0.00 owing
+----------
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">列表 2.1.7 </span><span class="caption-text"><a class="reference download internal" download="" href="downloads/f3e089b1738a63178cd939e41abe7169/loan.mzn"><tt class="xref download docutils literal">loan.mzn</tt></a> 的数据文件例子(<a class="reference download internal" download="" href="downloads/6d57794f539700b6bb393349d28cbb20/loan1.dzn"><tt class="xref download docutils literal">loan1.dzn</tt></a>) <span class="mzn-playground-button"><a href="playground-loan.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#id7" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">I</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.04</span><span class="p">;</span>
+<span class="nv">P</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1000.0</span><span class="p">;</span>
+<span class="nv">R</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">260.0</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">列表 2.1.8 </span><span class="caption-text"><a class="reference download internal" download="" href="downloads/f3e089b1738a63178cd939e41abe7169/loan.mzn"><tt class="xref download docutils literal">loan.mzn</tt></a> 的数据文件例子(<a class="reference download internal" download="" href="downloads/103cb50be6ea1459c279af46460672b0/loan2.dzn"><tt class="xref download docutils literal">loan2.dzn</tt></a>) <span class="mzn-playground-button"><a href="playground-loan.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#id8" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">I</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.04</span><span class="p">;</span>
+<span class="nv">P</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1000.0</span><span class="p">;</span>
+<span class="nv">B4</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.0</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">列表 2.1.9 </span><span class="caption-text"><a class="reference download internal" download="" href="downloads/f3e089b1738a63178cd939e41abe7169/loan.mzn"><tt class="xref download docutils literal">loan.mzn</tt></a> 的数据文件例子(<a class="reference download internal" download="" href="downloads/d33ac7cfada151218e35503a9c1f4be9/loan3.dzn"><tt class="xref download docutils literal">loan3.dzn</tt></a>) <span class="mzn-playground-button"><a href="playground-loan.html" target="_blank" title="Open in Playground">&#9654;</a></span></span><a class="headerlink" href="#id9" title="Link to this code"></a></div>
+<div class="highlight-minizinc notranslate"><div class="highlight"><pre><span></span><span class="nv">I</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.04</span><span class="p">;</span>
+<span class="nv">R</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">250.0</span><span class="p">;</span>
+<span class="nv">B4</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">0.0</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition- admonition" id="defblock-6">
+<p class="admonition-title">浮点算术操作符</p>
+<p>MiniZinc提供了标准的浮点算术操作符:
+加 (<tt class="docutils literal">+</tt>),
+减 (<tt class="docutils literal">-</tt>),
+乘 (<tt class="docutils literal">*</tt>)
+和浮点除 (<tt class="docutils literal">/</tt>)。
+同时也提供了一元操作符 <tt class="docutils literal">+</tt> 和 <tt class="docutils literal">-</tt> 。</p>
+<p>MiniZinc不会自动地强制转换整数为浮点数。内建函数 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">int2float</span></code> 被用来达到此目的。注意强制转换的一个后果是表达式 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nv">a</span><span class="s"> </span><span class="o">/</span><span class="s"> </span><span class="nv">b</span></code> 总是被认为是一个浮点除。 如果你需要一个整数除,请确定使用 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="o">div</span></code> 操作符。</p>
+<p>MiniZinc同时也包含浮点型函数来计算:
+绝对值 (<tt class="docutils literal">abs</tt>),
+平方根 (<tt class="docutils literal">sqrt</tt>),
+自然对数 (<tt class="docutils literal">ln</tt>),
+底数为2的对数 (<tt class="docutils literal">log2</tt>),
+底数为10的对数 (<tt class="docutils literal">log10</tt>),
+$e$的幂 (<tt class="docutils literal">exp</tt>),
+正弦 (<tt class="docutils literal">sin</tt>),
+余弦 (<tt class="docutils literal">cos</tt>),
+正切 (<tt class="docutils literal">tan</tt>),
+反正弦 (<tt class="docutils literal">asin</tt>),
+反余弦 (<tt class="docutils literal">acos</tt>),
+反正切 (<tt class="docutils literal">atan</tt>),
+双曲正弦 (<tt class="docutils literal">sinh</tt>),
+双曲余弦 (<tt class="docutils literal">cosh</tt>),
+双曲正切 (<tt class="docutils literal">tanh</tt>),
+双曲反正弦 (<tt class="docutils literal">asinh</tt>),
+双曲反余弦 (<tt class="docutils literal">acosh</tt>),
+双曲反正切 (<tt class="docutils literal">atanh</tt>),
+和唯一的二元函数次方 (<tt class="docutils literal">pow</tt>)，其余的都是一元函数。</p>
+<p>算术常量的语法是相当标准的。浮点数常量的例子有 <tt class="docutils literal">1.05</tt>， <tt class="docutils literal">1.3e-5</tt> 和 <tt class="docutils literal">1.3E+5</tt> 。</p>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">2.1.5. </span>模型的基本结构<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>我们现在可以去总结MiniZinc模型的基本结构了。
+它由多个项组成，每一个在其最后都有一个分号 <tt class="docutils literal">;</tt> 。
+项可以按照任何顺序出现。例如，标识符在被使用之前不需要被声明。</p>
+<p>有八种类型的项 <span class="target" id="index-32"></span>items 。</p>
+<ul>
+<li><p><span class="target" id="index-33"></span>引用项 允许另外一个文件的内容被插入模型中。
+它们有以下形式：</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> </span><span class="o">&lt;</span><span class="s">文件名</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>其中 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">文件名</span><span class="o">&gt;</span></code> 是一个字符串常量。
+它们使得大的模型可以被分为小的子模型以及包含库文件中定义的约束。
+我们会在 <a class="reference internal" href="modelling2.html#ex-smm"><span class="std std-numref">列表 2.2.4</span></a> 中看到一个例子。</p>
+</li>
+<li><p><span class="target" id="index-34"></span>变量声明 声明新的变量。
+这种变量是全局变量，可以在模型中的任何地方被提到。
+变量有两种。在模型中被赋一个固定值的参数变量以及只有在模型被求解的时候才会
+被赋值的决策变量。
+我们称参数是 <span class="target" id="index-35"></span>固定的 ，决策变量是 <span class="target" id="index-36"></span>不固定的 。
+变量可以选择性地被赋一个值来作为声明的一部分。形式是：</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="s">类型</span><span class="o">-</span><span class="s">实例化 表达式</span><span class="o">&gt;</span><span class="p">:</span><span class="s"> </span><span class="o">&lt;</span><span class="s">变量</span><span class="o">&gt;</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">]</span><span class="s"> </span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="o">&lt;</span><span class="s">类型</span><span class="o">-</span><span class="s">实例化 表达式</span><span class="o">&gt;</span></code>
+给了变量的类型和实例化。 这些是MiniZinc比较复杂的其中一面。
+用 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">par</span></code> 来实例化声明
+参数，用 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">var</span></code> 来实例化声明决策变量。
+如果没有明确的实例化声明，则变量是一个参数。类型可以为基类型，一个 <span class="target" id="index-37"></span>整数或者浮点数范围，或者一个数组或集合。
+基类型有
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span></code>,
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span></code>,
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">string</span></code>,
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">bool</span></code>,
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span></code>
+。其中只有
+<code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span></code>, <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span></code> and <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">bool</span></code> 可以被决策变量使用。
+基类型 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">ann</span></code> 是一个 <span class="target" id="index-38"></span>注解 –
+我们会在 <a class="reference internal" href="mzn_search.html#sec-search"><span class="std std-ref">搜索</span></a> 中讨论注解。
+<span class="target" id="index-39"></span>整数范围表达式 可以被用来代替类型 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">int</span></code>.
+类似的， <span class="target" id="index-40"></span>浮点数范围表达式
+可以被用来代替类型 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="kt">float</span></code> 。
+这些通常被用来定义一个整型决策变量的定义域，但也可以被用来限制一个整型参数的范围。
+变量声明的另外一个用处是定义 <span class="target" id="index-41"></span>枚举类型, —我们会在 <a class="reference internal" href="modelling2.html#sec-enum"><span class="std std-ref">枚举类型</span></a> 中讨论。</p>
+</li>
+<li><p><span class="target" id="index-42"></span>赋值项 给一个变量赋一个值。它们有以下形式：</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="s">变量</span><span class="o">&gt;</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>数值可以被赋给决策变量。在这种情况下，赋值相当于加入 <code class="code mzndef minizincdef docutils literal highlight highlight-minizincdef"><span></span><span class="k">constraint</span><span class="s"> </span><span class="o">&lt;</span><span class="s">变量</span><span class="o">&gt;</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="o">&lt;</span><span class="s">表达式</span><span class="o">&gt;</span></code> ;</p>
+</li>
+<li><p><span class="target" id="index-43"></span>约束项 是模型的核心。它们有以下形式：</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">constraint</span><span class="s"> </span><span class="o">&lt;</span><span class="s">布尔型表达式</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>我们已经看到了使用算术比较的简单约束以及内建函数 <code class="code mzn minizinc docutils literal highlight highlight-minizinc"><span></span><span class="nb">assert</span></code> 操作符。 在下一节我们会看到更加复杂的约束例子。</p>
+</li>
+<li><p><span class="target" id="index-44"></span>求解项 详细说明了到底要找哪种类型的解。
+正如我们看到的，它们有以下三种形式：</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+<span class="k">solve</span><span class="s"> </span><span class="k">maximize</span><span class="s"> </span><span class="o">&lt;</span><span class="s">算术表达式</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">solve</span><span class="s"> </span><span class="k">minimize</span><span class="s"> </span><span class="o">&lt;</span><span class="s">算术表达式</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>一个模型必须有且只有一个求解项。</p>
+</li>
+<li><p><span class="target" id="index-45"></span>输出项 用来恰当的呈现模型运行后的结果。
+它们有下面的形式：</p>
+<div class="highlight-minizincdef notranslate"><div class="highlight"><pre><span></span><span class="k">output</span><span class="s"> </span><span class="p">[</span><span class="s"> </span><span class="o">&lt;</span><span class="s">字符串表达式</span><span class="o">&gt;</span><span class="p">,</span><span class="s"> ...</span><span class="p">,</span><span class="s"> </span><span class="o">&lt;</span><span class="s">字符串表达式</span><span class="o">&gt;</span><span class="s"> </span><span class="p">];</span>
+</pre></div>
+</div>
+<p>如果没有输出项，MiniZinc会默认输出所有没有被以赋值项的形式赋值的决策变量值。</p>
+</li>
+<li><p><span class="target" id="index-46"></span>枚举类型声明.
+我们会在 <a class="reference internal" href="modelling2.html#sec-arrayset"><span class="std std-ref">数组和集合</span></a> 和 <a class="reference internal" href="modelling2.html#sec-enum"><span class="std std-ref">枚举类型</span></a> 中讨论。</p></li>
+<li><p><span class="target" id="index-47"></span>谓词函数和测试项 被用来定义新的约束，函数和布尔测试。我们会在 <a class="reference internal" href="predicates.html#sec-predicates"><span class="std std-ref">谓词和函数</span></a> 中讨论。</p></li>
+<li><p><span class="target" id="index-48"></span>注解项 用来定义一个新的注解。我们会在 <a class="reference internal" href="mzn_search.html#sec-search"><span class="std std-ref">搜索</span></a> 中讨论。</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="part_2_tutorial.html" class="btn btn-neutral float-left" title="2. Minizinc 指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="modelling2.html" class="btn btn-neutral float-right" title="2.2. 更多复杂模型" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2016, 2017, 2018, 2019, 2020 Peter J. Stuckey, Kim Marriott, Guido Tack。</p>
+  </div>
+
+  
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63390311-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-63390311-1', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
