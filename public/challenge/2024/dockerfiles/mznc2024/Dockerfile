@@ -178,8 +178,8 @@ RUN \
 #------------------------------------------------------------------------------#
 # Setup of the base image
 
-# Get base image with Ubuntu 20.04
-FROM minizinc/minizinc:2.8.4-focal
+# Get base image with Ubuntu 22.04
+FROM minizinc/minizinc:2.8.5-jammy
 
 # Copy unpacked MiniZinc installation from the build image
 COPY --from=builder /minizinc /minizinc

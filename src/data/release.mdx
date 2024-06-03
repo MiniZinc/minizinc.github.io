@@ -1,18 +1,29 @@
 import { BugRef, IDEBugRef } from '@/components/BugRef'
 
-- Add `-w` and `--disable-warnings` flags that will suppress all warnings
-  emitted by the flattening process.
-- Add option for solver libraries to set `mzn_opt_annotate_computed_domains`
-  such that the compiler will signal domains that are enforced by separate
-  constraints using a `computed_domain` annotation.
-- Always output multidimensional arrays as nested arrays when using `showJSON`
-  for consistency.
-- Add missing implementation for `default` for sets expressions.
-- Add missing optional versions of unary mathematical functions/operators.
-- Improve special-case handling of boolean `<->` and `xor` operators.
-- Allow IDE MOOC submission window to be scrolled.
-- Increase IDE hard process termination timeout to 1s.
-- Plus more than 30 bugfixes.
+- Add `string_split` function that splits a string into an array of strings
+  based on a separator.
+- Add `json_section` annotation to mark an output item as a JSON section
+  (<BugRef issue={816} />).
+- Fix specification for constraint items and annotations in FlatZinc JSON.
+- Fix flattening of negated let expressions with constraints.
+- Fix crash when equating identifiers to tuples/records in if-then-else
+  expressions.
+- Fix `string_length` function to return the number of Unicode code points
+  rather than the number of bytes (i.e., to interpret the string as UTF-8).
+- Emit type error for opt tuples and records created through type aliases.
+- Fix evaluation of par partial functions returning arrays.
+- Fix type inference for if-then-else expressions with different tuple or
+  record types in the branches.
+- Fix evaluation error caused by removal of fixed FlatZinc variables without
+  fixing them in the output model.
+- Fix computed type when flattening cv comprehensions containing tuple or
+  record types.
+- Fix unsatisfiability caused by reification in negated boolean context
+  (<BugRef issue={813} />).
+- Fix bug in computation of common type of incompatible record types.
+- Fix crash when type checking nested arrays of tuples or records.
+- Fix incorrect unification of flattened tuple/record fields with paths
+  enabled.
 
 export default function Release({ children }) {
   return (
