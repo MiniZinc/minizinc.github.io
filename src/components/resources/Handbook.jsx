@@ -1,6 +1,6 @@
 import { Container } from '@/components/Container'
 import { Link } from '@/components/Link'
-import { documentation } from '@/utils/links'
+import { documentation, pdfDocumentation } from '@/utils/links'
 import {
   faBookBookmark,
   faBookOpen,
@@ -54,26 +54,20 @@ export function Handbook() {
           the documentation for the MiniZinc language and system.
           <br />
           Also available as a{' '}
-          <Link href={documentation('MiniZinc Handbook.pdf')}>
-            printable PDF
-          </Link>
-          .
+          <Link href={pdfDocumentation()}>printable PDF</Link>.
         </p>
         <Resources resources={resources} />
         <p className="mt-4">
           The tutorial is also available in{' '}
-          <Link href={documentation('index.html', 'latest', 'chi')}>
+          <Link href={documentation('index.html', 'stable', 'zh-cn')}>
             Chinese
           </Link>
           ! MiniZinc手册
-          <Link href={documentation('index.html', 'latest', 'chi')}>
+          <Link href={documentation('index.html', 'stable', 'zh-cn')}>
             中文版
           </Link>
           已经提供 (
-          <Link href={documentation('MiniZinc Handbook.pdf', 'latest', 'chi')}>
-            PDF version
-          </Link>
-          )
+          <Link href={pdfDocumentation('stable', 'zh-cn')}>PDF version</Link>)
         </p>
       </Container>
     </section>

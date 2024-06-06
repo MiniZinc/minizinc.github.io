@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container'
 import { latest, releases } from '@/data/version'
 import { Link } from '@/components/Link'
-import { changelog, githubRelease } from '@/utils/links'
+import { changelog, documentation, githubRelease } from '@/utils/links'
 import ReleaseInfo from '@/data/release.mdx'
 
 export function Releases() {
@@ -27,10 +27,13 @@ export function Releases() {
         </h3>
         <p className="mt-2 leading-7">
           Unstable development builds with upcoming bugfixes and features are{' '}
-          <Link href="https://github.com/MiniZinc/MiniZincIDE/releases/tag/edge">
-            available on GitHub
-          </Link>
-          .
+          <Link href={githubRelease('edge')}>available on GitHub</Link>.
+        </p>
+        <p className="mt-2 leading-7">
+          Documentation for the latest development version of MiniZinc is
+          available <Link href={documentation('', 'latest')}>here</Link>.<br />
+          For a list of bugfixes/changes please refer to the{' '}
+          <Link href={changelog('edge')}>changelog</Link>.
         </p>
         <h3 className="mt-6 text-2xl font-medium tracking-tight text-gray-900">
           Previous releases

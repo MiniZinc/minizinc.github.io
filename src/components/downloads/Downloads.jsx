@@ -64,10 +64,14 @@ export function Downloads() {
         <div className="my-4">
           <Bundles bundles={bundles} />
         </div>
-        <p className="mb-6 max-w-prose leading-7">
+        <p className="mb-6 leading-7">
           Both the compiler tool chain and the IDE are available as free and
-          open source software. Have a look at our{' '}
-          <Link href="/license">License Information</Link> page for the details.
+          open source software.
+          <br />
+          Have a look at our <Link href="/license">
+            License Information
+          </Link>{' '}
+          page for the details.
         </p>
       </section>
     </Container>
