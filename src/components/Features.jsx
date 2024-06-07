@@ -7,6 +7,8 @@ import {
   faScrewdriverWrench,
   faShuffle,
 } from '@fortawesome/free-solid-svg-icons'
+import { Link } from '@/components/Link'
+import { documentation } from '@/utils/links'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
 
@@ -19,32 +21,70 @@ const features = [
   },
   {
     name: 'Solver independent',
-    description:
-      'Run the same model using a variety of different solver technologies, without being locked into a particular solver.',
+    description: (
+      <>
+        Run the same model using a variety of{' '}
+        <Link href="/downloads#minizinc-solvers">
+          different solver technologies
+        </Link>
+        , without being locked into a particular solver.
+      </>
+    ),
     icon: faShuffle,
   },
   {
     name: 'Pre-defined constraints',
-    description:
-      'MiniZinc features a large library of pre-defined constraints, making modelling complex relationships simple.',
+    description: (
+      <>
+        MiniZinc features a large library of{' '}
+        <Link href={documentation('lib-globals.html')}>
+          pre-defined constraints
+        </Link>
+        , making modelling complex relationships simple.
+      </>
+    ),
     icon: faBook,
   },
   {
     name: 'Fully featured development environment',
-    description:
-      'Use the MiniZinc IDE to write and run models, visualise search and solutions, profile performance and more.',
+    description: (
+      <>
+        Use the{' '}
+        <Link href="/downloads#minizinc-distribution-title">MiniZinc IDE</Link>{' '}
+        to write and run models, visualise search and solutions, profile
+        performance and more.
+      </>
+    ),
     icon: faScrewdriverWrench,
   },
   {
     name: 'In-depth learning materials',
-    description:
-      'MiniZinc has comprehensive documentation, including beginner tutorials, advanced courses, a user manual, and library documentation.',
+    description: (
+      <>
+        MiniZinc has <Link href="/resources">comprehensive documentation</Link>,
+        including the{' '}
+        <Link href={documentation('part_2_tutorial.html')}>tutorial</Link>,
+        several <Link href="/resources#courses-title">courses</Link>, the{' '}
+        <Link href={documentation('part_3_user_manual.html')}>user manual</Link>
+        , and{' '}
+        <Link href={documentation('part_4_reference.html')}>
+          library documentation
+        </Link>
+        .
+      </>
+    ),
     icon: faGraduationCap,
   },
   {
     name: 'Integrate MiniZinc into your project',
-    description:
-      'MiniZinc can be embedded into Python and JavaScript programs, and can even be used entirely from within the browser.',
+    description: (
+      <>
+        MiniZinc can be embedded into{' '}
+        <Link href="https://minizinc-python.readthedocs.io">Python</Link> and{' '}
+        <Link href="https://js.minizinc.dev">JavaScript</Link> programs, and can
+        even be used entirely from within the browser.
+      </>
+    ),
     icon: faPlug,
   },
 ]

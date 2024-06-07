@@ -29,7 +29,7 @@ export function MiniZincDistribution() {
               the MiniZinc IDE, which makes it easy to develop and run
               constraint models.
             </p>
-            <h3 className="my-3 text-2xl font-medium tracking-tight text-gray-900">
+            <h3 id="minizinc-solvers" className="my-3 text-2xl font-medium tracking-tight text-gray-900">
               Solvers
             </h3>
             <p>A number of solvers are included in the official binary packages:</p>
