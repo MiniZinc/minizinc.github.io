@@ -1,6 +1,0 @@
-NURSE = Nurse(1..7);
-DAY = D(1..10);
-
-req_day = 3;
-req_night = 2;
-min_night = 2;
