@@ -80,7 +80,7 @@ const features = [
     description: (
       <>
         MiniZinc can be embedded into{' '}
-        <Link href="https://minizinc-python.readthedocs.io">Python</Link> and{' '}
+        <Link href="https://python.minizinc.dev">Python</Link> and{' '}
         <Link href="https://js.minizinc.dev">JavaScript</Link> programs, and can
         even be used entirely from within the browser.
       </>
