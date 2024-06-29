@@ -49,7 +49,7 @@ function MobileNavLink({ children, ...props }) {
 export function Header() {
   return (
     <header>
-      <ChallengeCall stage="problem" />
+      <ChallengeCall stage="solver" />
       <nav>
         <Container className="relative z-50 flex justify-between py-8">
           <div className="relative z-10 flex items-center gap-16">
