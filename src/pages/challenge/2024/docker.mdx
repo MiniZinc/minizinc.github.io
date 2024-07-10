@@ -67,7 +67,7 @@ participants at the start of the initial submission round) to submit your entry.
 
 In order to submit your solver, you must install it into a
 [Docker](https://docs.docker.com/get-started/overview/) image that extends a base operating system
-image (Ubuntu 20.04 with MiniZinc installed) which we provide. To do this, you will create a
+image (Ubuntu 22.04 with MiniZinc installed) which we provide. To do this, you will create a
 `Dockerfile` - a set of instructions indicating how to (build and) install your solver on to the
 base operating system image.
 
@@ -93,7 +93,7 @@ announce that we have made changes to the base image).
   <code className="language-sh">{`docker pull minizinc/mznc${year}:latest`}</code>
 </pre>
 
-The image contains a minimal installation of Ubuntu 20.04 and MiniZinc {challenge.minizinc}, which is installed in the `/usr/local/bin` directory.
+The image contains a minimal installation of Ubuntu 22.04 and MiniZinc {challenge.minizinc}, which is installed in the `/usr/local/bin` directory.
 It is recommended that you create a <Link href={documentation("fzn-spec.html#solver-configuration-files", challenge.minizinc)}>solver configuration file</Link> for your solver,
 and set it as the default solver using a <Link href={documentation("command_line.html#user-configuration-files", challenge.minizinc)}>user configuration file</Link> (the details of how to do this are in the following section),
 however the method of setting up scripts as in previous years is still available.
