@@ -54,11 +54,11 @@ must comply wih the following requirements:
 You can test if your submission functions as required by running the command for the entry class
 you are participating in:
 
-| Class | Command                                                                                   |
-| ----- | ----------------------------------------------------------------------------------------- |
-| FD    | `docker run --rm <repository>:<tag> minizinc fd.mpc /minizinc/test.mzn /minizinc/2.dzn`   |
-| FREE  | `docker run --rm <repository>:<tag> minizinc free.mpc /minizinc/test.mzn /minizinc/2.dzn` |
-| PAR   | `docker run --rm <repository>:<tag> minizinc par.mpc /minizinc/test.mzn /minizinc/2.dzn`  |
+| Class | Command                                                                                             |
+| ----- | --------------------------------------------------------------------------------------------------- |
+| FD    | `docker run --rm <repository>:<tag> minizinc /minizinc/fd.mpc /minizinc/test.mzn /minizinc/2.dzn`   |
+| FREE  | `docker run --rm <repository>:<tag> minizinc /minizinc/free.mpc /minizinc/test.mzn /minizinc/2.dzn` |
+| PAR   | `docker run --rm <repository>:<tag> minizinc /minizinc/par.mpc /minizinc/test.mzn /minizinc/2.dzn`  |
 
 Push your image to Docker Hub and complete the web form (which will be made available to
 participants at the start of the initial submission round) to submit your entry.
@@ -192,7 +192,7 @@ docker build -t chuffed:latest .
 And check that it functions by running
 
 ```sh
-docker run --rm chuffed:latest minizinc /classes/fd.mpc /minizinc/test.mzn /minizinc/2.dzn
+docker run --rm chuffed:latest minizinc /minizinc/fd.mpc /minizinc/test.mzn /minizinc/2.dzn
 ```
 
 With your own image, replace `chuffed:latest` with an appropriate name for your solver in the format
@@ -370,11 +370,11 @@ the option `--change 'ENV MY_VAR=new_value'`.
 You can test if your submission functions as required by running the command for the entry class
 you are participating in:
 
-| Class | Command                                                                                   |
-| ----- | ----------------------------------------------------------------------------------------- |
-| FD    | `docker run --rm <repository>:<tag> minizinc fd.mpc /minizinc/test.mzn /minizinc/2.dzn`   |
-| FREE  | `docker run --rm <repository>:<tag> minizinc free.mpc /minizinc/test.mzn /minizinc/2.dzn` |
-| PAR   | `docker run --rm <repository>:<tag> minizinc par.mpc /minizinc/test.mzn /minizinc/2.dzn`  |
+| Class | Command                                                                                             |
+| ----- | --------------------------------------------------------------------------------------------------- |
+| FD    | `docker run --rm <repository>:<tag> minizinc /minizinc/fd.mpc /minizinc/test.mzn /minizinc/2.dzn`   |
+| FREE  | `docker run --rm <repository>:<tag> minizinc /minizinc/free.mpc /minizinc/test.mzn /minizinc/2.dzn` |
+| PAR   | `docker run --rm <repository>:<tag> minizinc /minizinc/par.mpc /minizinc/test.mzn /minizinc/2.dzn`  |
 
 It is strongly recommended that you also test your submission using `-v` and ensure that your
 MiniZinc library is being picked up correctly.
