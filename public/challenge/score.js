@@ -98,6 +98,21 @@ function init(){
     total_solver_problem_area[i] = [];
     total_solver_instance_area[i] = [];
   }
+
+  const classControls = [
+    [fd_solvers, document.getElementById("control-fd")],
+    [free_solvers, document.getElementById("control-free")],
+    [par_solvers, document.getElementById("control-par")],
+    [open_solvers, document.getElementById("control-open")],
+    [local_solvers, document.getElementById("control-open")]
+  ];
+  let prevSolvers = null;
+  for (const [s, e] of classControls) {
+    if (s.every(x => !x) || prevSolvers && prevSolvers.every((x, i) => (s[i] === x))) {
+      e.style.display = 'none';
+    }
+    prevSolvers = s;
+  }
 }
 
 function selectCategory(category){
