@@ -1,0 +1,16 @@
+Pumpkin is a new combinatorial optimisation solver that is under active development at the ConSol Lab at TU Delft.
+The contributors (all at TU Delft) of Pumpkin are (in alphabetical order): Emir Demirović, Maarten Flippo, Imko Marijnissen, Konstantin Sidorov, and Jeff Smits.
+
+Pumpkin has a FlatZinc frontend, but can also be used to solve SAT and MaxSAT problems. Support for CPMpy and XCSP is planned for the near future.
+The solver is written in pure Rust and also exposes a Rust API which allows users to express models with predefined constraints and implement custom branching strategies.
+
+The solver is based on the (lazy clause generation) constraint programming paradigm. 
+It supports integer variables, the FlatZinc built-in constraints for integer and boolean variables, and the cumulative global constraint. 
+
+A unique feature of Pumpkin is that it can produce a certificate of unsatisfiability as part of the solving process without significant overhead. See our CP’24 [1] paper for more details. 
+
+The solver is reasonably competitive, although depending on the problem, other state-of-the-art solvers may be better. We are planning many improvements for the near future.
+
+For more information, the repository can be found at https://github.com/ConSol-Lab/pumpkin. We welcome questions in the Discussion section of GitHub.
+
+[1]. A Multi-Stage Proof Logging Framework to Certify the Correctness of CP Solvers. Flippo, Sidorov, Marijnissen, Smits, Demirović. CP'24.

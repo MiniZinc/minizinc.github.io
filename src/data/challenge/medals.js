@@ -93,4 +93,11 @@ export const medals = {
     par: ['OR-Tools', 'PicatSAT', 'Choco 4'],
     local: ['Yuck'],
   },
+  2024: {
+    fd: ['OR-Tools CP-SAT', 'Choco-solver CP-SAT', 'SICStus Prolog'],
+    free: ['OR-Tools CP-SAT', 'PicatSAT', 'iZplus'],
+    par: ['OR-Tools CP-SAT', 'PicatSAT', 'Choco-solver CP'],
+    open: ['OR-Tools CP-SAT', 'PicatSAT', 'Choco-solver CP'],
+    local: ['OR-Tools CP-SAT LS', 'Yuck'],
+  },
 }

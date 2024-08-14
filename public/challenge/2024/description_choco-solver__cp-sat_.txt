@@ -1,0 +1,6 @@
+Choco-solver is a java library for constraint satisfaction problems and constraint optimization problems. 
+
+This experimental version of choco-solver combines SAT with CP to generate lazy clauses.
+However, the code has not been stabilised.
+
+Main authors of this version is Charles Prud’homme (TASC, LS2N UMR 6241).

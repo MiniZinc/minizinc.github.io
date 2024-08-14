@@ -6,6 +6,10 @@ export const info = {
     return {
       announcements: [
         <>
+          <strong>2024-09-05</strong> Announcements of the results are{' '}
+          <Link href="/challenge/2024/results">here</Link>.
+        </>,
+        <>
           <strong>2024-07-15</strong> Update the{' '}
           <Link href="/challenge/2024/docker">
             Docker image preparation instructions

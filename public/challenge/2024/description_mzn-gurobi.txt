@@ -1,0 +1,5 @@
+MiniZinc 2.8 MILP interface for Gurobi 11.0.3
+MiniZinc Release 2.8.5
+http://www.minizinc.org/software.html
+
+Gleb Belov, Peter J. Stuckey, Guido Tack, Mark Wallace. Improved Linearization of Constraint Programming Models. In M. Rueher, editor, Principles and Practice of Constraint Programming - 22nd International Conference, CP 2016, Toulouse, France, September 5-9, 2016, Proceedings. LNCS 9892, pp. 49-65, Springer, 2016.
