@@ -19,7 +19,7 @@ export function Results({ year }) {
 
       <h3>Summary of Results</h3>
 
-      <p>The results for the MiniZinc Challenge 2022 are</p>
+      <p>The results for the MiniZinc Challenge {year} are</p>
 
       <Medals medals={medals[year]} />
 
