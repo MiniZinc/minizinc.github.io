@@ -74,12 +74,12 @@ export function Results({ year }) {
         <Link href={`mznc${year}_probs.tar.gz`}>here</Link>.
       </p>
 
-      <h3>Selection:</h3>
+      <h3>Detailed Results</h3>
 
       <p>
         Select a list of solvers and benchmarks and click on &ldquo;Compute
         Results&rdquo; to score the solvers against each other on the selected
-        benchmarks. The entrants for each of the fd search, free search and
+        benchmarks. The entrants for each of the FD search, free search and
         parallel search categories can be selected with the corresponding
         buttons.
       </p>
@@ -346,165 +346,169 @@ export function Results({ year }) {
         </tbody>
       </table>
 
-      <table cellSpacing="15">
-        <tbody>
-          <tr></tr>
-          <tr>
-            <td>
-              <h3> Summary:</h3>
-            </td>
-            <td>
-              <h3> Total per problem:</h3>
-            </td>
-          </tr>
-          <tr>
-            <td valign="top">
-              <table
-                rules="groups"
-                cellpading="20"
-                name="total_table"
-                id="total_table"
-                cellSpacing="20"
-                border="2"
-              >
-                <colgroup></colgroup>
-                <colgroup></colgroup>
-                <colgroup></colgroup>
-                <colgroup></colgroup>
-                <thead>
-                  <tr>
-                    <td onClick={() => sortTotalTable(0, 'string')}>
-                      <b>Solver </b>
-                    </td>
-                    <td onClick={() => sortTotalTable(1, 'number')}>
-                      <b>Score </b>
-                    </td>
-                    <td onClick={() => sortTotalTable(2, 'number')}>
-                      <b>Score Incomplete </b>
-                    </td>
-                    <td onClick={() => sortTotalTable(3, 'number')}>
-                      <b>Score Area </b>
-                    </td>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </td>
-            <td valign="top">
-              <table
-                rules="groups"
-                cellpading="20"
-                name="problem_table"
-                cellSpacing="20"
-                border="2"
-              >
-                <colgroup span="2"></colgroup>
-                <colgroup span="1"></colgroup>
-                <colgroup span="1"></colgroup>
-                <colgroup span="1"></colgroup>
-                <thead>
-                  <tr>
-                    <td>
-                      <b>Problem </b>
-                    </td>
-                    <td>
-                      <b>Solver </b>
-                    </td>
-                    <td>
-                      <b>Score </b>
-                    </td>
-                    <td>
-                      <b>Score Incomplete</b>
-                    </td>
-                    <td>
-                      <b>Score Area</b>
-                    </td>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <h3>Individual results:</h3>
-      <table
-        frame="box"
-        rules="groups"
-        cellpading="20"
-        name="instance_table"
-        cellSpacing="20"
-        border="2"
-      >
-        <colgroup span="2"></colgroup>
-        <colgroup></colgroup>
-        <colgroup></colgroup>
-        <colgroup></colgroup>
-        <colgroup></colgroup>
-        <colgroup></colgroup>
-        <colgroup></colgroup>
-        <colgroup></colgroup>
-        <thead>
-          <tr>
-            <td>
-              <b> Problem </b>
-            </td>
-            <td>
-              <b> Instance </b>
-            </td>
-            <td>
-              <b> Solver </b>
-            </td>
-            <td>
-              <b> Status </b>
-            </td>
-            <td>
-              <b> Time </b>
-            </td>
-            <td>
-              <b> Objective </b>
-            </td>
-            <td>
-              <b> Score </b>
-            </td>
-            <td>
-              <b> Score Incomplete</b>
-            </td>
-            <td>
-              <b> Score Area</b>
-            </td>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <h3>Objective plots for each instance:</h3>
-      <table
-        frame="box"
-        border="2"
-        rules="groups"
-        cellpading="20"
-        cellSpacing="20"
-        name="objective_plots"
-      >
-        <colgroup span="2"></colgroup>
-        <colgroup width="1200"></colgroup>
-        <thead>
-          <tr>
-            <td>
-              <b> Problem </b>
-            </td>
-            <td>
-              <b> Instance </b>
-            </td>
-            <td>
-              <b> Plot </b>
-            </td>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <h3>Score development over time:</h3>
-      <div id="total_scores"></div>
+      <div id="results-section" style={{ display: 'none' }}>
+        <table cellSpacing="15">
+          <tbody>
+            <tr></tr>
+            <tr>
+              <td>
+                <h3> Overall</h3>
+              </td>
+              <td>
+                <h3> Total per problem</h3>
+              </td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <table
+                  rules="groups"
+                  cellpading="20"
+                  name="total_table"
+                  id="total_table"
+                  cellSpacing="20"
+                  border="2"
+                >
+                  <colgroup></colgroup>
+                  <colgroup></colgroup>
+                  <colgroup></colgroup>
+                  <colgroup></colgroup>
+                  <thead>
+                    <tr>
+                      <td onClick={() => sortTotalTable(0, 'string')}>
+                        <b>Solver </b>
+                      </td>
+                      <td onClick={() => sortTotalTable(1, 'number')}>
+                        <b>Score </b>
+                      </td>
+                      <td onClick={() => sortTotalTable(2, 'number')}>
+                        <b>Score Incomplete </b>
+                      </td>
+                      <td onClick={() => sortTotalTable(3, 'number')}>
+                        <b>Score Area </b>
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </td>
+              <td valign="top">
+                <table
+                  rules="groups"
+                  cellpading="20"
+                  name="problem_table"
+                  cellSpacing="20"
+                  border="2"
+                >
+                  <colgroup span="2"></colgroup>
+                  <colgroup span="1"></colgroup>
+                  <colgroup span="1"></colgroup>
+                  <colgroup span="1"></colgroup>
+                  <thead>
+                    <tr>
+                      <td>
+                        <b>Problem </b>
+                      </td>
+                      <td>
+                        <b>Solver </b>
+                      </td>
+                      <td>
+                        <b>Score </b>
+                      </td>
+                      <td>
+                        <b>Score Incomplete</b>
+                      </td>
+                      <td>
+                        <b>Score Area</b>
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Individual results</h3>
+        <table
+          frame="box"
+          rules="groups"
+          cellpading="20"
+          name="instance_table"
+          cellSpacing="20"
+          border="2"
+        >
+          <colgroup span="2"></colgroup>
+          <colgroup></colgroup>
+          <colgroup></colgroup>
+          <colgroup></colgroup>
+          <colgroup></colgroup>
+          <colgroup></colgroup>
+          <colgroup></colgroup>
+          <colgroup></colgroup>
+          <thead>
+            <tr>
+              <td>
+                <b> Problem </b>
+              </td>
+              <td>
+                <b> Instance </b>
+              </td>
+              <td>
+                <b> Solver </b>
+              </td>
+              <td>
+                <b> Status </b>
+              </td>
+              <td>
+                <b> Time </b>
+              </td>
+              <td>
+                <b> Objective </b>
+              </td>
+              <td>
+                <b> Score </b>
+              </td>
+              <td>
+                <b> Score Incomplete</b>
+              </td>
+              <td>
+                <b> Score Area</b>
+              </td>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div id="plots-section" style={{ display: 'none' }}>
+        <h3>Objective plots for each instance</h3>
+        <table
+          frame="box"
+          border="2"
+          rules="groups"
+          cellpading="20"
+          cellSpacing="20"
+          name="objective_plots"
+        >
+          <colgroup span="2"></colgroup>
+          <colgroup width="1200"></colgroup>
+          <thead>
+            <tr>
+              <td>
+                <b> Problem </b>
+              </td>
+              <td>
+                <b> Instance </b>
+              </td>
+              <td>
+                <b> Plot </b>
+              </td>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      {/* <h3>Score development over time:</h3>
+      <div id="total_scores"></div> */}
     </>
   )
 }

@@ -160,6 +160,7 @@ function clearAll(){
 }
 
 function computeSelected(){
+  document.getElementById('results-section').style.display = 'block';
   var i = 0;
   var prob = [];
   var solv = [];
@@ -1022,6 +1023,9 @@ function modifyTables(selected_solver, selected_problem) {
     // Draw plots for each instance
     if (document.getElementById("plot_instance").checked) {
         modifyInstancePlots(selected_solver, selected_problem, xaxis_type, lineshape);
+        document.getElementById('plots-section').style.display = 'block';
+    } else {
+        document.getElementById('plots-section').style.display = 'none';
     }
     // Draw plot for the total score
     // XXX Disable it, because it is not finished yet
