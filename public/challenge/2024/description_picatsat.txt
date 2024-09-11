@@ -27,7 +27,7 @@ another.
 
 For the sat module, the Picat compiler translates constraints into a
 logic formula in the conjunctive normal form (CNF) for the underlying
-SAT solver (the Maple solver is used for the competition). Picat
+SAT solver (the Kissat solver is used for the competition). Picat
 employs the so called log-encoding for compiling domain variables and
 constraints.  For a domain with the maximum absolute value n, 
 log_2(n) Boolean variables are used. If the domain contains both
@@ -46,4 +46,4 @@ Optimizing SAT Encodings for Arithmetic Constraints,
 CP 2017
 
 We would like to thank Joachim Schimpf for sharing his FlatZinc parser
-with us and Sanders Hernandez for implementing the Maple interface.
+with us.
