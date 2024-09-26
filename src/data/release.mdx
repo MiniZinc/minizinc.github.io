@@ -1,29 +1,22 @@
 import { BugRef, IDEBugRef } from '@/components/BugRef'
 
-- Add `string_split` function that splits a string into an array of strings
-  based on a separator.
-- Add `json_section` annotation to mark an output item as a JSON section
-  (<BugRef issue={816} />).
-- Fix specification for constraint items and annotations in FlatZinc JSON.
-- Fix flattening of negated let expressions with constraints.
-- Fix crash when equating identifiers to tuples/records in if-then-else
-  expressions.
-- Fix `string_length` function to return the number of Unicode code points
-  rather than the number of bytes (i.e., to interpret the string as UTF-8).
-- Emit type error for opt tuples and records created through type aliases.
-- Fix evaluation of par partial functions returning arrays.
-- Fix type inference for if-then-else expressions with different tuple or
-  record types in the branches.
-- Fix evaluation error caused by removal of fixed FlatZinc variables without
-  fixing them in the output model.
-- Fix computed type when flattening cv comprehensions containing tuple or
-  record types.
-- Fix unsatisfiability caused by reification in negated boolean context
-  (<BugRef issue={813} />).
-- Fix bug in computation of common type of incompatible record types.
-- Fix crash when type checking nested arrays of tuples or records.
-- Fix incorrect unification of flattened tuple/record fields with paths
-  enabled.
+- Variable ``in`` operators on arrays of (nested) records and tuples containing
+  only enumerable (enum, int, or bool) will now be rewritten into ``table``
+  global constraints.
+  - Values that are ``par`` in the left hand side will be checked and filtered
+    from the resulting table constraint.
+- Variable ``<``, ``<=``, ``>``  and ``>=`` operators on (nested) records and
+  tuples containing only enumerable (enum, int, or bool) will now be rewritten
+  into ``lex_less`` or ``lex_lesseq`` global constraints.
+- Automatically detect SCIP 9.0.1 and potential future versions on Windows.
+- The interface to the HiGHS solver now requires version 1.7.2 or later.
+- Enforce strict enum type correctness for set operations (:bugref:`828`).
+- Add ``par opt`` overloads of ``min`` / ``max`` and return enum values instead
+  of coercing to integers.
+- Use half-reification only when there isn't a reification that is a more 
+  specific match.
+- Add multidimensional overloads for the ``++`` array concatenation operator.
+- Plus more than 25 bug fixes.
 
 export default function Release({ children }) {
   return (
