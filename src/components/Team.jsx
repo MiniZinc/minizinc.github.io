@@ -31,7 +31,12 @@ function Members({ className, people, ...props }) {
             </div>
             <div>
               <div className="flex items-baseline gap-x-2">
-                <h4 className="text-lg font-medium">{person.name}</h4>
+                <h4
+                  id={person.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}
+                  className="text-lg font-medium"
+                >
+                  {person.name}
+                </h4>
                 {person.email ? (
                   <Link
                     href={`mailto:${person.email}`}
