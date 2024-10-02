@@ -1,4 +1,5 @@
 const releaseList = [
+  ['2.8.7', '2 October 2024'],
   ['2.8.6', '25 September 2024'],
   ['2.8.5', '3 June 2024'],
   ['2.8.4', '10 May 2024'],
