@@ -1,5 +1,6 @@
 import { changelog } from '@/utils/links'
 
+export const dynamic = 'force-static'
 export function GET() {
   const url = changelog()
   return new Response(
