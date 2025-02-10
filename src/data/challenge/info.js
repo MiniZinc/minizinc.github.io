@@ -1,6 +1,41 @@
 import { Link } from '@/components/Link'
 
 export const info = {
+  2025: (() => {
+    const problemSubmissionDeadline = 'Fri, 16 May 2025'
+    return {
+      announcements: [
+        <>
+          <strong>2025-02-11</strong> Official{' '}
+          <Link href="/challenge/2025/call_for_problems">
+            Call for Problems
+          </Link>{' '}
+          for the MiniZinc Challenge.
+        </>,
+      ],
+      problemSubmissionDeadline,
+      minizinc: '2.9.0',
+      dates: [
+        <>
+          Registration opens: <strong>Now</strong>.
+        </>,
+        <>
+          Problem submission deadline: <strong>{problemSubmissionDeadline}</strong>.
+        </>,
+        <>
+          Solver submission begins: <strong>Mon, 26 May 2025</strong>.
+        </>,
+        <>
+          Solver submission deadline: <strong>Fri, 11 July 2025</strong>.
+        </>,
+        <>
+          Announcement of results at{' '}
+          <Link href="https://cp2025.a4cp.org/">CP2025</Link>:{' '}
+          <strong>10 - 15 August 2025</strong> (Glasgow, Scotland).
+        </>,
+      ],
+    }
+  })(),
   2024: (() => {
     const problemSubmissionDeadline = 'Fri, 28 June 2024'
     return {
