@@ -121,7 +121,7 @@ export function Rostering() {
                 <td key={i}>
                   <div
                     className={clsx(
-                      'rounded text-center transition-colors duration-300',
+                      'rounded-sm text-center transition-colors duration-300',
                       bgColors[s] || '',
                     )}
                   >
