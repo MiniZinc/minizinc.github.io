@@ -1,36 +1,29 @@
 import { BugRef, IDEBugRef } from '@/components/BugRef'
 
--  Add support for ``elseif`` in ``if then elseif endif`` expressions without an
-   `else` branch.
--  Make ``sort`` functions return array of enum when input is array of
-   enum (<BugRef issue={853} />).
--  Make the ``mzn_in_root_context`` function (which is used only internally and
-   should not be used in user models) more flexible in where it can be called.
--  Update packaged version of the HiGHS solver to version 1.8.1.
--  Update Gurobi interface to be compatible with Gurobi 12.0.0.
--  Address compiler warnings concerning unsafe signed/unsigned comparisons and
-   implicit casts between different integer types.
--  **BREAKING**: The usage of ``--compile`` (or ``-c``) flag now requires the
-   user to explicitly specify the solver for which the MiniZinc instance is being
-   compiled, using ``--solver``. To select the default solver (and keep the
-   previous behaviour) you can use ``--solver default``.
--  Add the ``--fzn-format`` flag to influence whether the generated FlatZinc from
-   ``--compile`` or ``--fzn`` is given in the traditional FlatZinc format or the
-   new JSON-based format. (<BugRef issue={868} />)
--  Comments regarding the compilation invocation are now included in user-facing
-   FlatZinc (``.fzn``) files, created by the ``--compile`` or ``--fzn`` flags.
--  Add ``par`` version of the ``among`` function.
--  Add support for arrays containing arrays (which only support access using
-   ``par`` indices).
--  Add ``diversity.mzn`` library to be used with the diverse solutions toolchain
-   included in MiniZinc Python.
--  Ensure the MiniZinc directory is added to the DLL search path when running
-   child processes on Windows (<IDEBugRef issue={206} />).
--  Add ``par`` implementations for the ``arg_val`` and ``arg_val_weak`` functions.
--  Add support for calling enum constructors without arguments to return the set
-   of all constructed values.
--  Deprecate and emit warning for implicit coercion of enums to integers. The
-   ``enum2int`` function should be used to perform the coercion where required.
+-  Don't include empty stack traces in JSON stream errors or warnings
+   (<BugRef issue={880}/>, <IDEBugRef issue={212}/>).
+-  Wait 1 second between sending ``SIGTERM`` and ``SIGKILL`` signals to solvers
+   to allow more time for cleanup (<BugRef issue={882}/>).
+-  Fix a bug where calls to ``enum2int`` weren't correctly removed in
+   comprehensions, leading to an internal error (<BugRef issue={879}/>).
+-  Fix false-positive implicit enum coercion warnings when calling ``card`` and
+   some inequality operators.
+-  Fix false-positive implicit enum coercion warnings for calls with
+   comprehension arguments (<BugRef issue={887}/>).
+-  Recursively type check type-insts of variable declarations and function
+   items.
+   -  This enables enum constructors and other functions to be used on the
+      left hand side of declarations, and allows overloading of functions
+      with identifiers in type-insts to be correctly resolved.
+-  Fix type error in flexible job shop documentation example caused by change
+   of signature of ``cumulative`` to enum-safe version in 2.9.0.
+-  Accept enum types for the two argument ``regular`` constraint to avoid
+   false-positive warnings about implicit enum to int coercion.
+-  Disallow multiple comma-separated arguments in string interpolations,
+   which previously caused unexpected behaviour.
+-  Fix incorrect output of non-improving solutions when using HiGHS.
+-  Use scroll buttons when the tab bar overflows to ensure the side panels can
+   be resized in the MiniZincIDE (<IDEBugRef issue={213}/>).
 
 export default function Release({ children }) {
   return (
