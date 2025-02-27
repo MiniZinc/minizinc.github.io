@@ -97,7 +97,7 @@ export function Playground({ className, ...props }) {
       {...props}
     >
       <style jsx>{`
-        @import url('https://cdn.jsdelivr.net/gh/minizinc/minizinc-playground@library/dist/style.css');
+        @import url('https://cdn.jsdelivr.net/gh/minizinc/minizinc-playground@library/dist/minizinc-playground.css');
       `}</style>
       <Container>
         <div className="mx-auto max-w-2xl text-center">
