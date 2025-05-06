@@ -266,7 +266,8 @@ export default function Page() {
                       <li>indomain_max (x &gt;= 18; x &lt; 18) </li>
                       <li>indomain_median (x = 3 ; x != 3) </li>
                       <li>
-                        indomain_split (x &lt;= (1+18)/2 ; x &gt; (1+18)/2 ){' '}
+                        indomain_split (x &lt;= (1+18)/2 ; x &gt; (1+18)/2
+                        ){' '}
                       </li>
                       <li>
                         indomain_reverse_split (x &gt; (1+18)/2 ; x &lt;=

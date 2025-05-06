@@ -62,7 +62,8 @@ export default function Page() {
                 the competition VMs. Updated the rules accordingly.
               </li>
               <li>
-                <b>2015-06-24</b> Announcement of MiniZinc Challenge Judges.{' '}
+                <b>2015-06-24</b> Announcement of MiniZinc Challenge
+                Judges.{' '}
               </li>
               <li>
                 <b>2015-06-24</b> Official Call for Participation for the
@@ -82,7 +83,8 @@ export default function Page() {
                 Registration opens: <strong>Wed, 26 June 2015</strong>.{' '}
               </li>
               <li>
-                Problem submission deadline: <strong>Fri, 5 June 2015</strong>.{' '}
+                Problem submission deadline: <strong>Fri, 5 June 2015</strong>
+                .{' '}
               </li>
               <li>
                 Initial submission round begins:{' '}

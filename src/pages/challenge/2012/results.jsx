@@ -91,7 +91,8 @@ export default function Page() {
                 <Link href="http://dtai.cs.kuleuven.be/krr/software/minisatid">
                   MinisatID
                 </Link>{' '}
-                (<Link href="description_minisatid.txt">description</Link>).{' '}
+                (<Link href="description_minisatid.txt">description</Link>
+                ).{' '}
               </li>
             </ul>
             <p>
@@ -112,7 +113,8 @@ export default function Page() {
               </li>
               <li>
                 {' '}
-                G12/LazyFD. A Mercury FD solver using Lazy Clause Generation.{' '}
+                G12/LazyFD. A Mercury FD solver using Lazy Clause
+                Generation.{' '}
               </li>
               <li>
                 {' '}

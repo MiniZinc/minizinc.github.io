@@ -528,7 +528,8 @@ export default function Page() {
             <p>The files on this page are for MiniZinc version 2.0.13.</p>
             <div id="footer">
               {' '}
-              ©<Link href="http://data61.csiro.au">Data61, CSIRO</Link>, 2016{' '}
+              ©<Link href="http://data61.csiro.au">Data61, CSIRO</Link>,
+              2016{' '}
             </div>
           </article>
         </Container>

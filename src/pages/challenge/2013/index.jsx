@@ -64,7 +64,8 @@ export default function Page() {
                 Registration opens: <strong>Wed, 1 May 2013</strong>.{' '}
               </li>
               <li>
-                Problem submission deadline: <strong>Fri, 14 June 2013</strong>.{' '}
+                Problem submission deadline: <strong>Fri, 14 June 2013</strong>
+                .{' '}
               </li>
               <li>
                 Initial submission round begins:{' '}

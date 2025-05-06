@@ -126,7 +126,8 @@ export default function Page() {
                             <br /> This causes the solver to search for, and
                             output all solutions.
                             <br /> When this option is not given the solver
-                            should search for, and output the first solution.{' '}
+                            should search for, and output the first
+                            solution.{' '}
                           </li>
                           <li>
                             <b>Optimisation problems</b>
@@ -212,7 +213,8 @@ export default function Page() {
                 <dfn>Open class</dfn>: This class allows the usage of portfolio
                 solvers. Solvers in this class are free to use multiple threads
                 or cores to solve the problem. All entrants in the parallel
-                search class will be automatically entered in this class too.{' '}
+                search class will be automatically entered in this class
+                too.{' '}
               </li>
             </ul>
             <li>
@@ -311,7 +313,8 @@ export default function Page() {
                           first_fail (variable with smallest domain size){' '}
                         </li>
                         <li>
-                          anti_first_fail (variable with largest domain size){' '}
+                          anti_first_fail (variable with largest domain
+                          size){' '}
                         </li>
                         <li>
                           smallest (variable with smallest minimal value){' '}
@@ -326,7 +329,8 @@ export default function Page() {
                         <li>indomain_max (x &gt;= 18; x &lt; 18) </li>
                         <li>indomain_median (x = 3 ; x != 3) </li>
                         <li>
-                          indomain_split (x &lt;= (1+18)/2 ; x &gt; (1+18)/2 ){' '}
+                          indomain_split (x &lt;= (1+18)/2 ; x &gt; (1+18)/2
+                          ){' '}
                         </li>
                         <li>
                           indomain_reverse_split (x &gt; (1+18)/2 ; x &lt;=
@@ -529,7 +533,8 @@ export default function Page() {
                   <i> solved(p,s) &amp;&amp; not solved(p,s&apos;)</i>, or{' '}
                 </li>
                 <li>
-                  <i> optimal(p,s) &amp;&amp; not optimal(p,s&apos;)</i>, or{' '}
+                  <i> optimal(p,s) &amp;&amp; not optimal(p,s&apos;)</i>,
+                  or{' '}
                 </li>
                 <li>
                   <i> quality(p,s) &gt; quality(p,s&apos;)</i>, or{' '}

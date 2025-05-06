@@ -40,7 +40,7 @@ export function Handbook() {
     <section
       id="handbook"
       aria-labelledby="handbook-title"
-      className="mb-12 mt-6"
+      className="mt-6 mb-12"
     >
       <Container>
         <h2

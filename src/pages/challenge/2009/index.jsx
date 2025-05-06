@@ -72,7 +72,8 @@ export default function Page() {
                 .{' '}
               </li>
               <li>
-                Initial submission round ends: <strong>20 August 2009</strong>.{' '}
+                Initial submission round ends: <strong>20 August 2009</strong>
+                .{' '}
               </li>
               <li>
                 Final submissions: <strong>30 August 2009</strong>.{' '}

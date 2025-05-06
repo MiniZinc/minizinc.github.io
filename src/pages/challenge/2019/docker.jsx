@@ -59,8 +59,8 @@ export default function Page() {
               <li>Higher automatisation of the execution of solvers.</li>
             </ul>
             <h2 id="brief-overview-of-the-concept-of-docker">
-              <span className="header-section-number">2</span> Brief Overview of the
-              Concept of Docker
+              <span className="header-section-number">2</span> Brief Overview of
+              the Concept of Docker
             </h2>
             <p>
               There are two main concepts{' '}
@@ -121,8 +121,8 @@ export default function Page() {
               is created via the web pages.
             </p>
             <h2 id="minizinc-challenge-2019-docker-image">
-              <span className="header-section-number">5</span> MiniZinc Challenge
-              2019 Docker Image
+              <span className="header-section-number">5</span> MiniZinc
+              Challenge 2019 Docker Image
             </h2>
             <p>
               The docker image was created via configuration file called
@@ -162,8 +162,8 @@ export default function Page() {
               <code>docker run -it --rm minizinc/mznc2019:1.0 /bin/bash</code>
             </pre>
             <h2 id="preparation-of-the-solver-submission">
-              <span className="header-section-number">6</span> Preparation of the
-              Solver Submission
+              <span className="header-section-number">6</span> Preparation of
+              the Solver Submission
             </h2>
             <p>
               There are two ways to prepare a solver submission. One way is to
@@ -269,7 +269,8 @@ export default function Page() {
               </code>
             </pre>
             <h4 id="via-standard-in">
-              <span className="header-section-number">6.1.3</span> Via Standard In
+              <span className="header-section-number">6.1.3</span> Via Standard
+              In
             </h4>
             <p>
               Use this command in a terminal in Mac OS X or Linux distributions.
@@ -290,7 +291,8 @@ export default function Page() {
               </code>
             </pre>
             <h3 id="docker-container">
-              <span className="header-section-number">6.2</span> Docker Container
+              <span className="header-section-number">6.2</span> Docker
+              Container
             </h3>
             <p>
               Creating the image via a docker container might be a more familiar
@@ -428,8 +430,8 @@ export default function Page() {
               <code>x = 2; ----------</code>
             </pre>
             <h2 id="uploading-and-solver-submission">
-              <span className="header-section-number">7</span> Uploading and Solver
-              Submission
+              <span className="header-section-number">7</span> Uploading and
+              Solver Submission
             </h2>
             <p>
               You have finalised your solver docker image and have an account on{' '}
@@ -512,7 +514,8 @@ export default function Page() {
               </li>
             </ol>
             <h2 id="docker-cheat-sheet">
-              <span className="header-section-number">8</span> Docker Cheat Sheet
+              <span className="header-section-number">8</span> Docker Cheat
+              Sheet
             </h2>
             <p>
               Docker has an abundance of command-line commands, which are

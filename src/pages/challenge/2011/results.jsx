@@ -74,7 +74,8 @@ export default function Page() {
                 <Link href="http://yices.csl.sri.com/">Yices</Link>.{' '}
               </li>
               <li>
-                <Link href="http://scip.zib.de">SCIP</Link>. A CP/MIP solver.{' '}
+                <Link href="http://scip.zib.de">SCIP</Link>. A CP/MIP
+                solver.{' '}
               </li>
             </ul>
             <p>
@@ -95,7 +96,8 @@ export default function Page() {
               </li>
               <li>
                 {' '}
-                G12/LazyFD. A Mercury FD solver using Lazy Clause Generation.{' '}
+                G12/LazyFD. A Mercury FD solver using Lazy Clause
+                Generation.{' '}
               </li>
               <li>
                 {' '}
@@ -203,7 +205,8 @@ export default function Page() {
               </li>
               <li>
                 Bumblebee aborts on the vrp, four prize-collecting instances,
-                ship-scheduling and table layout with a compiler failed error.{' '}
+                ship-scheduling and table layout with a compiler failed
+                error.{' '}
               </li>
               <li>
                 Linearisation aborts (CBC, Cplex, Gurobi) on carpet-cutting,

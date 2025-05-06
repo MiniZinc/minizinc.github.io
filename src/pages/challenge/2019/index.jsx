@@ -88,7 +88,8 @@ export default function Page() {
                 <Link href="https://cp2019.a4cp.org">
                   <abbr>CP2019</abbr>
                 </Link>
-                : <strong>30 September - 4 October</strong> (Stamford, CT, USA).{' '}
+                : <strong>30 September - 4 October</strong> (Stamford, CT,
+                USA).{' '}
               </li>
             </ul>
             <h3>Registration</h3>

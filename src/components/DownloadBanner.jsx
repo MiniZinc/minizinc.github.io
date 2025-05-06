@@ -13,7 +13,7 @@ export function DownloadBanner() {
     <section
       id="latest-release"
       aria-labelledby="latest-release-title"
-      className="border-b border-t border-gray-200 bg-gray-100 py-6 sm:py-10"
+      className="border-t border-b border-gray-200 bg-gray-100 py-6 sm:py-10"
     >
       <Container>
         <h2

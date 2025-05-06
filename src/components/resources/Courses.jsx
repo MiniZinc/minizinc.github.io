@@ -39,7 +39,7 @@ export function Courses() {
     <section
       id="courses"
       aria-labelledby="courses-title"
-      className="mb-12 mt-6"
+      className="mt-6 mb-12"
     >
       <Container>
         <h2

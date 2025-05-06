@@ -26,7 +26,7 @@ export function CurrentChallenge() {
           >
             Announcements
           </h4>
-          <ul className="ml-4 mt-4 list-inside list-disc leading-relaxed">
+          <ul className="mt-4 ml-4 list-inside list-disc leading-relaxed">
             {info[current].announcements.map((item, i) => (
               <li key={i}>{item}</li>
             ))}
@@ -37,7 +37,7 @@ export function CurrentChallenge() {
           >
             Dates
           </h4>
-          <ul className="ml-4 mt-4 list-inside list-disc leading-relaxed">
+          <ul className="mt-4 ml-4 list-inside list-disc leading-relaxed">
             {info[current].dates.map((item, i) => (
               <li key={i}>{item}</li>
             ))}

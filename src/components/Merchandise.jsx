@@ -10,7 +10,7 @@ export function Merchandise({ className, ...props }) {
     <section id="merchandise" className={clsx(className, 'py-12')} {...props}>
       <Container>
         <div>
-          <div className="mb-6 flex justify-center gap-4 text-primary">
+          <div className="text-primary mb-6 flex justify-center gap-4">
             <FontAwesomeIcon size="xl" icon={faImage} />
             <FontAwesomeIcon size="xl" icon={faShirt} />
             <FontAwesomeIcon size="xl" icon={faMugHot} />

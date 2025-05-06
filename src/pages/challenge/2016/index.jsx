@@ -49,7 +49,8 @@ export default function Page() {
               </li>
               {/* <li><b>2016-08-03</b> Final submission deadline is now <strong>Thu, 6 August 2016</strong>.</li><li><b>2016-07-10</b> Upgrade of MiniZinc distribution to 2.0.4 on the competition VMs. Updated the rules accordingly.</li> */}
               <li>
-                <b>2016-07-11</b> Announcement of MiniZinc Challenge Judges.{' '}
+                <b>2016-07-11</b> Announcement of MiniZinc Challenge
+                Judges.{' '}
               </li>
               <li>
                 <b>2016-05-20</b> Official Call for Participation for the

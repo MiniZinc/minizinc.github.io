@@ -55,7 +55,8 @@ export default function Page() {
                 Friday, 15 August 2014.{' '}
               </li>
               <li>
-                <b>2014-07-08</b> Announcement of MiniZinc Challenge Judges.{' '}
+                <b>2014-07-08</b> Announcement of MiniZinc Challenge
+                Judges.{' '}
               </li>
               <li>
                 <b>2014-06-26</b> Official Call for Participation for the
@@ -75,7 +76,8 @@ export default function Page() {
                 Registration opens: <strong>Thu, 1 May 2014</strong>.{' '}
               </li>
               <li>
-                Problem submission deadline: <strong>Fri, 6 June 2014</strong>.{' '}
+                Problem submission deadline: <strong>Fri, 6 June 2014</strong>
+                .{' '}
               </li>
               <li>
                 Initial submission round begins:{' '}

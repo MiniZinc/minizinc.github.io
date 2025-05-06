@@ -60,7 +60,8 @@ export default function Page() {
                 <Link href="https://github.com/potassco/flatzingo">
                   Flatzingo
                 </Link>{' '}
-                (<Link href="description_flatzingo.txt">description</Link>).{' '}
+                (<Link href="description_flatzingo.txt">description</Link>
+                ).{' '}
               </li>
               <li>
                 <Link href="https://github.com/ehebrard/Mistral-2.0">
@@ -75,7 +76,8 @@ export default function Page() {
               </li>
               <li>
                 <Link href="http://optimathsat.disi.unitn.it">OptiMathSAT</Link>{' '}
-                (<Link href="description_optimathsat.txt">description</Link>).{' '}
+                (<Link href="description_optimathsat.txt">description</Link>
+                ).{' '}
               </li>
               <li>
                 <Link href="https://developers.google.com/optimization/">
@@ -128,7 +130,8 @@ export default function Page() {
               <li>
                 <Link href="https://bitbucket.org/gkgange/geas">Geas</Link> (
                 <Link href="description_geas.txt">description</Link>). A C++
-                lazy clause generation solver with an OCaml FlatZinc frontend.{' '}
+                lazy clause generation solver with an OCaml FlatZinc
+                frontend.{' '}
               </li>
               <li>
                 <Link href="http://www.gecode.org">Gecode</Link> (
@@ -217,7 +220,8 @@ export default function Page() {
                 <b>C</b> indicates that the search was complete,{' '}
               </li>
               <li>
-                <b>ERR</b> indicates an incorrect answer or the solver aborted,{' '}
+                <b>ERR</b> indicates an incorrect answer or the solver
+                aborted,{' '}
               </li>
               <li>
                 <b>ERR</b> indicates that flattening aborted (time-out or
@@ -627,7 +631,8 @@ export default function Page() {
             <p>The files on this page are for MiniZinc version 2.4.3.</p>
             <div id="footer">
               {' '}
-              ©<Link href="http://data61.csiro.au">Data61, CSIRO</Link>, 2020{' '}
+              ©<Link href="http://data61.csiro.au">Data61, CSIRO</Link>,
+              2020{' '}
             </div>
           </article>
         </Container>

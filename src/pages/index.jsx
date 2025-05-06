@@ -22,7 +22,7 @@ export default function Home() {
         <Video />
         <Features className="bg-gray-100" />
         <LatestRelease />
-        <Merchandise className="bg-sky-50 border-t border-gray-200" />
+        <Merchandise className="border-t border-gray-200 bg-sky-50" />
       </main>
       <Footer />
     </>

@@ -63,7 +63,8 @@ export default function Page() {
                 <Link href="http://yices.csl.sri.com/">Yices</Link>.{' '}
               </li>
               <li>
-                <Link href="http://scip.zib.de">SCIP</Link>. A CP/MIP solver.{' '}
+                <Link href="http://scip.zib.de">SCIP</Link>. A CP/MIP
+                solver.{' '}
               </li>
             </ul>
             <p>

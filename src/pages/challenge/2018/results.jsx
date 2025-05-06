@@ -241,7 +241,8 @@ export default function Page() {
                 <b>C</b> indicates that the search was complete,{' '}
               </li>
               <li>
-                <b>ERR</b> indicates an incorrect answer or the solver aborted,{' '}
+                <b>ERR</b> indicates an incorrect answer or the solver
+                aborted,{' '}
               </li>
               <li>
                 <b>ERR</b> indicates that flattening aborted (time-out or
@@ -649,7 +650,8 @@ export default function Page() {
             <p>The files on this page are for MiniZinc version 2.1.7.</p>
             <div id="footer">
               {' '}
-              ©<Link href="http://data61.csiro.au">Data61, CSIRO</Link>, 2018{' '}
+              ©<Link href="http://data61.csiro.au">Data61, CSIRO</Link>,
+              2018{' '}
             </div>
           </article>
         </Container>

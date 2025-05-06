@@ -13,7 +13,7 @@ export function Resources({ resources }) {
           key={resource.name}
           className="flex flex-col rounded-2xl border border-gray-200 p-8"
         >
-          <div className="text-xl text-primary-dark">
+          <div className="text-primary-dark text-xl">
             <FontAwesomeIcon icon={resource.icon} height="1em" />
           </div>
           <h3 className="mt-6 font-semibold text-gray-900">

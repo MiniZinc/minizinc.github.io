@@ -28,7 +28,7 @@ function BackgroundIllustration(props) {
         viewBox="0 0 1026 1026"
         fill="none"
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full animate-spin-slow"
+        className="animate-spin-slow absolute inset-0 h-full w-full"
       >
         <path
           d="M1025 513c0 282.77-229.23 512-512 512S1 795.77 1 513 230.23 1 513 1s512 229.23 512 512Z"
@@ -58,7 +58,7 @@ function BackgroundIllustration(props) {
         viewBox="0 0 1026 1026"
         fill="none"
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full animate-spin-reverse-slower"
+        className="animate-spin-reverse-slower absolute inset-0 h-full w-full"
       >
         <path
           d="M913 513c0 220.914-179.086 400-400 400S113 733.914 113 513s179.086-400 400-400 400 179.086 400 400Z"
@@ -172,8 +172,8 @@ export function Hero() {
             </div>
           </div>
           <div className="relative mt-10 sm:mt-20 xl:col-span-6 xl:row-span-2 xl:mt-0">
-            <BackgroundIllustration className="pointer-events-none absolute left-1/2 top-4 h-[1026px] w-[1026px] -translate-x-1/3 stroke-gray-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-translate-x-1/2 xl:-top-14 xl:ml-0" />
-            <div className="-mx-4 flex h-[448px] items-center justify-center px-9 sm:mx-0 xl:absolute xl:-inset-x-10 xl:-bottom-32 xl:-top-32 xl:h-auto xl:px-0">
+            <BackgroundIllustration className="pointer-events-none absolute top-4 left-1/2 h-[1026px] w-[1026px] -translate-x-1/3 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/70 sm:top-16 sm:-translate-x-1/2 xl:-top-14 xl:ml-0" />
+            <div className="-mx-4 flex h-[448px] items-center justify-center px-9 sm:mx-0 xl:absolute xl:-inset-x-10 xl:-top-32 xl:-bottom-32 xl:h-auto xl:px-0">
               <Carousel
                 className="w-full"
                 style={{ maxWidth: '500px' }}

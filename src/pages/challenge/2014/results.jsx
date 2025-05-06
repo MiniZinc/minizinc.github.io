@@ -130,7 +130,8 @@ export default function Page() {
               </li>
               <li>
                 {' '}
-                G12/LazyFD. A Mercury FD solver using lazy clause generation.{' '}
+                G12/LazyFD. A Mercury FD solver using lazy clause
+                generation.{' '}
               </li>
               <li>
                 <Link href="http://www.gecode.org">Gecode</Link> (

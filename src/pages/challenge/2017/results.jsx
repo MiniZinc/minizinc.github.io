@@ -93,13 +93,15 @@ export default function Page() {
                 <Link href="http://code.google.com/p/or-tools">
                   OR-Tools CP
                 </Link>{' '}
-                (<Link href="description_or-tools-cp.txt">description</Link>).{' '}
+                (<Link href="description_or-tools-cp.txt">description</Link>
+                ).{' '}
               </li>
               <li>
                 <Link href="http://code.google.com/p/or-tools">
                   OR-Tools LCG
                 </Link>{' '}
-                (<Link href="description_or-tools-lcg.txt">description</Link>).{' '}
+                (<Link href="description_or-tools-lcg.txt">description</Link>
+                ).{' '}
               </li>
               <li>
                 <Link href="http://code.google.com/p/or-tools">
@@ -247,7 +249,8 @@ export default function Page() {
                 <b>C</b> indicates that the search was complete,{' '}
               </li>
               <li>
-                <b>ERR</b> indicates an incorrect answer or the solver aborted,{' '}
+                <b>ERR</b> indicates an incorrect answer or the solver
+                aborted,{' '}
               </li>
               <li>
                 <b>ERR</b> indicates that flattening aborted (time-out or
@@ -646,7 +649,8 @@ export default function Page() {
             <p>The files on this page are for MiniZinc version 2.1.5.</p>
             <div id="footer">
               {' '}
-              ©<Link href="http://data61.csiro.au">Data61, CSIRO</Link>, 2017{' '}
+              ©<Link href="http://data61.csiro.au">Data61, CSIRO</Link>,
+              2017{' '}
             </div>
           </article>
         </Container>

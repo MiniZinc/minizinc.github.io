@@ -126,7 +126,8 @@ export default function Page() {
                             <br /> This causes the solver to search for, and
                             output all solutions.
                             <br /> When this option is not given the solver
-                            should search for, and output the first solution.{' '}
+                            should search for, and output the first
+                            solution.{' '}
                           </li>
                           <li>
                             <b>Optimisation problems</b>
@@ -209,7 +210,8 @@ export default function Page() {
                 <dfn>Open class</dfn>: This class allows the usage of portfolio
                 solvers. Solvers in this class are free to use multiple threads
                 or cores to solve the problem. All entrants in the parallel
-                search class will be automatically entered in this class too.{' '}
+                search class will be automatically entered in this class
+                too.{' '}
               </li>
             </ul>
             <p>
@@ -314,7 +316,8 @@ export default function Page() {
                       <li>indomain_max (x &gt;= 18; x &lt; 18) </li>
                       <li>indomain_median (x = 3 ; x != 3) </li>
                       <li>
-                        indomain_split (x &lt;= (1+18)/2 ; x &gt; (1+18)/2 ){' '}
+                        indomain_split (x &lt;= (1+18)/2 ; x &gt; (1+18)/2
+                        ){' '}
                       </li>
                       <li>
                         indomain_reverse_split (x &gt; (1+18)/2 ; x &lt;=
@@ -481,7 +484,8 @@ export default function Page() {
               <li>
                 {' '}
                 If <i>s</i> and <i>s&apos;</i> gives indistinguishable answers
-                then scoring is based on execution time comparison (see below).{' '}
+                then scoring is based on execution time comparison (see
+                below).{' '}
               </li>
               <li>
                 {' '}

@@ -16,7 +16,7 @@ function TitleAndAbstract({ publication }) {
             <span className="font-bold">{publication.title}</span>.
           </div>
           <div
-            className="rounded-md bg-primary px-1.5 py-0.5 text-xs text-white no-underline hover:cursor-pointer hover:bg-primary-light"
+            className="bg-primary hover:bg-primary-light rounded-md px-1.5 py-0.5 text-xs text-white no-underline hover:cursor-pointer"
             onClick={() => setActive(!active)}
           >
             {active ? 'Hide' : 'Abstract'}
@@ -77,7 +77,7 @@ export function PublicationList({ publications }) {
       {publications.map((pub, index) => (
         <li
           className={clsx(
-            'border-b border-l border-r border-gray-200 p-4',
+            'border-r border-b border-l border-gray-200 p-4',
             index === 0 ? 'border-t' : '',
           )}
           key={pub.id || pub.title}

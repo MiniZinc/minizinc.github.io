@@ -7,7 +7,7 @@ export function Video({ className }) {
       <Container>
         <div className="relative h-0 w-full pb-[56.25%]">
           <iframe
-            className="absolute left-0 top-0 h-full w-full"
+            className="absolute top-0 left-0 h-full w-full"
             width="560"
             height="315"
             src="https://www.youtube.com/embed/K1tH2otAtMw?si=3Tjn8oz46p1miB2J"

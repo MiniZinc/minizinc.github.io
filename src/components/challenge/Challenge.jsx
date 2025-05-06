@@ -27,7 +27,7 @@ export function Challenge() {
           least one of following publications.
         </p>
 
-        <ul className="ml-4 mt-4 list-inside list-disc leading-relaxed">
+        <ul className="mt-4 ml-4 list-inside list-disc leading-relaxed">
           <li>
             Peter J. Stuckey, T. Feydy, A. Schutt, G. Tack, J. Fischer (2014).
             The MiniZinc Challenge 2008-2013. AI Magazine 35 (2), 55-60.

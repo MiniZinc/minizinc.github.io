@@ -80,7 +80,8 @@ export default function Page() {
                 <Link href="http://www.opturion.com/cpx.html">
                   Opturion CPX
                 </Link>{' '}
-                (<Link href="description_opturion_cpx.txt">description</Link>).{' '}
+                (<Link href="description_opturion_cpx.txt">description</Link>
+                ).{' '}
               </li>
               <li>
                 <Link href="http://code.google.com/p/or-tools">OR-Tools</Link> (

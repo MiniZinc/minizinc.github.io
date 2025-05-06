@@ -20,7 +20,8 @@ export const info = {
           Registration opens: <strong>Now</strong>.
         </>,
         <>
-          Problem submission deadline: <strong>{problemSubmissionDeadline}</strong>.
+          Problem submission deadline:{' '}
+          <strong>{problemSubmissionDeadline}</strong>.
         </>,
         <>
           Solver submission begins: <strong>Mon, 26 May 2025</strong>.

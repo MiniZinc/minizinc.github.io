@@ -74,7 +74,8 @@ export default function Page() {
                 <Link href="https://cp2020.a4cp.org">
                   <abbr>CP2020</abbr>
                 </Link>
-                : <strong>7-11 September</strong> (Louvain-la-Neuve, Belgium).{' '}
+                : <strong>7-11 September</strong> (Louvain-la-Neuve,
+                Belgium).{' '}
               </li>
             </ul>
             <h3>Registration</h3>

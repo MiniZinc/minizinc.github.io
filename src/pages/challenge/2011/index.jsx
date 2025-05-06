@@ -68,10 +68,12 @@ export default function Page() {
                 Problem submission deadline: <strong>10 June 2011</strong>.{' '}
               </li>
               <li>
-                Initial submission round begins: <strong>1 July 2011</strong>.{' '}
+                Initial submission round begins: <strong>1 July 2011</strong>
+                .{' '}
               </li>
               <li>
-                Initial submission round ends: <strong>20 July 2011</strong>.{' '}
+                Initial submission round ends: <strong>20 July 2011</strong>
+                .{' '}
               </li>
               <li>
                 Final submissions: <strong>7 August 2011</strong>.{' '}
