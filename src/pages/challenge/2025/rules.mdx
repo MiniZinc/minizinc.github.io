@@ -20,8 +20,8 @@ export const challenge = info[year]
   ]}
 />
 
-These are the official rules for the MiniZinc Challenge {year}. Version 1.0.
-These rules were last updated on 11 February {year}.
+These are the official rules for the MiniZinc Challenge {year}. Version 1.1.
+These rules were last updated on 16 May {year}.
 
 ### Solver submission
 
@@ -173,7 +173,7 @@ so that timing information is accurate.
 During the MiniZinc Challenge {year} all instances of Docker images will run on a compute server with
 the following specification:
 
-- Image Operating System: Ubuntu 22.04 LTS (Jammy Jellyfish)
+- Image Operating System: Ubuntu 24.04 LTS (Noble Numbat)
 - Processor(s): Intel Xeon® Platinum 8260
 - Configuration for FD, FREE: 1 core, 16 GiB memory
 - Configuration for PAR, OPEN: 4 cores, 32 GiB memory
@@ -395,19 +395,19 @@ its performance with each other solver _s'_ on problem _p_.
   comparison (see below).
 - If _s_ gives a worse answer than _s'_ it scores 0 points.
 
-In the case on indistinguishable answers between _s_ and _s'_, _s_ scores
+In the case of indistinguishable answers between _s_ and _s'_, _s_ scores
 _timeUsed(p,s') / (timeUsed(p,s') + timeUsed(p,s))_ , 0.5 if both finished in 0s.
 The exception is that if _solved(p,s)_ is false, that is, _s_ fails to find any solution or prove
 unsatisfiability for problem _p_ it always scores 0 points (even if _s'_ also similarly fails).
 
 - **Satisfaction Problem**  
   A solver _s_ answer is **better** than solver _s'_ answer on satisfaction problem _p_ iff
-  - _solved(p,s) && not solved(p,s')_
+  - _solved(p,s) ∧ not solved(p,s')_
 - **Optimization Problem**  
   A solver _s_ is **better** than solver _s'_ on optimization problem _p_ iff
-  - _solved(p,s) && not solved(p,s')_, or
-  - _optimal(p,s) && not optimal(p,s')_, or
-  - _quality(p,s) > quality(p,s')_, or
+  - _solved(p,s) ∧ not solved(p,s')_, or
+  - _optimal(p,s) ∧ not optimal(p,s')_, or
+  - _quality(p,s) > quality(p,s')_
 
 #### Incomplete Scoring Procedure
 
@@ -416,11 +416,15 @@ proved optimal solution by a solver does not count.
 
 - **Satisfaction Problem**  
   A solver _s_ answer is **better** than solver _s'_ answer on satisfaction problem _p_ iff
-  - _solved(p,s) && not solved(p,s')_
+  - _solved(p,s) ∧ not solved(p,s')_
 - **Optimization Problem**  
   A solver _s_ is **better** than solver _s'_ on optimization problem _p_ iff
-  - _solved(p,s) && not solved(p,s')_, or
-  - _quality(p,s) > quality(p,s')_, or
+  - _solved(p,s) ∧ not solved(p,s')_, or
+  - _quality(p,s) > quality(p,s')_
+
+Indistinguishable answers are treated the same as in the complete scoring procedure for satisfaction
+problems. For optimization problems, _s_ scores 0.5 irrespective of _timeUsed_ unless _solved(p,s)_
+is false, in which case it scores 0 points.
 
 #### Area Scoring Procedure
 

@@ -2,9 +2,20 @@ import { Link } from '@/components/Link'
 
 export const info = {
   2025: (() => {
-    const problemSubmissionDeadline = 'Fri, 16 May 2025'
+    const problemSubmissionDeadline = 'Fri, 6 June 2025'
     return {
       announcements: [
+        <>
+          <strong>2025-05-16</strong> The tie-breaking procedure for incomplete
+          scoring has been updated in the{' '}
+          <Link href="/challenge/2025/rules#incomplete-scoring-procedure">
+            rules
+          </Link>
+          .
+        </>,
+        <>
+          <strong>2025-05-16</strong> Problem submission deadline extended.
+        </>,
         <>
           <strong>2025-02-11</strong> Official{' '}
           <Link href="/challenge/2025/call_for_problems">
@@ -20,7 +31,7 @@ export const info = {
           Registration opens: <strong>Now</strong>.
         </>,
         <>
-          Problem submission deadline:{' '}
+          Problem submission deadline: <s>Fri, 16 May 2025</s>{' '}
           <strong>{problemSubmissionDeadline}</strong>.
         </>,
         <>
