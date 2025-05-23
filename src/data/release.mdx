@@ -1,7 +1,12 @@
-- Fix the packaging of the OR Tools solver on linux distributions (:bugref:`889`).
-- Prevent output of and emit warning for invalid statistics in JSON streaming mode.
-- Fix crash in string interpolation (:bugref:`891`).
-- Fix `row` and `col` functions to use enumerated types instead of `int` (:bugref:`888`).
+
+-  Add ``mzn_max_version_required`` to enable models to speficy the maximum
+   version of MiniZinc required to run the model (:bugref:`872`).
+-  Replace use of ``ptrdiff_t`` with appropriate unsigned integer type.
+-  Clarify documentation example use of boolean extra flags in solver
+   configuration files.
+-  Warnings produced in solution checkers are now output as part of the
+   ``checker`` message when running in ``--json-stream`` mode.
+-  Plus 20 bugfixes!
 
 export default function Release({ children }) {
   return (

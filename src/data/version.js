@@ -1,4 +1,5 @@
 const releaseList = [
+  ['2.9.3', '23 May 2025'],
   ['2.9.2', '6 March 2025'],
   ['2.9.1', '3 March 2025'],
   ['2.9.0', '11 February 2025'],
@@ -26,7 +27,7 @@ export const releases = releaseList.map(([version, date]) => ({
 
 export const requirement = {
   windows: 'Windows 10',
-  linux: 'Ubuntu 20.04',
+  linux: 'Ubuntu 22.04',
   macOS: 'macOS 11',
 }
 
