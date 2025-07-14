@@ -2,12 +2,13 @@ import { Container } from '@/components/Container'
 import { faAward } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from '@/components/Link'
-import { solverCall } from '@/data/challenge/banners'
+import { resultsAnnouncement } from '@/data/challenge/banners'
 
 import clsx from 'clsx'
 
 export function AnnouncementBanner({ className, ...props }) {
-  const announcement = solverCall
+  const announcement = resultsAnnouncement
+  return <></>
   return (
     <section
       id="announcement-banner"
