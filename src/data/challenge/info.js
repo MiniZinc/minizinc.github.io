@@ -99,3 +99,24 @@ export const info = {
     }
   })(),
 }
+
+/// Get ordinal representation of challenge year
+export function nthYear(year) {
+  const n = year - 2008 + 1
+  const s = n % 100;
+  if (s > 3 && s < 21) {
+    return <>{n}<sup>th</sup></>;
+  }
+  switch (s % 10) {
+    case 1: {
+      return <>{n}<sup>st</sup></>;
+    }
+    case 2: {
+      return <>{n}<sup>nd</sup></>;
+    }
+    case 3: {
+      return <>{n}<sup>rd</sup></>;
+    }
+  }
+  return <>{n}<sup>th</sup></>;
+}
