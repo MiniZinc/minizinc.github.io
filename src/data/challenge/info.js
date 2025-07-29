@@ -6,6 +6,10 @@ export const info = {
     return {
       announcements: [
         <>
+          <strong>2025-09-15</strong> Announcements of the results are{' '}
+          <Link href="/challenge/2025/results">here</Link>.
+        </>,
+        <>
           <strong>2025-05-16</strong> The tie-breaking procedure for incomplete
           scoring has been updated in the{' '}
           <Link href="/challenge/2025/rules#incomplete-scoring-procedure">

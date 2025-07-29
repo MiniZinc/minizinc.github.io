@@ -8,7 +8,6 @@ import clsx from 'clsx'
 
 export function AnnouncementBanner({ className, ...props }) {
   const announcement = resultsAnnouncement
-  return <></>
   return (
     <section
       id="announcement-banner"

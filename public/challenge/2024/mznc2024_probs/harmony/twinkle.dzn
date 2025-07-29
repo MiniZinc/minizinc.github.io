@@ -1,0 +1,18 @@
+key = C;
+
+melody = [
+  Pitch(60), Pitch(67), Pitch(69), Pitch(67),
+  Pitch(65), Pitch(64), Pitch(62), Pitch(60),
+  Pitch(67), Pitch(65), Pitch(64), Pitch(62),
+  Pitch(67), Pitch(65), Pitch(64), Pitch(62),
+  Pitch(60), Pitch(67), Pitch(69), Pitch(67),
+  Pitch(65), Pitch(64), Pitch(62), Pitch(60)
+];
+
+min_perfect = 1;
+min_plagal = 1;
+min_imperfect = 0;
+min_interrupted = 1;
+
+max_stationary = 2;
+enforce_cadences = true;

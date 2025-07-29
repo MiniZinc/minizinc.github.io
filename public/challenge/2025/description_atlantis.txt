@@ -1,0 +1,2 @@
+Atlantis is a constraint-based local search solver, designed and implemented by the Optimisation Group of Uppsala University. Atlantis takes inspiration from Localizer, Comet, OscaR.cbls, Yuck, and Kangaroo. 
+The solver has mainly been developed by Frej Knutar Lewander (Department of Information Technology, Uppsala University), Gustav Björdal (Coupa Software), Pierre Flener (Department of Information Technology, Uppsala University), and Justin Pearson  (Department of Information Technology, Uppsala University).

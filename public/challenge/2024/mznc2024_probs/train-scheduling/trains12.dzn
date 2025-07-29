@@ -1,0 +1,49 @@
+STOP = {A,B,C,D,E,F,G,H,I,dummy};
+dstop = dummy;
+minimal_wait = [ 10, 4, 8,  8,  4, 10, 10, 8, 10, 0];
+skip_cost =    [  0, 0, 0, 20, 10,  0,  0, 5,  0, 0 ]; 
+platform =     [2, 1, 1, 1, 1, 2, 2, 1, 2, 0];                           
+stype = [TERMINUS, HUB, HUB, ORDINARY, ORDINARY, TERMINUS, 
+         TERMINUS, ORDINARY, TERMINUS, ORDINARY]; 
+               %  A   B   C   D   E   F   G   H   I   dummy 
+travel_time = [|  0,  7, <>, <>, <>, <>, <>, <>, <>, 0
+               |  7,  0,  8, <>, <>, <>, 12, <>, <>, 0
+               | <>,  9,  0, 10, <>, <>, <>,  4, <>, 0
+               | <>, <>, 10,  0,  8, <>, <>, <>, <>, 0
+               | <>, <>, <>,  8,  0, 15, <>, <>, <>, 0
+               | <>, <>, <>, <>, 15,  0, <>, <>, <>, 0
+               | <>, 12, <>, <>, <>, <>,  0, <>, <>, 0
+               | <>, <>,  4, <>, <>, <>, <>,  0,  6, 0
+               | <>, <>, <>, <>, <>, <>, <>,  6,  0, 0
+               |  0,  0,  0,  0,  0,  0,  0,  0,  0, 0
+               |];
+line = [| NONE, DOUB, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE
+        | DOUB, NONE, QUAD, NONE, NONE, NONE, DOUB, NONE, NONE, NONE
+        | NONE, QUAD, NONE, DOUB, NONE, NONE, NONE, DOUB, NONE, NONE
+        | NONE, NONE, DOUB, NONE, DOUB, NONE, NONE, NONE, NONE, NONE
+        | NONE, NONE, NONE, DOUB, NONE, DOUB, NONE, NONE, NONE, NONE
+        | NONE, NONE, NONE, NONE, DOUB, NONE, NONE, NONE, NONE, NONE
+        | NONE, DOUB, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE
+        | NONE, NONE, DOUB, NONE, NONE, NONE, NONE, NONE, DOUB, NONE
+        | NONE, NONE, NONE, NONE, NONE, NONE, NONE, DOUB, NONE, NONE
+        | NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE
+        |];
+makespan = 300; 
+min_sep = 20;                  
+
+ROUTE = anon_enum(4);
+max_route_length = 6;
+rlength = [ 6, 5, 6, 5 ];
+route = [| A, B, C, D, E, F
+         | G, B, C, H, I, dstop
+         | F, E, D, C, B, A
+         | I, H, C, B, G, dstop
+         |];
+         
+SERVICE = { R1a, R1b, R1c, R2a, R2b, R3a, R4a, R4b };
+sroute = [ ROUTE[1], ROUTE[1], ROUTE[1], ROUTE[2], ROUTE[2], ROUTE[3], ROUTE[4], ROUTE[4] ];
+service_start = [ 0 | i in 1..8];
+service_end   = [ 60, 70, 80, 90, 180, 190, 200, 210];         
+           
+ENGINE = { E1, E2, E3, E4 };
+start = [A, A, A, G];

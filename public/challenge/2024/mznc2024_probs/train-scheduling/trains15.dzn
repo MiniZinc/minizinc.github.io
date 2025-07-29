@@ -1,0 +1,54 @@
+STOP = {A,B,C,D,E,F,G,H,I,J,K,dummy};
+dstop = dummy;
+minimal_wait = [ 10, 4, 8, 8, 4, 10, 10, 8, 10, 6, 10, 0];
+skip_cost = [0, 6, 0, 0, 20, 0, 0, 5, 0, 5, 0, 0 ];             
+platform = [2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 0]; 
+stype = [TERMINUS, ORDINARY, HUB, HUB, ORDINARY, TERMINUS, 
+         TERMINUS, ORDINARY, TERMINUS, ORDINARY, TERMINUS, ORDINARY]; 
+               %  A   B   C   D   E   F   G   H   I   J   K  dummy 
+travel_time = [|  0,  7, <>, <>, <>, <>, <>, <>, <>, <>, <>, 0
+               |  7,  0,  8, <>, <>, <>, 12, <>, <>, <>, <>, 0
+               | <>,  9,  0, 10, <>, <>, <>, <>, <>,  5, <>, 0
+               | <>, <>, 10,  0,  8, <>, <>,  4, <>, <>, <>, 0
+               | <>, <>, <>,  8,  0, 15, <>, <>, <>, <>, <>, 0
+               | <>, <>, <>, <>, 15,  0, <>, <>, <>, <>, <>, 0
+               | <>, 12, <>, <>, <>, <>,  0, <>, <>, <>, <>, 0
+               | <>, <>, <>,  4, <>, <>, <>,  0,  6, <>, <>, 0
+               | <>, <>, <>, <>, <>, <>, <>,  6,  0, <>, <>, 0
+               | <>, <>,  6, <>, <>, <>, <>, <>, <>,  0, 10, 0
+               | <>, <>, <>, <>, <>, <>, <>, <>, <>, 10,  0, 0
+               |  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 0
+               |];
+line = [| NONE, SING, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE
+        | SING, NONE, QUAD, NONE, NONE, NONE, DOUB, NONE, NONE, NONE, NONE, NONE
+        | NONE, QUAD, NONE, DOUB, NONE, NONE, NONE, NONE, NONE, DOUB, NONE, NONE
+        | NONE, NONE, DOUB, NONE, DOUB, NONE, NONE, SING, NONE, NONE, NONE, NONE
+        | NONE, NONE, NONE, DOUB, NONE, DOUB, NONE, NONE, NONE, NONE, NONE, NONE
+        | NONE, NONE, NONE, NONE, DOUB, NONE, NONE, NONE, NONE, NONE, NONE, NONE
+        | NONE, DOUB, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE
+        | NONE, NONE, NONE, SING, NONE, NONE, NONE, NONE, SING, NONE, NONE, NONE
+        | NONE, NONE, NONE, NONE, NONE, NONE, NONE, SING, NONE, NONE, NONE, NONE
+        | NONE, NONE, DOUB, NONE, NONE, NONE, NONE, NONE, NONE, NONE, SING, NONE
+        | NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, SING, NONE, NONE
+        | NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE, NONE
+        |];
+makespan = 240; 
+min_sep = 4;                  
+
+ROUTE = anon_enum(5);
+max_route_length = 6;
+rlength = [ 6, 5, 6, 6, 5 ];
+route = [| A, B, C, D, E, F
+         | G, B, C, J, K, dstop
+         | F, E, D, C, B, A
+         | K, J, C, D, H, I
+         | I, H, D, E, F, dstop
+         |];
+         
+SERVICE = { R1a, R2a, R3a, R4a, R5a };
+sroute = [ ROUTE[i] | i in 1..5 ]; 
+service_start = [ 0 | i in 1..5 ];
+service_end   = [ 120 | i in 1..5 ];         
+           
+ENGINE = { E1, E2, E3, E4, E5 };
+start = [A, G, F, K, I];

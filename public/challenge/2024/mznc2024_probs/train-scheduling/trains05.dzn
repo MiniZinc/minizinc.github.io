@@ -1,0 +1,40 @@
+STOP = {A,B,C,D,E,F,dummy};
+dstop = dummy;
+minimal_wait = [ 10, 4, 4, 4, 4, 10, 0];
+skip_cost =    [  0, 6, 6, 6, 6,  0, 0];             
+platform =     [  2, 1, 1, 1, 1,  2, 0]; 
+stype = [TERMINUS, ORDINARY, ORDINARY, ORDINARY, ORDINARY, TERMINUS, ORDINARY]; 
+               %  A   B   C   D   E   F   dummy 
+travel_time = [|  0,  7, <>, <>, <>, <>,  0
+               |  7,  0,  8, <>, <>, <>,  0
+               | <>,  9,  0, 10, <>, <>,  0
+               | <>, <>, 10,  0,  8, <>,  0
+               | <>, <>, <>,  8,  0, 15,  0
+               | <>, <>, <>, <>, 15,  0,  0
+               |  0,  0,  0,  0,  0,  0,  0
+               |];
+line = [| NONE, QUAD, NONE, NONE, NONE, NONE, NONE
+        | QUAD, NONE, QUAD, NONE, NONE, NONE, NONE
+        | NONE, QUAD, NONE, QUAD, NONE, NONE, NONE
+        | NONE, NONE, QUAD, NONE, QUAD, NONE, NONE
+        | NONE, NONE, NONE, QUAD, NONE, QUAD, NONE
+        | NONE, NONE, NONE, NONE, QUAD, NONE, NONE
+        | NONE, NONE, NONE, NONE, NONE, NONE, NONE
+        |];
+makespan = 240; 
+min_sep = 4;                  
+
+ROUTE = anon_enum(2);
+max_route_length = 6;
+rlength = [ 6, 6 ];
+route = [| A, B, C, D, E, F
+         | F, E, D, C, B, A
+         |];
+         
+SERVICE = { R1a, R1b, R1c, R1d, R1e, R1f, R2a, R2b, R2c, R2d, R2e, R2f };
+sroute = [ ROUTE[1] | i in 1..6] ++ [ ROUTE[2] | i in 1..6]; 
+service_start = [ 0,  30,  60,  90, 120, 150,  0,  30,  60, 90, 120, 150];
+service_end   = [60,  90, 120, 150, 180, 210, 60,  90, 120,150, 180, 210];         
+           
+ENGINE = { E1, E2, E3, E4, E5, E6 };
+start = [A, A, A, F, F, F];

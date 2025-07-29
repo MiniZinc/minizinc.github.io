@@ -1308,6 +1308,113 @@ export const probs = {
     sbc: false,
     rc: false,
   },
+  "cgt": {
+    type: "real",
+    globals: [
+      "all_different",
+      "strictly_increasing"
+    ],
+    kind: "min",
+    sbc: true,
+    rc: false
+  },
+  "EchoSched": {
+    type: "real",
+    globals: [],
+    kind: "min",
+    sbc: false,
+    rc: true
+  },
+  "fbd1": {
+    type: "real",
+    globals: [
+      "all_different"
+    ],
+    kind: "min",
+    sbc: false,
+    rc: false
+  },
+  "gt-sort": {
+    type: "combi",
+    globals: [
+      "all_different",
+      "strictly_increasing"
+    ],
+    kind: "min",
+    sbc: false,
+    rc: false
+  },
+  "hitori": {
+    type: "puzzle",
+    globals: [
+      "all_different_except_0",
+      "connected"
+    ],
+    kind: "max",
+    sbc: false,
+    rc: false
+  },
+  "ihtc-2024-kletzander": {
+    type: "real",
+    globals: [
+      "cumulative"
+    ],
+    kind: "min",
+    sbc: false,
+    rc: false
+  },
+  "ihtc-2024-marte": {
+    type: "real",
+    globals: [
+      "bin_packing_load",
+      "cumulative",
+      "nvalue"
+    ],
+    kind: "min",
+    sbc: false,
+    rc: false
+  },
+  "mondoku": {
+    type: "puzzle",
+    globals: [
+      "global_cardinality",
+      "value_precede_chain"
+    ],
+    kind: "min",
+    sbc: true,
+    rc: false
+  },
+  "products-and-shelves": {
+    type: "real",
+    globals: [
+      "diffn_nonstrict_k",
+      "increasing",
+      "lex_chain_lesseq",
+      "seq_precede_chain"
+    ],
+    kind: "min",
+    sbc: true,
+    rc: false
+  },
+  "tsptw": {
+    type: "real",
+    globals: [
+      "circuit"
+    ],
+    kind: "min",
+    sbc: false,
+    rc: false
+  },
+  "work-task-variation": {
+    type: "real",
+    globals: [
+      "global_cardinality",
+      "regular"
+    ],
+    kind: "min",
+    sbc: false,
+    rc: false
+  }
 }
 
 export const years = {
@@ -1656,4 +1763,26 @@ export const years = {
     'word-equations',
     'yumi-dynamic',
   ],
+  2025: [
+    'atsp',
+    'black-hole',
+    'carpet-cutting',
+    'cgt',
+    'EchoSched',
+    'fbd1',
+    'groupsplitter',
+    'gt-sort',
+    'hitori',
+    'ihtc-2024-kletzander',
+    'ihtc-2024-marte',
+    'is',
+    'mondoku',
+    'products-and-shelves',
+    'proteindesign12',
+    'skill_allocation',
+    'stripboard',
+    'tower',
+    'tsptw',
+    'work-task-variation',
+  ]
 }

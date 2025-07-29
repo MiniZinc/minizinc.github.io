@@ -1,0 +1,36 @@
+============================================================
+  iZplus (fzn_izplus) -- iZ based solver for MiniZinc Challenge
+  Copyright (C) 2012-2025 NTT DATA SEKISUI SYSTEMS CORPORATION.
+============================================================
+
+* What is iZplus
+
+  iZplus is a FlatZinc solver using iZ-C constraint programming
+library which is developed by NTT DATA SEKISUI SYSTEMS CORPORATION.
+
+iZ-C provides :
+  * many built-in constraints
+  * constraint propagation mechanism
+  * simple search strategy
+
+And in iZplus, following algorithms are 'plus'ed.
+  * Randomized restarting in search
+  * Local search for optimization problem
+  * Local search for satisfying problem
+  * Variable reordering
+  * NG learning
+
+* Author
+
+  Toshimitsu FUJIWARA <t.fujiwara@sekisui.com>
+    developer at NTT DATA SEKISUI SYSTEMS CORPORATION
+
+* Acknowledgement
+
+  FlatZinc parser in fzn_izplus is based on 'FlatZinc parser skeleton'
+written by Guido Tack. 
+
+  iZ-C is a constraint programming library developed by
+NTT DATA SEKISUI SYSTEMS CORPORATION.
+
+   http://www.constraint.org/en/izc_download.html
