@@ -82,7 +82,7 @@ export default function ResultsPage() {
               </li>
               <li>
                 <Link href="http://picat-lang.org">PicatSAT</Link> (
-                <Link href="description_fzn_picat_sat.txt">description</Link>).
+                <Link href="description_picatsat.txt">description</Link>).
               </li>
               <li>
                 <Link href="https://github.com/ConSol-Lab/pumpkin">
