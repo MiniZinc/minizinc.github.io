@@ -40,7 +40,7 @@ export function MiniZincDistribution() {
             </p>
             <ul className="mx-2 my-2 list-inside list-disc leading-relaxed">
               <li>
-                <Link href="https://www.gecode.org">Gecode</Link>
+                <Link href="https://www.gecode.dev/">Gecode</Link>
               </li>
               <li>
                 <Link href="https://github.com/chuffed/chuffed">Chuffed</Link>
