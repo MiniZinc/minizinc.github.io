@@ -15,7 +15,7 @@ export default function Page() {
       <main>
         <Container>
           <article className="prose prose-minizinc max-w-none py-6">
-            <h2>MiniZinc Challenge 2018 -- Rules</h2>
+            <h2>MiniZinc Challenge 2018 - Rules</h2>
             <Breadcrumbs
               className="not-prose"
               items={[

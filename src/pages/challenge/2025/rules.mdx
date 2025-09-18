@@ -47,9 +47,7 @@ Participants may amend, or add additional entries freely until the final submiss
 
 The form will collect the following information:
 
-1.  Which competition CLASS(ES) the entry will compete in (see
-
-    <Link href={`/challenge/${year}/rules#competition-classes`}>below</Link>
+1.  Which competition CLASS(ES) the entry will compete in (see <Link href={`/challenge/${year}/rules#competition-classes`}>below</Link>
     for details).
 
 2.  A short (1-2 pages) description of the system. This
@@ -64,9 +62,7 @@ The form will collect the following information:
 4.  The repository and tag name for the entry on Docker Hub.
 
 The organisers will test each entry to ensure conformance with the rules, and if conformant, the
-entry will be run in the challenge, where it will be given a score according to the
-
-<Link href={`/challenge/${year}/rules#assessment`}>assessment procedure</Link>.
+entry will be run in the challenge, where it will be given a score according to the <Link href={`/challenge/${year}/rules#assessment`}>assessment procedure</Link>.
 If the entry does not conform with the rules, or is otherwise unable to run
 successfully, the Challenge organisers will make a reasonable attempt to contact
 the participant and notify them so that the issues can be remedied.
@@ -116,7 +112,6 @@ FlatZinc solvers must accept the following <Link href={documentation("fzn-spec.h
 `stdFlags` of the <Link href={documentation("fzn-spec.html#sec-cmdline-conffiles", challenge.minizinc)}>solver configuration</Link>:
 
 - One or more of:
-
   - `-a` (output all solutions/intermediate solutions), or
   - `-i` (output intermediate solutions).
 
@@ -192,7 +187,6 @@ Solver entries will be run with models that are compatible with <Link href={docu
 These models will adhere to the following restrictions:
 
 1.  Models may only use following types of variables:
-
     - integer (e.g. `var 1..10: x`),  
       optional integer (e.g. `var opt 1..10: x`),  
       integer set (e.g. `var set of 1..10: x`)
@@ -252,7 +246,6 @@ These models will adhere to the following restrictions:
     **seq_search**.  
     For **bool_search** and **int_search**, only the following parameters (where applicable) will be
     used:
-
     - variable choice:
       - input_order
       - first_fail (variable with smallest domain size)
@@ -269,7 +262,6 @@ These models will adhere to the following restrictions:
       - complete
 
     For **set_search**, only the following parameters will be used:
-
     - variable choice:
       - input_order
     - value choice:

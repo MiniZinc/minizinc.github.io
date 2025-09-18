@@ -1,21 +1,69 @@
 import { Button } from '@/components/Button'
 import { Link } from '@/components/Link'
 import { Medals } from '@/components/challenge/Medals'
-import { Scripts } from '@/components/challenge/Scripts'
+import Script from 'next/script'
 import { medals } from '@/data/challenge'
 
-export function Results({ year }) {
+function statusLegend(year) {
+  if (year >= 2012 && year <= 2014) {
+    return (
+      <ul>
+        <li>
+          <b>S</b> indicates that a solution was found,{' '}
+        </li>
+        <li>
+          <b>C</b> indicates that the search was complete,{' '}
+        </li>
+        <li>
+          <b>INC</b> indicates an incorrect answer{' '}
+        </li>
+        <li>
+          <b>MZN</b> indicates that flattening aborted (time-out or
+          out-of-memory){' '}
+        </li>
+        <li>
+          <b>UNK</b> indicates that no answer was returned in the time limit or
+          the solver aborted.{' '}
+        </li>
+      </ul>
+    )
+  }
+  return (
+    <ul>
+      <li>
+        <b>S</b> indicates that a solution was found,
+      </li>
+      <li>
+        <b>C</b> indicates that the search was complete,
+      </li>
+      <li>
+        <b>ERR</b> indicates an incorrect answer or the solver aborted,
+      </li>
+      <li>
+        <b>ERR</b> indicates that flattening aborted (time-out or
+        out-of-memory),
+      </li>
+      <li>
+        <b>UNK</b> indicates that no answer was returned in the time limit.
+      </li>
+    </ul>
+  )
+}
+
+export function Results({ year, children }) {
+  let fns = null
+
+  async function init() {
+    const response = await fetch(`/challenge/${year}/results.json`)
+    const data = await response.json()
+    fns = challengeResults(data)
+    console.log('data ready')
+  }
+
   return (
     <>
-      <Scripts
-        scripts={[
-          `/challenge/${year}/results.js`,
-          '/challenge/plots.js',
-          '/challenge/score.js',
-          'https://cdn.plot.ly/plotly-latest.min.js',
-        ]}
-        onReady={() => init()}
-      />
+      <Script src="https://cdn.plot.ly/plotly-latest.min.js" />
+      <Script src="/challenge/scoring.js" onReady={() => init()} />
 
       <h3>Summary of Results</h3>
 
@@ -25,21 +73,49 @@ export function Results({ year }) {
 
       <h3>Description of Results</h3>
 
-      <p>All times are given in milliseconds.</p>
+      {year <= 2012 ? (
+        <>
+          <p>All times are given in seconds.</p>
+          <p>
+            Scores of 0, 1 and 2 are used in the tables rather than 0, 0.5 and
+            1.
+          </p>
+        </>
+      ) : (
+        <>
+          <p>All times are given in milliseconds.</p>
 
-      <p>
-        A score of 0.0 indicates a worse answer in quality (worse objective, no
-        proof of optimality, or no answer for satisfaction problems).
-        <br />A score of 1.0 indicates a better solution in quality. When the
-        quality is the same, the 1.0 purse is split with respect to time used.
-      </p>
+          <p>
+            Scores of 0, 1 and 2 are used in the tables rather than 0, 0.5 and
+            1.
+          </p>
+
+          <p>
+            A score of 0.0 indicates a worse answer in quality (worse objective,
+            no proof of optimality, or no answer for satisfaction problems).
+            <br />A score of 1.0 indicates a better solution in quality. When
+            the quality is the same, the 1.0 purse is split with respect to time
+            used.
+          </p>
+        </>
+      )}
 
       <p>
         If a promoted entry does not recognize an option (or states that it is
         just ignored), times and solutions from the previous category are used
-        for scoring. The suffixes <i>-fd</i>, <i>-free</i>, <i>-par</i> or{' '}
-        <i>-open</i> (for the parallel portfolio solver entered) at the end of
-        the solver names indicate which configuration the solvers were run with.
+        for scoring. The suffixes <i>-fd</i>, <i>-free</i>,{' '}
+        {'open' in medals[year] ? (
+          <>
+            <i>-par</i>, and <i>-open</i> (for the parallel portfolio solvers
+            entered)
+          </>
+        ) : (
+          <>
+            and <i>-par</i>
+          </>
+        )}{' '}
+        at the end of the solver names indicate which configuration the solvers
+        were run with.
       </p>
 
       <p>The time limit includes both MiniZinc compilation and solving.</p>
@@ -48,24 +124,9 @@ export function Results({ year }) {
         In the Status column: <br />
       </p>
 
-      <ul>
-        <li>
-          <b>S</b> indicates that a solution was found,
-        </li>
-        <li>
-          <b>C</b> indicates that the search was complete,
-        </li>
-        <li>
-          <b>ERR</b> indicates an incorrect answer or the solver aborted,
-        </li>
-        <li>
-          <b>ERR</b> indicates that flattening aborted (time-out or
-          out-of-memory),
-        </li>
-        <li>
-          <b>UNK</b> indicates that no answer was returned in the time limit.
-        </li>
-      </ul>
+      {statusLegend(year)}
+
+      {children}
 
       <h3>Download all problems</h3>
 
@@ -118,7 +179,7 @@ export function Results({ year }) {
                           name="compute_results"
                           className="w-full"
                           color="primary"
-                          onClick={() => computeSelected()}
+                          onClick={() => fns.computeSelected()}
                         >
                           Compute Results
                         </Button>
@@ -133,7 +194,7 @@ export function Results({ year }) {
                           name="clear_selection"
                           className="w-full"
                           variant="outline"
-                          onClick={() => clearAll()}
+                          onClick={() => fns.clearAll()}
                         >
                           Clear Selection
                         </Button>
@@ -148,7 +209,7 @@ export function Results({ year }) {
                           name="select_all"
                           className="w-full"
                           variant="outline"
-                          onClick={() => selectAll()}
+                          onClick={() => fns.selectAll()}
                         >
                           Select all problems
                         </Button>
@@ -163,7 +224,7 @@ export function Results({ year }) {
                           name="select_fd"
                           className="w-full"
                           variant="outline"
-                          onClick={() => selectFD()}
+                          onClick={() => fns.selectFD()}
                         >
                           Add FD category solvers
                         </Button>
@@ -178,7 +239,7 @@ export function Results({ year }) {
                           name="select_free"
                           className="w-full"
                           variant="outline"
-                          onClick={() => selectFree()}
+                          onClick={() => fns.selectFree()}
                         >
                           Add Free category solvers
                         </Button>
@@ -193,7 +254,7 @@ export function Results({ year }) {
                           name="select_par"
                           className="w-full"
                           variant="outline"
-                          onClick={() => selectPar()}
+                          onClick={() => fns.selectPar()}
                         >
                           Add Par category solvers
                         </Button>
@@ -208,7 +269,7 @@ export function Results({ year }) {
                           name="select_open"
                           className="w-full"
                           variant="outline"
-                          onClick={() => selectOpen()}
+                          onClick={() => fns.selectOpen()}
                         >
                           Add Open category solvers
                         </Button>
@@ -223,7 +284,7 @@ export function Results({ year }) {
                           name="select_local"
                           className="w-full"
                           variant="outline"
-                          onClick={() => selectLocal()}
+                          onClick={() => fns.selectLocal()}
                         >
                           Add Local category solvers
                         </Button>
@@ -233,7 +294,7 @@ export function Results({ year }) {
                 </tbody>
               </table>
             </td>
-            <td valign="top">
+            <td valign="top" className="score-area">
               <table valign="top" border="2">
                 <thead></thead>
                 <tbody>
@@ -374,16 +435,22 @@ export function Results({ year }) {
                   <colgroup></colgroup>
                   <thead>
                     <tr>
-                      <td onClick={() => sortTotalTable(0, 'string')}>
+                      <td onClick={() => fns.sortTotalTable(0, 'string')}>
                         <b>Solver </b>
                       </td>
-                      <td onClick={() => sortTotalTable(1, 'number')}>
+                      <td onClick={() => fns.sortTotalTable(1, 'number')}>
                         <b>Score </b>
                       </td>
-                      <td onClick={() => sortTotalTable(2, 'number')}>
+                      <td
+                        className="score-incomplete"
+                        onClick={() => fns.sortTotalTable(2, 'number')}
+                      >
                         <b>Score Incomplete </b>
                       </td>
-                      <td onClick={() => sortTotalTable(3, 'number')}>
+                      <td
+                        className="score-area"
+                        onClick={() => fns.sortTotalTable(3, 'number')}
+                      >
                         <b>Score Area </b>
                       </td>
                     </tr>
@@ -414,10 +481,10 @@ export function Results({ year }) {
                       <td>
                         <b>Score </b>
                       </td>
-                      <td>
+                      <td className="score-incomplete">
                         <b>Score Incomplete</b>
                       </td>
-                      <td>
+                      <td className="score-area">
                         <b>Score Area</b>
                       </td>
                     </tr>
@@ -468,10 +535,10 @@ export function Results({ year }) {
               <td>
                 <b> Score </b>
               </td>
-              <td>
+              <td className="score-incomplete">
                 <b> Score Incomplete</b>
               </td>
-              <td>
+              <td className="score-area">
                 <b> Score Area</b>
               </td>
             </tr>
@@ -507,8 +574,6 @@ export function Results({ year }) {
           <tbody></tbody>
         </table>
       </div>
-      {/* <h3>Score development over time:</h3>
-      <div id="total_scores"></div> */}
     </>
   )
 }

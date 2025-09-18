@@ -14,7 +14,7 @@ export default function ResultsPage() {
   return (
     <>
       <Head>
-        <title>MiniZinc - Challenge {year} Results</title>
+        <title>{`MiniZinc - Challenge ${year} Results`}</title>
       </Head>
       <Header />
       <main>
@@ -166,7 +166,7 @@ export default function ResultsPage() {
             </p>
 
             <p>
-              Finally, the following solver was submitted after the {year}{' '}
+              Finally, the following solvers were submitted after the {year}{' '}
               MinZinc Challenge results had already been finalised:
             </p>
             <ul>
@@ -175,15 +175,19 @@ export default function ResultsPage() {
                 <Link href="description_huub.txt">description</Link>). An LCG
                 solver.
               </li>
+              <li>
+                <Link href="https://uu.diva-portal.org/smash/record.jsf?pid=diva2:1876143">Gecode/Dexter</Link> (
+                <Link href="description_gecode_dexter.txt">description</Link>).
+              </li>
             </ul>
             <p>
-              This solver does not modify scoring results for medal calculation,
-              but has been included for informational purposes.
+              These solvers do not modify the scoring results for medal calculation,
+              but have been included for informational purposes.
             </p>
 
             <p>
-              Note that there is no OPEN category this year as there were no
-              portfolio solver entrants.
+              Note that there is no OPEN medal this year as there were no
+              portfolio solver entrants at the competition deadline.
             </p>
 
             <Results year={year} />

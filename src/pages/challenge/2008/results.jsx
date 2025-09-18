@@ -5,8 +5,6 @@ import { Link } from '@/components/Link'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import Head from 'next/head'
 
-import { Button } from '@/components/Button'
-import { Scripts } from '@/components/challenge/Scripts'
 
 export default function Page() {
   return (
@@ -18,6 +16,15 @@ export default function Page() {
       <main>
         <Container>
           <article className="prose prose-minizinc max-w-none py-6">
+            <h2>MiniZinc Challenge 2008 Results</h2>
+            <Breadcrumbs
+              className="not-prose"
+              items={[
+                ['MiniZinc Challenge', '/challenge'],
+                ['Challenge 2008', '/challenge/2008'],
+                'Results',
+              ]}
+            />
             <table border="1">
               <thead>
                 <tr>

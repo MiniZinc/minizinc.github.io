@@ -5,13 +5,19 @@ import { Link } from '@/components/Link'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import Head from 'next/head'
 
-import { Button } from '@/components/Button'
+import Script from 'next/script'
 import { Globals } from '@/components/challenge/Globals'
 import { Medals } from '@/components/challenge/Medals'
-import { Scripts } from '@/components/challenge/Scripts'
 import { medals } from '@/data/challenge'
 
 export default function Page() {
+  let fns = null
+  async function ready() {
+    const response = await fetch('/challenge/2010/results.json')
+    const json = await response.json()
+    fns = challengeResults2010(json.results, json.loc)
+  }
+
   return (
     <>
       <Head>
@@ -21,14 +27,7 @@ export default function Page() {
       <main>
         <Container>
           <article className="prose prose-minizinc max-w-none py-6">
-            <Scripts
-              scripts={[
-                '/challenge/2010/locations.js',
-                '/challenge/2010/results.js',
-                '/challenge/2010/score.js',
-              ]}
-              onReady={() => init()}
-            />
+            <Script src="/challenge/2010/score.js" onReady={() => ready()} />
             <h2>MiniZinc Challenge 2010 Results</h2>
             <Breadcrumbs
               className="not-prose"
@@ -217,102 +216,98 @@ export default function Page() {
             each other on the selected benchmarks. The entrants for each of the
             fd search, free search and parallel search categories can be
             selected with the corresponding buttons.{' '}
-            <p>
-              <table valign="top">
-                <colgroup>
-                  <col valign="top" />
-                  <col />
-                  <col valign="top" />
-                  <col />
-                </colgroup>
-                <thead></thead>
-                <tbody>
-                  <tr>
-                    <td valign="top"> Solver selection: </td>
-                    <td id="solver_selection" valign="top"></td>
-                    <td valign="top"> Problem selection: </td>
-                    <td id="problem_selection" valign="top"></td>
-                  </tr>
-                </tbody>
-              </table>
-            </p>
-            <p>
-              <table border="2">
-                <thead></thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <form name="score">
-                        <input
-                          name="compute_results"
-                          onClick={() => computeSelected()}
-                          type="button"
-                          value="Compute Results"
-                        />
-                      </form>
-                    </td>
-                    <td>
-                      <form name="score">
-                        <input
-                          name="clear_selection"
-                          onClick={() => clearAll()}
-                          type="button"
-                          value="Clear Selection"
-                        />
-                      </form>
-                    </td>
-                    <td>
-                      <form name="score">
-                        <input
-                          name="select_all"
-                          onClick={() => selectAll()}
-                          type="button"
-                          value="Select all problems"
-                        />
-                      </form>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <form name="score">
-                        <input
-                          name="select_fd"
-                          onClick={() => selectFD()}
-                          type="button"
-                          value="Add FD category solvers"
-                        />
-                      </form>
-                    </td>
-                    <td>
-                      <form name="score">
-                        <input
-                          name="select_free"
-                          onClick={() => selectFree()}
-                          type="button"
-                          value="Add Free category solvers"
-                        />
-                      </form>
-                    </td>
-                    <td>
-                      <form name="score">
-                        <input
-                          name="select_par"
-                          onClick={() => selectPar()}
-                          type="button"
-                          value="Add Par category solvers"
-                        />
-                      </form>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </p>
+            <table valign="top">
+              <colgroup>
+                <col valign="top" />
+                <col />
+                <col valign="top" />
+                <col />
+              </colgroup>
+              <thead></thead>
+              <tbody>
+                <tr>
+                  <td valign="top"> Solver selection: </td>
+                  <td id="solver_selection" valign="top"></td>
+                  <td valign="top"> Problem selection: </td>
+                  <td id="problem_selection" valign="top"></td>
+                </tr>
+              </tbody>
+            </table>
+            <table border="2">
+              <thead></thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <form name="score">
+                      <input
+                        name="compute_results"
+                        onClick={() => fns.computeSelected()}
+                        type="button"
+                        value="Compute Results"
+                      />
+                    </form>
+                  </td>
+                  <td>
+                    <form name="score">
+                      <input
+                        name="clear_selection"
+                        onClick={() => fns.clearAll()}
+                        type="button"
+                        value="Clear Selection"
+                      />
+                    </form>
+                  </td>
+                  <td>
+                    <form name="score">
+                      <input
+                        name="select_all"
+                        onClick={() => fns.selectAll()}
+                        type="button"
+                        value="Select all problems"
+                      />
+                    </form>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <form name="score">
+                      <input
+                        name="select_fd"
+                        onClick={() => fns.selectFD()}
+                        type="button"
+                        value="Add FD category solvers"
+                      />
+                    </form>
+                  </td>
+                  <td>
+                    <form name="score">
+                      <input
+                        name="select_free"
+                        onClick={() => fns.selectFree()}
+                        type="button"
+                        value="Add Free category solvers"
+                      />
+                    </form>
+                  </td>
+                  <td>
+                    <form name="score">
+                      <input
+                        name="select_par"
+                        onClick={() => fns.selectPar()}
+                        type="button"
+                        value="Add Par category solvers"
+                      />
+                    </form>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
             <p></p>
             <h3> Summary:</h3>
             <table
               border="2"
               cellpading="20"
-              cellspacing="20"
+              cellSpacing="20"
               name="total_table"
               rules="groups"
             >
@@ -339,7 +334,7 @@ export default function Page() {
             <table
               border="2"
               cellpading="20"
-              cellspacing="20"
+              cellSpacing="20"
               name="problem_table"
               rules="groups"
             >
@@ -369,7 +364,7 @@ export default function Page() {
             <table
               border="2"
               cellpading="20"
-              cellspacing="20"
+              cellSpacing="20"
               frame="box"
               name="instance_table"
               rules="groups"

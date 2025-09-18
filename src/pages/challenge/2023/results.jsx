@@ -144,7 +144,7 @@ export default function ResultsPage() {
               not eligible for prizes, but do modify the scoring results.
             </p>
 
-            <Results year="2023" />
+            <Results year={2023} />
 
             <h3>Global constraint per model</h3>
 

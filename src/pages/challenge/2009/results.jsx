@@ -4,8 +4,6 @@ import { Header } from '@/components/Header'
 import { Link } from '@/components/Link'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import Head from 'next/head'
-import { Button } from '@/components/Button'
-import { Scripts } from '@/components/challenge/Scripts'
 
 export default function Page() {
   return (
