@@ -1,0 +1,34 @@
+TY  - CPAPER
+AU  - Stuckey, Peter J
+AU  - Tack, Guido
+TI  - Enumerated Types and Type Extensions for MiniZinc
+T2  - Integration of Constraint Programming, Artificial Intelligence, and
+      Operations Research: 19th International Conference, CPAIOR 2022, Los
+      Angeles, CA, USA, June 20-23, 2022, Proceedings
+SP  - 374–389
+PY  - 2022
+DA  - 2022
+PB  - Springer-Verlag
+AB  - Discrete optimisation problems often reason about finite sets of objects.
+      While the underlying solvers will represent these objects as integer
+      values, most modelling languages include enumerated types that allow the
+      objects to be expressed as a set of names. Data attached to an object is
+      made accessible through given arrays or functions from object to data.
+      Enumerated types improve models by making them more self documenting, and
+      by allowing type checking to point out modelling errors that may otherwise
+      be hard to track down. But a frequent modelling pattern requires us to add
+      new elements to a finite set of objects to represent extreme or default
+      behaviour, or to combine sets of objects to reason about them jointly.
+      Currently this requires us to map the extended object sets into integers,
+      thus losing the benefits of using enumerated types. In this paper we
+      introduce enumerated type extension, a restricted form of discriminated
+      union types, to extend enumerated types without losing type safety, and
+      default expressions to succinctly capture cases where we want to access
+      data of extended types. The new language features allow for more concise
+      and easily interpretable models that still support strong type checking
+      and compilation to efficient solver-level models.
+DO  - 10.1007/978-3-031-08011-1_25
+C1  - Berlin, Heidelberg
+UR  - https://doi.org/10.1007/978-3-031-08011-1_25
+UR  - http://dx.doi.org/10.1007/978-3-031-08011-1_25
+ER  - 

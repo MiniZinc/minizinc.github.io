@@ -1,0 +1,22 @@
+TY  - CPAPER
+AU  - Dekker, Jip J
+AU  - Nguyen, Jason
+AU  - Stuckey, Peter J
+AU  - Tack, Guido
+A2  - de la Banda, Maria Garcia
+TI  - Unit Types for MiniZinc
+T2  - 31st International Conference on Principles and Practice of Constraint
+      Programming (CP 2025)
+J2  - Leibniz International Proceedings in Informatics (LIPIcs)
+VL  - 340
+SP  - 10:1-10:20
+PY  - 2025
+DA  - 2025
+PB  - Schloss Dagstuhl – Leibniz-Zentrum für Informatik
+DO  - 10.4230/LIPIcs.CP.2025.10
+C1  - Dagstuhl, Germany
+UR  - http://dx.doi.org/10.4230/LIPIcs.CP.2025.10
+UR  - https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.CP.2025.10
+N1  - Keywords: Modelling, Type Safety, Unit Types
+ER  - 
+AB  - Discrete optimization models often reason about discrete sets of objects, but discrete optimization solvers only deal with integers. One of the key challenges when building models for discrete optimization problems is avoiding bugs. Because the model only defines constraints, decisions, and an objective that are then run on a solver, bugs in the model can be very difficult to track down. Hence, modelling languages should have strong type systems to detect as many bugs as possible at the modelling level. In this paper, we propose unit types for MiniZinc. Unit types allow us to differentiate between different integers appearing in the model. Almost all integer decisions in models are either about a set of objects or some measurable resource type. Using unit types, we can add more type safety to our models by avoiding confusion of decisions on different resource types. Compared to other programming languages, unit types in our proposal are unusual. MiniZinc models often deal with multiple levels of granularity of the same resource, e.g., scheduling to the minute, but doing resource allocation on the half day, or use an unspecified granularity, e.g., the same job-shop scheduling model could use task durations given in minutes or days. Our proposed unit types also differentiate between coordinate unit types, e.g., the time when an event occurred, and the usual delta unit types, e.g., the time difference between two events. Errors arising from mixing coordinate and delta types can be very challenging to debug, so we extend the type system to track this for us.
