@@ -1,12 +1,17 @@
-
--  Add ``mzn_max_version_required`` to enable models to speficy the maximum
-   version of MiniZinc required to run the model (:bugref:`872`).
--  Replace use of ``ptrdiff_t`` with appropriate unsigned integer type.
--  Clarify documentation example use of boolean extra flags in solver
-   configuration files.
--  Warnings produced in solution checkers are now output as part of the
-   ``checker`` message when running in ``--json-stream`` mode.
--  Plus 20 bugfixes!
+- Add new builtin functions for array manipulation: `select_from_index_X`
+  can slice an array with a non-contiguous set of indices, and
+  `concat_index_X` can concatenate two arrays along a specified index.
+- Add option type versions of bin packing and cumulatives constraints.
+- Remove `bool_xor` with two arguments from the FlatZinc builtins.
+  It is never output into FlatZinc by the compiler and violated the rule that
+  FlatZinc builtins are not overloaded (:bugref:`913`). Also remove
+  some other duplicates and incorrect overloads from `flatzinc_builtins.mzn`.
+- Add includes for header files where symbols are required, in order to
+  avoid issues with some compilers.
+- Fix AST string allocation to avoid warnings about writing into unallocated
+  memory.
+- Fix float literal parsing, making it consistent across all platforms (:bugref:`941`).
+- Plus 15 bugfixes!
 
 export default function Release({ children }) {
   return (
