@@ -66,6 +66,7 @@ export const people = [
     affiliation: 'Monash University',
     email: 'hendrik.bierlee@monash.edu',
     img: 'hendrik_bierlee.jpg',
+    former: true,
     description: `The MiniZinc-SAT compiler, integer and single constant multiplication encodings for SAT.`,
   },
   {
