@@ -6,6 +6,11 @@ export const info = {
     return {
       announcements: [
         <>
+          <strong>2026-01-14</strong> Amendment made to the results to fix an
+          issue with undetected incorrect optimality claims. Thanks to Alessio
+          Pellegrino for reporting.
+        </>,
+        <>
           <strong>2025-09-15</strong> Announcements of the results are{' '}
           <Link href="/challenge/2025/results">here</Link>.
         </>,
@@ -57,6 +62,11 @@ export const info = {
     return {
       announcements: [
         <>
+          <strong>2026-01-14</strong> Amendment made to the results to fix an
+          issue with undetected incorrect optimality claims. Thanks to Alessio
+          Pellegrino for reporting.
+        </>,
+        <>
           <strong>2024-09-05</strong> Announcements of the results are{' '}
           <Link href="/challenge/2024/results">here</Link>.
         </>,
@@ -107,20 +117,45 @@ export const info = {
 /// Get ordinal representation of challenge year
 export function nthYear(year) {
   const n = year - 2008 + 1
-  const s = n % 100;
+  const s = n % 100
   if (s > 3 && s < 21) {
-    return <>{n}<sup>th</sup></>;
+    return (
+      <>
+        {n}
+        <sup>th</sup>
+      </>
+    )
   }
   switch (s % 10) {
     case 1: {
-      return <>{n}<sup>st</sup></>;
+      return (
+        <>
+          {n}
+          <sup>st</sup>
+        </>
+      )
     }
     case 2: {
-      return <>{n}<sup>nd</sup></>;
+      return (
+        <>
+          {n}
+          <sup>nd</sup>
+        </>
+      )
     }
     case 3: {
-      return <>{n}<sup>rd</sup></>;
+      return (
+        <>
+          {n}
+          <sup>rd</sup>
+        </>
+      )
     }
   }
-  return <>{n}<sup>th</sup></>;
+  return (
+    <>
+      {n}
+      <sup>th</sup>
+    </>
+  )
 }
