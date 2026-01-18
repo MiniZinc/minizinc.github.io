@@ -52,4 +52,4 @@ export const globals = ((problems) => {
 /**
  * The current MiniZinc Challenge year
  */
-export const current = 2025
+export const current = 2026
