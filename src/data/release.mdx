@@ -1,17 +1,15 @@
-- Add new builtin functions for array manipulation: `select_from_index_X`
-  can slice an array with a non-contiguous set of indices, and
-  `concat_index_X` can concatenate two arrays along a specified index.
-- Add option type versions of bin packing and cumulatives constraints.
-- Remove `bool_xor` with two arguments from the FlatZinc builtins.
-  It is never output into FlatZinc by the compiler and violated the rule that
-  FlatZinc builtins are not overloaded (:bugref:`913`). Also remove
-  some other duplicates and incorrect overloads from `flatzinc_builtins.mzn`.
-- Add includes for header files where symbols are required, in order to
-  avoid issues with some compilers.
-- Fix AST string allocation to avoid warnings about writing into unallocated
-  memory.
-- Fix float literal parsing, making it consistent across all platforms (:bugref:`941`).
-- Plus 15 bugfixes!
+- Automatically detect Gurobi 13.0 and potential future versions.
+- Enable projection of arrays of tuples and records using field access
+  notation (:bugref:`970`).
+- Enable anonymous assignment generators in comprehensions.
+- Rewrite `regular` to `fzn_regular` instead of `fzn_regular_set`
+  when possible, in order to improve performance for solvers that do not
+  support `fzn_regular_set` natively (:bugref:`981`).
+- Add `zip` and `unzip` functions to the standard library (:bugref:`967`).
+- Add enum constructors lifted to arrays (:bugref:`965`).
+- Add `sliding_among` constraint to the standard globals library (:bugref:`960`).
+- Improve support for input of enum definitions using using JSON data files.
+- Plus 19 bugfixes!
 
 export default function Release({ children }) {
   return (
