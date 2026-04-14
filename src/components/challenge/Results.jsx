@@ -191,6 +191,21 @@ export function Results({ year, children }) {
                       <form name="score">
                         <Button
                           type="button"
+                          name="export_results"
+                          className="w-full"
+                          color="light"
+                          onClick={() => fns.downloadResults()}
+                        >
+                          Download Results
+                        </Button>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <form name="score">
+                        <Button
+                          type="button"
                           name="clear_selection"
                           className="w-full"
                           variant="outline"
