@@ -2,6 +2,7 @@ import { Container } from '@/components/Container'
 import { problems, globals, problemsByYear } from '@/data/challenge'
 import { Link } from '@/components/Link'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { Fragment } from 'react'
 
 export function AllGlobals() {
   const minYear = Math.min(...Object.keys(problemsByYear))
@@ -42,33 +43,37 @@ export function AllGlobals() {
           <tbody>
             {problems.map((problem, i) => (
               <tr
-                key={problem.name}
+                key={`problem-${problem.name}`}
                 id={`problem-${problem.name}`}
                 className={`border-b ${i % 2 == 0 ? 'bg-neutral-100' : ''}`}
               >
-                <td className="p-2">{problem.name}</td>
+                <td className="p-2">
+                  <Link
+                    href={`https://github.com/MiniZinc/mzn-challenge/tree/develop/${problem.years[problem.years.length - 1]}/${problem.name}`}
+                  >
+                    {problem.name}
+                  </Link>
+                </td>
                 <td className="p-2">{problem.type}</td>
                 <td className="p-2">{problem.kind}</td>
                 <td className="p-2">{problem.rc ? '✓' : ''}</td>
                 <td className="p-2">{problem.sbc ? '✓' : ''}</td>
                 <td className="p-2">
                   {problem.years.map((y, i) => (
-                    <>
+                    <Fragment key={`problem-${problem.name}-year-${y}`}>
                       {i > 0 ? ', ' : ''}
-                      <Link key={y} href={`/challenge/${y}`}>
-                        {y}
-                      </Link>
-                    </>
+                      <Link href={`/challenge/${y}`}>{y}</Link>
+                    </Fragment>
                   ))}
                 </td>
                 <td className="p-2">
                   {problem.globals.map((g, i) => (
-                    <>
+                    <Fragment key={`problem-${problem.name}-global-${g}`}>
                       {i > 0 ? ', ' : ''}
-                      <Link key={g} href={`#global-${g}`}>
+                      <Link href={`#global-${g}`}>
                         {g}
                       </Link>
-                    </>
+                    </Fragment>
                   ))}
                 </td>
               </tr>
@@ -98,29 +103,29 @@ export function AllGlobals() {
           <tbody>
             {globals.map((global, i) => (
               <tr
-                key={global.global}
+                key={`global-${global.global}`}
                 id={`global-${global.global}`}
                 className={`border-b ${i % 2 == 0 ? 'bg-neutral-100' : ''}`}
               >
                 <td className="p-2">{global.global}</td>
                 <td className="p-2">
                   {global.years.map((y, i) => (
-                    <>
+                    <Fragment key={`global-${global.global}-year-${y}`}>
                       {i > 0 ? ', ' : ''}
-                      <Link key={y} href={`/challenge/${y}`}>
+                      <Link href={`/challenge/${y}`}>
                         {y}
                       </Link>
-                    </>
+                    </Fragment>
                   ))}
                 </td>
                 <td className="p-2">
                   {global.problems.map((p, i) => (
-                    <>
+                    <Fragment key={`global-${global.global}-problem-${p}`}>
                       {i > 0 ? ', ' : ''}
-                      <Link key={p} href={`#problem-${p}`}>
+                      <Link href={`#problem-${p}`}>
                         {p}
                       </Link>
-                    </>
+                    </Fragment>
                   ))}
                 </td>
               </tr>
