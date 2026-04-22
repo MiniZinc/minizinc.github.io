@@ -2,11 +2,14 @@ import { Link } from '@/components/Link'
 
 export const info = {
   2026: (() => {
-    const problemSubmissionDeadline = 'Fri, 24 April 2026'
+    const problemSubmissionDeadline = 'Fri, 8 May 2026'
     return {
       announcements: [
         <>
-          <strong>2025-01-19</strong> Official{' '}
+          <strong>2026-04-23</strong> Problem submission deadline extended.
+        </>,
+        <>
+          <strong>2026-01-19</strong> Official{' '}
           <Link href="/challenge/2026/call_for_problems">
             Call for Problems
           </Link>{' '}
@@ -20,7 +23,7 @@ export const info = {
           Registration opens: <strong>Now</strong>.
         </>,
         <>
-          Problem submission deadline:
+          Problem submission deadline: <s>Fri, 24 April 2026</s>{' '}
           <strong>{problemSubmissionDeadline}</strong>.
         </>,
         <>
