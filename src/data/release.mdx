@@ -1,15 +1,16 @@
-- Automatically detect Gurobi 13.0 and potential future versions.
-- Enable projection of arrays of tuples and records using field access
-  notation (:bugref:`970`).
-- Enable anonymous assignment generators in comprehensions.
-- Rewrite `regular` to `fzn_regular` instead of `fzn_regular_set`
-  when possible, in order to improve performance for solvers that do not
-  support `fzn_regular_set` natively (:bugref:`981`).
-- Add `zip` and `unzip` functions to the standard library (:bugref:`967`).
-- Add enum constructors lifted to arrays (:bugref:`965`).
-- Add `sliding_among` constraint to the standard globals library (:bugref:`960`).
-- Improve support for input of enum definitions using using JSON data files.
-- Plus 19 bugfixes!
+- Xpress solver migration from BCL to C API with support for Xpress 9.8
+  parameters. Add support for indicator constraints, warm start, and
+  convex quadratic inequalities.
+- The compiler now removes all non-array right-hand sides from variable
+  declarations in FlatZinc. This minimizes the effort required when
+  parsing `.fzn` or FlatZinc JSON files.
+- Add support for SCIP 10, and remove support for SCIP 7 and earlier
+  (:bugref:`999`).
+- Add versions of `count_*` constraints for booleans, floats and sets of
+  integers to allow solvers to support them natively (:bugref:`1005`).
+- Add the `--cleanup-time-limit` option for configuring the grace period for
+  solver cleanup before forced termination (:bugref:`994`).
+- Plus 15 bugfixes!
 
 export default function Release({ children }) {
   return (
