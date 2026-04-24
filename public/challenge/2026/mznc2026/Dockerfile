@@ -179,7 +179,7 @@ RUN \
 # Setup of the base image
 
 # Get base image with Ubuntu 24.04
-FROM minizinc/minizinc:2.9.5-noble
+FROM minizinc/minizinc:2.9.6-noble
 
 # Copy unpacked MiniZinc installation from the build image
 COPY --from=builder /minizinc /minizinc
