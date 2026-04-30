@@ -17,7 +17,7 @@ export const info = {
         </>,
       ],
       problemSubmissionDeadline,
-      minizinc: '2.9.6',
+      minizinc: '2.9.7',
       dates: [
         <>
           Registration opens: <strong>Now</strong>.
