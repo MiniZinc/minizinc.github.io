@@ -196,7 +196,22 @@ export function Results({ year, children }) {
                           color="light"
                           onClick={() => fns.downloadResults()}
                         >
-                          Download Results
+                          Download Scoring Results
+                        </Button>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <form name="score">
+                        <Button
+                          type="button"
+                          name="export_steps"
+                          className="w-full"
+                          color="light"
+                          onClick={() => fns.downloadSteps()}
+                        >
+                          Download Objectives Over Time
                         </Button>
                       </form>
                     </td>

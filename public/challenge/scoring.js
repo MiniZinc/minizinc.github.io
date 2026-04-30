@@ -1162,6 +1162,53 @@ function challengeResults({
         document.body.appendChild(link);
         link.click();
     }
+
+    function downloadSteps() {
+        if (!hasAreaScoring) {
+            return;
+        }
+        const prob = [];
+        const solv = [];
+        for (let i = 0; i < nb_p; i++) {
+            prob[i] = pbox[i].checked;
+        }
+        for (let i = 0; i < nb_s; i++) {
+            solv[i] = sbox[i].checked;
+        }
+        const headings = ["Problem", "Instance", "Solver", "Time", "Objective"];
+        const csv = [headings];
+        for (let p = 0; p < nb_p; p++) {
+            if (prob[p]) {
+                for (let k = 0; k < instances[p].length; k++) {
+                    const i = instances[p][k];
+                    const p_string = problems[p];
+                    const i_string = benchmarks[i];
+                    for (let s = 0; s < nb_s; s++) {
+                        if (solv[s]) {
+                            for (let j = 0; j < step_count[s][i]; j++) {
+                                const row = [p_string, i_string, solvers[s], step_times[s][i][j]];
+                                const obj = step_obj[s][i][j];
+                                row.push(obj === ' ' ? '' : obj);
+                                csv.push(row);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // Export as CSV
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csv.forEach(function (rowArray) {
+            let row = rowArray.join(",");
+            csvContent += row + "\r\n";
+        });
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "objectives.csv");
+        document.body.appendChild(link);
+        link.click();
+    }
     
     init();
 
@@ -1175,6 +1222,7 @@ function challengeResults({
         clearAll,
         computeSelected,
         sortTotalTable,
-        downloadResults
+        downloadResults,
+        downloadSteps
     }
 }
