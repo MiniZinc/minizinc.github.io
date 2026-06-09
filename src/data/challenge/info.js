@@ -6,6 +6,9 @@ export const info = {
     return {
       announcements: [
         <>
+          <strong>2026-06-09</strong> A typo in the rules regarding the command used for running solvers was corrected.
+        </>,
+        <>
           <strong>2026-04-23</strong> Problem submission deadline extended.
         </>,
         <>

@@ -20,8 +20,8 @@ export const challenge = info[year]
   ]}
 />
 
-These are the official rules for the MiniZinc Challenge {year}. Version 1.1.
-These rules were last updated on 30 April {year}.
+These are the official rules for the MiniZinc Challenge {year}. Version 1.2.
+These rules were last updated on 9 June {year}.
 
 ### Solver submission
 
@@ -107,9 +107,9 @@ organisers) as its base. The image must be set up such that the default minizinc
 entry's solver. The entry will be run by executing the `minizinc` command using the default
 solver for the image with options depending on the entry CLASS.
 
-- FD: `minizinc -i --output-mode dzn --output-objective <model.dzn> [data.dzn]`
-- FREE: `minizinc -i --output-mode dzn --output-objective -f <model.dzn> [data.dzn]`
-- PAR: `minizinc -i --output-mode dzn --output-objective -p 4 <model.dzn> [data.dzn]`
+- FD: `minizinc -i --output-mode dzn --output-objective <model.mzn> [data.dzn]`
+- FREE: `minizinc -i --output-mode dzn --output-objective -f <model.mzn> [data.dzn]`
+- PAR: `minizinc -i --output-mode dzn --output-objective -p 8 <model.mzn> [data.dzn]`
 
 FlatZinc solvers must accept the following <Link href={documentation("fzn-spec.html#command-line-interface-and-standard-options", challenge.minizinc)}>standard options</Link>, and they must be included in the supported
 `stdFlags` of the <Link href={documentation("fzn-spec.html#sec-cmdline-conffiles", challenge.minizinc)}>solver configuration</Link>:
