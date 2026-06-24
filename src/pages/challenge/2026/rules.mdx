@@ -364,7 +364,8 @@ minutes (process time) per instances.
 Each solver _s_ is run on problem _p_ and the following information is collected.
 
 - _timeUsed(p,s)_ - the _wall clock_ time used by the solver, or _timeLimit(p)_ if it was still
-  running at the timeLimit (quantized to seconds by rounding towards zero).
+  running at the timeLimit. This time _T_ is quantized to seconds by rounding towards one:
+  _max(1, floor(T / 1000))_.
 - _solved(p,s)_ - true if a correct solution is returned, or correct unsatisfiability is detected
 - _quality(p,s)_ - the objective value of the best solution found by the solver (that is the last
   solution fully output before the time limit) assuming maximization
@@ -391,7 +392,7 @@ its performance with each other solver _s'_ on problem _p_.
 - If _s_ gives a worse answer than _s'_ it scores 0 points.
 
 In the case of indistinguishable answers between _s_ and _s'_, _s_ scores
-_timeUsed(p,s') / (timeUsed(p,s') + timeUsed(p,s))_ , 0.5 if both finished in 0s.
+_timeUsed(p,s') / (timeUsed(p,s') + timeUsed(p,s))_.
 The exception is that if _solved(p,s)_ is false, that is, _s_ fails to find any solution or prove
 unsatisfiability for problem _p_ it always scores 0 points (even if _s'_ also similarly fails).
 
