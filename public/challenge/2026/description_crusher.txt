@@ -1,0 +1,5 @@
+Crusher is a constraint satisfaction solver and combinatorial optimization modeling tool that uses local search methods. The system utilizes fast tabu search combined with scatter search and path relinking for diversity and parallelized solution space exploration. It can take flatzinc input and integrates with the minizinc toolchain.
+
+Crusher is written in the Nim language.
+
+Crusher is authored by Kenneth Brown. More information at https://github.com/siegelzero/crusher

@@ -1,0 +1,14 @@
+reference_tardiness = 720284;
+reference_makespan = 6120;
+program_setup_time = 600;
+sequence_setup_time = 300;
+num_jobs = 1;
+num_programs = 1;
+job_program = [1];
+job_time = [6120];
+num_products = 1;
+demand_product = [1];
+job_qty = array2d(jobs, products, [2]);
+num_demands = 1;
+demand_duedate = [-714164];
+total_demand_qty = [2];

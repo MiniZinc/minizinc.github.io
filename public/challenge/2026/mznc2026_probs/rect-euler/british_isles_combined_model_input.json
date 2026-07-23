@@ -1,0 +1,79 @@
+{
+  "n_elements": 4,
+  "w": [
+    82,
+    96,
+    135,
+    119
+  ],
+  "h": [
+    75,
+    77,
+    24,
+    26
+  ],
+  "n_container": 5,
+  "in_container": [
+    [
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      false,
+      true,
+      true
+    ],
+    [
+      true,
+      false,
+      false,
+      false
+    ],
+    [
+      true,
+      false,
+      true,
+      false
+    ]
+  ],
+  "n_group": 4,
+  "element_group": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "w_container_name": [
+    100,
+    119,
+    125,
+    104,
+    135
+  ],
+  "h_container_name": [
+    24,
+    24,
+    26,
+    24,
+    27
+  ],
+  "n_non_overlap_container_groups": 1,
+  "non_overlap_container_member": [
+    [
+      false,
+      false,
+      true,
+      true,
+      false
+    ]
+  ]
+}

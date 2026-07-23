@@ -1,0 +1,10 @@
+QiuQi  solver is developed by Huawei Taylor Laboratory. It adopts a novel MIX search framework that combines key techniques from computer science and operations research. Huawei Taylor Laboratory is a laboratory focused on theoretical computer science, operations research, algorithmic game theory, and other related research areas. QiuQi solver is one of our in-house solvers developed for solving general IP, MILP, SMT and CP problems.
+
+MIX-LS is a core component of QiuQi solver. It can be used either as a standalone optimizer or as a heuristic component within complete search procedures.
+
+MIX-LS extends the classical 0-1 local search paradigm [1] and has evolved into a general-purpose optimization engine that supports IP, MIP, and CP formulations and is capable of handling both integer and continuous decision variables. Its search strategies are designed within a unified framework, making them applicable across different problem types.
+
+The solver we submitted to the CP-LS track 2026 uses the FlatZinc parser and part of presolve module from OR-Tools 9.15. The authors of MIX-LS are: Zhendong Lei, Pinyan Lu, Wenying Hou, Zishuo Li, Zhihao Zhang, Yueran Wang.
+
+Reference:
+[1] Zhendong Lei, Shaowei Cai, Chuan Luo, and Holger Hoos: Efficient Local Search for Pseudo Boolean Optimization. SAT conference 2021.

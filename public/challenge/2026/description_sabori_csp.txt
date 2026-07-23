@@ -1,0 +1,49 @@
+## Authors
+
+- T. Fujiwara
+
+## Overview
+
+sabori_csp is a simple constraint solver that combines well-known techniques with several original extensions:
+
+- depth-first search with restarts
+- nogood learning (trail-based, without a propagation graph)
+- activity-based variable ordering
+
+## Search
+
+### Variable Selection
+
+Variable selection is based on a VSIDS-style activity heuristic with two non-standard additions:
+
+- **Mode Reward**  
+  We maintain two selection modes: *activity-first* (highest VSIDS activity) and *value-first* (smallest domain, with activity as tiebreaker).  
+  Each found solution rewards the mode that produced it. The mode for the next decision is then sampled proportionally to the cumulative rewards, with a small probability of exploration. This mechanism recovers a domain-size-focused policy on hard combinatorial problems while allowing activity to dominate where conflicts are more informative.
+
+- **Per-constraint Activity Initialization**  
+  Each global constraint contributes initial activity to its variables according to its own structure (`init_activity` / `bump_activity`).
+
+### Restart Strategy
+
+Restarts use an adaptive outer/inner cycle mechanism. The inner conflict limit grows geometrically within each outer cycle. The length of the outer cycle is dynamically widened or shrunk depending on whether nogood pruning was effective and whether the maximum search depth increased during the cycle.
+
+### Improvement Probe (Optimization)
+
+Between outer restart cycles in optimization mode, the solver performs a short *speculative probe*. It temporarily adds the tightened bound  
+`obj ≤ obj_ub − ⌈(obj_ub − obj_lb) / 20⌉` (symmetrically for maximization)  
+and runs a budgeted search with a small failure limit.
+
+### Pseudo-Gradient Value Hint (Optimization)
+
+In addition to the well-known solution-based phase saving (“try the value the variable took in the incumbent first”), we introduce a *directional* component. This hint is derived from the direction of movement of the objective value between successive improving solutions.
+
+## Nogood Learning
+
+Conflict analysis walks the decision trail and learns a nogood.
+
+Additionally, a 512-bit Bloom filter is maintained per decision level. It records which variables have appeared in any active nogood since the last decision. This information serves as a cheap tiebreaker in variable selection (“prefer variables recently connected to conflicts”).
+
+## Appendix
+
+The source code is available from the following repository:  
+https://github.com/tofjw/sabori_csp

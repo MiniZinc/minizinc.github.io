@@ -6,6 +6,10 @@ export const info = {
     return {
       announcements: [
         <>
+          <strong>2026-07-23</strong> Announcements of the results are{' '}
+          <Link href="/challenge/2026/results">here</Link>.
+        </>,
+        <>
           <strong>2026-06-09</strong> A typo in the rules regarding the command used for running solvers was corrected.
         </>,
         <>

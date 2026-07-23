@@ -41,6 +41,13 @@ export const probs = {
     sbc: false,
     globals: [],
   },
+  'atp-stage2': {
+    type: 'real',
+    globals: ['arg_sort', 'circuit', 'disjunctive'],
+    kind: 'min',
+    sbc: false,
+    rc: false,
+  },
   bacp: {
     type: 'real',
     kind: 'min',
@@ -295,6 +302,13 @@ export const probs = {
     sbc: false,
     globals: ['bin_packing_load', 'global_cardinality_low_up_closed'],
   },
+  'gcc-benchmark': {
+    type: 'combi',
+    globals: ['global_cardinality_closed'],
+    kind: 'sat',
+    sbc: false,
+    rc: false,
+  },
   'generalized-peacable-queens': {
     type: 'puzzle',
     kind: 'max',
@@ -391,6 +405,13 @@ export const probs = {
     rc: false,
     sbc: true,
     globals: ['all_different', 'bin_packing', 'seq_precede_chain'],
+  },
+  kitchen: {
+    type: 'real',
+    globals: [],
+    kind: 'max',
+    sbc: false,
+    rc: false,
   },
   l2p: {
     type: 'combi',
@@ -518,6 +539,13 @@ export const probs = {
     sbc: false,
     globals: ['knapsack'],
   },
+  'multiple-constant-multiplication': {
+    type: 'combi',
+    globals: ['all_different_except_0', 'count', 'member'],
+    kind: 'min',
+    sbc: false,
+    rc: false,
+  },
   MZNC_connect: {
     type: 'real',
     kind: 'min',
@@ -601,6 +629,13 @@ export const probs = {
     rc: false,
     sbc: false,
     globals: ['table'],
+  },
+  orthorio: {
+    type: 'combi',
+    globals: ['all_different', 'subcircuit', 'table'],
+    kind: 'min',
+    sbc: false,
+    rc: false,
   },
   p1f: {
     type: 'combi',
@@ -763,6 +798,13 @@ export const probs = {
     sbc: false,
     globals: ['cumulative'],
   },
+  'rect-euler': {
+    type: 'real',
+    globals: ['diffn'],
+    kind: 'min',
+    sbc: false,
+    rc: false,
+  },
   'rectangle-packing': {
     type: 'combi',
     kind: 'sat',
@@ -839,6 +881,13 @@ export const probs = {
     rc: false,
     sbc: false,
     globals: [],
+  },
+  saeling: {
+    type: 'real',
+    globals: ['disjunctive'],
+    kind: 'min',
+    sbc: false,
+    rc: false,
   },
   search_stress: {
     type: 'combi',
@@ -1022,6 +1071,13 @@ export const probs = {
     sbc: false,
     globals: [],
   },
+  'surface-based-tsp': {
+    type: 'real',
+    globals: ['tree'],
+    kind: 'min',
+    sbc: false,
+    rc: false,
+  },
   'table-layout': {
     type: 'real',
     kind: 'min',
@@ -1155,6 +1211,13 @@ export const probs = {
     sbc: true,
     globals: ['circuit', 'cumulative'],
   },
+  warehouse: {
+    type: 'real',
+    globals: ['disjoint', 'global_cardinality', 'increasing'],
+    kind: 'min',
+    sbc: true,
+    rc: true,
+  },
   whirlpool: {
     type: 'puzzle',
     kind: 'sat',
@@ -1175,6 +1238,13 @@ export const probs = {
     rc: false,
     sbc: false,
     globals: [],
+  },
+  'workforce-alloc': {
+    type: 'real',
+    globals: ['all_equal', 'disjunctive', 'nvalue'],
+    kind: 'min',
+    sbc: false,
+    rc: true,
   },
   wwtp_random: {
     type: 'real',
@@ -1308,113 +1378,88 @@ export const probs = {
     sbc: false,
     rc: false,
   },
-  "cgt": {
-    type: "real",
-    globals: [
-      "all_different",
-      "strictly_increasing"
-    ],
-    kind: "min",
+  cgt: {
+    type: 'real',
+    globals: ['all_different', 'strictly_increasing'],
+    kind: 'min',
     sbc: true,
-    rc: false
+    rc: false,
   },
-  "EchoSched": {
-    type: "real",
+  EchoSched: {
+    type: 'real',
     globals: [],
-    kind: "min",
+    kind: 'min',
     sbc: false,
-    rc: true
+    rc: true,
   },
-  "fbd1": {
-    type: "real",
-    globals: [
-      "all_different"
-    ],
-    kind: "min",
+  fbd1: {
+    type: 'real',
+    globals: ['all_different'],
+    kind: 'min',
     sbc: false,
-    rc: false
+    rc: false,
   },
-  "gt-sort": {
-    type: "combi",
-    globals: [
-      "all_different",
-      "strictly_increasing"
-    ],
-    kind: "min",
+  'gt-sort': {
+    type: 'combi',
+    globals: ['all_different', 'strictly_increasing'],
+    kind: 'min',
     sbc: false,
-    rc: false
+    rc: false,
   },
-  "hitori": {
-    type: "puzzle",
-    globals: [
-      "all_different_except_0",
-      "connected"
-    ],
-    kind: "max",
+  hitori: {
+    type: 'puzzle',
+    globals: ['all_different_except_0', 'connected'],
+    kind: 'max',
     sbc: false,
-    rc: false
+    rc: false,
   },
-  "ihtc-2024-kletzander": {
-    type: "real",
-    globals: [
-      "cumulative"
-    ],
-    kind: "min",
+  'ihtc-2024-kletzander': {
+    type: 'real',
+    globals: ['cumulative'],
+    kind: 'min',
     sbc: false,
-    rc: false
+    rc: false,
   },
-  "ihtc-2024-marte": {
-    type: "real",
-    globals: [
-      "bin_packing_load",
-      "cumulative",
-      "nvalue"
-    ],
-    kind: "min",
+  'ihtc-2024-marte': {
+    type: 'real',
+    globals: ['bin_packing_load', 'cumulative', 'nvalue'],
+    kind: 'min',
     sbc: false,
-    rc: false
+    rc: false,
   },
-  "mondoku": {
-    type: "puzzle",
-    globals: [
-      "global_cardinality",
-      "value_precede_chain"
-    ],
-    kind: "min",
+  mondoku: {
+    type: 'puzzle',
+    globals: ['global_cardinality', 'value_precede_chain'],
+    kind: 'min',
     sbc: true,
-    rc: false
+    rc: false,
   },
-  "products-and-shelves": {
-    type: "real",
+  'products-and-shelves': {
+    type: 'real',
     globals: [
-      "diffn_nonstrict_k",
-      "increasing",
-      "lex_chain_lesseq",
-      "seq_precede_chain"
+      'diffn_nonstrict_k',
+      'increasing',
+      'lex_chain_lesseq',
+      'seq_precede_chain',
     ],
-    kind: "min",
+    kind: 'min',
     sbc: true,
-    rc: false
+    rc: false,
   },
-  "tsptw": {
-    type: "real",
-    globals: [
-      "circuit"
-    ],
-    kind: "min",
+  tsptw: {
+    type: 'real',
+    globals: ['circuit'],
+    kind: 'min',
     sbc: false,
-    rc: false
+    rc: false,
   },
-  "work-task-variation": {
-    type: "real",
-    globals: [
-      "global_cardinality",
-      "regular"
-    ],
-    kind: "min",
+  'work-task-variation': {
+    type: 'real',
+    globals: ['global_cardinality', 'regular'],
+    kind: 'min',
     sbc: false,
-    rc: false
-  }
+    rc: false,
+  },
 }
 
 export const years = {
@@ -1784,5 +1829,27 @@ export const years = {
     'tower',
     'tsptw',
     'work-task-variation',
-  ]
+  ],
+  2026: [
+    'atp-stage2',
+    'community-detection-rnd',
+    'filters',
+    'gbac',
+    'gcc-benchmark',
+    'kitchen',
+    'multiple-constant-multiplication',
+    'nonogram',
+    'nside',
+    'orthorio',
+    'rect-euler',
+    'saeling',
+    'sdn-chain',
+    'spot5',
+    'surface-based-tsp',
+    'tdtsp',
+    'vrplc',
+    'warehouse',
+    'workforce-alloc',
+    'zephyrus-2016',
+  ],
 }

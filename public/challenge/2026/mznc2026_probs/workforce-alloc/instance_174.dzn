@@ -1,0 +1,17 @@
+% Generated from instance_174.json
+Team = {team_1, team_2, team_3, team_4};
+Task = {task_1};
+
+horizon = 75;
+duration = [45];
+released = [0];
+due = [75];
+original_start = [0];
+compatible = array2d(Task, Team, [1, 1, 1, 1]);
+
+same_allocation = [];
+
+successors = [
+];
+calendars = [
+];

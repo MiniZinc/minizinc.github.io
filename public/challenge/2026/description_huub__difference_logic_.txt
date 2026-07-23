@@ -1,0 +1,2 @@
+Huub is an efficient library for developing constraint-based decision or optimization systems and applications with learning capabilities. It combines the modelling strengths of constraint programming (CP) with the learning and proof machinery of Boolean satisfiability (SAT) solving.
+This is a version of Huub that includes an initial implementation of the difference logic engine to strengthen reasoning capabilities over precedence relationships within the solver.

@@ -1,0 +1,40 @@
+PARASOL 1.X
+=================================
+
+Parallel CP/MIP Portfolio Solver
+
+Parasol is a multi-threaded portfolio executor written in Rust that allows solving Constraint (Satisfaction/Optimisation) Problems defined in the MiniZinc language by using a portfolio approach. It is built to support a wide range of state-of-the-art constraint solvers, coordinating them dynamically via a machine-learning-based portfolio selector.
+
+In a nutshell, Parasol relies on two sequential steps:
+
+1. FEATURE EXTRACTION & STATIC PRE-SOLVING: Consists of the parallel execution
+of a 7-core static schedule concurrently with the extraction of the problem
+features from the FlatZinc representation using fzn2feat and model
+compilation on the remaining core, ensuring that cores are not left
+idle during the start-up and inference phase.
+2. DYNAMIC SOLVING: Consists of the parallel execution of a predicted
+portfolio (utilising the full 8-core budget) selected by a machine learning
+model based on the 95 extracted features. The model is an ensemble of 30
+Support Vector Classifiers with RBF kernels, utilising a bagged margin-weighted
+approach (BagSVC-MW). It selects whether to run CP-SAT on all 8 cores or
+to deploy a custom portfolio of constituent solvers with optional
+bound-sharing intervals.
+
+This version is the submission to the MiniZinc Challenge 2026, configured with: OR-Tools CP-SAT (1 core), Gurobi (2 cores), Picat (1 core), Yuck (1 core), Pumpkin (1 core), Dexter (1 core), and Choco (1 core).
+
+Parasol is available on GitHub: https://github.com/Portfolio-Solver-Platform/parasol
+
+AUTHORS
+=======
+
+Parasol is developed as part of a master's thesis project by Jonas Bork Jørgensen and Sofus Hesseldahl Laubel
+(University of Southern Denmark), under the supervision of Professor Jacopo Mauro and in collaboration with Alessio Pellegrino.
+For any questions or information, please contact the authors at:
+
+alessio at imada.sdu.dk
+
+mauro at imada.sdu.dk
+
+jonjo21 at student.sdu.dk
+
+slaub21 at student.sdu.dk

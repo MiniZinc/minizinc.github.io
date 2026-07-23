@@ -1,0 +1,73 @@
+# CUFE System Description
+
+CUFE is a derivative MiniZinc Challenge 2026 solver entry packaged as a Docker
+image based on `minizinc/mznc2026:latest`. The default solver id is `org.cufe`
+and the default executable is `bin/mzn-cufe`. CUFE is not a new standalone CP
+engine; it is a MiniZinc-level and FlatZinc-level portfolio wrapper around
+available backends, with a small number of guarded model-family seed heuristics.
+
+## Architecture
+
+The top-level MiniZinc wrapper handles normal MiniZinc solver invocation,
+compile-only calls, output flags, and the official `-a`, `-i`, `-f`, and `-p`
+options. For ordinary solves it delegates to an internal FlatZinc portfolio
+solver with id `org.cufe.fzn` and executable `bin/fzn-cufe-portfolio`.
+
+In single-core mode CUFE minimizes overhead by executing the strongest available
+FlatZinc backend directly, normally OR-Tools CP-SAT. In parallel mode it races a
+portfolio of CP-SAT, Chuffed, and Gecode where available. CP-SAT receives most
+threads, while Chuffed and Gecode provide diversification workers. The wrapper
+streams complete solution blocks, preserves improving optimization incumbents
+when the objective is visible, and terminates the portfolio once a backend
+proves completion.
+
+CUFE also includes narrow FlatZinc feature gates. Examples include direct Gecode
+routing for selected TSPTW-like shapes, CP-SAT free-search routing for selected
+connected-grid models, Choco routing for set-heavy `int_times` models, and
+controlled Chuffed soft-stops for cases where Chuffed flushes useful incumbents
+only when terminated gracefully. Broader experimental profiles are present but
+disabled by default.
+
+## Constructive Seeds and Caches
+
+The MiniZinc-level wrapper contains tightly gated constructive seed generators
+for public historical model families where backend search often missed any
+incumbent at short cutoffs. These include products-and-shelves,
+skill-allocation, capital-gains tax, binary WCSP/proteindesign, groupsplitter,
+room-only carpet cutting, tower power assignment, ATSP production batching,
+large TSPTW, large gt-sort, IHTC Kletzander and Marte, work-task variation,
+25x25 Sudoku, Hitori, monitor placement, roster-shifts-bool, and
+test-scheduling cases.
+
+These routes parse the original MiniZinc/data files, build a candidate incumbent
+under the original constraints, and print a MiniZinc solution block that is then
+validated by MiniZinc postprocessing. Several seed families continue backend
+search after printing the incumbent so longer official cutoffs can prove or
+improve the result. Smaller, unseen, or quality-sensitive cases remain on the
+normal backend portfolio.
+
+CUFE also contains exact public-instance incumbent caches for selected
+historical instances. These caches are intentionally keyed to public benchmark
+instances and should be treated as historical benchmark specialization, not as
+general solvers for those domains.
+
+## Dependencies
+
+CUFE uses CP-SAT, Chuffed, and Gecode from the challenge base image when
+available. The Dockerfile additionally installs Python 3, OpenJDK 17, Pumpkin
+0.3.0 as `fzn-pumpkin`, Choco 4.10.18 as `fzn-choco`, and CaDiCaL for direct
+SAT rescue encodings. Optional MiniZinc-level MIP sidecar workers can use
+COIN-BC or HiGHS, but this mode is disabled by default.
+
+## Reproducibility
+
+The local submission image is tagged `cufe:latest`. The validated image digest
+for the current package is
+`sha256:62acc22276777666556cf7d90fa381622086afeb233156b61309b2ea7568a3ae`.
+Smoke testing with the official fd/free/par commands completed successfully.
+
+The implementation is intentionally disclosed as a wrapper and portfolio. Its
+competitive strength comes from backend selection, incumbent preservation,
+parallel diversification, and guarded public-family seed routes; hidden 2026
+performance depends on how closely the private benchmark set resembles those
+families and on the strength of the included base-image solvers.

@@ -1,0 +1,17 @@
+HEIGHT = 11;
+WIDTH = 10;
+AGENTS = 8;
+TUNNEL_4 = true;
+TUNNEL_6 = false;
+
+path = array2d(1..AGENTS, Marker,
+  [|(y:  3, x:  1, d: ">"), (y:  8, x: 10, d: ">")
+   |(y:  4, x:  1, d: ">"), (y:  9, x: 10, d: ">")
+   |(y:  5, x:  1, d: ">"), (y:  3, x: 10, d: ">")
+   |(y:  6, x:  1, d: ">"), (y: 10, x: 10, d: ">")
+   |(y:  8, x:  1, d: ">"), (y:  4, x: 10, d: ">")
+   |(y:  9, x:  1, d: ">"), (y: 11, x: 10, d: ">")
+   |(y: 10, x:  1, d: ">"), (y:  6, x: 10, d: ">")
+   |(y: 11, x:  1, d: ">"), (y:  5, x: 10, d: ">")|]);
+
+walls = array2d(1..HEIGHT, 1..WIDTH, [0 | _ in 1..HEIGHT, _ in 1..WIDTH]);

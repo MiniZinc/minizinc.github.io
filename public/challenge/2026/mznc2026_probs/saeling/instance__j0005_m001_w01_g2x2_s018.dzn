@@ -1,0 +1,173 @@
+% Copyright 2026 Siemens AG Österreich and Benedetta Strizzolo and Francesco Zuccato and Thomas Sergeys
+%Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+%The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+%THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+% --- generation parameters
+% instance_seed = 18;
+% num_jobs = 5;
+% num_machines = 1;
+% num_modes_per_cut = (2, 2);
+% num_workers = 1;
+% num_workers_per_machine = 1;
+
+% --- statistics
+num_cuts = 8;
+num_modes = 32;
+num_operations = 24;
+num_st = 16;
+num_tt = 3;
+
+% --- parameters
+instance_seed = 18;
+num_jobs = 5;
+num_machines = 1;
+num_workers = 1;
+num_workers_per_machine = 1;
+
+% --- domains
+max_auxiliar_energy_Wh = 3784;
+max_horizon = 227;
+max_idle_energy_Wh = 2161;
+max_processing_energy_Wh = 627;
+max_total_energy_Wh = 6571;
+max_total_tardiness = 0;
+min_auxiliar_energy_Wh = 2383;
+min_horizon = 143;
+min_idle_energy_Wh = 0;
+min_processing_energy_Wh = 252;
+min_total_energy_Wh = 2635;
+min_total_tardiness = 0;
+
+% --- solving_constants
+factory_power_auxiliar_equipments_W = 1000;
+
+% --- cuts
+% fields: ('cut_id', 'cut_depth_mm', 'cut_channel_mm', 'in_weight_kg')
+cuts = [
+  (cut_id: 1, cut_depth_mm: 120.4200, cut_channel_mm: 20, in_weight_kg: 2.4300),
+  (cut_id: 2, cut_depth_mm: 242.9800, cut_channel_mm: 682.7500, in_weight_kg: 217.8400),
+  (cut_id: 3, cut_depth_mm: 333.8700, cut_channel_mm: 203.3500, in_weight_kg: 132.2300),
+  (cut_id: 4, cut_depth_mm: 118.2400, cut_channel_mm: 71.7700, in_weight_kg: 1.3300),
+  (cut_id: 5, cut_depth_mm: 5.2000, cut_channel_mm: 71.7700, in_weight_kg: 0.3500),
+  (cut_id: 6, cut_depth_mm: 144.1800, cut_channel_mm: 236.5000, in_weight_kg: 24.6200),
+  (cut_id: 7, cut_depth_mm: 67.9200, cut_channel_mm: 236.5000, in_weight_kg: 18.1800),
+  (cut_id: 8, cut_depth_mm: 236.5000, cut_channel_mm: 91.0600, in_weight_kg: 11.4800)
+];
+
+% --- jobs
+% fields: ('job_id', 'deadline')
+jobs = [
+  (job_id: 1, deadline: 240),
+  (job_id: 2, deadline: 720),
+  (job_id: 3, deadline: 240),
+  (job_id: 4, deadline: 360),
+  (job_id: 5, deadline: 360)
+];
+
+% --- machines
+% fields: ('mch_id', 'mch_type', 'idle_power_W')
+machines = [
+  (mch_id: 1, mch_type: "with-feeder", idle_power_W: 571)
+];
+
+% --- modes
+% fields: ('cut_id', 'mch_id', 'mode_id', 'feed_rate', 'blade_speed', 'time', 'energy_Wh')
+modes = [
+  (cut_id: 1, mch_id: 1, mode_id: 1, feed_rate: 18.5000, blade_speed: 11.0000, time: 7, energy_Wh: 25),
+  (cut_id: 1, mch_id: 1, mode_id: 2, feed_rate: 18.5000, blade_speed: 33.0000, time: 7, energy_Wh: 46),
+  (cut_id: 1, mch_id: 1, mode_id: 3, feed_rate: 55.5000, blade_speed: 11.0000, time: 3, energy_Wh: 38),
+  (cut_id: 1, mch_id: 1, mode_id: 4, feed_rate: 55.5000, blade_speed: 33.0000, time: 3, energy_Wh: 85),
+  (cut_id: 2, mch_id: 1, mode_id: 1, feed_rate: 8.0000, blade_speed: 1.5000, time: 31, energy_Wh: 52),
+  (cut_id: 2, mch_id: 1, mode_id: 2, feed_rate: 8.0000, blade_speed: 4.5000, time: 31, energy_Wh: 29),
+  (cut_id: 2, mch_id: 1, mode_id: 3, feed_rate: 24.0000, blade_speed: 1.5000, time: 11, energy_Wh: 86),
+  (cut_id: 2, mch_id: 1, mode_id: 4, feed_rate: 24.0000, blade_speed: 4.5000, time: 11, energy_Wh: 36),
+  (cut_id: 3, mch_id: 1, mode_id: 1, feed_rate: 17.5000, blade_speed: 12.3300, time: 20, energy_Wh: 50),
+  (cut_id: 3, mch_id: 1, mode_id: 2, feed_rate: 17.5000, blade_speed: 37.0000, time: 20, energy_Wh: 44),
+  (cut_id: 3, mch_id: 1, mode_id: 3, feed_rate: 52.5000, blade_speed: 12.3300, time: 7, energy_Wh: 80),
+  (cut_id: 3, mch_id: 1, mode_id: 4, feed_rate: 52.5000, blade_speed: 37.0000, time: 7, energy_Wh: 64),
+  (cut_id: 4, mch_id: 1, mode_id: 1, feed_rate: 9.0000, blade_speed: 2.2500, time: 14, energy_Wh: 27),
+  (cut_id: 4, mch_id: 1, mode_id: 2, feed_rate: 9.0000, blade_speed: 6.7500, time: 14, energy_Wh: 24),
+  (cut_id: 4, mch_id: 1, mode_id: 3, feed_rate: 27.0000, blade_speed: 2.2500, time: 5, energy_Wh: 49),
+  (cut_id: 4, mch_id: 1, mode_id: 4, feed_rate: 27.0000, blade_speed: 6.7500, time: 5, energy_Wh: 43),
+  (cut_id: 5, mch_id: 1, mode_id: 1, feed_rate: 15.0000, blade_speed: 17.1500, time: 1, energy_Wh: 19),
+  (cut_id: 5, mch_id: 1, mode_id: 2, feed_rate: 15.0000, blade_speed: 51.4400, time: 1, energy_Wh: 34),
+  (cut_id: 5, mch_id: 1, mode_id: 3, feed_rate: 45.0000, blade_speed: 17.1500, time: 1, energy_Wh: 31),
+  (cut_id: 5, mch_id: 1, mode_id: 4, feed_rate: 45.0000, blade_speed: 51.4400, time: 1, energy_Wh: 54),
+  (cut_id: 6, mch_id: 1, mode_id: 1, feed_rate: 35.0000, blade_speed: 12.6700, time: 5, energy_Wh: 50),
+  (cut_id: 6, mch_id: 1, mode_id: 2, feed_rate: 35.0000, blade_speed: 38.0200, time: 5, energy_Wh: 60),
+  (cut_id: 6, mch_id: 1, mode_id: 3, feed_rate: 105.0000, blade_speed: 12.6700, time: 2, energy_Wh: 134),
+  (cut_id: 6, mch_id: 1, mode_id: 4, feed_rate: 105.0000, blade_speed: 38.0200, time: 2, energy_Wh: 157),
+  (cut_id: 7, mch_id: 1, mode_id: 1, feed_rate: 15.0000, blade_speed: 5.1700, time: 5, energy_Wh: 24),
+  (cut_id: 7, mch_id: 1, mode_id: 2, feed_rate: 15.0000, blade_speed: 15.5200, time: 5, energy_Wh: 31),
+  (cut_id: 7, mch_id: 1, mode_id: 3, feed_rate: 45.0000, blade_speed: 5.1700, time: 2, energy_Wh: 35),
+  (cut_id: 7, mch_id: 1, mode_id: 4, feed_rate: 45.0000, blade_speed: 15.5200, time: 2, energy_Wh: 58),
+  (cut_id: 8, mch_id: 1, mode_id: 1, feed_rate: 10.5000, blade_speed: 3.0000, time: 23, energy_Wh: 41),
+  (cut_id: 8, mch_id: 1, mode_id: 2, feed_rate: 10.5000, blade_speed: 9.0000, time: 23, energy_Wh: 37),
+  (cut_id: 8, mch_id: 1, mode_id: 3, feed_rate: 31.5000, blade_speed: 3.0000, time: 8, energy_Wh: 43),
+  (cut_id: 8, mch_id: 1, mode_id: 4, feed_rate: 31.5000, blade_speed: 9.0000, time: 8, energy_Wh: 58)
+];
+
+% --- operations
+% fields: ('op_id', 'cut_id', 'job_id', 'pos_in_job', 'op_type')
+operations = [
+  (op_id: 1, cut_id: 1, job_id: 1, pos_in_job: 1, op_type: 0),
+  (op_id: 2, cut_id: 1, job_id: 1, pos_in_job: 2, op_type: 1),
+  (op_id: 3, cut_id: 1, job_id: 1, pos_in_job: 3, op_type: 2),
+  (op_id: 4, cut_id: 2, job_id: 2, pos_in_job: 1, op_type: 0),
+  (op_id: 5, cut_id: 2, job_id: 2, pos_in_job: 2, op_type: 1),
+  (op_id: 6, cut_id: 2, job_id: 2, pos_in_job: 3, op_type: 2),
+  (op_id: 7, cut_id: 3, job_id: 3, pos_in_job: 1, op_type: 0),
+  (op_id: 8, cut_id: 3, job_id: 3, pos_in_job: 2, op_type: 1),
+  (op_id: 9, cut_id: 3, job_id: 3, pos_in_job: 3, op_type: 2),
+  (op_id: 10, cut_id: 4, job_id: 4, pos_in_job: 1, op_type: 0),
+  (op_id: 11, cut_id: 4, job_id: 4, pos_in_job: 2, op_type: 1),
+  (op_id: 12, cut_id: 4, job_id: 4, pos_in_job: 3, op_type: 2),
+  (op_id: 13, cut_id: 5, job_id: 4, pos_in_job: 4, op_type: 0),
+  (op_id: 14, cut_id: 5, job_id: 4, pos_in_job: 5, op_type: 1),
+  (op_id: 15, cut_id: 5, job_id: 4, pos_in_job: 6, op_type: 2),
+  (op_id: 16, cut_id: 6, job_id: 5, pos_in_job: 1, op_type: 0),
+  (op_id: 17, cut_id: 6, job_id: 5, pos_in_job: 2, op_type: 1),
+  (op_id: 18, cut_id: 6, job_id: 5, pos_in_job: 3, op_type: 2),
+  (op_id: 19, cut_id: 7, job_id: 5, pos_in_job: 4, op_type: 0),
+  (op_id: 20, cut_id: 7, job_id: 5, pos_in_job: 5, op_type: 1),
+  (op_id: 21, cut_id: 7, job_id: 5, pos_in_job: 6, op_type: 2),
+  (op_id: 22, cut_id: 8, job_id: 5, pos_in_job: 7, op_type: 0),
+  (op_id: 23, cut_id: 8, job_id: 5, pos_in_job: 8, op_type: 1),
+  (op_id: 24, cut_id: 8, job_id: 5, pos_in_job: 9, op_type: 2)
+];
+
+% --- setup_times
+% fields: ('op_id', 'time')
+setup_times = [
+  (op_id: 1, time: 4),
+  (op_id: 3, time: 4),
+  (op_id: 4, time: 8),
+  (op_id: 6, time: 8),
+  (op_id: 7, time: 8),
+  (op_id: 9, time: 8),
+  (op_id: 10, time: 4),
+  (op_id: 12, time: 4),
+  (op_id: 13, time: 4),
+  (op_id: 15, time: 4),
+  (op_id: 16, time: 8),
+  (op_id: 18, time: 8),
+  (op_id: 19, time: 8),
+  (op_id: 21, time: 8),
+  (op_id: 22, time: 8),
+  (op_id: 24, time: 8)
+];
+
+% --- transport_times
+% fields: ('op_id_from', 'op_id_to', 'time')
+transport_times = [
+  (op_id_from: 12, op_id_to: 13, time: 2),
+  (op_id_from: 18, op_id_to: 19, time: 10),
+  (op_id_from: 21, op_id_to: 22, time: 5)
+];
+
+% --- workers_machines
+% fields: ('worker_id', 'machine_id')
+workers_machines = [
+  (worker_id: 1, machine_id: 1)
+];

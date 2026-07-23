@@ -1,0 +1,27 @@
+Thornbill is a CP solver designed to run on microcontrollers. The same solver that
+enters this challenge also runs on a Raspberry Pi Pico and an ESP32, within the few hundred kilobytes of
+RAM available on these systems. Most of what distinguishes it from a desktop-class solver follows from
+that target.
+
+- **Compact code.** The solver core is a small C++17 kernel with no dependencies; the entire solver
+  (kernel, propagators and search engine) compiles to under 400 KB of machine code on embedded platforms.
+- **A fixed, pre-sized memory arena.** Thornbill reserves its working and search memory once, at
+  start-up, and never calls the allocator while solving. Its memory use is therefore bounded and known
+  in advance, which is what an embedded board needs. On a desktop or server, it keeps the solver's
+  working set compact.
+- **Interval domains.** Variable domains are contiguous intervals [l, u] with no holes, and propagation
+  is (at most) bounds-consistent. This gives up some pruning in exchange for a small per-variable
+  footprint and fast, simple propagation.
+
+The challenge configuration runs in three modes. For the fd category, it follows the model's search
+annotation. For free search, it alternates between the search annotation and an activity-based (dom/wdeg)
+search, committing to one of them according to a heuristic based on progress and time. For the parallel
+category, it implements a parallel portfolio: the model's own search annotation, several activity-based
+searches with restarts, and large-neighbourhood search, sharing incumbents and failure weights across
+the workers. The common global constraints (all-different, cumulative, circuit, regular,
+global cardinality, bin-packing, and others) have native propagators rather than being decomposed.
+The free search sequential portfolio is also available on the embedded target platforms, while the
+parallel portfolio uses OS threads, which are not available on microcontrollers.
+
+Thornbill's code is written entirely by AI coding agents (Codex and Claude Code), working under close
+(human) supervision.

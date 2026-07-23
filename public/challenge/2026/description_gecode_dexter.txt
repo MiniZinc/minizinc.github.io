@@ -1,0 +1,10 @@
+Gecode/Dexter
+
+Gecode Authors: Christian Schulte, Guido Tack, and Mikael Z. Lagerkvist.
+Gecode/Dexter Authors: Dexter Leander.
+
+Gecode/Dexter uses a portfolio search built into the classical constraint programming solver Gecode for MiniZinc, to solve optimisation problems. When solving satisfaction problems or when the solver is run with one thread, regular Gecode is used. As such, this solver is a variant of the Gecode solver. 
+
+The portfolio supports up to eleven assets and was implemented as part of a master thesis. Six of these assets utilise LNS to navigate the search space, and they include: random, propagation-guided, reverse propagation-guided, objective relaxation, cost impact-guided, and static variable-relationship-guided LNS. Moreover, one asset compares all LNS assets and selects the one most fit for the problem at hand. Additionally, two assets are modifications of standard Gecode search, and one is identical. The portfolio also includes a shaving asset that helps find infeasible values for variables during the search.
+
+A more in-depth description of the assets of the portfolio and the portfolio itself can be found in the thesis at: https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1876143&dswid=-6428
