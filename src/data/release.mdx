@@ -1,19 +1,45 @@
-- Xpress solver migration from BCL to C API with support for Xpress 9.8
-  parameters. Add support for indicator constraints, warm start, and
-  convex quadratic inequalities.
-- The compiler now removes all non-array right-hand sides from variable
-  declarations in FlatZinc. This minimizes the effort required when
-  parsing `.fzn` or FlatZinc JSON files.
-- Add support for SCIP 10, and remove support for SCIP 7 and earlier
-  (:bugref:`999`).
-- Add versions of `count_*` constraints for booleans, floats and sets of
-  integers to allow solvers to support them natively (:bugref:`1005`).
-- Add the `--cleanup-time-limit` option for configuring the grace period for
-  solver cleanup before forced termination (:bugref:`994`).
-- Plus 20 bugfixes!
+- Add support for named arguments. Function calls can now refer to
+  arguments by name, in addition to the usual positional arguments.
+  The parameter names of the global constraints in the standard library have
+  been revised so that they read well as named arguments (now that named
+  arguments make them part of the public interface).
+  It is now a type error to declare two overloads of a function or predicate
+  that a call supplying all of its arguments by name could not tell apart,
+  i.e. two overloads that give the same name and type to every parameter
+  that has to be supplied.
+  Named arguments are available for user-defined and library operations. The
+  low-level operations a solver supports natively (those declared without a
+  body) remain positional-only for now, until solver libraries have converged
+  on a common set of parameter names; calling one by name is an error. The new
+  `--warn-non-authoritative-names` option helps solver implementers audit
+  their libraries against the standard-library names ahead of that change.
+- Add support for default values for function and parameter arguments.
+- Add support for set cardinality declarations using the syntax
+  `set(e) of T: s;`. When `e` has type `int` or `var int`, this
+  desugars to an additional `card(s) = e` constraint; when `e` has type
+  `set of int` or `var set of int`, it desugars to `card(s) in e`.
+  The syntax works for tuple- and record-typed sets as well as arrays
+  (and arrays of arrays) of sets.
+- Add support for index-dependent array declarations, where an index list
+  entry of the form `c in S` binds the name `c` in the element type's
+  domain expression — for example `array[c in 1..n] of var 1..f(c): x;`.
+  The per-element domain is desugared into an additional constraint and
+  works for tuple- and record-typed elements as well as arrays of arrays;
+  it also composes with the `set(e) of T` cardinality syntax.
+- Make the `list` type behave like a real 1-based array type. It is now
+  syntactic sugar for `array [1..infinity] of T`. Checks ensure that only
+  1-based arrays match the `list` type.
+- Allow par tuples and records to be optional. `opt` makes the tuple or
+  record optional as a whole (it is either a complete value or `<>`); it does
+  not distribute into the fields, so `opt record(int: a)` remains a different
+  type from `record(opt int: a)`. Accessing a field of an optional tuple or
+  record yields an optional value. `var opt` tuples and records remain type
+  errors, including when the `var` comes from a field, since a tuple or
+  record with any `var` field is itself `var`.
+- And many more changes and bugfixes!
 
 export default function Release({ children }) {
-  return (
-    <article className="prose prose-minizinc max-w-none">{children}</article>
-  )
+ return (
+  <article className="prose prose-minizinc max-w-none">{children}</article>
+ )
 }
