@@ -23,19 +23,6 @@ export function Releases() {
           <Link href={changelog()}>See the full changelog</Link>.
         </p>
         <h3 className="mt-6 text-2xl font-medium tracking-tight text-gray-900">
-          Development builds
-        </h3>
-        <p className="mt-2 leading-7">
-          Unstable development builds with upcoming bugfixes and features are{' '}
-          <Link href={githubRelease('edge')}>available on GitHub</Link>.
-        </p>
-        <p className="mt-2 leading-7">
-          Documentation for the latest development version of MiniZinc is
-          available <Link href={documentation('', 'latest')}>here</Link>.<br />
-          For a list of bugfixes/changes please refer to the{' '}
-          <Link href={changelog('edge')}>changelog</Link>.
-        </p>
-        <h3 className="mt-6 text-2xl font-medium tracking-tight text-gray-900">
           Previous releases
         </h3>
         <ul className="mx-2 mt-2 list-inside list-disc leading-relaxed">

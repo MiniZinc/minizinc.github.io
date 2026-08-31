@@ -1,45 +1,8 @@
 import { Container } from '@/components/Container'
 import { Bundles } from '@/components/downloads/Bundles'
-import { bundles as bundleLinks, documentation } from '@/utils/links'
-import { latest, requirement } from '@/data/version'
+import { documentation } from '@/utils/links'
+import { latest } from '@/data/version'
 import { Link } from '@/components/Link'
-
-const downloadLinks = bundleLinks(latest.version)
-
-const bundles = [
-  {
-    name: 'Windows',
-    description: `${requirement.windows} or later, 64-bit processor.`,
-    url: downloadLinks.windows,
-  },
-  {
-    name: 'macOS',
-    description: `${requirement.macOS} or later, universal binary.`,
-    url: downloadLinks.macOS,
-  },
-  {
-    name: 'Linux AppImage',
-    description: `AppImage for 64-bit Linux (tested on ${requirement.linux}).`,
-    url: downloadLinks.appImage,
-  },
-  {
-    name: 'Linux Snap package',
-    description: 'Snap package for 64-bit Linux.',
-    label: 'View on the Snap store',
-    url: downloadLinks.snap,
-  },
-  {
-    name: 'Linux binary archive',
-    description: `Binary archive for 64-bit Linux (tested on ${requirement.linux}).`,
-    url: downloadLinks.linux,
-  },
-  {
-    name: 'Source code',
-    description: 'Source code is available from the GitHub repositories.',
-    label: 'View on GitHub',
-    url: 'https://github.com/minizinc',
-  },
-]
 
 export function Downloads() {
   return (
@@ -62,7 +25,7 @@ export function Downloads() {
           <Link href={documentation('installation.html')}>documentation</Link>.
         </p>
         <div className="my-4">
-          <Bundles bundles={bundles} />
+          <Bundles />
         </div>
         <p className="mb-6 leading-7">
           Both the compiler tool chain and the IDE are available as free and

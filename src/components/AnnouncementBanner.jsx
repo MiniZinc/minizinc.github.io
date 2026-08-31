@@ -7,6 +7,7 @@ import { resultsAnnouncement } from '@/data/challenge/banners'
 import clsx from 'clsx'
 
 export function AnnouncementBanner({ className, ...props }) {
+  return <></>
   const announcement = resultsAnnouncement
   return (
     <section

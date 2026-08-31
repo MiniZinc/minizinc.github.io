@@ -173,7 +173,7 @@ export function Hero() {
           </div>
           <div className="relative mt-10 sm:mt-20 xl:col-span-6 xl:row-span-2 xl:mt-0">
             <BackgroundIllustration className="pointer-events-none absolute top-4 left-1/2 h-[1026px] w-[1026px] -translate-x-1/3 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/70 sm:top-16 sm:-translate-x-1/2 xl:-top-14 xl:ml-0" />
-            <div className="-mx-4 flex h-[448px] items-center justify-center px-9 sm:mx-0 xl:absolute xl:-inset-x-10 xl:-top-32 xl:-bottom-32 xl:h-auto xl:px-0">
+            <div className="flex items-center justify-center lg:justify-end lg:-mt-4">
               <Carousel
                 className="w-full"
                 style={{ maxWidth: '500px' }}

@@ -11,7 +11,7 @@ export function LatestRelease({ className, ...props }) {
     <section
       id="latest-release"
       aria-labelledby="latest-release-title"
-      className={clsx(className, 'py-20 sm:py-32')}
+      className={clsx(className, 'py-12 sm:py-20')}
       {...props}
     >
       <Container>

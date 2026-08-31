@@ -94,7 +94,7 @@ export function Features({ className, ...props }) {
     <section
       id="features"
       aria-labelledby="features-title"
-      className={clsx(className, 'py-20 sm:py-32')}
+      className={clsx(className, 'py-12 sm:py-20')}
       {...props}
     >
       <Container>

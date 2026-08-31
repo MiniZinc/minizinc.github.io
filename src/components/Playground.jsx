@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Container } from '@/components/Container'
 import { SelectField } from '@/components/Fields'
 import AustraliaProject from '@/data/examples/australia.json'
@@ -8,6 +8,20 @@ import SudokuProject from '@/data/examples/sudoku.json'
 import { Link } from '@/components/Link'
 import clsx from 'clsx'
 
+const playgroundOrigin = 'https://play.minizinc.dev/develop'
+const embedClientSrc = `${playgroundOrigin}/embed.module.js`
+const playgroundOptions = {
+  project: { files: [] },
+  autoFocus: false,
+  splitterDirection: 'horizontal',
+  splitterSize: 60,
+  autoClearOutput: true,
+  showClearOutput: false,
+  canEditTabs: false,
+  theme: 'light',
+}
+const playgroundSrc = `${playgroundOrigin}/#embed=${encodeURIComponent(JSON.stringify(playgroundOptions))}`
+
 const examples = [
   AustraliaProject,
   NQueensProject,
@@ -16,89 +30,77 @@ const examples = [
 ]
 
 export function Playground({ className, ...props }) {
-  const id = useId()
-  const [playground, setPlayground] = useState(null)
-  const [target, setTarget] = useState(null)
-  const [svelteComponent, setSvelteComponent] = useState(null)
+  const iframe = useRef(null)
+  const embed = useRef(null)
+  const [ready, setReady] = useState(false)
   const [projectIndex, setProjectIndex] = useState(0)
 
   useEffect(() => {
     setProjectIndex(Math.floor(examples.length * Math.random()))
-    window[`playground-${id}`] = (p) => setPlayground({ playground: p })
-    const script = document.createElement('script')
-    script.id = `playground-script-${id}`
-    script.type = 'module'
-    script.innerHTML = `
-        import Playground from 'https://cdn.jsdelivr.net/gh/minizinc/minizinc-playground@library/dist/minizinc-playground.js';
-        if ('playground-${id}' in window) {
-          window['playground-${id}'](Playground);
-          delete window['playground-${id}'];
-          document.getElementById('playground-script-${id}').remove();
-        }
-      `
-    document.body.appendChild(script)
-  }, [id])
+  }, [])
 
   useEffect(() => {
-    if (!playground || !target) {
-      return
+    let cancelled = false
+
+    import(/* webpackIgnore: true */ embedClientSrc)
+      .then(({ default: createEmbed }) => {
+        if (cancelled) return
+        const client = createEmbed(iframe.current)
+        embed.current = client
+        client.ready
+          .then(() => {
+            if (!cancelled) setReady(true)
+          })
+          .catch((error) =>
+            console.error('Playground failed to become ready', error),
+          )
+      })
+      .catch((error) =>
+        console.error('Failed to load playground client', error),
+      )
+
+    return () => {
+      cancelled = true
+      embed.current?.destroy()
+      embed.current = null
     }
+  }, [])
+
+  useEffect(() => {
+    if (!ready) return
+    embed.current
+      ?.loadProject(examples[projectIndex].project)
+      .catch((error) =>
+        console.error('Failed to load playground project', error),
+      )
+  }, [ready, projectIndex])
+
+  useEffect(() => {
+    if (!ready) return
 
     const mediaQuery = matchMedia('(max-width: 768px)')
-    const component = new playground.playground({
-      target,
-      props: {
-        project: { files: [] },
-        autoFocus: false,
-        splitterDirection: mediaQuery.matches ? 'vertical' : 'horizontal',
-        splitterSize: 60,
-        showShareButton: false,
-        showDownloadButton: false,
-        compilationEnabled: false,
-        showVersionSwitcher: false,
-        canSwitchOrientation: false,
-        autoClearOutput: true,
-        showClearOutput: false,
-        showAutoClearOutput: false,
-        showOutputSectionToggles: false,
-        showOutputRightControls: false,
-        canEditTabs: false,
-        externalPlaygroundURL: 'https://play.minizinc.dev/',
-        theme: 'light',
-      },
-    })
-
-    const mediaQueryChange = (e) => {
-      component.$set({
-        splitterDirection: e.matches ? 'vertical' : 'horizontal',
-      })
+    const updateLayout = (matches) => {
+      embed.current
+        ?.setOptions({
+          splitterDirection: matches ? 'vertical' : 'horizontal',
+        })
+        .catch((error) =>
+          console.error('Failed to update playground layout', error),
+        )
     }
-    mediaQuery.addEventListener('change', mediaQueryChange)
-    setSvelteComponent({ component })
-    return () => {
-      mediaQuery.removeEventListener('change', mediaQuery)
-      component.$destroy()
-    }
-  }, [playground, target])
-
-  useEffect(() => {
-    if (svelteComponent) {
-      svelteComponent.component.$set({
-        project: examples[projectIndex].project,
-      })
-    }
-  }, [svelteComponent, projectIndex])
+    updateLayout(mediaQuery.matches)
+    const onChange = (event) => updateLayout(event.matches)
+    mediaQuery.addEventListener('change', onChange)
+    return () => mediaQuery.removeEventListener('change', onChange)
+  }, [ready])
 
   return (
     <section
       id="playground"
       aria-labelledby="playground-title"
-      className={clsx(className, 'py-20 sm:py-32')}
+      className={clsx(className, 'py-12 sm:py-20')}
       {...props}
     >
-      <style jsx>{`
-        @import url('https://cdn.jsdelivr.net/gh/minizinc/minizinc-playground@library/dist/minizinc-playground.css');
-      `}</style>
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <h2
@@ -125,21 +127,27 @@ export function Playground({ className, ...props }) {
           <SelectField
             id="playground-example"
             className="col-span-full"
-            onChange={(e) => setProjectIndex(e.target.value)}
+            onChange={(event) => setProjectIndex(Number(event.target.value))}
             value={projectIndex}
           >
-            {examples.map((x, i) => (
-              <option key={i} value={i}>
-                {x.name}
+            {examples.map((example, index) => (
+              <option key={index} value={index}>
+                {example.name}
               </option>
             ))}
           </SelectField>
         </div>
         <div className="mt-8">
-          <div
-            ref={(el) => setTarget(el)}
+          <iframe
+            ref={iframe}
+            src={playgroundSrc}
+            title="MiniZinc Playground"
+            width="100%"
+            height="540"
+            allow="clipboard-write"
             style={{
-              height: '540px',
+              display: 'block',
+              border: 0,
               boxShadow: '0 0 1rem 1rem rgba(0, 0, 0, 0.08)',
             }}
           />

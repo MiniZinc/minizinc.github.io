@@ -7,6 +7,7 @@ import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import { NavLinks } from '@/components/NavLinks'
 import routes from '@/data/routes'
+import { Socials } from './Socials'
 
 function MenuIcon(props) {
   return (
@@ -105,6 +106,9 @@ export function Header() {
                                 {label}
                               </MobileNavLink>
                             ))}
+                            <div className="pt-2 text-xl">
+                              <Socials />
+                            </div>
                           </div>
                         </Popover.Panel>
                       </>
@@ -113,6 +117,9 @@ export function Header() {
                 </>
               )}
             </Popover>
+          </div>
+          <div className="hidden lg:flex">
+            <Socials />
           </div>
         </Container>
       </nav>

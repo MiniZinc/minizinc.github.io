@@ -8,6 +8,7 @@ import { Playground } from '@/components/Playground'
 import { LatestRelease } from '@/components/LatestRelease'
 import { Video } from '@/components/Video'
 import { Merchandise } from '@/components/Merchandise'
+import { ProfessionalServices } from '@/components/ProfessionalServices'
 
 export default function Home() {
   return (
@@ -21,7 +22,8 @@ export default function Home() {
         <Playground className="border-t border-gray-200 bg-gray-100" />
         <Video />
         <Features className="bg-gray-100" />
-        <LatestRelease />
+        <ProfessionalServices />
+        <LatestRelease className="bg-gray-100" />
         <Merchandise className="border-t border-gray-200 bg-sky-50" />
       </main>
       <Footer />

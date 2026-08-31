@@ -23,11 +23,16 @@ export function pdfDocumentation(version = 'stable', lang = 'en') {
 export function bundles(version) {
   const v = version || latest.version
   return {
-    linux: `https://github.com/MiniZinc/MiniZincIDE/releases/download/${v}/MiniZincIDE-${v}-bundle-linux-x86_64.tgz`,
-    appImage: `https://github.com/MiniZinc/MiniZincIDE/releases/download/${v}/MiniZincIDE-${v}-x86_64.AppImage`,
+    linux: `https://github.com/MiniZinc/MiniZincIDE/releases/download/${v}/MiniZincIDE-${v}-x86_64-linux-gnu.tgz`,
+    appImage: `https://github.com/MiniZinc/MiniZincIDE/releases/download/${v}/MiniZincIDE-${v}-x86_64-linux-gnu.AppImage`,
     snap: 'https://snapcraft.io/minizinc',
-    windows: `https://github.com/MiniZinc/MiniZincIDE/releases/download/${v}/MiniZincIDE-${v}-bundled-setup-win64.exe`,
-    macOS: `https://github.com/MiniZinc/MiniZincIDE/releases/download/${v}/MiniZincIDE-${v}-bundled.dmg`,
+    windows: `https://github.com/MiniZinc/MiniZincIDE/releases/download/${v}/MiniZincIDE-${v}-x86_64-windows-setup.exe`,
+    windowsARM: `https://github.com/MiniZinc/MiniZincIDE/releases/download/${v}/MiniZincIDE-${v}-aarch64-windows-setup.exe`,
+    macOS: `https://github.com/MiniZinc/MiniZincIDE/releases/download/${v}/MiniZincIDE-${v}-aarch64-apple-darwin.dmg`,
+    macOSIntel: `https://github.com/MiniZinc/MiniZincIDE/releases/download/${v}/MiniZincIDE-${v}-x86_64-apple-darwin.dmg`,
+    commandLineTools: `https://github.com/MiniZinc/libminizinc/releases/tag/${v}`,
+    edgeIDE: `https://github.com/MiniZinc/MiniZincIDE/releases/tag/edge`,
+    edgeCommandLineTools: `https://github.com/MiniZinc/libminizinc/releases/tag/edge`,
   }
 }
 

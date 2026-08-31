@@ -3,7 +3,7 @@ import clsx from 'clsx'
 
 export function Video({ className }) {
   return (
-    <section id="minizinc-video" className={clsx(className, 'py-20 sm:py-32')}>
+    <section id="minizinc-video" className={clsx(className, 'py-12 sm:py-20')}>
       <Container>
         <div className="relative h-0 w-full pb-[56.25%]">
           <iframe
