@@ -8,7 +8,7 @@ import SudokuProject from '@/data/examples/sudoku.json'
 import { Link } from '@/components/Link'
 import clsx from 'clsx'
 
-const playgroundOrigin = 'https://play.minizinc.dev/develop'
+const playgroundOrigin = 'https://play.minizinc.org'
 const embedClientSrc = `${playgroundOrigin}/embed.module.js`
 const playgroundOptions = {
   project: { files: [] },
@@ -115,7 +115,7 @@ export function Playground({ className, ...props }) {
             Try one of the examples, or{' '}
             <Link
               color="primary"
-              href="https://play.minizinc.dev"
+              href="https://play.minizinc.org"
               target="_blank"
             >
               write your own model

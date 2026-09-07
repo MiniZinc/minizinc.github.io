@@ -5,14 +5,14 @@ import { Resources } from '@/components/resources/Resources'
 const resources = [
   {
     name: 'MiniZinc Python',
-    url: 'https://python.minizinc.dev',
+    url: 'https://python.minizinc.org',
     description: 'Access all MiniZinc functionality directly from Python.',
     action: 'Get started',
     icon: faPython,
   },
   {
     name: `MiniZinc JavaScript`,
-    url: 'https://js.minizinc.dev',
+    url: 'https://js.minizinc.org',
     description:
       'Use MiniZinc completely within your web browser, or server-side using NodeJS.',
     action: 'Get started',

@@ -3,7 +3,7 @@ import { documentation } from '@/utils/links'
 const routes = [
   ['Resources', '/resources'],
   ['Team', '/team'],
-  ['Playground', 'https://play.minizinc.dev'],
+  ['Playground', 'https://play.minizinc.org'],
   ['Challenge', '/challenge'],
   ['Discussions', 'https://groups.google.com/forum/#!forum/minizinc'],
 ]
@@ -13,7 +13,7 @@ export const siteMap = [
     label: 'MiniZinc',
     children: [
       ['Downloads', '/downloads'],
-      ['Playground', 'https://play.minizinc.dev'],
+      ['Playground', 'https://play.minizinc.org'],
       ['Challenge', '/challenge'],
       ['Releases', '/downloads#releases'],
     ],

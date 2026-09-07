@@ -2,22 +2,22 @@ import { latest } from '@/data/version'
 
 export function changelog(version) {
   if (version === 'edge') {
-    return `https://docs.minizinc.dev/en/latest/changelog.html#unreleased`
+    return `https://docs.minizinc.org/en/latest/changelog.html#unreleased`
   }
   if (version) {
     const versionDash = (version || latest.version).replace(/\./g, '-')
-    return `https://docs.minizinc.dev/en/stable/changelog.html#v${versionDash}`
+    return `https://docs.minizinc.org/en/stable/changelog.html#v${versionDash}`
   }
-  return `https://docs.minizinc.dev/en/stable/changelog.html`
+  return `https://docs.minizinc.org/en/stable/changelog.html`
 }
 
 export function documentation(page = '', version = 'stable', lang = 'en') {
   const suffix = page ? page.replace(/^\/+/, '') : ''
-  return `https://docs.minizinc.dev/${lang}/${version}/${suffix}`
+  return `https://docs.minizinc.org/${lang}/${version}/${suffix}`
 }
 
 export function pdfDocumentation(version = 'stable', lang = 'en') {
-  return `https://docs.minizinc.dev/_/downloads/${lang}/${version}/pdf/`
+  return `https://docs.minizinc.org/_/downloads/${lang}/${version}/pdf/`
 }
 
 export function bundles(version) {
